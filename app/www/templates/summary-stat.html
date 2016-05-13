@@ -1,0 +1,28 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th></th>
+      <th ng-repeat="stat in summary.namesStats">{{stat}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="player in summary.realTimePlayers">
+      <td>{{player.last_name}} </br> {{player.first_name}}</td>
+      <td>nb min jouées</td>
+      <td>{{player.statistics.ballon_jouee}}</td>
+      <td>{{player.statistics.ballons_perdus}}</td>
+      <td>{{stat_player.percent_pass(player)}}</td>
+      <td>{{player.ballon_recup}}</td>
+      <td>{{player.geste_defensif}}</td>
+      <td>{{stat_player.percent(player)}}</td>
+      <td>{{player.fautes_commises}}</td>
+      <td>{{player.fautes_subies}}</td>
+      <td>{{player.hors_jeu}}</td>
+      <td>{{stat_player.tirs(player)}}</td>
+      <td>{{player.tir_cadre}}</td>
+      <td>{{player.avant_passe_decisive}}</td>
+      <td>{{player.passe_decisive}}</td>
+      <td>{{player.but}}</td>
+    </tr>
+  </tbody>
+</table>

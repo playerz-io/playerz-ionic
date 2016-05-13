@@ -1,0 +1,52 @@
+
+<div>
+  <div class="row" disable-all="isDisableClick">
+    <div class="row" style="text-align: center;">
+
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'ATD'">
+        <button ng-click="matchStat.countBallPlayed(player)"> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'ATG'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+    </div>
+
+    <div class="row" style="text-align: center;">
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'MD'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'MCD'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'MCG'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'MG'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+    </div>
+
+
+    <div class="row" style="text-align: center;">
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'ARD'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'DFD'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'DFG'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'ARG'">
+        <button> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+    </div>
+
+    <div class="row" style="text-align: center;">
+      <div class="col" ng-repeat="player in playerInfo" ng-if="player.position === 'GD'">
+	       <button ng-click="matchStat.countBallPlayed(player)"> {{player.last_name}}<br/> {{player.first_name}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
