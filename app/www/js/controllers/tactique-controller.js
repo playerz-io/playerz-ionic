@@ -28,7 +28,7 @@ angular.module('starter.controller.tactique', [])
           self.getTactique();
           console.log(data);
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     };
@@ -40,7 +40,7 @@ angular.module('starter.controller.tactique', [])
           console.log(data);
           self.post = data.tactique;
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     };
@@ -52,7 +52,7 @@ angular.module('starter.controller.tactique', [])
         .success(function(data) {
           console.log(data);
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     };
@@ -80,7 +80,7 @@ angular.module('starter.controller.tactique', [])
         .success(function(data) {
           console.log(data);
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     }
