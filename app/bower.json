@@ -5,6 +5,8 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "angular-disable-all": "^0.0.2"
+    "angular-disable-all": "^0.0.2",
+    "firebase": "^2.4.2",
+    "angularfire": "^1.2.0"
   }
 }
