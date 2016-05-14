@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 .text-center{
     text-align: center;
 }
@@ -32,4 +33,13 @@ a{
 
 table, th, td {
     border: 1px solid black;
+}
+
+
+/*  screen > 520px  and landscape mode*/
+@media screen and (orientation:landscape) and (min-width: 520px) {
+  .connexion{
+      width: 80%;
+      margin: 0 auto;
+  }
 }
