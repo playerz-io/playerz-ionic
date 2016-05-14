@@ -20,7 +20,7 @@ var StatisticSchema = new Schema({
     substitute: false,
     but: Number,
     ballLost: Number,
-    ballPLayed: Number,
+    ballPlayed: Number,
     passesCompletion: Number,
     defensiveAction: Number,
     relanceCompletion: Number,

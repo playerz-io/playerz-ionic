@@ -39,7 +39,7 @@
                         substitute: statistics.substitute,
                         but: statistics.but,
                         ballLost: statistics.ballLost,
-                        ballPLayed: statistics.ballPLayed,
+                        ballPlayed: statistics.ballPlayed,
                         passesCompletion: statistics.passesCompletion,
                         defensiveAction: statistics.defensiveAction,
                         relanceCompletion: statistics.relanceCompletion,
@@ -265,7 +265,7 @@
 
                 for (let stat of playerSelected) {
                     if (stat.match_id.toString() === match_id.toString()) {
-                        let percentPass = 100 - (stat.ballLost * 100 / stat.ballPLayed);
+                        let percentPass = 100 - (stat.ballLost * 100 / stat.ballPlayed);
 
                         if (isNan(percentPass)) {
                             percentPass = 0
@@ -427,7 +427,7 @@
                                 substitute: player.statistics[i].substitute,
                                 but: player.statistics[i].but,
                                 ballLost: player.statistics[i].ballLost,
-                                ballPLayed: player.statistics[i].ballPLayed,
+                                ballPlayed: player.statistics[i].ballPlayed,
                                 passesCompletion: player.statistics[i].passesCompletion,
                                 defensiveAction: player.statistics[i].defensiveAction,
                                 relanceCompletion: player.statistics[i].relanceCompletion,

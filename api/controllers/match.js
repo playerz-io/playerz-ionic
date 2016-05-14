@@ -435,7 +435,7 @@ let addStatisticsToPlayer = function(player, match_id) {
         substitute: 0,
         but: 0,
         ballLost: 0,
-        ballPLayed: 0,
+        ballPlayed: 0,
         passesCompletion: 0,
         defensiveAction: 0,
         relanceCompletion: 0,

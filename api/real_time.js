@@ -44,7 +44,7 @@ exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
                 substitute: player.statistics[0].substitute,
                 but: player.statistics[0].but,
                 ballLost: player.statistics[0].ballLost,
-                ballPLayed: player.statistics[0].ballPLayed,
+                ballPlayed: player.statistics[0].ballPlayed,
                 passesCompletion: player.statistics[0].passesCompletion,
                 defensiveAction: player.statistics[0].defensiveAction,
                 relanceCompletion: player.statistics[0].relanceCompletion,

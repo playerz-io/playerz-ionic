@@ -56,7 +56,7 @@ angular.module('starter.controller.match-stat', [])
 
     //count ball touched
     self.countBallPlayed = function(player) {
-      self.updateStatistic(player.$id, "ballons_jouée");
+      self.updateStatistic(player.$id, "ballPLayed");
       console.log(player.$id.toString());
       PlayerService.addSchema(self.matchId, player.$id.toString())
         .success(function(data) {
