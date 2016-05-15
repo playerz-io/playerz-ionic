@@ -250,15 +250,24 @@
     // }
 
 
-    //count percentage relance and percentage passes success per a match
+    //count percentage relance and percentage passes success per a match and attempts
+    // statistic that required calculation
     let countPercent = function(player, idMatch, idCoach) {
         let playerStatistic = player.statistics;
         let percentRelance = 0;
         let percentPass = 0;
+        let numberAttempts = 0;
 
         for (let stat of playerStatistic) {
             if (stat.match_id.toString() === idMatch.toString()) {
 
+                //count number attempts
+                numberAttempts = stat.attemptsOnTarget + stat.attemptsOffTarget + stat.but;
+                if (isNaN(numberAttempts)) {
+                    numberAttempts = 0
+                }
+
+                stat.attempts = numberAttempts;
                 //count percentage passes success
                 percentPass = 100 - (stat.ballLost * 100 / stat.ballPlayed);
 
@@ -275,9 +284,8 @@
                 }
 
                 stat.relanceCompletion = percentRelance;
-                console.log("relance completion : "+stat.relanceCompletion);
                 player.save();
-                console.log(playerStatistic);
+
                 real_time.updateStatistic_firebase(player, idCoach, idCoach, {
                     statistics: {
                         assist: stat.assist,
