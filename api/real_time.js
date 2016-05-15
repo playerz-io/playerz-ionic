@@ -4,11 +4,7 @@
 let Firebase = require('firebase');
 var ref = new Firebase('https://boos.firebaseio.com/coaches');
 
-// exports.addMatch_firebase = function(idRef, match_ID){
 
-//     var coaches_firebase =  ref.child(idRef);
-//     var match_firebase = coaches_firebase.child(match_ID);
-// };
 
 let checkMatchId = function(match_ID, player) {
     return matchID === player.match_id;
@@ -38,6 +34,7 @@ exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
                 redCard: player.statistics[0].redCard,
                 attemptsOnTarget: player.statistics[0].attemptsOnTarget,
                 attemptsOffTarget: player.statistics[0].attemptsOffTarget,
+                attempts: player.statistics[0].attempts,
                 beforeAssist: player.statistics[0].beforeAssist,
                 matchPlayed: player.statistics[0].matchPlayed,
                 firstTeamPlayer: player.statistics[0].firstTeamPlayer,

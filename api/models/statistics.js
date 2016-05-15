@@ -14,6 +14,7 @@ var StatisticSchema = new Schema({
     redCard: Number,
     attemptsOnTarget: Number,
     attemptsOffTarget: Number,
+    attempts: Number,
     beforeAssist: Number,
     matchPlayed: Number,
     firstTeamPlayer: false,
