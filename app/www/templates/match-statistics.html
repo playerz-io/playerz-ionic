@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col col-25">
       <button ng-click="matchStat.countMainAction('but')">But</button>
-      <button ng-click="matchStat.countMainAction('geste_defensif')">Geste Défensif</button>
-      <button ng-click="matchStat.countMainAction('tirs_cadrees')">Tirs Cadrés</button>
-      <button ng-click="matchStat.countMainAction('tirs_non_cadrees')">Tirs Cadrés</button>
-      <button ng-click="matchStat.countMainAction('ballons_perdus')">Tirs Cadrés</button>
-      <button ui-sref="summary-stat">Fin du match</button>
+      <button ng-click="matchStat.countMainAction('defensiveAction')">Geste Défensif</button>
+      <button ng-click="matchStat.countMainAction('attemptsOnTarget')">Tirs Cadrés</button>
+      <button ng-click="matchStat.countMainAction('attemptsOffTarget')">Tirs Non Cadrés</button>
+      <button ng-click="matchStat.countMainAction('ballLost')">Ballons Perdu</button>
+      <button ng-click="matchStat.countPercent()">Fin du match</button>
     </div>
     <div ng-if="matchStat.match.formation === '4-4-2'" class="quatre col col-75">
       <four-fourtwo info="matchStat.playerSelected_firebase" click="false"></four-fourtwo>

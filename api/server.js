@@ -255,8 +255,13 @@ apiRoutes.post('/action', passport.authenticate('jwt', {
     session: false
 }), controllerStat.countMainAction);
 
-apiRoutes.get('/avgRelance', passport.authenticate('jwt', {
+apiRoutes.post('/avgRelance', passport.authenticate('jwt', {
     session: false
 }), controllerStat.avgRelance);
+
+apiRoutes.post('/countPercent', passport.authenticate('jwt', {
+    session: false
+}), controllerStat.countPercent);
+
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);

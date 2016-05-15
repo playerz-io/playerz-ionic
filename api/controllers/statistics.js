@@ -22,7 +22,6 @@
                 if (err)
                     throw err;
                 statistics[stat]++;
-                console.log()
                 real_time.updateStatistic_firebase(player, match_id, coach_id, {
                     statistics: {
                         assist: statistics.assist,
@@ -138,13 +137,12 @@
 
                 let match = coach.team.matchs.id(match_id);
                 let schema = match.schemas;
+                let stringAction = action.toString();
                 console.log(action);
                 schema.push(action);
 
                 let sizeSchema = match.schemas.length;
                 console.log(match.schemas);
-
-                let stringAction = action.toString();
 
                 //id player with main action(but, tir cadré, tir non cadrées...)
                 let id_statPlayer = schema[sizeSchema - 2];
@@ -250,99 +248,113 @@
     //
     // }
 
-    exports.percentPass = function(req, res) {
-        let token = getToken(req.headers);
-        let match_id = req.body.match_id;
-        let player_id = req.body.player_id;
 
-        if (token) {
-            let decoded = jwt.decode(token, config.secret);
-            let coach_id = decoded._id;
+    //count percentage relance and percentage passes success per a match
+    let countPercent = function(player, idMatch, idCoach) {
+        let playerStatistic = player.statistics;
+        let percentRelance = 0;
+        let percentPass = 0;
 
-            Player.findById(player_id, function(err, player) {
+        for (let stat of playerStatistic) {
+            if (stat.match_id.toString() === idMatch.toString()) {
 
-                let playerStatistic = player.statistics;
+                //count percentage passes success
+                percentPass = 100 - (stat.ballLost * 100 / stat.ballPlayed);
 
-                for (let stat of playerSelected) {
-                    if (stat.match_id.toString() === match_id.toString()) {
-                        let percentPass = 100 - (stat.ballLost * 100 / stat.ballPlayed);
+                if (isNaN(percentPass)) {
+                    percentPass = 0
+                }
+                stat.passesCompletion = percentPass;
 
-                        if (isNan(percentPass)) {
-                            percentPass = 0
-                        }
+                //count percentRelance
+                percentRelance = stat.retrieveBalls * 100 / (stat.retrieveBalls + stat.defensiveAction);
 
-                        stat.passesCompletion = percentPass;
-                        player.save();
-
-                        real_time.updateStatistic_firebase(player, match_id, coach_id, {
-                            statistics: {
-                                passesCompletion: percentPass
-                            }
-                        });
-                    }
+                if (isNaN(percentRelance)) {
+                    percentRelance = 0;
                 }
 
-                res.status(201).json({
-                    success: true,
-                    player
+                stat.relanceCompletion = percentRelance;
+                console.log("relance completion : "+stat.relanceCompletion);
+                player.save();
+                console.log(playerStatistic);
+                real_time.updateStatistic_firebase(player, idCoach, idCoach, {
+                    statistics: {
+                        assist: stat.assist,
+                        retrieveBalls: stat.retrieveBalls,
+                        foulsSuffered: stat.foulsSuffered,
+                        foulsCommitted: stat.foulsCommitted,
+                        yellowCard: stat.yellowCard,
+                        redCard: stat.redCard,
+                        attemptsOnTarget: stat.attemptsOnTarget,
+                        attemptsOffTarget: stat.attemptsOffTarget,
+                        beforeAssist: stat.beforeAssist,
+                        matchPlayed: stat.matchPlayed,
+                        firstTeamPlayer: stat.firstTeamPlayer,
+                        substitute: stat.substitute,
+                        but: stat.but,
+                        ballLost: stat.ballLost,
+                        ballPlayed: stat.ballPlayed,
+                        passesCompletion: stat.passesCompletion,
+                        defensiveAction: stat.defensiveAction,
+                        relanceCompletion: stat.relanceCompletion,
+                        offSide: stat.offSide,
+                        passesFailed: stat.passesFailed,
+                        crossesFailed: stat.crossesFailed,
+                        saves: stat.saves,
+                        claquettes: stat.claquettes,
+                        sorties_aeriennes: stat.sorties_aeriennes,
+                        clean_sheet: stat.clean_sheet
+                    }
                 });
-            });
-        } else {
-            return res.status(403).send({
-                success: false,
-                msg: 'No token provided.'
-            });
-        }
-    }
 
-    exports.percentRelance = function(req, res) {
+            }
+        }
+
+    };
+
+
+    exports.countPercent = function(req, res) {
         let token = getToken(req.headers);
-        let match_id = req.body.match_id;
-        let player_id = req.body.player_id;
+        let idMatch = req.body.idMatch;
 
         if (token) {
             let decoded = jwt.decode(token, config.secret);
-            let coach_id = decoded._id;
-            Player.findById(player_id, function(err, player) {
-                let playerStatistic = player.statistics;
+            let idCoach = decoded._id;
 
-                for (let stat of playerSelected) {
-                    if (stat.match_id.toString() === match_id.toString()) {
-                        let percentRelance = stat.retrieveBalls * 100 / (stat.retrieveBalls + stat.defensiveAction);
+            Coach.findById(idCoach, function(err, coach) {
+                if (err)
+                    throw err;
+                let playerSelected = coach.team.matchs.id(idMatch).playerSelected;
+                console.log(coach.team.matchs);
+                for (let idPlayer of playerSelected) {
+                    Player.findById(idPlayer, function(err, player) {
 
-                        if (isNan(percentRelance)) {
-                            percentRelance = 0;
-                        }
-
-                        stat.relanceCompletion = percentRelance;
-                        player.save();
-
-                        real_time.updateStatistic_firebase(player, match_id, coach_id, {
-                            statistics: {
-                                relanceCompletion: percentRelance
-                            }
-                        });
-
-                    }
+                        if (err)
+                            throw err;
+                        countPercent(player, idMatch, idCoach);
+                    });
                 }
 
                 res.status(201).json({
                     success: true,
-                    player
+                    player: playerSelected
                 })
             });
 
+
         } else {
-            return res.status(403).send({
+            return res.status(403).json({
                 success: false,
                 msg: 'No token provided.'
             });
         }
+
     };
+
 
     exports.avgRelance = function(req, res) {
         let token = getToken(req.headers);
-        let match_id = req.query.match_id;
+        let match_id = req.body.match_id;
 
 
         console.log('match_id : ' + match_id);
