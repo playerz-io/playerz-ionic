@@ -429,6 +429,7 @@ let addStatisticsToPlayer = function(player, match_id) {
         redCard: 0,
         attemptsOnTarget: 0,
         attemptsOffTarget: 0,
+        attempts: 0,
         beforeAssist: 0,
         matchPlayed: 0,
         firstTeamPlayer: 0,
