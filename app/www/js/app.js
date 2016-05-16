@@ -3,7 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.matchdetail', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat', 'ionic-table'])
+angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.matchdetail', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
+'ionic-table', 'starter.controller.change'])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
 
@@ -156,6 +157,11 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
       url: '/summary-stat',
       templateUrl: 'templates/summary-stat.html',
       controller: 'SummaryStatCtrl as summary'
+    })
+    .state('change', {
+      url: '/change',
+      templateUrl: 'templates/change.html',
+      controller: 'ChangeCtrl as change'
     })
 
   $urlRouterProvider.otherwise('/');

@@ -76,7 +76,7 @@ angular.module('starter.controller.tactique', [])
 
     //add position to player
     self.addPosition = function(player_id, position) {
-      PlayerService.addPosition(player_id, position)
+      PlayerService.addPosition(player_id, position, self.matchId)
         .success(function(data) {
           console.log(data);
         })

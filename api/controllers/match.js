@@ -198,6 +198,8 @@ exports.getTactique = function(req, res) {
                     post: 'ATD'
                 }, {
                     post: 'ATG'
+                }, {
+                    post: 'REM'
                 }]
             });
         } else if (tactique === '4-3-3') {
@@ -225,6 +227,8 @@ exports.getTactique = function(req, res) {
                     post: 'ATD'
                 }, {
                     post: 'ATG'
+                }, {
+                    post: 'REM'
                 }]
             });
         } else {

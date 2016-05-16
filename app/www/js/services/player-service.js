@@ -2,15 +2,16 @@
 
 angular.module('starter')
     .service('PlayerService', function(API_ENDPOINT, $http, $httpParamSerializerJQLike) {
-        let addPosition = function(player_id, position) {
+        let addPosition = function(player_id, position, match_id) {
             return $http({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 data: $httpParamSerializerJQLike({
-                    player_id: player_id,
-                    position: position
+                    player_id,
+                    position,
+                    match_id
                 }),
                 url: API_ENDPOINT.url + '/position'
             });

@@ -1,29 +1,51 @@
 //controller player
+'use strict'
 
-var getToken = require('./token');
-var jwt = require('jwt-simple');
-var config = require('../config/database');
-var Player = require('../models/player').modelPlayer;
+let realTime = require('../real_time');
+let getToken = require('./token');
+let jwt = require('jwt-simple');
+let config = require('../config/database');
+let Player = require('../models/player').modelPlayer;
 
-exports.addPosition = function(req, res){
-    var token = getToken(req.headers);
+exports.addPosition = function(req, res) {
+
+    let position = req.body.position;
+    let idPlayer = req.body.player_id;
+    let idMatch = req.body.match_id;
+
+    let token = getToken(req.headers);
 
     if (token) {
-	var decoded = jwt.decode(token, config.secret);
+        let decoded = jwt.decode(token, config.secret);
+        let idCoach = decoded._id;
 
 
-	Player.findById(req.body.player_id, function(err, player){
-	    if (err)
-		res.status(404).json({ error: err});
+        Player.findById(idPlayer, function(err, player) {
+            if (err)
+                res.status(404).json({
+                    error: err
+                });
 
-	    console.log(player)
-	    player.position = req.body.position;
-	    player.save();
+            console.log(player, idMatch, idCoach)
+            player.position = position;
+            realTime.updateStatistic_firebase(player, idMatch, idCoach, {
+                first_name: player.first_name,
+                last_name: player.last_name,
+                id: player._id,
+                position: position,
+            });
+            player.save();
 
-	    res.status(201).json({ success: true, player: player});
-	})
+            res.status(201).json({
+                success: true,
+                player: player
+            });
+        })
 
     } else {
-	     return res.status(403).send({success: false, msg: 'No token provided.'});
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
     }
 };
