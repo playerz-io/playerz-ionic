@@ -312,6 +312,7 @@ exports.addPlayerSelected = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
         let player_id = req.body.player_id;
         let match_id = req.body.match_id;
+        let position = req.body.position;
 
         Player.findById(player_id, function(err, player) {
             if (err)
@@ -329,9 +330,6 @@ exports.addPlayerSelected = function(req, res) {
                 let playerSelected = coach.team.matchs.id(match_id).playerSelected;
                 let formation = coach.team.matchs.id(match_id).formation;
                 let findPlayer = playerSelected.indexOf(player_id);
-                let idRef = decoded._id.toString() + '_' + decoded.last_name + '_' + decoded.last_name;
-
-                //	console.log(player);
 
                 //check if user already exist
                 if (findPlayer === -1) {
@@ -358,6 +356,14 @@ exports.addPlayerSelected = function(req, res) {
 
                     if (formation === '4-4-2') {
                         /************* add verif position ***********************/
+
+                        player.position = position;
+                        real_time.updateStatistic_firebase(player, match_id, decoded._id, {
+                            first_name: player.first_name,
+                            last_name: player.last_name,
+                            id: player._id,
+                            position: position,
+                        });
 
                         real_time.addPlayerSelected_firebase(player, match_id, decoded._id);
                         playerSelected.push(player);

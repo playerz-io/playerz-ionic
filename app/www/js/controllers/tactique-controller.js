@@ -46,9 +46,9 @@ angular.module('starter.controller.tactique', [])
     };
 
     //add player to the selection of current match
-    self.addPlayerSelected = function(player_id) {
+    self.addPlayerSelected = function(player_id, position) {
       console.log(player_id);
-      MatchService.addPlayerSelected(player_id, StorageService.getStorage())
+      MatchService.addPlayerSelected(player_id, StorageService.getStorage(), position)
         .success(function(data) {
           console.log(data);
         })

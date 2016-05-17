@@ -32,7 +32,7 @@ exports.addPosition = function(req, res) {
                 first_name: player.first_name,
                 last_name: player.last_name,
                 id: player._id,
-                position: position,
+                position: position
             });
             player.save();
 
