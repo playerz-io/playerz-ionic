@@ -331,6 +331,16 @@ exports.addPlayerSelected = function(req, res) {
                 let formation = coach.team.matchs.id(match_id).formation;
                 let findPlayer = playerSelected.indexOf(player_id);
 
+
+                //change position of player even if he is already added
+                player.position = position;
+                real_time.updateStatistic_firebase(player, match_id, decoded._id, {
+                    first_name: player.first_name,
+                    last_name: player.last_name,
+                    id: player._id,
+                    position: position,
+                });
+
                 //check if user already exist
                 if (findPlayer === -1) {
 
@@ -357,14 +367,6 @@ exports.addPlayerSelected = function(req, res) {
                     if (formation === '4-4-2') {
                         /************* add verif position ***********************/
 
-                        player.position = position;
-                        real_time.updateStatistic_firebase(player, match_id, decoded._id, {
-                            first_name: player.first_name,
-                            last_name: player.last_name,
-                            id: player._id,
-                            position: position,
-                        });
-
                         real_time.addPlayerSelected_firebase(player, match_id, decoded._id);
                         playerSelected.push(player);
                         player.save();
@@ -377,6 +379,7 @@ exports.addPlayerSelected = function(req, res) {
                         });
                     }
                 } else {
+
                     res.status(201).json({
                         success: false,
                         msg: 'User is already added',
