@@ -2,7 +2,7 @@ angular.module('starter.controller.match', [])
     .controller('MatchTabCtrl', function($ionicPopup, MatchService, $scope, $timeout, StorageService){
 
 	var self = this;
-	
+
 	self.match = {
 	    against_team: '',
 	    place: '',
@@ -19,7 +19,7 @@ angular.module('starter.controller.match', [])
 		.success(function(data){
 		    self.getMatchs();
 		    self.match = {};
-		    
+
 		})
 		.error(function(data){
 		    console.log(data);
@@ -47,6 +47,6 @@ angular.module('starter.controller.match', [])
 		})
 	};
 
-	self.getMatchs();	
-	
+	self.getMatchs();
+
     });

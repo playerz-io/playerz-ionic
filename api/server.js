@@ -16,7 +16,7 @@ var port = process.env.PORT || 5000;
 var jwt = require('jwt-simple');
 
 //connect to database
-mongoose.connect(config.database);
+mongoose.connect(config.database_prod);
 
 
 

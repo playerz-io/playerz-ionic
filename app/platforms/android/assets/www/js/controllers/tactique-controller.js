@@ -28,7 +28,7 @@ angular.module('starter.controller.tactique', [])
           self.getTactique();
           console.log(data);
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     };
@@ -40,19 +40,19 @@ angular.module('starter.controller.tactique', [])
           console.log(data);
           self.post = data.tactique;
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     };
 
     //add player to the selection of current match
-    self.addPlayerSelected = function(player_id) {
+    self.addPlayerSelected = function(player_id, position) {
       console.log(player_id);
-      MatchService.addPlayerSelected(player_id, StorageService.getStorage())
+      MatchService.addPlayerSelected(player_id, StorageService.getStorage(), position)
         .success(function(data) {
           console.log(data);
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     };
@@ -76,11 +76,11 @@ angular.module('starter.controller.tactique', [])
 
     //add position to player
     self.addPosition = function(player_id, position) {
-      PlayerService.addPosition(player_id, position)
+      PlayerService.addPosition(player_id, position, self.matchId)
         .success(function(data) {
           console.log(data);
         })
-        .error(function() {
+        .error(function(data) {
           console.log(data);
         })
     }

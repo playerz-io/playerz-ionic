@@ -1,53 +1,51 @@
 <div class="row">
 
-  <div class="col col-33">
+    <div class="col col-33">
 
-    <div class="list">
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Formation
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Formation
+                </div>
+                <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)">
+                    <option selected>4-4-2</option>
+                    <option>4-3-3</option>
+                </select>
+            </label>
         </div>
-        <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)">
-          <option selected>4-4-2</option>
-          <option>4-3-3</option>
-        </select>
-      </label>
+
+        <ion-list>
+            <ion-scroll>
+                <ion-item ng-repeat="player in tactique.players">
+                    {{player.first_name}}
+                    <br/> {{player.last_name}}
+                    <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post"
+                    ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
+
+                    <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
+                    <br/>
+                    <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
+                </ion-item>
+            </ion-scroll>
+        </ion-list>
     </div>
 
-    <ion-list>
-      <ion-scroll>
-        <ion-item ng-repeat="player in tactique.players">
-          {{player.first_name}}
-          <br/> {{player.last_name}}
-          <select ng-model="tactique.post_player" ng-change="tactique.addPosition(player._id, tactique.post_player)">
-            <option ng-repeat="post in tactique.post">{{post.post}}</option>
-          </select>
+    <div class="col col-67">
+        <div class="row quatre">
+            <div ng-if="tactique.formation === '4-4-2'">
+                <four-fourtwo info="tactique.playerSelected" click="true"></four-fourtwo>
+            </div>
 
-          <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
-          <br/>
-          <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
-        </ion-item>
-      </ion-scroll>
-    </ion-list>
-  </div>
+            <div ng-if="tactique.formation === '4-3-3'">
+                <four-threethree></four-threethree>
+            </div>
+        </div>
 
-  <div class="col col-67">
-    <div class="row quatre">
-      <div ng-if="tactique.formation === '4-4-2'">
-        <four-fourtwo info="tactique.playerSelected" click="true"></four-fourtwo>
-      </div>
-
-      <div ng-if="tactique.formation === '4-3-3'">
-        <four-threethree></four-threethree>
-      </div>
+        <div class="row" id="begin-match">
+            <button class="button button-assertive" ui-sref="match-statistics({ matchId: tactique.matchId })">
+                Début du match
+            </button>
+        </div>
     </div>
-
-    <div class="row" id="begin-match">
-      <button class="button button-assertive" ui-sref="match-statistics({ matchId: tactique.matchId })">
-        Début du match
-      </button>
-    </div>
-  </div>
-
 
 </div>

@@ -1,35 +1,35 @@
 <ion-pane>
-  <ion-content>
-    <div class="row">
-      <div class="col">
-	<div class="list">
-	  <label class="item item-input">
-	    <input type="text" placeholder="First Name" ng-model="troop.player.first_name">
-	  </label>
-	  <label class="item item-input">
-	    <input type="text" placeholder="Last Name" ng-model="troop.player.last_name">
-	  </label>
-	</div>
-	<button class="button button-full button-positive" ng-click="troop.addPlayer(troop.player)">
-	  Ajouter
-	</button>
-      </div>
-      <div class="col">
-	<label class="item item-input">
-	  <i class="icon ion-search placeholder-icon"></i>
-	  <input type="text" placeholder="Rechercher un joueur" ng-model="troop.searchPlayer">
-	</label>
-	</br>
-	<div class="list" ng-repeat="player in troop.players | filter:troop.searchPlayer">
-	  <a class="item item-thumbnail-left" ui-sref="player({playerId: player._id})">
-	    <h2>{{player.last_name}}</h2>
-	    <h4>{{player.first_name}}</h4>
-	    <button ng-click="troop.removePlayer(player._id)">Supprimer</button>
-	  </a>
-	</div>
-      </div>
-    </div>
-  </ion-content>
+    <ion-content>
+        <div class="row">
+            <div class="col">
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="First Name" ng-model="troop.player.first_name">
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Last Name" ng-model="troop.player.last_name">
+                    </label>
+                </div>
+                <button class="button button-full button-positive" ng-click="troop.addPlayer(troop.player)">
+                    Ajouter
+                </button>
+            </div>
+            <div class="col">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="Rechercher un joueur" ng-model="troop.searchPlayer">
+                </label>
+                </br>
+                <ion-list>
+                    <ion-scroll>
+                        <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ui-sref="player({playerId: player._id})">
+                            <h2>{{player.last_name}}</h2>
+                            <h4>{{player.first_name}}</h4>
+                            <ion-option-button ng-click="troop.removePlayer(player._id)">Supprimer</ion-option-button>
+                        </ion-item>
+                    </ion-scroll>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
 </ion-pane>
-
-
