@@ -7,8 +7,8 @@
                 <div class="input-label">
                     Formation
                 </div>
-                <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)">
-                    <option selected>4-4-2</option>
+                <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)" ng-init="tactique.formation = '4-4-2'">
+                    <option>4-4-2</option>
                     <option>4-3-3</option>
                 </select>
             </label>
