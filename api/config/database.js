@@ -1,5 +1,5 @@
 module.exports = {
     'secret': 'playerzissecret',
     'database_dev': 'mongodb://localhost/playerz-prod',
-    'database_prod': 'mongodb://heroku_v4sv7znm:rjvugsinv8mjtpu1qd4k29si1g@ds025762.mlab.com:25762/heroku_v4sv7znm'
+    'database_prod': 'mongodb://heroku_cp8fl6ht:5q2b967lgqoer50nv5jqma0j1g@ds011933.mlab.com:11933/heroku_cp8fl6ht'
 };
