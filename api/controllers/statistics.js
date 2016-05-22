@@ -286,7 +286,7 @@
                 stat.relanceCompletion = percentRelance;
                 player.save();
 
-                real_time.updateStatistic_firebase(player, idCoach, idCoach, {
+                real_time.updateStatistic_firebase(player, idMatch, idCoach, {
                     statistics: {
                         assist: stat.assist,
                         retrieveBalls: stat.retrieveBalls,

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="tactique">
 
     <div class="col col-33">
 
@@ -7,32 +7,31 @@
                 <div class="input-label">
                     Formation
                 </div>
-                <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)">
-                    <option selected>4-4-2</option>
+                <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)" ng-init="tactique.formation = '4-4-2'">
+                    <option>4-4-2</option>
                     <option>4-3-3</option>
                 </select>
             </label>
         </div>
 
-        <ion-list>
-            <ion-scroll>
-                <ion-item ng-repeat="player in tactique.players">
+        <ion-scroll style="height:90vh">
+            <ion-list>
+                <ion-item ng-repeat="player in tactique.players" class="item">
                     {{player.first_name}}
                     <br/> {{player.last_name}}
-                    <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post"
-                    ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
+                    <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
 
                     <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
                     <br/>
                     <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
                 </ion-item>
-            </ion-scroll>
-        </ion-list>
+            </ion-list>
+        </ion-scroll>
     </div>
 
     <div class="col col-67">
         <div class="row quatre">
-            <div ng-if="tactique.formation === '4-4-2'">
+            <div ng-if="tactique.formation === '4-4-2'" style="margin: 0 auto">
                 <four-fourtwo info="tactique.playerSelected" click="true"></four-fourtwo>
             </div>
 

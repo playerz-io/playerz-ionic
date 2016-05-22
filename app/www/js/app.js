@@ -14,8 +14,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .constant('API_ENDPOINT', {
-    url: 'http://localhost:5000/api'
-        //url: 'https://floating-castle-92524.herokuapp.com/api'
+  url: 'http://localhost:5000/api'
+  //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
                 event.preventDefault();
                 $state.go('login');
             }
-            
+
         } else {
             if (AuthService.isAuthenticated()) {
                 if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team') {
