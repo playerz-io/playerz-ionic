@@ -1,18 +1,19 @@
 //team schema
 'use strict'
 
-var moogoose = require('mongoose');
-var Schema = moogoose.Schema;
-var Player = require('./player').modelPlayer;
-var Match = require('./match').schemaMatch;
+let moogoose = require('mongoose');
+let Schema = moogoose.Schema;
+let Player = require('./player').modelPlayer;
+let Match = require('./match').schemaMatch;
 
-var TeamSchema = new Schema({
+let TeamSchema = new Schema({
     name_club: String,
     matchs: [Match],
     category: String,
     division: String,
-    players: [{type: Schema.ObjectId, ref: 'Player'}]
-    
+    players: [{type: Schema.ObjectId, ref: 'Player'}],
+    any: Schema.Types.Mixed
+
 });
 
 
