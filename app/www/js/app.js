@@ -43,6 +43,16 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
                 event.preventDefault();
                 $state.go('login');
             }
+            
+        } else {
+            if (AuthService.isAuthenticated()) {
+                if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team') {
+                    event.preventDefault();
+                    $state.go('profile.home');
+
+                }
+
+            }
         }
     });
 
