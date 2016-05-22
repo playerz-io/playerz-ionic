@@ -85,7 +85,9 @@ angular.module('starter.controller.tactique', [])
         })
     }
 
-    //	self.getPlayerSelected();
+    //call add formation here for get position as soons as
+    // tactique page is loaded
+    self.addFormation();
     self.getPlayers();
 
   });
