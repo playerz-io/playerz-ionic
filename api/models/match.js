@@ -6,8 +6,8 @@ let Schema = moogoose.Schema;
 
 
 let MatchSchema = new Schema({
-    against_team: String,
-    place: String,
+    against_team: {type: String, required: true},
+    place: {type: String, required: true},
     type: String, //official pleasure
     score: String,
     date: Date,
