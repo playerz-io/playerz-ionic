@@ -18,12 +18,12 @@ a {
 }
 
 .quatre {
-    height: 100vh;
+    height: 85vh;
 }
 
 .quatre button {
     border-radius: 50%;
-    height: 15vh;
+    height: 10vh;
 }
 
 #begin-match {
