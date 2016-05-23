@@ -1,18 +1,21 @@
 //controllers
-var getToken = require('./token');
-var jwt = require('jwt-simple');
-var config = require('../config/database');
-var Player = require('../models/player').modelPlayer;
-var Coach = require('../models/coach').modelCoach;
-var Team = require('../models/team').modelTeam;
+
+'use strict'
+
+let getToken = require('./token');
+let jwt = require('jwt-simple');
+let config = require('../config/database');
+let Player = require('../models/player').modelPlayer;
+let Coach = require('../models/coach').modelCoach;
+let Team = require('../models/team').modelTeam;
 
 exports.addPlayer = function(req, res) {
-    var token = getToken(req.headers);
+    let token = getToken(req.headers);
 
     if (token) {
-        var decoded = jwt.decode(token, config.secret);
+        let decoded = jwt.decode(token, config.secret);
         console.log(decoded);
-        var newPlayer = new Player({
+        let newPlayer = new Player({
             last_name: req.body.last_name,
             first_name: req.body.first_name
         });
@@ -49,10 +52,10 @@ exports.addPlayer = function(req, res) {
 
 
 exports.getPlayers = function(req, res) {
-    var token = getToken(req.headers);
+    let token = getToken(req.headers);
 
     if (token) {
-        var decoded = jwt.decode(token, config.secret);
+        let decoded = jwt.decode(token, config.secret);
 
         Coach
             .findById(decoded._id)
@@ -76,10 +79,10 @@ exports.getPlayers = function(req, res) {
 
 //get player by ID
 exports.getPlayerById = function(req, res) {
-    var token = getToken(req.headers);
+    let token = getToken(req.headers);
 
     if (token) {
-        var decoded = jwt.decode(token, config.secret);
+        let decoded = jwt.decode(token, config.secret);
 
         Player.findById(req.params.id, function(err, player) {
             if (err)
@@ -102,21 +105,54 @@ exports.getPlayerById = function(req, res) {
 
 //remove player by ID
 exports.removePlayer = function(req, res) {
-    var token = getToken(req.headers);
+    let token = getToken(req.headers);
 
     if (token) {
-        Player.remove({
-            _id: req.body._id
-        }, function(err) {
-            if (err)
-                throw err;
 
-            res.json({
-                success: true,
-                msg: 'Player removed'
-            })
-        })
+        let decoded = jwt.decode(token, config.secret);
+        let player_id = req.body._id;
+        let coach_id = decoded._id;
+        // Player.remove({
+        //     _id: player_id
+        // }, function(err) {
+        //     if (err)
+        //         throw err;
+        // });
+
+        Coach.findById(coach_id, function(err, coach) {
+            if (err) {
+                res.status(404).json({
+                    error: err
+                });
+            }
+
+            let players = coach.team.players;
+            let findPlayer = players.indexOf(player_id);
+
+            if (findPlayer >= 0) {
+                players.splice(findPlayer, 1);
+            } else {
+                return res.status(202).json({
+                    msg: 'player not exists'
+                });
+            }
+
+            coach.save(function(err) {
+                if (err)
+                    res.status(404).json({
+                        error: err
+                    });
+
+                res.status(202).json({
+                    player: players,
+                    msg: 'player removed'
+                });
+
+            });
+        });
+
     } else {
+
         return res.status(403).send({
             success: false,
             msg: 'No token provided.'
