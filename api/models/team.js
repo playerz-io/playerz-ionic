@@ -7,23 +7,11 @@ let Player = require('./player').modelPlayer;
 let Match = require('./match').schemaMatch;
 
 let TeamSchema = new Schema({
-    name_club: {
-        type: String,
-        required: true
-    },
+    name_club: String,
     matchs: [Match],
-    category: {
-        type: String,
-        required: true
-    },
-    division: {
-        type: String,
-        required: true
-    },
-    players: [{
-        type: Schema.ObjectId,
-        ref: 'Player'
-    }],
+    category: String,
+    division: String,
+    players: [{type: Schema.ObjectId, ref: 'Player'}],
     any: Schema.Types.Mixed
 
 });

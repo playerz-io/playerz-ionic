@@ -188,15 +188,28 @@
 
                 }
 
-                //handle action exclude "but"
-                Player.findById(id_statPlayer, function(err, player) {
-                    updateStatPlayer(player, match_id, stringAction, err, coach_id);
-                });
 
-                //handle player retrieve ball
-                Player.findById(id_playerRetrieveBall, function(err, player) {
-                    updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
-                });
+                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', undefined, null];
+
+                //check if id_statPlayer is not equal any actions
+                if (actions.indexOf(id_statPlayer) === -1) {
+                    //handle all action exclude "but"
+                    Player.findById(id_statPlayer, function(err, player) {
+                        updateStatPlayer(player, match_id, stringAction, err, coach_id);
+                    });
+                }
+
+                //check if id_playerRetrieveBall is not equal any actions
+                if (actions.indexOf(id_playerRetrieveBall) === -1) {
+                    //handle player retrieve ball
+                    Player.findById(id_playerRetrieveBall, function(err, player) {
+                        updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
+                    });
+                }
+
+
+
+
 
                 coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
 

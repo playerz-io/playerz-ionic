@@ -14,4 +14,4 @@ angular.module('starter.controller.home', [])
             console.log(data);
         })
 
-})
+});
