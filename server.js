@@ -16,10 +16,10 @@ var port = process.env.PORT || 5000;
 var jwt = require('jwt-simple');
 
 //connect to database
-if(process.env.NODE_ENV === 'production'){
-  mongoose.connect(config.database_prod);
+if (process.env.NODE_ENV === 'production') {
+    mongoose.connect(config.database_prod);
 } else {
-  mongoose.connect(config.database_dev);
+    mongoose.connect(config.database_dev);
 }
 
 
@@ -190,6 +190,7 @@ apiRoutes.delete('/player', passport.authenticate('jwt', {
 apiRoutes.post('/match', passport.authenticate('jwt', {
     session: false
 }), controllerMatch.addMatch);
+
 //get matchs
 apiRoutes.get('/matchs', passport.authenticate('jwt', {
     session: false

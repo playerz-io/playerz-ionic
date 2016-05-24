@@ -22,6 +22,7 @@
                 if (err)
                     throw err;
                 statistics[stat]++;
+                console.log(statistics);
                 real_time.updateStatistic_firebase(player, match_id, coach_id, {
                     statistics: {
                         assist: statistics.assist,
@@ -188,15 +189,28 @@
 
                 }
 
-                //handle action exclude "but"
-                Player.findById(id_statPlayer, function(err, player) {
-                    updateStatPlayer(player, match_id, stringAction, err, coach_id);
-                });
 
-                //handle player retrieve ball
-                Player.findById(id_playerRetrieveBall, function(err, player) {
-                    updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
-                });
+                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed',undefined, null];
+
+                //check if id_statPlayer is not equal any actions
+                if (actions.indexOf(id_statPlayer) === -1) {
+                    //handle all action exclude "but"
+                    Player.findById(id_statPlayer, function(err, player) {
+                        updateStatPlayer(player, match_id, stringAction, err, coach_id);
+                    });
+                }
+
+                //check if id_playerRetrieveBall is not equal any actions
+                if (actions.indexOf(id_playerRetrieveBall) === -1) {
+                    //handle player retrieve ball
+                    Player.findById(id_playerRetrieveBall, function(err, player) {
+                        updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
+                    });
+                }
+
+
+
+
 
                 coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
 
@@ -286,7 +300,7 @@
                 stat.relanceCompletion = percentRelance;
                 player.save();
 
-                real_time.updateStatistic_firebase(player, idCoach, idCoach, {
+                real_time.updateStatistic_firebase(player, idMatch, idCoach, {
                     statistics: {
                         assist: stat.assist,
                         retrieveBalls: stat.retrieveBalls,

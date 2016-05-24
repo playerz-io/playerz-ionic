@@ -259,10 +259,11 @@ exports.removePlayerSelected = function(req, res) {
                 });
 
             Coach.findById(decoded._id, function(err, coach) {
-                if (err)
+                if (err) {
                     res.status(404).json({
                         error: err
                     });
+                }
 
                 let playersSelected = coach.team.matchs
                     .id(match_id)

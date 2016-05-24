@@ -1,11 +1,11 @@
 //match schema
 'use strict'
 
-var moogoose = require('mongoose');
-var Schema = moogoose.Schema;
+let moogoose = require('mongoose');
+let Schema = moogoose.Schema;
 
 
-var MatchSchema = new Schema({
+let MatchSchema = new Schema({
     against_team: String,
     place: String,
     type: String, //official pleasure
@@ -17,7 +17,8 @@ var MatchSchema = new Schema({
     }],
     formation: String,
     schemaMatch: [],
-    schemas: []
+    schemas: [],
+    any: Schema.Types.Mixed
 
 });
 

@@ -2,9 +2,9 @@
 
 'use strict'
 
-var moogoose = require('mongoose');
-var Schema = moogoose.Schema;
-var StatisticSchema = new Schema({
+let moogoose = require('mongoose');
+let Schema = moogoose.Schema;
+let StatisticSchema = new Schema({
     match_id: String,
     assist: Number,
     retrieveBalls: Number,
@@ -31,7 +31,8 @@ var StatisticSchema = new Schema({
     saves: Number,
     claquettes: Number,
     sorties_aeriennes: Number,
-    clean_sheet: Number
+    clean_sheet: Number,
+    any: Schema.Types.Mixed
 
 });
 
