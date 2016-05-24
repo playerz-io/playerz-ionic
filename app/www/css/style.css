@@ -6,6 +6,7 @@
 .button-energized{
   margin-bottom: 2.5vh;
   font-weight: bold;
+  line-height: 100%;
 }
 #match-statistics {
     background: url('../img/blue-polygon.jpg')

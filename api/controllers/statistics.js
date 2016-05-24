@@ -22,6 +22,7 @@
                 if (err)
                     throw err;
                 statistics[stat]++;
+                console.log(statistics);
                 real_time.updateStatistic_firebase(player, match_id, coach_id, {
                     statistics: {
                         assist: statistics.assist,
@@ -189,7 +190,7 @@
                 }
 
 
-                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', undefined, null];
+                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed',undefined, null];
 
                 //check if id_statPlayer is not equal any actions
                 if (actions.indexOf(id_statPlayer) === -1) {

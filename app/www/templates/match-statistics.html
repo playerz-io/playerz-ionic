@@ -11,20 +11,25 @@
             </br>
             <button ng-click="matchStat.countMainAction('ballLost')" class="button button-energized">Ballon Perdu</button>
             </br>
-            <button ng-click="matchStat.countMainAction('ballLost')" class="button button-energized">Passe Raté</button>
+            <button ng-click="matchStat.countMainAction('passesFailed')" class="button button-energized">Passe Raté</button>
             </br>
-            <button ng-click="matchStat.countMainAction('ballLost')" class="button button-energized">Centre Raté</button>
+            <button ng-click="matchStat.countMainAction('crossesFailed')" class="button button-energized">Centre Raté</button>
             </br>
-            <button ui-sref="change" class="button button-energized">Fautes</button>
-            </br>
-            <button ui-sref="change" class="button button-energized">Cartons</button>
-            </br>
-            <button ui-sref="change" class="button button-energized">Changement</button>
-            </br>
-            <button ng-click="matchStat.countPercent()" class="button button-energized">Fin du match</button>
+
         </div>
         <div ng-if="matchStat.match.formation === '4-4-2'" class="quatre col col-75">
             <four-fourtwo info="matchStat.playerSelected_firebase" click="false"></four-fourtwo>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <button ng-click="matchStat.countMainAction('foulsSuffered')" class="button button-energized">Faute </br> Subie</button>
+            <button ng-click="matchStat.countMainAction('foulsCommitted')" class="button button-energized">Faute </br> Commise </button>
+            <button ng-click="matchStat.countMainAction('yellowCard')" class="button button-energized">Carton </br> Jaune</button>
+            <button ng-click="matchStat.countMainAction('redCard')" class="button button-energized">Carton </br> Rouge</button>
+            <button ui-sref="change" class="button button-energized">Changement</button>
+            <button ng-click="matchStat.countPercent()" class="button button-energized">Fin </br> du match</button>
         </div>
     </div>
 </ion-content>
