@@ -2,6 +2,11 @@
 .text-center {
     text-align: center;
 }
+
+.button-energized{
+  margin-bottom: 2.5vh;
+  font-weight: bold;
+}
 #match-statistics {
     background: url('../img/blue-polygon.jpg')
 }
