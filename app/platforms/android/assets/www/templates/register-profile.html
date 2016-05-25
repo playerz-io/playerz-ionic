@@ -1,41 +1,41 @@
 <ion-pane>
-  <ion-content class="padding">
-    <div class="list">
-      <label class="item item-input">
-        <input type="text" placeholder="Nom" ng-model="register.user.first_name">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Prénom" ng-model="register.user.last_name">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Email" ng-model="register.user.email">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Mot de passe" ng-model="register.user.password">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Country" ng-model="register.user.country">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Sport" ng-model="register.user.sport">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Joueur ou Entraineur" ng-model="register.user.type">
-      </label>
-      <label class="item item-input item-select">
-	<div class="input-label">
-	  Genre
-	</div>
-	<select ng-model="register.user.genre">
-	  <option>Masculin</option>
-	  <option selected>Feminin</option>
-	</select>
-      </label>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Nom" ng-model="register.user.first_name">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Prénom" ng-model="register.user.last_name">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Email" ng-model="register.user.email">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="Mot de passe" ng-model="register.user.password">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Country" ng-model="register.user.country">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Sport" ng-model="register.user.sport">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Joueur ou Entraineur" ng-model="register.user.type">
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Genre
+                </div>
+                <select ng-model="register.user.genre">
+                    <option>Masculin</option>
+                    <option selected>Feminin</option>
+                </select>
+            </label>
 
 
-    </div>
-    <button class="button button-full button-positive" ui-sref="register.team">
-      Suivant
-    </button>
-  </ion-content>
+        </div>
+        <button class="button button-full button-positive" ui-sref="register.team">
+            Suivant
+        </button>
+    </ion-content>
 </ion-pane>

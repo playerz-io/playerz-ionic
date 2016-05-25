@@ -7,6 +7,7 @@ angular.module('starter.controller.tactique', [])
     self.matchId = StorageService.getStorage();
     self.coachId = StorageService.getStorageCoachId();
     var refMatch = FireService.refMatch(StorageService.getStorage(), self.coachId);
+    self.formation = '4-4-2';
 
     //get Player of troop
     self.getPlayers = function() {
@@ -23,6 +24,7 @@ angular.module('starter.controller.tactique', [])
 
     //change the formation
     self.addFormation = function() {
+      //console.log(formation);
       TeamService.addFormation(self.formation, StorageService.getStorage())
         .success(function(data) {
           self.getTactique();
@@ -85,7 +87,9 @@ angular.module('starter.controller.tactique', [])
         })
     }
 
-    //	self.getPlayerSelected();
+    //call add formation here for get position as soons as
+    // tactique page is loaded
+    self.addFormation();
     self.getPlayers();
 
   });

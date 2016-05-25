@@ -1,45 +1,49 @@
 /* Empty. Add your own CSS if you like */
-
-.text-center{
+.text-center {
     text-align: center;
 }
 
-/* button{ */
-/*     float: right; */
-/* } */
-
-a{
-    text-decoration: none;
+.button-energized{
+  margin-bottom: 2.5vh;
+  font-weight: bold;
+  line-height: 100%;
 }
-
-.quatre{
-    background-color: green;
-    height: 80vh;
+#match-statistics {
+    background: url('../img/blue-polygon.jpg')
 }
-
-.quatre button{
-   border-radius: 50%;
-   height: 15%;
-}
-
-
-.quatre .row{
-    margin-top: 3VH;
-}
-
-#begin-match {
-    margin-top: 3vh;
-}
-
 table, th, td {
     border: 1px solid black;
 }
-
+a {
+    text-decoration: none;
+}
+.quatre {
+    height: 85vh;
+}
+.quatre button {
+    border-radius: 50%;
+    height: 10vh;
+}
+#begin-match {
+    margin-top: 3vh;
+}
+div .row-player + .row-player, .row-player {
+    margin-top: 10vh;
+    height: 10vh;
+}
+#title-login {
+    margin: 5vh;
+    text-align: center;
+}
 
 /*  screen > 520px  and landscape mode*/
+
 @media screen and (orientation:landscape) and (min-width: 520px) {
-  .connexion{
-      width: 80%;
-      margin: 0 auto;
-  }
+    .connexion {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+.connexion {
+    margin-top: 35vh;
 }

@@ -1,6 +1,6 @@
 angular.module('starter.controller.troop', [])
     .controller('TroopTabCtrl', function($ionicPopup, TeamService, $scope, $timeout){
-	
+
 	var self = this;
 
 	self.player = {
@@ -14,12 +14,11 @@ angular.module('starter.controller.troop', [])
 		    self.getPlayers();
 		    console.log(data);
 		    self.player = {};
-		    
 		})
-		.error(function(){
+		.error(function(data){
 		    console.log(data);
 		})
-	    
+
 	};
 
 	self.getPlayers = function(){
@@ -36,7 +35,7 @@ angular.module('starter.controller.troop', [])
 	self.removePlayer = function(id){
 	    TeamService.removePlayer(id)
 		.success(function(data){
-		    console.log(id);
+		    console.log(data);
 		    self.getPlayers();
 		})
 		.error(function(data){
@@ -44,5 +43,5 @@ angular.module('starter.controller.troop', [])
 		})
 	}
 	self.getPlayers();
-	
+
     });

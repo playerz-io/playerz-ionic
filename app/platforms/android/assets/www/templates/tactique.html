@@ -7,7 +7,7 @@
                 <div class="input-label">
                     Formation
                 </div>
-                <select ng-model="tactique.formation" ng-change="tactique.addFormation(tactique.formation)" ng-init="tactique.formation = '4-4-2'">
+                <select ng-model="tactique.formation" ng-change="tactique.addFormation()">
                     <option>4-4-2</option>
                     <option>4-3-3</option>
                 </select>
@@ -19,7 +19,9 @@
                 <ion-item ng-repeat="player in tactique.players" class="item">
                     {{player.first_name}}
                     <br/> {{player.last_name}}
-                    <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
+                    <select ng-model="post_player"
+                    ng-options="player_post.post for player_post in tactique.post"
+                    ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
 
                     <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
                     <br/>

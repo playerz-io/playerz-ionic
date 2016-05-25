@@ -1,3 +1,4 @@
+'use strict'
 angular.module('starter.controller.home', [])
 
 .controller('HomeTabCtrl', function(ProfileService) {
@@ -14,4 +15,4 @@ angular.module('starter.controller.home', [])
             console.log(data);
         })
 
-})
+});
