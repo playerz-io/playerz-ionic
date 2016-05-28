@@ -37,22 +37,20 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
-        let page = (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo');
+      
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);
-            if (page) {
+            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo') {
                 event.preventDefault();
                 $state.go('login');
             }
 
         } else {
             if (AuthService.isAuthenticated()) {
-                if (page) {
+                if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team' || next.name   === 'register.privateInfo') {
                     event.preventDefault();
                     $state.go('profile.home');
-
                 }
-
             }
         }
     });
