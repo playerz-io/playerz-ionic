@@ -33,4 +33,4 @@ angular.module('starter.controller.summary-stat', [])
 
 
 
-    })
+    });

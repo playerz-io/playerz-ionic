@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //log to console
-app.use(morgan('dev'))
+app.use(morgan('dev'));
 
 //Use the passport package in our application
 app.use(passport.initialize());
@@ -63,7 +63,7 @@ apiRoutes.post('/facebook', function(req, res) {
             return res.json({
                 success: false,
                 msg: 'Username already exists'
-            })
+            });
         }
     });
 
@@ -81,8 +81,8 @@ apiRoutes.post('/facebook', function(req, res) {
 apiRoutes.post('/signup', function(req, res) {
     if (!req.body.last_name || !req.body.first_name || !req.body.password || !req.body.type || !req.body.sport || !req.body.country || !req.body.genre) {
         res.json({
-            sucess: false,
-            msg: "Un ou plusieurs champs n'ont pas été remplis"
+            success: false,
+            msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
     } else {
         var newCoach = new Coach.modelCoach({
@@ -110,7 +110,7 @@ apiRoutes.post('/signup', function(req, res) {
                 return res.json({
                     success: false,
                     msg: 'Username already exists'
-                })
+                });
             }
 
             res.json({
@@ -194,7 +194,7 @@ apiRoutes.post('/match', passport.authenticate('jwt', {
 //get matchs
 apiRoutes.get('/matchs', passport.authenticate('jwt', {
     session: false
-}), controllerMatch.getMatchs)
+}), controllerMatch.getMatchs);
 
 //get matchs by id
 apiRoutes.get('/match/:id', passport.authenticate('jwt', {

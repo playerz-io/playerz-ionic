@@ -1,8 +1,8 @@
 // Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+'use strict'
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.matchdetail', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
     'ionic-table', 'starter.controller.change'
 ])
@@ -14,8 +14,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .constant('API_ENDPOINT', {
-//url: 'http://localhost:5000/api'
-  url: 'https://secret-plateau-96989.herokuapp.com/api'
+    url: 'http://localhost:5000/api'
+        //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
@@ -37,16 +37,17 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
+        let page = (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo');
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);
-            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team') {
+            if (page) {
                 event.preventDefault();
                 $state.go('login');
             }
 
         } else {
             if (AuthService.isAuthenticated()) {
-                if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team') {
+                if (page) {
                     event.preventDefault();
                     $state.go('profile.home');
 
@@ -68,11 +69,13 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             version: 'v2.5' // use graph api version 2.5
         });
 
-    }
+    };
 
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position("top");
+
     $stateProvider
 
         .state('login', {
@@ -90,6 +93,14 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             views: {
                 'register-profile': {
                     templateUrl: 'templates/register-profile.html'
+                }
+            }
+        })
+        .state('register.privateInfo', {
+            url: '/register-privateInfo',
+            views: {
+                'register-privateInfo': {
+                    templateUrl: 'templates/register-privateInfo.html'
                 }
             }
         })
@@ -174,8 +185,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             url: '/change',
             templateUrl: 'templates/change.html',
             controller: 'ChangeCtrl as change'
-        })
+        });
 
     $urlRouterProvider.otherwise('/');
 
-})
+});
