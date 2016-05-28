@@ -37,7 +37,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
-      
+
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);
             if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo') {
@@ -72,7 +72,9 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    $ionicConfigProvider.tabs.position("top");
+    $ionicConfigProvider.tabs
+      .position("bottom")
+      .style("standard");
 
     $stateProvider
 
