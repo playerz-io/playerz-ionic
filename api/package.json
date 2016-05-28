@@ -20,6 +20,7 @@
     "passport-jwt": "^2.0.0"
   },
   "dependencies": {
-    "firebase": "^2.4.2"
+    "firebase": "^2.4.2",
+    "moment": "^2.13.0"
   }
 }

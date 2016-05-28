@@ -1,19 +1,22 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var config = require('./config/database');
-var Coach = require('./models/coach');
-var Team = require('./models/team').modelTeam;
-var controllerCoach = require('./controllers/coach');
-var controllerTeam = require('./controllers/team');
-var controllerMatch = require('./controllers/match');
-var controllerPlayer = require('./controllers/player');
-var controllerStat = require('./controllers/statistics');
-var port = process.env.PORT || 5000;
-var jwt = require('jwt-simple');
+'use strict';
+
+
+let express = require('express');
+let app = express();
+let bodyParser = require('body-parser');
+let morgan = require('morgan');
+let mongoose = require('mongoose');
+let passport = require('passport');
+let config = require('./config/database');
+let Coach = require('./models/coach');
+let Team = require('./models/team').modelTeam;
+let controllerCoach = require('./controllers/coach');
+let controllerTeam = require('./controllers/team');
+let controllerMatch = require('./controllers/match');
+let controllerPlayer = require('./controllers/player');
+let controllerStat = require('./controllers/statistics');
+let port = process.env.PORT || 5000;
+let jwt = require('jwt-simple');
 
 //connect to database
 if (process.env.NODE_ENV === 'production') {
@@ -45,13 +48,13 @@ require('./config/passport')(passport);
 
 
 
-var apiRoutes = express.Router();
+let apiRoutes = express.Router();
 
 
 //auth with facebook
 apiRoutes.post('/facebook', function(req, res) {
 
-    var newCoach = new Coach.modelCoach({
+    let newCoach = new Coach.modelCoach({
         last_name: req.body.last_name,
         first_name: req.body.first_name,
         connected: 'facebook'
@@ -67,7 +70,7 @@ apiRoutes.post('/facebook', function(req, res) {
         }
     });
 
-    var token = jwt.encode(newCoach, config.secret);
+    let token = jwt.encode(newCoach, config.secret);
     res.json({
         success: true,
         msg: 'Successful created new user',
@@ -79,13 +82,14 @@ apiRoutes.post('/facebook', function(req, res) {
 });
 
 apiRoutes.post('/signup', function(req, res) {
-    if (!req.body.last_name || !req.body.first_name || !req.body.password || !req.body.type || !req.body.sport || !req.body.country || !req.body.genre) {
+    if (!req.body.last_name || !req.body.first_name || !req.body.password || !req.body.type || !req.body.sport || !req.body.country || !req.body.genre || !req.body.birth_date) {
         res.json({
             success: false,
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
     } else {
-        var newCoach = new Coach.modelCoach({
+      console.log(req.body.birth_date);
+        let newCoach = new Coach.modelCoach({
             last_name: req.body.last_name,
             first_name: req.body.first_name,
             password: req.body.password,
@@ -95,6 +99,7 @@ apiRoutes.post('/signup', function(req, res) {
             sport: req.body.sport,
             type: req.body.type,
             genre: req.body.genre,
+            birth_date: req.body.birth_date,
             created_at: Date.now()
         });
 
@@ -137,7 +142,7 @@ apiRoutes.post('/authenticate', function(req, res) {
         } else {
             coach.comparePassword(req.body.password, function(err, isMatch) {
                 if (isMatch && !err) {
-                    var token = jwt.encode(coach, config.secret);
+                    let token = jwt.encode(coach, config.secret);
 
                     res.json({
                         success: true,

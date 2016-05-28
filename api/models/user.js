@@ -1,6 +1,6 @@
 //user schema
 
-'use strict'
+'use strict';
 
 let moogoose = require('mongoose');
 let Schema = moogoose.Schema;
@@ -19,6 +19,7 @@ let UserSchema = new Schema({
     country: String,
     description: String,
     genre: String,
+    birth_date: Date,
     created_at: Date,
     sport: String,
     type: String,// coach, player
