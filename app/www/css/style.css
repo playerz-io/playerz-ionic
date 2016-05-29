@@ -1,4 +1,12 @@
 /* Empty. Add your own CSS if you like */
+
+@font-face {
+  font-weight: 'Raleway', sans-serif;
+}
+
+* {
+  font-family: Raleway
+}
 .text-center {
     text-align: center;
 }

@@ -1,27 +1,10 @@
-<ion-pane>
+<ion-view title="Match">
+  <ion-nav-buttons side="secondary">
+    <button class="button ion-plus-circled" ng-click="matchCtrl.showPopupMatch()">
+    </button>
+  </ion-nav-buttons>
     <ion-content>
         <div class="row">
-            <div class="col">
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="text" placeholder="Adversaire" ng-model="matchCtrl.match.against_team">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="Domicile ou Exterieur" ng-model="matchCtrl.match.place">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="Amical Officiel" ng-model="matchCtrl.match.type">
-                    </label>
-                    <label class="item item-input">
-                        <span class="input-label">Date</span>
-                        <input type="date" ng-model="matchCtrl.match.date">
-                    </label>
-                </div>
-                <button class="button button-full button-positive" ng-click="matchCtrl.addMatch()">
-                    Ajouter
-                </button>
-            </div>
-
             <div class="col">
                 <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
@@ -29,17 +12,17 @@
                 </label>
                 </br>
 
-                <ul class="list">
-                    <li class="item" ng-repeat="match in matchCtrl.matchs | filter:matchCtrl.searchMatch">
+                <ion-list>
+                    <ion-item class="item" ng-repeat="match in matchCtrl.matchs | filter:matchCtrl.searchMatch">
                         <a ui-sref="matchDetail({matchId: match._id})" ng-click="matchCtrl.saveMatchID(match._id)">
                             <h2>{{match.against_team}}</h2>
                             <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
                         </a>
-                        <button ng-click="matchCtrl.removeMatch(match._id)">Supprimer</button>
-                    </li>
-                </ul>
+                        <ion-option-button ng-click="matchCtrl.removeMatch(match._id)">Supprimer</ion-option-button>
+                    </ion-item>
+                </ion-list>
             </div>
         </div>
 
     </ion-content>
-</ion-pane>
+</ion-view>

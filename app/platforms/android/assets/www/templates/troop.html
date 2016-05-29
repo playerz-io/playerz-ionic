@@ -1,19 +1,10 @@
-<ion-pane>
+<ion-view title="Effectif">
+  <ion-nav-buttons side="secondary">
+    <button class="button ion-plus-circled" ng-click="troop.showPopupPlayer()">
+    </button>
+  </ion-nav-buttons>
     <ion-content>
         <div class="row">
-            <div class="col">
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="text" placeholder="First Name" ng-model="troop.player.first_name">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="Last Name" ng-model="troop.player.last_name">
-                    </label>
-                </div>
-                <button class="button button-full button-positive" ng-click="troop.addPlayer(troop.player)">
-                    Ajouter
-                </button>
-            </div>
             <div class="col">
                 <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
@@ -21,15 +12,15 @@
                 </label>
                 </br>
                 <ion-list>
-                    <ion-scroll>
+                    <!-- <ion-scroll> -->
                         <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ui-sref="player({playerId: player._id})">
                             <h2>{{player.last_name}}</h2>
                             <h4>{{player.first_name}}</h4>
                             <ion-option-button ng-click="troop.removePlayer(player._id)">Supprimer</ion-option-button>
                         </ion-item>
-                    </ion-scroll>
+                    <!-- </ion-scroll> -->
                 </ion-list>
             </div>
         </div>
     </ion-content>
-</ion-pane>
+</ion-view>

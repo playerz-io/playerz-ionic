@@ -37,7 +37,7 @@ angular.module('starter.controller.login', [])
                 FB.api('/me', {
                     fields: 'last_name, first_name, picture, email'
                 }, function(response) {
-                    console.log(response)
+                    console.log(response);
                     AuthService.registerFacebook(response);
                 });
             } else {
@@ -48,4 +48,4 @@ angular.module('starter.controller.login', [])
         });
     };
 
-})
+});
