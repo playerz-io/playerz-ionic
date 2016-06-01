@@ -1,4 +1,57 @@
 /* Empty. Add your own CSS if you like */
+
+@font-face {
+  font-weight: 'Raleway', sans-serif;
+}
+
+* {
+  font-family: Raleway
+}
+
+.whistle{
+  background-image: url('../img/whistle.png');
+  background-size: 10vh 10vh;
+  background-position: left top;
+  background-repeat: no-repeat;
+  width: 10vh;
+  height: 10vh;
+}
+
+
+
+.button-player{
+  background-image: url('../img/hexagon_playerz_stroke.png');
+  background-size: 20vh 20vh;
+  background-position: left top;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 20vh;
+  height: 20vh;
+  border-image: white solid 1px;
+  padding-top: 7vh;
+  font-size: 1em;
+}
+
+
+.stricker {
+  clear: both;
+  margin: 0 auto;
+  width: 40vh;
+}
+
+.midfielder, .defender{
+  margin: 0 auto;
+  clear: both;
+  width: 80vh;
+}
+
+.goalkeeper{
+  margin: 0 auto;
+  clear: both;
+  width: 20vh;
+}
+
+
 .text-center {
     text-align: center;
 }
@@ -17,19 +70,35 @@ table, th, td {
 a {
     text-decoration: none;
 }
+
+.tactique{
+  width: 100vh;
+  margin: 0 auto;
+}
 .quatre {
     height: 85vh;
+    width: 100%;
+    margin: 0 auto;
 }
 .quatre button {
     border-radius: 50%;
     height: 10vh;
 }
 #begin-match {
-    margin-top: 3vh;
+  height: 10vh;
+  width: 10vh;
+  float: right;
+}
+
+#begin-match img{
+
+  height: 10vh;
+  width: 10vh;
+
 }
 div .row-player + .row-player, .row-player {
-    margin-top: 10vh;
-    height: 10vh;
+    float: right;
+
 }
 #title-login {
     margin: 5vh;

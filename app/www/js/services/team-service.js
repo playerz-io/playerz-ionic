@@ -68,14 +68,29 @@ angular.module('starter')
       });
     };
 
+    let nameTeam = function(idCoach){
+      return $http({
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          params: {
+              coach_id
+          },
+          url: API_ENDPOINT.url + '/nameTeam'
+      });
+    };
 
     return {
+      
       addTeam,
       addPlayer,
       getPlayers,
       getPlayerById,
       removePlayer,
-      addFormation
+      addFormation,
+      nameTeam
+
     }
 
   });

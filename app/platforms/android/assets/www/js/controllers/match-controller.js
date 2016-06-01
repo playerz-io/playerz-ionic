@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.match', [])
-    .controller('MatchTabCtrl', function($ionicPopup, MatchService, $scope, $timeout, StorageService) {
+    .controller('MatchTabCtrl', function($ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService) {
 
         var self = this;
 
@@ -11,35 +11,21 @@ angular.module('starter.controller.match', [])
             date: ''
         };
 
-        self.showPopupMatch = function() {
-            let popup = $ionicPopup.show({
-                template: '<div class="list">' +
-                    '<label class="item item-input">' +
-                    '<input type="text" placeholder="Adversaire" ng-model="match.against_team">' +
-                    '</label>' +
-                    '<label class="item item-input">' +
-                    '<input type="text" placeholder="Domicile ou Exterieur" ng-model="match.place">' +
-                    '</label>' +
-                    '<label class="item item-input">' +
-                    '<input type="text" placeholder="Amical Officiel" ng-model="match.type">' +
-                    '</label>' +
-                    '<label class="item item-input">' +
-                    '<span class="input-label">Date</span>' +
-                    '<input type="date" ng-model="match.date">' +
-                    '</label>' +
-                    '</div>',
-                title: 'Ajouter un match',
-                scope: $scope,
-                buttons: [{
-                    text: 'Cancel'
-                }, {
-                    text: '<b>Ajouter</b>',
-                    onTap: function(e) {
-                        self.addMatch();
-                    }
-                }]
-            });
-        }
+        $ionicModal.fromTemplateUrl('templates/add-match-modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal){
+          $scope.modal = modal;
+        })
+
+        $scope.openModal = function(){
+          $scope.modal.show();
+        };
+
+        $scope.closeModal = function(){
+          $scope.modal.hide();
+        };
+
         self.saveMatchID = function(match_id) {
             StorageService.addStorage(match_id);
         };
@@ -49,6 +35,7 @@ angular.module('starter.controller.match', [])
                 .success(function(data) {
                     self.getMatchs();
                     $scope.match = {};
+                    $scope.modal.hide();
 
                 })
                 .error(function(data) {

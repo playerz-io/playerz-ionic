@@ -19,9 +19,7 @@
                 <ion-item ng-repeat="player in tactique.players" class="item">
                     {{player.first_name}}
                     <br/> {{player.last_name}}
-                    <select ng-model="post_player"
-                    ng-options="player_post.post for player_post in tactique.post"
-                    ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
+                    <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
 
                     <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
                     <br/>
@@ -32,20 +30,20 @@
     </div>
 
     <div class="col col-67">
+
+        <div id="begin-match">
+            <a class="whistle" ui-sref="match-statistics({ matchId: tactique.matchId })">
+                <img src="../img/whistle.png" alt="Début du match">
+            </a>
+        </div>
         <div class="row quatre">
-            <div ng-if="tactique.formation === '4-4-2'" style="margin: 0 auto">
+            <div ng-if="tactique.formation === '4-4-2'" class="tac">
                 <four-fourtwo info="tactique.playerSelected" click="true"></four-fourtwo>
             </div>
 
             <div ng-if="tactique.formation === '4-3-3'">
                 <four-threethree></four-threethree>
             </div>
-        </div>
-
-        <div class="row" id="begin-match">
-            <button class="button button-assertive" ui-sref="match-statistics({ matchId: tactique.matchId })">
-                Début du match
-            </button>
         </div>
     </div>
 

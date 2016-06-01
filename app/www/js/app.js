@@ -3,7 +3,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 'use strict'
-angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.matchdetail', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
+angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
     'ionic-table', 'starter.controller.change'
 ])
 
@@ -15,7 +15,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 .constant('API_ENDPOINT', {
     url: 'http://localhost:5000/api'
-        //url: 'https://secret-plateau-96989.herokuapp.com/api'
+    //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
@@ -150,14 +150,6 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             controller: 'PlayerCtrl as player',
             params: {
                 playerId: null
-            }
-        })
-        .state('matchDetail', {
-            url: '/matchDetail',
-            templateUrl: 'templates/match-detail.html',
-            controller: 'MatchDetailCtrl as matchDetail',
-            params: {
-                matchId: null
             }
         })
         .state('tactique', {

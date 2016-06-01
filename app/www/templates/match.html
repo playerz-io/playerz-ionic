@@ -1,6 +1,6 @@
 <ion-view title="Match">
   <ion-nav-buttons side="secondary">
-    <button class="button ion-plus-circled" ng-click="matchCtrl.showPopupMatch()">
+    <button class="button ion-plus-circled" ng-click="openModal()">
     </button>
   </ion-nav-buttons>
     <ion-content>
@@ -14,7 +14,7 @@
 
                 <ion-list>
                     <ion-item class="item" ng-repeat="match in matchCtrl.matchs | filter:matchCtrl.searchMatch">
-                        <a ui-sref="matchDetail({matchId: match._id})" ng-click="matchCtrl.saveMatchID(match._id)">
+                        <a ui-sref="tactique({matchId: match._id})" ng-click="matchCtrl.saveMatchID(match._id)">
                             <h2>{{match.against_team}}</h2>
                             <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
                         </a>

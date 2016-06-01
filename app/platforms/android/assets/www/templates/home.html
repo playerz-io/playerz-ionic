@@ -1,4 +1,9 @@
 <ion-view title="Home">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-clear button-positive" ng-click="profile.logout()"
+    style="color:white">Logout</button>
+  </ion-nav-buttons>
+
   <ion-content>
     <h1 class="text-center">Bienvenue {{ profile.last_name + " " +profile.first_name}}</h1>
   </ion-content>

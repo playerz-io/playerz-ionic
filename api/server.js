@@ -272,5 +272,9 @@ apiRoutes.post('/countPercent', passport.authenticate('jwt', {
     session: false
 }), controllerStat.countPercent);
 
+apiRoutes.get('/nameTeam', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.getNameTeam);
+
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);

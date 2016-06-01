@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.troop', [])
-    .controller('TroopTabCtrl', function($ionicPopup, TeamService, $scope, $timeout) {
+    .controller('TroopTabCtrl', function($ionicModal, TeamService, $scope, $timeout) {
 
         var self = this;
 
@@ -10,29 +10,20 @@ angular.module('starter.controller.troop', [])
             last_name: ''
         };
 
-        self.showPopupPlayer = function() {
+        $ionicModal.fromTemplateUrl('templates/add-player-modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal){
+          $scope.modal = modal;
+        })
 
-            let popup = $ionicPopup.show({
-                template: '<div class="list">' +
-                    '<label class="item item-input">' +
-                    '<input type="text" placeholder="First Name" ng-model="player.first_name">' +
-                    '</label>' +
-                    '<label class="item item-input">' +
-                    '<input type="text" placeholder="Last Name" ng-model="player.last_name">' +
-                    '</label>' +
-                    '</div>',
-                title: 'Ajouter un joueur',
-                scope: $scope,
-                buttons: [{
-                    text: 'Cancel'
-                }, {
-                    text: '<b>Ajouter</b>',
-                    onTap: function(e) {
-                        self.addPlayer();
-                    }
-                }]
-            });
-        }
+        $scope.openModal = function(){
+          $scope.modal.show();
+        };
+
+        $scope.closeModal = function(){
+          $scope.modal.hide();
+        };
 
         self.addPlayer = function() {
             TeamService.addPlayer($scope.player)
@@ -40,6 +31,7 @@ angular.module('starter.controller.troop', [])
                     self.getPlayers();
                     console.log(data);
                     $scope.player = {};
+                    $scope.modal.hide();
                 })
                 .error(function(data) {
                     console.log(data);
