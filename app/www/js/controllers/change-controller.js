@@ -1,5 +1,5 @@
 angular.module('starter.controller.change', [])
-    .controller('ChangeCtrl', function(MatchService, StorageService, FireService, PlayerService) {
+    .controller('ChangeCtrl', function(MatchService, StorageService, FireService, PlayerService, $scope) {
 
         var self = this;
 
@@ -7,6 +7,10 @@ angular.module('starter.controller.change', [])
         self.coachId = StorageService.getStorageCoachId();
         self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
 
+        //force to display back button
+        $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+            viewData.enableBack = true;
+        });
 
         // return posts of formation
         self.getTactique = function() {

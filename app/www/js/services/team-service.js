@@ -75,14 +75,14 @@ angular.module('starter')
               'Content-Type': 'application/x-www-form-urlencoded'
           },
           params: {
-              coach_id
+              coach_id: idCoach
           },
           url: API_ENDPOINT.url + '/nameTeam'
       });
     };
 
     return {
-      
+
       addTeam,
       addPlayer,
       getPlayers,

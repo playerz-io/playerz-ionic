@@ -131,7 +131,6 @@ apiRoutes.post('/authenticate', function(req, res) {
     let email = req.body.email;
     let password = req.body.password;
     
-    console.log(email, password);
     if( !email.toString() || !password.toString() ){
         res.send({
           success: false,

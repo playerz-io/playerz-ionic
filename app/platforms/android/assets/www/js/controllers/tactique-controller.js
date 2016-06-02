@@ -1,95 +1,139 @@
 angular.module('starter.controller.tactique', [])
-  .controller('TactiqueCtrl', function($stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService) {
+    .controller('TactiqueCtrl', function($stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope) {
 
-    var self = this;
+        var self = this;
+
+        self.nameTeam = null;
+        self.opponent = null;
+        self.place = null;
+        self.billingName = null;
+
+        //force to display back button
+        $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+            viewData.enableBack = true;
+        });
+
+        self.matchId = StorageService.getStorage();
+        self.coachId = StorageService.getStorageCoachId();
+        var refMatch = FireService.refMatch(StorageService.getStorage(), self.coachId);
+        self.formation = '4-4-2';
+
+        //get Player of troop
+        self.getPlayers = function() {
+            TeamService.getPlayers()
+                .success(function(data) {
+                    console.log(data);
+                    self.players = data.players;
+
+                })
+                .error(function() {
+                    console.log(data);
+                });
+        };
+
+        //change the formation
+        self.addFormation = function() {
+            //console.log(formation);
+            TeamService.addFormation(self.formation, StorageService.getStorage())
+                .success(function(data) {
+                    self.getTactique();
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        // return posts of formation
+        self.getTactique = function() {
+            MatchService.getTactique(self.formation)
+                .success(function(data) {
+                    console.log(data);
+                    self.post = data.tactique;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        //add player to the selection of current match
+        self.addPlayerSelected = function(player_id, position) {
+            console.log(player_id);
+            MatchService.addPlayerSelected(player_id, StorageService.getStorage(), position)
+                .success(function(data) {
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        //remove player to the selection of current match
+        self.removePlayerSelected = function(player_id, player) {
+            MatchService.removePlayerSelected(player_id, StorageService.getStorage())
+                .success(function(data) {
+
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
 
 
-    self.matchId = StorageService.getStorage();
-    self.coachId = StorageService.getStorageCoachId();
-    var refMatch = FireService.refMatch(StorageService.getStorage(), self.coachId);
-    self.formation = '4-4-2';
+        self.playerSelected = FireService.refPlayer(refMatch);
+        console.log(self.playerSelected);
+        console.log('self.playerSelected :' + self.matchId);
 
-    //get Player of troop
-    self.getPlayers = function() {
-      TeamService.getPlayers()
-        .success(function(data) {
-          console.log(data);
-          self.players = data.players;
+        //add position to player
+        self.addPosition = function(player_id, position) {
+            PlayerService.addPosition(player_id, position, self.matchId)
+                .success(function(data) {
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
 
-        })
-        .error(function() {
-          console.log(data);
-        })
-    };
+        self.getMatch = function() {
+            MatchService.getMatchById(self.matchId)
+                .success(function(data) {
+                    console.log(data);
+                    self.opponent = data.match.against_team;
+                    self.place = data.match.place;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
 
-    //change the formation
-    self.addFormation = function() {
-      //console.log(formation);
-      TeamService.addFormation(self.formation, StorageService.getStorage())
-        .success(function(data) {
-          self.getTactique();
-          console.log(data);
-        })
-        .error(function(data) {
-          console.log(data);
-        })
-    };
+        self.getNameTeam = function() {
+            TeamService.nameTeam(self.coachId)
+                .success(function(data) {
+                    console.log(data);
+                    self.nameTeam = data.nameTeam;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
 
-    // return posts of formation
-    self.getTactique = function() {
-      MatchService.getTactique(self.formation)
-        .success(function(data) {
-          console.log(data);
-          self.post = data.tactique;
-        })
-        .error(function(data) {
-          console.log(data);
-        })
-    };
+        self.getBillingName = function(){
 
-    //add player to the selection of current match
-    self.addPlayerSelected = function(player_id, position) {
-      console.log(player_id);
-      MatchService.addPlayerSelected(player_id, StorageService.getStorage(), position)
-        .success(function(data) {
-          console.log(data);
-        })
-        .error(function(data) {
-          console.log(data);
-        })
-    };
+          if(self.place === 'Domicile'){
+            self.billingName = self.nameTeam + ' - ' + self.opponent;
+          }else{
+            self.billingName = self.opponent+ ' - ' + self.nameTeam;
+          }
 
-    //remove player to the selection of current match
-    self.removePlayerSelected = function(player_id, player) {
-      MatchService.removePlayerSelected(player_id, StorageService.getStorage())
-        .success(function(data) {
+          return self.billingName;
+        }
+        //call add formation here for get position as soons as
+        // tactique page is loaded
+        self.addFormation();
+        self.getPlayers();
+        self.getMatch();
+        self.getNameTeam();
 
-          console.log(data);
-        })
-        .error(function(data) {
-          console.log(data);
-        })
-    };
-
-
-    self.playerSelected = FireService.refPlayer(refMatch);
-    console.log(self.playerSelected);
-    console.log('self.playerSelected :' + self.matchId);
-
-    //add position to player
-    self.addPosition = function(player_id, position) {
-      PlayerService.addPosition(player_id, position, self.matchId)
-        .success(function(data) {
-          console.log(data);
-        })
-        .error(function(data) {
-          console.log(data);
-        })
-    }
-
-    //call add formation here for get position as soons as
-    // tactique page is loaded
-    self.addFormation();
-    self.getPlayers();
-
-  });
+    });

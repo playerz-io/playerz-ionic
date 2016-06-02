@@ -1,26 +1,32 @@
-<div class="row">
+<ion-view title="Changement">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="row">
 
-    <div class="col col-33">
-        <ion-list>
-            <ion-scroll>
-                <ion-item ng-repeat="player in change.playerSelected_firebase">
-                    {{player.first_name}}
-                    <br/> {{player.last_name}}
-                    <select ng-model="post_player"
-                     ng-options="player_post.post for player_post in change.post"
-                     ng-change="change.addPosition(player.$id, post_player.post)"></select>
-                </ion-item>
-            </ion-scroll>
-        </ion-list>
+            <div class="col col-33">
+                <ion-list>
+                    <ion-scroll>
+                        <ion-item ng-repeat="player in change.playerSelected_firebase">
+                            {{player.first_name}}
+                            <br/> {{player.last_name}}
+                            <select ng-model="post_player" ng-options="player_post.post for player_post in change.post" ng-change="change.addPosition(player.$id, post_player.post)"></select>
+                        </ion-item>
+                    </ion-scroll>
+                </ion-list>
 
-    </div>
-    <div class="col col-67">
-        <div class="row quatre">
-            <div ng-if="change.match.formation === '4-4-2'">
-                <four-fourtwo info="change.playerSelected_firebase" click="true"></four-fourtwo>
+            </div>
+            <div class="col col-67">
+                <div class="row quatre">
+                    <div ng-if="change.match.formation === '4-4-2'">
+                        <four-fourtwo info="change.playerSelected_firebase" click="true"></four-fourtwo>
+                    </div>
+
+                </div>
             </div>
 
         </div>
-    </div>
-
-</div>
+    </ion-content>
+</ion-view>

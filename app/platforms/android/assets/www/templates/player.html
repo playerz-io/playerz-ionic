@@ -1,2 +1,12 @@
-<h1>{{player.player.first_name}}</h1>
-<h2>{{player.player.last_name}}</h2>
+<ion-view title="{{player.player.first_name}} {{player.player.last_name}}">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    </ion-nav-buttons>
+    <ion-content class="padding" scroll="false">
+        <h1>{{player.player.first_name}}</h1>
+        <h2>{{player.player.last_name}}</h2>
+    </ion-content>
+</ion-view>

@@ -14,8 +14,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .constant('API_ENDPOINT', {
-    url: 'http://localhost:5000/api'
-    //url: 'https://secret-plateau-96989.herokuapp.com/api'
+    //url: 'http://localhost:5000/api'
+      url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
@@ -47,13 +47,15 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
         } else {
             if (AuthService.isAuthenticated()) {
-                if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team' || next.name   === 'register.privateInfo') {
+                if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team' || next.name === 'register.privateInfo') {
                     event.preventDefault();
                     $state.go('profile.home');
                 }
             }
         }
     });
+
+
 
     $rootScope.user = {};
 
@@ -73,8 +75,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs
-      .position("bottom")
-      .style("standard");
+        .position("bottom")
+        .style("standard");
 
     $stateProvider
 

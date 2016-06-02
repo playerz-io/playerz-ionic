@@ -8,6 +8,19 @@
   font-family: Raleway
 }
 
+.css-form input.ng-invalid.ng-dirty{
+  border-color: #FA787E;
+  border-width: 3px;
+  border-style: solid;
+
+}
+
+.css-form input.ng-valid.ng-dirty{
+  border-color: #78FA89;
+  border-width: 3px;
+  border-style: solid;
+}
+
 .whistle{
   background-image: url('../img/whistle.png');
   background-size: 10vh 10vh;
@@ -27,7 +40,7 @@
   display: inline-block;
   width: 20vh;
   height: 20vh;
-  border-image: white solid 1px;
+
   padding-top: 7vh;
   font-size: 1em;
 }
