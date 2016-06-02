@@ -128,8 +128,19 @@ apiRoutes.post('/signup', function(req, res) {
 
 apiRoutes.post('/authenticate', function(req, res) {
 
+    let email = req.body.email;
+    let password = req.body.password;
+    
+    console.log(email, password);
+    if( !email.toString() || !password.toString() ){
+        res.send({
+          success: false,
+          msg: "Les champs email ou mot de passe sont vides !"
+        });
+    }
+
     Coach.modelCoach.findOne({
-        email: req.body.email
+        email: email
     }, function(err, coach) {
         if (err)
             throw err;
@@ -140,7 +151,7 @@ apiRoutes.post('/authenticate', function(req, res) {
                 msg: 'Authentication failed. User not found'
             });
         } else {
-            coach.comparePassword(req.body.password, function(err, isMatch) {
+            coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
 

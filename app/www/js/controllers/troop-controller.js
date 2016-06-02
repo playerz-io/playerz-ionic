@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.troop', [])
-    .controller('TroopTabCtrl', function($ionicModal, TeamService, $scope, $timeout) {
+    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout) {
 
         var self = this;
 
@@ -34,6 +34,10 @@ angular.module('starter.controller.troop', [])
                     $scope.modal.hide();
                 })
                 .error(function(data) {
+                  var alertPopup = $ionicPopup.alert({
+                      title: 'Error',
+                      template: data.msg
+                  });
                     console.log(data);
                 })
 

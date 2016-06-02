@@ -40,6 +40,10 @@ angular.module('starter.controller.match', [])
                 })
                 .error(function(data) {
                     console.log(data);
+                    let alertPopup = $ionicPopup.alert({
+                        title: 'Error',
+                        template: data.msg
+                    });
                 })
         };
 

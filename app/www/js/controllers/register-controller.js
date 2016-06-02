@@ -14,7 +14,6 @@ angular.module('starter.controller.register', [])
             type: '',
             genre: '',
             name_club: '',
-            birth_date: '',
             category: '',
             division: ''
         };

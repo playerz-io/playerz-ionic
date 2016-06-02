@@ -24,7 +24,7 @@ angular.module('starter.controller.login', [])
             loginCtrl.user = {};
         }, function(errMsg) {
             var alertPopup = $ionicPopup.alert({
-                title: 'Login failed!',
+                title: 'Erreur',
                 template: errMsg
             });
         });

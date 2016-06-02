@@ -12,9 +12,19 @@ let Team = require('../models/team').modelTeam;
 exports.addPlayer = function(req, res) {
     let token = getToken(req.headers);
 
+    let last_name =  req.body.last_name;
+    let first_name = req.body.first_name;
+
     if (token) {
         let decoded = jwt.decode(token, config.secret);
         console.log(decoded);
+
+        if( !last_name || !first_name){
+          return res.status(403).json({
+            success: false,
+            msg: "Certains champs n'ont pas été saisies"
+          });
+        }
         let newPlayer = new Player({
             last_name: req.body.last_name,
             first_name: req.body.first_name

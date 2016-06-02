@@ -1,11 +1,22 @@
 <ion-pane>
     <ion-content class="padding">
         <div class="list">
-            <label class="item item-input">
-                <input type="text" placeholder="Sport" ng-model="register.user.sport">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                  Sport
+              </div>
+                <select ng-model="register.user.sport">
+                    <option>Football</option>
+                </select>
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Joueur ou Entraineur" ng-model="register.user.type">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Joueur ou Entraineur
+                </div>
+                <select ng-model="register.user.type">
+                    <option>Entraineur</option>
+                    <option selected>Joueur</option>
+                </select>
             </label>
             <label class="item item-input">
                 <input type="text" placeholder="Nom de votre club" ng-model="register.user.name_club">
