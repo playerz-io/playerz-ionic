@@ -1,3 +1,4 @@
+'use strict'
 //controller coach
 var Coach = require('../models/coach').modelCoach;
 var getToken = require('./token');
@@ -5,6 +6,24 @@ var jwt = require('jwt-simple');
 var config = require('../config/database');
 var Team = require('../models/team').modelTeam;
 
+
+exports.getNameTeam = function(req, res) {
+    let token = getToken(req.headers);
+    let coach_id = req.body.coach_id;
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        Coach.findById(coach_id, function(err, coach) {
+            if (err) throw err;
+            let nameTeam = coach.team.name_club;
+
+            res.status(202).json({
+                success: true,
+                nameTeam
+            })
+        });
+    }
+}
 exports.getCoach = function(req, res) {
     var token = getToken(req.headers);
     if (token) {

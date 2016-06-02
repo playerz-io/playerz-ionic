@@ -16,13 +16,27 @@ let real_time = require('../real_time');
 exports.addMatch = function(req, res) {
     let token = getToken(req.headers);
 
+    let against_team = req.body.against_team;
+    let place = req.body.place;
+    let type = req.body.type;
+    let date = req.body.date;
+
+
     if (token) {
         let decoded = jwt.decode(token, config.secret);
+
+        if (!against_team || !place || !type || !date ) {
+            return res.status(403).json({
+                success: false,
+                msg: "Certains champs n'ont pas été saisies"
+            });
+        }
+
         let newMatch = new Match({
-            against_team: req.body.against_team,
-            place: req.body.place,
-            type: req.body.type,
-            date: req.body.date
+            against_team: against_team,
+            place: place,
+            type: type,
+            date: date
         });
 
         newMatch.save(function(err, match) {
