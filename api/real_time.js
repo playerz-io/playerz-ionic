@@ -25,6 +25,7 @@ exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
             first_name: player.first_name,
             last_name: player.last_name,
             position: player.position,
+            favourite_position: player.favourite_position,
             statistics: {
                 assist: player.statistics[0].assist,
                 retrieveBalls: player.statistics[0].retrieveBalls,

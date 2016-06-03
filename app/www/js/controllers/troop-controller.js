@@ -6,9 +6,9 @@ angular.module('starter.controller.troop', [])
         var self = this;
 
         $scope.player = {
-            first_name: '',
-            last_name: '',
-            position: null
+            first_name: null,
+            last_name: null,
+            favourite_position: null
         };
 
         $ionicModal.fromTemplateUrl('templates/add-player-modal.html', {

@@ -14,13 +14,13 @@ exports.addPlayer = function(req, res) {
 
     let last_name =  req.body.last_name;
     let first_name = req.body.first_name;
-    let position = req.body.position;
+    let favourite_position = req.body.favourite_position;
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
         console.log(decoded);
 
-        if( !last_name || !first_name  || !position){
+        if( !last_name || !first_name  || !favourite_position){
           return res.status(403).json({
             success: false,
             msg: "Certains champs n'ont pas été saisies"
@@ -29,7 +29,7 @@ exports.addPlayer = function(req, res) {
         let newPlayer = new Player({
             last_name: req.body.last_name,
             first_name: req.body.first_name,
-            position: req.body.position
+            favourite_position: req.body.favourite_position
         });
 
         newPlayer.save(function(err, player) {
