@@ -11,6 +11,20 @@
             <label class="item item-input">
                 <input type="text" placeholder="Last Name" ng-model="player.last_name">
             </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Position favorite
+                </div>
+                <select ng-model="player.position">
+                    <option>Gardien</option>
+                    <option selected>Défenseur</option>
+                    <option>Arrière Latéral</option>
+                    <option>Milieu Défensif</option>
+                    <option>Milieu offensif</option>
+                    <option>Ailier</option>
+                    <option>Avant-Centre</option>
+                </select>
+            </label>
             <button class="button button-full button-positive" ng-click="troop.addPlayer()">Ajouter</button>
         </div>
     </ion-content>
