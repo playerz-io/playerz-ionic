@@ -16,7 +16,7 @@ angular.module('starter.controller.troop', [])
           animation: 'slide-in-up'
         }).then(function(modal){
           $scope.modal = modal;
-        })
+        });
 
         $scope.openModal = function(){
           $scope.modal.show();
@@ -40,7 +40,7 @@ angular.module('starter.controller.troop', [])
                       template: data.msg
                   });
                     console.log(data);
-                })
+                });
 
         };
 
@@ -52,7 +52,7 @@ angular.module('starter.controller.troop', [])
                 })
                 .error(function(data) {
                     console.log(data);
-                })
+                });
         };
 
         self.removePlayer = function(id) {
@@ -63,8 +63,8 @@ angular.module('starter.controller.troop', [])
                 })
                 .error(function(data) {
                     console.log(data);
-                })
-        }
+                });
+        };
         self.getPlayers();
 
     });

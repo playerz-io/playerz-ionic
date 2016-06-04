@@ -130,7 +130,7 @@ apiRoutes.post('/authenticate', function(req, res) {
 
     let email = req.body.email;
     let password = req.body.password;
-    
+
     if( !email.toString() || !password.toString() ){
         res.send({
           success: false,
@@ -244,6 +244,16 @@ apiRoutes.get('/player_selected', passport.authenticate('jwt', {
 apiRoutes.delete('/player_selected', passport.authenticate('jwt', {
     session: false
 }), controllerMatch.removePlayerSelected);
+
+//get match comeup
+apiRoutes.get('/match_finished', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.findMatchFinished);
+
+//get match comeup
+apiRoutes.get('/match_comeup', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.findMatchComeUp);
 
 
 

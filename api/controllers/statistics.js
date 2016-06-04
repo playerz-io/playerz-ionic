@@ -266,6 +266,7 @@
 
     //count percentage relance and percentage passes success per a match and attempts
     // statistic that required calculation
+    // CALL IN exports.countPercent
     let countPercent = function(player, idMatch, idCoach) {
         let playerStatistic = player.statistics;
         let percentRelance = 0;
@@ -341,14 +342,30 @@
         let token = getToken(req.headers);
         let idMatch = req.body.idMatch;
 
+
         if (token) {
             let decoded = jwt.decode(token, config.secret);
             let idCoach = decoded._id;
 
+            Match.findById(idMatch, function(err, match){
+              if(err)
+                throw err;
+
+                match.status = 'finished';
+                match.save();
+            })
             Coach.findById(idCoach, function(err, coach) {
                 if (err)
                     throw err;
-                let playerSelected = coach.team.matchs.id(idMatch).playerSelected;
+
+                let match = coach.team.matchs.id(idMatch);
+                let playerSelected = match.playerSelected;
+
+
+                //Match finished
+                match.status = 'finished';
+                coach.save();
+
                 console.log(coach.team.matchs);
                 for (let idPlayer of playerSelected) {
                     Player.findById(idPlayer, function(err, player) {

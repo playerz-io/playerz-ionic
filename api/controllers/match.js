@@ -25,7 +25,9 @@ exports.addMatch = function(req, res) {
     if (token) {
         let decoded = jwt.decode(token, config.secret);
 
-        if (!against_team || !place || !type || !date ) {
+        let idCoach = decoded._id;
+
+        if (!against_team || !place || !type || !date) {
             return res.status(403).json({
                 success: false,
                 msg: "Certains champs n'ont pas été saisies"
@@ -36,7 +38,10 @@ exports.addMatch = function(req, res) {
             against_team: against_team,
             place: place,
             type: type,
-            date: date
+            date: date,
+            belongs_to: idCoach,
+            status: 'comeup'
+
         });
 
         newMatch.save(function(err, match) {
@@ -477,5 +482,41 @@ let addStatisticsToPlayer = function(player, match_id) {
         passesFailed: 0
     }));
 
+}
 
+let findMatch = function(status, req, res){
+  let token = getToken(req.headers);
+
+  if (token) {
+      let decoded = jwt.decode(token, config.secret);
+
+      let idCoach = decoded._id;
+        console.log("idCoach : "+idCoach);
+      Match.find({
+          belongs_to: idCoach,
+          status: status
+      }, function(err, matchs) {
+          if (err)
+              throw err;
+
+          res.status(201).json({
+              success: true,
+              matchs: matchs
+          })
+
+      })
+  } else {
+      return res.status(403).json({
+          success: false,
+          msg: 'No token provided.'
+      });
+  }
+}
+
+exports.findMatchFinished = function(req, res) {
+  findMatch('finished', req, res);
+}
+
+exports.findMatchComeUp = function(req, res) {
+  findMatch('comeup', req, res);
 }

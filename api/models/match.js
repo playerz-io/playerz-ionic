@@ -11,6 +11,7 @@ let MatchSchema = new Schema({
     type: String, //official pleasure
     score: String,
     date: Date,
+    status: String, //['comeup, finished']
     playerSelected: [{
         type: Schema.ObjectId,
         ref: 'Player'
@@ -18,6 +19,7 @@ let MatchSchema = new Schema({
     formation: String,
     schemaMatch: [],
     schemas: [],
+    belongs_to: String,
     any: Schema.Types.Mixed
 
 });

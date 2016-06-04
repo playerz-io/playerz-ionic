@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 'use strict'
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-    'ionic-table', 'starter.controller.change'
+    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played'
 ])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -15,7 +15,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 .constant('API_ENDPOINT', {
     url: 'http://localhost:5000/api'
-      //url: 'https://secret-plateau-96989.herokuapp.com/api'
+        //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
@@ -145,6 +145,18 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
                     controller: 'MatchTabCtrl as matchCtrl'
                 }
             }
+        })
+        .state('match-comeup', {
+            url: '/comeup',
+            templateUrl: 'templates/match-comeup.html',
+            controller: 'MatchComeUpCtrl as comeup'
+        })
+        .state('match-played', {
+            url: '/played',
+            templateUrl: 'templates/match-played.html',
+            controller: 'MatchPlayedCtrl as played'
+
+
         })
         .state('player', {
             url: '/player',
