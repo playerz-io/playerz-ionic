@@ -88,7 +88,7 @@ apiRoutes.post('/signup', function(req, res) {
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
     } else {
-      console.log(req.body.birth_date);
+        console.log(req.body.birth_date);
         let newCoach = new Coach.modelCoach({
             last_name: req.body.last_name,
             first_name: req.body.first_name,
@@ -131,10 +131,10 @@ apiRoutes.post('/authenticate', function(req, res) {
     let email = req.body.email;
     let password = req.body.password;
 
-    if( !email.toString() || !password.toString() ){
+    if (!email.toString() || !password.toString()) {
         res.send({
-          success: false,
-          msg: "Les champs email ou mot de passe sont vides !"
+            success: false,
+            msg: "Les champs email ou mot de passe sont vides !"
         });
     }
 
@@ -275,11 +275,6 @@ apiRoutes.post('/schema', passport.authenticate('jwt', {
     session: false
 }), controllerStat.addPlayerSchema);
 
-//empty schema
-// apiRoutes.post('/emptySchema', passport.authenticate('jwt', {
-//     session: false
-// }), controllerStat.emptySchema);
-
 apiRoutes.post('/action', passport.authenticate('jwt', {
     session: false
 }), controllerStat.countMainAction);
@@ -295,6 +290,11 @@ apiRoutes.post('/countPercent', passport.authenticate('jwt', {
 apiRoutes.get('/nameTeam', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.getNameTeam);
+
+apiRoutes.post('/totalStat', passport.authenticate('jwt', {
+    session: false
+}), controllerStat.totalStat);
+
 
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);

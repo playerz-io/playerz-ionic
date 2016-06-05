@@ -106,7 +106,22 @@ angular.module('starter')
             return $http.get(API_ENDPOINT.url + '/match_comeup');
         };
 
+        let totalStat = function(match_id) {
+          return $http({
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              data: $httpParamSerializerJQLike({
+                  match_id,
+              }),
+              url: API_ENDPOINT.url + '/totalStat'
+
+          });
+        }
+
         return {
+            totalStat,
             addMatch,
             getMatchs,
             getMatchById,

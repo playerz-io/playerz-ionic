@@ -14,7 +14,7 @@
 
                 <ion-list>
                     <ion-item class="item" ng-repeat="match in played.matchs | filter:played.searchMatch">
-                        <a ui-sref="tactique({matchId: match._id})" ng-click="played.saveMatchID(match._id)">
+                        <a ui-sref="stat-end-match({matchId: match._id})" ng-click="played.saveMatchID(match._id)">
                             <h2>{{match.against_team}}</h2>
                             <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
                         </a>

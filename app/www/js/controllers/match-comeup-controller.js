@@ -17,6 +17,7 @@ angular.module('starter.controller.match-comeup', [])
         self.getMatchComeUp = function() {
             MatchService.getMatchComeUp()
                 .success(function(data) {
+                  console.log(data);
                     self.matchs = data.matchs;
                 })
                 .error(function(data) {

@@ -7,7 +7,8 @@
     let Match = require('../models/match').modelMatch;
     var Coach = require('../models/coach').modelCoach;
     let real_time = require('../real_time');
-
+    let mongoose = require('mongoose');
+    mongoose.Promise = require('bluebird');
 
     // update statistics of player
     let updateStatPlayer = function(player, match_id, stat, err, coach_id) {
@@ -190,7 +191,7 @@
                 }
 
 
-                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed',undefined, null];
+                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null];
 
                 //check if id_statPlayer is not equal any actions
                 if (actions.indexOf(id_statPlayer) === -1) {
@@ -347,9 +348,9 @@
             let decoded = jwt.decode(token, config.secret);
             let idCoach = decoded._id;
 
-            Match.findById(idMatch, function(err, match){
-              if(err)
-                throw err;
+            Match.findById(idMatch, function(err, match) {
+                if (err)
+                    throw err;
 
                 match.status = 'finished';
                 match.save();
@@ -513,3 +514,119 @@
         }
 
     };
+
+    exports.totalStat = function(req, res) {
+        let token = getToken(req.headers);
+        let match_id = req.body.match_id;
+
+        if (token) {
+            let decoded = jwt.decode(token, config.secret);
+            let coach_id = decoded._id;
+            let totalBallPlayed = 0,
+                totalBallLost = 0,
+                totalRetrieveBalls = 0,
+                totalDefensiveAction = 0,
+                totalFoulsSuffered = 0,
+                totalFoulsCommited = 0,
+                totalOffSide = 0,
+                totalAttempts = 0,
+                totalAttemptsOnTarget = 0,
+                totalAttemptsOffTarget = 0,
+                totalBut = 0,
+                totalPassesCompletion = 0,
+                totalRelanceCompletion = 0;
+
+            Coach.findById(coach_id, function(err, coach) {
+                if (err)
+                    throw err;
+
+                let match = coach.team.matchs.id(match_id)
+
+                //player selected
+                let playerSelected = match.playerSelected;
+                //number of player selected
+                let numberPlayerSelected = playerSelected.length;
+
+                for (let player_id of playerSelected) {
+
+                    Player.findById(player_id, function(err, player) {
+                        let playerStatistic = player.statistics;
+                        for (let stat of playerStatistic) {
+
+                            if (stat.match_id.toString() === match_id.toString()) {
+                                console.log(stat);
+                                totalBallPlayed += stat['ballPlayed'];
+                                totalBallLost += stat['ballLost'];
+                                totalRetrieveBalls += stat['retrieveBalls'];
+                                totalDefensiveAction += stat['defensiveAction'];
+                                totalFoulsSuffered += stat['foulsSuffered'];
+                                totalFoulsCommited += stat['foulsCommitted'];
+                                totalOffSide += stat['offSide'];
+                                totalAttempts += stat['attempts'];
+                                totalAttemptsOnTarget += stat['attemptsOnTarget'];
+                                totalAttemptsOffTarget += stat['attemptsOffTarget'];
+                                totalBut += stat['but'];
+                                totalPassesCompletion += stat['passesCompletion'];
+                                totalRelanceCompletion += stat['relanceCompletion'];
+                                console.log('loop for');
+                            }
+                        }
+                    });
+                }
+
+                Match.findById(match_id, function(err, foundMatch) {
+
+                    if (err)
+                        throw err;
+                    //update match stat
+                    foundMatch.statistics = {
+                        ballPlayed: totalBallPlayed,
+                        ballLost: totalBallLost,
+                        passesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
+                        retrieveBalls: totalRetrieveBalls,
+                        defensiveAction: totalDefensiveAction,
+                        relanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
+                        foulsSuffered: totalFoulsSuffered,
+                        foulsCommitted: totalFoulsCommited,
+                        offSide: totalOffSide,
+                        attempts: totalAttempts,
+                        attemptsOnTarget: totalAttemptsOnTarget,
+                        attemptsOffTarget: totalAttemptsOffTarget,
+                        but: totalBut
+
+                    };
+                    console.log(foundMatch.statistics);
+                    foundMatch.save();
+
+                    //update match stat in coach
+                    match.statistics = {
+                        ballPlayed: totalBallPlayed,
+                        ballLost: totalBallLost,
+                        passesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
+                        retrieveBalls: totalRetrieveBalls,
+                        defensiveAction: totalDefensiveAction,
+                        relanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
+                        foulsSuffered: totalFoulsSuffered,
+                        foulsCommitted: totalFoulsCommited,
+                        offSide: totalOffSide,
+                        attempts: totalAttempts,
+                        attemptsOnTarget: totalAttemptsOnTarget,
+                        attemptsOffTarget: totalAttemptsOffTarget,
+                        but: totalBut
+
+                    };
+                    coach.save();
+
+                    res.status(202).json({
+                        success: true,
+                        match_statistics: foundMatch.statistics
+                    })
+                });
+            });
+        } else {
+            return res.status(403).send({
+                success: false,
+                msg: 'No token provided.'
+            });
+        };
+    }

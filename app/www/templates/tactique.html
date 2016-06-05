@@ -25,9 +25,6 @@
                             {{player.first_name}}
                             <br/> {{player.last_name}}
                             <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
-
-                            <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
-                            <br/>
                             <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
                         </ion-item>
                     </ion-list>
