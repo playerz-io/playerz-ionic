@@ -5,10 +5,9 @@
     let config = require('../config/database');
     let Player = require('../models/player').modelPlayer;
     let Match = require('../models/match').modelMatch;
-    var Coach = require('../models/coach').modelCoach;
+    let Coach = require('../models/coach').modelCoach;
     let real_time = require('../real_time');
-    let mongoose = require('mongoose');
-    mongoose.Promise = require('bluebird');
+    let async = require('async');
 
     // update statistics of player
     let updateStatPlayer = function(player, match_id, stat, err, coach_id) {
@@ -232,37 +231,6 @@
         }
 
     }
-
-    // exports.numberTir = function(req, res) {
-    //     let token = getToken(req.headers);
-    //     let match_id = req.body.match_id;
-    //     let player_id = req.body.player_id;
-    //
-    //     if (token) {
-    //         let decoded = jwt.decode(token, config.secret);
-    //         let coach_id = decoded._id;
-    //
-    //         Player.findById(player_id, function(err, player) {
-    //           let playerStatistic = player.statistics;
-    //
-    //           for (let stat of playerSelected) {
-    //             if (stat.match_id.toString() === match_id.toString()) {
-    //               let tirs = stat.attemptsOnTarget + stat.attemptsOffTarget + stat.but;
-    //
-    //               stat.tirs
-    //
-    //             }
-    //           }
-    //         }
-    //
-    //     } else {
-    //         return res.status(403).send({
-    //             success: false,
-    //             msg: 'No token provided.'
-    //         });
-    //     }
-    //
-    // }
 
 
     //count percentage relance and percentage passes success per a match and attempts
@@ -520,8 +488,10 @@
         let match_id = req.body.match_id;
 
         if (token) {
+
             let decoded = jwt.decode(token, config.secret);
             let coach_id = decoded._id;
+
             let totalBallPlayed = 0,
                 totalBallLost = 0,
                 totalRetrieveBalls = 0,
@@ -536,93 +506,128 @@
                 totalPassesCompletion = 0,
                 totalRelanceCompletion = 0;
 
-            Coach.findById(coach_id, function(err, coach) {
-                if (err)
-                    throw err;
 
-                let match = coach.team.matchs.id(match_id)
+            async.waterfall([
+                (cb) => {
+                    Coach.findById(coach_id, (err, coach) => {
+                        if (err)
+                            throw err;
 
-                //player selected
-                let playerSelected = match.playerSelected;
-                //number of player selected
-                let numberPlayerSelected = playerSelected.length;
+                        let match = coach.team.matchs.id(match_id)
 
-                for (let player_id of playerSelected) {
+                        //player selected
+                        let playerSelected = match.playerSelected;
+                        //number of player selected
+                        let numberPlayerSelected = playerSelected.length;
+                        cb(null, numberPlayerSelected, playerSelected, match, coach)
 
-                    Player.findById(player_id, function(err, player) {
-                        let playerStatistic = player.statistics;
-                        for (let stat of playerStatistic) {
-
-                            if (stat.match_id.toString() === match_id.toString()) {
-                                console.log(stat);
-                                totalBallPlayed += stat['ballPlayed'];
-                                totalBallLost += stat['ballLost'];
-                                totalRetrieveBalls += stat['retrieveBalls'];
-                                totalDefensiveAction += stat['defensiveAction'];
-                                totalFoulsSuffered += stat['foulsSuffered'];
-                                totalFoulsCommited += stat['foulsCommitted'];
-                                totalOffSide += stat['offSide'];
-                                totalAttempts += stat['attempts'];
-                                totalAttemptsOnTarget += stat['attemptsOnTarget'];
-                                totalAttemptsOffTarget += stat['attemptsOffTarget'];
-                                totalBut += stat['but'];
-                                totalPassesCompletion += stat['passesCompletion'];
-                                totalRelanceCompletion += stat['relanceCompletion'];
-                                console.log('loop for');
-                            }
-                        }
                     });
-                }
+                },
 
-                Match.findById(match_id, function(err, foundMatch) {
+                (numberPlayerSelected, playerSelected, match, coach, cb) => {
 
-                    if (err)
-                        throw err;
-                    //update match stat
-                    foundMatch.statistics = {
-                        ballPlayed: totalBallPlayed,
-                        ballLost: totalBallLost,
-                        passesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
-                        retrieveBalls: totalRetrieveBalls,
-                        defensiveAction: totalDefensiveAction,
-                        relanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
-                        foulsSuffered: totalFoulsSuffered,
-                        foulsCommitted: totalFoulsCommited,
-                        offSide: totalOffSide,
-                        attempts: totalAttempts,
-                        attemptsOnTarget: totalAttemptsOnTarget,
-                        attemptsOffTarget: totalAttemptsOffTarget,
-                        but: totalBut
+                    for (let player_id of playerSelected) {
 
-                    };
-                    console.log(foundMatch.statistics);
-                    foundMatch.save();
+                        Player.findById(player_id, (err, player) => {
+                            let playerStatistic = player.statistics;
+                            for (let stat of playerStatistic) {
+                                if (stat.match_id.toString() === match_id.toString()) {
+                                    totalBallPlayed += stat['ballPlayed'];
+                                    totalBallLost += stat['ballLost'];
+                                    totalRetrieveBalls += stat['retrieveBalls'];
+                                    totalDefensiveAction += stat['defensiveAction'];
+                                    totalFoulsSuffered += stat['foulsSuffered'];
+                                    totalFoulsCommited += stat['foulsCommitted'];
+                                    totalOffSide += stat['offSide'];
+                                    totalAttempts += stat['attempts'];
+                                    totalAttemptsOnTarget += stat['attemptsOnTarget'];
+                                    totalAttemptsOffTarget += stat['attemptsOffTarget'];
+                                    totalBut += stat['but'];
+                                    totalPassesCompletion += stat['passesCompletion'];
+                                    totalRelanceCompletion += stat['relanceCompletion'];
+                                }
+                            }
+                            if (player_id === playerSelected[numberPlayerSelected - 1]) {
+                                cb(null, coach, match, {
+                                    totalBallPlayed,
+                                    totalBallLost,
+                                    totalRetrieveBalls,
+                                    totalDefensiveAction,
+                                    totalFoulsSuffered,
+                                    totalFoulsCommited,
+                                    totalOffSide,
+                                    totalAttempts,
+                                    totalAttemptsOnTarget,
+                                    totalAttemptsOffTarget,
+                                    totalBut,
+                                    totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
+                                    totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected)
+                                });
+                            }
+                        });
 
-                    //update match stat in coach
+
+                    }
+
+                },
+                (coach, match, stat, cb) => {
+
+                    Match.findById(match_id, (err, foundMatch) => {
+                        if (err)
+                            throw err;
+                        //console.log(foundMatch);
+
+                        //update match stat
+                        foundMatch.statistics = {
+                            ballPlayed: stat.totalBallPlayed,
+                            ballLost: stat.totalBallLost,
+                            passesCompletion: stat.totalPassesCompletion,
+                            retrieveBalls: stat.totalRetrieveBalls,
+                            defensiveAction: stat.totalDefensiveAction,
+                            relanceCompletion: stat.totalRelanceCompletion,
+                            foulsSuffered: stat.totalFoulsSuffered,
+                            foulsCommitted: stat.totalFoulsCommited,
+                            offSide: stat.totalOffSide,
+                            attempts: stat.totalAttempts,
+                            attemptsOnTarget: stat.totalAttemptsOnTarget,
+                            attemptsOffTarget: stat.totalAttemptsOffTarget,
+                            but: stat.totalBut
+
+                        };
+                        foundMatch.save();
+                    });
+
                     match.statistics = {
-                        ballPlayed: totalBallPlayed,
-                        ballLost: totalBallLost,
-                        passesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
-                        retrieveBalls: totalRetrieveBalls,
-                        defensiveAction: totalDefensiveAction,
-                        relanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
-                        foulsSuffered: totalFoulsSuffered,
-                        foulsCommitted: totalFoulsCommited,
-                        offSide: totalOffSide,
-                        attempts: totalAttempts,
-                        attemptsOnTarget: totalAttemptsOnTarget,
-                        attemptsOffTarget: totalAttemptsOffTarget,
-                        but: totalBut
+                        ballPlayed: stat.totalBallPlayed,
+                        ballLost: stat.totalBallLost,
+                        passesCompletion: stat.totalPassesCompletion,
+                        retrieveBalls: stat.totalRetrieveBalls,
+                        defensiveAction: stat.totalDefensiveAction,
+                        relanceCompletion: stat.totalRelanceCompletion,
+                        foulsSuffered: stat.totalFoulsSuffered,
+                        foulsCommitted: stat.totalFoulsCommited,
+                        offSide: stat.totalOffSide,
+                        attempts: stat.totalAttempts,
+                        attemptsOnTarget: stat.totalAttemptsOnTarget,
+                        attemptsOffTarget: stat.totalAttemptsOffTarget,
+                        but: stat.totalBut
 
                     };
                     coach.save();
+                    //  console.log(coach);
+                    cb(null, stat);
+                }
+            ], (err, result) => {
+                if (err)
+                    throw err;
 
-                    res.status(202).json({
-                        success: true,
-                        match_statistics: foundMatch.statistics
-                    })
+                res.status(202).json({
+                    success: true,
+                    match_statistics: result
                 });
+                console.log(result);
             });
+
         } else {
             return res.status(403).send({
                 success: false,
