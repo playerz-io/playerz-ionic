@@ -1,5 +1,5 @@
 angular.module('starter.controller.tactique', [])
-    .controller('TactiqueCtrl', function($stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope) {
+    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope) {
 
         var self = this;
 
@@ -62,6 +62,13 @@ angular.module('starter.controller.tactique', [])
             MatchService.addPlayerSelected(player_id, StorageService.getStorage(), position)
                 .success(function(data) {
                     console.log(data);
+                    if (!data.success) {
+                      $ionicPopup.alert({
+                        title: 'Erreur',
+                        template: data.msg
+                      })
+                    }
+
                 })
                 .error(function(data) {
                     console.log(data);
@@ -119,18 +126,18 @@ angular.module('starter.controller.tactique', [])
                 });
         };
 
-        self.getBillingName = function(){
+        self.getBillingName = function() {
 
-          if(self.place === 'Domicile'){
-            self.billingName = self.nameTeam + ' - ' + self.opponent;
-          }else{
-            self.billingName = self.opponent+ ' - ' + self.nameTeam;
-          }
+                if (self.place === 'Domicile') {
+                    self.billingName = self.nameTeam + ' - ' + self.opponent;
+                } else {
+                    self.billingName = self.opponent + ' - ' + self.nameTeam;
+                }
 
-          return self.billingName;
-        }
-        //call add formation here for get position as soons as
-        // tactique page is loaded
+                return self.billingName;
+            }
+            //call add formation here for get position as soons as
+            // tactique page is loaded
         self.addFormation();
         self.getPlayers();
         self.getMatch();

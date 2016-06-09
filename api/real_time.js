@@ -11,8 +11,8 @@ let checkMatchId = function(match_ID, player) {
 };
 
 exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
-    console.log(match_ID);
-    console.log(player);
+    //console.log(match_ID);
+  //  console.log(player);
 
     let refAddPlayer = ref
         .child(coach_ID)
