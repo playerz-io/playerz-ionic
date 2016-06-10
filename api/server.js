@@ -176,6 +176,14 @@ apiRoutes.get('/coach', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.getCoach);
 
+apiRoutes.get('/coach_by_id', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.getCoachById);
+
+apiRoutes.put('/coach', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.updateCoach);
+
 
 /*********** PLAYER ****************/
 //add Player to Team

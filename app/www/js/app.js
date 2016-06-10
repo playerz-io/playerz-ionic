@@ -5,7 +5,7 @@
 'use strict'
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match'
+    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting'
 ])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -125,7 +125,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             views: {
                 'home-tab': {
                     templateUrl: "templates/home.html",
-                    controller: 'HomeTabCtrl'
+                    controller: 'HomeTabCtrl as home'
                 }
             }
         })
@@ -191,13 +191,18 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             templateUrl: 'templates/change.html',
             controller: 'ChangeCtrl as change'
         })
-        .state('stat-end-match',{
-          url: '/stat-end-match',
-          templateUrl: 'templates/stat-end-match.html',
-          controller: 'StatEndMatchCtrl as statEndMatch',
-          params: {
-            matchId: null
-          }
+        .state('stat-end-match', {
+            url: '/stat-end-match',
+            templateUrl: 'templates/stat-end-match.html',
+            controller: 'StatEndMatchCtrl as statEndMatch',
+            params: {
+                matchId: null
+            }
+        })
+        .state('profile-setting', {
+            url: '/profile-setting',
+            templateUrl: 'templates/profile-setting.html',
+            controller: 'ProfileSettingCtrl as profileSetting'
         })
 
     $urlRouterProvider.otherwise('/');
