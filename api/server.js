@@ -303,6 +303,14 @@ apiRoutes.post('/totalStat', passport.authenticate('jwt', {
     session: false
 }), controllerStat.totalStat);
 
+apiRoutes.get('/getMatchPlayed', passport.authenticate('jwt', {
+    session: false
+}), controllerPlayer.getMatchPlayed);
+
+apiRoutes.get('/getStatisticsMatch', passport.authenticate('jwt', {
+    session: false
+}), controllerPlayer.getStatisticsMatch);
+
 
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);
