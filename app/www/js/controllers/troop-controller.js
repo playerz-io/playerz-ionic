@@ -11,19 +11,24 @@ angular.module('starter.controller.troop', [])
             favourite_position: null
         };
 
+        self.showDelete = false;
+
         $ionicModal.fromTemplateUrl('templates/add-player-modal.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-        }).then(function(modal){
-          $scope.modal = modal;
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
         });
 
-        $scope.openModal = function(){
-          $scope.modal.show();
+        $scope.openModal = function() {
+            if (self.showDelete) {
+                self.showDelete = false;
+            }
+            $scope.modal.show();
         };
 
-        $scope.closeModal = function(){
-          $scope.modal.hide();
+        $scope.closeModal = function() {
+            $scope.modal.hide();
         };
 
         self.addPlayer = function() {
@@ -35,10 +40,10 @@ angular.module('starter.controller.troop', [])
                     $scope.modal.hide();
                 })
                 .error(function(data) {
-                  var alertPopup = $ionicPopup.alert({
-                      title: 'Error',
-                      template: data.msg
-                  });
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Error',
+                        template: data.msg
+                    });
                     console.log(data);
                 });
 
@@ -68,9 +73,11 @@ angular.module('starter.controller.troop', [])
 
         self.goPlayer = (playerId) => {
             StorageService.addStoragePlayerId(playerId);
-            $state.go('player', {playerId});
+            $state.go('player', {
+                playerId
+            });
         };
-        
+
         self.getPlayers();
 
     });

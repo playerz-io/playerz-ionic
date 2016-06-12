@@ -11,12 +11,13 @@ angular.module('starter.controller.stat-end-match', [])
 
         let self = this;
 
-        self.matchId = StorageService.getStorage();
+        self.showDelete = false;
+        self.matchId = StorageService.getStorageMatchId();
         self.totalStat = function() {
             MatchService.totalStat(self.matchId)
                 .success(function(data) {
-                  console.log(data);
-                  self.statistics = data.match_statistics;
+                    console.log(data);
+                    self.statistics = data.match_statistics;
                 })
                 .error(function(data) {
                     console.log(data);

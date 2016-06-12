@@ -7,6 +7,7 @@ angular.module('starter.controller.tactique', [])
         self.opponent = null;
         self.place = null;
         self.billingName = null;
+        self.showDelete = false;
 
         //force to display back button
         $scope.$on('$ionicView.beforeEnter', function(event, viewData) {

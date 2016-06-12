@@ -10,6 +10,8 @@ angular.module('starter.controller.match-comeup', [])
             viewData.enableBack = true;
         });
 
+        self.showDelete = false;
+
         self.saveMatchID = function(match_id) {
             StorageService.addStorageMatchId(match_id);
         };
@@ -17,7 +19,7 @@ angular.module('starter.controller.match-comeup', [])
         self.getMatchComeUp = function() {
             MatchService.getMatchComeUp()
                 .success(function(data) {
-                  console.log(data);
+                    console.log(data);
                     self.matchs = data.matchs;
                 })
                 .error(function(data) {

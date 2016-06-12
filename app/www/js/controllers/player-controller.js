@@ -24,6 +24,7 @@ angular.module('starter.controller.player', [])
                 })
         };
 
+
         self.getMatchPlayed = () => {
 
             PlayerService.getMatchPlayed(self.playerId)

@@ -2,6 +2,10 @@
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
+        <ion-nav-buttons side="secondary">
+            <button class="button button-icon icon ion-ios-minus-outline" ng-click="comeup.showDelete = !comeup.showDelete">
+            </button>
+        </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content>
         <div class="row">
@@ -12,13 +16,14 @@
                 </label>
                 </br>
 
-                <ion-list>
+                <ion-list show-delete="comeup.showDelete">
                     <ion-item class="item" ng-repeat="match in comeup.matchs | filter:comeup.searchMatch">
                         <a ui-sref="tactique({matchId: match._id})" ng-click="comeup.saveMatchID(match._id)">
                             <h2>{{match.against_team}}</h2>
                             <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
                         </a>
-                        <ion-option-button ng-click="comeup.removeMatch(match._id)">Supprimer</ion-option-button>
+                          <ion-delete-button class="ion-minus-circled" ng-click="comeup.removeMatch(match._id)"></ion-delete-button>
+                        <!-- <ion-option-button ng-click="comeup.removeMatch(match._id)">Supprimer</ion-option-button> -->
                     </ion-item>
                 </ion-list>
             </div>
