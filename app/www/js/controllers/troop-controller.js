@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.troop', [])
-    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout) {
+    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout, $state, StorageService) {
 
         var self = this;
 
@@ -65,6 +65,12 @@ angular.module('starter.controller.troop', [])
                     console.log(data);
                 });
         };
+
+        self.goPlayer = (playerId) => {
+            StorageService.addStoragePlayerId(playerId);
+            $state.go('player', {playerId});
+        };
+        
         self.getPlayers();
 
     });

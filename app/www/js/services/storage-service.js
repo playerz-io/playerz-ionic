@@ -3,11 +3,11 @@
 angular.module('starter')
   .service('StorageService', function(API_ENDPOINT, $sessionStorage) {
 
-    let getStorage = function() {
+    let getStorageMatchId = function() {
       return window.localStorage.matchId;
     };
 
-    let addStorage = function(matchId) {
+    let addStorageMatchId = function(matchId) {
       window.localStorage.matchId = matchId;
     };
 
@@ -19,10 +19,18 @@ angular.module('starter')
       return window.localStorage.coachId;
     };
 
+    let addStoragePlayerId = (playerId) => {
+      window.localStorage.playerId = playerId;
+    };
+
+    let getStoragePlayerId = () => window.localStorage.playerId;
+
     return {
-      addStorage,
-      getStorage,
+      addStorageMatchId,
+      getStorageMatchId,
       addStorageCoachId,
-      getStorageCoachId
+      getStorageCoachId,
+      addStoragePlayerId,
+      getStoragePlayerId
     }
   });

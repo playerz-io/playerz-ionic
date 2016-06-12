@@ -10,7 +10,7 @@ angular.module('starter.controller.match-played', [])
        });
 
        self.saveMatchID = function(match_id) {
-           StorageService.addStorage(match_id);
+           StorageService.addStorageMatchId(match_id);
        };
 
        self.getMatchFinished = function(){

@@ -61,7 +61,6 @@ exports.getMatchPlayed = (req, res) => {
     if (token) {
         let decoded = jwt.decode(token, config.secret);
         let coach_id = decoded._id;
-
         async.waterfall([
             (cb) => {
                 Player.findById(player_id, (err, player) => {
@@ -80,7 +79,7 @@ exports.getMatchPlayed = (req, res) => {
                 Match.find({
                     _id: {
                         "$in": matchPlayed
-                    }
+                    }, status: 'finished'
                 }, (err, match) => {
                     if (err)
                         throw err;

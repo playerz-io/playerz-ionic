@@ -3,7 +3,7 @@ angular.module('starter.controller.change', [])
 
         var self = this;
 
-        self.matchId = StorageService.getStorage();
+        self.matchId = StorageService.getStorageMatchId();
         self.coachId = StorageService.getStorageCoachId();
         self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
 

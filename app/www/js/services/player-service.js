@@ -93,17 +93,21 @@ angular.module('starter')
 
         let getMatchPlayed = (player_id) =>
             $http.get(`${API_ENDPOINT.url}/getMatchPlayed`, {
-                player_id
+                params: {
+                    player_id
+                }
             });
 
         let getStatisticsMatch = (player_id, match_id) =>
-            $http.get(`${API_ENDPOINT.url}/getMatchPlayed`, {
-                player_id,
-                match_id
+            $http.get(`${API_ENDPOINT.url}/getStatisticsMatch`, {
+                params: {
+                    player_id,
+                    match_id
+                }
             });
         return {
             getMatchPlayed,
-            getStatisticsMatch,  
+            getStatisticsMatch,
             addPosition,
             updateStatistic,
             addSchema,

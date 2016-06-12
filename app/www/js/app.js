@@ -5,7 +5,7 @@
 'use strict'
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting'
+    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics'
 ])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -204,6 +204,15 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             templateUrl: 'templates/profile-setting.html',
             controller: 'ProfileSettingCtrl as profileSetting'
         })
+        .state('player-statistics', {
+          url: '/player-statistics',
+          templateUrl: 'templates/player-statistics.html',
+          controller: 'PlayerStatCtrl as playerStat',
+          params: {
+            matchId: null,
+            playerId: null
+          }
+        });
 
     $urlRouterProvider.otherwise('/');
 

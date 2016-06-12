@@ -11,7 +11,7 @@ angular.module('starter.controller.summary-stat', [])
         let self = this;
 
         self.coachId = StorageService.getStorageCoachId();
-        self.matchId = StorageService.getStorage();
+        self.matchId = StorageService.getStorageMatchId();
 
         let firebaseMatch = FireService.refMatch(self.matchId, self.coachId);
 

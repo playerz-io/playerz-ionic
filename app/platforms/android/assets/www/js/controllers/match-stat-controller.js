@@ -7,7 +7,7 @@ angular.module('starter.controller.match-stat', [])
 
         self.disable = true;
         self.coachId = StorageService.getStorageCoachId();
-        self.matchId = StorageService.getStorage();
+        self.matchId = StorageService.getStorageMatchId();
         console.log(self.matchId);
         self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
 

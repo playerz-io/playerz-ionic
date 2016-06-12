@@ -13,7 +13,7 @@
                 </br>
                 <ion-list>
                     <!-- <ion-scroll> -->
-                        <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ui-sref="player({playerId: player._id})">
+                        <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
                             <h2>{{player.last_name}}</h2>
                             <h4>{{player.first_name}}</h4>
                             <ion-option-button ng-click="troop.removePlayer(player._id)">Supprimer</ion-option-button>

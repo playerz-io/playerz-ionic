@@ -13,9 +13,9 @@ angular.module('starter.controller.tactique', [])
             viewData.enableBack = true;
         });
 
-        self.matchId = StorageService.getStorage();
+        self.matchId = StorageService.getStorageMatchId();
         self.coachId = StorageService.getStorageCoachId();
-        var refMatch = FireService.refMatch(StorageService.getStorage(), self.coachId);
+        var refMatch = FireService.refMatch(self.matchId, self.coachId);
         self.formation = '4-4-2';
 
         //get Player of troop
@@ -34,7 +34,7 @@ angular.module('starter.controller.tactique', [])
         //change the formation
         self.addFormation = function() {
             //console.log(formation);
-            TeamService.addFormation(self.formation, StorageService.getStorage())
+            TeamService.addFormation(self.formation, self.matchId)
                 .success(function(data) {
                     self.getTactique();
                     console.log(data);
@@ -59,7 +59,7 @@ angular.module('starter.controller.tactique', [])
         //add player to the selection of current match
         self.addPlayerSelected = function(player_id, position) {
             console.log(player_id);
-            MatchService.addPlayerSelected(player_id, StorageService.getStorage(), position)
+            MatchService.addPlayerSelected(player_id, self.matchId, position)
                 .success(function(data) {
                     console.log(data);
                 })
@@ -70,7 +70,7 @@ angular.module('starter.controller.tactique', [])
 
         //remove player to the selection of current match
         self.removePlayerSelected = function(player_id, player) {
-            MatchService.removePlayerSelected(player_id, StorageService.getStorage())
+            MatchService.removePlayerSelected(player_id, self.matchId)
                 .success(function(data) {
 
                     console.log(data);
