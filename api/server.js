@@ -1,6 +1,6 @@
 'use strict';
 
-
+let http = require('http');
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
@@ -17,6 +17,7 @@ let controllerPlayer = require('./controllers/player');
 let controllerStat = require('./controllers/statistics');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
+let FacebookStrategy = require('passport-facebook').Strategy;
 
 //connect to database
 if (process.env.NODE_ENV === 'production') {
@@ -38,7 +39,24 @@ app.use(morgan('dev'));
 //Use the passport package in our application
 app.use(passport.initialize());
 
+app.use(function(req, res, next) {
 
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 //Start server
 app.listen(port);
 
@@ -54,36 +72,59 @@ let apiRoutes = express.Router();
 //auth with facebook
 apiRoutes.post('/facebook', function(req, res) {
 
-    let newCoach = new Coach.modelCoach({
-        last_name: req.body.last_name,
-        first_name: req.body.first_name,
-        connected: 'facebook'
-    });
 
-    newCoach.save(function(err) {
-        if (err) {
-            console.log(err);
+
+    Coach.modelCoach.findOne({
+        id_facebook: req.body.id_facebook
+    }, (err, coach) => {
+        if (err)
+            throw err;
+
+        if (!coach) {
+            let newCoach = new Coach.modelCoach({
+                last_name: req.body.last_name,
+                first_name: req.body.first_name,
+                connected: 'facebook',
+                email: req.body.email,
+                country: req.body.country,
+                type: req.body.type,
+                genre: req.body.genre,
+                birth_date: req.body.birth_date,
+                id_facebook: req.body.id_facebook,
+                created_at: Date.now()
+            });
+
+            newCoach.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    return res.json({
+                        success: false,
+                        msg: 'Username already exists'
+                    });
+                }
+            });
+
+            let token = jwt.encode(newCoach, config.secret);
             return res.json({
-                success: false,
-                msg: 'Username already exists'
+                success: true,
+                msg: 'Successful created new user',
+                token: 'JWT ' + token,
+                newCoach
             });
         }
+        let token = jwt.encode(coach, config.secret);
+        return res.json({
+          success: true,
+          coach,
+          token: 'JWT ' + token
+        });
     });
-
-    let token = jwt.encode(newCoach, config.secret);
-    res.json({
-        success: true,
-        msg: 'Successful created new user',
-        token: 'JWT ' + token,
-        newCoach: newCoach
-    });
-
 
 });
 
 apiRoutes.post('/signup', function(req, res) {
     if (!req.body.last_name || !req.body.first_name || !req.body.password || !req.body.type || !req.body.sport || !req.body.country || !req.body.genre || !req.body.birth_date) {
-        res.json({
+        return res.json({
             success: false,
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
@@ -132,7 +173,7 @@ apiRoutes.post('/authenticate', function(req, res) {
     let password = req.body.password;
 
     if (!email.toString() || !password.toString()) {
-        res.send({
+        return res.json({
             success: false,
             msg: "Les champs email ou mot de passe sont vides !"
         });
@@ -145,7 +186,7 @@ apiRoutes.post('/authenticate', function(req, res) {
             throw err;
 
         if (!coach) {
-            res.send({
+            return res.json({
                 success: false,
                 msg: 'Authentication failed. User not found'
             });
@@ -161,7 +202,7 @@ apiRoutes.post('/authenticate', function(req, res) {
                     });
 
                 } else {
-                    res.send({
+                    return res.json({
                         success: false,
                         msg: 'Authentication failed. Wrong password'
                     });
@@ -310,6 +351,14 @@ apiRoutes.get('/getMatchPlayed', passport.authenticate('jwt', {
 apiRoutes.get('/getStatisticsMatch', passport.authenticate('jwt', {
     session: false
 }), controllerPlayer.getStatisticsMatch);
+
+apiRoutes.post('/addSportFacebookUser', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.addSportFacebookUser);
+
+apiRoutes.post('/addTeamFacebookUser', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.addTeamFacebookUser);
 
 
 console.log('connected to port : ' + port);

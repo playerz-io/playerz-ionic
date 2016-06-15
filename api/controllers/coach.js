@@ -7,6 +7,97 @@ var config = require('../config/database');
 var Team = require('../models/team').modelTeam;
 
 
+
+exports.addSportFacebookUser = (req, res) => {
+    let token = getToken(req.headers);
+    let sport = req.body.sport;
+
+    if (!sport) {
+        return res.status(400).json({
+            success: false,
+            msg: 'Choisissez un sport !!!'
+        });
+
+    }
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coach_id = decoded._id;
+
+        Coach.findById(coach_id, (err, coach) => {
+
+            if (err) {
+                throw err;
+            }
+
+            coach.sport = sport;
+            coach.save();
+
+            res.status(202).json({
+                success: true,
+                msg: 'Sport ajouté',
+                coach
+            });
+        });
+
+
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+exports.addTeamFacebookUser = (req, res) => {
+    let token = getToken(req.headers);
+
+    let name_club = req.body.name_club;
+    let category = req.body.category;
+    let division = req.body.division;
+
+    if (!name_club || !category || !division) {
+        return res.status(400).json({
+            success: false,
+            msg: "Un ou plusieurs champs requis n'ont pas été remplis"
+        });
+    }
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coach_id = decoded._id;
+        Coach.findById(coach_id, (err, coach) => {
+
+            if (err) {
+                throw err;
+            }
+
+            let newTeam = new Team({
+                name_club,
+                category,
+                division
+            });
+
+            coach.team = newTeam;
+
+            coach.save();
+
+            res.status(202).json({
+                success: true,
+                msg: 'Equipe ajouté',
+                coach
+            });
+
+        });
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+
+};
+
 exports.getNameTeam = function(req, res) {
     let token = getToken(req.headers);
     let coach_id = req.query.coach_id;
@@ -22,6 +113,11 @@ exports.getNameTeam = function(req, res) {
                 success: true,
                 nameTeam
             })
+        });
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
         });
     }
 }
@@ -40,6 +136,11 @@ exports.getCoachById = function(req, res) {
                 success: true,
                 coach
             })
+        });
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
         });
     }
 }
