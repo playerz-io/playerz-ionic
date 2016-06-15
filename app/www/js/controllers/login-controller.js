@@ -40,13 +40,14 @@ angular.module('starter.controller.login', [])
                     console.log(response);
                     AuthService.registerFacebook(response)
                         .success(function(data) {
-                            let team = data.coach.team;
+                          console.log(data);
+                            let team = data.newCoach.team;
                             if (team  === undefined || team === null) {
                                 $state.go('sport');
                             } else {
                               $state.go('profile');
                             }
-                            StorageService.addStorageCoachId(data.coach._id);
+                            StorageService.addStorageCoachId(data.newCoach._id);
                             AuthService.useCredentials();
                             AuthService.storeUserCredentials(data.token);
 
@@ -59,7 +60,7 @@ angular.module('starter.controller.login', [])
                 console.log('User cancelled login or did not fully authorize.');
             }
         }, {
-            scope: 'public_profile,email'
+            scope: 'public_profile, email'
         });
     };
 

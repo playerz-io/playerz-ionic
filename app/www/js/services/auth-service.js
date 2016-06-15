@@ -16,7 +16,7 @@ angular.module('starter')
         }
 
 
-        let loadUserCredentials = function () {
+        let loadUserCredentials = function() {
             var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
             if (token) {
                 useCredentials(token);
@@ -40,18 +40,18 @@ angular.module('starter')
 
         var registerFacebook = function(response) {
             return $http({
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: $httpParamSerializerJQLike({
-                        last_name: response.last_name,
-                        first_name: response.first_name,
-                        email: response.email,
-                        id_facebook: response.id
-                    }),
-                    url: `${API_ENDPOINT.url}/facebook`
-                });
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: $httpParamSerializerJQLike({
+                    last_name: response.last_name,
+                    first_name: response.first_name,
+                    email: response.email,
+                    id_facebook: response.id
+                }),
+                url: `${API_ENDPOINT.url}/facebook`
+            });
 
         };
 
@@ -87,9 +87,22 @@ angular.module('starter')
             destroyUserCredentials()
         };
 
+        let forgotPassword = (email) =>
+            $http.post(`${API_ENDPOINT.url}/forgotPassword`, {
+                email
+            });
+
+        let resetPassword = (token, password, confPassword) =>
+            $http.post(`${API_ENDPOINT.url}/resetPassword`, {
+                token,
+                password,
+                confPassword
+            });
         loadUserCredentials()
 
         return {
+            resetPassword,
+            forgotPassword,
             login: login,
             register: register,
             logout: logout,

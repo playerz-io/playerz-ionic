@@ -5,8 +5,10 @@ var getToken = require('./token');
 var jwt = require('jwt-simple');
 var config = require('../config/database');
 var Team = require('../models/team').modelTeam;
-
-
+let async = require('async');
+let crypto = require('crypto');
+let nodemailer = require('nodemailer');
+let mg = require('nodemailer-mailgun-transport');
 
 exports.addSportFacebookUser = (req, res) => {
     let token = getToken(req.headers);
@@ -213,4 +215,157 @@ exports.updateCoach = function(req, res) {
             msg: 'No token provided.'
         });
     }
+};
+
+exports.forgotPassword = function(req, res) {
+
+    let email = req.body.email;
+
+    if (!email) {
+        return res.status(400).json({
+            msg: 'Saisissez un email !!'
+        })
+    }
+    async.waterfall([
+
+        (done) => {
+            crypto.randomBytes(20, (err, buf) => {
+                let token = buf.toString('hex');
+                done(null, token);
+            });
+        },
+
+        (token, done) => {
+            Coach.findOne({
+                email
+            }, (err, coach) => {
+
+                if (!coach) {
+                    return res.status(400).json({
+                        msg: "Cet utilisateur n'exsite pas"
+                    });
+                }
+
+                if(coach.connected === 'facebook'){
+                  return res.status(400).json({
+                      msg: "Votre connexion à été effectué avec Facebook !!"
+                  });
+                }
+
+                coach.resetPasswordToken = token;
+                coach.resetPasswordExpires = Date.now() + 3600000;
+
+                coach.save((err) => {
+                    done(err, token, coach);
+                });
+            });
+        },
+
+        (token, coach, done) => {
+            let auth = {
+                auth: {
+                    api_key: 'key-2cbf56735c697b79b2b69306c4d0b79c',
+                    domain: 'sandbox23aac40875ed43708170487989939d3f.mailgun.org'
+                }
+            };
+
+            let smtpTransport = nodemailer.createTransport(mg(auth));
+
+            let mailOptions = {
+                to: coach.email,
+                from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                subject: 'Playerz mot de passe oublié',
+                text: `http://localhost:8100/#/reset/${token}`
+
+            };
+
+            smtpTransport.sendMail(mailOptions, (err) => {
+                if (err)
+                    throw err;
+                return res.status(202).json({
+                    success: true,
+                    msg: 'Un mail vous a été envoyé'
+                });
+            });
+        }
+
+    ]);
+
+};
+
+exports.resetPassword = function(req, res) {
+    let password = req.body.password;
+    let confPassword = req.body.confPassword;
+    let token = req.body.token;
+
+    if (!password || !confPassword) {
+        return res.status(400).json({
+            success: false,
+            msg: 'Remplissez tous les champs !!'
+        });
+    }
+
+    if (password !== confPassword) {
+        return res.status(400).json({
+            success: false,
+            msg: 'Les deux mots de passe sont différents'
+        });
+    }
+    async.waterfall([
+        (done) => {
+            Coach.findOne({
+                resetPasswordToken: token,
+                resetPasswordExpires: {
+                    $gt: Date.now()
+                }
+            }, function(err, coach) {
+                if (!coach) {
+                    return res.status(400).json({
+                        msg: "Password reset token is invalid or has expired."
+                    });
+                }
+
+                coach.password = password;
+                coach.resetPasswordToken = undefined;
+                coach.resetPasswordExpires = undefined;
+
+                coach.save((err) => {
+                    if (err)
+                        throw err;
+
+                    done(null, coach);
+                });
+
+            });
+        },
+
+        (coach, done) => {
+
+            let auth = {
+                auth: {
+                    api_key: 'key-2cbf56735c697b79b2b69306c4d0b79c',
+                    domain: 'sandbox23aac40875ed43708170487989939d3f.mailgun.org'
+                }
+            };
+
+            let smtpTransport = nodemailer.createTransport(mg(auth));
+
+            let mailOptions = {
+                to: coach.email,
+                from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                subject: 'Le mot a été changé',
+                text: `Votre mot de passe a bien été changé`
+            };
+
+            smtpTransport.sendMail(mailOptions, (err) => {
+                if (err)
+                    throw err;
+                return res.status(202).json({
+                    success: true,
+                    msg: 'Le mot de passe a été changé'
+                });
+            });
+        }
+    ])
+
 };

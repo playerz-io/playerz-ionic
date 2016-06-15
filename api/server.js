@@ -360,6 +360,7 @@ apiRoutes.post('/addTeamFacebookUser', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.addTeamFacebookUser);
 
-
+apiRoutes.post('/forgotPassword', controllerCoach.forgotPassword);
+apiRoutes.post('/resetPassword', controllerCoach.resetPassword);
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);
