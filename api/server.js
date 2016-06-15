@@ -17,7 +17,7 @@ let controllerPlayer = require('./controllers/player');
 let controllerStat = require('./controllers/statistics');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
-let FacebookStrategy = require('passport-facebook').Strategy;
+
 
 //connect to database
 if (process.env.NODE_ENV === 'production') {
