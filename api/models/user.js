@@ -26,6 +26,7 @@ let UserSchema = new Schema({
     type: String, // coach, player
     resetPasswordToken: String,
     resetPasswordExpires: Date,
+    total_connexion: 0,
     any: Schema.Types.Mixed
 
 });

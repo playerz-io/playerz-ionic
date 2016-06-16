@@ -80,6 +80,9 @@ apiRoutes.post('/facebook', function(req, res) {
         if (err)
             throw err;
 
+        //increase total_connexion
+        coach.total_connexion++;
+
         if (!coach) {
             let newCoach = new Coach.modelCoach({
                 last_name: req.body.last_name,
@@ -94,13 +97,16 @@ apiRoutes.post('/facebook', function(req, res) {
                 created_at: Date.now()
             });
 
+            //increase total_connexion
+            newCoach.total_connexion++;
             newCoach.save(function(err) {
                 if (err) {
-                    console.log(err);
-                    return res.json({
-                        success: false,
-                        msg: 'Username already exists'
-                    });
+                  throw err;
+                    // console.log(err);
+                    // return res.json({
+                    //     success: false,
+                    //     msg: 'Username already exists'
+                    // });
                 }
             });
 
