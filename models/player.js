@@ -13,6 +13,7 @@ let playerSchema = user.userSchema.extend({
     strong_foot: Number,
     country: String,
     position: String,
+    favourite_position: String,
     team: String,
     statistics: [Statistics],
     any: Schema.Types.Mixed

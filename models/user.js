@@ -11,6 +11,7 @@ let bcrypt = require('bcrypt');
 
 let UserSchema = new Schema({
 
+    id_facebook: String,
     first_name: String,
     last_name: String,
     email: String,
@@ -22,40 +23,44 @@ let UserSchema = new Schema({
     birth_date: Date,
     created_at: Date,
     sport: String,
-    type: String,// coach, player
+    type: String, // coach, player
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
+    total_connexion: Number,
+    token_stripe: String,
     any: Schema.Types.Mixed
 
 });
 
 //trigger before sava user schem
-UserSchema.pre('save', function (next){
+UserSchema.pre('save', function(next) {
     let user = this;
 
-    if(user.password){
-	if(this.isModified('password') || this.isNew){
-	    bcrypt.genSalt(10, function(err, salt){
-		if(err){
-		    return next(err);
-		}
-		bcrypt.hash(user.password, salt, function(err, hash){
-		    if(err){
-			return next(err);
-		    }
-		    user.password = hash;
-		    next();
-		});
-	    });
-	} else {
-	    return next();
-	}
-    } else{
-	return next();
+    if (user.password) {
+        if (this.isModified('password') || this.isNew) {
+            bcrypt.genSalt(10, function(err, salt) {
+                if (err) {
+                    return next(err);
+                }
+                bcrypt.hash(user.password, salt, function(err, hash) {
+                    if (err) {
+                        return next(err);
+                    }
+                    user.password = hash;
+                    next();
+                });
+            });
+        } else {
+            return next();
+        }
+    } else {
+        return next();
     }
 
 });
 
-UserSchema.methods.comparePassword = function (passw, cb) {
-    bcrypt.compare(passw, this.password, function (err, isMatch) {
+UserSchema.methods.comparePassword = function(passw, cb) {
+    bcrypt.compare(passw, this.password, function(err, isMatch) {
         if (err) {
             return cb(err);
         }

@@ -1,6 +1,6 @@
 'use strict';
 
-
+let http = require('http');
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
@@ -15,8 +15,10 @@ let controllerTeam = require('./controllers/team');
 let controllerMatch = require('./controllers/match');
 let controllerPlayer = require('./controllers/player');
 let controllerStat = require('./controllers/statistics');
+let Payment = require('./controllers/payment');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
+
 
 //connect to database
 if (process.env.NODE_ENV === 'production') {
@@ -38,7 +40,24 @@ app.use(morgan('dev'));
 //Use the passport package in our application
 app.use(passport.initialize());
 
+app.use(function(req, res, next) {
 
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 //Start server
 app.listen(port);
 
@@ -54,41 +73,70 @@ let apiRoutes = express.Router();
 //auth with facebook
 apiRoutes.post('/facebook', function(req, res) {
 
-    let newCoach = new Coach.modelCoach({
-        last_name: req.body.last_name,
-        first_name: req.body.first_name,
-        connected: 'facebook'
-    });
 
-    newCoach.save(function(err) {
-        if (err) {
-            console.log(err);
+
+    Coach.modelCoach.findOne({
+        id_facebook: req.body.id_facebook
+    }, (err, coach) => {
+        if (err)
+            throw err;
+
+        //increase total_connexion
+        coach.total_connexion++;
+
+        if (!coach) {
+            let newCoach = new Coach.modelCoach({
+                last_name: req.body.last_name,
+                first_name: req.body.first_name,
+                connected: 'facebook',
+                email: req.body.email,
+                country: req.body.country,
+                type: req.body.type,
+                genre: req.body.genre,
+                birth_date: req.body.birth_date,
+                id_facebook: req.body.id_facebook,
+                created_at: Date.now()
+            });
+
+            //increase total_connexion
+            newCoach.total_connexion++;
+            newCoach.save(function(err) {
+                if (err) {
+                    throw err;
+                    // console.log(err);
+                    // return res.json({
+                    //     success: false,
+                    //     msg: 'Username already exists'
+                    // });
+                }
+            });
+
+            let token = jwt.encode(newCoach, config.secret);
             return res.json({
-                success: false,
-                msg: 'Username already exists'
+                success: true,
+                msg: 'Successful created new user',
+                token: 'JWT ' + token,
+                newCoach
             });
         }
+        let token = jwt.encode(coach, config.secret);
+        return res.json({
+            success: true,
+            coach,
+            token: 'JWT ' + token
+        });
     });
-
-    let token = jwt.encode(newCoach, config.secret);
-    res.json({
-        success: true,
-        msg: 'Successful created new user',
-        token: 'JWT ' + token,
-        newCoach: newCoach
-    });
-
 
 });
 
 apiRoutes.post('/signup', function(req, res) {
     if (!req.body.last_name || !req.body.first_name || !req.body.password || !req.body.type || !req.body.sport || !req.body.country || !req.body.genre || !req.body.birth_date) {
-        res.json({
+        return res.json({
             success: false,
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
     } else {
-      console.log(req.body.birth_date);
+        console.log(req.body.birth_date);
         let newCoach = new Coach.modelCoach({
             last_name: req.body.last_name,
             first_name: req.body.first_name,
@@ -100,7 +148,8 @@ apiRoutes.post('/signup', function(req, res) {
             type: req.body.type,
             genre: req.body.genre,
             birth_date: req.body.birth_date,
-            created_at: Date.now()
+            created_at: Date.now(),
+            total_connexion: 0
         });
 
         newCoach.team = new Team({
@@ -130,11 +179,12 @@ apiRoutes.post('/authenticate', function(req, res) {
 
     let email = req.body.email;
     let password = req.body.password;
-    
-    if( !email.toString() || !password.toString() ){
-        res.send({
-          success: false,
-          msg: "Les champs email ou mot de passe sont vides !"
+
+    // TODO: REGEXP EMAIL
+    if (!email.toString() || !password.toString()) {
+        return res.json({
+            success: false,
+            msg: "Les champs email ou mot de passe sont vides !"
         });
     }
 
@@ -145,7 +195,7 @@ apiRoutes.post('/authenticate', function(req, res) {
             throw err;
 
         if (!coach) {
-            res.send({
+            return res.json({
                 success: false,
                 msg: 'Authentication failed. User not found'
             });
@@ -154,6 +204,10 @@ apiRoutes.post('/authenticate', function(req, res) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
 
+                    //increase total_connexion
+                    coach.total_connexion++;
+                    coach.save();
+
                     res.json({
                         success: true,
                         token: 'JWT ' + token,
@@ -161,7 +215,7 @@ apiRoutes.post('/authenticate', function(req, res) {
                     });
 
                 } else {
-                    res.send({
+                    return res.json({
                         success: false,
                         msg: 'Authentication failed. Wrong password'
                     });
@@ -175,6 +229,14 @@ apiRoutes.post('/authenticate', function(req, res) {
 apiRoutes.get('/coach', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.getCoach);
+
+apiRoutes.get('/coach_by_id', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.getCoachById);
+
+apiRoutes.put('/coach', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.updateCoach);
 
 
 /*********** PLAYER ****************/
@@ -245,6 +307,16 @@ apiRoutes.delete('/player_selected', passport.authenticate('jwt', {
     session: false
 }), controllerMatch.removePlayerSelected);
 
+//get match comeup
+apiRoutes.get('/match_finished', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.findMatchFinished);
+
+//get match comeup
+apiRoutes.get('/match_comeup', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.findMatchComeUp);
+
 
 
 /************** PLAYER **************/
@@ -265,11 +337,6 @@ apiRoutes.post('/schema', passport.authenticate('jwt', {
     session: false
 }), controllerStat.addPlayerSchema);
 
-//empty schema
-// apiRoutes.post('/emptySchema', passport.authenticate('jwt', {
-//     session: false
-// }), controllerStat.emptySchema);
-
 apiRoutes.post('/action', passport.authenticate('jwt', {
     session: false
 }), controllerStat.countMainAction);
@@ -286,5 +353,44 @@ apiRoutes.get('/nameTeam', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.getNameTeam);
 
+apiRoutes.post('/totalStat', passport.authenticate('jwt', {
+    session: false
+}), controllerStat.totalStat);
+
+apiRoutes.get('/getMatchPlayed', passport.authenticate('jwt', {
+    session: false
+}), controllerPlayer.getMatchPlayed);
+
+apiRoutes.get('/getStatisticsMatch', passport.authenticate('jwt', {
+    session: false
+}), controllerPlayer.getStatisticsMatch);
+
+apiRoutes.post('/addSportFacebookUser', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.addSportFacebookUser);
+
+apiRoutes.post('/addTeamFacebookUser', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.addTeamFacebookUser);
+
+//save token stripe
+
+apiRoutes.post('/stripe', passport.authenticate('jwt', {
+    session: false
+}), Payment.createTokenStripe);
+
+apiRoutes.post('/webhooks', (req, res) => {
+    var event_json = JSON.parse(request.body);
+    console.log(event_json);
+    stripe.events.retrieve(event_json.id, function(err, event) {
+        // Do something with event
+        console.log(event);
+        response.send(200);
+    });
+});
+
+
+apiRoutes.post('/forgotPassword', controllerCoach.forgotPassword);
+apiRoutes.post('/resetPassword', controllerCoach.resetPassword);
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);

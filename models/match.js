@@ -11,13 +11,30 @@ let MatchSchema = new Schema({
     type: String, //official pleasure
     score: String,
     date: Date,
+    status: String, //['comeup, finished']
     playerSelected: [{
         type: Schema.ObjectId,
         ref: 'Player'
     }],
     formation: String,
     schemaMatch: [],
+    statistics : {
+      ballPlayed: Number,
+      ballLost: Number,
+      passesCompletion  : Number,
+      retrieveBalls: Number,
+      defensiveAction: Number,
+      relanceCompletion: Number,
+      foulsSuffered: Number,
+      foulsCommitted: Number,
+      offSide: Number,
+      attempts: Number,
+      attemptsOnTarget: Number,
+      attemptsOffTarget: Number,
+      but: Number,
+    },
     schemas: [],
+    belongs_to: String,
     any: Schema.Types.Mixed
 
 });
