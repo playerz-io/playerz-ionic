@@ -15,8 +15,10 @@ let controllerTeam = require('./controllers/team');
 let controllerMatch = require('./controllers/match');
 let controllerPlayer = require('./controllers/player');
 let controllerStat = require('./controllers/statistics');
+let Payment = require('./controllers/payment');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
+let Utils = require('./utils');
 
 
 //connect to database
@@ -101,7 +103,7 @@ apiRoutes.post('/facebook', function(req, res) {
             newCoach.total_connexion++;
             newCoach.save(function(err) {
                 if (err) {
-                  throw err;
+                    throw err;
                     // console.log(err);
                     // return res.json({
                     //     success: false,
@@ -120,40 +122,63 @@ apiRoutes.post('/facebook', function(req, res) {
         }
         let token = jwt.encode(coach, config.secret);
         return res.json({
-          success: true,
-          coach,
-          token: 'JWT ' + token
+            success: true,
+            coach,
+            token: 'JWT ' + token
         });
     });
 
 });
 
 apiRoutes.post('/signup', function(req, res) {
-    if (!req.body.last_name || !req.body.first_name || !req.body.password || !req.body.type || !req.body.sport || !req.body.country || !req.body.genre || !req.body.birth_date) {
-        return res.json({
+
+    let last_name = req.body.last_name;
+    let first_name = req.body.first_name;
+    let password = req.body.password;
+    let email = req.body.email;
+    let country = req.body.country;
+    let sport = req.body.sport;
+    let type = req.body.type;
+    let genre = req.body.genre;
+    let birth_date = req.body.birth_date;
+    let name_club = req.body.name_club;
+    let category = req.body.category;
+    let division = req.body.division;
+
+    //validation email
+    if (!Utils.validateEmail(email)) {
+      return res.json({
+        success: false,
+        msg: "Respecter le format d'une addresse mail"
+      });
+    }
+
+    if (!last_name || !first_name || !password || !type || !sport || !country || !genre || !birth_date || !name_club || !category || !division) {
+        return res.status(400).json({
             success: false,
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
     } else {
-        console.log(req.body.birth_date);
+
         let newCoach = new Coach.modelCoach({
-            last_name: req.body.last_name,
-            first_name: req.body.first_name,
-            password: req.body.password,
-            email: req.body.email,
+            last_name,
+            first_name,
+            password,
+            email,
             connected: 'jwt',
-            country: req.body.country,
-            sport: req.body.sport,
-            type: req.body.type,
-            genre: req.body.genre,
-            birth_date: req.body.birth_date,
-            created_at: Date.now()
+            country,
+            sport,
+            type,
+            genre,
+            birth_date,
+            created_at: Date.now(),
+            total_connexion: 0
         });
 
         newCoach.team = new Team({
-            name_club: req.body.name_club,
-            category: req.body.category,
-            division: req.body.division
+            name_club,
+            category,
+            division
         });
 
 
@@ -178,6 +203,14 @@ apiRoutes.post('/authenticate', function(req, res) {
     let email = req.body.email;
     let password = req.body.password;
 
+    //validate email
+    if (!Utils.validateEmail(email)) {
+      return res.json({
+        success: false,
+        msg: "Respecter le format d'une addresse mail"
+      });
+    }
+
     if (!email.toString() || !password.toString()) {
         return res.json({
             success: false,
@@ -200,6 +233,10 @@ apiRoutes.post('/authenticate', function(req, res) {
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
+
+                    //increase total_connexion
+                    coach.total_connexion++;
+                    coach.save();
 
                     res.json({
                         success: true,
@@ -365,6 +402,22 @@ apiRoutes.post('/addSportFacebookUser', passport.authenticate('jwt', {
 apiRoutes.post('/addTeamFacebookUser', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.addTeamFacebookUser);
+
+// //save token stripe
+//
+// apiRoutes.post('/stripe', passport.authenticate('jwt', {
+//     session: false
+// }), Payment.createTokenStripe);
+//
+// apiRoutes.post('/webhooks', (req, res) => {
+//     var event_json = JSON.parse(request.body);
+//     console.log(event_json);
+//     stripe.events.retrieve(event_json.id, function(err, event) {
+//         // Do something with event
+//         console.log(event);
+//         response.send(200);
+//     });
+// });
 
 apiRoutes.post('/forgotPassword', controllerCoach.forgotPassword);
 apiRoutes.post('/resetPassword', controllerCoach.resetPassword);

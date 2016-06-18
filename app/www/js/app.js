@@ -5,7 +5,8 @@
 'use strict'
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.team-user-facebook', 'starter.controller.sport', 'starter.controller.forgot', 'starter.controller.reset'
+    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.team-user-facebook', 'starter.controller.sport', 'starter.controller.forgot', 'starter.controller.reset',
+    'angular-stripe'
 ])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -41,8 +42,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);
-            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo' && next.name !== 'sport' && next.name !== 'team-user-facebook' && next.name !== 'profile'
-            && next.name !== 'forgot' && next.name !== 'reset') {
+            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo' && next.name !== 'sport' && next.name !== 'team-user-facebook' && next.name !== 'profile' && next.name !== 'forgot' && next.name !== 'reset') {
                 event.preventDefault();
                 $state.go('login');
             }
@@ -75,10 +75,15 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, stripeProvider) {
+
+    //set tabs in bottom for all platform
     $ionicConfigProvider.tabs
         .position("bottom")
         .style("standard");
+
+    //set key stripe
+    stripeProvider.setPublishableKey('pk_test_DmbU7fQcToQjn3DyOH35uBuc');
 
     $stateProvider
 
@@ -225,14 +230,14 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             controller: 'TeamUserFacebookCtrl as teamUser'
         })
         .state('forgot', {
-          url: '/forgot',
-          templateUrl: 'templates/forgot.html',
-          controller: 'ForgotCtrl as forgot'
+            url: '/forgot',
+            templateUrl: 'templates/forgot.html',
+            controller: 'ForgotCtrl as forgot'
         })
         .state('reset', {
-          url: '/reset/:token',
-          templateUrl: 'templates/reset.html',
-          controller: 'ResetCtrl as reset'
+            url: '/reset/:token',
+            templateUrl: 'templates/reset.html',
+            controller: 'ResetCtrl as reset'
         });
 
     $urlRouterProvider.otherwise('/');
