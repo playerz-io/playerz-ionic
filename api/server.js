@@ -104,11 +104,6 @@ apiRoutes.post('/facebook', function(req, res) {
             newCoach.save(function(err) {
                 if (err) {
                     throw err;
-                    // console.log(err);
-                    // return res.json({
-                    //     success: false,
-                    //     msg: 'Username already exists'
-                    // });
                 }
             });
 
@@ -147,10 +142,10 @@ apiRoutes.post('/signup', function(req, res) {
 
     //validation email
     if (!Utils.validateEmail(email)) {
-      return res.json({
-        success: false,
-        msg: "Respecter le format d'une addresse mail"
-      });
+        return res.json({
+            success: false,
+            msg: "Respecter le format d'une addresse mail"
+        });
     }
 
     if (!last_name || !first_name || !password || !type || !sport || !country || !genre || !birth_date || !name_club || !category || !division) {
@@ -160,41 +155,51 @@ apiRoutes.post('/signup', function(req, res) {
         });
     } else {
 
-        let newCoach = new Coach.modelCoach({
-            last_name,
-            first_name,
-            password,
-            email,
-            connected: 'jwt',
-            country,
-            sport,
-            type,
-            genre,
-            birth_date,
-            created_at: Date.now(),
-            total_connexion: 0
-        });
-
-        newCoach.team = new Team({
-            name_club,
-            category,
-            division
-        });
-
-
-        newCoach.save(function(err) {
-            if (err) {
-                return res.json({
-                    success: false,
-                    msg: 'Username already exists'
+        Coach.modelCoach.findOne({
+            email
+        }, (err, coach) => {
+            if (!coach) {
+                let newCoach = new Coach.modelCoach({
+                    last_name,
+                    first_name,
+                    password,
+                    email,
+                    connected: 'jwt',
+                    country,
+                    sport,
+                    type,
+                    genre,
+                    birth_date,
+                    created_at: Date.now(),
+                    total_connexion: 0
                 });
+
+                newCoach.team = new Team({
+                    name_club,
+                    category,
+                    division
+                });
+
+
+                newCoach.save(function(err) {
+                    if (err)
+                        throw err;
+
+                    res.json({
+                        success: true,
+                        msg: 'Successful created new user'
+                    });
+                });
+            } else {
+              return res.json({
+                success: false,
+                msg: 'Un coach existe déjà avec cette addresse mail'
+              })
             }
 
-            res.json({
-                success: true,
-                msg: 'Successful created new user'
-            });
         });
+
+
     }
 });
 
@@ -205,10 +210,10 @@ apiRoutes.post('/authenticate', function(req, res) {
 
     //validate email
     if (!Utils.validateEmail(email)) {
-      return res.json({
-        success: false,
-        msg: "Respecter le format d'une addresse mail"
-      });
+        return res.json({
+            success: false,
+            msg: "Respecter le format d'une addresse mail"
+        });
     }
 
     if (!email.toString() || !password.toString()) {
