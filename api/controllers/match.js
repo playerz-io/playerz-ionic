@@ -355,8 +355,6 @@ exports.addPlayerSelected = function(req, res) {
 
             (playerSelected, formation, findPlayer, numberPlayerSelected, coach, cb) => {
 
-
-
                 Player.find({
                     _id: {
                         "$in": playerSelected
@@ -399,7 +397,7 @@ exports.addPlayerSelected = function(req, res) {
 
                     //change position of player even if he is already added
                     player.position = position;
-                    player.save();
+
                     real_time.updateStatistic_firebase(player, match_id, decoded._id, {
                         first_name: player.first_name,
                         last_name: player.last_name,
@@ -413,19 +411,24 @@ exports.addPlayerSelected = function(req, res) {
                         // if array stat is empty add stat
                         if (player.statistics.length === 0) {
                             //add stastistic to player
+                            console.log('stat');
                             addStatisticsToPlayer(player, match_id);
+
                         } else {
 
                             // if array stat is not empty check if stat with
                             // match_id already exist
                             let statExist = false;
                             for (let i = 0, x = player.statistics.length; i < x; i++) {
-                                if (player.statistics[i].match_id.toString() === match_id.toString())
+                                if (player.statistics[i].match_id.toString() === match_id.toString()) {
                                     statExist = true;
+
+                                }
                             }
 
                             if (!statExist) {
                                 //add stastistic to player
+                                console.log('stat stat');
                                 addStatisticsToPlayer(player, match_id);
                             }
                         }
@@ -435,8 +438,10 @@ exports.addPlayerSelected = function(req, res) {
 
                             real_time.addPlayerSelected_firebase(player, match_id, decoded._id);
                             playerSelected.push(player);
+
                             player.save();
                             coach.save();
+                            console.log(player);
                             return res.status(201).json({
                                 success: true,
                                 player: player,
@@ -445,7 +450,7 @@ exports.addPlayerSelected = function(req, res) {
                             });
                         }
                     } else {
-
+                        player.save();
                         return res.status(201).json({
                             success: false,
                             msg: 'Ce joueur a déjà été ajouté',
@@ -501,6 +506,7 @@ exports.getPlayerSelected = function(req, res) {
 };
 
 let addStatisticsToPlayer = function(player, match_id) {
+    console.log('ok');
     player.statistics.push(new Statistic({
         match_id: match_id.toString(),
         assist: 0,
@@ -531,7 +537,7 @@ let addStatisticsToPlayer = function(player, match_id) {
         passesFailed: 0
     }));
 
-}
+};
 
 let findMatch = function(status, req, res) {
     let token = getToken(req.headers);
