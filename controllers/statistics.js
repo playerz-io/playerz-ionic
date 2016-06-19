@@ -133,96 +133,212 @@
             let decoded = jwt.decode(token, config.secret);
             let coach_id = decoded._id;
 
-            Coach.findById(coach_id, function(err, coach) {
-                if (err)
-                    throw err;
+            async.waterfall([
+                (done) => {
+                    Coach.findById(coach_id, (err, coach) => {
+                        if (err)
+                            throw err;
 
-                let match = coach.team.matchs.id(match_id);
-                let schema = match.schemas;
-                let stringAction = action.toString();
-                console.log(action);
-                schema.push(action);
+                        let match = coach.team.matchs.id(match_id);
+                        let schema = match.schemas;
+                        let stringAction = action.toString();
 
-                let sizeSchema = match.schemas.length;
-                console.log(match.schemas);
+                        schema.push(action);
+                        let sizeSchema = match.schemas.length;
 
-                //id player with main action(but, tir cadré, tir non cadrées...)
-                let id_statPlayer = schema[sizeSchema - 2];
-                let id_playerRetrieveBall = schema[0];
+                        //id player with main action(but, tir cadré, tir non cadrées...)
+                        let id_statPlayer = schema[sizeSchema - 2];
+                        let id_playerRetrieveBall = schema[0];
 
-                //BUT avec passeur and avant-passeur
-                if (stringAction === 'but' && sizeSchema >= 4) {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
 
-                    let id_passeur = schema[sizeSchema - 3];
-                    let id_avant_passeur = schema[sizeSchema - 4];
-
-
-                    //buteur
-                    Player.findById(id_statPlayer, function(err, buteur) {
-                        updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
                     });
+                },
 
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                    if (stringAction === 'but' && sizeSchema >= 4) {
+                        //buteur
+                        Player.findById(id_statPlayer, function(err, buteur) {
+                            updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+                        });
+
+                    }
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+                },
+
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
                     //passeur
-                    Player.findById(id_passeur, function(err, passeur) {
-                        updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
-                    });
+                    if (stringAction === 'but' && sizeSchema >= 4) {
+                        let id_passeur = schema[sizeSchema - 3];
+                        Player.findById(id_passeur, function(err, passeur) {
+                            updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+                        });
+                    }
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+                },
 
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
                     //avant-passeur
-                    Player.findById(id_avant_passeur, function(err, avant_passeur) {
-                        updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
+                    if (stringAction === 'but' && sizeSchema >= 4) {
+                        let id_avant_passeur = schema[sizeSchema - 4];
+                        Player.findById(id_avant_passeur, function(err, avant_passeur) {
+                            updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
+                        });
+                    }
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+                },
+
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+
+                    if (action.toString() === 'but' && sizeSchema == 3) {
+                        //buteur
+                        Player.findById(id_statPlayer, function(err, buteur) {
+                            updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+                        });
+                    }
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+                },
+
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+
+                    if (action.toString() === 'but' && sizeSchema == 3) {
+                        //passeur
+                        let id_passeur = schema[sizeSchema - 3];
+
+                        Player.findById(id_passeur, function(err, passeur) {
+                            updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+                        });
+                    }
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+
+                },
+
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+
+                    let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null];
+                    //check if id_statPlayer is not equal any actions
+                    if (actions.indexOf(id_statPlayer) === -1) {
+                        //handle all action exclude "but"
+                        Player.findById(id_statPlayer, function(err, player) {
+                            updateStatPlayer(player, match_id, stringAction, err, coach_id);
+                        });
+                    }
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions);
+
+                },
+
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, done) => {
+                    //check if id_playerRetrieveBall is not equal any actions
+                    if (actions.indexOf(id_playerRetrieveBall) === -1) {
+                        //handle player retrieve ball
+                        Player.findById(id_playerRetrieveBall, function(err, player) {
+                            updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
+                        });
+                    }
+                },
+
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, done) => {
+                    coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
+
+                    coach.team.matchs.id(match_id).schemas = [];
+
+                    coach.save();
+
+                    res.status(201).json({
+                        success: true,
+                        playerSelected: match.playerSelected
                     });
                 }
 
-                //BUT with only one passeur
-                if (action.toString() === 'but' && sizeSchema >= 3) {
-                    let id_passeur = schema[sizeSchema - 3];
+            ]);
 
-                    //buteur
-                    Player.findById(id_statPlayer, function(err, buteur) {
-                        updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
-                    });
-
-                    //passeur
-                    Player.findById(id_passeur, function(err, passeur) {
-                        updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
-                    });
-
-                }
-
-
-                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null];
-
-                //check if id_statPlayer is not equal any actions
-                if (actions.indexOf(id_statPlayer) === -1) {
-                    //handle all action exclude "but"
-                    Player.findById(id_statPlayer, function(err, player) {
-                        updateStatPlayer(player, match_id, stringAction, err, coach_id);
-                    });
-                }
-
-                //check if id_playerRetrieveBall is not equal any actions
-                if (actions.indexOf(id_playerRetrieveBall) === -1) {
-                    //handle player retrieve ball
-                    Player.findById(id_playerRetrieveBall, function(err, player) {
-                        updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
-                    });
-                }
-
-
-
-
-
-                coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
-
-                coach.team.matchs.id(match_id).schemas = [];
-
-                coach.save();
-
-                res.status(201).json({
-                    success: true,
-                    playerSelected: match.playerSelected
-                })
-            });
+            // Coach.findById(coach_id, function(err, coach) {
+            //     if (err)
+            //         throw err;
+            //
+            //     let match = coach.team.matchs.id(match_id);
+            //     let schema = match.schemas;
+            //     let stringAction = action.toString();
+            //
+            //     schema.push(action);
+            //
+            //     let sizeSchema = match.schemas.length;
+            //     console.log(match.schemas);
+            //
+            //     //id player with main action(but, tir cadré, tir non cadrées...)
+            //     let id_statPlayer = schema[sizeSchema - 2];
+            //     let id_playerRetrieveBall = schema[0];
+            //
+            //     //BUT avec passeur and avant-passeur
+            //     if (stringAction === 'but' && sizeSchema >= 4) {
+            //
+            //         let id_passeur = schema[sizeSchema - 3];
+            //         let id_avant_passeur = schema[sizeSchema - 4];
+            //
+            //
+            //         //buteur
+            //         Player.findById(id_statPlayer, function(err, buteur) {
+            //             updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+            //         });
+            //
+            //         //passeur
+            //         Player.findById(id_passeur, function(err, passeur) {
+            //             updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+            //         });
+            //
+            //         //avant-passeur
+            //         Player.findById(id_avant_passeur, function(err, avant_passeur) {
+            //             updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
+            //         });
+            //     }
+            //
+            //     //BUT with only one passeur
+            //     if (action.toString() === 'but' && sizeSchema == 3) {
+            //         let id_passeur = schema[sizeSchema - 3];
+            //
+            //         //buteur
+            //         Player.findById(id_statPlayer, function(err, buteur) {
+            //             updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+            //         });
+            //
+            //         //passeur
+            //         Player.findById(id_passeur, function(err, passeur) {
+            //             updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+            //         });
+            //
+            //     }
+            //
+            //
+            //     let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null];
+            //
+            //     //check if id_statPlayer is not equal any actions
+            //     if (actions.indexOf(id_statPlayer) === -1) {
+            //         //handle all action exclude "but"
+            //         Player.findById(id_statPlayer, function(err, player) {
+            //             updateStatPlayer(player, match_id, stringAction, err, coach_id);
+            //         });
+            //     }
+            //
+            //     //check if id_playerRetrieveBall is not equal any actions
+            //     if (actions.indexOf(id_playerRetrieveBall) === -1) {
+            //         //handle player retrieve ball
+            //         Player.findById(id_playerRetrieveBall, function(err, player) {
+            //             updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
+            //         });
+            //     }
+            //
+            //
+            //     coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
+            //
+            //     coach.team.matchs.id(match_id).schemas = [];
+            //
+            //     coach.save();
+            //
+            //     res.status(201).json({
+            //         success: true,
+            //         playerSelected: match.playerSelected
+            //     })
+            // });
         } else {
             return res.status(403).send({
                 success: false,
@@ -230,7 +346,7 @@
             });
         }
 
-    }
+    };
 
 
     //count percentage relance and percentage passes success per a match and attempts
@@ -413,7 +529,7 @@
             });
         }
 
-    }
+    };
 
     exports.updateStatistic = function(req, res) {
 
@@ -525,13 +641,15 @@
                 },
 
                 (numberPlayerSelected, playerSelected, match, coach, cb) => {
-
+console.log(playerSelected);
                     for (let player_id of playerSelected) {
 
                         Player.findById(player_id, (err, player) => {
                             let playerStatistic = player.statistics;
                             for (let stat of playerStatistic) {
+
                                 if (stat.match_id.toString() === match_id.toString()) {
+                                  //console.log(stat);
                                     totalBallPlayed += stat['ballPlayed'];
                                     totalBallLost += stat['ballLost'];
                                     totalRetrieveBalls += stat['retrieveBalls'];
@@ -614,6 +732,7 @@
 
                     };
                     coach.save();
+                      console.log(stat);
                     //  console.log(coach);
                     cb(null, stat);
                 }
@@ -625,7 +744,7 @@
                     success: true,
                     match_statistics: result
                 });
-                console.log(result);
+
             });
 
         } else {
@@ -634,4 +753,4 @@
                 msg: 'No token provided.'
             });
         };
-    }
+    };
