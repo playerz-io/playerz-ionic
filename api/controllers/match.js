@@ -2,6 +2,7 @@
 'use strict'
 
 let getToken = require('./token');
+let Utils = require('../utils');
 let jwt = require('jwt-simple');
 let config = require('../config/database');
 let Match = require('../models/match').modelMatch;
@@ -10,9 +11,7 @@ let Player = require('../models/player').modelPlayer;
 let Statistic = require('../models/statistics').modelStatistic;
 let real_time = require('../real_time');
 let async = require('async');
-
-
-
+let Football = require('../sports/football');
 
 exports.addMatch = function(req, res) {
     let token = getToken(req.headers);
@@ -123,7 +122,7 @@ exports.getMatchById = function(req, res) {
             msg: 'No token provided.'
         });
     }
-}
+};
 
 exports.removeMatch = function(req, res) {
     let token = getToken(req.headers);
@@ -192,7 +191,7 @@ exports.getTactique = function(req, res) {
 
     if (token) {
         let tactique = req.query.tactique;
-        console.log(tactique)
+
         if (tactique === '4-4-2') {
             res.json({
                 success: true,
@@ -360,31 +359,29 @@ exports.addPlayerSelected = function(req, res) {
                         "$in": playerSelected
                     }
                 }, (err, playerPosition) => {
-
+                    console.log(playerPosition);
                     Player.findById(player_id, (err, mainPlayer) => {
 
                         for (let player of playerPosition) {
 
                             // check if there are 11 players on the pitch
                             if ((numberPlayerSelected >= 11) && (findPlayer < 0) && (position !== 'REM')) {
-                                console.log("numberPlayerSelected : " + numberPlayerSelected);
                                 return res.status(201).json({
                                     success: false,
                                     msg: 'Vous avez dejà 11 joueurs sur le terrain'
                                 });
                             }
                             // check if two players are the same position
-                            console.log(player_id, player._id);
                             if (player.position === position && position !== 'REM' && player._id.toString() !== player_id.toString()) {
                                 return res.status(201).json({
                                     success: false,
                                     msg: `Attention
                                     ${player.first_name} ${player.last_name} et ${mainPlayer.first_name} ${mainPlayer.last_name}
-                                    ont le même poste`
+                                    ne peuvent pas avoir le même poste`
                                 });
                             }
                         }
-                        cb(null, playerSelected, formation, findPlayer, numberPlayerSelected, coach, cb);
+                        cb(null, playerSelected, formation, findPlayer, numberPlayerSelected, coach);
                     });
                 });
             },
@@ -411,7 +408,6 @@ exports.addPlayerSelected = function(req, res) {
                         // if array stat is empty add stat
                         if (player.statistics.length === 0) {
                             //add stastistic to player
-                            console.log('stat');
                             addStatisticsToPlayer(player, match_id);
 
                         } else {
@@ -428,7 +424,7 @@ exports.addPlayerSelected = function(req, res) {
 
                             if (!statExist) {
                                 //add stastistic to player
-                                console.log('stat stat');
+                                //console.log('stat stat');
                                 addStatisticsToPlayer(player, match_id);
                             }
                         }
@@ -506,7 +502,7 @@ exports.getPlayerSelected = function(req, res) {
 };
 
 let addStatisticsToPlayer = function(player, match_id) {
-    console.log('ok');
+    //  console.log('ok');
     player.statistics.push(new Statistic({
         match_id: match_id.toString(),
         assist: 0,
@@ -566,12 +562,301 @@ let findMatch = function(status, req, res) {
             msg: 'No token provided.'
         });
     }
-}
+};
 
 exports.findMatchFinished = function(req, res) {
     findMatch('finished', req, res);
-}
+};
 
 exports.findMatchComeUp = function(req, res) {
     findMatch('comeup', req, res);
+};
+
+let _defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
+    if (player.statistics.length === 0) {
+        addStatisticsToPlayer(player, idMatch);
+    }
+    for (let i = 0, x = player.statistics.length; i < x; i++) {
+        if (!(player.statistics[i].match_id.toString() === idMatch.toString())) {
+            addStatisticsToPlayer(player, idMatch);
+        }
+    }
+    player.position = position;
+    player.save();
+    playersSelected.push(player);
+    real_time.addPlayerSelected_firebase(player, idMatch, idCoach);
+};
+
+exports.defaultPosition = (req, res) => {
+    let token = getToken(req.headers);
+
+    let idMatch = req.body.match_id;
+    let countGD = 0;
+    let GD = false,
+        DFD = false,
+        DFG = false,
+        ARG = false,
+        ARD = false,
+        MCD = false,
+        MCG = false,
+        MD = false,
+        MG = false,
+        ATG = false,
+        ATD = false;
+
+    //console.log(GD);
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+
+        let idCoach = decoded._id;
+
+        async.waterfall([
+            (done) => {
+                Coach.findById(idCoach, (err, coach) => {
+                    if (err)
+                        throw err;
+
+
+                    let team = coach.team;
+                    let match = team.matchs.id(idMatch);
+                    let players = team.players;
+                    let playersSelected = match.playerSelected;
+
+                    done(null, match, players, playersSelected, coach);
+                });
+            },
+
+            (match, players, playersSelected, coach, done) => {
+                let maxPlayer = 0;
+                let countGD = 0;
+                Player.find({
+                        _id: {
+                            "$in": players
+                        }
+                    },
+                    (err, players) => {
+
+                        if (coach.sport === Football.FOOTBALL) {
+                            if (match.formation === Football.QQDEUX) {
+                                while (maxPlayer < 5) {
+                                    for (let player of players) {
+
+                                        // placement du gardien
+                                        if (player.favourite_position === Football.GD && GD === false) {
+                                            _defaultPosition(player, idMatch, 'GD', idCoach, playersSelected);
+                                            GD = true;
+                                            maxPlayer++;
+                                            continue;
+
+                                        }
+
+                                        if (player.favourite_position === Football.DEF && DFG === false) {
+                                            _defaultPosition(player, idMatch, 'DFG', idCoach, playersSelected);
+                                            DFG = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.DEF && DFD === false) {
+                                            _defaultPosition(player, idMatch, 'DFD', idCoach, playersSelected);
+                                            DFD = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.AR && ARG === false) {
+                                            _defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected);
+                                            ARG = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.AR && ARD === false) {
+                                            _defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected);
+                                            ARD = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.MD && MCD === false) {
+                                            _defaultPosition(player, idMatch, 'MCD', idCoach, playersSelected);
+                                            MCD = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.MD && MCG === false) {
+                                            _defaultPosition(player, idMatch, 'MCG', idCoach, playersSelected);
+                                            MCG = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && MD === false) {
+                                            _defaultPosition(player, idMatch, 'MD', idCoach, playersSelected);
+                                            MD = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && MG === false) {
+                                            _defaultPosition(player, idMatch, 'MG', idCoach, playersSelected);
+                                            MG = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.AV && ATG === false) {
+                                            _defaultPosition(player, idMatch, 'ATG', idCoach, playersSelected);
+                                            ATG = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                        if (player.favourite_position === Football.AV && ATD === false) {
+                                            _defaultPosition(player, idMatch, 'ATD', idCoach, playersSelected);
+                                            ATD = true;
+                                            maxPlayer++;
+                                            continue;
+                                        }
+
+                                    }
+                                    console.log(maxPlayer);
+                                }
+                            }
+                        }
+                        coach.save();
+                        res.json({
+                            msg: 'OK'
+                        })
+                    });
+            }
+        ]);
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+
+exports.switchPosition = (req, res) => {
+
+    let player_id_one = req.body.player_id_one;
+    let player_id_two = req.body.player_id_two;
+    let match_id = req.body.match_id;
+    let token = getToken(req.headers);
+console.log(player_id_one, player_id_two);
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+
+        let idCoach = decoded._id;
+
+        async.waterfall([
+            (cb) => {
+                Player.findById(player_id_one, (err, fstPlayer) => {
+                    if (err)
+                        throw err;
+
+                        console.log(fstPlayer);
+                    let fstPosition = fstPlayer.position;
+                    cb(null, fstPlayer, fstPosition);
+                });
+            },
+
+            (fstPlayer, fstPosition, cb) => {
+                Player.findById(player_id_two, (err, sndPlayer) => {
+                    if (err)
+                        throw err;
+
+console.log(sndPlayer);
+                    let sndPosition = sndPlayer.position;
+
+                    fstPlayer.position = sndPosition;
+                    fstPlayer.save();
+
+                    sndPlayer.position = fstPosition;
+                    sndPlayer.save();
+
+                    cb(null, fstPlayer, sndPlayer);
+
+                });
+            },
+
+            (fstPlayer, sndPlayer, cb) => {
+
+                let fstPlayerName = `${fstPlayer.first_name} ${fstPlayer.last_name}`;
+                let sndPlayerName = `${sndPlayer.first_name} ${sndPlayer.last_name}`;
+
+                real_time.switchPosition_firebase(player_id_one, player_id_two, match_id, idCoach);
+
+                return res.status(200).json({
+                    success: true,
+                    msg: `${fstPlayerName} et ${sndPlayerName} ont changé de position`
+                });
+
+            }
+
+
+
+
+        ])
+
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+
+};
+
+exports.getPlayerNoSelected = (req, res) => {
+
+    let match_id = req.query.match_id;
+    let token = getToken(req.headers);
+
+    if (token) {
+
+        let decoded = jwt.decode(token, config.secret);
+        let idCoach = decoded._id;
+
+        async.waterfall([
+            (cb) => {
+                Coach.findById(idCoach, (err, coach) => {
+                    let team = coach.team;
+                    let players = team.players;
+                    let playersSelected = team.matchs.id(match_id).playerSelected;
+                    //console.log(playersSelected, players);
+                    let playersNoSelected = Utils.diffArray(players, playersSelected);
+                  //  console.log(playersNoSelected);
+                    cb(null, playersNoSelected);
+                });
+            },
+
+            (playersNoSelected, cb) => {
+            //  console.log(playersNoSelected);
+                Player.find({
+                    _id: {
+                        "$in": playersNoSelected
+                    }
+                }, (err, players) => {
+                    if(err)
+                      throw err;
+
+                      return res.status(202).json({
+                        success: true,
+                        players
+                      });
+                });
+            }
+        ])
+
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
 }

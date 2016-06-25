@@ -3,8 +3,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 'use strict'
+
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-    'ionic-table', 'starter.controller.change'
+    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.team-user-facebook', 'starter.controller.sport', 'starter.controller.forgot', 'starter.controller.reset',
+    'angular-stripe'
 ])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -15,7 +17,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 .constant('API_ENDPOINT', {
     //url: 'http://localhost:5000/api'
-      url: 'https://secret-plateau-96989.herokuapp.com/api'
+    url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
@@ -40,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);
-            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo') {
+            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo' && next.name !== 'sport' && next.name !== 'team-user-facebook' && next.name !== 'profile' && next.name !== 'forgot' && next.name !== 'reset') {
                 event.preventDefault();
                 $state.go('login');
             }
@@ -73,10 +75,15 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, stripeProvider) {
+
+    //set tabs in bottom for all platform
     $ionicConfigProvider.tabs
         .position("bottom")
         .style("standard");
+
+    //set key stripe
+    stripeProvider.setPublishableKey('pk_test_DmbU7fQcToQjn3DyOH35uBuc');
 
     $stateProvider
 
@@ -124,7 +131,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             views: {
                 'home-tab': {
                     templateUrl: "templates/home.html",
-                    controller: 'HomeTabCtrl'
+                    controller: 'HomeTabCtrl as home'
                 }
             }
         })
@@ -145,6 +152,16 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
                     controller: 'MatchTabCtrl as matchCtrl'
                 }
             }
+        })
+        .state('match-comeup', {
+            url: '/comeup',
+            templateUrl: 'templates/match-comeup.html',
+            controller: 'MatchComeUpCtrl as comeup'
+        })
+        .state('match-played', {
+            url: '/played',
+            templateUrl: 'templates/match-played.html',
+            controller: 'MatchPlayedCtrl as played'
         })
         .state('player', {
             url: '/player',
@@ -179,6 +196,48 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             url: '/change',
             templateUrl: 'templates/change.html',
             controller: 'ChangeCtrl as change'
+        })
+        .state('stat-end-match', {
+            url: '/stat-end-match',
+            templateUrl: 'templates/stat-end-match.html',
+            controller: 'StatEndMatchCtrl as statEndMatch',
+            params: {
+                matchId: null
+            }
+        })
+        .state('profile-setting', {
+            url: '/profile-setting',
+            templateUrl: 'templates/profile-setting.html',
+            controller: 'ProfileSettingCtrl as profileSetting'
+        })
+        .state('player-statistics', {
+            url: '/player-statistics',
+            templateUrl: 'templates/player-statistics.html',
+            controller: 'PlayerStatCtrl as playerStat',
+            params: {
+                matchId: null,
+                playerId: null
+            }
+        })
+        .state('sport', {
+            url: '/sport',
+            templateUrl: 'templates/sport.html',
+            controller: 'SportCtrl as sport'
+        })
+        .state('team-user-facebook', {
+            url: '/team-user-facebook',
+            templateUrl: 'templates/team-user-facebook.html',
+            controller: 'TeamUserFacebookCtrl as teamUser'
+        })
+        .state('forgot', {
+            url: '/forgot',
+            templateUrl: 'templates/forgot.html',
+            controller: 'ForgotCtrl as forgot'
+        })
+        .state('reset', {
+            url: '/reset/:token',
+            templateUrl: 'templates/reset.html',
+            controller: 'ResetCtrl as reset'
         });
 
     $urlRouterProvider.otherwise('/');

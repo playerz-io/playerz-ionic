@@ -3,27 +3,63 @@
 angular.module('starter.controller.match-stat', [])
     .controller('MatchStatCtrl', function(MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup) {
 
+        const NBR_PLAYER_SWITCHED = 2;
         let self = this;
-
         self.disable = true;
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
         self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
 
+        //define if player is selected by user
+        self.selected = -1;
+        self.switched = false;
+        // array that should contains two player switched
+        let playerSwitched = [];
+
+        //switched position of two player
+        // params index allow to highlight only the player selected
+        self.switchedPlayer = (index, player) => {
+            self.selected = index;
+
+            if (!self.switched) {
+                playerSwitched.push(player);
+                self.switched = true;
+
+            } else {
+                playerSwitched.push(player);
+                //check if playerSelected lenght equals 2
+                if (playerSwitched.length === NBR_PLAYER_SWITCHED) {
+                    let idFstPlayer = playerSwitched[0].$id;
+                    let idSndPlayer = playerSwitched[1].$id;
+                    console.log(idFstPlayer, idSndPlayer);
+                    PlayerService.switchPosition(self.matchId, idFstPlayer, idSndPlayer)
+                        .success((data) => {
+                            console.log(data);
+                        })
+                        .error((data) => {
+                          console.log(data);
+                        })
+                }
+
+                playerSwitched = [];
+                self.switched = false;
+                self.selected = -1;
+            }
+        };
 
 
-        self.showConfirmEndMatchPopup = function(){
+        self.showConfirmEndMatchPopup = function() {
             let popup = $ionicPopup.confirm({
-              title: 'Fin du match',
-              template: 'Etes-vous sûr de vouloir terminer le match ?'
+                title: 'Fin du match',
+                template: 'Etes-vous sûr de vouloir terminer le match ?'
             });
 
-            popup.then(function(res){
-              if(res){
-                self.countPercent();
-              }else{
+            popup.then(function(res) {
+                if (res) {
+                    self.countPercent();
+                } else {
 
-              }
+                }
             });
         };
 

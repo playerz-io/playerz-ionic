@@ -1,3 +1,5 @@
+'use strict'
+
 angular.module('starter.controller.login', [])
 
 .controller('LoginCtrl', function($state, AuthService, $ionicPopup, StorageService, $location) {

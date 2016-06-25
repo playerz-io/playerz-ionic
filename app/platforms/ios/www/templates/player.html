@@ -1,2 +1,21 @@
-<h1>{{player.player.first_name}}</h1>
-<h2>{{player.player.last_name}}</h2>
+<ion-view title="{{player.player.first_name}} {{player.player.last_name}}">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    </ion-nav-buttons>
+    <ion-content class="padding" scroll="false">
+        <h1>{{player.player.first_name}}</h1>
+        <h2>{{player.player.last_name}}</h2>
+
+        <ion-list>
+            <ion-item ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">
+                <h2>{{match.against_team}}</h2>
+                <h4>{{match.date | date:'dd MMMM yyyy'}}</h4>
+                <!-- <ion-option-button ng-click="">Supprimer</ion-option-button> -->
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-view>

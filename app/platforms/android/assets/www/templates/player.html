@@ -8,5 +8,14 @@
     <ion-content class="padding" scroll="false">
         <h1>{{player.player.first_name}}</h1>
         <h2>{{player.player.last_name}}</h2>
+
+        <ion-list>
+            <ion-item ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">
+                <h2>{{match.against_team}}</h2>
+                <h4>{{match.date | date:'dd MMMM yyyy'}}</h4>
+                <!-- <ion-option-button ng-click="">Supprimer</ion-option-button> -->
+            </ion-item>
+        </ion-list>
     </ion-content>
+
 </ion-view>

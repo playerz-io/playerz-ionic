@@ -1,0 +1,21 @@
+<ion-view title="Inscris ton équipe">
+    <p>Choisi ton sport</p>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Nom de votre club" ng-model="teamUser.team.name_club">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Categorie" ng-model="teamUser.team.category">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Division de l'equipe" ng-model="teamUser.team.division">
+            </label>
+        </div>
+        <button class="button button-full button-positive" ng-click="teamUser.addTeamFacebookUser()">
+
+            C'est parti
+        </button>
+    </ion-content>
+
+</ion-view>

@@ -105,7 +105,15 @@ angular.module('starter')
                     match_id
                 }
             });
+
+        let switchPosition = (match_id, player_id_one, player_id_two) =>
+            $http.post(`${API_ENDPOINT.url}/switchPosition`, {
+                match_id,
+                player_id_one,
+                player_id_two
+            });
         return {
+            switchPosition,
             getMatchPlayed,
             getStatisticsMatch,
             addPosition,

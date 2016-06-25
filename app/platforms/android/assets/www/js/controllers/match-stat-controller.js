@@ -1,16 +1,31 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(MatchService, StorageService, PlayerService, FireService, $state) {
+    .controller('MatchStatCtrl', function(MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup) {
 
         let self = this;
 
         self.disable = true;
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
-        console.log(self.matchId);
         self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
 
+
+
+        self.showConfirmEndMatchPopup = function(){
+            let popup = $ionicPopup.confirm({
+              title: 'Fin du match',
+              template: 'Etes-vous sûr de vouloir terminer le match ?'
+            });
+
+            popup.then(function(res){
+              if(res){
+                self.countPercent();
+              }else{
+
+              }
+            });
+        };
 
         //update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {

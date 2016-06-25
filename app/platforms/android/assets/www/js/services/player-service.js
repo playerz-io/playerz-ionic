@@ -91,7 +91,23 @@ angular.module('starter')
             });
         };
 
+        let getMatchPlayed = (player_id) =>
+            $http.get(`${API_ENDPOINT.url}/getMatchPlayed`, {
+                params: {
+                    player_id
+                }
+            });
+
+        let getStatisticsMatch = (player_id, match_id) =>
+            $http.get(`${API_ENDPOINT.url}/getStatisticsMatch`, {
+                params: {
+                    player_id,
+                    match_id
+                }
+            });
         return {
+            getMatchPlayed,
+            getStatisticsMatch,
             addPosition,
             updateStatistic,
             addSchema,

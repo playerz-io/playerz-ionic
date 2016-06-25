@@ -1,0 +1,13 @@
+<ion-view title="Profile">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <label class="item item-input">
+            <input type="text" placeholder="First Name" ng-model="profileSetting.coach.first_name">
+        </label>
+        <button ng-click="profileSetting.updateCoach()"> Save </button>
+    </ion-content>
+
+</ion-view>

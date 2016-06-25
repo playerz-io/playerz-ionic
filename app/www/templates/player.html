@@ -8,6 +8,7 @@
     <ion-content class="padding" scroll="false">
         <h1>{{player.player.first_name}}</h1>
         <h2>{{player.player.last_name}}</h2>
+        <p>{{player.player.favourite_position}}<p>
 
         <ion-list>
             <ion-item ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">

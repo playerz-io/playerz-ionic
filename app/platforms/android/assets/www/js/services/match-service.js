@@ -1,3 +1,4 @@
+'use strict'
 angular.module('starter')
     .service('MatchService', function(API_ENDPOINT, $http, $httpParamSerializerJQLike) {
         var addMatch = function(match) {
@@ -95,16 +96,41 @@ angular.module('starter')
 
             });
 
-        }
-        return {
+        };
 
-            addMatch: addMatch,
-            getMatchs: getMatchs,
-            getMatchById: getMatchById,
-            removeMatch: removeMatch,
-            getTactique: getTactique,
-            addPlayerSelected: addPlayerSelected,
-            getPlayerSelected: getPlayerSelected,
-            removePlayerSelected: removePlayerSelected
+        let getMatchFinished = function() {
+            return $http.get(API_ENDPOINT.url + '/match_finished');
+        };
+
+        let getMatchComeUp = function() {
+            return $http.get(API_ENDPOINT.url + '/match_comeup');
+        };
+
+        let totalStat = function(match_id) {
+          return $http({
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              data: $httpParamSerializerJQLike({
+                  match_id,
+              }),
+              url: API_ENDPOINT.url + '/totalStat'
+
+          });
+        }
+
+        return {
+            totalStat,
+            addMatch,
+            getMatchs,
+            getMatchById,
+            removeMatch,
+            getTactique,
+            addPlayerSelected,
+            getPlayerSelected,
+            removePlayerSelected,
+            getMatchFinished,
+            getMatchComeUp
         }
     });

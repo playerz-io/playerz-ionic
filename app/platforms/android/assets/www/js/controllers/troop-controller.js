@@ -1,28 +1,34 @@
 'use strict';
 
 angular.module('starter.controller.troop', [])
-    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout) {
+    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout, $state, StorageService) {
 
         var self = this;
 
         $scope.player = {
-            first_name: '',
-            last_name: ''
+            first_name: null,
+            last_name: null,
+            favourite_position: null
         };
+
+        self.showDelete = false;
 
         $ionicModal.fromTemplateUrl('templates/add-player-modal.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-        }).then(function(modal){
-          $scope.modal = modal;
-        })
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
 
-        $scope.openModal = function(){
-          $scope.modal.show();
+        $scope.openModal = function() {
+            if (self.showDelete) {
+                self.showDelete = false;
+            }
+            $scope.modal.show();
         };
 
-        $scope.closeModal = function(){
-          $scope.modal.hide();
+        $scope.closeModal = function() {
+            $scope.modal.hide();
         };
 
         self.addPlayer = function() {
@@ -34,12 +40,12 @@ angular.module('starter.controller.troop', [])
                     $scope.modal.hide();
                 })
                 .error(function(data) {
-                  var alertPopup = $ionicPopup.alert({
-                      title: 'Error',
-                      template: data.msg
-                  });
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Error',
+                        template: data.msg
+                    });
                     console.log(data);
-                })
+                });
 
         };
 
@@ -51,7 +57,7 @@ angular.module('starter.controller.troop', [])
                 })
                 .error(function(data) {
                     console.log(data);
-                })
+                });
         };
 
         self.removePlayer = function(id) {
@@ -62,8 +68,16 @@ angular.module('starter.controller.troop', [])
                 })
                 .error(function(data) {
                     console.log(data);
-                })
-        }
+                });
+        };
+
+        self.goPlayer = (playerId) => {
+            StorageService.addStoragePlayerId(playerId);
+            $state.go('player', {
+                playerId
+            });
+        };
+
         self.getPlayers();
 
     });

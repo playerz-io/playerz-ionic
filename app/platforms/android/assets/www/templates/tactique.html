@@ -2,12 +2,15 @@
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
+        <ion-nav-buttons side="secondary">
+            <button class="button button-icon icon ion-ios-minus-outline" ng-click="tactique.showDelete = !tactique.showDelete">
+            </button>
+        </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-content>
+    <ion-content scroll="false">
         <div class="row" id="tactique">
 
             <div class="col col-33">
-
                 <div class="list">
                     <label class="item item-input item-select">
                         <div class="input-label">
@@ -21,15 +24,13 @@
                 </div>
 
                 <ion-scroll style="height:90vh">
-                    <ion-list>
+                    <ion-list show-delete="tactique.showDelete">
                         <ion-item ng-repeat="player in tactique.players" class="item">
                             {{player.first_name}}
                             <br/> {{player.last_name}}
                             <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
-
-                            <ion-option-button class="button-positive" ng-click="tactique.addPlayerSelected(player._id)">Ajouter</ion-option-button>
-                            <br/>
-                            <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
+                            <!-- <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button> -->
+                            <ion-delete-button class="ion-minus-circled" ng-click="tactique.removePlayerSelected(player._id, player)"></ion-delete-button>
                         </ion-item>
                     </ion-list>
                 </ion-scroll>

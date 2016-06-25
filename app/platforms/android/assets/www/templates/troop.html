@@ -1,8 +1,12 @@
 <ion-view title="Effectif">
-  <ion-nav-buttons side="secondary">
-    <button class="button ion-plus-circled" ng-click="openModal()">
-    </button>
-  </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-ios-plus-outline" ng-click="openModal()">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="primary">
+        <button class="button button-icon icon ion-ios-minus-outline" ng-click="troop.showDelete = !troop.showDelete">
+        </button>
+    </ion-nav-buttons>
     <ion-content>
         <div class="row">
             <div class="col">
@@ -11,13 +15,14 @@
                     <input type="text" placeholder="Rechercher un joueur" ng-model="troop.searchPlayer">
                 </label>
                 </br>
-                <ion-list>
+                <ion-list show-delete="troop.showDelete">
                     <!-- <ion-scroll> -->
-                        <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ui-sref="player({playerId: player._id})">
-                            <h2>{{player.last_name}}</h2>
-                            <h4>{{player.first_name}}</h4>
-                            <ion-option-button ng-click="troop.removePlayer(player._id)">Supprimer</ion-option-button>
-                        </ion-item>
+                    <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
+                        <h2>{{player.last_name}}</h2>
+                        <h4>{{player.first_name}}</h4>
+                        <ion-delete-button class="ion-minus-circled" ng-click="troop.removePlayer(player._id)"></ion-delete-button>
+                        <!-- <ion-option-button ng-click="troop.removePlayer(player._id)">Supprimer</ion-option-button>
+                    </ion-item> -->
                     <!-- </ion-scroll> -->
                 </ion-list>
             </div>

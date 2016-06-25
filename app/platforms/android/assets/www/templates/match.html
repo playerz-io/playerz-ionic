@@ -1,28 +1,16 @@
 <ion-view title="Match">
-  <ion-nav-buttons side="secondary">
-    <button class="button ion-plus-circled" ng-click="openModal()">
-    </button>
-  </ion-nav-buttons>
-    <ion-content>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-ios-plus-outline" ng-click="openModal()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content scroll="false">
         <div class="row">
             <div class="col">
-                <label class="item item-input">
-                    <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Rechercher un match" ng-model="matchCtrl.searchMatch">
-                </label>
-                </br>
-
-                <ion-list>
-                    <ion-item class="item" ng-repeat="match in matchCtrl.matchs | filter:matchCtrl.searchMatch">
-                        <a ui-sref="tactique({matchId: match._id})" ng-click="matchCtrl.saveMatchID(match._id)">
-                            <h2>{{match.against_team}}</h2>
-                            <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
-                        </a>
-                        <ion-option-button ng-click="matchCtrl.removeMatch(match._id)">Supprimer</ion-option-button>
-                    </ion-item>
-                </ion-list>
+                <button ui-sref="match-comeup">Match à venir</button>
+            </div>
+            <div class="col">
+                <button ui-sref="match-played">Match terminé</button>
             </div>
         </div>
-
     </ion-content>
 </ion-view>

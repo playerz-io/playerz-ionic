@@ -1,5 +1,10 @@
-<ion-pane>
+<ion-view title="Home">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon ion-more" ng-click="popover.show($event)"
+    style="color:white"></button>
+  </ion-nav-buttons>
+
   <ion-content>
     <h1 class="text-center">Bienvenue {{ profile.last_name + " " +profile.first_name}}</h1>
   </ion-content>
-</ion-pane>
+</ion-view>

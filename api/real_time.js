@@ -2,8 +2,8 @@
 //function firebase
 
 let Firebase = require('firebase');
-var ref = new Firebase('https://boos.firebaseio.com/coaches');
-
+let ref = new Firebase('https://boos.firebaseio.com/coaches');
+let async = require('async');
 
 
 let checkMatchId = function(match_ID, player) {
@@ -12,7 +12,8 @@ let checkMatchId = function(match_ID, player) {
 
 exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
     //console.log(match_ID);
-  //  console.log(player);
+    //console.log(player);
+    console.log(player);
 
     let refAddPlayer = ref
         .child(coach_ID)
@@ -78,4 +79,41 @@ exports.updateStatistic_firebase = function(player, match_ID, coach_ID, stat) {
         .child(player._id.toString())
         .update(stat);
 
+};
+let array_players = [];
+
+exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) => {
+
+    console.log(fstPlayerId, sndPlayerId, matchId, coachId);
+    let referenceFstPlayer = ref
+        .child(coachId.toString())
+        .child("matchs")
+        .child(matchId.toString())
+        .child('players_selected')
+        .child(fstPlayerId.toString());
+
+    let referenceSndPlayer = ref
+        .child(coachId.toString())
+        .child("matchs")
+        .child(matchId.toString())
+        .child('players_selected')
+        .child(sndPlayerId.toString());
+
+
+
+        //console.log(referencePlayerOne, referencePlayerTwo);
+        referenceFstPlayer.once('value', function(fstPlayer){
+          //console.log('ok');
+          referenceSndPlayer.once('value', function(sndPlayer){
+
+            referenceFstPlayer.update({
+              position: sndPlayer.val().position
+            });
+            referenceSndPlayer.update({
+              position: fstPlayer.val().position
+            });
+            console.log(sndPlayer.val());
+            console.log(fstPlayer.val());
+          });
+        });
 };

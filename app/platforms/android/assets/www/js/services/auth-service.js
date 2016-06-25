@@ -1,30 +1,34 @@
+'use strict'
+
 angular.module('starter')
-    .service('AuthService', function($q, $http, API_ENDPOINT, $rootScope, $httpParamSerializerJQLike, StorageService) {
+    .service('AuthService', function($q, $http, API_ENDPOINT, $rootScope, $httpParamSerializerJQLike, StorageService, $state) {
 
         var LOCAL_TOKEN_KEY = 'yourTokenKey';
         var isAuthenticated = false;
         var authToken;
 
 
+        let useCredentials = function(token) {
+            isAuthenticated = true;
+            authToken = token;
 
-        function loadUserCredentials() {
+            $http.defaults.headers.common.Authorization = authToken;
+        }
+
+
+        let loadUserCredentials = function() {
             var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
             if (token) {
                 useCredentials(token);
             }
         }
 
-        function storeUserCredentials(token) {
+        let storeUserCredentials = function(token) {
             window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
             useCredentials(token);
         }
 
-        function useCredentials(token) {
-            isAuthenticated = true;
-            authToken = token;
 
-            $http.defaults.headers.common.Authorization = authToken;
-        }
 
         function destroyUserCredentials() {
             authToken = undefined;
@@ -35,26 +39,21 @@ angular.module('starter')
 
 
         var registerFacebook = function(response) {
-            $http({
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: $httpParamSerializerJQLike({
-                        last_name: response.last_name,
-                        first_name: response.first_name
-                    }),
-                    url: 'http://localhost:8080/api/facebook'
-                })
-                .success(function(data) {
-                    console.log(data);
-                })
-                .error(function(data) {
-                    console.log(data);
-                })
+            return $http({
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: $httpParamSerializerJQLike({
+                    last_name: response.last_name,
+                    first_name: response.first_name,
+                    email: response.email,
+                    id_facebook: response.id
+                }),
+                url: `${API_ENDPOINT.url}/facebook`
+            });
 
-
-        }
+        };
 
         var register = function(user) {
             return $q(function(resolve, reject) {
@@ -73,7 +72,7 @@ angular.module('starter')
             return $q(function(resolve, reject) {
                 $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
                     if (result.data.success) {
-                        console.log(result);
+                        console.log(result.data);
                         StorageService.addStorageCoachId(result.data.coach._id);
                         storeUserCredentials(result.data.token);
                         resolve(result.data.msg);
@@ -88,13 +87,28 @@ angular.module('starter')
             destroyUserCredentials()
         };
 
+        let forgotPassword = (email) =>
+            $http.post(`${API_ENDPOINT.url}/forgotPassword`, {
+                email
+            });
+
+        let resetPassword = (token, password, confPassword) =>
+            $http.post(`${API_ENDPOINT.url}/resetPassword`, {
+                token,
+                password,
+                confPassword
+            });
         loadUserCredentials()
 
         return {
+            resetPassword,
+            forgotPassword,
             login: login,
             register: register,
             logout: logout,
             registerFacebook: registerFacebook,
+            storeUserCredentials,
+            useCredentials,
             isAuthenticated: function() {
                 return isAuthenticated;
             }

@@ -30,7 +30,9 @@
   height: 10vh;
 }
 
-
+.button-player-back{
+  background-color: red;
+}
 
 .button-player{
   background-image: url('../img/hexagon_playerz_stroke.png');

@@ -15,6 +15,8 @@ let controllerTeam = require('./controllers/team');
 let controllerMatch = require('./controllers/match');
 let controllerPlayer = require('./controllers/player');
 let controllerStat = require('./controllers/statistics');
+let controllerFirebase = require('./real_time');
+
 let Payment = require('./controllers/payment');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
@@ -342,6 +344,10 @@ apiRoutes.delete('/player_selected', passport.authenticate('jwt', {
     session: false
 }), controllerMatch.removePlayerSelected);
 
+apiRoutes.get('/player_no_selected', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.getPlayerNoSelected);
+
 //get match comeup
 apiRoutes.get('/match_finished', passport.authenticate('jwt', {
     session: false
@@ -407,6 +413,15 @@ apiRoutes.post('/addSportFacebookUser', passport.authenticate('jwt', {
 apiRoutes.post('/addTeamFacebookUser', passport.authenticate('jwt', {
     session: false
 }), controllerCoach.addTeamFacebookUser);
+
+apiRoutes.post('/defaultPosition', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.defaultPosition);
+
+apiRoutes.post('/switchPosition', passport.authenticate('jwt', {
+    session: false
+}), controllerMatch.switchPosition);
+
 
 // //save token stripe
 //
