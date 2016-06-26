@@ -107,20 +107,27 @@ angular.module('starter')
         };
 
         let totalStat = function(match_id) {
-          return $http({
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded'
-              },
-              data: $httpParamSerializerJQLike({
-                  match_id,
-              }),
-              url: API_ENDPOINT.url + '/totalStat'
+            return $http({
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: $httpParamSerializerJQLike({
+                    match_id,
+                }),
+                url: API_ENDPOINT.url + '/totalStat'
 
-          });
+            });
         }
 
+        let getPlayerNoSelected = (match_id) => $http.get(API_ENDPOINT.url + '/player_no_selected', {
+            params: {
+                match_id
+            }
+        })
+
         return {
+            getPlayerNoSelected,
             totalStat,
             addMatch,
             getMatchs,

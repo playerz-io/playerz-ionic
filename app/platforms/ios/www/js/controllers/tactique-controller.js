@@ -1,3 +1,4 @@
+'use strict';
 angular.module('starter.controller.tactique', [])
     .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope) {
 
@@ -20,17 +21,27 @@ angular.module('starter.controller.tactique', [])
         self.formation = '4-4-2';
 
         //get Player of troop
-        self.getPlayers = function() {
-            TeamService.getPlayers()
-                .success(function(data) {
-                    console.log(data);
-                    self.players = data.players;
+        self.getPlayerNoSelected = () => {
+                MatchService.getPlayerNoSelected(self.matchId)
+                    .success((data) => {
+                        self.playersNoSelected = data.players;
+                        console.log(data);
+                    })
+                    .error((data) => {
 
-                })
-                .error(function() {
-                    console.log(data);
-                });
-        };
+                    })
+            }
+            // self.getPlayers = function() {
+            //     TeamService.getPlayers()
+            //         .success(function(data) {
+            //             console.log(data);
+            //             self.players = data.players;
+            //
+            //         })
+            //         .error(function() {
+            //             console.log(data);
+            //         });
+            // };
 
         //change the formation
         self.addFormation = function() {
@@ -44,6 +55,7 @@ angular.module('starter.controller.tactique', [])
                     console.log(data);
                 });
         };
+
 
         // return posts of formation
         self.getTactique = function() {
@@ -64,10 +76,10 @@ angular.module('starter.controller.tactique', [])
                 .success(function(data) {
                     console.log(data);
                     if (!data.success) {
-                      $ionicPopup.alert({
-                        title: 'Erreur',
-                        template: data.msg
-                      })
+                        $ionicPopup.alert({
+                            title: 'Erreur',
+                            template: data.msg
+                        })
                     }
 
                 })
@@ -140,7 +152,8 @@ angular.module('starter.controller.tactique', [])
             //call add formation here for get position as soons as
             // tactique page is loaded
         self.addFormation();
-        self.getPlayers();
+        //  self.getPlayers();
+        self.getPlayerNoSelected();
         self.getMatch();
         self.getNameTeam();
 

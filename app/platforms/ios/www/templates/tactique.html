@@ -25,11 +25,12 @@
 
                 <ion-scroll style="height:90vh">
                     <ion-list show-delete="tactique.showDelete">
-                        <ion-item ng-repeat="player in tactique.players" class="item">
+                        <ion-item collection-repeat="player in tactique.playersNoSelected" class="item">
                             {{player.first_name}}
-                            <br/> {{player.last_name}}
-                            <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)"></select>
-                            <!-- <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button> -->
+                            <br/> {{player.last_name}} {{player.position}}
+                            <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)">
+                            </select>
+                            <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
                             <ion-delete-button class="ion-minus-circled" ng-click="tactique.removePlayerSelected(player._id, player)"></ion-delete-button>
                         </ion-item>
                     </ion-list>

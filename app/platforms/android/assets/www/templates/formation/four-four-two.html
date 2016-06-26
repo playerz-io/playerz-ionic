@@ -1,16 +1,22 @@
-<div disable-all="isDisableClick">
+<div>
 
     <!-- Attaquant -->
     <div style="text-align: center;" class="stricker">
-        <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ATD'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+        <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ATD'" >
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ATG'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index,player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
     </div>
 
@@ -18,55 +24,82 @@
     <!-- Milieu -->
     <div style="text-align: center;" class="midfielder">
         <div class="row-player side-player" ng-repeat="player in playerInfo" ng-if="player.position === 'MD'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'MCD'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'MCG'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player side-player" ng-repeat="player in playerInfo" ng-if="player.position === 'MG'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
     </div>
 
     <!-- Défenseur -->
     <div style="text-align: center;" class="defender">
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ARD'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'DFD'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'DFG'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ARG'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
                 <br/> {{player.first_name}} {{player.position}}
-              </a>
+            </a>
         </div>
     </div>
 
     <div style="text-align: center;" class="goalkeeper">
         <div class="row-player" ng-repeat="player in playerInfo" ng-if="player.position === 'GD'">
-            <a ng-click="matchStat.countBallPlayed(player)" class="button-player">
-               {{player.last_name}} </br> {{player.first_name}}
+          <a ng-show="isDisableClick" class="button-player" ng-class="{'button-player-back' : matchStat.selected === $index}" ng-click="matchStat.switchedPlayer($index, player)"> {{player.last_name}}
+              <br/> {{player.first_name}} {{player.position}}
+          </a>
+            <a ng-show="!isDisableClick" ng-click="matchStat.countBallPlayed(player)" class="button-player"> {{player.last_name}}
+                <br/> {{player.first_name}} {{player.position}}
             </a>
         </div>
     </div>

@@ -234,7 +234,7 @@ apiRoutes.post('/authenticate', function(req, res) {
         if (!coach) {
             return res.json({
                 success: false,
-                msg: 'Authentication failed. User not found'
+                msg: "Le coach n'a pas été trouvé"
             });
         } else {
             coach.comparePassword(password, function(err, isMatch) {

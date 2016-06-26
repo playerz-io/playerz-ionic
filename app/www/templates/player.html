@@ -12,8 +12,8 @@
 
         <ion-list>
             <ion-item ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">
-                <h2>{{match.against_team}}</h2>
-                <h4>{{match.date | date:'dd MMMM yyyy'}}</h4>
+                <p>{{match.against_team}}</p>
+                <p>{{match.date | date:'dd MMMM yyyy'}}</p>
                 <!-- <ion-option-button ng-click="">Supprimer</ion-option-button> -->
             </ion-item>
         </ion-list>
