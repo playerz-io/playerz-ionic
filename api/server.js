@@ -112,7 +112,7 @@ apiRoutes.post('/facebook', function(req, res) {
             let token = jwt.encode(newCoach, config.secret);
             return res.json({
                 success: true,
-                msg: 'Successful created new user',
+                msg: 'Nouvel utilisateur crée',
                 token: 'JWT ' + token,
                 newCoach
             });
@@ -189,7 +189,7 @@ apiRoutes.post('/signup', function(req, res) {
 
                     res.json({
                         success: true,
-                        msg: 'Successful created new user'
+                        msg: 'Nouvel utilisateur crée'
                     });
                 });
             } else {
@@ -254,7 +254,7 @@ apiRoutes.post('/authenticate', function(req, res) {
                 } else {
                     return res.json({
                         success: false,
-                        msg: 'Authentication failed. Wrong password'
+                        msg: `Votre mot de passe n'est pas correct`
                     });
                 }
             });
