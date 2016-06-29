@@ -1,21 +1,25 @@
 'use strict'
 
-angular.module('starter.controller.team-user-facebook', [])
-    .controller('TeamUserFacebookCtrl', function(AuthService, FacebookService, $ionicPopup, $state) {
+angular.module('starter.controller.facebook-team', [])
+    .controller('FacebookTeamCtrl', function(AuthService, FacebookService, $ionicPopup, $state, StorageService) {
 
         var self = this;
+        self.coachId = StorageService.getStorageCoachId();
 
         self.team = {
             name_club: '',
             category: '',
-            division: ''
+            division: '',
+            coach_id: self.coachId
         };
 
         self.addTeamFacebookUser = () => {
+
             FacebookService.addTeamFacebookUser(self.team)
                 .success((data) => {
-                    $state.go('register.profile');
                     console.log(data);
+                    $state.go('profile');
+
                 })
                 .error((data) => {
                     $ionicPopup.alert({

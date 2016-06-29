@@ -21,7 +21,7 @@ angular.module('starter.controller.login', [])
 
     loginCtrl.login = function() {
         AuthService.login(loginCtrl.user).then(function(msg) {
-            console.log(msg);
+
             $state.go('profile');
             loginCtrl.user = {};
         }, function(errMsg) {
@@ -42,20 +42,25 @@ angular.module('starter.controller.login', [])
                     console.log(response);
                     AuthService.registerFacebook(response)
                         .success(function(data) {
-                          console.log(data);
-                            let team = data.newCoach.team;
-                            if (team  === undefined || team === null) {
-                                $state.go('sport');
-                            } else {
-                              $state.go('profile');
-                            }
-                            StorageService.addStorageCoachId(data.newCoach._id);
-                            AuthService.useCredentials();
+                            console.log(data);
                             AuthService.storeUserCredentials(data.token);
+                            StorageService.addStorageCoachId(data.coach._id);
+                            //check if coach has a team
+                            if (!data.coach.hasOwnProperty('team')) {
+                                $state.go('register-facebook-sport');
+                            } else {
+
+                                AuthService.useCredentials(data.token);
+                                $state.go('profile');
+                            }
 
                         })
                         .error(function(data) {
                             console.log(data);
+                            $ionicPopup.alert({
+                                title: 'Erreur',
+                                template: data.msg
+                            });
                         })
                 });
             } else {

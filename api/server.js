@@ -21,6 +21,7 @@ let Payment = require('./controllers/payment');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
 let Utils = require('./utils');
+let async = require('async');
 
 
 //connect to database
@@ -76,57 +77,90 @@ let apiRoutes = express.Router();
 //auth with facebook
 apiRoutes.post('/facebook', function(req, res) {
 
+    let last_name = req.body.last_name;
+    let first_name = req.body.first_name;
+    let email = req.body.email;
+    let country = req.body.country;
+    let type = req.body.type;
+    let genre = req.body.genre;
+    let birth_date = req.body.birth_date;
+    let id_facebook = req.body.id_facebook;
 
-
-    Coach.modelCoach.findOne({
-        id_facebook: req.body.id_facebook
-    }, (err, coach) => {
-        if (err)
-            throw err;
-
-        //increase total_connexion
-        coach.total_connexion++;
-
-        if (!coach) {
-            let newCoach = new Coach.modelCoach({
-                last_name: req.body.last_name,
-                first_name: req.body.first_name,
-                connected: 'facebook',
-                email: req.body.email,
-                country: req.body.country,
-                type: req.body.type,
-                genre: req.body.genre,
-                birth_date: req.body.birth_date,
-                id_facebook: req.body.id_facebook,
-                created_at: Date.now()
-            });
-
-            //increase total_connexion
-            newCoach.total_connexion++;
-            newCoach.save(function(err) {
-                if (err) {
-                    throw err;
+    async.waterfall([
+        (done) => {
+            Coach.modelCoach.findOne({
+                email,
+                $not: {
+                    connected: 'facebook'
                 }
-            });
+            }, (err, coach) => {
+                if (coach) {
+                    res.status(400).json({
+                        msg: `Un utilisateur avec l'adresse que vous
+                        utilisé pour votre compte facebook existe déjà`
+                    });
+                } else {
+                    done(null);
+                }
+            })
+        },
 
-            let token = jwt.encode(newCoach, config.secret);
-            return res.json({
-                success: true,
-                msg: 'Nouvel utilisateur crée',
-                token: 'JWT ' + token,
-                newCoach
+        (done) => {
+            Coach.modelCoach.findOne({
+                id_facebook
+            }, (err, coach) => {
+                if (err)
+                    throw err;
+
+
+                if (!coach) {
+                    let newCoach = new Coach.modelCoach({
+                        last_name,
+                        first_name,
+                        connected: 'facebook',
+                        email,
+                        country,
+                        type,
+                        genre,
+                        birth_date,
+                        id_facebook,
+                        created_at: Date.now(),
+                        total_connexion: 0
+                    });
+
+                    //increase total_connexion
+                    newCoach.total_connexion++;
+                    newCoach.save(function(err) {
+                        if (err) {
+                            throw err;
+                        }
+                    });
+
+                    let token = jwt.encode(newCoach, config.secret);
+                    return res.json({
+                        success: true,
+                        msg: 'Nouvel utilisateur crée',
+                        token: 'JWT ' + token,
+                        coach: newCoach
+                    });
+                } else {
+                    //increase total_connexion
+                    coach.total_connexion++;
+                    coach.save();
+
+                }
+                let token = jwt.encode(coach, config.secret);
+                return res.json({
+                    success: true,
+                    coach,
+                    token: 'JWT ' + token
+                });
             });
         }
-        let token = jwt.encode(coach, config.secret);
-        return res.json({
-            success: true,
-            coach,
-            token: 'JWT ' + token
-        });
-    });
-
+    ])
 });
 
+// TODO: validate email only if it set
 apiRoutes.post('/signup', function(req, res) {
 
     let last_name = req.body.last_name;
@@ -193,10 +227,10 @@ apiRoutes.post('/signup', function(req, res) {
                     });
                 });
             } else {
-              return res.json({
-                success: false,
-                msg: 'Un coach existe déjà avec cette addresse mail'
-              })
+                return res.json({
+                    success: false,
+                    msg: 'Un coach existe déjà avec cette addresse mail'
+                })
             }
 
         });
@@ -406,13 +440,10 @@ apiRoutes.get('/getStatisticsMatch', passport.authenticate('jwt', {
     session: false
 }), controllerPlayer.getStatisticsMatch);
 
-apiRoutes.post('/addSportFacebookUser', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.addSportFacebookUser);
+apiRoutes.post('/addSportFacebookUser', controllerCoach.addSportFacebookUser);
 
-apiRoutes.post('/addTeamFacebookUser', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.addTeamFacebookUser);
+//no check jwt token cause of allowed subscribtion
+apiRoutes.post('/addTeamFacebookUser', controllerCoach.addTeamFacebookUser);
 
 apiRoutes.post('/defaultPosition', passport.authenticate('jwt', {
     session: false

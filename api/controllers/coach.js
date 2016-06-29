@@ -11,52 +11,39 @@ let nodemailer = require('nodemailer');
 let mg = require('nodemailer-mailgun-transport');
 
 exports.addSportFacebookUser = (req, res) => {
-    let token = getToken(req.headers);
     let sport = req.body.sport;
+    let coach_id = req.body.coach_id;
 
     if (!sport) {
         return res.status(400).json({
             success: false,
             msg: 'Choisissez un sport !!!'
         });
-
     }
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let coach_id = decoded._id;
+    Coach.findById(coach_id, (err, coach) => {
+        console.log(coach);
+        if (err) {
+            throw err;
+        }
 
-        Coach.findById(coach_id, (err, coach) => {
+        coach.sport = sport;
+        coach.save();
 
-            if (err) {
-                throw err;
-            }
-
-            coach.sport = sport;
-            coach.save();
-
-            res.status(202).json({
-                success: true,
-                msg: 'Sport ajouté',
-                coach
-            });
+        res.status(202).json({
+            success: true,
+            msg: 'Sport ajouté',
+            coach
         });
-
-
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+    });
 };
 
 exports.addTeamFacebookUser = (req, res) => {
-    let token = getToken(req.headers);
-
     let name_club = req.body.name_club;
     let category = req.body.category;
     let division = req.body.division;
+    let coach_id = req.body.coach_id;
+
 
     if (!name_club || !category || !division) {
         return res.status(400).json({
@@ -65,9 +52,6 @@ exports.addTeamFacebookUser = (req, res) => {
         });
     }
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let coach_id = decoded._id;
         Coach.findById(coach_id, (err, coach) => {
 
             if (err) {
@@ -84,6 +68,8 @@ exports.addTeamFacebookUser = (req, res) => {
 
             coach.save();
 
+            //create token for authentication jwt
+            let token = jwt.encode(coach, config.secret);
             res.status(202).json({
                 success: true,
                 msg: 'Equipe ajouté',
@@ -91,13 +77,6 @@ exports.addTeamFacebookUser = (req, res) => {
             });
 
         });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
-
 };
 
 exports.getNameTeam = function(req, res) {
@@ -246,10 +225,10 @@ exports.forgotPassword = function(req, res) {
                     });
                 }
 
-                if(coach.connected === 'facebook'){
-                  return res.status(400).json({
-                      msg: "Votre connexion à été effectué avec Facebook !!"
-                  });
+                if (coach.connected === 'facebook') {
+                    return res.status(400).json({
+                        msg: "Votre connexion à été effectué avec Facebook !!"
+                    });
                 }
 
                 coach.resetPasswordToken = token;
