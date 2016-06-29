@@ -28,6 +28,9 @@ let UserSchema = new Schema({
     resetPasswordExpires: Date,
     total_connexion: Number,
     token_stripe: String,
+    image_url: String,
+    website_club: String,
+    number_tel: String,
     any: Schema.Types.Mixed
 
 });

@@ -49,7 +49,8 @@ angular.module('starter')
                     last_name: response.last_name,
                     first_name: response.first_name,
                     email: response.email,
-                    id_facebook: response.id
+                    id_facebook: response.id,
+                    image_url: response.picture.data.url
                 }),
                 url: `${API_ENDPOINT.url}/facebook`
             });

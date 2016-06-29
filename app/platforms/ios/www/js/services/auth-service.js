@@ -35,6 +35,7 @@ angular.module('starter')
             isAuthenticated = false;
             $http.defaults.headers.common.Authorization = undefined;
             window.localStorage.removeItem(LOCAL_TOKEN_KEY);
+            // TODO: Remove other localStorage
         }
 
 
@@ -98,7 +99,7 @@ angular.module('starter')
                 password,
                 confPassword
             });
-        loadUserCredentials()
+        loadUserCredentials();
 
         return {
             resetPassword,
