@@ -29,7 +29,7 @@ angular.module('starter.controller.profile-setting', [])
                 .error((data) => {
                     console.log(data);
                 })
-        }
+        };
 
         self.getCoachById();
 

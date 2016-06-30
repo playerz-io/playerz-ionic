@@ -17,7 +17,7 @@ angular.module('starter.controller.profile', [])
 
     ProfileService.getCoach()
         .success(function(data) {
-            dataProfile = data.coach;
+            self.coach = data.coach;
             console.log(data);
             //check if user facebook has team
             if (!data.coach.hasOwnProperty('team')) {
@@ -27,10 +27,6 @@ angular.module('starter.controller.profile', [])
             if (!data.coach.hasOwnProperty('sport')) {
                 $scope.openModalSport();
             }
-
-
-            self.last_name = dataProfile.last_name;
-            self.first_name = dataProfile.first_name;
         })
         .error(function(data) {
             console.log(data);

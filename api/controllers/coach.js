@@ -345,6 +345,7 @@ exports.changePassword = (req, res) => {
     let newPassword = req.body.new_password;
     let confNewPassword = req.body.conf_new_password;
 
+    console.log(req.body);
     if (token) {
         let decoded = jwt.decode(token, config.secret);
         let coachId = decoded._id;
@@ -353,8 +354,7 @@ exports.changePassword = (req, res) => {
             (done) => {
                 Coach.findById(coachId, (err, coach) => {
                     let password = coach.password;
-
-
+                      
                     coach.comparePassword(currentPassword, (err, isMatch) => {
 
                         if (err || !isMatch) {
@@ -395,7 +395,7 @@ exports.changePassword = (req, res) => {
                             if (err)
                                 throw err;
                         });
-                        
+
                         res.status(200).json({
                             success: true,
                             coach,

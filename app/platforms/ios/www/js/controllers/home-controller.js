@@ -4,7 +4,7 @@ angular.module('starter.controller.home', [])
 .controller('HomeTabCtrl', function(PaymentService, stripe, ProfileService, AuthService, $ionicPopover, $scope, $state, $ionicPopup, $ionicModal) {
     let self = this;
     let dataProfile;
-// TODO: signifier à l'utilisateur qu'il doit absolument donner ses coordonnées
+    // TODO: signifier à l'utilisateur qu'il doit absolument donner ses coordonnées
     self.charge = () => {
         return stripe.card.createToken(self.payment)
             .then((response) => {
@@ -35,7 +35,6 @@ angular.module('starter.controller.home', [])
 
 
     $scope.openModal = function() {
-
         $scope.modal.show();
     };
 
@@ -66,14 +65,22 @@ angular.module('starter.controller.home', [])
         $scope.popover = popover;
     });
 
-    self.logout = function() {
+    let hidePopover = () => {
         $scope.popover.hide();
+    }
+    self.logout = function() {
+        hidePopover();
         AuthService.logout();
         $state.go('login');
     };
 
     self.goProfile = () => {
-        $scope.popover.hide();
+        hidePopover();
         $state.go('profile-setting');
+    };
+
+    self.goMainSetting = () => {
+        hidePopover();
+        $state.go('main-settings');
     }
 });

@@ -1,0 +1,30 @@
+<ion-view title="Compte">
+  <ion-nav-bar class="bar-positive" align-title="center">
+      <ion-nav-back-button class="button-clear">
+
+      </ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item">
+                <h2>Numéro de téléphone</h2>
+                <p ng-show="account.coach.number_tel">
+                  {{account.coach.number}}
+                </p>
+                <p ng-show="!account.coach.number_tel">
+                  Ajouter
+                </p>
+            </div>
+            <div class="item">
+                <h2>Email</h2>
+                <p>
+                  {{account.coach.email}}
+                </p>
+            </div>
+            <div class="item" ui-sref="change-password">
+                <h2>Changer de mot de passe</h2>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

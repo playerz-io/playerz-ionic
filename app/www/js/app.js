@@ -5,7 +5,8 @@
 'use strict'
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset', 'angular-stripe', 'starter.controller.account', 'starter.controller.main-settings'
+    'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset', 'angular-stripe', 'starter.controller.account', 'starter.controller.main-settings',
+    'starter.controller.change-password', 'ngCordova'
 ])
 
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -248,6 +249,11 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
           url: '/account',
           templateUrl: 'templates/account.html',
           controller: 'AccountCtrl as account'
+        })
+        .state('change-password', {
+          url: '/changePassword',
+          templateUrl: 'templates/change-password.html',
+          controller: 'ChangePasswordCtrl as changePassword'
         })
 
     $urlRouterProvider.otherwise('/');
