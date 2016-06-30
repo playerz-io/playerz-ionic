@@ -453,6 +453,10 @@ apiRoutes.post('/switchPosition', passport.authenticate('jwt', {
     session: false
 }), controllerMatch.switchPosition);
 
+apiRoutes.post('/changePassword', passport.authenticate('jwt', {
+    session: false
+}), controllerCoach.changePassword);
+
 
 // //save token stripe
 //

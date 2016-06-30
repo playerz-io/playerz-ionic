@@ -4,19 +4,19 @@
 
         </ion-nav-back-button>
     </ion-nav-bar>
-    </ion-nav-buttons>
     <ion-content class="padding" scroll="false">
         <h1>{{player.player.first_name}}</h1>
         <h2>{{player.player.last_name}}</h2>
-        <p>{{player.player.favourite_position}}<p>
+        <p>{{player.player.favourite_position}}
+            <p>
 
-        <ion-list>
-            <ion-item ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">
-                <p>{{match.against_team}}</p>
-                <p>{{match.date | date:'dd MMMM yyyy'}}</p>
-                <!-- <ion-option-button ng-click="">Supprimer</ion-option-button> -->
-            </ion-item>
-        </ion-list>
+                <ion-list>
+                    <ion-item ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">
+                        <p>{{match.against_team}}</p>
+                        <p>{{match.date | date:'dd MMMM yyyy'}}</p>
+                        <!-- <ion-option-button ng-click="">Supprimer</ion-option-button> -->
+                    </ion-item>
+                </ion-list>
     </ion-content>
 
 </ion-view>
