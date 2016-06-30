@@ -1,1 +1,1 @@
-web: NODE_ENV=production --harmony_proxies node server.js 
+web: NODE_ENV=production node server.js
