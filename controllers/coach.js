@@ -9,54 +9,44 @@ let async = require('async');
 let crypto = require('crypto');
 let nodemailer = require('nodemailer');
 let mg = require('nodemailer-mailgun-transport');
+let auth = require('../config/mailgun').auth;
+
+let bcrypt = require('bcrypt');
 
 exports.addSportFacebookUser = (req, res) => {
-    let token = getToken(req.headers);
     let sport = req.body.sport;
+    let coach_id = req.body.coach_id;
 
     if (!sport) {
         return res.status(400).json({
             success: false,
             msg: 'Choisissez un sport !!!'
         });
-
     }
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let coach_id = decoded._id;
+    Coach.findById(coach_id, (err, coach) => {
+        console.log(coach);
+        if (err) {
+            throw err;
+        }
 
-        Coach.findById(coach_id, (err, coach) => {
+        coach.sport = sport;
+        coach.save();
 
-            if (err) {
-                throw err;
-            }
-
-            coach.sport = sport;
-            coach.save();
-
-            res.status(202).json({
-                success: true,
-                msg: 'Sport ajouté',
-                coach
-            });
+        res.status(202).json({
+            success: true,
+            msg: 'Sport ajouté',
+            coach
         });
-
-
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+    });
 };
 
 exports.addTeamFacebookUser = (req, res) => {
-    let token = getToken(req.headers);
-
     let name_club = req.body.name_club;
     let category = req.body.category;
     let division = req.body.division;
+    let coach_id = req.body.coach_id;
+
 
     if (!name_club || !category || !division) {
         return res.status(400).json({
@@ -65,39 +55,31 @@ exports.addTeamFacebookUser = (req, res) => {
         });
     }
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let coach_id = decoded._id;
-        Coach.findById(coach_id, (err, coach) => {
+    Coach.findById(coach_id, (err, coach) => {
 
-            if (err) {
-                throw err;
-            }
+        if (err) {
+            throw err;
+        }
 
-            let newTeam = new Team({
-                name_club,
-                category,
-                division
-            });
-
-            coach.team = newTeam;
-
-            coach.save();
-
-            res.status(202).json({
-                success: true,
-                msg: 'Equipe ajouté',
-                coach
-            });
-
+        let newTeam = new Team({
+            name_club,
+            category,
+            division
         });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
 
+        coach.team = newTeam;
+
+        coach.save();
+
+        //create token for authentication jwt
+        let token = jwt.encode(coach, config.secret);
+        res.status(202).json({
+            success: true,
+            msg: 'Equipe ajouté',
+            coach
+        });
+
+    });
 };
 
 exports.getNameTeam = function(req, res) {
@@ -246,10 +228,10 @@ exports.forgotPassword = function(req, res) {
                     });
                 }
 
-                if(coach.connected === 'facebook'){
-                  return res.status(400).json({
-                      msg: "Votre connexion à été effectué avec Facebook !!"
-                  });
+                if (coach.connected === 'facebook') {
+                    return res.status(400).json({
+                        msg: "Votre connexion à été effectué avec Facebook !!"
+                    });
                 }
 
                 coach.resetPasswordToken = token;
@@ -262,13 +244,6 @@ exports.forgotPassword = function(req, res) {
         },
 
         (token, coach, done) => {
-            let auth = {
-                auth: {
-                    api_key: 'key-2cbf56735c697b79b2b69306c4d0b79c',
-                    domain: 'sandbox23aac40875ed43708170487989939d3f.mailgun.org'
-                }
-            };
-
             let smtpTransport = nodemailer.createTransport(mg(auth));
 
             let mailOptions = {
@@ -341,13 +316,6 @@ exports.resetPassword = function(req, res) {
 
         (coach, done) => {
 
-            let auth = {
-                auth: {
-                    api_key: 'key-2cbf56735c697b79b2b69306c4d0b79c',
-                    domain: 'sandbox23aac40875ed43708170487989939d3f.mailgun.org'
-                }
-            };
-
             let smtpTransport = nodemailer.createTransport(mg(auth));
 
             let mailOptions = {
@@ -368,4 +336,81 @@ exports.resetPassword = function(req, res) {
         }
     ])
 
+};
+
+exports.changePassword = (req, res) => {
+
+    let token = getToken(req.headers);
+    let currentPassword = req.body.current_password;
+    let newPassword = req.body.new_password;
+    let confNewPassword = req.body.conf_new_password;
+
+    console.log(req.body);
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coachId = decoded._id;
+
+        async.waterfall([
+            (done) => {
+                Coach.findById(coachId, (err, coach) => {
+                    let password = coach.password;
+                      
+                    coach.comparePassword(currentPassword, (err, isMatch) => {
+
+                        if (err || !isMatch) {
+
+                            res.status(400).json({
+                                success: false,
+                                msg: 'Mauvais mot de passe'
+                            });
+                        } else {
+                            done(null, coach)
+                        }
+                    });
+                });
+
+            },
+            (coach, done) => {
+                if (newPassword !== confNewPassword) {
+                    res.status(400).json({
+                        success: false,
+                        msg: 'Les deux mots de passe sont différents'
+                    });
+                } else {
+                    coach.password = newPassword;
+                    coach.save((err) => {
+                        if (err)
+                            throw err;
+
+                        let smtpTransport = nodemailer.createTransport(mg(auth));
+
+                        let mailOptions = {
+                            to: coach.email,
+                            from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                            subject: 'Le mot a été changé',
+                            text: `Votre mot de passe a bien été changé`
+                        };
+
+                        smtpTransport.sendMail(mailOptions, (err) => {
+                            if (err)
+                                throw err;
+                        });
+
+                        res.status(200).json({
+                            success: true,
+                            coach,
+                            msg: 'Votre mot de passe à été mis à jour'
+                        });
+                    });
+
+                }
+            }
+        ])
+    } else {
+
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
 };
