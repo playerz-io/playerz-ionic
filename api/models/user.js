@@ -30,6 +30,7 @@ let UserSchema = new Schema({
     token_stripe: String,
     image_url: String,
     website_club: String,
+    website_perso: String,
     number_tel: String,
     any: Schema.Types.Mixed
 
