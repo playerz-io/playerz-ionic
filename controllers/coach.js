@@ -169,6 +169,8 @@ exports.updateCoach = function(req, res) {
     let country = req.body.country;
     let description = req.body.description;
     let birth_date = req.body.birth_date;
+    let website_club = req.body.website_club;
+    let website_perso = req.body.website_perso;
     if (token) {
         let decoded = jwt.decode(token, config.secret);
 
@@ -179,6 +181,8 @@ exports.updateCoach = function(req, res) {
             coach.country = country;
             coach.description = description;
             coach.birth_date = birth_date;
+            coach.website_perso = website_perso;
+            coach.website_club = website_club;
 
             coach.save((err) => {
                 if (err)
@@ -354,7 +358,7 @@ exports.changePassword = (req, res) => {
             (done) => {
                 Coach.findById(coachId, (err, coach) => {
                     let password = coach.password;
-                      
+
                     coach.comparePassword(currentPassword, (err, isMatch) => {
 
                         if (err || !isMatch) {

@@ -168,9 +168,10 @@ exports.addFormation = function(req, res) {
                 throw err;
 
             let match = coach.team.matchs.id(req.body.id);
-            console.log(match);
+
             match.formation = req.body.formation;
             coach.save();
+            console.log(match);
 
             res.json({
                 success: true,
@@ -637,8 +638,11 @@ exports.defaultPosition = (req, res) => {
                     (err, players) => {
 
                         if (coach.sport === Football.FOOTBALL) {
+                            console.log(players);
                             if (match.formation === Football.QQDEUX) {
-                                while (maxPlayer < 5) {
+
+                                while (maxPlayer < 11) {
+
                                     for (let player of players) {
 
                                         // placement du gardien

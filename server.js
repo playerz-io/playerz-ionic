@@ -274,7 +274,7 @@ apiRoutes.post('/authenticate', function(req, res) {
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
-
+                    console.log("token : " +token);
                     //increase total_connexion
                     coach.total_connexion++;
                     coach.save();
