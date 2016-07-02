@@ -88,14 +88,13 @@ apiRoutes.post('/facebook', function(req, res) {
 
     async.waterfall([
         (done) => {
+          // TODO: not equals facebook à revoir
             Coach.modelCoach.findOne({
                 email,
-                $not: {
-                    connected: 'facebook'
-                }
+                connected: 'jwt'
             }, (err, coach) => {
                 if (coach) {
-                    res.status(400).json({
+                    return res.status(400).json({
                         msg: `Un utilisateur avec l'adresse que vous
                         utilisé pour votre compte facebook existe déjà`
                     });
@@ -274,7 +273,7 @@ apiRoutes.post('/authenticate', function(req, res) {
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
-
+                    console.log("token : " + token);
                     //increase total_connexion
                     coach.total_connexion++;
                     coach.save();

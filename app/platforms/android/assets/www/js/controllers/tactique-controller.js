@@ -92,7 +92,6 @@ angular.module('starter.controller.tactique', [])
         self.removePlayerSelected = function(player_id, player) {
             MatchService.removePlayerSelected(player_id, self.matchId)
                 .success(function(data) {
-
                     console.log(data);
                 })
                 .error(function(data) {

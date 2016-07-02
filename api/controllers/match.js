@@ -168,9 +168,10 @@ exports.addFormation = function(req, res) {
                 throw err;
 
             let match = coach.team.matchs.id(req.body.id);
-            console.log(match);
+
             match.formation = req.body.formation;
             coach.save();
+            console.log(match);
 
             res.json({
                 success: true,
@@ -637,8 +638,11 @@ exports.defaultPosition = (req, res) => {
                     (err, players) => {
 
                         if (coach.sport === Football.FOOTBALL) {
+                            console.log(players);
                             if (match.formation === Football.QQDEUX) {
-                                while (maxPlayer < 5) {
+
+                                while (maxPlayer < 11) {
+
                                     for (let player of players) {
 
                                         // placement du gardien
@@ -747,7 +751,7 @@ exports.switchPosition = (req, res) => {
     let player_id_two = req.body.player_id_two;
     let match_id = req.body.match_id;
     let token = getToken(req.headers);
-console.log(player_id_one, player_id_two);
+    console.log(player_id_one, player_id_two);
     if (token) {
         let decoded = jwt.decode(token, config.secret);
 
@@ -759,7 +763,7 @@ console.log(player_id_one, player_id_two);
                     if (err)
                         throw err;
 
-                        console.log(fstPlayer);
+                    console.log(fstPlayer);
                     let fstPosition = fstPlayer.position;
                     cb(null, fstPlayer, fstPosition);
                 });
@@ -770,7 +774,7 @@ console.log(player_id_one, player_id_two);
                     if (err)
                         throw err;
 
-console.log(sndPlayer);
+                    console.log(sndPlayer);
                     let sndPosition = sndPlayer.position;
 
                     fstPlayer.position = sndPosition;
@@ -830,25 +834,25 @@ exports.getPlayerNoSelected = (req, res) => {
                     let playersSelected = team.matchs.id(match_id).playerSelected;
                     //console.log(playersSelected, players);
                     let playersNoSelected = Utils.diffArray(players, playersSelected);
-                  //  console.log(playersNoSelected);
+                    //  console.log(playersNoSelected);
                     cb(null, playersNoSelected);
                 });
             },
 
             (playersNoSelected, cb) => {
-            //  console.log(playersNoSelected);
+                //  console.log(playersNoSelected);
                 Player.find({
                     _id: {
                         "$in": playersNoSelected
                     }
                 }, (err, players) => {
-                    if(err)
-                      throw err;
+                    if (err)
+                        throw err;
 
-                      return res.status(202).json({
+                    return res.status(202).json({
                         success: true,
                         players
-                      });
+                    });
                 });
             }
         ])

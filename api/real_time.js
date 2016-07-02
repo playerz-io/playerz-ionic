@@ -103,7 +103,7 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
 
         //console.log(referencePlayerOne, referencePlayerTwo);
         referenceFstPlayer.once('value', function(fstPlayer){
-          //console.log('ok');
+          console.log('ok');
           referenceSndPlayer.once('value', function(sndPlayer){
 
             referenceFstPlayer.update({

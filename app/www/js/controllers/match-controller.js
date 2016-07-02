@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.match', [])
-    .controller('MatchTabCtrl', function($ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService) {
+    .controller('MatchTabCtrl', function($state, $ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService) {
 
         var self = this;
 
@@ -46,5 +46,9 @@ angular.module('starter.controller.match', [])
                     });
                 });
         };
+
+        self.goMatchComeUp = () => {
+          $state.go('match-comeup');
+        }
 
     });

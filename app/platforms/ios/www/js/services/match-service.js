@@ -124,9 +124,14 @@ angular.module('starter')
             params: {
                 match_id
             }
-        })
+        });
+
+        let defaultPosition = (match_id) => $http.post(API_ENDPOINT.url + '/defaultPosition', {
+            match_id
+        });
 
         return {
+            defaultPosition,
             getPlayerNoSelected,
             totalStat,
             addMatch,
