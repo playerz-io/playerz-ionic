@@ -39,6 +39,5 @@
   },
   "_source": "https://github.com/bendrucker/angular-stripe.git",
   "_target": "^4.2.12",
-  "_originalSource": "angular-stripe",
-  "_direct": true
+  "_originalSource": "angular-stripe"
 }

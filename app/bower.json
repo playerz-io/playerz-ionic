@@ -11,5 +11,8 @@
     "moment": "^2.13.0",
     "angular-stripe": "^4.2.12",
     "ngCordova": "^0.1.26-alpha"
+  },
+  "resolutions": {
+    "angular": ">= 1.0.8"
   }
 }
