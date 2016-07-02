@@ -108,7 +108,7 @@ function promisify (Promise, method, receiver, resolver) {
     return new Promise(function (resolve, reject) {
       receiver[method].apply(receiver, args.concat(function promisifiedResolve () {
         resolver.apply({resolve: resolve, reject: reject}, arguments)
-      }))
+      }))      
     })
   }
 }
