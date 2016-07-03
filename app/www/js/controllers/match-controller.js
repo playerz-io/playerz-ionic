@@ -32,6 +32,7 @@ angular.module('starter.controller.match', [])
         };
 
         self.addMatch = function() {
+            $scope.match.date = new Date($scope.match.date);
             MatchService.addMatch($scope.match)
                 .success(function(data) {
                     $scope.match = {};

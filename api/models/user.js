@@ -2,9 +2,10 @@
 
 'use strict';
 
-let moogoose = require('mongoose');
-let Schema = moogoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 let bcrypt = require('bcrypt');
+require('mongoose-moment')(mongoose);
 
 
 //User model

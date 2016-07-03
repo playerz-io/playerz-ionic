@@ -16,7 +16,7 @@ let controllerMatch = require('./controllers/match');
 let controllerPlayer = require('./controllers/player');
 let controllerStat = require('./controllers/statistics');
 let controllerFirebase = require('./real_time');
-
+let moment = require('moment');
 let Payment = require('./controllers/payment');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
@@ -204,7 +204,7 @@ apiRoutes.post('/signup', function(req, res) {
                     sport,
                     type,
                     genre,
-                    birth_date,
+                    birth_date: new Date(birth_date),
                     created_at: Date.now(),
                     total_connexion: 0
                 });
@@ -215,7 +215,7 @@ apiRoutes.post('/signup', function(req, res) {
                     division
                 });
 
-
+                console.log(`date : ${newCoach.birth_date}` );
                 newCoach.save(function(err) {
                     if (err)
                         throw err;

@@ -15,11 +15,13 @@ angular.module('starter.controller.register', [])
             genre: '',
             name_club: '',
             category: '',
-            division: ''
+            division: '',
+            birth_date: ''
         };
 
 
         self.register = function() {
+            self.user.birth_date = new Date(self.user.birth_date);
             AuthService.register(self.user).then(function(msg) {
                 console.log(msg);
                 $state.go('login');

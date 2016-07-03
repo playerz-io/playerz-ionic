@@ -38,7 +38,7 @@ exports.addMatch = function(req, res) {
             against_team: against_team,
             place: place,
             type: type,
-            date: date,
+            date: new Date(date),
             belongs_to: idCoach,
             status: 'comeup'
 
@@ -835,6 +835,7 @@ exports.getPlayerNoSelected = (req, res) => {
                     //console.log(playersSelected, players);
                     let playersNoSelected = Utils.diffArray(players, playersSelected);
                     //  console.log(playersNoSelected);
+
                     cb(null, playersNoSelected);
                 });
             },
@@ -846,6 +847,10 @@ exports.getPlayerNoSelected = (req, res) => {
                         "$in": playersNoSelected
                     }
                 }, (err, players) => {
+                    for (let player of players) {
+                        console.log(player);
+                        real_time.playersNoSelected_firebase(match_id, idCoach, player);
+                    }
                     if (err)
                         throw err;
 

@@ -80,7 +80,6 @@ exports.updateStatistic_firebase = function(player, match_ID, coach_ID, stat) {
         .update(stat);
 
 };
-let array_players = [];
 
 exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) => {
 
@@ -117,3 +116,18 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
           });
         });
 };
+
+exports.playersNoSelected_firebase = (matchId, coachId, player) => {
+  let refAddPlayer = ref
+      .child(coachId)
+      .child("matchs")
+      .child(matchId)
+      .child('players_no_selected')
+      .child(player._id.toString())
+      .set({
+            id: player._id,
+            first_name: player.first_name,
+            last_name: player.last_name,
+            favourite_position: player.favourite_position
+      })
+}
