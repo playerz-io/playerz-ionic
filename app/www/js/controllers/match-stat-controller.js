@@ -10,13 +10,17 @@ angular.module('starter.controller.match-stat', [])
         self.matchId = StorageService.getStorageMatchId();
         self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
         let refMatch = FireService.refMatch(StorageService.getStorageMatchId(), self.coachId);
-          self.formation = '4-4-2';
+        self.formation = '4-4-2';
         self.showDelete = false;
         //define if player is selected by user
         // self.selected = -1;
         // self.switched = false;
         // // array that should contains two player switched
         // let playerSwitched = [];
+
+        self.dropRemplacant = (obj, evt) => {
+            console.log(obj);
+        };
 
         self.onDropComplete = (index, obj, evt) => {
             //dropped
@@ -85,18 +89,18 @@ angular.module('starter.controller.match-stat', [])
         };
 
         //update statistic of player, set the stat in params stat
-        self.updateStatistic = function(player_id, stat) {
-            PlayerService.updateStatistic(player_id, self.matchId, stat)
-                .success(function(data) {
-                    console.log(data);
-                    // data of match
-                    self.playerSelected = data.playerSelected;
-
-                })
-                .error(function(data) {
-                    console.log(data);
-                })
-        };
+        // self.updateStatistic = function(player_id, stat) {
+        //     PlayerService.updateStatistic(player_id, self.matchId, stat)
+        //         .success(function(data) {
+        //             console.log(data);
+        //             // data of match
+        //             self.playerSelected = data.playerSelected;
+        //
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         })
+        // };
 
         // get Match with match id
         self.getMatch = function() {
@@ -189,8 +193,9 @@ angular.module('starter.controller.match-stat', [])
         self.getPlayerNoSelected = () => {
             MatchService.getPlayerNoSelected(self.matchId)
                 .success((data) => {
-                    self.playersNoSelected = data.players;
                     console.log(data);
+                    self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
+                    self.playersNoSelected = FireService.refPlayer(self.noSeleted);
                 })
                 .error((data) => {
 
@@ -208,9 +213,23 @@ angular.module('starter.controller.match-stat', [])
                 });
         };
 
+
+
+        MatchService.defaultPosition(self.matchId)
+            .success((data) => {
+                console.log(data);
+                self.playerSelected = FireService.refPlayer(refMatch);
+            })
+            .error((data) => {
+                console.log(data);
+            })
+
         self.getPlayerNoSelected();
-        MatchService.defaultPosition(self.matchId);
-        self.playerSelected = FireService.refPlayer(refMatch);
+
+
+
+
+        //console.log(self.playerSelected);
         //        self.getMatch();
         //playerSelected for data in real time
 

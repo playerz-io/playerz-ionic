@@ -22,26 +22,26 @@ angular.module('starter.controller.tactique', [])
 
         //get Player of troop
         self.getPlayerNoSelected = () => {
-                MatchService.getPlayerNoSelected(self.matchId)
-                    .success((data) => {
-                        self.playersNoSelected = data.players;
-                        console.log(data);
-                    })
-                    .error((data) => {
+            MatchService.getPlayerNoSelected(self.matchId)
+                .success((data) => {
+                    self.playersNoSelected = data.players;
+                    console.log(data);
+                })
+                .error((data) => {
 
-                    })
-            }
-            // self.getPlayers = function() {
-            //     TeamService.getPlayers()
-            //         .success(function(data) {
-            //             console.log(data);
-            //             self.players = data.players;
-            //
-            //         })
-            //         .error(function() {
-            //             console.log(data);
-            //         });
-            // };
+                })
+        };
+        // self.getPlayers = function() {
+        //     TeamService.getPlayers()
+        //         .success(function(data) {
+        //             console.log(data);
+        //             self.players = data.players;
+        //
+        //         })
+        //         .error(function() {
+        //             console.log(data);
+        //         });
+        // };
 
         //change the formation
         self.addFormation = function() {

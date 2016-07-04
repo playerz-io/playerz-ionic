@@ -1,6 +1,5 @@
 'use strict';
 
-let http = require('http');
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
@@ -8,20 +7,8 @@ let morgan = require('morgan');
 let mongoose = require('mongoose');
 let passport = require('passport');
 let config = require('./config/database');
-let Coach = require('./models/coach');
-let Team = require('./models/team').modelTeam;
-let controllerCoach = require('./controllers/coach');
-let controllerTeam = require('./controllers/team');
-let controllerMatch = require('./controllers/match');
-let controllerPlayer = require('./controllers/player');
-let controllerStat = require('./controllers/statistics');
-let controllerFirebase = require('./real_time');
-let moment = require('moment');
-let Payment = require('./controllers/payment');
 let port = process.env.PORT || 5000;
 let jwt = require('jwt-simple');
-let Utils = require('./utils');
-let async = require('async');
 
 
 //connect to database
@@ -69,393 +56,24 @@ app.listen(port);
 //passport configuration
 require('./config/passport')(passport);
 
-
-
 let apiRoutes = express.Router();
 
-
-//auth with facebook
-apiRoutes.post('/facebook', function(req, res) {
-
-    let last_name = req.body.last_name;
-    let first_name = req.body.first_name;
-    let email = req.body.email;
-    let country = req.body.country;
-    let type = req.body.type;
-    let genre = req.body.genre;
-    let birth_date = req.body.birth_date;
-    let id_facebook = req.body.id_facebook;
-
-    async.waterfall([
-        (done) => {
-          // TODO: not equals facebook à revoir
-            Coach.modelCoach.findOne({
-                email,
-                connected: 'jwt'
-            }, (err, coach) => {
-                if (coach) {
-                    return res.status(400).json({
-                        msg: `Un utilisateur avec l'adresse que vous
-                        utilisé pour votre compte facebook existe déjà`
-                    });
-                } else {
-                    done(null);
-                }
-            })
-        },
-
-        (done) => {
-            Coach.modelCoach.findOne({
-                id_facebook
-            }, (err, coach) => {
-                if (err)
-                    throw err;
-
-
-                if (!coach) {
-                    let newCoach = new Coach.modelCoach({
-                        last_name,
-                        first_name,
-                        connected: 'facebook',
-                        email,
-                        country,
-                        type,
-                        genre,
-                        birth_date,
-                        id_facebook,
-                        created_at: Date.now(),
-                        total_connexion: 0
-                    });
-
-                    //increase total_connexion
-                    newCoach.total_connexion++;
-                    newCoach.save(function(err) {
-                        if (err) {
-                            throw err;
-                        }
-                    });
-
-                    let token = jwt.encode(newCoach, config.secret);
-                    return res.json({
-                        success: true,
-                        msg: 'Nouvel utilisateur crée',
-                        token: 'JWT ' + token,
-                        coach: newCoach
-                    });
-                } else {
-                    //increase total_connexion
-                    coach.total_connexion++;
-                    coach.save();
-
-                }
-                let token = jwt.encode(coach, config.secret);
-                return res.json({
-                    success: true,
-                    coach,
-                    token: 'JWT ' + token
-                });
-            });
-        }
-    ])
-});
-
-// TODO: validate email only if it set
-apiRoutes.post('/signup', function(req, res) {
-
-    let last_name = req.body.last_name;
-    let first_name = req.body.first_name;
-    let password = req.body.password;
-    let email = req.body.email;
-    let country = req.body.country;
-    let sport = req.body.sport;
-    let type = req.body.type;
-    let genre = req.body.genre;
-    let birth_date = req.body.birth_date;
-    let name_club = req.body.name_club;
-    let category = req.body.category;
-    let division = req.body.division;
-
-    //validation email
-    if (!Utils.validateEmail(email)) {
-        return res.json({
-            success: false,
-            msg: "Respecter le format d'une addresse mail"
-        });
-    }
-
-    if (!last_name || !first_name || !password || !type || !sport || !country || !genre || !birth_date || !name_club || !category || !division) {
-        return res.status(400).json({
-            success: false,
-            msg: "Un ou plusieurs champs requis n'ont pas été remplis"
-        });
-    } else {
-
-        Coach.modelCoach.findOne({
-            email
-        }, (err, coach) => {
-            if (!coach) {
-                let newCoach = new Coach.modelCoach({
-                    last_name,
-                    first_name,
-                    password,
-                    email,
-                    connected: 'jwt',
-                    country,
-                    sport,
-                    type,
-                    genre,
-                    birth_date: new Date(birth_date),
-                    created_at: Date.now(),
-                    total_connexion: 0
-                });
-
-                newCoach.team = new Team({
-                    name_club,
-                    category,
-                    division
-                });
-
-                console.log(`date : ${newCoach.birth_date}` );
-                newCoach.save(function(err) {
-                    if (err)
-                        throw err;
-
-                    res.json({
-                        success: true,
-                        msg: 'Nouvel utilisateur crée'
-                    });
-                });
-            } else {
-                return res.json({
-                    success: false,
-                    msg: 'Un coach existe déjà avec cette addresse mail'
-                })
-            }
-
-        });
-
-
-    }
-});
-
-apiRoutes.post('/authenticate', function(req, res) {
-
-    let email = req.body.email;
-    let password = req.body.password;
-
-    //validate email
-    if (!Utils.validateEmail(email)) {
-        return res.json({
-            success: false,
-            msg: "Respecter le format d'une addresse mail"
-        });
-    }
-
-    if (!email.toString() || !password.toString()) {
-        return res.json({
-            success: false,
-            msg: "Les champs email ou mot de passe sont vides !"
-        });
-    }
-
-    Coach.modelCoach.findOne({
-        email: email
-    }, function(err, coach) {
-        if (err)
-            throw err;
-
-        if (!coach) {
-            return res.json({
-                success: false,
-                msg: "Le coach n'a pas été trouvé"
-            });
-        } else {
-            coach.comparePassword(password, function(err, isMatch) {
-                if (isMatch && !err) {
-                    let token = jwt.encode(coach, config.secret);
-                    console.log("token : " + token);
-                    //increase total_connexion
-                    coach.total_connexion++;
-                    coach.save();
-
-                    res.json({
-                        success: true,
-                        token: 'JWT ' + token,
-                        coach: coach
-                    });
-
-                } else {
-                    return res.json({
-                        success: false,
-                        msg: `Votre mot de passe n'est pas correct`
-                    });
-                }
-            });
-        }
-    });
-});
-
-//get coach
-apiRoutes.get('/coach', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.getCoach);
-
-apiRoutes.get('/coach_by_id', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.getCoachById);
-
-apiRoutes.put('/coach', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.updateCoach);
-
-
-/*********** PLAYER ****************/
-//add Player to Team
-apiRoutes.post('/player', passport.authenticate('jwt', {
-    session: false
-}), controllerTeam.addPlayer);
-
-//get players
-apiRoutes.get('/players', passport.authenticate('jwt', {
-    session: false
-}), controllerTeam.getPlayers);
-
-//get Player by Id
-apiRoutes.get('/player/:id', passport.authenticate('jwt', {
-    session: false
-}), controllerTeam.getPlayerById);
-
-//remove player
-apiRoutes.delete('/player', passport.authenticate('jwt', {
-    session: false
-}), controllerTeam.removePlayer);
-
-
-/************ MATCH *****************/
-
-//add match
-apiRoutes.post('/match', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.addMatch);
-
-//get matchs
-apiRoutes.get('/matchs', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.getMatchs);
-
-//get matchs by id
-apiRoutes.get('/match/:id', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.getMatchById);
-
-//remove match
-apiRoutes.delete('/match', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.removeMatch);
-
-//add formation
-apiRoutes.post('/formation', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.addFormation);
-
-//get post tactique
-apiRoutes.get('/tactique', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.getTactique);
-
-//add selected_player
-apiRoutes.post('/player_selected', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.addPlayerSelected);
-
-//Get player selected
-apiRoutes.get('/player_selected', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.getPlayerSelected);
-
-apiRoutes.delete('/player_selected', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.removePlayerSelected);
-
-apiRoutes.get('/player_no_selected', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.getPlayerNoSelected);
-
-//get match comeup
-apiRoutes.get('/match_finished', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.findMatchFinished);
-
-//get match comeup
-apiRoutes.get('/match_comeup', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.findMatchComeUp);
-
-
-
-/************** PLAYER **************/
-
-//add position to playerSelected
-apiRoutes.post('/position', passport.authenticate('jwt', {
-    session: false
-}), controllerPlayer.addPosition);
-
-/******* UPDATE **********/
-
-apiRoutes.post('/statistic', passport.authenticate('jwt', {
-    session: false
-}), controllerStat.updateStatistic);
-
-// push schema
-apiRoutes.post('/schema', passport.authenticate('jwt', {
-    session: false
-}), controllerStat.addPlayerSchema);
-
-apiRoutes.post('/action', passport.authenticate('jwt', {
-    session: false
-}), controllerStat.countMainAction);
-
-apiRoutes.post('/avgRelance', passport.authenticate('jwt', {
-    session: false
-}), controllerStat.avgRelance);
-
-apiRoutes.post('/countPercent', passport.authenticate('jwt', {
-    session: false
-}), controllerStat.countPercent);
-
-apiRoutes.get('/nameTeam', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.getNameTeam);
-
-apiRoutes.post('/totalStat', passport.authenticate('jwt', {
-    session: false
-}), controllerStat.totalStat);
-
-apiRoutes.get('/getMatchPlayed', passport.authenticate('jwt', {
-    session: false
-}), controllerPlayer.getMatchPlayed);
-
-apiRoutes.get('/getStatisticsMatch', passport.authenticate('jwt', {
-    session: false
-}), controllerPlayer.getStatisticsMatch);
-
-apiRoutes.post('/addSportFacebookUser', controllerCoach.addSportFacebookUser);
-
-//no check jwt token cause of allowed subscribtion
-apiRoutes.post('/addTeamFacebookUser', controllerCoach.addTeamFacebookUser);
-
-apiRoutes.post('/defaultPosition', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.defaultPosition);
-
-apiRoutes.post('/switchPosition', passport.authenticate('jwt', {
-    session: false
-}), controllerMatch.switchPosition);
-
-apiRoutes.post('/changePassword', passport.authenticate('jwt', {
-    session: false
-}), controllerCoach.changePassword);
-
+let auth = require('./routes/auth');
+let user = require('./routes/user');
+let coach = require('./routes/coach');
+let statistics = require('./routes/statistics');
+let team = require('./routes/team');
+let match = require('./routes/match');
+let player = require('./routes/player');
+
+apiRoutes
+    .use('/', auth)
+    .use('/', user)
+    .use('/', coach)
+    .use('/', statistics)
+    .use('/', team)
+    .use('/', player)
+    .use('/', match);
 
 // //save token stripe
 //
@@ -473,7 +91,5 @@ apiRoutes.post('/changePassword', passport.authenticate('jwt', {
 //     });
 // });
 
-apiRoutes.post('/forgotPassword', controllerCoach.forgotPassword);
-apiRoutes.post('/resetPassword', controllerCoach.resetPassword);
 console.log('connected to port : ' + port);
 app.use('/api', apiRoutes);

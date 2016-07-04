@@ -13,7 +13,7 @@ let checkMatchId = function(match_ID, player) {
 exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
     //console.log(match_ID);
     //console.log(player);
-    console.log(player);
+    console.log('ok');
 
     let refAddPlayer = ref
         .child(coach_ID)
@@ -83,51 +83,139 @@ exports.updateStatistic_firebase = function(player, match_ID, coach_ID, stat) {
 
 exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) => {
 
-    console.log(fstPlayerId, sndPlayerId, matchId, coachId);
-    let referenceFstPlayer = ref
+
+    let refMatch = ref
         .child(coachId.toString())
         .child("matchs")
-        .child(matchId.toString())
-        .child('players_selected')
-        .child(fstPlayerId.toString());
+        .child(matchId.toString());
 
-    let referenceSndPlayer = ref
-        .child(coachId.toString())
-        .child("matchs")
-        .child(matchId.toString())
-        .child('players_selected')
-        .child(sndPlayerId.toString());
+    let refPlayerSelected = refMatch.child('players_selected');
 
+    let refPlayerNoSelected = refMatch.child('players_no_selected');
 
+    let referenceFstPlayer = refPlayerSelected.child(fstPlayerId.toString());
+    let referenceSndPlayer = refPlayerSelected.child(sndPlayerId.toString());
 
-        //console.log(referencePlayerOne, referencePlayerTwo);
-        referenceFstPlayer.once('value', function(fstPlayer){
-          console.log('ok');
-          referenceSndPlayer.once('value', function(sndPlayer){
+    let referenceFstPlayerNo = refPlayerNoSelected.child(fstPlayerId.toString());
+    let referenceSndPlayerNo = refPlayerNoSelected.child(sndPlayerId.toString());
 
-            referenceFstPlayer.update({
-              position: sndPlayer.val().position
-            });
-            referenceSndPlayer.update({
-              position: fstPlayer.val().position
-            });
-            console.log(sndPlayer.val());
-            console.log(fstPlayer.val());
-          });
+    //console.log(referenceFstPlayerNo, referenceSndPlayerNo);
+
+    // refPlayerNoSelected.once("value", (snapshot) => {
+    //
+    //     if (!)
+    //         console.log(snapshot.child(fstPlayerId).exists());
+    // });
+
+    //console.log(referencePlayerOne, referencePlayerTwo);
+    refPlayerSelected.once('value', (snapPlayerSelected) => {
+        refPlayerNoSelected.once('value', (snapPlayerNoSelected) => {
+            let fstPlayerSelectedExists = snapPlayerSelected.child(fstPlayerId).exists();
+            let sndPlayerSelectedExists = snapPlayerSelected.child(sndPlayerId).exists();
+
+            let fstPlayerNoSelectedExists = snapPlayerNoSelected.child(fstPlayerId).exists();
+            let sndPlayerNoSelectedExists = snapPlayerNoSelected.child(sndPlayerId).exists();
+
+            if (fstPlayerSelectedExists && sndPlayerNoSelectedExists) {
+                referenceFstPlayer.once('value', (fstPlayer) => {
+                    referenceSndPlayerNo.once('value', (sndPlayer) => {
+                      //  console.log(fstPlayer.val());
+                        refPlayerNoSelected.child(fstPlayer.key())
+                            .set({
+                                id: fstPlayer.val().id,
+                                first_name: fstPlayer.val().first_name,
+                                last_name: fstPlayer.val().last_name,
+                                favourite_position: fstPlayer.val().favourite_position
+                            });
+                        refPlayerSelected.child(fstPlayer.key()).set(null);
+
+                      //  console.log(sndPlayer);
+                        refPlayerSelected.child(sndPlayer.key())
+                        .set({
+                          id: sndPlayer.val().id,
+                          first_name: sndPlayer.val().first_name,
+                          last_name: sndPlayer.val().last_name,
+                          favourite_position: sndPlayer.val().favourite_position,
+                          position: fstPlayer.val().position
+                        });
+
+                        refPlayerNoSelected.child(sndPlayer.key()).set(null);
+
+                    });
+                });
+            }
+
+            if (fstPlayerNoSelectedExists && sndPlayerSelectedExists) {
+                referenceSndPlayer.once('value', (sndPlayer) => {
+                    referenceFstPlayerNo.once('value', (fstPlayer) => {
+
+                        refPlayerNoSelected.child(sndPlayer._id)
+                            .set({
+                                id: sndPlayer._id,
+                                first_name: sndPlayer.first_name,
+                                last_name: sndPlayer.last_name,
+                                favourite_position: sndPlayer.favourite_position
+                            });
+                        refPlayerSelected.child(sndPlayer._id).set(null);
+
+                        refPlayerSelected.child(fstPlayer._id)
+                        .set({
+                          id: sndPlayer._id,
+                          first_name: sndPlayer.first_name,
+                          last_name: sndPlayer.last_name,
+                          favourite_position: sndPlayer.favourite_position,
+                          position: fstPlayer.position
+                        });
+
+                        refPlayerNoSelected.child(fstPlayer._id).set(null);
+
+                    });
+                });
+            }
         });
+    });
+
+    refPlayerSelected.once('value', (snapPlayerSelected) => {
+        let fstPlayerExists = snapPlayerSelected.child(fstPlayerId).exists();
+        let sndPlayerExists = snapPlayerSelected.child(sndPlayerId).exists();
+//        console.log(fstPlayerExists, sndPlayerExists);
+        if (fstPlayerExists && sndPlayerExists) {
+            referenceFstPlayer.once('value', function(fstPlayer) {
+
+                referenceSndPlayer.once('value', function(sndPlayer) {
+                    console.log('ok');
+                    referenceFstPlayer.update({
+                        position: sndPlayer.val().position
+                    });
+                    referenceSndPlayer.update({
+                        position: fstPlayer.val().position
+                    });
+                    //console.log(sndPlayer.val());
+                    //console.log(fstPlayer.val());
+                });
+            });
+        }
+    });
+
+
+
 };
 
 exports.playersNoSelected_firebase = (matchId, coachId, player) => {
-  let refAddPlayer = ref
-      .child(coachId)
-      .child("matchs")
-      .child(matchId)
-      .child('players_no_selected')
-      .child(player._id.toString())
-      .set({
+    let refAddPlayer = ref
+        .child(coachId)
+        .child("matchs")
+        .child(matchId)
+        .child('players_no_selected')
+        .child(player._id.toString())
+        .set({
             id: player._id,
             first_name: player.first_name,
             last_name: player.last_name,
             favourite_position: player.favourite_position
-      })
+        })
+}
+
+exports.playersNoSelectedToRemplacant = (matchId, coachId, player) => {
+
 }

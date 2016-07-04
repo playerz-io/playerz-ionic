@@ -109,7 +109,16 @@ a {
 
   height: 10vh;
   width: 10vh;
+  float: right;
 
+}
+
+.rem{
+  float: left;
+  margin-right: 0.5vw;
+  height: 10vh;
+  width: 10vw;
+  background-color: green;
 }
 div .row-player + .row-player, .row-player {
     float: right;

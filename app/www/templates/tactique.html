@@ -23,27 +23,47 @@
                     </label>
                 </div>
 
-                <ion-scroll style="height:90vh">
-                    <ion-list show-delete="matchStat.showDelete">
-                        <ion-item collection-repeat="player in matchStat.playersNoSelected" class="item">
-                            {{player.first_name}}
-                            <br/> {{player.last_name}} {{player.favourite_position}}
-                            <!-- <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)">
+
+                <ion-list show-delete="matchStat.showDelete">
+                    <ion-item ng-repeat="player in matchStat.playersNoSelected" class="item" ng-drag="true" ng-drag-data="player" ng-drop-success="matchStat.onDropComplete($index, $data)">
+                        {{player.first_name}}
+                        <br/> {{player.last_name}} {{player.favourite_position}}
+                        <!-- <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)">
                             </select> -->
-                            <ion-option-button ng-click="matchStat.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
-                            <ion-delete-button class="ion-minus-circled" ng-click="matchStat.removePlayerSelected(player._id, player)"></ion-delete-button>
-                        </ion-item>
-                    </ion-list>
-                </ion-scroll>
+                        <ion-option-button ng-click="matchStat.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
+                        <ion-delete-button class="ion-minus-circled" ng-click="matchStat.removePlayerSelected(player._id, player)"></ion-delete-button>
+                    </ion-item>
+                </ion-list>
+
             </div>
 
             <div class="col col-67">
-
                 <div id="begin-match">
                     <a class="whistle" ui-sref="match-statistics({ matchId: tactique.matchId })">
                         <img src="../img/whistle.png" alt="Début du match">
                     </a>
                 </div>
+
+                <div class="rem" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="matchStat.onDropComplete($index, $data)" ng-repeat="player in matchStat.playerSelected" ng-if="player.position === 'REM'">
+                    <a> {{player.last_name}}
+                        <br/> {{player.first_name}} {{player.position}}
+                    </a>
+                </div>
+                <!-- <div class="rem" ng-drop="true" ng-drop-success="matchStat.dropRemplacant($data, $event)">
+                    <p></p>
+                </div>
+                <div class="rem" ng-drop="true" ng-drop-success="matchStat.dropRemplacant($data, $event)">
+                    OK
+                </div>
+                <div class="rem" ng-drop="true" ng-drop-success="matchStat.dropRemplacant($data, $event)">
+                    OK
+                </div>
+                <div class="rem" ng-drop="true" ng-drop-success="matchStat.dropRemplacant($data, $event)">
+                    OK
+                </div>
+                <div class="rem" ng-drop="true" ng-drop-success="matchStat.dropRemplacant($data, $event)">
+                    OK
+                </div> -->
                 <div class="row quatre">
                     <div ng-if="matchStat.formation === '4-4-2'" class="tac">
                         <four-fourtwo info="matchStat.playerSelected" click="true"></four-fourtwo>

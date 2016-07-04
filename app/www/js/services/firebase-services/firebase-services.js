@@ -16,6 +16,17 @@ angular.module('starter')
         return refMatchId;
       },
 
+      refMatchNoSelected: function(matchId, coachId) {
+        var refMatchId = mainRef
+          .child(coachId)
+          .child("matchs")
+          .child(matchId)
+          .child('players_no_selected');
+
+
+        return refMatchId;
+      },
+
       refPlayer: function(ref) {
         return $firebaseArray(ref);
       }

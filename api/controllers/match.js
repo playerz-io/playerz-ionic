@@ -536,7 +536,7 @@ let addStatisticsToPlayer = function(player, match_id) {
 
 };
 
-let findMatch = function(status, req, res) {
+let _findMatch = function(status, req, res) {
     let token = getToken(req.headers);
 
     if (token) {
@@ -566,26 +566,37 @@ let findMatch = function(status, req, res) {
 };
 
 exports.findMatchFinished = function(req, res) {
-    findMatch('finished', req, res);
+    _findMatch('finished', req, res);
 };
 
 exports.findMatchComeUp = function(req, res) {
-    findMatch('comeup', req, res);
+    _findMatch('comeup', req, res);
 };
 
 let _defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
+    let statExist = false;
     if (player.statistics.length === 0) {
         addStatisticsToPlayer(player, idMatch);
     }
     for (let i = 0, x = player.statistics.length; i < x; i++) {
-        if (!(player.statistics[i].match_id.toString() === idMatch.toString())) {
-            addStatisticsToPlayer(player, idMatch);
+        if (player.statistics[i].match_id.toString() === idMatch.toString()) {
+            statExist = true
         }
     }
+
+    if (!statExist) {
+        addStatisticsToPlayer(player, idMatch);
+        console.log('defaultPosition');
+    }
+
     player.position = position;
     player.save();
-    playersSelected.push(player);
+    if (playersSelected.indexOf(player._id) < 0) {
+        playersSelected.push(player);
+
+    }
     real_time.addPlayerSelected_firebase(player, idMatch, idCoach);
+
 };
 
 exports.defaultPosition = (req, res) => {
@@ -605,7 +616,6 @@ exports.defaultPosition = (req, res) => {
         ATG = false,
         ATD = false;
 
-    //console.log(GD);
     if (token) {
         let decoded = jwt.decode(token, config.secret);
 
@@ -616,7 +626,6 @@ exports.defaultPosition = (req, res) => {
                 Coach.findById(idCoach, (err, coach) => {
                     if (err)
                         throw err;
-
 
                     let team = coach.team;
                     let match = team.matchs.id(idMatch);
@@ -638,7 +647,7 @@ exports.defaultPosition = (req, res) => {
                     (err, players) => {
 
                         if (coach.sport === Football.FOOTBALL) {
-                            console.log(players);
+
                             if (match.formation === Football.QQDEUX) {
 
                                 while (maxPlayer < 11) {
@@ -724,9 +733,15 @@ exports.defaultPosition = (req, res) => {
                                             continue;
                                         }
 
-                                    }
+                                        if (maxPlayer < 14) {
+
+                                            _defaultPosition(player, idMatch, 'REM', idCoach, playersSelected);
+                                            maxPlayer++;
+                                            continue;
+                                        }
+                                    }//for
                                     console.log(maxPlayer);
-                                }
+                                } //while
                             }
                         }
                         coach.save();
@@ -751,7 +766,7 @@ exports.switchPosition = (req, res) => {
     let player_id_two = req.body.player_id_two;
     let match_id = req.body.match_id;
     let token = getToken(req.headers);
-    console.log(player_id_one, player_id_two);
+    //  console.log(player_id_one, player_id_two);
     if (token) {
         let decoded = jwt.decode(token, config.secret);
 
@@ -763,7 +778,7 @@ exports.switchPosition = (req, res) => {
                     if (err)
                         throw err;
 
-                    console.log(fstPlayer);
+                    //  console.log(fstPlayer);
                     let fstPosition = fstPlayer.position;
                     cb(null, fstPlayer, fstPosition);
                 });
@@ -774,7 +789,7 @@ exports.switchPosition = (req, res) => {
                     if (err)
                         throw err;
 
-                    console.log(sndPlayer);
+                    //  console.log(sndPlayer);
                     let sndPosition = sndPlayer.position;
 
                     fstPlayer.position = sndPosition;
@@ -801,9 +816,6 @@ exports.switchPosition = (req, res) => {
                 });
 
             }
-
-
-
 
         ])
 
