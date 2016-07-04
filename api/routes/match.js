@@ -2,7 +2,7 @@
 
 let express = require('express');
 let router = express.Router();
-let controllerMatch = require('../controllers/match');
+let controllerMatch = require('../controllers/match/match');
 let passport = require('passport');
 
 router

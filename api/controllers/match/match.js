@@ -1,17 +1,18 @@
 //controller match
-'use strict'
+'use strict';
 
-let getToken = require('./token');
-let Utils = require('../utils');
+let getToken = require('../token');
+let Utils = require('../../utils');
 let jwt = require('jwt-simple');
-let config = require('../config/database');
-let Match = require('../models/match').modelMatch;
-let Coach = require('../models/coach').modelCoach;
-let Player = require('../models/player').modelPlayer;
-let Statistic = require('../models/statistics').modelStatistic;
-let real_time = require('../real_time');
+let config = require('../../config/database');
+let Match = require('../../models/match').modelMatch;
+let Coach = require('../../models/coach').modelCoach;
+let Player = require('../../models/player').modelPlayer;
+let Statistic = require('../../models/statistics').modelStatistic;
+let real_time = require('../../real_time');
 let async = require('async');
-let Football = require('../sports/football');
+let Football = require('../../sports/football');
+let privateMatch = require('./private');
 
 exports.addMatch = function(req, res) {
     let token = getToken(req.headers);
@@ -409,7 +410,7 @@ exports.addPlayerSelected = function(req, res) {
                         // if array stat is empty add stat
                         if (player.statistics.length === 0) {
                             //add stastistic to player
-                            addStatisticsToPlayer(player, match_id);
+                            privateMatch._addStatisticsToPlayer(player, match_id);
 
                         } else {
 
@@ -426,7 +427,7 @@ exports.addPlayerSelected = function(req, res) {
                             if (!statExist) {
                                 //add stastistic to player
                                 //console.log('stat stat');
-                                addStatisticsToPlayer(player, match_id);
+                                privateMatch._addStatisticsToPlayer(player, match_id);
                             }
                         }
 
@@ -502,101 +503,13 @@ exports.getPlayerSelected = function(req, res) {
     }
 };
 
-let addStatisticsToPlayer = function(player, match_id) {
-    //  console.log('ok');
-    player.statistics.push(new Statistic({
-        match_id: match_id.toString(),
-        assist: 0,
-        retrieveBalls: 0,
-        foulsSuffered: 0,
-        foulsCommitted: 0,
-        yellowCard: 0,
-        redCard: 0,
-        attemptsOnTarget: 0,
-        attemptsOffTarget: 0,
-        attempts: 0,
-        beforeAssist: 0,
-        matchPlayed: 0,
-        firstTeamPlayer: 0,
-        substitute: 0,
-        but: 0,
-        ballLost: 0,
-        ballPlayed: 0,
-        passesCompletion: 0,
-        defensiveAction: 0,
-        relanceCompletion: 0,
-        offSide: 0,
-        clean_sheet: 0,
-        sorties_aeriennes: 0,
-        claquettes: 0,
-        saves: 0,
-        crossesFailed: 0,
-        passesFailed: 0
-    }));
-
-};
-
-let _findMatch = function(status, req, res) {
-    let token = getToken(req.headers);
-
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-
-        let idCoach = decoded._id;
-        console.log("idCoach : " + idCoach);
-        Match.find({
-            belongs_to: idCoach,
-            status: status
-        }, function(err, matchs) {
-            if (err)
-                throw err;
-
-            res.status(201).json({
-                success: true,
-                matchs: matchs
-            })
-
-        })
-    } else {
-        return res.status(403).json({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
-};
 
 exports.findMatchFinished = function(req, res) {
-    _findMatch('finished', req, res);
+    privateMatch._findMatch('finished', req, res);
 };
 
 exports.findMatchComeUp = function(req, res) {
-    _findMatch('comeup', req, res);
-};
-
-let _defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
-    let statExist = false;
-    if (player.statistics.length === 0) {
-        addStatisticsToPlayer(player, idMatch);
-    }
-    for (let i = 0, x = player.statistics.length; i < x; i++) {
-        if (player.statistics[i].match_id.toString() === idMatch.toString()) {
-            statExist = true
-        }
-    }
-
-    if (!statExist) {
-        addStatisticsToPlayer(player, idMatch);
-        console.log('defaultPosition');
-    }
-
-    player.position = position;
-    player.save();
-    if (playersSelected.indexOf(player._id) < 0) {
-        playersSelected.push(player);
-
-    }
-    real_time.addPlayerSelected_firebase(player, idMatch, idCoach);
-
+    privateMatch._findMatch('comeup', req, res);
 };
 
 exports.defaultPosition = (req, res) => {
@@ -656,7 +569,7 @@ exports.defaultPosition = (req, res) => {
 
                                         // placement du gardien
                                         if (player.favourite_position === Football.GD && GD === false) {
-                                            _defaultPosition(player, idMatch, 'GD', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'GD', idCoach, playersSelected);
                                             GD = true;
                                             maxPlayer++;
                                             continue;
@@ -664,70 +577,70 @@ exports.defaultPosition = (req, res) => {
                                         }
 
                                         if (player.favourite_position === Football.DEF && DFG === false) {
-                                            _defaultPosition(player, idMatch, 'DFG', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'DFG', idCoach, playersSelected);
                                             DFG = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.DEF && DFD === false) {
-                                            _defaultPosition(player, idMatch, 'DFD', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'DFD', idCoach, playersSelected);
                                             DFD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.AR && ARG === false) {
-                                            _defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected);
                                             ARG = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.AR && ARD === false) {
-                                            _defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected);
                                             ARD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.MD && MCD === false) {
-                                            _defaultPosition(player, idMatch, 'MCD', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'MCD', idCoach, playersSelected);
                                             MCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.MD && MCG === false) {
-                                            _defaultPosition(player, idMatch, 'MCG', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'MCG', idCoach, playersSelected);
                                             MCG = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && MD === false) {
-                                            _defaultPosition(player, idMatch, 'MD', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'MD', idCoach, playersSelected);
                                             MD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && MG === false) {
-                                            _defaultPosition(player, idMatch, 'MG', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'MG', idCoach, playersSelected);
                                             MG = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.AV && ATG === false) {
-                                            _defaultPosition(player, idMatch, 'ATG', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'ATG', idCoach, playersSelected);
                                             ATG = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
                                         if (player.favourite_position === Football.AV && ATD === false) {
-                                            _defaultPosition(player, idMatch, 'ATD', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'ATD', idCoach, playersSelected);
                                             ATD = true;
                                             maxPlayer++;
                                             continue;
@@ -735,7 +648,7 @@ exports.defaultPosition = (req, res) => {
 
                                         if (maxPlayer < 14) {
 
-                                            _defaultPosition(player, idMatch, 'REM', idCoach, playersSelected);
+                                            privateMatch._defaultPosition(player, idMatch, 'REM', idCoach, playersSelected);
                                             maxPlayer++;
                                             continue;
                                         }
