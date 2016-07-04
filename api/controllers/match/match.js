@@ -197,60 +197,12 @@ exports.getTactique = function(req, res) {
         if (tactique === '4-4-2') {
             res.json({
                 success: true,
-                tactique: [{
-                    post: 'GD'
-                }, {
-                    post: 'ARD'
-                }, {
-                    post: 'ARG'
-                }, {
-                    post: 'DFG'
-                }, {
-                    post: 'DFD'
-                }, {
-                    post: 'MCD'
-                }, {
-                    post: 'MCG'
-                }, {
-                    post: 'MD'
-                }, {
-                    post: 'MG'
-                }, {
-                    post: 'ATD'
-                }, {
-                    post: 'ATG'
-                }, {
-                    post: 'REM'
-                }]
+                tactique: Football.QQDEUX_POST
             });
         } else if (tactique === '4-3-3') {
             res.json({
                 success: true,
-                tactique: [{
-                    post: 'GD'
-                }, {
-                    post: 'ARD'
-                }, {
-                    post: 'ARG'
-                }, {
-                    post: 'DFG'
-                }, {
-                    post: 'DFD'
-                }, {
-                    post: 'MC'
-                }, {
-                    post: 'MCG'
-                }, {
-                    post: 'MCD'
-                }, {
-                    post: 'AV'
-                }, {
-                    post: 'ATD'
-                }, {
-                    post: 'ATG'
-                }, {
-                    post: 'REM'
-                }]
+                tactique: Football.QTTROIS_POST
             });
         } else {
             res.json({
