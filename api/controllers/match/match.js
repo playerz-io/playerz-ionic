@@ -604,7 +604,7 @@ exports.defaultPosition = (req, res) => {
                                             maxPlayer++;
                                             continue;
                                         }
-                                    }//for
+                                    } //for
                                     console.log(maxPlayer);
                                 } //while
                             }
@@ -706,34 +706,45 @@ exports.getPlayerNoSelected = (req, res) => {
         async.waterfall([
             (cb) => {
                 Coach.findById(idCoach, (err, coach) => {
+
+                    if (err)
+                        throw err;
+
                     let team = coach.team;
                     let players = team.players;
-                    let playersSelected = team.matchs.id(match_id).playerSelected;
-                    //console.log(playersSelected, players);
+                    let match = team.matchs.id(match_id);
+                    let playersSelected = match.playerSelected;
                     let playersNoSelected = Utils.diffArray(players, playersSelected);
-                    //  console.log(playersNoSelected);
 
-                    cb(null, playersNoSelected);
+                    cb(null, playersNoSelected, coach, match);
                 });
             },
 
-            (playersNoSelected, cb) => {
+            (playersNoSelected, coach, match, cb) => {
                 //  console.log(playersNoSelected);
                 Player.find({
                     _id: {
                         "$in": playersNoSelected
                     }
                 }, (err, players) => {
-                    for (let player of players) {
-                        console.log(player);
-                        real_time.playersNoSelected_firebase(match_id, idCoach, player);
-                    }
+                    let matchPlayerNoSelected = match.playerNoSelected;
+                    
                     if (err)
                         throw err;
 
+                    for (let player of players) {
+
+                        if (matchPlayerNoSelected.indexOf(player._id) < 0) {
+                            matchPlayerNoSelected.push(player);
+                        }
+                        real_time.playersNoSelected_firebase(match_id, idCoach, player);
+                    }
+
+                    coach.save();
+
                     return res.status(202).json({
                         success: true,
-                        players
+                        players: match.playerNoSelected
                     });
                 });
             }
