@@ -16,6 +16,10 @@ let MatchSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Player'
     }],
+    playerNoSelected: [{
+        type: Schema.ObjectId,
+        ref: 'Player'
+    }],
     formation: String,
     schemaMatch: [],
     statistics : {
