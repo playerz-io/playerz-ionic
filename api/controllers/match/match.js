@@ -14,6 +14,8 @@ let async = require('async');
 let Football = require('../../sports/football');
 let privateMatch = require('./private');
 
+
+//add new match
 exports.addMatch = function(req, res) {
     let token = getToken(req.headers);
 
@@ -22,8 +24,8 @@ exports.addMatch = function(req, res) {
     let type = req.body.type;
     let date = req.body.date;
 
-
     if (token) {
+
         let decoded = jwt.decode(token, config.secret);
 
         let idCoach = decoded._id;
@@ -47,10 +49,7 @@ exports.addMatch = function(req, res) {
 
         newMatch.save(function(err, match) {
             if (err) {
-                return res.json({
-                    success: false,
-                    msg: 'Error save match'
-                });
+                throw err;
             }
         });
 
@@ -58,26 +57,24 @@ exports.addMatch = function(req, res) {
             if (err)
                 throw err;
 
-            console.log(coach.team.matchs);
             coach.team.matchs.push(newMatch);
             coach.save();
             res.json({
                 success: true,
                 match: coach.team.matchs
             });
-
         });
 
-
     } else {
+
         return res.status(403).send({
             success: false,
             msg: 'No token provided.'
         });
     }
-
 };
 
+//get all match d'un coach
 exports.getMatchs = function(req, res) {
     let token = getToken(req.headers);
 
@@ -101,6 +98,7 @@ exports.getMatchs = function(req, res) {
     }
 };
 
+//get match d'un coach by id
 exports.getMatchById = function(req, res) {
     let token = getToken(req.headers);
 
@@ -125,24 +123,26 @@ exports.getMatchById = function(req, res) {
     }
 };
 
+//remove le match d'un coach
 exports.removeMatch = function(req, res) {
+
     let token = getToken(req.headers);
+    let idMatch = req.body.id;
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
-
 
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
                 throw err;
 
             Match.remove({
-                _id: req.body.id
+                _id: idMatch
             }, function(err, ok) {
                 console.log(err, ok);
             });
 
-            coach.team.matchs.id(req.body.id).remove();
+            coach.team.matchs.id(idMatch).remove();
             coach.save();
             res.json({
                 success: true,
@@ -158,8 +158,12 @@ exports.removeMatch = function(req, res) {
     }
 };
 
+//choisir une formation pour un match
 exports.addFormation = function(req, res) {
+
     let token = getToken(req.headers);
+    let idMatch = req.body.id;
+    let formation = formation;
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
@@ -168,9 +172,9 @@ exports.addFormation = function(req, res) {
             if (err)
                 throw err;
 
-            let match = coach.team.matchs.id(req.body.id);
+            let match = coach.team.matchs.id(idMatch);
 
-            match.formation = req.body.formation;
+            match.formation = formation;
             coach.save();
             console.log(match);
 
@@ -188,11 +192,12 @@ exports.addFormation = function(req, res) {
     }
 };
 
+//obtenir la tactique d'un match
 exports.getTactique = function(req, res) {
-    let token = getToken(req.headers);
 
+    let token = getToken(req.headers);
+    let tactique = req.query.tactique;
     if (token) {
-        let tactique = req.query.tactique;
 
         if (tactique === '4-4-2') {
             res.json({
@@ -217,6 +222,7 @@ exports.getTactique = function(req, res) {
     }
 };
 
+//supprimer un joueur sélectionné
 exports.removePlayerSelected = function(req, res) {
     let token = getToken(req.headers);
 
@@ -254,7 +260,6 @@ exports.removePlayerSelected = function(req, res) {
                     });
                 }
 
-
                 coach.save(function(err) {
                     if (err)
                         res.status(404).json({
@@ -268,9 +273,7 @@ exports.removePlayerSelected = function(req, res) {
                 });
 
             });
-
         });
-
     } else {
         return res.status(403).send({
             success: false,
@@ -280,6 +283,7 @@ exports.removePlayerSelected = function(req, res) {
 };
 
 exports.addPlayerSelected = function(req, res) {
+
     let token = getToken(req.headers);
 
     if (token) {
@@ -372,19 +376,16 @@ exports.addPlayerSelected = function(req, res) {
                             for (let i = 0, x = player.statistics.length; i < x; i++) {
                                 if (player.statistics[i].match_id.toString() === match_id.toString()) {
                                     statExist = true;
-
                                 }
                             }
 
                             if (!statExist) {
                                 //add stastistic to player
-                                //console.log('stat stat');
                                 privateMatch._addStatisticsToPlayer(player, match_id);
                             }
                         }
 
                         if (formation === '4-4-2') {
-                            /************* add verif position ***********************/
 
                             real_time.addPlayerSelected_firebase(player, match_id, decoded._id);
                             playerSelected.push(player);
@@ -407,10 +408,7 @@ exports.addPlayerSelected = function(req, res) {
                             playersSelected: playerSelected
                         });
                     }
-
-
                 });
-
             }
         ]);
     } else {
@@ -418,16 +416,16 @@ exports.addPlayerSelected = function(req, res) {
             success: false,
             msg: 'No token provided.'
         });
-
     }
 };
 
-
+//get player selected
 exports.getPlayerSelected = function(req, res) {
 
     let token = getToken(req.headers);
 
     if (token) {
+
         let decoded = jwt.decode(token, config.secret);
 
         Coach.findById(decoded._id)
@@ -455,14 +453,21 @@ exports.getPlayerSelected = function(req, res) {
     }
 };
 
-
+//return les matchs fini
 exports.findMatchFinished = function(req, res) {
     privateMatch._findMatch('finished', req, res);
 };
 
+//return les match en cours
 exports.findMatchComeUp = function(req, res) {
     privateMatch._findMatch('comeup', req, res);
 };
+
+
+//ajoute une selection de 11 joueurs par défault
+//en fonction de leurs position favorite
+//la fonction fait également la différence entre les joueurs séléctionné et les joueurs de l'effectif
+//pour trouvé les joueurs non sélectionnés
 
 exports.defaultPosition = (req, res) => {
     let token = getToken(req.headers);
@@ -599,13 +604,11 @@ exports.defaultPosition = (req, res) => {
                                         }
 
                                         if (maxPlayer < 14) {
-
                                             privateMatch._defaultPosition(player, idMatch, 'REM', idCoach, playersSelected);
                                             maxPlayer++;
                                             continue;
                                         }
                                     } //for
-                                    console.log(maxPlayer);
                                 } //while
                             }
                         }
@@ -615,6 +618,7 @@ exports.defaultPosition = (req, res) => {
             },
 
             (match, players, playersSelected, coach) => {
+                //diff between playersSelected and players of troop
                 let playersNoSelected = Utils.diffArray(players, playersSelected);
 
                 console.log(players);
@@ -654,7 +658,8 @@ exports.defaultPosition = (req, res) => {
     }
 };
 
-
+//switch position entre 2 joueurs selectionnés.
+//switch position entre un joueur selectioné et un non selectioné
 exports.switchPosition = (req, res) => {
 
     let player_id_one = req.body.player_id_one;
@@ -679,9 +684,14 @@ exports.switchPosition = (req, res) => {
                     let match = coach.team.matchs.id(match_id);
                     let playersSelected = match.playerSelected;
                     let playersNoSelected = match.playerNoSelected;
+
+                    //présence du joueur 1 dans les joueurs sélectionnés
                     let fstPlayerSelectedExists = playersSelected.indexOf(player_id_one);
+                    //présence du joueur 2 dans les joueurs sélectionnés
                     let sndPlayerSelectedExists = playersSelected.indexOf(player_id_two);
+                    //présence du joueur 2 dans les joueurs non sélectionnés
                     let fstPlayerNoSelectedExists = playersNoSelected.indexOf(player_id_one);
+                    //présence du joueur 2 dans les joueurs non sélectionnés
                     let sndPlayerNoSelectedExists = playersNoSelected.indexOf(player_id_two);
 
                     cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
@@ -691,7 +701,7 @@ exports.switchPosition = (req, res) => {
 
             (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
 
-
+                //si joueur 1 est dans les joueurs selectionnés et joueur 2 dans les joueurs non sélectionnés
                 if (fstPlayerSelectedExists >= 0 && sndPlayerNoSelectedExists >= 0) {
 
                     Player.findById(player_id_one, (fstErr, fstPlayer) => {
@@ -721,6 +731,7 @@ exports.switchPosition = (req, res) => {
 
             (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
 
+                //si joueur 2 est dans les joueurs selectionnés et joueur 1 dans les joueurs non sélectionnés
                 if (fstPlayerNoSelectedExists >= 0 && sndPlayerSelectedExists >= 0) {
 
                     Player.findById(player_id_two, (sndErr, sndPlayer) => {
@@ -744,14 +755,12 @@ exports.switchPosition = (req, res) => {
                 } else {
                     cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
                 }
-
-
             },
 
             (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
 
                 coach.save();
-
+                //si les deux joueurs son selectionnés
                 if (fstPlayerSelectedExists >= 0 && sndPlayerSelectedExists >= 0) {
 
                     Player.findById(player_id_one, (fstErr, fstPlayer) => {
@@ -819,68 +828,3 @@ exports.switchPosition = (req, res) => {
     }
 
 };
-
-// exports.getPlayerNoSelected = (req, res) => {
-//
-//     let match_id = req.query.match_id;
-//     let token = getToken(req.headers);
-//
-//     if (token) {
-//
-//         let decoded = jwt.decode(token, config.secret);
-//         let idCoach = decoded._id;
-//
-//         async.waterfall([
-//             (cb) => {
-//                 Coach.findById(idCoach, (err, coach) => {
-//
-//                     if (err)
-//                         throw err;
-//
-//                     let team = coach.team;
-//                     let players = team.players;
-//                     let match = team.matchs.id(match_id);
-//                     let playersSelected = match.playerSelected;
-//                     let playersNoSelected = Utils.diffArray(players, playersSelected);
-//
-//                     cb(null, playersNoSelected, coach, match);
-//                 });
-//             },
-//
-//             (playersNoSelected, coach, match, cb) => {
-//                 //  console.log(playersNoSelected);
-//                 Player.find({
-//                     _id: {
-//                         "$in": playersNoSelected
-//                     }
-//                 }, (err, players) => {
-//                     let matchPlayerNoSelected = match.playerNoSelected;
-//
-//                     if (err)
-//                         throw err;
-//
-//                     for (let player of players) {
-//
-//                         if (matchPlayerNoSelected.indexOf(player._id) < 0) {
-//                             matchPlayerNoSelected.push(player);
-//                         }
-//                         real_time.playersNoSelected_firebase(match_id, idCoach, player);
-//                     }
-//
-//                     coach.save();
-//                     //console.log(match.playerNoSelected);
-//                     return res.status(202).json({
-//                         success: true,
-//                         players: match.playerNoSelected
-//                     });
-//                 });
-//             }
-//         ])
-//
-//     } else {
-//         return res.status(403).json({
-//             success: false,
-//             msg: 'No token provided.'
-//         });
-//     }
-// }
