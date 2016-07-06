@@ -12,6 +12,19 @@ angular.module('starter.controller.match-stat', [])
         let refMatch = FireService.refMatch(StorageService.getStorageMatchId(), self.coachId);
         self.formation = '4-4-2';
         self.showDelete = false;
+
+        self.defaultPosition = () => {
+            MatchService.defaultPosition(self.matchId)
+                .success((data) => {
+                    console.log(data);
+                    self.playerSelected = FireService.refPlayer(refMatch);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+
+        };
+        self.defaultPosition();
         //define if player is selected by user
         // self.selected = -1;
         // self.switched = false;
@@ -194,8 +207,7 @@ angular.module('starter.controller.match-stat', [])
             MatchService.getPlayerNoSelected(self.matchId)
                 .success((data) => {
                     console.log(data);
-                    self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
-                    self.playersNoSelected = FireService.refPlayer(self.noSeleted);
+
                 })
                 .error((data) => {
 
@@ -213,18 +225,13 @@ angular.module('starter.controller.match-stat', [])
                 });
         };
 
+        self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
+        self.playersNoSelected = FireService.refPlayer(self.noSeleted);
 
 
-        MatchService.defaultPosition(self.matchId)
-            .success((data) => {
-                console.log(data);
-                self.playerSelected = FireService.refPlayer(refMatch);
-            })
-            .error((data) => {
-                console.log(data);
-            })
 
-        self.getPlayerNoSelected();
+
+        //self.getPlayerNoSelected();
 
 
 

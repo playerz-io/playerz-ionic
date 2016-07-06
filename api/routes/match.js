@@ -41,9 +41,9 @@ router
     .delete('/player_selected', passport.authenticate('jwt', {
         session: false
     }), controllerMatch.removePlayerSelected)
-    .get('/player_no_selected', passport.authenticate('jwt', {
-        session: false
-    }), controllerMatch.getPlayerNoSelected)
+    // .get('/player_no_selected', passport.authenticate('jwt', {
+    //     session: false
+    // }), controllerMatch.getPlayerNoSelected)
     //get match comeup
     .get('/match_finished', passport.authenticate('jwt', {
         session: false

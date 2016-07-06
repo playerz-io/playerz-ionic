@@ -509,7 +509,7 @@ exports.defaultPosition = (req, res) => {
                             "$in": players
                         }
                     },
-                    (err, players) => {
+                    (err, playersTeam) => {
 
                         if (coach.sport === Football.FOOTBALL) {
 
@@ -517,7 +517,7 @@ exports.defaultPosition = (req, res) => {
 
                                 while (maxPlayer < 11) {
 
-                                    for (let player of players) {
+                                    for (let player of playersTeam) {
 
                                         // placement du gardien
                                         if (player.favourite_position === Football.GD && GD === false) {
@@ -609,11 +609,41 @@ exports.defaultPosition = (req, res) => {
                                 } //while
                             }
                         }
-                        coach.save();
-                        res.json({
-                            msg: 'OK'
-                        })
+                        done(null, match, players, playersSelected, coach);
+
                     });
+            },
+
+            (match, players, playersSelected, coach) => {
+                let playersNoSelected = Utils.diffArray(players, playersSelected);
+
+                console.log(players);
+                Player.find({
+                    _id: {
+                        "$in": playersNoSelected
+                    }
+                }, (err, players) => {
+                    let matchPlayerNoSelected = match.playerNoSelected;
+
+                    if (err)
+                        throw err;
+
+                    for (let player of players) {
+
+                        if (matchPlayerNoSelected.indexOf(player._id) === -1) {
+                            matchPlayerNoSelected.push(player);
+                        }
+                        real_time.playersNoSelected_firebase(idMatch, idCoach, player);
+                    }
+
+                    coach.save();
+
+                    return res.status(202).json({
+                        success: true,
+                        players: match.playerNoSelected
+                    });
+                });
+
             }
         ]);
     } else {
@@ -638,51 +668,148 @@ exports.switchPosition = (req, res) => {
         let idCoach = decoded._id;
 
         async.waterfall([
+
             (cb) => {
-                Player.findById(player_id_one, (err, fstPlayer) => {
-                    if (err)
+                Coach.findById(idCoach, (err, coach) => {
+
+                    if (err) {
                         throw err;
+                    }
 
-                    //  console.log(fstPlayer);
-                    let fstPosition = fstPlayer.position;
-                    cb(null, fstPlayer, fstPosition);
-                });
-            },
+                    let match = coach.team.matchs.id(match_id);
+                    let playersSelected = match.playerSelected;
+                    let playersNoSelected = match.playerNoSelected;
+                    let fstPlayerSelectedExists = playersSelected.indexOf(player_id_one);
+                    let sndPlayerSelectedExists = playersSelected.indexOf(player_id_two);
+                    let fstPlayerNoSelectedExists = playersNoSelected.indexOf(player_id_one);
+                    let sndPlayerNoSelectedExists = playersNoSelected.indexOf(player_id_two);
 
-            (fstPlayer, fstPosition, cb) => {
-                Player.findById(player_id_two, (err, sndPlayer) => {
-                    if (err)
-                        throw err;
-
-                    //  console.log(sndPlayer);
-                    let sndPosition = sndPlayer.position;
-
-                    fstPlayer.position = sndPosition;
-                    fstPlayer.save();
-
-                    sndPlayer.position = fstPosition;
-                    sndPlayer.save();
-
-                    cb(null, fstPlayer, sndPlayer);
+                    cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
 
                 });
             },
 
-            (fstPlayer, sndPlayer, cb) => {
+            (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
 
-                let fstPlayerName = `${fstPlayer.first_name} ${fstPlayer.last_name}`;
-                let sndPlayerName = `${sndPlayer.first_name} ${sndPlayer.last_name}`;
 
-                real_time.switchPosition_firebase(player_id_one, player_id_two, match_id, idCoach);
+                if (fstPlayerSelectedExists >= 0 && sndPlayerNoSelectedExists >= 0) {
 
-                return res.status(200).json({
-                    success: true,
-                    msg: `${fstPlayerName} et ${sndPlayerName} ont changé de position`
+                    Player.findById(player_id_one, (fstErr, fstPlayer) => {
+                        if (fstErr) {
+                            throw fstErr;
+                        }
+                        Player.findById(player_id_two, (sndErr, sndPlayer) => {
+                            if (sndErr) {
+                                throw sndErr;
+                            }
+
+                            playersNoSelected.push(fstPlayer);
+                            playersSelected.splice(fstPlayerSelectedExists, 1);
+
+                            playersSelected.push(sndPlayer);
+                            playersNoSelected.splice(sndPlayerNoSelectedExists, 1);
+
+                            cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
+
+                        });
+                    });
+                } else {
+                    cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
+                }
+
+            },
+
+            (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
+
+                if (fstPlayerNoSelectedExists >= 0 && sndPlayerSelectedExists >= 0) {
+
+                    Player.findById(player_id_two, (sndErr, sndPlayer) => {
+                        if (sndErr) {
+                            throw sndErr;
+                        }
+                        Player.findById(player_id_one, (fstErr, fstPlayer) => {
+                            if (fstErr) {
+                                throw fstErr;
+                            }
+
+                            playersNoSelected.push(sndPlayer);
+                            playersSelected.splice(sndPlayerSelectedExists, 1);
+
+                            playersSelected.push(fstPlayer);
+                            playersNoSelected.splice(fstPlayerNoSelectedExists, 1);
+
+                            cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
+                        });
+                    });
+                } else {
+                    cb(null, playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists);
+                }
+
+
+            },
+
+            (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
+
+                coach.save();
+
+                if (fstPlayerSelectedExists >= 0 && sndPlayerSelectedExists >= 0) {
+
+                    Player.findById(player_id_one, (fstErr, fstPlayer) => {
+                        if (fstErr)
+                            throw fstErr;
+
+                        Player.findById(player_id_two, (sndErr, sndPlayer) => {
+                            if (sndErr)
+                                throw sndErr;
+
+                            //  console.log(sndPlayer);
+                            let sndPosition = sndPlayer.position;
+                            let fstPosition = fstPlayer.position;
+
+                            fstPlayer.position = sndPosition;
+                            fstPlayer.save();
+
+                            sndPlayer.position = fstPosition;
+                            sndPlayer.save();
+
+                            cb(null);
+
+                        });
+                    });
+                } else {
+                    cb(null);
+                }
+
+            },
+
+            (cb) => {
+
+                Player.findById(player_id_two, (sndErr, sndPlayer) => {
+
+                    if (sndErr) {
+                        throw sndErr;
+                    }
+
+                    Player.findById(player_id_one, (fstErr, fstPlayer) => {
+                        console.log(fstPlayer);
+                        if (fstErr) {
+                            throw fstErr;
+                        }
+
+                        let fstPlayerName = `${fstPlayer.first_name} ${fstPlayer.last_name}`;
+                        let sndPlayerName = `${sndPlayer.first_name} ${sndPlayer.last_name}`;
+
+                        real_time.switchPosition_firebase(player_id_one, player_id_two, match_id, idCoach);
+
+                        return res.status(200).json({
+                            success: true,
+                            msg: `${fstPlayerName} et ${sndPlayerName} ont changé de position`
+                        });
+
+                    });
                 });
-
             }
-
-        ])
+        ]);
 
     } else {
         return res.status(403).json({
@@ -693,67 +820,67 @@ exports.switchPosition = (req, res) => {
 
 };
 
-exports.getPlayerNoSelected = (req, res) => {
-
-    let match_id = req.query.match_id;
-    let token = getToken(req.headers);
-
-    if (token) {
-
-        let decoded = jwt.decode(token, config.secret);
-        let idCoach = decoded._id;
-
-        async.waterfall([
-            (cb) => {
-                Coach.findById(idCoach, (err, coach) => {
-
-                    if (err)
-                        throw err;
-
-                    let team = coach.team;
-                    let players = team.players;
-                    let match = team.matchs.id(match_id);
-                    let playersSelected = match.playerSelected;
-                    let playersNoSelected = Utils.diffArray(players, playersSelected);
-
-                    cb(null, playersNoSelected, coach, match);
-                });
-            },
-
-            (playersNoSelected, coach, match, cb) => {
-                //  console.log(playersNoSelected);
-                Player.find({
-                    _id: {
-                        "$in": playersNoSelected
-                    }
-                }, (err, players) => {
-                    let matchPlayerNoSelected = match.playerNoSelected;
-                    
-                    if (err)
-                        throw err;
-
-                    for (let player of players) {
-
-                        if (matchPlayerNoSelected.indexOf(player._id) < 0) {
-                            matchPlayerNoSelected.push(player);
-                        }
-                        real_time.playersNoSelected_firebase(match_id, idCoach, player);
-                    }
-
-                    coach.save();
-
-                    return res.status(202).json({
-                        success: true,
-                        players: match.playerNoSelected
-                    });
-                });
-            }
-        ])
-
-    } else {
-        return res.status(403).json({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
-}
+// exports.getPlayerNoSelected = (req, res) => {
+//
+//     let match_id = req.query.match_id;
+//     let token = getToken(req.headers);
+//
+//     if (token) {
+//
+//         let decoded = jwt.decode(token, config.secret);
+//         let idCoach = decoded._id;
+//
+//         async.waterfall([
+//             (cb) => {
+//                 Coach.findById(idCoach, (err, coach) => {
+//
+//                     if (err)
+//                         throw err;
+//
+//                     let team = coach.team;
+//                     let players = team.players;
+//                     let match = team.matchs.id(match_id);
+//                     let playersSelected = match.playerSelected;
+//                     let playersNoSelected = Utils.diffArray(players, playersSelected);
+//
+//                     cb(null, playersNoSelected, coach, match);
+//                 });
+//             },
+//
+//             (playersNoSelected, coach, match, cb) => {
+//                 //  console.log(playersNoSelected);
+//                 Player.find({
+//                     _id: {
+//                         "$in": playersNoSelected
+//                     }
+//                 }, (err, players) => {
+//                     let matchPlayerNoSelected = match.playerNoSelected;
+//
+//                     if (err)
+//                         throw err;
+//
+//                     for (let player of players) {
+//
+//                         if (matchPlayerNoSelected.indexOf(player._id) < 0) {
+//                             matchPlayerNoSelected.push(player);
+//                         }
+//                         real_time.playersNoSelected_firebase(match_id, idCoach, player);
+//                     }
+//
+//                     coach.save();
+//                     //console.log(match.playerNoSelected);
+//                     return res.status(202).json({
+//                         success: true,
+//                         players: match.playerNoSelected
+//                     });
+//                 });
+//             }
+//         ])
+//
+//     } else {
+//         return res.status(403).json({
+//             success: false,
+//             msg: 'No token provided.'
+//         });
+//     }
+// }

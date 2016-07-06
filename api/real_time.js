@@ -99,15 +99,6 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
     let referenceFstPlayerNo = refPlayerNoSelected.child(fstPlayerId.toString());
     let referenceSndPlayerNo = refPlayerNoSelected.child(sndPlayerId.toString());
 
-    //console.log(referenceFstPlayerNo, referenceSndPlayerNo);
-
-    // refPlayerNoSelected.once("value", (snapshot) => {
-    //
-    //     if (!)
-    //         console.log(snapshot.child(fstPlayerId).exists());
-    // });
-
-    //console.log(referencePlayerOne, referencePlayerTwo);
     refPlayerSelected.once('value', (snapPlayerSelected) => {
         refPlayerNoSelected.once('value', (snapPlayerNoSelected) => {
             let fstPlayerSelectedExists = snapPlayerSelected.child(fstPlayerId).exists();
@@ -196,9 +187,6 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
             });
         }
     });
-
-
-
 };
 
 exports.playersNoSelected_firebase = (matchId, coachId, player) => {
@@ -213,9 +201,18 @@ exports.playersNoSelected_firebase = (matchId, coachId, player) => {
             first_name: player.first_name,
             last_name: player.last_name,
             favourite_position: player.favourite_position
-        })
+        });
 }
 
-exports.playersNoSelectedToRemplacant = (matchId, coachId, player) => {
+exports.cleanReference_firebase = (coachId, matchId) => {
+  let refMatch = ref
+      .child(coachId.toString())
+      .child("matchs")
+      .child(matchId.toString());
+
+  let refPlayerSelected = refMatch.child('players_selected').remove();
+
+  let refPlayerNoSelected = refMatch.child('players_no_selected').remove();
+
 
 }
