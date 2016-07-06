@@ -1,30 +1,30 @@
 'use strict'
 angular.module('starter.controller.home', [])
 
-.controller('HomeTabCtrl', function(PaymentService, stripe, ProfileService, AuthService, $ionicPopover, $scope, $state, $ionicPopup, $ionicModal) {
+.controller('HomeTabCtrl', function(PaymentService, ProfileService, AuthService, $ionicPopover, $scope, $state, $ionicPopup, $ionicModal) {
     let self = this;
     let dataProfile;
     // TODO: signifier à l'utilisateur qu'il doit absolument donner ses coordonnées
-    self.charge = () => {
-        return stripe.card.createToken(self.payment)
-            .then((response) => {
-                console.log(response);
-                PaymentService.saveTokenStripe(response.id)
-                    .success((data) => {
-                        console.log(data);
-                    })
-                    .error((data) => {
-                        console.log(data);
-                    });
-
-                $scope.modal.hide();
-
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-    };
+    // self.charge = () => {
+    //     return stripe.card.createToken(self.payment)
+    //         .then((response) => {
+    //             console.log(response);
+    //             PaymentService.saveTokenStripe(response.id)
+    //                 .success((data) => {
+    //                     console.log(data);
+    //                 })
+    //                 .error((data) => {
+    //                     console.log(data);
+    //                 });
+    //
+    //             $scope.modal.hide();
+    //
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
+    //
+    // };
 
     $ionicModal.fromTemplateUrl('templates/payment-modal.html', {
         scope: $scope,
