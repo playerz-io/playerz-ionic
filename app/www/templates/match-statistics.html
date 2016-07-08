@@ -18,7 +18,7 @@
 
         </div>
         <div ng-if="matchStat.formation === '4-4-2'" class="quatre col col-75">
-            <four-fourtwo info="matchStat.playerSelected" drag="false"></four-fourtwo>
+            <four-fourtwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)"></four-fourtwo>
         </div>
 
     </div>

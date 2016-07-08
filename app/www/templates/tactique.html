@@ -52,7 +52,7 @@
 
                 <div class="row quatre">
                     <div ng-if="tactique.formation === '4-4-2'" class="tac">
-                        <four-fourtwo info="tactique.playerSelected" drag="true" drop-complete="onDropComplete(index, data)"></four-fourtwo>
+                        <four-fourtwo info="tactique.playerSelected" drag="true" drop-complete="tactique.onDropComplete(index, data)" ></four-fourtwo>
                     </div>
 
                     <div ng-if="tactique.formation === '4-3-3'">

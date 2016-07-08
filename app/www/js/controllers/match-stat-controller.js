@@ -34,8 +34,6 @@ angular.module('starter.controller.match-stat', [])
                 .success(function(data) {
                     console.log(data);
                     // data of match
-                    self.playerSelected = data.playerSelected;
-
                 })
                 .error(function(data) {
                     console.log(data);

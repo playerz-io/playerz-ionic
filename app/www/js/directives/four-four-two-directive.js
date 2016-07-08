@@ -7,7 +7,8 @@ angular.module('starter.directives.fourFourtwo', [])
       scope: {
         playerInfo: '=info',
         drag: '=',
-        dropComplete: '&'
+        dropComplete: '&',
+        ballPlayed: '&'
       }
     };
   });
