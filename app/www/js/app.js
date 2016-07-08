@@ -176,7 +176,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
         .state('tactique', {
             url: '/tactique',
             templateUrl: 'templates/tactique.html',
-            controller: 'MatchStatCtrl as matchStat',
+            controller: 'TactiqueCtrl as tactique',
             params: {
                 matchId: null,
             }
