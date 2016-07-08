@@ -6,7 +6,7 @@ angular.module('starter.directives.fourFourtwo', [])
       restrict: 'E',
       scope: {
         playerInfo: '=info',
-        isDisableClick: '=click',
+        drag: '=',
         dropComplete: '&'
       }
     };
