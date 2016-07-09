@@ -1,17 +1,52 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval) {
 
         let self = this;
 
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
-
         let refMatch = FireService.refMatch(self.matchId, self.coachId);
         self.playerSelected = FireService.refPlayer(refMatch);
         self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
         self.playersNoSelected = FireService.refPlayer(self.noSeleted);
+        let counter;
+        self.minutes = 0;
+        self.seconds = 0;
+        self.textSeconds = null;
+        self.textMinutes = null;
+        self.fullTime = null;
+
+        self.time = () => {
+            self.seconds++;
+            if (self.seconds > 59) {
+                self.seconds = 0;
+                self.minutes++;
+            }
+
+            self.textMinutes = self.minutes < 10 ? '0' + self.minutes : self.minutes;
+            self.textSeconds = self.seconds < 10 ? '0' + self.seconds : self.seconds;
+            self.fullTime = self.textMinutes + ':' + self.textSeconds;
+
+        }
+
+        self.stopTimer = () => {
+            console.log('OK');
+            if (angular.isDefined(counter)) {
+                console.log('counter is defined stop')
+                $interval.cancel(counter);
+                counter = undefined;
+            }
+        };
+
+        self.startTimer = () => {
+            if (angular.isDefined(counter)) {
+                console.log('counter is defined')
+                return;
+            }
+            counter = $interval(self.time, 1000);
+        };
 
         self.showCountdownPopup = () => {
             let popup = $ionicPopup.confirm({
@@ -21,6 +56,7 @@ angular.module('starter.controller.match-stat', [])
             popup.then((res) => {
                 if (res) {
                     console.log('ok');
+                    self.startTimer();
                 } else {
                     $state.go('tactique');
                 }

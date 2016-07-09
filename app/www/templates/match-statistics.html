@@ -15,6 +15,13 @@
             </br>
             <button ng-click="matchStat.countMainAction('crossesFailed')" class="button button-energized">Centre Raté</button>
             </br>
+            <button ng-click="matchStat.countMainAction('crossesFailed')" class="button button-energized">Centre Raté</button>
+            <br>
+            <button ng-click="matchStat.stopTimer()" class="button button-energized">stop</button>
+            <br>
+            <button ng-click="matchStat.startTimer()" class="button button-energized">start</button>
+            <br>
+            {{matchStat.fullTime}}
 
         </div>
         <div ng-if="matchStat.formation === '4-4-2'" class="quatre col col-75">
