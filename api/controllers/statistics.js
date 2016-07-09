@@ -150,56 +150,67 @@
                         let id_statPlayer = schema[sizeSchema - 2];
                         let id_playerRetrieveBall = schema[0];
 
-                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
 
                     });
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
                     if (stringAction === 'but' && sizeSchema >= 4) {
                         //buteur
                         Player.findById(id_statPlayer, function(err, buteur) {
                             updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                         });
-
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                     }
-                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
                     //passeur
                     if (stringAction === 'but' && sizeSchema >= 4) {
                         let id_passeur = schema[sizeSchema - 3];
                         Player.findById(id_passeur, function(err, passeur) {
                             updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                         });
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                     }
-                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
                     //avant-passeur
                     if (stringAction === 'but' && sizeSchema >= 4) {
                         let id_avant_passeur = schema[sizeSchema - 4];
                         Player.findById(id_avant_passeur, function(err, avant_passeur) {
                             updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                         });
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                     }
-                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
 
                     if (action.toString() === 'but' && sizeSchema == 3) {
                         //buteur
                         Player.findById(id_statPlayer, function(err, buteur) {
                             updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                         });
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                     }
-                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
 
                     if (action.toString() === 'but' && sizeSchema == 3) {
                         //passeur
@@ -207,13 +218,16 @@
 
                         Player.findById(id_passeur, function(err, passeur) {
                             updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                         });
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
                     }
-                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall);
+
 
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
 
                     let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null];
                     //check if id_statPlayer is not equal any actions
@@ -221,23 +235,29 @@
                         //handle all action exclude "but"
                         Player.findById(id_statPlayer, function(err, player) {
                             updateStatPlayer(player, match_id, stringAction, err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, coach);
                         });
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, coach);
                     }
-                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions);
+
 
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, coach, done) => {
                     //check if id_playerRetrieveBall is not equal any actions
                     if (actions.indexOf(id_playerRetrieveBall) === -1) {
                         //handle player retrieve ball
                         Player.findById(id_playerRetrieveBall, function(err, player) {
                             updateStatPlayer(player, match_id, 'retrieveBalls', err, coach_id);
+                            done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, coach);
                         });
+                    } else {
+                        done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, coach);
                     }
                 },
 
-                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, done) => {
+                (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, actions, coach, done) => {
                     coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
 
                     coach.team.matchs.id(match_id).schemas = [];

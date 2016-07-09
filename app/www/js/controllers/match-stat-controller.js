@@ -11,13 +11,14 @@ angular.module('starter.controller.match-stat', [])
 
         let refMatch = FireService.refMatch(self.matchId, self.coachId);
         self.playerSelected = FireService.refPlayer(refMatch);
+        self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
+        self.playersNoSelected = FireService.refPlayer(self.noSeleted);
 
         self.showConfirmEndMatchPopup = function() {
             let popup = $ionicPopup.confirm({
                 title: 'Fin du match',
                 template: 'Etes-vous sûr de vouloir terminer le match ?'
             });
-
             popup.then(function(res) {
                 if (res) {
                     self.countPercent();
@@ -26,7 +27,6 @@ angular.module('starter.controller.match-stat', [])
                 }
             });
         };
-
 
         //  update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {
@@ -88,8 +88,6 @@ angular.module('starter.controller.match-stat', [])
         };
         self.getMatch();
 
-        self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
-        self.playersNoSelected = FireService.refPlayer(self.noSeleted);
 
 
 
