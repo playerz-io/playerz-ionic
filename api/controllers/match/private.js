@@ -74,7 +74,7 @@ exports._findMatch = function(status, req, res) {
 exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
     let statExist = false;
     if (player.statistics.length === 0) {
-        _addStatisticsToPlayer(player, idMatch);
+        exports._addStatisticsToPlayer(player, idMatch);
     }
     for (let i = 0, x = player.statistics.length; i < x; i++) {
         if (player.statistics[i].match_id.toString() === idMatch.toString()) {
@@ -83,7 +83,7 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected)
     }
 
     if (!statExist) {
-        _addStatisticsToPlayer(player, idMatch);
+        exports._addStatisticsToPlayer(player, idMatch);
         console.log('defaultPosition');
     }
 

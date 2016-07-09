@@ -43,7 +43,7 @@ angular.module('starter.controller.tactique', [])
                 })
 
         };
-        self.defaultPosition();
+
 
 
         self.onDropComplete = (index, obj, evt) => {
@@ -191,7 +191,11 @@ angular.module('starter.controller.tactique', [])
             //self.addFormation();
             //  self.getPlayers();
             //  self.getPlayerNoSelected();
+            // TODO: faire choisir une formation vie un modal ou une popup
+        self.addFormation();
+        self.defaultPosition();
         self.getMatch();
         self.getNameTeam();
+
 
     });
