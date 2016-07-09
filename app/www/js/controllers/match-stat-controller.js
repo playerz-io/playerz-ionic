@@ -3,9 +3,8 @@
 angular.module('starter.controller.match-stat', [])
     .controller('MatchStatCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup) {
 
-        //  const NBR_PLAYER_SWITCHED = 2;
         let self = this;
-        //  self.disable = true;
+
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
 
@@ -13,6 +12,20 @@ angular.module('starter.controller.match-stat', [])
         self.playerSelected = FireService.refPlayer(refMatch);
         self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
         self.playersNoSelected = FireService.refPlayer(self.noSeleted);
+
+        self.showCountdownPopup = () => {
+            let popup = $ionicPopup.confirm({
+                title: 'Chronomètre',
+                template: 'En appuyant sur ok le chronomètre va démarrer'
+            });
+            popup.then((res) => {
+                if (res) {
+                    console.log('ok');
+                } else {
+                    $state.go('tactique');
+                }
+            })
+        };
 
         self.showConfirmEndMatchPopup = function() {
             let popup = $ionicPopup.confirm({
@@ -86,9 +99,8 @@ angular.module('starter.controller.match-stat', [])
                     console.log(data);
                 });
         };
+
         self.getMatch();
-
-
-
+        self.showCountdownPopup();
 
     });
