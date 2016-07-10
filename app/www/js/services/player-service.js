@@ -48,7 +48,7 @@ angular.module('starter')
             });
         };
 
-        let countMainAction = function(match_id, action) {
+        let countMainAction = function(match_id, action, time) {
             return $http({
                 method: 'POST',
                 headers: {
@@ -56,7 +56,8 @@ angular.module('starter')
                 },
                 data: $httpParamSerializerJQLike({
                     match_id,
-                    action
+                    action,
+                    time
                 }),
                 url: API_ENDPOINT.url + '/action'
             });

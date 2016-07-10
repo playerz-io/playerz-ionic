@@ -128,6 +128,7 @@
         let token = getToken(req.headers);
         let action = req.body.action;
         let match_id = req.body.match_id;
+        let time = req.body.time;
 
         if (token) {
             let decoded = jwt.decode(token, config.secret);
@@ -142,12 +143,13 @@
                         let match = coach.team.matchs.id(match_id);
                         let schema = match.schemas;
                         let stringAction = action.toString();
-
+                        // TODO: add time
                         schema.push(action);
+                        schema.push(time);
                         let sizeSchema = match.schemas.length;
 
                         //id player with main action(but, tir cadré, tir non cadrées...)
-                        let id_statPlayer = schema[sizeSchema - 2];
+                        let id_statPlayer = schema[sizeSchema - 3];
                         let id_playerRetrieveBall = schema[0];
 
                         done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
@@ -156,7 +158,7 @@
                 },
 
                 (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
-                    if (stringAction === 'but' && sizeSchema >= 4) {
+                    if (stringAction === 'but' && sizeSchema >= 5) {
                         //buteur
                         Player.findById(id_statPlayer, function(err, buteur) {
                             updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
@@ -170,8 +172,8 @@
 
                 (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
                     //passeur
-                    if (stringAction === 'but' && sizeSchema >= 4) {
-                        let id_passeur = schema[sizeSchema - 3];
+                    if (stringAction === 'but' && sizeSchema >= 5) {
+                        let id_passeur = schema[sizeSchema - 4];
                         Player.findById(id_passeur, function(err, passeur) {
                             updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
                             done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
@@ -184,8 +186,8 @@
 
                 (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
                     //avant-passeur
-                    if (stringAction === 'but' && sizeSchema >= 4) {
-                        let id_avant_passeur = schema[sizeSchema - 4];
+                    if (stringAction === 'but' && sizeSchema >= 5) {
+                        let id_avant_passeur = schema[sizeSchema - 5];
                         Player.findById(id_avant_passeur, function(err, avant_passeur) {
                             updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
                             done(null, stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach);
@@ -198,7 +200,7 @@
 
                 (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
 
-                    if (action.toString() === 'but' && sizeSchema == 3) {
+                    if (action.toString() === 'but' && sizeSchema == 4) {
                         //buteur
                         Player.findById(id_statPlayer, function(err, buteur) {
                             updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
@@ -212,9 +214,9 @@
 
                 (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
 
-                    if (action.toString() === 'but' && sizeSchema == 3) {
+                    if (action.toString() === 'but' && sizeSchema == 4) {
                         //passeur
-                        let id_passeur = schema[sizeSchema - 3];
+                        let id_passeur = schema[sizeSchema - 4];
 
                         Player.findById(id_passeur, function(err, passeur) {
                             updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
