@@ -135,6 +135,17 @@ angular.module('starter.controller.match-stat', [])
                 });
         };
 
+        self.addOpponentBut = function(){
+          MatchService.addOpponentBut(self.matchId)
+          .success((data) => {
+            console.log(data);
+            self.opponent_but = data.but_opponent;
+          })
+          .error((data) => {
+            console.log(data);
+          })
+        }
+
         self.getMatch();
         self.showCountdownPopup();
 

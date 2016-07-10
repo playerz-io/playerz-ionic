@@ -86,7 +86,7 @@ angular.module('starter.controller.tactique', [])
             //console.log(formation);
             TeamService.addFormation(self.formation, self.matchId)
                 .success(function(data) {
-                    self.getTactique();
+                  //  self.getTactique();
                     console.log(data);
                 })
                 .error(function(data) {
@@ -96,16 +96,16 @@ angular.module('starter.controller.tactique', [])
 
 
         // return posts of formation
-        self.getTactique = function() {
-            MatchService.getTactique(self.formation)
-                .success(function(data) {
-                    console.log(data);
-                    self.post = data.tactique;
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
+        // self.getTactique = function() {
+        //     MatchService.getTactique(self.formation)
+        //         .success(function(data) {
+        //             console.log(data);
+        //             self.post = data.tactique;
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         });
+        // };
 
         //add player to the selection of current match
         // self.addPlayerSelected = function(player_id, position) {

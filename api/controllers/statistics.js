@@ -553,7 +553,8 @@
                 totalAttemptsOffTarget = 0,
                 totalBut = 0,
                 totalPassesCompletion = 0,
-                totalRelanceCompletion = 0;
+                totalRelanceCompletion = 0
+                butOpponent = 0;
 
 
             async.waterfall([
@@ -596,6 +597,8 @@
                                     totalBut += stat['but'];
                                     totalPassesCompletion += stat['passesCompletion'];
                                     totalRelanceCompletion += stat['relanceCompletion'];
+                                    butOpponent += stat['but_opponent'];
+
                                 }
                             }
                             if (player_id === playerSelected[numberPlayerSelected - 1]) {
@@ -611,6 +614,7 @@
                                     totalAttemptsOnTarget,
                                     totalAttemptsOffTarget,
                                     totalBut,
+                                    butOpponent,
                                     totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
                                     totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected)
                                 });
@@ -642,6 +646,7 @@
                             attempts: stat.totalAttempts,
                             attemptsOnTarget: stat.totalAttemptsOnTarget,
                             attemptsOffTarget: stat.totalAttemptsOffTarget,
+                            butOpponent: stat.but_opponent,
                             but: stat.totalBut
 
                         };

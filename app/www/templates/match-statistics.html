@@ -21,7 +21,7 @@
             <br>
             <button ng-click="matchStat.startTimer()" class="button button-energized">start</button>
             <br>
-            {{matchStat.fullTime}}
+            {{matchStat.fullTime}} {{matchStat.opponent_but}}
 
         </div>
         <div ng-if="matchStat.formation === '4-4-2'" class="quatre col col-75">
@@ -36,6 +36,7 @@
             <button ng-click="matchStat.countMainAction('yellowCard')" class="button button-energized">Carton </br> Jaune</button>
             <button ng-click="matchStat.countMainAction('redCard')" class="button button-energized">Carton </br> Rouge</button>
             <button ui-sref="change" class="button button-energized">Changement</button>
+            <button ng-click="matchStat.addOpponentBut()" class="button button-energized"> But adverser </button>
             <button ng-click="matchStat.showConfirmEndMatchPopup()" class="button button-energized">Fin </br> du match</button>
         </div>
     </div>

@@ -57,6 +57,9 @@ router
     }), controllerMatch.defaultPosition)
     .post('/switchPosition', passport.authenticate('jwt', {
         session: false
-    }), controllerMatch.switchPosition);
+    }), controllerMatch.switchPosition)
+    .post('/addOpponentBut', passport.authenticate('jwt', {
+        session: false
+    }), controllerMatch.addOpponentBut);
 
 module.exports = router;

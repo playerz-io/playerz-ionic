@@ -44,7 +44,23 @@ exports.addMatch = function(req, res) {
             date: new Date(date),
             belongs_to: idCoach,
             defaultPosition: false,
-            status: 'comeup'
+            status: 'comeup',
+            statistics: {
+                ballPlayed: 0,
+                ballLost: 0,
+                passesCompletion: 0,
+                retrieveBalls: 0,
+                defensiveAction: 0,
+                relanceCompletion: 0,
+                foulsSuffered: 0,
+                foulsCommitted: 0,
+                offSide: 0,
+                attempts: 0,
+                attemptsOnTarget: 0,
+                attemptsOffTarget: 0,
+                but: 0,
+                but_opponent: 0
+            }
 
         });
 
@@ -616,7 +632,7 @@ exports.defaultPosition = (req, res) => {
                                 }
                             } //if
                         } //defaultPosition
-                        
+
                         match.defaultPosition = true;
                         done(null, match, players, playersSelected, coach);
 
@@ -834,3 +850,41 @@ exports.switchPosition = (req, res) => {
     }
 
 };
+
+exports.addOpponentBut = (req, res) => {
+
+    let match_id = req.body.match_id;
+    let token = getToken(req.headers);
+
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+
+        Coach.findById(decoded._id, (err, coach) => {
+
+            if (err)
+                throw err;
+
+            let match = coach.team.matchs.id(match_id);
+            let statistics = match.statistics;
+            statistics.but_opponent++;
+            console.log(statistics.but_opponent);
+
+            coach.save((err) => {
+                if (err)
+                    throw err;
+            });
+            res.status(202).json({
+                success: true,
+                but_opponent: statistics.but_opponent
+            });
+        })
+
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+
+}

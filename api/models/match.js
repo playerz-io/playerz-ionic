@@ -36,10 +36,11 @@ let MatchSchema = new Schema({
       attemptsOnTarget: Number,
       attemptsOffTarget: Number,
       but: Number,
+      but_opponent: Number
     },
     schemas: [],
     belongs_to: String,
-    defaultPosition: Boolean,
+    defaultPosition: Boolean,  
     any: Schema.Types.Mixed
 
 });

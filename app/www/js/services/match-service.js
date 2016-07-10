@@ -130,7 +130,12 @@ angular.module('starter')
             match_id
         });
 
+        let addOpponentBut = (match_id) => $http.post(API_ENDPOINT.url + '/addOpponentBut', {
+            match_id
+        });
+
         return {
+            addOpponentBut,
             defaultPosition,
             getPlayerNoSelected,
             totalStat,
