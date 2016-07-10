@@ -170,7 +170,19 @@ exports.clubs = {
     ]
 };
 
+exports.getNameClub = (req, res) => {
+    "use strict";
 
+    let clubs = exports.clubs.clubsFFF;
+
+    let arrayNameClub = clubs.map((club) => {
+        return club.nomClub;
+    });
+
+    return res.json({
+        arrayNameClub
+    });
+};
 
 
 

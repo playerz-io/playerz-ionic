@@ -143,7 +143,7 @@ exports.signup = (req, res) => {
 
         Coach.findOne({
             email
-        }, (err, coach) =>
+        }, (err, coach) => {
             //si le coach n'existe pas deja ds la bdd
             if (!coach) {
                 //creation du coach
