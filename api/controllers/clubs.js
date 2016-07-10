@@ -1,4 +1,4 @@
-{
+exports.clubs = {
     clubsFFF: [
         // {
         //     nomClub: '',
@@ -166,9 +166,9 @@
             tresorier: '',
             secretaire: 'VIOT YANNICK',
             urlFFF: 'http://www.fff.fr/la-vie-des-clubs/00165/infos-cles',
-        },
+        }
     ]
-}
+};
 
 
 
