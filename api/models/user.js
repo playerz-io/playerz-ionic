@@ -5,11 +5,9 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let bcrypt = require('bcrypt');
-require('mongoose-moment')(mongoose);
 
 
 //User model
-
 let UserSchema = new Schema({
 
     id_facebook: String,
@@ -34,14 +32,13 @@ let UserSchema = new Schema({
     website_perso: String,
     number_tel: String,
     any: Schema.Types.Mixed
-
 });
 
-//trigger before sava user schem
+//trigger before save user schema
 UserSchema.pre('save', function(next) {
     let user = this;
-
     if (user.password) {
+        //check si le mdp est change et si oui il le crypte
         if (this.isModified('password') || this.isNew) {
             bcrypt.genSalt(10, function(err, salt) {
                 if (err) {
@@ -73,5 +70,5 @@ UserSchema.methods.comparePassword = function(passw, cb) {
     });
 };
 
-
+//rend visible le shema cree partt ds l api
 exports.userSchema = UserSchema;

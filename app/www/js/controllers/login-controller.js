@@ -39,10 +39,10 @@ angular.module('starter.controller.login', [])
                 FB.api('/me', {
                     fields: 'last_name, first_name, picture, email, gender, id'
                 }, (response) => {
-                    console.log(response);
+                    console.log('Datas recues de facebook : ', response);
                     AuthService.registerFacebook(response)
                         .success(function(data) {
-                            console.log(data);
+                            console.log('Datas renvoyees a l\'api :', data);
                             AuthService.storeUserCredentials(data.token);
                             StorageService.addStorageCoachId(data.coach._id);
                             //check if coach has a team
