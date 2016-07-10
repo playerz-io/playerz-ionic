@@ -2,7 +2,7 @@
 
 angular.module('starter')
     .service('PlayerService', function(API_ENDPOINT, $http, $httpParamSerializerJQLike) {
-        let addPosition = function(player_id, position, match_id) {
+        let addPosition = (player_id, position, match_id) => {
             return $http({
                 method: 'POST',
                 headers: {
