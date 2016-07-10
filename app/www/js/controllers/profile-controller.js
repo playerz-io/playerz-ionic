@@ -29,8 +29,8 @@ angular.module('starter.controller.profile', [])
                 }
             })
             .error(function(data) {
-                console.log(data);
-            })
+                //console.log(data);
+            });
 
         $ionicModal.fromTemplateUrl('templates/add-team-modal.html', {
             scope: $scope,
