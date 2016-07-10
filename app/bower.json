@@ -8,7 +8,7 @@
     "angular-disable-all": "^0.0.2",
     "firebase": "^2.4.2",
     "angularfire": "^1.2.0",
-    "moment": "^2.13.0",
+    "moment": "2.0.0",
     "angular-stripe": "^4.2.12",
     "ngCordova": "^0.1.26-alpha",
     "ngDraggable": "^0.1.8"

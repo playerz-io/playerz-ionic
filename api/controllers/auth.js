@@ -35,6 +35,7 @@ exports.facebookConnect = (req, res) => {
                 connected: 'jwt'
             }, (err, coach) => {
                 if (coach) {
+                    //TODO: trouver le bon code erreur correspondnat
                     return res.status(400).json({
                         msg: `Un utilisateur avec l'adresse que vous
                         utilisé pour votre compte facebook existe déjà`
@@ -76,7 +77,7 @@ exports.facebookConnect = (req, res) => {
                     });
 
                     let token = jwt.encode(newCoach, config.secret);
-                    return res.json({
+                    return res.status(200).json({
                         success: true,
                         msg: 'Nouvel utilisateur crée',
                         token: 'JWT ' + token,
@@ -125,7 +126,7 @@ exports.signup = (req, res) => {
     // NOTE: 1
     if (email) {
         if (!Utils.validateEmail(email)) {
-            return res.json({
+            return res.status(400).json({
                 success: false,
                 msg: "Respecter le format d'une addresse mail"
             });
@@ -142,8 +143,10 @@ exports.signup = (req, res) => {
 
         Coach.findOne({
             email
-        }, (err, coach) => {
+        }, (err, coach) =>
+            //si le coach n'existe pas deja ds la bdd
             if (!coach) {
+                //creation du coach
                 let newCoach = new Coach({
                     last_name,
                     first_name,
@@ -158,7 +161,7 @@ exports.signup = (req, res) => {
                     created_at: Date.now(),
                     total_connexion: 0
                 });
-
+                //creation de son equipe
                 newCoach.team = new Team({
                     name_club,
                     category,
@@ -169,13 +172,13 @@ exports.signup = (req, res) => {
                     if (err)
                         throw err;
 
-                    res.json({
+                    res.status(200).json({
                         success: true,
                         msg: 'Nouvel utilisateur crée'
                     });
                 });
             } else {
-                return res.json({
+                return res.status(400).json({
                     success: false,
                     msg: 'Un coach existe déjà avec cette addresse mail'
                 });
@@ -192,7 +195,7 @@ exports.authenticationJwt = (req, res) => {
 
     if (email) {
         if (!Utils.validateEmail(email)) {
-            return res.json({
+            return res.status(400).json({
                 success: false,
                 msg: "Respecter le format d'une addresse mail"
             });
@@ -200,12 +203,12 @@ exports.authenticationJwt = (req, res) => {
     }
 
     if (!email.toString() || !password.toString()) {
-        return res.json({
+        return res.status(400).json({
             success: false,
             msg: "Les champs email ou mot de passe ne sont pas remplis !"
         });
     }
-
+    //recherche d'un coach par son email
     Coach.findOne({
         email: email
     }, function(err, coach) {
@@ -213,11 +216,12 @@ exports.authenticationJwt = (req, res) => {
             throw err;
 
         if (!coach) {
-            return res.json({
+            return res.status(400).json({
                 success: false,
                 msg: "Le coach n'a pas été trouvé"
             });
         } else {
+            //check si le mdp est le bon
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
@@ -226,14 +230,14 @@ exports.authenticationJwt = (req, res) => {
                     coach.total_connexion++;
                     coach.save();
 
-                    res.json({
+                    res.status(200).json({
                         success: true,
                         token: 'JWT ' + token,
                         coach: coach
                     });
 
                 } else {
-                    return res.json({
+                    return res.status(400).json({
                         success: false,
                         msg: `Votre mot de passe n'est pas correct`
                     });

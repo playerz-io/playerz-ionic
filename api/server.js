@@ -3,6 +3,7 @@
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
+//TODO: a voir
 let morgan = require('morgan');
 let mongoose = require('mongoose');
 let passport = require('passport');
@@ -13,13 +14,16 @@ let jwt = require('jwt-simple');
 
 //connect to database
 if (process.env.NODE_ENV === 'production') {
+    //console.log(process.env.NODE_ENV);
     mongoose.connect(config.database_prod);
 } else {
+    console.log('dev');
     mongoose.connect(config.database_dev);
 }
 
 
 //get our request parameters
+//TODO: a voir
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -55,7 +59,7 @@ app.listen(port);
 
 //passport configuration
 require('./config/passport')(passport);
-
+//TODO: a voir
 let apiRoutes = express.Router();
 
 let auth = require('./routes/auth');

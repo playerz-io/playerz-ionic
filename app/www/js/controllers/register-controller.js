@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('starter.controller.register', [])
     .controller('RegisterCtrl', function(AuthService, $ionicPopup, $state, TeamService) {

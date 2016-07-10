@@ -2,7 +2,7 @@
 angular.module('starter.controller.profile', [])
 
 .controller('ProfileCtrl', function($state, $ionicPopup, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService) {
-
+    
     var self = this;
     var dataProfile;
 
