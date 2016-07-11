@@ -85,9 +85,9 @@ angular.module('starter.controller.tactique', [])
         self.addFormation = function() {
             //console.log(formation);
             TeamService.addFormation(self.formation, self.matchId)
-                .success(function(data) {
-                    //  self.getTactique();
+                .success(function(data) {          
                     console.log(data);
+                    self.defaultPosition();
                 })
                 .error(function(data) {
                     console.log(data);
@@ -191,7 +191,6 @@ angular.module('starter.controller.tactique', [])
             // TODO: faire choisir une formation vie un modal ou une popup
         self.addFormation();
         self.getMatch();
-        self.defaultPosition();
         self.getNameTeam();
 
 
