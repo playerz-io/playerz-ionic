@@ -383,7 +383,7 @@ exports.addPlayerSelected = function(req, res) {
                         // if array stat is empty add stat
                         if (player.statistics.length === 0) {
                             //add stastistic to player
-                            privateMatch._addStatisticsToPlayer(player, match_id);
+                            privateMatch.addStatisticsToPlayer(player, match_id);
 
                         } else {
 
@@ -398,7 +398,7 @@ exports.addPlayerSelected = function(req, res) {
 
                             if (!statExist) {
                                 //add stastistic to player
-                                privateMatch._addStatisticsToPlayer(player, match_id);
+                                privateMatch.addStatisticsToPlayer(player, match_id);
                             }
                         }
 

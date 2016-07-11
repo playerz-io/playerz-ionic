@@ -8,8 +8,7 @@ let Statistic = require('../../models/statistics').modelStatistic;
 let real_time = require('../../real_time');
 
 
-exports._addStatisticsToPlayer = function(player, match_id) {
-    //  console.log('ok');
+let _addStatisticsToPlayer = (player, match_id) => {
     player.statistics.push(new Statistic({
         match_id: match_id.toString(),
         assist: 0,
@@ -39,6 +38,26 @@ exports._addStatisticsToPlayer = function(player, match_id) {
         crossesFailed: 0,
         passesFailed: 0
     }));
+};
+
+//check if stat for this match already exists
+exports.addStatisticsToPlayer = function(player, match_id) {
+    //  console.log('ok');
+    let statExist = false;
+    if (player.statistics.length === 0) {
+        _addStatisticsToPlayer(player, match_id)
+    }
+
+    for (let i = 0, x = player.statistics.length; i < x; i++) {
+        if (player.statistics[i].match_id.toString() === match_id.toString()) {
+            statExist = true
+        }
+    }
+
+    if (!statExist) {
+        _addStatisticsToPlayer(player, match_id.toString());
+        console.log('defaultPosition');
+    }
 
 };
 
@@ -72,21 +91,7 @@ exports._findMatch = function(status, req, res) {
 };
 
 exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
-    let statExist = false;
-    if (player.statistics.length === 0) {
-        exports._addStatisticsToPlayer(player, idMatch);
-    }
-    for (let i = 0, x = player.statistics.length; i < x; i++) {
-        if (player.statistics[i].match_id.toString() === idMatch.toString()) {
-            statExist = true
-        }
-    }
-
-    if (!statExist) {
-        exports._addStatisticsToPlayer(player, idMatch);
-        console.log('defaultPosition');
-    }
-
+    exports.addStatisticsToPlayer(player, idMatch);
     player.position = position;
     player.save();
     if (playersSelected.indexOf(player._id) < 0) {
