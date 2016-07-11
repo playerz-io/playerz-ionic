@@ -64,16 +64,19 @@ exports.addMatch = function(req, res) {
 
         });
 
-        newMatch.save(function(err, match) {
-            if (err) {
-                throw err;
-            }
-        });
 
-        Coach.findById(decoded._id, function(err, coach) {
+        console.log(newMatch);
+
+        Coach.findById(idCoach, function(err, coach) {
             if (err)
                 throw err;
 
+            real_time.addStatisticsMatch(newMatch._id.toString(), idCoach, newMatch);
+            newMatch.save(function(err, match) {
+                if (err) {
+                    throw err;
+                }
+            });
             coach.team.matchs.push(newMatch);
             coach.save();
             res.json({
