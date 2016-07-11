@@ -17,8 +17,8 @@ angular.module('starter.controller.tactique', [])
 
         self.matchId = StorageService.getStorageMatchId();
         self.coachId = StorageService.getStorageCoachId();
-        var refMatch = FireService.refMatch(self.matchId, self.coachId);
-        self.playerSelected_firebase = FireService.refMatch(self.matchId, self.coachId);
+        self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
+
         self.formation = '4-4-2';
 
         self.getPlayerNoSelected = () => {
@@ -36,7 +36,7 @@ angular.module('starter.controller.tactique', [])
             MatchService.defaultPosition(self.matchId)
                 .success((data) => {
                     console.log(data);
-                    self.playerSelected = FireService.refPlayer(refMatch);
+                    self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
                 })
                 .error((data) => {
                     console.log(data);
@@ -49,7 +49,7 @@ angular.module('starter.controller.tactique', [])
         self.onDropComplete = (index, obj, evt) => {
             //dropped
             console.log(index);
-            let droppedId = self.playerSelected[index].$id || self.playerSelected_firebase[index]._id;
+            let droppedId = self.playerSelected[index].$id || self.playerSelected[index]._id;
             //dragged
             let draggedId = obj.$id || obj._id;
             console.log(droppedId, draggedId);
@@ -62,12 +62,6 @@ angular.module('starter.controller.tactique', [])
                 })
 
         };
-
-
-        self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
-        self.playersNoSelected = FireService.refPlayer(self.noSeleted);
-        console.log(self.playersNoSelected);
-
 
         // self.getPlayers = function() {
         //     TeamService.getPlayers()
@@ -85,7 +79,7 @@ angular.module('starter.controller.tactique', [])
         self.addFormation = function() {
             //console.log(formation);
             TeamService.addFormation(self.formation, self.matchId)
-                .success(function(data) {          
+                .success(function(data) {
                     console.log(data);
                     self.defaultPosition();
                 })

@@ -7,10 +7,8 @@ angular.module('starter.controller.match-stat', [])
 
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
-        let refMatch = FireService.refMatch(self.matchId, self.coachId);
-        self.playerSelected = FireService.refPlayer(refMatch);
-        self.noSeleted = FireService.refMatchNoSelected(self.matchId, self.coachId);
-        self.playersNoSelected = FireService.refPlayer(self.noSeleted);
+        self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
+        self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
         let counter;
         self.minutes = 0;
         self.seconds = 0;

@@ -1,30 +1,32 @@
-angular.module('starter')
-  .service('FireService', function(FIREBASE_URI, $firebaseArray, $firebaseObject) {
+'use strict';
 
-    var mainRef = new Firebase(FIREBASE_URI + 'coaches');
+angular.module('starter')
+  .service('FireService', function(FIREBASE_URI, $firebaseArray) {
+
+    let mainRef = new Firebase(FIREBASE_URI + 'coaches');
 
     return {
 
-      refMatch: function(matchId, coachId) {
-        var refMatchId = mainRef
+      refPlayerSelected: function(matchId, coachId) {
+        let refMatchId = mainRef
           .child(coachId)
           .child("matchs")
           .child(matchId)
           .child('players_selected');
 
 
-        return refMatchId;
+        return $firebaseArray(refMatchId);
       },
 
-      refMatchNoSelected: function(matchId, coachId) {
-        var refMatchId = mainRef
+      refPlayerNoSelected: function(matchId, coachId) {
+        let refMatchId = mainRef
           .child(coachId)
           .child("matchs")
           .child(matchId)
           .child('players_no_selected');
 
 
-        return refMatchId;
+        return $firebaseArray(refMatchId);
       },
 
       refPlayer: function(ref) {
