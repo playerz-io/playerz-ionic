@@ -97,5 +97,5 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected)
     if (playersSelected.indexOf(player._id) < 0) {
         playersSelected.push(player);
     }
-    real_time.addPlayerSelected_firebase(player, idMatch, idCoach);
+    real_time.addPlayer_firebase(player, idMatch, idCoach, true);
 };

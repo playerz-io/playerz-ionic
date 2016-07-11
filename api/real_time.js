@@ -10,16 +10,21 @@ let checkMatchId = function(match_ID, player) {
     return matchID === player.match_id;
 };
 
-exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
-    //console.log(match_ID);
-    //console.log(player);
+exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
+
     console.log('ok');
+    //get stat for the good match
+    let getStatMatch = (stat) => stat.match_id === match_ID;
+    let stat = player.statistics.filter(getStatMatch);
+
+
+    let playerSelected = selected ? 'players_selected' : 'players_no_selected';
 
     let refAddPlayer = ref
         .child(coach_ID)
         .child("matchs")
         .child(match_ID)
-        .child('players_selected')
+        .child(playerSelected)
         .child(player._id.toString())
         .set({
             id: player._id,
@@ -28,32 +33,32 @@ exports.addPlayerSelected_firebase = function(player, match_ID, coach_ID) {
             position: player.position,
             favourite_position: player.favourite_position,
             statistics: {
-                assist: player.statistics[0].assist,
-                retrieveBalls: player.statistics[0].retrieveBalls,
-                foulsSuffered: player.statistics[0].foulsSuffered,
-                foulsCommitted: player.statistics[0].foulsCommitted,
-                yellowCard: player.statistics[0].yellowCard,
-                redCard: player.statistics[0].redCard,
-                attemptsOnTarget: player.statistics[0].attemptsOnTarget,
-                attemptsOffTarget: player.statistics[0].attemptsOffTarget,
-                attempts: player.statistics[0].attempts,
-                beforeAssist: player.statistics[0].beforeAssist,
-                matchPlayed: player.statistics[0].matchPlayed,
-                firstTeamPlayer: player.statistics[0].firstTeamPlayer,
-                substitute: player.statistics[0].substitute,
-                but: player.statistics[0].but,
-                ballLost: player.statistics[0].ballLost,
-                ballPlayed: player.statistics[0].ballPlayed,
-                passesCompletion: player.statistics[0].passesCompletion,
-                defensiveAction: player.statistics[0].defensiveAction,
-                relanceCompletion: player.statistics[0].relanceCompletion,
-                offSide: player.statistics[0].offSide,
-                passesFailed: player.statistics[0].passesFailed,
-                crossesFailed: player.statistics[0].crossesFailed,
-                saves: player.statistics[0].saves,
-                claquettes: player.statistics[0].claquettes,
-                sorties_aeriennes: player.statistics[0].sorties_aeriennes,
-                clean_sheet: player.statistics[0].clean_sheet
+                assist: stat[0].assist,
+                retrieveBalls: stat[0].retrieveBalls,
+                foulsSuffered: stat[0].foulsSuffered,
+                foulsCommitted: stat[0].foulsCommitted,
+                yellowCard: stat[0].yellowCard,
+                redCard: stat[0].redCard,
+                attemptsOnTarget: stat[0].attemptsOnTarget,
+                attemptsOffTarget: stat[0].attemptsOffTarget,
+                attempts: stat[0].attempts,
+                beforeAssist: stat[0].beforeAssist,
+                matchPlayed: stat[0].matchPlayed,
+                firstTeamPlayer: stat[0].firstTeamPlayer,
+                substitute: stat[0].substitute,
+                but: stat[0].but,
+                ballLost: stat[0].ballLost,
+                ballPlayed: stat[0].ballPlayed,
+                passesCompletion: stat[0].passesCompletion,
+                defensiveAction: stat[0].defensiveAction,
+                relanceCompletion: stat[0].relanceCompletion,
+                offSide: stat[0].offSide,
+                passesFailed: stat[0].passesFailed,
+                crossesFailed: stat[0].crossesFailed,
+                saves: stat[0].saves,
+                claquettes: stat[0].claquettes,
+                sorties_aeriennes: stat[0].sorties_aeriennes,
+                clean_sheet: stat[0].clean_sheet
             }
         });
 };
@@ -188,21 +193,6 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
         }
     });
 };
-
-exports.playersNoSelected_firebase = (matchId, coachId, player) => {
-    let refAddPlayer = ref
-        .child(coachId)
-        .child("matchs")
-        .child(matchId)
-        .child('players_no_selected')
-        .child(player._id.toString())
-        .set({
-            id: player._id,
-            first_name: player.first_name,
-            last_name: player.last_name,
-            favourite_position: player.favourite_position
-        });
-}
 
 exports.cleanReference_firebase = (coachId, matchId) => {
   let refMatch = ref

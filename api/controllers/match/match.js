@@ -404,7 +404,7 @@ exports.addPlayerSelected = function(req, res) {
 
                         if (formation === '4-4-2') {
 
-                            real_time.addPlayerSelected_firebase(player, match_id, decoded._id);
+                            real_time.addPlayer_firebase(player, match_id, decoded._id, true);
                             playerSelected.push(player);
 
                             player.save();
@@ -657,9 +657,11 @@ exports.defaultPosition = (req, res) => {
                     for (let player of players) {
 
                         if (matchPlayerNoSelected.indexOf(player._id) === -1) {
+                            privateMatch.addStatisticsToPlayer(player, idMatch);
                             matchPlayerNoSelected.push(player);
+                            player.save();
                         }
-                        real_time.playersNoSelected_firebase(idMatch, idCoach, player);
+                        real_time.addPlayer_firebase(player, idMatch, idCoach, false);
                     }
 
                     coach.save();
