@@ -12,31 +12,31 @@ let checkMatchId = function(match_ID, player) {
 exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
 
     let statistics = match.statistics;
-    console.log(match.type,match.place,match.against_team);
+    console.log(match.type, match.place, match.against_team);
     let refMatch = ref
         .child(coach_ID)
         .child('matchs')
         .child(match_ID)
         .set({
-          type: match.type,
-          place: match.place,
-          against_team: match.against_team,
-          statistics: {
-            ballPlayed: statistics.ballPlayed,
-            ballLost: statistics.ballLost,
-            passesCompletion: statistics.passesCompletion,
-            retrieveBalls: statistics.retrieveBalls,
-            defensiveAction: statistics.defensiveAction,
-            relanceCompletion: statistics.relanceCompletion,
-            foulsSuffered: statistics.foulsSuffered,
-            foulsCommitted: statistics.foulsCommitted,
-            offSide: statistics.offSide,
-            attempts: statistics.attempts,
-            attemptsOnTarget: statistics.attemptsOnTarget,
-            attemptsOffTarget: statistics.attemptsOffTarget,
-            but: statistics.but,
-            but_opponent: statistics.but_opponent
-          }
+            type: match.type,
+            place: match.place,
+            against_team: match.against_team,
+            statistics: {
+                ballPlayed: statistics.ballPlayed,
+                ballLost: statistics.ballLost,
+                passesCompletion: statistics.passesCompletion,
+                retrieveBalls: statistics.retrieveBalls,
+                defensiveAction: statistics.defensiveAction,
+                relanceCompletion: statistics.relanceCompletion,
+                foulsSuffered: statistics.foulsSuffered,
+                foulsCommitted: statistics.foulsCommitted,
+                offSide: statistics.offSide,
+                attempts: statistics.attempts,
+                attemptsOnTarget: statistics.attemptsOnTarget,
+                attemptsOffTarget: statistics.attemptsOffTarget,
+                but: statistics.but,
+                but_opponent: statistics.but_opponent
+            }
         });
 
 };
@@ -233,6 +233,108 @@ exports.cleanReference_firebase = (coachId, matchId) => {
     let refPlayerSelected = refMatch.child('players_selected').remove();
 
     let refPlayerNoSelected = refMatch.child('players_no_selected').remove();
+
+
+};
+
+exports.updateStatMatch_firebase = (coachId, matchId) => {
+
+    let totalBallPlayed = 0,
+        totalBallLost = 0,
+        totalRetrieveBalls = 0,
+        totalDefensiveAction = 0,
+        totalFoulsSuffered = 0,
+        totalFoulsCommited = 0,
+        totalOffSide = 0,
+        totalAttempts = 0,
+        totalAttemptsOnTarget = 0,
+        totalAttemptsOffTarget = 0,
+        totalBut = 0,
+        totalPassesCompletion = 0,
+        totalRelanceCompletion = 0,
+        butOpponent = 0;
+
+    let refMatch = ref
+        .child(coachId.toString())
+        .child("matchs")
+        .child(matchId.toString());
+
+
+
+
+    let refPlayerSelected = refMatch.child('players_selected');
+
+    async.waterfall([
+        (done) => {
+            refPlayerSelected.once('value', (playerSelected) => {
+
+
+
+                playerSelected.forEach((snapshot) => {
+                    let _snapshot = snapshot.val();
+                    let player = _snapshot.statistics;
+                    totalBallPlayed += player.ballPlayed;
+                    totalBallLost += player.ballLost;
+                    totalRetrieveBalls += player.retrieveBalls;
+                    totalDefensiveAction += player.defensiveAction;
+                    totalFoulsSuffered += player.foulsSuffered;
+                    totalFoulsCommited += player.foulsCommitted;
+                    totalOffSide += player.offSide;
+                    totalAttempts += player.attempts;
+                    totalAttemptsOnTarget += player.attemptsOnTarget;
+                    totalAttemptsOffTarget += player.attemptsOffTarget;
+                    totalBut += player.but;
+                    totalPassesCompletion += player.passesCompletion;
+                    totalRelanceCompletion += player.relanceCompletion;
+
+
+                });
+
+                console.log(totalBallPlayed);
+
+                done(null, totalBallPlayed, totalBallLost, totalRetrieveBalls, totalDefensiveAction,
+                    totalFoulsSuffered, totalFoulsCommited,
+                    totalOffSide, totalAttempts, totalAttemptsOnTarget,
+                    totalAttemptsOffTarget, totalBut, totalPassesCompletion,
+                    totalRelanceCompletion);
+
+            });
+
+        },
+
+        (totalBallPlayed, totalBallLost, totalRetrieveBalls, totalDefensiveAction,
+            totalFoulsSuffered, totalFoulsCommited,
+            totalOffSide, totalAttempts, totalAttemptsOnTarget,
+            totalAttemptsOffTarget, totalBut, totalPassesCompletion,
+            totalRelanceCompletion, done) => {
+            console.log(totalBallPlayed, totalRelanceCompletion);
+
+            refMatch.update({
+                statistics: {
+                    ballPlayed: totalBallPlayed,
+                    ballLost: totalBallLost,
+                    retrieveBalls: totalRetrieveBalls,
+                    defensiveAction: totalDefensiveAction,
+                    foulsSuffered: totalFoulsSuffered,
+                    foulsCommitted: totalFoulsCommited,
+                    offSide: totalOffSide,
+                    attempts: totalAttempts,
+                    attemptsOnTarget: totalAttemptsOnTarget,
+                    attemptsOffTarget: totalAttemptsOffTarget,
+                    but: totalBut,
+                    but_opponent: butOpponent,
+                    passesCompletion: 0,
+                    relanceCompletion: 0
+                }
+            });
+
+            done(null, 'complete');
+        }
+    ], (err, result) => {
+        console.log(result);
+    })
+
+
 
 
 }
