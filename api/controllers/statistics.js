@@ -184,7 +184,8 @@ exports.countMainAction = function(req, res) {
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, id_playerRetrieveBall, coach, done) => {
                 //avant-passeur
-                if (stringAction === 'but' && sizeSchema >= 5) {
+                //add (schema[sizeSchema - 5] !== schema[sizeSchema - 3]) in case of one two
+                if (stringAction === 'but' && sizeSchema >= 5 && (schema[sizeSchema - 5] !== schema[sizeSchema - 3])) {
                     let id_avant_passeur = schema[sizeSchema - 5];
                     Player.findById(id_avant_passeur, function(err, avant_passeur) {
                         updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
