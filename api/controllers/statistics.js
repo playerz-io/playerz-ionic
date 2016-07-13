@@ -597,7 +597,7 @@ let totalStat = function(_coach_id, _match_id) {
                             totalBut += stat['but'];
                             totalPassesCompletion += stat['passesCompletion'];
                             totalRelanceCompletion += stat['relanceCompletion'];
-                            //butOpponent += stat['but_opponent'];
+                            butOpponent += stat['but_opponent'];
                             console.log(totalPassesCompletion, totalRelanceCompletion);
                         }
                     }
@@ -614,7 +614,7 @@ let totalStat = function(_coach_id, _match_id) {
                             totalAttemptsOnTarget,
                             totalAttemptsOffTarget,
                             totalBut,
-                            //  butOpponent,
+                            butOpponent,
                             totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
                             totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected)
                         });
@@ -648,7 +648,7 @@ let totalStat = function(_coach_id, _match_id) {
                     attempts: stat.totalAttempts,
                     attemptsOnTarget: stat.totalAttemptsOnTarget,
                     attemptsOffTarget: stat.totalAttemptsOffTarget,
-                    //  butOpponent: stat.but_opponent,
+                    butOpponent: stat.but_opponent,
                     but: stat.totalBut
 
                 };
@@ -668,6 +668,7 @@ let totalStat = function(_coach_id, _match_id) {
                 attempts: stat.totalAttempts,
                 attemptsOnTarget: stat.totalAttemptsOnTarget,
                 attemptsOffTarget: stat.totalAttemptsOffTarget,
+                butOpponent: stat.but_opponent,
                 but: stat.totalBut
 
             };

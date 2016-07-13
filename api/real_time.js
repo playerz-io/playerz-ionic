@@ -259,6 +259,7 @@ exports.updateStatMatch_firebase = (coachId, matchId, stat) => {
         attempts: stat.totalAttempts,
         attemptsOnTarget: stat.totalAttemptsOnTarget,
         attemptsOffTarget: stat.totalAttemptsOffTarget,
+        but_opponent: stat.but_opponent,
         but: stat.totalBut
     });
 }
