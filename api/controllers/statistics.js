@@ -581,7 +581,7 @@ let totalStat = function(_coach_id, _match_id) {
 
                     let playerStatistic = player.statistics;
                     for (let stat of playerStatistic) {
-
+                        //don't add but_opponent
                         if (stat.match_id.toString() === match_id.toString()) {
                             //console.log(stat);
                             totalBallPlayed += stat['ballPlayed'];
@@ -597,7 +597,6 @@ let totalStat = function(_coach_id, _match_id) {
                             totalBut += stat['but'];
                             totalPassesCompletion += stat['passesCompletion'];
                             totalRelanceCompletion += stat['relanceCompletion'];
-                            butOpponent += stat['but_opponent'];
                             console.log(totalPassesCompletion, totalRelanceCompletion);
                         }
                     }
@@ -614,7 +613,6 @@ let totalStat = function(_coach_id, _match_id) {
                             totalAttemptsOnTarget,
                             totalAttemptsOffTarget,
                             totalBut,
-                            butOpponent,
                             totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
                             totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected)
                         });

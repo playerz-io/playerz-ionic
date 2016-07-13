@@ -246,20 +246,5 @@ exports.updateStatMatch_firebase = (coachId, matchId, stat) => {
         .child(matchId.toString())
         .child("statistics");
 
-    refMatch.update({
-        ballPlayed: stat.totalBallPlayed,
-        ballLost: stat.totalBallLost,
-        passesCompletion: stat.totalPassesCompletion,
-        retrieveBalls: stat.totalRetrieveBalls,
-        defensiveAction: stat.totalDefensiveAction,
-        relanceCompletion: stat.totalRelanceCompletion,
-        foulsSuffered: stat.totalFoulsSuffered,
-        foulsCommitted: stat.totalFoulsCommited,
-        offSide: stat.totalOffSide,
-        attempts: stat.totalAttempts,
-        attemptsOnTarget: stat.totalAttemptsOnTarget,
-        attemptsOffTarget: stat.totalAttemptsOffTarget,
-        but_opponent: stat.but_opponent,
-        but: stat.totalBut
-    });
+    refMatch.update(stat);
 }

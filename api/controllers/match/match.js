@@ -864,8 +864,8 @@ exports.addOpponentBut = (req, res) => {
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
-
-        Coach.findById(decoded._id, (err, coach) => {
+        let coach_id = decoded._id;
+        Coach.findById(coach_id, (err, coach) => {
 
             if (err)
                 throw err;
@@ -873,8 +873,9 @@ exports.addOpponentBut = (req, res) => {
             let match = coach.team.matchs.id(match_id);
             let statistics = match.statistics;
             statistics.but_opponent++;
-            console.log(statistics.but_opponent);
-
+            real_time.updateStatMatch_firebase(coach_id, match_id, {
+              but_opponent: statistics.but_opponent
+            })
             coach.save((err) => {
                 if (err)
                     throw err;
