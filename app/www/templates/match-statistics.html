@@ -15,13 +15,12 @@
             </br>
             <button ng-click="matchStat.countMainAction('crossesFailed')" class="button button-energized">Centre Raté</button>
             </br>
-            <button ng-click="matchStat.countMainAction('crossesFailed')" class="button button-energized">Centre Raté</button>
+            <button ng-click="matchStat.countMainAction('retrieveBalls')" class="button button-energized">Ballon récupéré</button>
+            <button ng-click="matchStat.countMainAction('offSide')" class="button button-energized">Hors Jeu</button>
             <br>
             <button ng-click="matchStat.stopTimer()" class="button button-energized">stop</button>
-            <br>
             <button ng-click="matchStat.startTimer()" class="button button-energized">start</button>
-            <br>
-            {{matchStat.fullTime}} {{matchStat.opponent_but}}
+            <br> {{matchStat.fullTime}} {{matchStat.opponent_but}}
 
         </div>
         <div ng-if="matchStat.formation === '4-4-2'" class="quatre col col-75">

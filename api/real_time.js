@@ -112,6 +112,7 @@ exports.updateStatistic_firebase = function(player, match_ID, coach_ID, stat) {
         .child(match_ID)
         .child('players_selected')
         .child(player._id.toString())
+        .child('statistics')
         .update(stat);
 
 };
@@ -237,104 +238,27 @@ exports.cleanReference_firebase = (coachId, matchId) => {
 
 };
 
-exports.updateStatMatch_firebase = (coachId, matchId) => {
-
-    let totalBallPlayed = 0,
-        totalBallLost = 0,
-        totalRetrieveBalls = 0,
-        totalDefensiveAction = 0,
-        totalFoulsSuffered = 0,
-        totalFoulsCommited = 0,
-        totalOffSide = 0,
-        totalAttempts = 0,
-        totalAttemptsOnTarget = 0,
-        totalAttemptsOffTarget = 0,
-        totalBut = 0,
-        totalPassesCompletion = 0,
-        totalRelanceCompletion = 0,
-        butOpponent = 0;
+exports.updateStatMatch_firebase = (coachId, matchId, stat) => {
 
     let refMatch = ref
         .child(coachId.toString())
         .child("matchs")
-        .child(matchId.toString());
+        .child(matchId.toString())
+        .child("statistics");
 
-
-
-
-    let refPlayerSelected = refMatch.child('players_selected');
-
-    async.waterfall([
-        (done) => {
-            refPlayerSelected.once('value', (playerSelected) => {
-
-
-
-                playerSelected.forEach((snapshot) => {
-                    let _snapshot = snapshot.val();
-                    let player = _snapshot.statistics;
-                    totalBallPlayed += player.ballPlayed;
-                    totalBallLost += player.ballLost;
-                    totalRetrieveBalls += player.retrieveBalls;
-                    totalDefensiveAction += player.defensiveAction;
-                    totalFoulsSuffered += player.foulsSuffered;
-                    totalFoulsCommited += player.foulsCommitted;
-                    totalOffSide += player.offSide;
-                    totalAttempts += player.attempts;
-                    totalAttemptsOnTarget += player.attemptsOnTarget;
-                    totalAttemptsOffTarget += player.attemptsOffTarget;
-                    totalBut += player.but;
-                    totalPassesCompletion += player.passesCompletion;
-                    totalRelanceCompletion += player.relanceCompletion;
-
-
-                });
-
-                console.log(totalBallPlayed);
-
-                done(null, totalBallPlayed, totalBallLost, totalRetrieveBalls, totalDefensiveAction,
-                    totalFoulsSuffered, totalFoulsCommited,
-                    totalOffSide, totalAttempts, totalAttemptsOnTarget,
-                    totalAttemptsOffTarget, totalBut, totalPassesCompletion,
-                    totalRelanceCompletion);
-
-            });
-
-        },
-
-        (totalBallPlayed, totalBallLost, totalRetrieveBalls, totalDefensiveAction,
-            totalFoulsSuffered, totalFoulsCommited,
-            totalOffSide, totalAttempts, totalAttemptsOnTarget,
-            totalAttemptsOffTarget, totalBut, totalPassesCompletion,
-            totalRelanceCompletion, done) => {
-            console.log(totalBallPlayed, totalRelanceCompletion);
-
-            refMatch.update({
-                statistics: {
-                    ballPlayed: totalBallPlayed,
-                    ballLost: totalBallLost,
-                    retrieveBalls: totalRetrieveBalls,
-                    defensiveAction: totalDefensiveAction,
-                    foulsSuffered: totalFoulsSuffered,
-                    foulsCommitted: totalFoulsCommited,
-                    offSide: totalOffSide,
-                    attempts: totalAttempts,
-                    attemptsOnTarget: totalAttemptsOnTarget,
-                    attemptsOffTarget: totalAttemptsOffTarget,
-                    but: totalBut,
-                    but_opponent: butOpponent,
-                    passesCompletion: 0,
-                    relanceCompletion: 0
-                }
-            });
-
-            done(null, 'complete');
-        }
-    ], (err, result) => {
-        console.log(result);
-    })
-
-
-
-
+    refMatch.update({
+        ballPlayed: stat.totalBallPlayed,
+        ballLost: stat.totalBallLost,
+        passesCompletion: stat.totalPassesCompletion,
+        retrieveBalls: stat.totalRetrieveBalls,
+        defensiveAction: stat.totalDefensiveAction,
+        relanceCompletion: stat.totalRelanceCompletion,
+        foulsSuffered: stat.totalFoulsSuffered,
+        foulsCommitted: stat.totalFoulsCommited,
+        offSide: stat.totalOffSide,
+        attempts: stat.totalAttempts,
+        attemptsOnTarget: stat.totalAttemptsOnTarget,
+        attemptsOffTarget: stat.totalAttemptsOffTarget,
+        but: stat.totalBut
+    });
 }

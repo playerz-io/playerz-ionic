@@ -18,12 +18,12 @@ router
     }), controllerStat.countMainAction)
     .post('/avgRelance', passport.authenticate('jwt', {
         session: false
-    }), controllerStat.avgRelance)
-    .post('/countPercent', passport.authenticate('jwt', {
-        session: false
-    }), controllerStat.countPercent)
-    .post('/totalStat', passport.authenticate('jwt', {
-        session: false
-    }), controllerStat.totalStat);
+    }), controllerStat.avgRelance);
+    // .post('/countPercent', passport.authenticate('jwt', {
+    //     session: false
+    // }), controllerStat.countPercent);
+    // .post('/totalStat', passport.authenticate('jwt', {
+    //     session: false
+    // }), controllerStat.totalStat);
 
 module.exports = router;
