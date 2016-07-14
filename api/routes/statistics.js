@@ -18,10 +18,10 @@ router
     }), controllerStat.countMainAction)
     .post('/avgRelance', passport.authenticate('jwt', {
         session: false
-    }), controllerStat.avgRelance);
-    // .post('/countPercent', passport.authenticate('jwt', {
-    //     session: false
-    // }), controllerStat.countPercent);
+    }), controllerStat.avgRelance)
+    .post('/removeAction', passport.authenticate('jwt', {
+        session: false
+    }), controllerStat.removeAction);
     // .post('/totalStat', passport.authenticate('jwt', {
     //     session: false
     // }), controllerStat.totalStat);

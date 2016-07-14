@@ -3,14 +3,30 @@ angular.module('starter.controller.change', [])
 
         var self = this;
 
-        self.matchId = StorageService.getStorage();
+        self.matchId = StorageService.getStorageMatchId();
         self.coachId = StorageService.getStorageCoachId();
-        self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
+        self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
 
         //force to display back button
         $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
             viewData.enableBack = true;
         });
+
+        self.onDropComplete = (index, obj, evt) => {
+            //dropped
+            console.log(index);
+            let droppedId = self.playerSelected[index].$id || self.playerSelected[index]._id;
+            //dragged
+            let draggedId = obj.$id || obj._id;
+            console.log(droppedId, draggedId);
+            PlayerService.switchPosition(self.matchId, droppedId, draggedId)
+                .success((data) => {
+                    console.log(data);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+        };
 
         // return posts of formation
         self.getTactique = function() {

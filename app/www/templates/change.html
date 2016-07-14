@@ -3,25 +3,17 @@
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-content>
+    <ion-content scroll="false">
         <div class="row">
-
-            <div class="col col-33">
-                <ion-list>
-                    <ion-scroll>
-                        <ion-item ng-repeat="player in change.playerSelected_firebase">
-                            {{player.first_name}}
-                            <br/> {{player.last_name}}
-                            <select ng-model="post_player" ng-options="player_post.post for player_post in change.post" ng-change="change.addPosition(player.$id, post_player.post)"></select>
-                        </ion-item>
-                    </ion-scroll>
-                </ion-list>
-
-            </div>
+          <div class="rem" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="change.onDropComplete($index, $data)" ng-repeat="player in change.playerSelected" ng-if="player.position === 'REM'">
+              <a> {{player.last_name}}
+                  <br/> {{player.first_name}} {{player.position}}
+              </a>
+          </div>
             <div class="col col-67">
                 <div class="row quatre">
                     <div ng-if="change.match.formation === '4-4-2'">
-                        <four-fourtwo info="change.playerSelected_firebase" click="true"></four-fourtwo>
+                        <four-fourtwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-fourtwo>
                     </div>
 
                 </div>

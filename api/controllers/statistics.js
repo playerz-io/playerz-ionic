@@ -10,7 +10,7 @@ let real_time = require('../real_time');
 let async = require('async');
 
 // update statistics of player
-let updateStatPlayer = function(player, match_id, stat, err, coach_id) {
+let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
     //console.log(player);
     let numberAttempts = 0;
     let percentPass = 0;
@@ -25,7 +25,12 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id) {
 
             if (err)
                 throw err;
-            statistics[stat]++;
+            if (minus === true) {
+                statistics[stat]--;
+            } else {
+                statistics[stat]++;
+            }
+
 
             numberAttempts = statistics.attemptsOnTarget + statistics.attemptsOffTarget + statistics.but;
             if (isNaN(numberAttempts)) {
@@ -52,6 +57,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id) {
 
             console.log(i, statistics);
             player.save();
+            totalStat(coach_id.toString(), match_id.toString());
             real_time.updateStatistic_firebase(player, match_id, coach_id, {
                 assist: statistics.assist,
                 retrieveBalls: statistics.retrieveBalls,
@@ -68,6 +74,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id) {
                 substitute: statistics.substitute,
                 but: statistics.but,
                 ballLost: statistics.ballLost,
+                ballPlayed: statistics.ballPlayed,
                 passesCompletion: statistics.passesCompletion,
                 defensiveAction: statistics.defensiveAction,
                 relanceCompletion: statistics.relanceCompletion,
@@ -186,7 +193,7 @@ exports.countMainAction = function(req, res) {
                 if (stringAction === 'but' && sizeSchema >= 5) {
                     //buteur
                     Player.findById(id_statPlayer, function(err, buteur) {
-                        updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+                        updateStatPlayer(buteur, match_id, stringAction, err, coach_id, false);
                         done(null, stringAction, match, schema, sizeSchema, id_statPlayer, coach);
                     });
                 } else {
@@ -200,7 +207,7 @@ exports.countMainAction = function(req, res) {
                 if (stringAction === 'but' && sizeSchema >= 5) {
                     let id_passeur = schema[sizeSchema - 4];
                     Player.findById(id_passeur, function(err, passeur) {
-                        updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+                        updateStatPlayer(passeur, match_id, 'assist', err, coach_id, false);
                         done(null, stringAction, match, schema, sizeSchema, id_statPlayer, coach);
                     });
                 } else {
@@ -215,7 +222,7 @@ exports.countMainAction = function(req, res) {
                 if (stringAction === 'but' && sizeSchema >= 5 && (schema[sizeSchema - 5] !== schema[sizeSchema - 3])) {
                     let id_avant_passeur = schema[sizeSchema - 5];
                     Player.findById(id_avant_passeur, function(err, avant_passeur) {
-                        updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id);
+                        updateStatPlayer(avant_passeur, match_id, 'beforeAssist', err, coach_id, false);
                         done(null, stringAction, match, schema, sizeSchema, id_statPlayer, coach);
                     });
                 } else {
@@ -229,7 +236,7 @@ exports.countMainAction = function(req, res) {
                 if (action.toString() === 'but' && sizeSchema === 4) {
                     //buteur
                     Player.findById(id_statPlayer, function(err, buteur) {
-                        updateStatPlayer(buteur, match_id, stringAction, err, coach_id);
+                        updateStatPlayer(buteur, match_id, stringAction, err, coach_id, false);
                         done(null, stringAction, match, schema, sizeSchema, id_statPlayer, coach);
                     });
                 } else {
@@ -245,7 +252,7 @@ exports.countMainAction = function(req, res) {
                     let id_passeur = schema[sizeSchema - 4];
 
                     Player.findById(id_passeur, function(err, passeur) {
-                        updateStatPlayer(passeur, match_id, 'assist', err, coach_id);
+                        updateStatPlayer(passeur, match_id, 'assist', err, coach_id, false);
                         done(null, stringAction, match, schema, sizeSchema, id_statPlayer, coach);
                     });
                 } else {
@@ -265,7 +272,7 @@ exports.countMainAction = function(req, res) {
                     if (actions.indexOf(id_statPlayer) === -1) {
                         Player.findById(id_statPlayer, function(err, player) {
                             console.log('but');
-                            updateStatPlayer(player, match_id, stringAction, err, coach_id);
+                            updateStatPlayer(player, match_id, stringAction, err, coach_id, false);
                             done(null, stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach);
                         });
                     } else {
@@ -280,7 +287,6 @@ exports.countMainAction = function(req, res) {
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach, done) => {
                 coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
-                totalStat(coach_id.toString(), match_id.toString());
                 coach.team.matchs.id(match_id).schemas = [];
 
                 coach.save();
@@ -682,3 +688,81 @@ let totalStat = function(_coach_id, _match_id) {
         real_time.updateStatMatch_firebase(coach_id.toString(), match_id.toString(), result);
     });
 };
+
+exports.removeAction = (req, res) => {
+
+    let token = getToken(req.headers);
+    let match_id = req.body.match_id;
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let idCoach = decoded._id;
+
+        Coach.findById(idCoach, (err, coach) => {
+
+            if (err)
+                throw err;
+
+            console.log(coach);
+            let match = coach.team.matchs.id(match_id);
+            let sizeSchemaMatch = match.schemaMatch.length;
+            let schemaMatch = match.schemaMatch;
+            let lastSchema = schemaMatch[sizeSchemaMatch - 1];
+            let sizeLastSchema = lastSchema.length;
+            let schema = match.schemas;
+            let sizeSchema = schema.length;
+
+            if (sizeSchema !== 0) {
+                let idPlayerRemoved = schema.splice(sizeSchema - 1, 1);
+                Player.findById(idPlayerRemoved, (err, player) => {
+                  updateStatPlayer(player, match_id, 'ballPlayed', err, idCoach, true);
+                  coach.save();
+                  return res.status(202).json({
+                    success: true,
+                    msg: `ballon joué par ${player.last_name} ${player.first_name} est annulé`
+                  })
+                });
+            } else {
+                //check if sizeLastSchema equals 3
+                if (sizeLastSchema >= 3) {
+                    //remove 3 dernier item du dernier schema
+                    //schemaRemoved contains [ '577a4211c02b9a386444063e', 'but', '00:09' ]
+                    // lastSchema = schemaMatch[sizeSchemaMatch - 1] - [ '577a4211c02b9a386444063e', 'but', '00:09' ]
+                    let schemaRemoved = lastSchema.splice(sizeLastSchema - 3, 3);
+                    match.schemas = lastSchema;
+
+                    //removed last schema
+                    schemaMatch.splice(sizeSchemaMatch - 1, 1);
+
+                    let idPlayerRemoved = schemaRemoved[0];
+                    let actionRemoved = schemaRemoved[1];
+
+                    coach.save();
+
+                    Player.findById(idPlayerRemoved, (err, player) => {
+
+                        updateStatPlayer(player, match_id, actionRemoved, err, idCoach, true);
+
+                        res.status(202).json({
+                            success: true,
+                            msg: `${actionRemoved} ${player.last_name} ${player.first_name}`
+                        })
+                    });
+                } else {
+                    return res.status(404).json({
+                        success: false,
+                        msg: 'le schema n\'est pas supèrieur ou égale à 3'
+                    });
+                }
+            }
+        });
+
+    } else {
+
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+
+}

@@ -60,7 +60,6 @@ angular.module('starter.controller.tactique', [])
                 .error((data) => {
                     console.log(data);
                 })
-
         };
 
         // self.getPlayers = function() {
