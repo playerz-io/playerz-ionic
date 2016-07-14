@@ -134,9 +134,13 @@ angular.module('starter')
             match_id
         });
 
+        let removeAction = (match_id) => $http.post(API_ENDPOINT.url + '/removeAction', {
+            match_id
+        });
+
         return {
             addOpponentBut,
-
+            removeAction,
             defaultPosition,
             getPlayerNoSelected,
             totalStat,
