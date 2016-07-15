@@ -1,0 +1,11 @@
+<ion-view title="Stat en live">
+    <ion-nav-bar class="bar-positive" align-title="center">
+      <ion-nav-back-button class="button-clear">
+
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content scroll="false">
+
+      <p ng-repeat="stat in statInLive.refStatMatch">{{stat.$id}} : {{stat.$value}}</p>
+    </ion-content>
+</ion-view>

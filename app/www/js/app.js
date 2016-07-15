@@ -6,7 +6,7 @@
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
     'ionic-table', 'starter.controller.change', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset',  'starter.controller.account', 'starter.controller.main-settings',
-    'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial'
+    'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live'
 ])
 // TODO: 'angular-stripe',
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -256,6 +256,11 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             templateUrl: 'templates/change-password.html',
             controller: 'ChangePasswordCtrl as changePassword'
         })
+        .state('stat-in-live',{
+          url: '/stat-in-live',
+          templateUrl: 'templates/stat-in-live.html',
+          controller: 'StatInLiveCtrl as statInLive'
+        });
 
     $urlRouterProvider.otherwise('/');
 

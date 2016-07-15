@@ -25,8 +25,17 @@ angular.module('starter')
           .child(matchId)
           .child('players_no_selected');
 
-
         return $firebaseArray(refMatchId);
+      },
+
+      refStatMatch: (matchId, coachId) => {
+          let refStatMatch = mainRef
+            .child(coachId)
+            .child("matchs")
+            .child(matchId)
+            .child('statistics');
+
+            return $firebaseArray(refStatMatch);
       },
 
       refPlayer: function(ref) {

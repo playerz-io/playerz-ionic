@@ -36,7 +36,7 @@ exports.addMatch = function(req, res) {
                 msg: "Certains champs n'ont pas été saisies"
             });
         }
-
+        // TODO: add red and yellow card
         let newMatch = new Match({
             against_team: against_team,
             place: place,
@@ -46,20 +46,19 @@ exports.addMatch = function(req, res) {
             defaultPosition: false,
             status: 'comeup',
             statistics: {
-                ballPlayed: 0,
-                ballLost: 0,
-                passesCompletion: 0,
-                retrieveBalls: 0,
-                defensiveAction: 0,
-                relanceCompletion: 0,
-                foulsSuffered: 0,
-                foulsCommitted: 0,
-                offSide: 0,
-                attempts: 0,
-                attemptsOnTarget: 0,
-                attemptsOffTarget: 0,
-                but: 0,
-                but_opponent: 0
+                totalBallPlayed: 0,
+                totalBallLost: 0,
+                totalRetrieveBalls: 0,
+                totalFoulsSuffered: 0,
+                totalFoulsCommited: 0,
+                totalOffSide: 0,
+                totalAttempts: 0,
+                totalAttemptsOnTarget: 0,
+                totalAttemptsOffTarget: 0,
+                totalBut: 0,
+                totalPassesCompletion: 0,
+                totalRelanceCompletion: Number,
+                but_opponent: Number
             }
 
         });
