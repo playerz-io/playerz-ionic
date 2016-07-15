@@ -21,9 +21,12 @@ router
     }), controllerStat.avgRelance)
     .post('/removeAction', passport.authenticate('jwt', {
         session: false
-    }), controllerStat.removeAction);
-    // .post('/totalStat', passport.authenticate('jwt', {
-    //     session: false
-    // }), controllerStat.totalStat);
+    }), controllerStat.removeAction)
+    .get('/statistics', passport.authenticate('jwt', {
+        session: false
+    }), controllerStat.getStatMatch);
+// .post('/totalStat', passport.authenticate('jwt', {
+//     session: false
+// }), controllerStat.totalStat);
 
 module.exports = router;

@@ -61,6 +61,16 @@ angular.module('starter.controller.match-stat', [])
             })
         };
 
+        let putMatchFinished = () => {
+            MatchService.putMatchFinished(self.matchId)
+                .success((data) => {
+                    console.log(data);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+        };
+
         self.showConfirmEndMatchPopup = function() {
             let popup = $ionicPopup.confirm({
                 title: 'Fin du match',
@@ -68,12 +78,14 @@ angular.module('starter.controller.match-stat', [])
             });
             popup.then(function(res) {
                 if (res) {
-                    self.countPercent();
+                    putMatchFinished();
+                    $state.go("summary-stat");
                 } else {
 
                 }
             });
         };
+
 
         //  update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {
@@ -110,16 +122,16 @@ angular.module('starter.controller.match-stat', [])
                 })
         };
 
-        self.countPercent = function() {
-            PlayerService.countPercent(self.matchId)
-                .success(function(data) {
-                    console.log(data);
-                    $state.go("summary-stat");
-                })
-                .error(function(data) {
-                    console.log(data);
-                })
-        }
+        // self.countPercent = function() {
+        //     PlayerService.countPercent(self.matchId)
+        //         .success(function(data) {
+        //             console.log(data);
+        //
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         })
+        // }
 
         self.getMatch = function() {
             MatchService.getMatchById(self.matchId)

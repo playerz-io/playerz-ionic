@@ -16,6 +16,7 @@ angular.module('starter.controller.match-played', [])
        self.getMatchFinished = function(){
          MatchService.getMatchFinished()
           .success(function(data){
+            console.log(data);
             self.matchs = data.matchs;
           })
           .error(function(data){
@@ -33,7 +34,6 @@ angular.module('starter.controller.match-played', [])
                    console.log(data);
                });
        };
-
        self.getMatchFinished();
 
 

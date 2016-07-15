@@ -60,6 +60,9 @@ router
     }), controllerMatch.switchPosition)
     .post('/addOpponentBut', passport.authenticate('jwt', {
         session: false
-    }), controllerMatch.addOpponentBut);
+    }), controllerMatch.addOpponentBut)
+    .post('/match_finished', passport.authenticate('jwt', {
+        session: false
+    }), controllerMatch.putMatchFinished);
 
 module.exports = router;

@@ -873,9 +873,11 @@ exports.addOpponentBut = (req, res) => {
             let match = coach.team.matchs.id(match_id);
             let statistics = match.statistics;
             statistics.but_opponent++;
+            console.log(statistics);
+
             real_time.updateStatMatch_firebase(coach_id, match_id, {
-              but_opponent: statistics.but_opponent
-            })
+                but_opponent: statistics.but_opponent
+            });
             coach.save((err) => {
                 if (err)
                     throw err;
@@ -884,13 +886,50 @@ exports.addOpponentBut = (req, res) => {
                 success: true,
                 but_opponent: statistics.but_opponent
             });
-        })
-
+        });
     } else {
         return res.status(403).json({
             success: false,
             msg: 'No token provided.'
         });
     }
+};
 
-}
+exports.putMatchFinished = (req, res) => {
+
+    let match_id = req.body.match_id;
+    let token = getToken(req.headers);
+
+
+    if (token) {
+
+        let decoded = jwt.decode(token, config.secret);
+        let coach_id = decoded._id;
+
+        Coach.findById(coach_id, (err, coach) => {
+
+            if (err)
+                throw err;
+
+            Match.findById(match_id, (err, match) => {
+                let matchCoach = coach.team.matchs.id(match_id)
+                matchCoach.status = "finished";
+                coach.save();
+
+                match.status = 'finished'
+                match.save();
+
+                res.status(200).json({
+                    success: true,
+                    match: match
+                })
+            });
+
+        });
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};

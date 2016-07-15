@@ -15,6 +15,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
     let numberAttempts = 0;
     let percentPass = 0;
     let percentRelance = 0;
+    let lostBall = 0;
 
     for (let i = 0, x = player.statistics.length; i < x; i++) {
         let statistics = player.statistics[i];
@@ -51,9 +52,15 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             if (isNaN(percentRelance)) {
                 percentRelance = 0;
             }
-
             statistics.relanceCompletion = percentRelance;
 
+            //ballLost
+
+            lostBall = statistics.ballLost + statistics.passesFailed + statistics.crossesFailed;
+            if (isNaN(lostBall)) {
+                lostBall = 0;
+            }
+            statistics.ballLost = lostBall;
 
             console.log(i, statistics);
             player.save();
@@ -559,8 +566,7 @@ let totalStat = function(_coach_id, _match_id) {
         totalAttemptsOffTarget = 0,
         totalBut = 0,
         totalPassesCompletion = 0,
-        totalRelanceCompletion = 0,
-        butOpponent = 0;
+        totalRelanceCompletion = 0;
 
     async.waterfall([
         (cb) => {
@@ -652,7 +658,7 @@ let totalStat = function(_coach_id, _match_id) {
                     attempts: stat.totalAttempts,
                     attemptsOnTarget: stat.totalAttemptsOnTarget,
                     attemptsOffTarget: stat.totalAttemptsOffTarget,
-                    butOpponent: stat.but_opponent,
+                    but_opponent: stat.but_opponent,
                     but: stat.totalBut
 
                 };
@@ -672,7 +678,7 @@ let totalStat = function(_coach_id, _match_id) {
                 attempts: stat.totalAttempts,
                 attemptsOnTarget: stat.totalAttemptsOnTarget,
                 attemptsOffTarget: stat.totalAttemptsOffTarget,
-                butOpponent: stat.but_opponent,
+                but_opponent: stat.but_opponent,
                 but: stat.totalBut
 
             };
@@ -715,12 +721,12 @@ exports.removeAction = (req, res) => {
             if (sizeSchema !== 0) {
                 let idPlayerRemoved = schema.splice(sizeSchema - 1, 1);
                 Player.findById(idPlayerRemoved, (err, player) => {
-                  updateStatPlayer(player, match_id, 'ballPlayed', err, idCoach, true);
-                  coach.save();
-                  return res.status(202).json({
-                    success: true,
-                    msg: `ballon joué par ${player.last_name} ${player.first_name} est annulé`
-                  })
+                    updateStatPlayer(player, match_id, 'ballPlayed', err, idCoach, true);
+                    coach.save();
+                    return res.status(202).json({
+                        success: true,
+                        msg: `ballon joué par ${player.last_name} ${player.first_name} est annulé`
+                    })
                 });
             } else {
                 //check if sizeLastSchema equals 3
@@ -765,4 +771,37 @@ exports.removeAction = (req, res) => {
         });
     }
 
+};
+
+exports.getStatMatch = (req, res) => {
+
+    let match_id = req.query.match_id;
+    let token = getToken(req.headers);
+
+
+    if (token) {
+
+        let decoded = jwt.decode(token, config.secret);
+        let coach_id = decoded._id;
+
+        Coach.findById(coach_id, (err, coach) => {
+
+            if (err)
+                throw err;
+
+            let match = coach.team.matchs.id(match_id);
+            console.log(match_id);
+            let statistics = match.statistics;
+
+            res.status(200).json({
+                success: true,
+                statistics
+            });
+        });
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
 }

@@ -40,7 +40,7 @@ let MatchSchema = new Schema({
     },
     schemas: [],
     belongs_to: String,
-    defaultPosition: Boolean,  
+    defaultPosition: Boolean,
     any: Schema.Types.Mixed
 
 });

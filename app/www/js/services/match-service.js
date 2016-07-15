@@ -138,7 +138,19 @@ angular.module('starter')
             match_id
         });
 
+        let putMatchFinished = (match_id) => $http.post(API_ENDPOINT.url + '/match_finished', {
+            match_id
+        });
+
+        let getMatchStatistics = (match_id) => $http.get(API_ENDPOINT.url + '/statistics', {
+            params: {
+                match_id
+            }
+        });
+
         return {
+            getMatchStatistics,
+            putMatchFinished,
             addOpponentBut,
             removeAction,
             defaultPosition,
