@@ -57,8 +57,8 @@ exports.addMatch = function(req, res) {
                 totalAttemptsOffTarget: 0,
                 totalBut: 0,
                 totalPassesCompletion: 0,
-                totalRelanceCompletion: Number,
-                but_opponent: Number
+                totalRelanceCompletion: 0,
+                but_opponent: 0
             }
 
         });

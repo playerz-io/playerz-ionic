@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal) {
 
         let self = this;
 
@@ -28,6 +28,22 @@ angular.module('starter.controller.match-stat', [])
             self.fullTime = self.textMinutes + ':' + self.textSeconds;
 
         }
+
+        self.onDropComplete = (index, obj, evt) => {
+            //dropped
+            console.log(index);
+            let droppedId = self.playerSelected[index].$id || self.playerSelected[index]._id;
+            //dragged
+            let draggedId = obj.$id || obj._id;
+            console.log(droppedId, draggedId);
+            PlayerService.switchPosition(self.matchId, droppedId, draggedId)
+                .success((data) => {
+                    console.log(data);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+        };
 
         self.stopTimer = () => {
             console.log('OK');
@@ -121,6 +137,27 @@ angular.module('starter.controller.match-stat', [])
                     console.log(data);
                 })
         };
+
+        //Change Modal
+        $ionicModal.fromTemplateUrl('templates/change-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then((modal) => {
+            $scope.modal = modal;
+        });
+
+        self.goChange = () => {
+            self.stopTimer();
+            $scope.modal.show();
+        };
+
+        self.backToMatch = () => {
+            self.startTimer();
+            $scope.modal.hide();
+        }
+
+
+
 
         // self.countPercent = function() {
         //     PlayerService.countPercent(self.matchId)
