@@ -90,7 +90,7 @@ exports.facebookConnect = (req, res) => {
 
                 }
                 let token = jwt.encode(coach, config.secret);
-                return res.json({
+                return res.status(200).json({
                     success: true,
                     coach,
                     token: 'JWT ' + token
@@ -172,7 +172,7 @@ exports.signup = (req, res) => {
                     if (err)
                         throw err;
 
-                    res.status(200).json({
+                    return res.status(200).json({
                         success: true,
                         msg: 'Nouvel utilisateur crée'
                     });
@@ -195,15 +195,15 @@ exports.authenticationJwt = (req, res) => {
 
     if (email) {
         if (!Utils.validateEmail(email)) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 msg: "Respecter le format d'une addresse mail"
             });
         }
     }
 
-    if (!email.toString() || !password.toString()) {
-        return res.status(400).json({
+    if (!email || !password ) {
+        return res.json({
             success: false,
             msg: "Les champs email ou mot de passe ne sont pas remplis !"
         });
@@ -216,7 +216,7 @@ exports.authenticationJwt = (req, res) => {
             throw err;
 
         if (!coach) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 msg: "Le coach n'a pas été trouvé"
             });
@@ -230,14 +230,14 @@ exports.authenticationJwt = (req, res) => {
                     coach.total_connexion++;
                     coach.save();
 
-                    res.status(200).json({
+                    return res.json({
                         success: true,
                         token: 'JWT ' + token,
                         coach: coach
                     });
 
                 } else {
-                    return res.status(400).json({
+                    return res.json({
                         success: false,
                         msg: `Votre mot de passe n'est pas correct`
                     });
