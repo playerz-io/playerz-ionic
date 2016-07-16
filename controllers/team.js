@@ -1,6 +1,6 @@
 //controllers
 
-'use strict'
+'use strict';
 
 let getToken = require('./token');
 let jwt = require('jwt-simple');
@@ -23,7 +23,7 @@ exports.addPlayer = function(req, res) {
         if( !last_name || !first_name  || !favourite_position){
           return res.status(403).json({
             success: false,
-            msg: "Certains champs n'ont pas été saisies"
+            msg: "Certain champs n'ont pas été saisis"
           });
         }
         let newPlayer = new Player({

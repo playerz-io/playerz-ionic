@@ -16,25 +16,30 @@ let MatchSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Player'
     }],
+    playerNoSelected: [{
+        type: Schema.ObjectId,
+        ref: 'Player'
+    }],
     formation: String,
     schemaMatch: [],
     statistics : {
-      ballPlayed: Number,
-      ballLost: Number,
-      passesCompletion  : Number,
-      retrieveBalls: Number,
-      defensiveAction: Number,
-      relanceCompletion: Number,
-      foulsSuffered: Number,
-      foulsCommitted: Number,
-      offSide: Number,
-      attempts: Number,
-      attemptsOnTarget: Number,
-      attemptsOffTarget: Number,
-      but: Number,
+      totalBallPlayed: Number,
+      totalBallLost: Number,
+      totalRetrieveBalls  : Number,
+      totalFoulsSuffered: Number,
+      totalFoulsCommited: Number,
+      totalOffSide: Number,
+      totalAttempts: Number,
+      totalAttemptsOnTarget: Number,
+      totalAttemptsOffTarget: Number,
+      totalBut: Number,
+      totalPassesCompletion: Number,
+      totalRelanceCompletion: Number,
+      but_opponent: Number
     },
     schemas: [],
     belongs_to: String,
+    defaultPosition: Boolean,
     any: Schema.Types.Mixed
 
 });
