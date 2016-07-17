@@ -203,7 +203,7 @@ exports.authenticationJwt = (req, res) => {
     }
 
     if (!email || !password ) {
-        return res.json({
+        return resœ.json({
             success: false,
             msg: "Les champs email ou mot de passe ne sont pas remplis !"
         });

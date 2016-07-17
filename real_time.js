@@ -59,7 +59,7 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
             id: player._id,
             first_name: player.first_name,
             last_name: player.last_name,
-            position: player.position,
+            position: player.position || '',
             favourite_position: player.favourite_position,
             statistics: {
                 assist: stat[0].assist,
