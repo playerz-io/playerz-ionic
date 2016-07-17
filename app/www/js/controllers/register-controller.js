@@ -27,9 +27,10 @@ angular
                 $state.go('login');
                 self.user = {};
             }, function(errMsg) {
+              console.log(errMsg);
                 let alertPopup = $ionicPopup.alert({
                     title: 'Erreur Inscription !',
-                    template: errMsg
+                    template: errMsg.msg
                 });
             });
         };

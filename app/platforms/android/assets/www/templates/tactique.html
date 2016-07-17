@@ -3,7 +3,7 @@
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
         <ion-nav-buttons side="secondary">
-            <button class="button button-icon icon ion-ios-minus-outline" ng-click="matchStat.showDelete = !matchStat.showDelete">
+            <button class="button button-icon icon ion-ios-minus-outline" ng-click="tactique.showDelete = !tactique.showDelete">
             </button>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -16,37 +16,43 @@
                         <div class="input-label">
                             Formation
                         </div>
-                        <select ng-model="matchStat.formation" ng-change="matchStat.addFormation()">
+                        <select ng-model="tactique.formation" ng-change="tactique.addFormation()">
                             <option>4-4-2</option>
                             <option>4-3-3</option>
                         </select>
                     </label>
                 </div>
 
-                <ion-scroll style="height:90vh">
-                    <ion-list show-delete="matchStat.showDelete">
-                        <ion-item collection-repeat="player in matchStat.playersNoSelected" class="item">
-                            {{player.first_name}}
-                            <br/> {{player.last_name}} {{player.favourite_position}}
-                            <!-- <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)">
+
+                <ion-list show-delete="tactique.showDelete">
+                    <ion-item ng-repeat="player in tactique.playersNoSelected" class="item" ng-drag="true" ng-drag-data="player" ng-drop-success="tactique.onDropComplete($index, $data)">
+                        {{player.first_name}}
+                        <br/> {{player.last_name}} {{player.favourite_position}}
+                        <!-- <select ng-model="post_player" ng-options="player_post.post for player_post in tactique.post" ng-change="tactique.addPlayerSelected(player._id, post_player.post)">
                             </select> -->
-                            <ion-option-button ng-click="matchStat.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
-                            <ion-delete-button class="ion-minus-circled" ng-click="matchStat.removePlayerSelected(player._id, player)"></ion-delete-button>
-                        </ion-item>
-                    </ion-list>
-                </ion-scroll>
+                        <!-- <ion-option-button ng-click="tactique.removePlayerSelected(player._id, player)">Supprimer</ion-option-button>
+                        <ion-delete-button class="ion-minus-circled" ng-click="tactique.removePlayerSelected(player._id, player)"></ion-delete-button> -->
+                    </ion-item>
+                </ion-list>
+
             </div>
 
             <div class="col col-67">
-
                 <div id="begin-match">
-                    <a class="whistle" ui-sref="match-statistics({ matchId: tactique.matchId })">
+                    <a class="whistle" ui-sref="match-statistics({ matchId: tactique.matchId })" ui-sref-opts="{reload: true}">
                         <img src="../img/whistle.png" alt="Début du match">
                     </a>
                 </div>
+
+                <div class="rem" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="tactique.onDropComplete($index, $data)" ng-repeat="player in tactique.playerSelected" ng-if="player.position === 'REM'">
+                    <a> {{player.last_name}}
+                        <br/> {{player.first_name}} {{player.position}}
+                    </a>
+                </div>
+
                 <div class="row quatre">
-                    <div ng-if="matchStat.formation === '4-4-2'" class="tac">
-                        <four-fourtwo info="matchStat.playerSelected" click="true"></four-fourtwo>
+                    <div ng-if="tactique.formation === '4-4-2'" class="tac">
+                        <four-fourtwo info="tactique.playerSelected" drag="true" drop-complete="tactique.onDropComplete(index, data)" ></four-fourtwo>
                     </div>
 
                     <div ng-if="tactique.formation === '4-3-3'">

@@ -69,5 +69,4 @@ angular.module('starter.controller.change', [])
 
         self.getMatch();
 
-
     });

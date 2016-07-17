@@ -1,0 +1,23 @@
+<ion-view title="Stat en live">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="row">
+            <div class="col">
+                <p ng-repeat="stat in statInLive.refStatMatch">{{stat.$id}} : {{stat.$value}}</p>
+            </div>
+            <div class="col">
+                <ion-list>
+                    <ion-item ng-repeat="player in statInLive.playerSelected" ng-click="statInLive.goStat(player.$id)">
+                        <p>{{player.last_name}}</p>
+                        <p>{{player.first_name}}</p>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

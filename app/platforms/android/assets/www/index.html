@@ -40,7 +40,7 @@
             if (d.getElementById(id)) return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=508256989378454";
+            js.src = "connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=508256989378454";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
@@ -51,6 +51,14 @@
     <!-- ionic-table -->
     <script src="lib/ionic-table/ionic-table.js"></script>
 
+    <!--angular material-->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+
+    <!-- moment -->
+    <script src="lib/moment/moment.js"></script>
     <!-- Firebase -->
     <script src="lib/firebase/firebase.js"></script>
     <!-- AngularFire -->
@@ -81,6 +89,8 @@
     <script src="js/controllers/main-settings-controller.js"></script>
     <script src="js/controllers/account-controller.js"></script>
     <script src="js/controllers/change-password-controller.js"></script>
+    <script src="js/controllers/stat-in-live-controller.js"></script>
+    <script src="js/controllers/stat-in-live-player-controller.js"></script>
     <!-- services -->
     <script src="js/services/auth-service.js"></script>
     <script src="js/services/profile-service.js"></script>
@@ -97,8 +107,8 @@
     <script src="js/directives/four-four-two-directive.js"></script>
 
     <!-- stripe -->
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script src="lib/angular-stripe/release/angular-stripe.js"></script>
+    <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="lib/angular-stripe/release/angular-stripe.js"></script> -->
 
 
 

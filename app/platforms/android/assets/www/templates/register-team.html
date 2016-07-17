@@ -19,8 +19,12 @@
                 </select>
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="Nom de votre club" ng-model="register.user.name_club">
+                <input type="text" placeholder="Nom de votre club" ng-change="register.search()" ng-model="register.user.name_club">
             </label>
+
+            <div ng-show="register.user.name_club.length">
+                <li class="item" ng-click="register.selectedItem($index)" ng-repeat="club in register.clubs">{{club}}</li>
+            </div>
             <label class="item item-input">
                 <input type="text" placeholder="Categorie" ng-model="register.user.category">
             </label>

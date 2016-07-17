@@ -21,10 +21,10 @@ angular.module('starter.controller.login', [])
 
     loginCtrl.login = function() {
         AuthService.login(loginCtrl.user).then(function(msg) {
-
             $state.go('profile');
             loginCtrl.user = {};
         }, function(errMsg) {
+            console.log(errMsg);
             var alertPopup = $ionicPopup.alert({
                 title: 'Erreur',
                 template: errMsg

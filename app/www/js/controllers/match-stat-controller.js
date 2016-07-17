@@ -147,12 +147,10 @@ angular.module('starter.controller.match-stat', [])
         });
 
         self.goChange = () => {
-            self.stopTimer();
             $scope.modal.show();
         };
 
         self.backToMatch = () => {
-            self.startTimer();
             $scope.modal.hide();
         }
 

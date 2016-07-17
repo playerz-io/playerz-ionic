@@ -1,7 +1,7 @@
 'use strict'
 angular.module('starter')
     .service('MatchService', function(API_ENDPOINT, $http, $httpParamSerializerJQLike) {
-        var addMatch = function(match) {
+        let addMatch = function(match) {
             return $http({
                 method: 'POST',
                 headers: {
@@ -12,21 +12,21 @@ angular.module('starter')
             });
         };
 
-        var getMatchs = function() {
+        let getMatchs = function() {
             return $http({
                 method: 'GET',
                 url: API_ENDPOINT.url + '/matchs'
             });
         };
 
-        var getMatchById = function(id) {
+        let getMatchById = function(id) {
             return $http({
                 method: 'GET',
                 url: API_ENDPOINT.url + '/match' + '/' + id
             });
         };
 
-        var removeMatch = function(id) {
+        let removeMatch = function(id) {
             return $http({
                 method: 'DELETE',
                 headers: {
@@ -39,7 +39,7 @@ angular.module('starter')
             });
         };
 
-        var getTactique = function(tactique) {
+        let getTactique = function(tactique) {
             return $http({
                 method: 'GET',
                 headers: {
@@ -52,7 +52,7 @@ angular.module('starter')
             });
         };
 
-        var addPlayerSelected = function(player_id, match_id, position) {
+        let addPlayerSelected = function(player_id, match_id, position) {
 
             return $http({
                 method: 'POST',
@@ -69,7 +69,7 @@ angular.module('starter')
             });
         };
 
-        var getPlayerSelected = function(match_id) {
+        let getPlayerSelected = function(match_id) {
             return $http({
                 method: 'GET',
                 headers: {
@@ -82,7 +82,7 @@ angular.module('starter')
             });
         };
 
-        var removePlayerSelected = function(player_id, match_id) {
+        let removePlayerSelected = function(player_id, match_id) {
             return $http({
                 method: 'DELETE',
                 headers: {
@@ -130,7 +130,29 @@ angular.module('starter')
             match_id
         });
 
+        let addOpponentBut = (match_id) => $http.post(API_ENDPOINT.url + '/addOpponentBut', {
+            match_id
+        });
+
+        let removeAction = (match_id) => $http.post(API_ENDPOINT.url + '/removeAction', {
+            match_id
+        });
+
+        let putMatchFinished = (match_id) => $http.post(API_ENDPOINT.url + '/match_finished', {
+            match_id
+        });
+
+        let getMatchStatistics = (match_id) => $http.get(API_ENDPOINT.url + '/statistics', {
+            params: {
+                match_id
+            }
+        });
+
         return {
+            getMatchStatistics,
+            putMatchFinished,
+            addOpponentBut,
+            removeAction,
             defaultPosition,
             getPlayerNoSelected,
             totalStat,
