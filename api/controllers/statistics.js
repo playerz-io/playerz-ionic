@@ -566,7 +566,8 @@ let totalStat = function(_coach_id, _match_id) {
         totalAttemptsOffTarget = 0,
         totalBut = 0,
         totalPassesCompletion = 0,
-        totalRelanceCompletion = 0;
+        totalRelanceCompletion = 0,
+        but_opponent = 0;
 
     async.waterfall([
         (cb) => {
@@ -609,7 +610,6 @@ let totalStat = function(_coach_id, _match_id) {
                             totalBut += stat['but'];
                             totalPassesCompletion += stat['passesCompletion'];
                             totalRelanceCompletion += stat['relanceCompletion'];
-                            console.log(totalPassesCompletion, totalRelanceCompletion);
                         }
                     }
                     if (player_id === playerSelected[numberPlayerSelected - 1]) {
@@ -626,65 +626,60 @@ let totalStat = function(_coach_id, _match_id) {
                             totalAttemptsOffTarget,
                             totalBut,
                             totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
-                            totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected)
+                            totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
+                            but_opponent: match.statistics.but_opponent
                         });
                     }
-
-
                 });
-
-
             }
-
         },
         (coach, match, stat, cb) => {
 
             Match.findById(match_id, (err, foundMatch) => {
                 if (err)
                     throw err;
-                //console.log(foundMatch);
 
                 //update match stat
                 foundMatch.statistics = {
-                    ballPlayed: stat.totalBallPlayed,
-                    ballLost: stat.totalBallLost,
-                    passesCompletion: stat.totalPassesCompletion,
-                    retrieveBalls: stat.totalRetrieveBalls,
-                    defensiveAction: stat.totalDefensiveAction,
-                    relanceCompletion: stat.totalRelanceCompletion,
-                    foulsSuffered: stat.totalFoulsSuffered,
-                    foulsCommitted: stat.totalFoulsCommited,
-                    offSide: stat.totalOffSide,
-                    attempts: stat.totalAttempts,
-                    attemptsOnTarget: stat.totalAttemptsOnTarget,
-                    attemptsOffTarget: stat.totalAttemptsOffTarget,
+                    totalBallPlayed: stat.totalBallPlayed,
+                    totalBallLost: stat.totalBallLost,
+                    totalPassesCompletion: stat.totalPassesCompletion,
+                    totalRetrieveBalls: stat.totalRetrieveBalls,
+                    totalDefensiveAction: stat.totalDefensiveAction,
+                    totalRelanceCompletion: stat.totalRelanceCompletion,
+                    totalFoulsSuffered: stat.totalFoulsSuffered,
+                    totalFoulsCommited: stat.totalFoulsCommited,
+                    totalOffSide: stat.totalOffSide,
+                    totalAttempts: stat.totalAttempts,
+                    totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
+                    totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
                     but_opponent: stat.but_opponent,
-                    but: stat.totalBut
+                    totalBut: stat.totalBut
 
                 };
                 foundMatch.save();
             });
 
             match.statistics = {
-                ballPlayed: stat.totalBallPlayed,
-                ballLost: stat.totalBallLost,
-                passesCompletion: stat.totalPassesCompletion,
-                retrieveBalls: stat.totalRetrieveBalls,
-                defensiveAction: stat.totalDefensiveAction,
-                relanceCompletion: stat.totalRelanceCompletion,
-                foulsSuffered: stat.totalFoulsSuffered,
-                foulsCommitted: stat.totalFoulsCommited,
-                offSide: stat.totalOffSide,
-                attempts: stat.totalAttempts,
-                attemptsOnTarget: stat.totalAttemptsOnTarget,
-                attemptsOffTarget: stat.totalAttemptsOffTarget,
+                totalBallPlayed: stat.totalBallPlayed,
+                totalBallLost: stat.totalBallLost,
+                totalPassesCompletion: stat.totalPassesCompletion,
+                totalRetrieveBalls: stat.totalRetrieveBalls,
+                totalDefensiveAction: stat.totalDefensiveAction,
+                totalRelanceCompletion: stat.totalRelanceCompletion,
+                totalFoulsSuffered: stat.totalFoulsSuffered,
+                totalFoulsCommited: stat.totalFoulsCommited,
+                totalOffSide: stat.totalOffSide,
+                totalAttempts: stat.totalAttempts,
+                totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
+                totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
                 but_opponent: stat.but_opponent,
-                but: stat.totalBut
+                totalBut: stat.totalBut
 
             };
+            console.log('match.statistics', match.statistics);
             coach.save();
 
-            //  console.log(coach);
             cb(null, stat);
         }
     ], (err, result) => {

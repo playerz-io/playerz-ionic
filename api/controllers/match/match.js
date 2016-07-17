@@ -899,7 +899,6 @@ exports.putMatchFinished = (req, res) => {
     let match_id = req.body.match_id;
     let token = getToken(req.headers);
 
-
     if (token) {
 
         let decoded = jwt.decode(token, config.secret);
@@ -927,6 +926,60 @@ exports.putMatchFinished = (req, res) => {
         });
     } else {
         return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+exports.getGlobalStatisticsMatch = (req, res) => {
+    let token = getToken(req.headers);
+
+    let statisticsGlobal = {
+        "totalBallPlayed": 0,
+        "totalBallLost": 0,
+        "totalRetrieveBalls": 0,
+        "totalFoulsSuffered": 0,
+        "totalFoulsCommited": 0,
+        "totalOffSide": 0,
+        "totalAttempts": 0,
+        "totalAttemptsOnTarget": 0,
+        "totalAttemptsOffTarget": 0,
+        "totalBut": 0,
+        "totalPassesCompletion": 0,
+        "totalRelanceCompletion": 0,
+        "but_opponent": 0
+    };
+
+    let keyStatisticsGlobal = Object.keys(statisticsGlobal);
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coach_id = decoded._id;
+        let nbrMatchFinished = 0;
+
+        Coach.findById(coach_id, (err, coach) => {
+            let matchs = coach.team.matchs
+
+            for (let match of matchs) {
+                if (match.status === 'finished') {
+                    nbrMatchFinished++;
+                    let statistics = match.statistics
+
+                    for (let key of keyStatisticsGlobal) {
+                        statisticsGlobal[key] += statistics[key];
+                    }
+                }
+            }
+
+            res.status(200).json({
+                success: true,
+                statisticsGlobal,
+                nbrMatchFinished
+            });
+        });
+    } else {
+        return res.status(403).send({
             success: false,
             msg: 'No token provided.'
         });
