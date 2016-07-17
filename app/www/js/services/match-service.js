@@ -148,7 +148,10 @@ angular.module('starter')
             }
         });
 
+        let getGlobalStatisticsMatch = (match_id) => $http.get(API_ENDPOINT.url + '/getGlobalStatisticsMatch');
+
         return {
+            getGlobalStatisticsMatch,
             getMatchStatistics,
             putMatchFinished,
             addOpponentBut,
