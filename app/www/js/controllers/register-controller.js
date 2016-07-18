@@ -2,7 +2,7 @@
 
 angular
     .module('starter.controller.register', [])
-    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService) {
+    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast) {
         let self = this;
 
         self.user = {
@@ -10,6 +10,7 @@ angular
             last_name: '',
             email: '',
             password: '',
+            confirmation_password: '',
             country: '',
             sport: '',
             type: '',
@@ -24,13 +25,14 @@ angular
             self.user.birth_date = new Date(self.user.birth_date);
             AuthService.register(self.user).then(function(msg) {
                 console.log(msg);
+                $cordovaToast.showShortBottom(msg)
                 $state.go('login');
                 self.user = {};
             }, function(errMsg) {
-              console.log(errMsg);
+                console.log(errMsg);
                 let alertPopup = $ionicPopup.alert({
                     title: 'Erreur Inscription !',
-                    template: errMsg.msg
+                    template: errMsg
                 });
             });
         };
@@ -47,15 +49,15 @@ angular
         };
         self.getNameClub();
 
-        var searchClubs = function(searchFilter) {
+        let searchClubs = function(searchFilter) {
             console.log('Searching clubs for ' + searchFilter);
             var deferred = $q.defer();
-            var matches = self.clubsArray.filter( function(club) {
+            var matches = self.clubsArray.filter(function(club) {
                 //console.log(club);
-                if(club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1 ) return true;
+                if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
             });
-            $timeout( function(){
-                deferred.resolve( matches );
+            $timeout(function() {
+                deferred.resolve(matches);
             }, 100);
             return deferred.promise;
         };
@@ -64,7 +66,7 @@ angular
             searchClubs(self.user.name_club).then(
                 function(matches) {
 
-                    if(self.user.name_club.length === 0) {
+                    if (self.user.name_club.length === 0) {
                         self.clubs = {};
                     } else {
                         self.clubs = matches;

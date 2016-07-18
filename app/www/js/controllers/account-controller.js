@@ -28,6 +28,8 @@ angular.module('starter.controller.account', [])
         UserService.changeMail(self.coach.email)
             .success((data) => {
                 console.log(data);
+                AuthService.logout();
+                $state.go('login')
             })
             .error((data) => {
                 console.log(data);

@@ -112,6 +112,7 @@ exports.signup = (req, res) => {
     let last_name = req.body.last_name;
     let first_name = req.body.first_name;
     let password = req.body.password;
+    let confirmation_password = req.body.confirmation_password;
     let email = req.body.email;
     let country = req.body.country;
     let sport = req.body.sport;
@@ -126,16 +127,33 @@ exports.signup = (req, res) => {
     // NOTE: 1
     if (email) {
         if (!Utils.validateEmail(email)) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 msg: "Respecter le format d'une addresse mail"
             });
         }
     }
 
+    if(password){
+
+      if (confirmation_password.length < 6 || password.length < 6) {
+          return res.json({
+              success: false,
+              msg: 'Votre mot de passe doit contenir au moins 6 caractères'
+          });
+      }
+
+      if (confirmation_password !== password) {
+          return res.json({
+              success: false,
+              msg: 'Le mot de passe et la confirmation sont différents'
+          });
+      }
+    }
+
     // NOTE: 2
-    if (!last_name || !email || !first_name || !password || !type || !sport || !country || !genre || !birth_date || !name_club || !category || !division) {
-        return res.status(400).json({
+    if (!last_name || !email || !first_name || !password || !type || !sport || !country || !genre || !birth_date || !name_club || !category || !division || !confirmation_password) {
+        return res.json({
             success: false,
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
         });
@@ -172,13 +190,13 @@ exports.signup = (req, res) => {
                     if (err)
                         throw err;
 
-                    return res.status(200).json({
+                    return res.json({
                         success: true,
-                        msg: 'Nouvel utilisateur crée'
+                        msg: 'Votre profil a été crée'
                     });
                 });
             } else {
-                return res.status(400).json({
+                return res.json({
                     success: false,
                     msg: 'Un coach existe déjà avec cette addresse mail'
                 });
@@ -202,7 +220,7 @@ exports.authenticationJwt = (req, res) => {
         }
     }
 
-    if (!email || !password ) {
+    if (!email || !password) {
         return resœ.json({
             success: false,
             msg: "Les champs email ou mot de passe ne sont pas remplis !"

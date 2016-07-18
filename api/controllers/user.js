@@ -18,17 +18,14 @@ exports.forgotPassword = function(req, res) {
     let email = req.body.email;
 
     if (!email) {
-        return res.status(400).json({
-            msg: 'Saisissez un email !!'
-        })
+        let msg = 'Saisissez un email !!'
+        return Utils.error(res, msg);
     }
 
     if (email) {
         if (!Utils.validateEmail(email)) {
-            return res.status(400).json({
-                success: false,
-                msg: "Respecter le format d'une addresse mail"
-            });
+            let msg = "Respecter le format d'une addresse mail"
+            return Utils.error(res, msg);
         }
     }
 
@@ -47,15 +44,13 @@ exports.forgotPassword = function(req, res) {
             }, (err, coach) => {
 
                 if (!coach) {
-                    return res.status(400).json({
-                        msg: "Cet utilisateur n'exsite pas"
-                    });
+                    let msg = "Cet utilisateur n'exsite pas";
+                    return Utils.error(res, msg);
                 }
 
                 if (coach.connected === 'facebook') {
-                    return res.status(400).json({
-                        msg: "Votre connexion à été effectué avec Facebook !!"
-                    });
+                    let msg = "Votre connexion à été effectué avec Facebook !!";
+                    return Utils.error(res, msg);
                 }
 
                 coach.resetPasswordToken = token;
@@ -98,18 +93,15 @@ exports.resetPassword = function(req, res) {
     let token = req.body.token;
 
     if (!password || !confPassword) {
-        return res.status(400).json({
-            success: false,
-            msg: 'Remplissez tous les champs !!'
-        });
+        let msg = 'Remplissez tous les champs !!';
+        return Utils.error(res, msg);
     }
 
     if (password !== confPassword) {
-        return res.status(400).json({
-            success: false,
-            msg: 'Les deux mots de passe sont différents'
-        });
+        let msg = 'Les deux mots de passe sont différents';
+        return Utils.error(res, msg);
     }
+
     async.waterfall([
         (done) => {
             Coach.findOne({
@@ -119,9 +111,8 @@ exports.resetPassword = function(req, res) {
                 }
             }, function(err, coach) {
                 if (!coach) {
-                    return res.status(400).json({
-                        msg: "Password reset token is invalid or has expired."
-                    });
+                    let msg = "Password reset token is invalid or has expired.";
+                    return Utils.error(res, msg);
                 }
 
                 coach.password = password;
@@ -173,6 +164,11 @@ exports.changePassword = (req, res) => {
         let decoded = jwt.decode(token, config.secret);
         let coachId = decoded._id;
 
+        if (!newPassword || !confNewPassword || !currentPassword) {
+            let msg = "Un ou plusieurs champs requis n'ont pas été saisies"
+            return Utils.error(res, msg);
+        }
+
         async.waterfall([
 
             (done) => {
@@ -182,11 +178,8 @@ exports.changePassword = (req, res) => {
                     coach.comparePassword(currentPassword, (err, isMatch) => {
 
                         if (err || !isMatch) {
-
-                            res.status(400).json({
-                                success: false,
-                                msg: 'Mauvais mot de passe'
-                            });
+                            let msg = 'Mauvais mot de passe';
+                            return Utils.error(res, msg);
                         } else {
                             done(null, coach)
                         }
@@ -197,10 +190,11 @@ exports.changePassword = (req, res) => {
 
             (coach, done) => {
                 if (newPassword !== confNewPassword) {
-                    res.status(400).json({
-                        success: false,
-                        msg: 'Les deux mots de passe sont différents'
-                    });
+                    let msg = `Les deux mots de passe sont différents`;
+                    return Utils.error(res, msg);
+                } else if (newPassword.length < 6 || confNewPassword.length < 6) {
+                    let msg = 'Votre de passe doit contenir au moins 6 caractères'
+                    return Utils.error(res, msg);
                 } else {
                     coach.password = newPassword;
                     coach.save((err) => {

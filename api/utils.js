@@ -12,3 +12,10 @@ exports.diffArray = (fstArray, sndArray) => {
 
     return diff;
 };
+
+exports.error = (res, msg) => {
+   return res.status(400).json({
+     success: false,
+     msg
+   });
+}
