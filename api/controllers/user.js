@@ -239,11 +239,17 @@ exports.changePassword = (req, res) => {
     }
 };
 
-
 exports.changeEmail = (req, res) => {
 
     let token = getToken(req.headers);
     let newEmail = req.body.email;
+
+    if (!newEmail) {
+        return res.status(400).json({
+            success: false,
+            msg: "Saisissez une addresse mail"
+        });
+    }
 
     if (newEmail) {
         if (!Utils.validateEmail(newEmail)) {
@@ -267,11 +273,11 @@ exports.changeEmail = (req, res) => {
                     let oldEmail = coach.email;
                     coach.email = newEmail
 
-                    if(oldEmail === newEmail){
-                      return res.status(400).json({
-                        success: false,
-                        msg: `La nouveau email est le même que l'ancien`
-                      })
+                    if (oldEmail === newEmail) {
+                        return res.status(400).json({
+                            success: false,
+                            msg: `La nouveau email est le même que l'ancien`
+                        })
                     }
 
                     coach.save();
@@ -312,6 +318,67 @@ exports.changeEmail = (req, res) => {
                 return res.status(202).json({
                     success: true,
                     mgs: 'Votre email a changé'
+                });
+            }
+        ]);
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+exports.changeNumber = (req, res) => {
+
+    let token = getToken(req.headers);
+    let number = req.body.number;
+
+    if (!number) {
+        return res.status(400).json({
+            success: false,
+            msg: "Saisissez un numéro de téléphone"
+        });
+    }
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coachId = decoded._id;
+
+        async.waterfall([
+
+            (done) => {
+                Coach.findById(coachId, (err, coach) => {
+                    if (err)
+                        throw err;
+                    coach.number_tel = number;
+
+                    coach.save();
+
+                    done(null, number, coach);
+
+                });
+            },
+
+            (number, coach, done) => {
+
+                let smtpTransport = nodemailer.createTransport(mg(auth));
+
+                let mailOptions = {
+                    to: coach.email,
+                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    subject: `Changement de télphone`,
+                    text: `Le numéro de téléphone à changé`
+                };
+
+                smtpTransport.sendMail(mailOptions, (err) => {
+                    if (err)
+                        throw err;
+                });
+
+                return res.status(202).json({
+                    success: true,
+                    mgs: 'Votre numéro a changé'
                 });
             }
         ]);

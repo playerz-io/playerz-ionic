@@ -17,9 +17,7 @@ angular.module('starter.controller.account', [])
             .success((data) => {
                 console.log(data);
                 self.coach = data.coach;
-                if (!self.coach.number) {
-                    self.coach.number = "Ajoutez"
-                }
+
             })
             .error((data) => {
                 console.log(data);
@@ -27,8 +25,17 @@ angular.module('starter.controller.account', [])
     };
 
     self.changeMail = () => {
-        console.log('ok');
         UserService.changeMail(self.coach.email)
+            .success((data) => {
+                console.log(data);
+            })
+            .error((data) => {
+                console.log(data);
+            })
+    };
+
+    self.changeNumber = () => {
+        UserService.changeNumber(self.coach.number_tel)
             .success((data) => {
                 console.log(data);
             })

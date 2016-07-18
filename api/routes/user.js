@@ -13,7 +13,10 @@ router
     }), controllerUser.changePassword)
     .post('/changeEmail', passport.authenticate('jwt', {
         session: false
-    }), controllerUser.changeEmail);
+    }), controllerUser.changeEmail)
+    .post('/changeNumber', passport.authenticate('jwt', {
+        session: false
+    }), controllerUser.changeNumber);
 
 
 module.exports = router;

@@ -8,12 +8,12 @@
         <div class="list">
             <div class="item item-input item-stacked-label item-button-right">
                 <span class="input-label">Numéro <br> de <br> téléphone</span>
-                <input ng-model="account.coach.number"></input>
-                <button class="button button-positive">ok</button>
+                <input type="number" placeholder="Ajoutez" ng-model="account.coach.number_tel"></input>
+                <button class="button button-positive" ng-click="account.changeNumber()">ok</button>
             </div>
             <div class="item item-input item-stacked-label item-button-right" ng-hide="account.coach.connected === 'facebook'">
                 <span class="input-label">Email</span>
-                <input ng-model="account.coach.email"></input>
+                <input type="email" ng-model="account.coach.email"></input>
                 <button class="button button-positive" ng-click="account.changeMail()">ok</button>
             </div>
             <div class="item" ui-sref="change-password" ng-hide="account.coach.connected === 'facebook'">

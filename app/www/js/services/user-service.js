@@ -10,7 +10,13 @@ angular.module('starter')
             email
         });
 
+        let changeNumber = (number) => $http.post(`${API_ENDPOINT.url}/changeNumber`, {
+            number
+        });
+
+
         return {
+            changeNumber,
             changePassword,
             changeMail
         }
