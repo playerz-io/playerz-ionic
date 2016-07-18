@@ -116,7 +116,7 @@ exports.signup = (req, res) => {
     let email = req.body.email;
     let country = req.body.country;
     let sport = req.body.sport;
-    let type = req.body.type;
+    //let type = req.body.type;
     let genre = req.body.genre;
     let birth_date = req.body.birth_date;
     let name_club = req.body.name_club;
@@ -152,7 +152,7 @@ exports.signup = (req, res) => {
     }
 
     // NOTE: 2
-    if (!last_name || !email || !first_name || !password || !type || !sport || !country || !genre || !birth_date || !name_club || !category || !division || !confirmation_password) {
+    if (!last_name || !email || !first_name || !password || !sport || !country || !genre || !birth_date || !name_club || !category || !division || !confirmation_password) {
         return res.json({
             success: false,
             msg: "Un ou plusieurs champs requis n'ont pas été remplis"
@@ -173,7 +173,7 @@ exports.signup = (req, res) => {
                     connected: 'jwt',
                     country,
                     sport,
-                    type,
+                    type: 'Coach',
                     genre,
                     birth_date: new Date(birth_date),
                     created_at: Date.now(),
