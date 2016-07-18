@@ -13,7 +13,6 @@ angular
             confirmation_password: '',
             country: '',
             sport: '',
-            type: '',
             genre: '',
             name_club: '',
             category: '',
