@@ -15,6 +15,9 @@ router
     }), controllerPlayer.getMatchPlayed)
     .get('/getStatisticsMatch', passport.authenticate('jwt', {
         session: false
-    }), controllerPlayer.getStatisticsMatch);
+    }), controllerPlayer.getStatisticsMatch)
+    .get('/getGlobalStatistics', passport.authenticate('jwt', {
+        session: false
+    }), controllerPlayer.getGlobalStatistics);
 
 module.exports = router;

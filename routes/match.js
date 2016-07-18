@@ -63,6 +63,9 @@ router
     }), controllerMatch.addOpponentBut)
     .post('/match_finished', passport.authenticate('jwt', {
         session: false
-    }), controllerMatch.putMatchFinished);
+    }), controllerMatch.putMatchFinished)
+    .get('/getGlobalStatisticsMatch', passport.authenticate('jwt', {
+        session: false
+    }), controllerMatch.getGlobalStatisticsMatch)
 
 module.exports = router;

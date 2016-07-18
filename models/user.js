@@ -30,7 +30,7 @@ let UserSchema = new Schema({
     image_url: String,
     website_club: String,
     website_perso: String,
-    number_tel: String,
+    number_tel: Number,
     any: Schema.Types.Mixed
 });
 

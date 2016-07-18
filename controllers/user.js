@@ -11,16 +11,24 @@ let mg = require('nodemailer-mailgun-transport');
 let auth = require('../config/mailgun').auth;
 let bcrypt = require('bcrypt');
 var Coach = require('../models/coach').modelCoach;
+let Utils = require('../utils');
 
 exports.forgotPassword = function(req, res) {
 
     let email = req.body.email;
 
     if (!email) {
-        return res.status(400).json({
-            msg: 'Saisissez un email !!'
-        })
+        let msg = 'Saisissez un email !!'
+        return Utils.error(res, msg);
     }
+
+    if (email) {
+        if (!Utils.validateEmail(email)) {
+            let msg = "Respecter le format d'une addresse mail"
+            return Utils.error(res, msg);
+        }
+    }
+
     async.waterfall([
 
         (done) => {
@@ -36,15 +44,13 @@ exports.forgotPassword = function(req, res) {
             }, (err, coach) => {
 
                 if (!coach) {
-                    return res.status(400).json({
-                        msg: "Cet utilisateur n'exsite pas"
-                    });
+                    let msg = "Cet utilisateur n'exsite pas";
+                    return Utils.error(res, msg);
                 }
 
                 if (coach.connected === 'facebook') {
-                    return res.status(400).json({
-                        msg: "Votre connexion à été effectué avec Facebook !!"
-                    });
+                    let msg = "Votre connexion à été effectué avec Facebook !!";
+                    return Utils.error(res, msg);
                 }
 
                 coach.resetPasswordToken = token;
@@ -87,18 +93,15 @@ exports.resetPassword = function(req, res) {
     let token = req.body.token;
 
     if (!password || !confPassword) {
-        return res.status(400).json({
-            success: false,
-            msg: 'Remplissez tous les champs !!'
-        });
+        let msg = 'Remplissez tous les champs !!';
+        return Utils.error(res, msg);
     }
 
     if (password !== confPassword) {
-        return res.status(400).json({
-            success: false,
-            msg: 'Les deux mots de passe sont différents'
-        });
+        let msg = 'Les deux mots de passe sont différents';
+        return Utils.error(res, msg);
     }
+
     async.waterfall([
         (done) => {
             Coach.findOne({
@@ -108,9 +111,8 @@ exports.resetPassword = function(req, res) {
                 }
             }, function(err, coach) {
                 if (!coach) {
-                    return res.status(400).json({
-                        msg: "Password reset token is invalid or has expired."
-                    });
+                    let msg = "Password reset token is invalid or has expired.";
+                    return Utils.error(res, msg);
                 }
 
                 coach.password = password;
@@ -162,6 +164,11 @@ exports.changePassword = (req, res) => {
         let decoded = jwt.decode(token, config.secret);
         let coachId = decoded._id;
 
+        if (!newPassword || !confNewPassword || !currentPassword) {
+            let msg = "Un ou plusieurs champs requis n'ont pas été saisies"
+            return Utils.error(res, msg);
+        }
+
         async.waterfall([
 
             (done) => {
@@ -171,11 +178,8 @@ exports.changePassword = (req, res) => {
                     coach.comparePassword(currentPassword, (err, isMatch) => {
 
                         if (err || !isMatch) {
-
-                            res.status(400).json({
-                                success: false,
-                                msg: 'Mauvais mot de passe'
-                            });
+                            let msg = 'Mauvais mot de passe';
+                            return Utils.error(res, msg);
                         } else {
                             done(null, coach)
                         }
@@ -186,10 +190,11 @@ exports.changePassword = (req, res) => {
 
             (coach, done) => {
                 if (newPassword !== confNewPassword) {
-                    res.status(400).json({
-                        success: false,
-                        msg: 'Les deux mots de passe sont différents'
-                    });
+                    let msg = `Les deux mots de passe sont différents`;
+                    return Utils.error(res, msg);
+                } else if (newPassword.length < 6 || confNewPassword.length < 6) {
+                    let msg = 'Votre de passe doit contenir au moins 6 caractères'
+                    return Utils.error(res, msg);
                 } else {
                     coach.password = newPassword;
                     coach.save((err) => {
@@ -210,7 +215,7 @@ exports.changePassword = (req, res) => {
                                 throw err;
                         });
 
-                        res.status(200).json({
+                        return res.status(200).json({
                             success: true,
                             coach,
                             msg: 'Votre mot de passe à été mis à jour'
@@ -218,6 +223,157 @@ exports.changePassword = (req, res) => {
                     });
 
                 }
+            }
+        ]);
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+exports.changeEmail = (req, res) => {
+
+    let token = getToken(req.headers);
+    let newEmail = req.body.email;
+
+    if (!newEmail) {
+        return res.status(400).json({
+            success: false,
+            msg: "Saisissez une addresse mail"
+        });
+    }
+
+    if (newEmail) {
+        if (!Utils.validateEmail(newEmail)) {
+            return res.status(400).json({
+                success: false,
+                msg: "Respecter le format d'une addresse mail"
+            });
+        }
+    }
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coachId = decoded._id;
+
+        async.waterfall([
+
+            (done) => {
+                Coach.findById(coachId, (err, coach) => {
+                    if (err)
+                        throw err;
+                    let oldEmail = coach.email;
+                    coach.email = newEmail
+
+                    if (oldEmail === newEmail) {
+                        return res.status(400).json({
+                            success: false,
+                            msg: `La nouveau email est le même que l'ancien`
+                        })
+                    }
+
+                    coach.save();
+
+                    done(null, oldEmail, newEmail);
+
+                });
+            },
+
+            (oldEmail, newEmail, done) => {
+
+                let smtpTransport = nodemailer.createTransport(mg(auth));
+
+                let mailOptionsOldMail = {
+                    to: oldEmail,
+                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    subject: `Changement d'email`,
+                    text: `Ce mail n'est plus lié à Playerz`
+                };
+
+                let mailOptionsNewMail = {
+                    to: newEmail,
+                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    subject: `Changement d'email`,
+                    text: `Est bien votre nouveau mail`
+                };
+
+                smtpTransport.sendMail(mailOptionsOldMail, (err) => {
+                    if (err)
+                        throw err;
+                });
+
+                smtpTransport.sendMail(mailOptionsNewMail, (err) => {
+                    if (err)
+                        throw err;
+                });
+
+                return res.status(202).json({
+                    success: true,
+                    mgs: 'Votre email a changé'
+                });
+            }
+        ]);
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+exports.changeNumber = (req, res) => {
+
+    let token = getToken(req.headers);
+    let number = req.body.number;
+
+    if (!number) {
+        return res.status(400).json({
+            success: false,
+            msg: "Saisissez un numéro de téléphone"
+        });
+    }
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coachId = decoded._id;
+
+        async.waterfall([
+
+            (done) => {
+                Coach.findById(coachId, (err, coach) => {
+                    if (err)
+                        throw err;
+                    coach.number_tel = number;
+
+                    coach.save();
+
+                    done(null, number, coach);
+
+                });
+            },
+
+            (number, coach, done) => {
+
+                let smtpTransport = nodemailer.createTransport(mg(auth));
+
+                let mailOptions = {
+                    to: coach.email,
+                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    subject: `Changement de télphone`,
+                    text: `Le numéro de téléphone à changé`
+                };
+
+                smtpTransport.sendMail(mailOptions, (err) => {
+                    if (err)
+                        throw err;
+                });
+
+                return res.status(202).json({
+                    success: true,
+                    mgs: 'Votre numéro a changé'
+                });
             }
         ]);
     } else {
