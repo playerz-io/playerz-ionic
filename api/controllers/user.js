@@ -11,6 +11,7 @@ let mg = require('nodemailer-mailgun-transport');
 let auth = require('../config/mailgun').auth;
 let bcrypt = require('bcrypt');
 var Coach = require('../models/coach').modelCoach;
+let Utils = require('../utils');
 
 exports.forgotPassword = function(req, res) {
 
@@ -21,6 +22,16 @@ exports.forgotPassword = function(req, res) {
             msg: 'Saisissez un email !!'
         })
     }
+
+    if (email) {
+        if (!Utils.validateEmail(email)) {
+            return res.status(400).json({
+                success: false,
+                msg: "Respecter le format d'une addresse mail"
+            });
+        }
+    }
+
     async.waterfall([
 
         (done) => {
@@ -210,7 +221,7 @@ exports.changePassword = (req, res) => {
                                 throw err;
                         });
 
-                        res.status(200).json({
+                        return res.status(200).json({
                             success: true,
                             coach,
                             msg: 'Votre mot de passe à été mis à jour'
@@ -218,6 +229,90 @@ exports.changePassword = (req, res) => {
                     });
 
                 }
+            }
+        ]);
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+};
+
+
+exports.changeEmail = (req, res) => {
+
+    let token = getToken(req.headers);
+    let newEmail = req.body.email;
+
+    if (newEmail) {
+        if (!Utils.validateEmail(newEmail)) {
+            return res.status(400).json({
+                success: false,
+                msg: "Respecter le format d'une addresse mail"
+            });
+        }
+    }
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coachId = decoded._id;
+
+        async.waterfall([
+
+            (done) => {
+                Coach.findById(coachId, (err, coach) => {
+                    if (err)
+                        throw err;
+                    let oldEmail = coach.email;
+                    coach.email = newEmail
+
+                    if(oldEmail === newEmail){
+                      return res.status(400).json({
+                        success: false,
+                        msg: `La nouveau email est le même que l'ancien`
+                      })
+                    }
+
+                    coach.save();
+
+                    done(null, oldEmail, newEmail);
+
+                });
+            },
+
+            (oldEmail, newEmail, done) => {
+
+                let smtpTransport = nodemailer.createTransport(mg(auth));
+
+                let mailOptionsOldMail = {
+                    to: oldEmail,
+                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    subject: `Changement d'email`,
+                    text: `Ce mail n'est plus lié à Playerz`
+                };
+
+                let mailOptionsNewMail = {
+                    to: newEmail,
+                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    subject: `Changement d'email`,
+                    text: `Est bien votre nouveau mail`
+                };
+
+                smtpTransport.sendMail(mailOptionsOldMail, (err) => {
+                    if (err)
+                        throw err;
+                });
+
+                smtpTransport.sendMail(mailOptionsNewMail, (err) => {
+                    if (err)
+                        throw err;
+                });
+
+                return res.status(202).json({
+                    success: true,
+                    mgs: 'Votre email a changé'
+                });
             }
         ]);
     } else {

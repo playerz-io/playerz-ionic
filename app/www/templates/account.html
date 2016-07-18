@@ -1,30 +1,24 @@
 <ion-view title="Compte">
-  <ion-nav-bar class="bar-positive" align-title="center">
-      <ion-nav-back-button class="button-clear">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
 
-      </ion-nav-back-button>
-  </ion-nav-bar>
-    <ion-content>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content scroll="false">
         <div class="list">
-            <div class="item">
-                <h2>Numéro de téléphone</h2>
-                <p ng-show="account.coach.number_tel">
-                  {{account.coach.number}}
-                </p>
-                <p ng-show="!account.coach.number_tel">
-                  Ajouter
-                </p>
+            <div class="item item-input item-stacked-label item-button-right">
+                <span class="input-label">Numéro <br> de <br> téléphone</span>
+                <input ng-model="account.coach.number"></input>
+                <button class="button button-positive">ok</button>
             </div>
-            <div class="item">
-                <h2>Email</h2>
-                <p>
-                  {{account.coach.email}}
-                </p>
+            <div class="item item-input item-stacked-label item-button-right" ng-hide="account.coach.connected === 'facebook'">
+                <span class="input-label">Email</span>
+                <input ng-model="account.coach.email"></input>
+                <button class="button button-positive" ng-click="account.changeMail()">ok</button>
             </div>
-            <div class="item" ui-sref="change-password">
+            <div class="item" ui-sref="change-password" ng-hide="account.coach.connected === 'facebook'">
                 <h2>Changer de mot de passe</h2>
             </div>
-
         </div>
     </ion-content>
 </ion-view>

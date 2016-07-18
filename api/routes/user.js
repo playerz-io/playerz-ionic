@@ -10,6 +10,10 @@ router
     .post('/resetPassword', controllerUser.resetPassword)
     .post('/changePassword', passport.authenticate('jwt', {
         session: false
-    }), controllerUser.changePassword);
+    }), controllerUser.changePassword)
+    .post('/changeEmail', passport.authenticate('jwt', {
+        session: false
+    }), controllerUser.changeEmail);
+
 
 module.exports = router;
