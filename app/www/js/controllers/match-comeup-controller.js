@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-comeup', [])
-    .controller('MatchComeUpCtrl', function(MatchService, $scope, StorageService) {
+    .controller('MatchComeUpCtrl', function(MatchService, $scope, StorageService, $cordovaToast) {
 
         let self = this;
 
@@ -30,6 +30,7 @@ angular.module('starter.controller.match-comeup', [])
         self.removeMatch = function(id) {
             MatchService.removeMatch(id)
                 .success(function(data) {
+                    $cordovaToast.showShortBottom(data.msg);
                     console.log(data);
                     self.getMatchComeUp();
                 })

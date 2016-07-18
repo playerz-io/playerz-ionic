@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.match', [])
-    .controller('MatchTabCtrl', function($state, $ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService) {
+    .controller('MatchTabCtrl', function($state, $filter, $ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService, $cordovaToast) {
 
         var self = this;
 
@@ -33,8 +33,11 @@ angular.module('starter.controller.match', [])
 
         self.addMatch = function() {
             $scope.match.date = new Date($scope.match.date);
+            $scope.match.against_team = $filter('uppercase')($scope.match.against_team);
             MatchService.addMatch($scope.match)
                 .success(function(data) {
+                    console.log(data);
+                    $cordovaToast.showShortBottom(data.msg);
                     $scope.match = {};
                     $scope.modal.hide();
 
@@ -42,14 +45,14 @@ angular.module('starter.controller.match', [])
                 .error(function(data) {
                     console.log(data);
                     let alertPopup = $ionicPopup.alert({
-                        title: 'Error',
+                        title: 'Erreur',
                         template: data.msg
                     });
                 });
         };
 
         self.goMatchComeUp = () => {
-          $state.go('match-comeup');
+            $state.go('match-comeup');
         }
 
     });

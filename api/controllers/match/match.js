@@ -31,16 +31,14 @@ exports.addMatch = function(req, res) {
         let idCoach = decoded._id;
 
         if (!against_team || !place || !type || !date) {
-            return res.status(403).json({
-                success: false,
-                msg: "Certains champs n'ont pas été saisies"
-            });
+            let msg = "Certains champs n'ont pas été saisies";
+            return Utils.error(res, msg);
         }
         // TODO: add red and yellow card
         let newMatch = new Match({
-            against_team: against_team,
-            place: place,
-            type: type,
+            against_team: against_team.toUpperCase(),
+            place,
+            type,
             date: new Date(date),
             belongs_to: idCoach,
             defaultPosition: false,
@@ -60,33 +58,38 @@ exports.addMatch = function(req, res) {
                 totalRelanceCompletion: 0,
                 but_opponent: 0
             }
-
         });
 
-
-        console.log(newMatch);
-
-        Coach.findById(idCoach, function(err, coach) {
+        Coach.findById(idCoach, (err, coach) => {
             if (err)
                 throw err;
 
             real_time.addStatisticsMatch(newMatch._id.toString(), idCoach, newMatch);
-            newMatch.save(function(err, match) {
+
+            newMatch.save((err, match) => {
                 if (err) {
                     throw err;
                 }
             });
+
             coach.team.matchs.push(newMatch);
-            coach.save();
-            res.json({
+            let nameClub = coach.team.name_club;
+
+            coach.save((err, coach) => {
+                if (err)
+                    throw err;
+            });
+            let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a œété ajouté` :
+                `Le match ${against_team} - ${nameClub} a été ajouté`;
+
+            res.status(200).json({
                 success: true,
+                msg: returnMsg,
                 match: coach.team.matchs
             });
         });
-
     } else {
-
-        return res.status(403).send({
+        return res.status(403).json({
             success: false,
             msg: 'No token provided.'
         });
@@ -104,7 +107,7 @@ exports.getMatchs = function(req, res) {
             if (err)
                 throw err;
 
-            res.json({
+            res.status(200).json({
                 success: true,
                 matchs: coach.team.matchs
             });
@@ -129,7 +132,7 @@ exports.getMatchById = function(req, res) {
                 throw err;
 
             let match = coach.team.matchs.id(req.params.id);
-            res.json({
+            res.status(200).json({
                 success: true,
                 match: match
             });
@@ -157,14 +160,27 @@ exports.removeMatch = function(req, res) {
 
             Match.remove({
                 _id: idMatch
-            }, function(err, ok) {
-                console.log(err, ok);
+            }, (err, ok) => {
+                if (err)
+                    throw err;
+            });
+            let match = coach.team.matchs.id(idMatch);
+            let against_team = match.against_team;
+            let nameClub = coach.team.name_club;
+            match.remove((err, match) => {
+                if (err)
+                    throw err;
             });
 
-            coach.team.matchs.id(idMatch).remove();
-            coach.save();
-            res.json({
+            coach.save((err, coach) => {
+                if (err)
+                    throw err;
+            });
+            let returnMsg = (match.place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
+                `Le match ${against_team} - ${nameClub} a été ajouté`;
+            res.status(200).json({
                 success: true,
+                msg: returnMsg,
                 match: coach.team.matchs
             });
         });
@@ -188,19 +204,27 @@ exports.addFormation = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
 
         Coach.findById(decoded._id, function(err, coach) {
+
             if (err)
                 throw err;
 
-            let match = coach.team.matchs.id(idMatch);
+            Match.findById(idMatch, (err, foundMatch) => {
+                let match = coach.team.matchs.id(idMatch);
 
-            match.formation = formation;
-            coach.save();
-            console.log(match);
+                match.formation = formation;
+                coach.save();
 
-            res.json({
-                success: true,
-                match: match
+                foundMatch.formation = formation;
+                foundMatch.save();
+                console.log(match);
+
+                res.status(200).json({
+                    success: true,
+                    match: match
+                });
             });
+
+
         });
 
     } else {
@@ -219,17 +243,17 @@ exports.getTactique = function(req, res) {
     if (token) {
 
         if (tactique === '4-4-2') {
-            res.json({
+            return res.status(200).json({
                 success: true,
                 tactique: Football.QQDEUX_POST
             });
         } else if (tactique === '4-3-3') {
-            res.json({
+            return res.status(200).json({
                 success: true,
                 tactique: Football.QTTROIS_POST
             });
         } else {
-            res.json({
+            return res.status(400).json({
                 success: false
             });
         }
@@ -859,7 +883,6 @@ exports.addOpponentBut = (req, res) => {
 
     let match_id = req.body.match_id;
     let token = getToken(req.headers);
-
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
