@@ -16,8 +16,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .constant('API_ENDPOINT', {
-    //url: 'http://localhost:5000/api'
-    url: 'https://secret-plateau-96989.herokuapp.com/api'
+    url: 'http://localhost:5000/api'
+        //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window, $cordovaSplashscreen) {
@@ -36,11 +36,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
-
-        // $cordovaSplashscreen.show();
-        // setTimeout(function() {
-        //     $cordovaSplashscreen.hide()
-        // }, 3000);
+        
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
