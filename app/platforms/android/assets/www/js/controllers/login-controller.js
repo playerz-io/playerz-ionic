@@ -33,42 +33,7 @@ angular.module('starter.controller.login', [])
     };
 
     loginCtrl.loginFacebook = function() {
-        // FB.login(function(response) {
-        //     if (response.authResponse) {
-        //         console.log('Welcome!  Fetching your information.... ');
-        //         FB.api('/me', {
-        //             fields: 'last_name, first_name, picture, email, gender, id'
-        //         }, (response) => {
-        //             console.log('Datas recues de facebook : ', response);
-        //             AuthService.registerFacebook(response)
-        //                 .success(function(data) {
-        //                     console.log('Datas renvoyees a l\'api :', data);
-        //                     AuthService.storeUserCredentials(data.token);
-        //                     StorageService.addStorageCoachId(data.coach._id);
-        //                     //check if coach has a team
-        //                     if (!data.coach.hasOwnProperty('team')) {
-        //                         $state.go('register-facebook-sport');
-        //                     } else {
-        //
-        //                         AuthService.useCredentials(data.token);
-        //                         $state.go('profile');
-        //                     }
-        //
-        //                 })
-        //                 .error(function(data) {
-        //                     console.log(data);
-        //                     $ionicPopup.alert({
-        //                         title: 'Erreur',
-        //                         template: data.msg
-        //                     });
-        //                 })
-        //         });
-        //     } else {
-        //         console.log('User cancelled login or did not fully authorize.');
-        //     }
-        // }, {
-        //     scope: 'public_profile, email'
-        // });
+
         $cordovaOauth.facebook("508256989378454", ["email", "public_profile"]).then((result) => {
             console.log(result);
             $http.get("https://graph.facebook.com/v2.5/me", {
@@ -78,7 +43,7 @@ angular.module('starter.controller.login', [])
                     format: "json"
                 }
             }).then((result) => {
-                console.log(result);
+
                 AuthService.registerFacebook(result.data)
                     .success(function(data) {
                         console.log('Datas renvoyees a l\'api :', data);
@@ -102,11 +67,18 @@ angular.module('starter.controller.login', [])
                         });
                     })
             }, (error) => {
-                console.error(error);
+                $ionicPopup.alert({
+                    title: 'Erreur',
+                    template: error
+                });
+
             });
 
         }, (error) => {
-            console.log(error);
+            $ionicPopup.alert({
+                title: 'Erreur',
+                template: error
+            });
         });
     };
 

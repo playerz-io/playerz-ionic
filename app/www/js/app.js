@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
-.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
+.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window, $cordovaSplashscreen) {
 
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -36,6 +36,11 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
+
+        // $cordovaSplashscreen.show();
+        // setTimeout(function() {
+        //     $cordovaSplashscreen.hide()
+        // }, 3000);
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {

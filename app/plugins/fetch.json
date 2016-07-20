@@ -27,7 +27,7 @@
     "cordova-plugin-splashscreen": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-splashscreen@~3.1.0"
+            "id": "cordova-plugin-splashscreen"
         },
         "is_top_level": true,
         "variables": {}
