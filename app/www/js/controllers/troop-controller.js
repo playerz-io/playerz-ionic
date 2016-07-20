@@ -38,6 +38,7 @@ angular.module('starter.controller.troop', [])
                     console.log(data);
                     $scope.player = {};
                     $scope.modal.hide();
+                    $cordovaToast.showShortBottom(data.msg);
                 })
                 .error(function(data) {
                     var alertPopup = $ionicPopup.alert({
@@ -60,11 +61,27 @@ angular.module('starter.controller.troop', [])
                 });
         };
 
+        self.popupRemovePlayer = (player) => {
+          let confirmPopup = $ionicPopup.confirm({
+            title: 'Suppression',
+            template: `Etes-vous sur de vouloir supprimer
+            ${player.first_name} ${player.last_name} ?`
+          })
+
+          confirmPopup.then((res) => {
+            if(res){
+                self.removePlayer(player._id);
+            }else {
+
+            }
+          })
+        };
         self.removePlayer = function(id) {
             TeamService.removePlayer(id)
                 .success(function(data) {
                     console.log(data);
                     self.getPlayers();
+                    $cordovaToast.showShortBottom(data.msg);
                 })
                 .error(function(data) {
                     console.log(data);

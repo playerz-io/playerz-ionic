@@ -31,16 +31,16 @@ router
         session: false
     }), controllerMatch.getTactique)
     //add selected_player
-    .post('/player_selected', passport.authenticate('jwt', {
-        session: false
-    }), controllerMatch.addPlayerSelected)
+    // .post('/player_selected', passport.authenticate('jwt', {
+    //     session: false
+    // }), controllerMatch.addPlayerSelected)
     //Get player selected
     .get('/player_selected', passport.authenticate('jwt', {
         session: false
     }), controllerMatch.getPlayerSelected)
-    .delete('/player_selected', passport.authenticate('jwt', {
-        session: false
-    }), controllerMatch.removePlayerSelected)
+    // .delete('/player_selected', passport.authenticate('jwt', {
+    //     session: false
+    // }), controllerMatch.removePlayerSelected)
     // .get('/player_no_selected', passport.authenticate('jwt', {
     //     session: false
     // }), controllerMatch.getPlayerNoSelected)

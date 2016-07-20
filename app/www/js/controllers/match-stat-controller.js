@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast) {
 
         let self = this;
 
@@ -39,6 +39,7 @@ angular.module('starter.controller.match-stat', [])
             PlayerService.switchPosition(self.matchId, droppedId, draggedId)
                 .success((data) => {
                     console.log(data);
+                    $cordovaToast.showShortBottom(data.msg);
                 })
                 .error((data) => {
                     console.log(data);
@@ -195,6 +196,7 @@ angular.module('starter.controller.match-stat', [])
             MatchService.removeAction(self.matchId)
                 .success((data) => {
                     console.log(data);
+                    $cordovaToast.showShortBottom(data.msg);
                 })
                 .error((data) => {
                     console.log(data);

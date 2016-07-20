@@ -20,7 +20,7 @@
                     <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
                         <h2>{{player.last_name}}</h2>
                         <h4>{{player.first_name}}</h4>
-                        <ion-delete-button class="ion-minus-circled" ng-click="troop.removePlayer(player._id)"></ion-delete-button>
+                        <ion-delete-button class="ion-minus-circled" ng-click="troop.popupRemovePlayer(player)"></ion-delete-button>
                 </ion-list>
             </div>
         </div>

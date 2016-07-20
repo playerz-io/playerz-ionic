@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
-        
+
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
