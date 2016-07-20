@@ -79,10 +79,10 @@ exports.addMatch = function(req, res) {
                 if (err)
                     throw err;
             });
-            let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a œété ajouté` :
+            let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
                 `Le match ${against_team} - ${nameClub} a été ajouté`;
 
-            res.status(200).json({
+            res.status(201).json({
                 success: true,
                 msg: returnMsg,
                 match: coach.team.matchs
@@ -176,8 +176,8 @@ exports.removeMatch = function(req, res) {
                 if (err)
                     throw err;
             });
-            let returnMsg = (match.place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
-                `Le match ${against_team} - ${nameClub} a été ajouté`;
+            let returnMsg = (match.place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été supprimé` :
+                `Le match ${against_team} - ${nameClub} a été supprimé`;
             res.status(200).json({
                 success: true,
                 msg: returnMsg,
@@ -209,6 +209,9 @@ exports.addFormation = function(req, res) {
                 throw err;
 
             Match.findById(idMatch, (err, foundMatch) => {
+
+                if (err)
+                    throw err;
                 let match = coach.team.matchs.id(idMatch);
 
                 match.formation = formation;
@@ -265,202 +268,202 @@ exports.getTactique = function(req, res) {
     }
 };
 
-//supprimer un joueur sélectionné
-exports.removePlayerSelected = function(req, res) {
-    let token = getToken(req.headers);
-
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let player_id = req.body.player_id;
-        let match_id = req.body.match_id;
-
-        Player.findById(player_id, function(err, player) {
-            if (err)
-                res.status(404).json({
-                    error: err
-                });
-
-            Coach.findById(decoded._id, function(err, coach) {
-                if (err) {
-                    res.status(404).json({
-                        error: err
-                    });
-                }
-
-                let playersSelected = coach.team.matchs
-                    .id(match_id)
-                    .playerSelected;
-
-                let findPlayer = playersSelected.indexOf(player_id);
-
-                if (findPlayer >= 0) {
-                    real_time.removePlayerSelected_firebase(player, match_id, decoded._id);
-                    playersSelected.splice(findPlayer, 1);
-
-                } else {
-                    return res.status(202).json({
-                        msg: 'player not exists'
-                    });
-                }
-
-                coach.save(function(err) {
-                    if (err)
-                        res.status(404).json({
-                            error: err
-                        });
-                    res.status(202).json({
-                        player: player,
-                        playerSelected: playersSelected,
-                        msg: 'player removed'
-                    });
-                });
-
-            });
-        });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
-};
-
-exports.addPlayerSelected = function(req, res) {
-
-    let token = getToken(req.headers);
-
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let player_id = req.body.player_id;
-        let match_id = req.body.match_id;
-        let position = req.body.position;
-
-
-        async.waterfall([
-            (cb) => {
-
-                Coach.findById(decoded._id, (err, coach) => {
-                    if (err)
-                        throw err;
-
-                    let playerSelected = coach.team.matchs.id(match_id).playerSelected;
-                    let formation = coach.team.matchs.id(match_id).formation;
-                    let findPlayer = playerSelected.indexOf(player_id); // return -1 if player not exist else return value >= 0
-                    let numberPlayerSelected = playerSelected.length;
-
-                    cb(null, playerSelected, formation, findPlayer, numberPlayerSelected, coach);
-
-                });
-            },
-
-            (playerSelected, formation, findPlayer, numberPlayerSelected, coach, cb) => {
-
-                Player.find({
-                    _id: {
-                        "$in": playerSelected
-                    }
-                }, (err, playerPosition) => {
-                    console.log(playerPosition);
-                    Player.findById(player_id, (err, mainPlayer) => {
-
-                        for (let player of playerPosition) {
-
-                            // check if there are 11 players on the pitch
-                            if ((numberPlayerSelected >= 11) && (findPlayer < 0) && (position !== 'REM')) {
-                                return res.status(201).json({
-                                    success: false,
-                                    msg: 'Vous avez dejà 11 joueurs sur le terrain'
-                                });
-                            }
-                            // check if two players are the same position
-                            if (player.position === position && position !== 'REM' && player._id.toString() !== player_id.toString()) {
-                                return res.status(201).json({
-                                    success: false,
-                                    msg: `Attention
-                                    ${player.first_name} ${player.last_name} et ${mainPlayer.first_name} ${mainPlayer.last_name}
-                                    ne peuvent pas avoir le même poste`
-                                });
-                            }
-                        }
-                        cb(null, playerSelected, formation, findPlayer, numberPlayerSelected, coach);
-                    });
-                });
-            },
-
-            (playerSelected, formation, findPlayer, numberPlayerSelected, coach, cb) => {
-
-                Player.findById(player_id, (err, player) => {
-                    if (err)
-                        throw err;
-
-                    //change position of player even if he is already added
-                    player.position = position;
-
-                    real_time.updateStatistic_firebase(player, match_id, decoded._id, {
-                        first_name: player.first_name,
-                        last_name: player.last_name,
-                        id: player._id,
-                        position: position,
-                    });
-
-                    //check if user already exist
-                    if (findPlayer === -1) {
-
-                        // if array stat is empty add stat
-                        if (player.statistics.length === 0) {
-                            //add stastistic to player
-                            privateMatch.addStatisticsToPlayer(player, match_id);
-
-                        } else {
-
-                            // if array stat is not empty check if stat with
-                            // match_id already exist
-                            let statExist = false;
-                            for (let i = 0, x = player.statistics.length; i < x; i++) {
-                                if (player.statistics[i].match_id.toString() === match_id.toString()) {
-                                    statExist = true;
-                                }
-                            }
-
-                            if (!statExist) {
-                                //add stastistic to player
-                                privateMatch.addStatisticsToPlayer(player, match_id);
-                            }
-                        }
-
-                        if (formation === '4-4-2') {
-
-                            real_time.addPlayer_firebase(player, match_id, decoded._id, true);
-                            playerSelected.push(player);
-
-                            player.save();
-                            coach.save();
-                            console.log(player);
-                            return res.status(201).json({
-                                success: true,
-                                player: player,
-                                playersSelected: playerSelected,
-                                msg: 'Joueur ajouté'
-                            });
-                        }
-                    } else {
-                        player.save();
-                        return res.status(201).json({
-                            success: false,
-                            msg: 'Ce joueur a déjà été ajouté',
-                            playersSelected: playerSelected
-                        });
-                    }
-                });
-            }
-        ]);
-    } else {
-        res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
-};
+// //supprimer un joueur sélectionné
+// exports.removePlayerSelected = function(req, res) {
+//     let token = getToken(req.headers);
+//
+//     if (token) {
+//         let decoded = jwt.decode(token, config.secret);
+//         let player_id = req.body.player_id;
+//         let match_id = req.body.match_id;
+//
+//         Player.findById(player_id, function(err, player) {
+//             if (err)
+//                 res.status(404).json({
+//                     error: err
+//                 });
+//
+//             Coach.findById(decoded._id, function(err, coach) {
+//                 if (err) {
+//                     res.status(404).json({
+//                         error: err
+//                     });
+//                 }
+//
+//                 let playersSelected = coach.team.matchs
+//                     .id(match_id)
+//                     .playerSelected;
+//
+//                 let findPlayer = playersSelected.indexOf(player_id);
+//
+//                 if (findPlayer >= 0) {
+//                     real_time.removePlayerSelected_firebase(player, match_id, decoded._id);
+//                     playersSelected.splice(findPlayer, 1);
+//
+//                 } else {
+//                     return res.status(202).json({
+//                         msg: 'player not exists'
+//                     });
+//                 }
+//
+//                 coach.save(function(err) {
+//                     if (err)
+//                         res.status(404).json({
+//                             error: err
+//                         });
+//                     res.status(202).json({
+//                         player: player,
+//                         playerSelected: playersSelected,
+//                         msg: 'player removed'
+//                     });
+//                 });
+//
+//             });
+//         });
+//     } else {
+//         return res.status(403).send({
+//             success: false,
+//             msg: 'No token provided.'
+//         });
+//     }
+// };
+//
+// exports.addPlayerSelected = function(req, res) {
+//
+//     let token = getToken(req.headers);
+//
+//     if (token) {
+//         let decoded = jwt.decode(token, config.secret);
+//         let player_id = req.body.player_id;
+//         let match_id = req.body.match_id;
+//         let position = req.body.position;
+//
+//
+//         async.waterfall([
+//             (cb) => {
+//
+//                 Coach.findById(decoded._id, (err, coach) => {
+//                     if (err)
+//                         throw err;
+//
+//                     let playerSelected = coach.team.matchs.id(match_id).playerSelected;
+//                     let formation = coach.team.matchs.id(match_id).formation;
+//                     let findPlayer = playerSelected.indexOf(player_id); // return -1 if player not exist else return value >= 0
+//                     let numberPlayerSelected = playerSelected.length;
+//
+//                     cb(null, playerSelected, formation, findPlayer, numberPlayerSelected, coach);
+//
+//                 });
+//             },
+//
+//             (playerSelected, formation, findPlayer, numberPlayerSelected, coach, cb) => {
+//
+//                 Player.find({
+//                     _id: {
+//                         "$in": playerSelected
+//                     }
+//                 }, (err, playerPosition) => {
+//                     console.log(playerPosition);
+//                     Player.findById(player_id, (err, mainPlayer) => {
+//
+//                         for (let player of playerPosition) {
+//
+//                             // check if there are 11 players on the pitch
+//                             if ((numberPlayerSelected >= 11) && (findPlayer < 0) && (position !== 'REM')) {
+//                                 return res.status(201).json({
+//                                     success: false,
+//                                     msg: 'Vous avez dejà 11 joueurs sur le terrain'
+//                                 });
+//                             }
+//                             // check if two players are the same position
+//                             if (player.position === position && position !== 'REM' && player._id.toString() !== player_id.toString()) {
+//                                 return res.status(201).json({
+//                                     success: false,
+//                                     msg: `Attention
+//                                     ${player.first_name} ${player.last_name} et ${mainPlayer.first_name} ${mainPlayer.last_name}
+//                                     ne peuvent pas avoir le même poste`
+//                                 });
+//                             }
+//                         }
+//                         cb(null, playerSelected, formation, findPlayer, numberPlayerSelected, coach);
+//                     });
+//                 });
+//             },
+//
+//             (playerSelected, formation, findPlayer, numberPlayerSelected, coach, cb) => {
+//
+//                 Player.findById(player_id, (err, player) => {
+//                     if (err)
+//                         throw err;
+//
+//                     //change position of player even if he is already added
+//                     player.position = position;
+//
+//                     real_time.updateStatistic_firebase(player, match_id, decoded._id, {
+//                         first_name: player.first_name,
+//                         last_name: player.last_name,
+//                         id: player._id,
+//                         position: position,
+//                     });
+//
+//                     //check if user already exist
+//                     if (findPlayer === -1) {
+//
+//                         // if array stat is empty add stat
+//                         if (player.statistics.length === 0) {
+//                             //add stastistic to player
+//                             privateMatch.addStatisticsToPlayer(player, match_id);
+//
+//                         } else {
+//
+//                             // if array stat is not empty check if stat with
+//                             // match_id already exist
+//                             let statExist = false;
+//                             for (let i = 0, x = player.statistics.length; i < x; i++) {
+//                                 if (player.statistics[i].match_id.toString() === match_id.toString()) {
+//                                     statExist = true;
+//                                 }
+//                             }
+//
+//                             if (!statExist) {
+//                                 //add stastistic to player
+//                                 privateMatch.addStatisticsToPlayer(player, match_id);
+//                             }
+//                         }
+//
+//                         if (formation === '4-4-2') {
+//
+//                             real_time.addPlayer_firebase(player, match_id, decoded._id, true);
+//                             playerSelected.push(player);
+//
+//                             player.save();
+//                             coach.save();
+//                             console.log(player);
+//                             return res.status(201).json({
+//                                 success: true,
+//                                 player: player,
+//                                 playersSelected: playerSelected,
+//                                 msg: 'Joueur ajouté'
+//                             });
+//                         }
+//                     } else {
+//                         player.save();
+//                         return res.status(201).json({
+//                             success: false,
+//                             msg: 'Ce joueur a déjà été ajouté',
+//                             playersSelected: playerSelected
+//                         });
+//                     }
+//                 });
+//             }
+//         ]);
+//     } else {
+//         res.status(403).send({
+//             success: false,
+//             msg: 'No token provided.'
+//         });
+//     }
+// };
 
 //get player selected
 exports.getPlayerSelected = function(req, res) {
@@ -475,17 +478,14 @@ exports.getPlayerSelected = function(req, res) {
             .populate('team.matchs.playerSelected')
             .exec(function(err, coach) {
                 if (err)
-                    res.status(404).json({
-                        error: err
-                    });
+                    throw err;
 
                 let playerSelected = coach.team.matchs.id(req.query.match_id).playerSelected;
 
-                res.status(201).json({
+                res.status(200).json({
                     success: true,
                     playerSelected: playerSelected
                 });
-
             });
 
     } else {
@@ -692,7 +692,7 @@ exports.defaultPosition = (req, res) => {
 
                     coach.save();
 
-                    return res.status(202).json({
+                    return res.status(200).json({
                         success: true,
                         players: match.playerNoSelected
                     });
@@ -904,7 +904,7 @@ exports.addOpponentBut = (req, res) => {
                 if (err)
                     throw err;
             });
-            res.status(202).json({
+            res.status(201).json({
                 success: true,
                 but_opponent: statistics.but_opponent
             });
@@ -928,11 +928,14 @@ exports.putMatchFinished = (req, res) => {
         let coach_id = decoded._id;
 
         Coach.findById(coach_id, (err, coach) => {
-
             if (err)
                 throw err;
 
             Match.findById(match_id, (err, match) => {
+
+                if (err)
+                    throw err;
+
                 let matchCoach = coach.team.matchs.id(match_id)
                 matchCoach.status = "finished";
                 coach.save();
@@ -940,7 +943,7 @@ exports.putMatchFinished = (req, res) => {
                 match.status = 'finished'
                 match.save();
 
-                res.status(200).json({
+                res.status(202).json({
                     success: true,
                     match: match
                 })

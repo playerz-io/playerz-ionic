@@ -8,11 +8,13 @@ let config = require('../config/database');
 let Player = require('../models/player').modelPlayer;
 let Coach = require('../models/coach').modelCoach;
 let Team = require('../models/team').modelTeam;
+let Utils = require('../utils');
+
 
 exports.addPlayer = function(req, res) {
     let token = getToken(req.headers);
 
-    let last_name =  req.body.last_name;
+    let last_name = req.body.last_name;
     let first_name = req.body.first_name;
     let favourite_position = req.body.favourite_position;
 
@@ -20,11 +22,9 @@ exports.addPlayer = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
         console.log(decoded);
 
-        if( !last_name || !first_name  || !favourite_position){
-          return res.status(403).json({
-            success: false,
-            msg: "Certain champs n'ont pas été saisis"
-          });
+        if (!last_name || !first_name || !favourite_position) {
+            let msg = "Certain champs n'ont pas été saisis";
+            return Utils.error(res, msg);
         }
         let newPlayer = new Player({
             last_name: req.body.last_name,
@@ -32,14 +32,7 @@ exports.addPlayer = function(req, res) {
             favourite_position: req.body.favourite_position
         });
 
-        newPlayer.save(function(err, player) {
-            if (err) {
-                return res.json({
-                    success: false,
-                    msg: 'Error save player'
-                });
-            }
-        });
+        newPlayer.save();
 
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
@@ -47,8 +40,11 @@ exports.addPlayer = function(req, res) {
 
             coach.team.players.push(newPlayer);
             coach.save();
-            res.json({
+            let returnMsg = `${newPlayer.first_name} ${newPlayer.last_name} ajouté`;
+
+            res.status(201).json({
                 success: true,
+                msg: returnMsg,
                 team: coach.team
             });
         });
@@ -76,7 +72,7 @@ exports.getPlayers = function(req, res) {
                 if (err)
                     throw err;
 
-                res.json({
+                res.status(200).json({
                     success: true,
                     players: coach.team.players
                 });
@@ -100,7 +96,7 @@ exports.getPlayerById = function(req, res) {
             if (err)
                 throw err;
 
-            res.json({
+            res.status(200).json({
                 success: true,
                 player: player
             });
@@ -124,47 +120,41 @@ exports.removePlayer = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
         let player_id = req.body._id;
         let coach_id = decoded._id;
-        // Player.remove({
-        //     _id: player_id
-        // }, function(err) {
-        //     if (err)
-        //         throw err;
-        // });
 
-        Coach.findById(coach_id, function(err, coach) {
-            if (err) {
-                res.status(404).json({
-                    error: err
-                });
-            }
+        Player.findById(player_id, (err, playerRemoved) => {
+            if (err)
+                throw err;
 
-            let players = coach.team.players;
-            let findPlayer = players.indexOf(player_id);
-
-            if (findPlayer >= 0) {
-                players.splice(findPlayer, 1);
-            } else {
-                return res.status(202).json({
-                    msg: 'player not exists'
-                });
-            }
-
-            coach.save(function(err) {
+            Coach.findById(coach_id, function(err, coach) {
                 if (err)
-                    res.status(404).json({
-                        error: err
+                    throw err;
+
+                let players = coach.team.players;
+                let findPlayer = players.indexOf(player_id);
+
+                if (findPlayer >= 0) {
+                    players.splice(findPlayer, 1);
+                } else {
+                    return res.status(200).json({
+                        msg: 'player not exists'
+                    });
+                }
+
+                coach.save(function(err) {
+                    if (err)
+                        throw err;
+
+                    res.status(200).json({
+                        player: players,
+                        msg: `${playerRemoved.first_ame} ${playerRemoved.last_name} a été supprimé`
                     });
 
-                res.status(202).json({
-                    player: players,
-                    msg: 'player removed'
                 });
-
             });
-        });
+
+        })
 
     } else {
-
         return res.status(403).send({
             success: false,
             msg: 'No token provided.'

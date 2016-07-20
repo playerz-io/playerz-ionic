@@ -8,6 +8,7 @@ let Match = require('../models/match').modelMatch;
 let Coach = require('../models/coach').modelCoach;
 let real_time = require('../real_time');
 let async = require('async');
+let Utils = require('../utils');
 
 // update statistics of player
 let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
@@ -709,7 +710,7 @@ exports.removeAction = (req, res) => {
             let sizeSchemaMatch = match.schemaMatch.length;
             let schemaMatch = match.schemaMatch;
             let lastSchema = schemaMatch[sizeSchemaMatch - 1];
-            let sizeLastSchema = lastSchema.length;
+            let sizeLastSchema = (lastSchema === undefined)? 0 : lastSchema.length;
             let schema = match.schemas;
             let sizeSchema = schema.length;
 
@@ -720,7 +721,7 @@ exports.removeAction = (req, res) => {
                     coach.save();
                     return res.status(202).json({
                         success: true,
-                        msg: `ballon joué par ${player.last_name} ${player.first_name} est annulé`
+                        msg: `${Utils.getAction('ballPlayed')} de ${player.last_name} ${player.first_name} est annulé`
                     })
                 });
             } else {
@@ -746,13 +747,13 @@ exports.removeAction = (req, res) => {
 
                         res.status(202).json({
                             success: true,
-                            msg: `${actionRemoved} ${player.last_name} ${player.first_name}`
+                            msg: `${Utils.getAction(actionRemoved)} de ${player.last_name} ${player.first_name} est annulé`
                         })
                     });
                 } else {
-                    return res.status(404).json({
+                    return res.status(400).json({
                         success: false,
-                        msg: 'le schema n\'est pas supèrieur ou égale à 3'
+                        msg: `Il n'y a plus d'actions a annulé`
                     });
                 }
             }
