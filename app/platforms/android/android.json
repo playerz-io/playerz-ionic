@@ -43,6 +43,34 @@
                         {
                             "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://m.facebook.com\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://graph.facebook.com\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://api.facebook.com\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://*.fbcdn.net\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://*.akamaihd.net\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -53,6 +81,30 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 2
+                        }
+                    ],
+                    "application": [
+                        {
+                            "xml": "<meta-data android:name=\"com.facebook.sdk.ApplicationId\" android:value=\"@string/fb_app_id\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:label=\"@string/fb_app_name\" android:name=\"com.facebook.LoginActivity\" android:theme=\"@android:style/Theme.Translucent.NoTitleBar\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "res/values/facebookconnect.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<string name=\"fb_app_id\">508256989378454</string>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<string name=\"fb_app_name\">Playerz</string>",
+                            "count": 1
                         }
                     ]
                 }
@@ -91,6 +143,14 @@
             "PACKAGE_NAME": "com.ionicframework.playerz164850"
         },
         "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "phonegap-facebook-plugin": {
+            "APP_ID": "508256989378454",
+            "APP_NAME": "Playerz",
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.playerz164850"
         }
     },
@@ -333,6 +393,21 @@
         {
             "file": "plugins/cordova-plugin-x-toast/test/tests.js",
             "id": "cordova-plugin-x-toast.tests"
+        },
+        {
+            "file": "plugins/phonegap-facebook-plugin/facebookConnectPlugin.js",
+            "id": "phonegap-facebook-plugin.FacebookConnectPlugin",
+            "clobbers": [
+                "facebookConnectPlugin"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+            "id": "cordova-plugin-inappbrowser.inappbrowser",
+            "clobbers": [
+                "cordova.InAppBrowser.open",
+                "window.open"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -346,6 +421,8 @@
         "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-camera": "2.2.0",
         "cordova-plugin-file": "4.2.0",
-        "cordova-plugin-x-toast": "2.5.2"
+        "cordova-plugin-x-toast": "2.5.2",
+        "phonegap-facebook-plugin": "0.12.0",
+        "cordova-plugin-inappbrowser": "1.4.0"
     }
 }

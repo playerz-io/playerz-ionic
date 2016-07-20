@@ -30,9 +30,6 @@
   height: 10vh;
 }
 
-.button-player-back{
-  background-color: red;
-}
 
 .button-player{
   background-image: url('../img/hexagon_playerz_stroke.png');
@@ -109,7 +106,16 @@ a {
 
   height: 10vh;
   width: 10vh;
+  float: right;
 
+}
+
+.rem{
+  float: left;
+  margin-right: 0.5vw;
+  height: 10vh;
+  width: 10vw;
+  background-color: green;
 }
 div .row-player + .row-player, .row-player {
     float: right;

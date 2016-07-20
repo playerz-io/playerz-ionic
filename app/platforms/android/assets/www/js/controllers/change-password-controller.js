@@ -15,10 +15,14 @@ angular.module('starter.controller.change-password', [])
         UserService.changePassword(self.settingsPassword)
             .success((data) => {
                 console.log(data);
+                self.settingsPassword = {};
+                AuthService.logout();
+                $state.go('login')
                 $cordovaToast.showShortBottom(data.msg);
+
             })
             .error((data) => {
-                console.log(data);
+                console.log(data.msg);
                 $cordovaToast.showShortBottom(data.msg);
             })
     }

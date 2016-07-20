@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src  *; style-src  * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -105,6 +107,10 @@
     <!-- directives-->
     <script src="js/directives/four-three-three-directive.js"></script>
     <script src="js/directives/four-four-two-directive.js"></script>
+
+    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.js">
+
+    </script>
 
     <!-- stripe -->
     <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

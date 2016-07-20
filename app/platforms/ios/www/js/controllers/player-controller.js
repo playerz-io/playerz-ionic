@@ -7,7 +7,7 @@ angular.module('starter.controller.player', [])
             viewData.enableBack = true;
         });
 
-        var self = this;
+        let self = this;
 
         self.playerId = StorageService.getStoragePlayerId();
 
@@ -24,9 +24,7 @@ angular.module('starter.controller.player', [])
                 })
         };
 
-
         self.getMatchPlayed = () => {
-
             PlayerService.getMatchPlayed(self.playerId)
                 .success((data) => {
                     self.matchPlayed = data.matchs;
@@ -35,13 +33,29 @@ angular.module('starter.controller.player', [])
                 .error((data) => {
                     console.log(data);
                 })
-        }
+        };
 
         self.goPlayerStat = (matchId) => {
-          StorageService.addStorageMatchId(matchId);
-          $state.go('player-statistics', { matchId, playerId: self.playerId });
+            StorageService.addStorageMatchId(matchId);
+            $state.go('player-statistics', {
+                matchId,
+                playerId: self.playerId
+            });
+        };
+
+        self.getGlobalStatistics = () => {
+            PlayerService.getGlobalStatistics(self.playerId)
+                .success((data) => {
+                    self.nbrMatchPlayed = data.nbrMatchPlayed;
+                    self.statisticsGlobal = data.statisticsGlobal;
+                    console.log(data);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
         };
 
         self.getPlayer();
         self.getMatchPlayed();
+        self.getGlobalStatistics();
     });

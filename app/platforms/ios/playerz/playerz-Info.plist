@@ -38,10 +38,42 @@
     <true/>
     <key>NSAppTransportSecurity</key>
     <dict>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>m.facebook.com</key>
+        <dict/>
+        <key>graph.facebook.com</key>
+        <dict/>
+        <key>api.facebook.com</key>
+        <dict/>
+        <key>fbcdn.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>akamaihd.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+      </dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
+    <key>FacebookAppID</key>
+    <string>508256989378454</string>
+    <key>FacebookDisplayName</key>
+    <string>Playerz</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb508256989378454</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>

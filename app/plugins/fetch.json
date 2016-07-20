@@ -88,5 +88,24 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "phonegap-facebook-plugin": {
+        "source": {
+            "type": "local",
+            "path": "/home/barth/phonegap-facebook-plugin"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "508256989378454",
+            "APP_NAME": "Playerz"
+        }
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

@@ -14,6 +14,7 @@ angular.module('starter.controller.profile-setting', [])
             ProfileService.getCoachById()
                 .success((data) => {
                     self.coach = data.coach;
+                    self.coach.birth_date = new Date(self.coach.birth_date);
                     console.log(data);
                 })
                 .error((data) => {

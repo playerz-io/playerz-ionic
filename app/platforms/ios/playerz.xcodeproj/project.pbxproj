@@ -35,6 +35,13 @@
 		2FE3D940AAA24DED845AAEE9 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 967E3174B9B64E81B455A474 /* Toast+UIView.m */; };
 		94C889B0B962414084304B95 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 67645260230E4434B7C2A50A /* Toast.m */; };
 		72CED9663409412284C49E63 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F58F6FE778473EA0DA988D /* QuartzCore.framework */; };
+		396643FB2D7B492C94D2864C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 70FDA9BA257242CE8CD63F96 /* libsqlite3.dylib */; };
+		AFF5ACF3C57F419995865316 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5189D476984EB1BEF0AF38 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E2EAB00C614E4E0E90499D3D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD727DC370046B49BE5B77B /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7911B1B57E0843149A13C243 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D16DAC57914316B126727B /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1417DDFE36244C3C84D56FF7 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0511C5D2AFCF41FCAF6B7037 /* FacebookConnectPlugin.m */; };
+		E73AB2D0FD884AF7958280E4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8812F2214243F0A23DAFE7 /* FacebookSDK.framework */; };
+		57D1A220306B49FCB8F87952 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA5D2E0492343AAB02E5609 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +118,15 @@
 		B8CC108DC9EE458980D217A5 /* Toast+UIView.h */ = {isa = PBXFileReference; name = "Toast+UIView.h"; path = "cordova-plugin-x-toast/Toast+UIView.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		5A608A9E11584C1E80798C65 /* Toast.h */ = {isa = PBXFileReference; name = "Toast.h"; path = "cordova-plugin-x-toast/Toast.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		73F58F6FE778473EA0DA988D /* QuartzCore.framework */ = {isa = PBXFileReference; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		70FDA9BA257242CE8CD63F96 /* libsqlite3.dylib */ = {isa = PBXFileReference; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = compiled.mach-o.dylib; explicitFileType = undefined; includeInIndex = 0; };
+		0A5189D476984EB1BEF0AF38 /* Social.framework */ = {isa = PBXFileReference; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		9BD727DC370046B49BE5B77B /* Accounts.framework */ = {isa = PBXFileReference; name = "Accounts.framework"; path = "System/Library/Frameworks/Accounts.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		05D16DAC57914316B126727B /* Security.framework */ = {isa = PBXFileReference; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		0511C5D2AFCF41FCAF6B7037 /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; name = "FacebookConnectPlugin.m"; path = "phonegap-facebook-plugin/FacebookConnectPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		EBD986257F404717AB0A7DC0 /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; name = "FacebookConnectPlugin.h"; path = "phonegap-facebook-plugin/FacebookConnectPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		AF8812F2214243F0A23DAFE7 /* FacebookSDK.framework */ = {isa = PBXFileReference; name = "FacebookSDK.framework"; path = "playerz/Plugins/phonegap-facebook-plugin/FacebookSDK.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		FDA5D2E0492343AAB02E5609 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		F01EE198CA3945EE84DB86F3 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +139,11 @@
 				3DCD93704ADD469395CE4E1E /* CoreLocation.framework in Frameworks */,
 				F66FD8D2524A4B6EB59A397D /* AVFoundation.framework in Frameworks */,
 				72CED9663409412284C49E63 /* QuartzCore.framework in Frameworks */,
+				396643FB2D7B492C94D2864C /* libsqlite3.dylib in Frameworks */,
+				AFF5ACF3C57F419995865316 /* Social.framework in Frameworks */,
+				E2EAB00C614E4E0E90499D3D /* Accounts.framework in Frameworks */,
+				7911B1B57E0843149A13C243 /* Security.framework in Frameworks */,
+				E73AB2D0FD884AF7958280E4 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +217,11 @@
 				AAB502B6548C4FCC855C7D52 /* CoreLocation.framework */,
 				EC772B2F2C27443F9F3C02E8 /* AVFoundation.framework */,
 				73F58F6FE778473EA0DA988D /* QuartzCore.framework */,
+				70FDA9BA257242CE8CD63F96 /* libsqlite3.dylib */,
+				0A5189D476984EB1BEF0AF38 /* Social.framework */,
+				9BD727DC370046B49BE5B77B /* Accounts.framework */,
+				05D16DAC57914316B126727B /* Security.framework */,
+				AF8812F2214243F0A23DAFE7 /* FacebookSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,6 +280,10 @@
 				67645260230E4434B7C2A50A /* Toast.m */,
 				B8CC108DC9EE458980D217A5 /* Toast+UIView.h */,
 				5A608A9E11584C1E80798C65 /* Toast.h */,
+				0511C5D2AFCF41FCAF6B7037 /* FacebookConnectPlugin.m */,
+				EBD986257F404717AB0A7DC0 /* FacebookConnectPlugin.h */,
+				FDA5D2E0492343AAB02E5609 /* CDVInAppBrowser.m */,
+				F01EE198CA3945EE84DB86F3 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "playerz/Plugins";
@@ -384,6 +414,8 @@
 				E0C19D8E7E2D4802B8B76552 /* CDVAssetLibraryFilesystem.m in Sources */,
 				2FE3D940AAA24DED845AAEE9 /* Toast+UIView.m in Sources */,
 				94C889B0B962414084304B95 /* Toast.m in Sources */,
+				1417DDFE36244C3C84D56FF7 /* FacebookConnectPlugin.m in Sources */,
+				57D1A220306B49FCB8F87952 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +449,11 @@
 				INFOPLIST_FILE = "playerz/playerz-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "playerz";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"playerz/Plugins/phonegap-facebook-plugin\"",
+					"\"playerz/Plugins/phonegap-facebook-plugin\"",
+				);
 			};
 			name = Debug;
 		};
@@ -436,6 +473,11 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "playerz/playerz-Info.plist";
 				PRODUCT_NAME = "playerz";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"playerz/Plugins/phonegap-facebook-plugin\"",
+					"\"playerz/Plugins/phonegap-facebook-plugin\"",
+				);
 			};
 			name = Release;
 		};

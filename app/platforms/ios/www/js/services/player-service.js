@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
 angular.module('starter')
     .service('PlayerService', function(API_ENDPOINT, $http, $httpParamSerializerJQLike) {
-        let addPosition = function(player_id, position, match_id) {
+        let addPosition = (player_id, position, match_id) => {
             return $http({
                 method: 'POST',
                 headers: {
@@ -48,7 +48,7 @@ angular.module('starter')
             });
         };
 
-        let countMainAction = function(match_id, action) {
+        let countMainAction = function(match_id, action, time) {
             return $http({
                 method: 'POST',
                 headers: {
@@ -56,7 +56,8 @@ angular.module('starter')
                 },
                 data: $httpParamSerializerJQLike({
                     match_id,
-                    action
+                    action,
+                    time
                 }),
                 url: API_ENDPOINT.url + '/action'
             });
@@ -112,7 +113,17 @@ angular.module('starter')
                 player_id_one,
                 player_id_two
             });
+
+        let getGlobalStatistics = (player_id) =>
+            $http.get(`${API_ENDPOINT.url}/getGlobalStatistics`, {
+                params: {
+                    player_id,
+                }
+            });
+
+
         return {
+            getGlobalStatistics,
             switchPosition,
             getMatchPlayed,
             getStatisticsMatch,

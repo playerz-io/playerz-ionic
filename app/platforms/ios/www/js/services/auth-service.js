@@ -73,6 +73,7 @@ angular.module('starter')
 
             return $q(function(resolve, reject) {
                 $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
+                  console.log(result);
                     if (result.data.success) {
                         console.log(result.data);
                         StorageService.addStorageCoachId(result.data.coach._id);

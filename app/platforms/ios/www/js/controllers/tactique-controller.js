@@ -17,39 +17,70 @@ angular.module('starter.controller.tactique', [])
 
         self.matchId = StorageService.getStorageMatchId();
         self.coachId = StorageService.getStorageCoachId();
-        var refMatch = FireService.refMatch(StorageService.getStorageMatchId(), self.coachId);
+        self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
+
         self.formation = '4-4-2';
 
-        //get Player of troop
         self.getPlayerNoSelected = () => {
-                MatchService.getPlayerNoSelected(self.matchId)
-                    .success((data) => {
-                        self.playersNoSelected = data.players;
-                        console.log(data);
-                    })
-                    .error((data) => {
+            MatchService.getPlayerNoSelected(self.matchId)
+                .success((data) => {
+                    console.log(data);
 
-                    })
-            }
-            // self.getPlayers = function() {
-            //     TeamService.getPlayers()
-            //         .success(function(data) {
-            //             console.log(data);
-            //             self.players = data.players;
-            //
-            //         })
-            //         .error(function() {
-            //             console.log(data);
-            //         });
-            // };
+                })
+                .error((data) => {
+
+                })
+        };
+
+        self.defaultPosition = () => {
+            MatchService.defaultPosition(self.matchId)
+                .success((data) => {
+                    console.log(data);
+                    self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+
+        };
+
+
+
+        self.onDropComplete = (index, obj, evt) => {
+            //dropped
+            console.log(index);
+            let droppedId = self.playerSelected[index].$id || self.playerSelected[index]._id;
+            //dragged
+            let draggedId = obj.$id || obj._id;
+            console.log(droppedId, draggedId);
+            PlayerService.switchPosition(self.matchId, droppedId, draggedId)
+                .success((data) => {
+                    console.log(data);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+        };
+
+        // self.getPlayers = function() {
+        //     TeamService.getPlayers()
+        //         .success(function(data) {
+        //             console.log(data);
+        //             self.players = data.players;
+        //
+        //         })
+        //         .error(function() {
+        //             console.log(data);
+        //         });
+        // };
 
         //change the formation
         self.addFormation = function() {
             //console.log(formation);
             TeamService.addFormation(self.formation, self.matchId)
                 .success(function(data) {
-                    self.getTactique();
                     console.log(data);
+                    self.defaultPosition();
                 })
                 .error(function(data) {
                     console.log(data);
@@ -58,62 +89,62 @@ angular.module('starter.controller.tactique', [])
 
 
         // return posts of formation
-        self.getTactique = function() {
-            MatchService.getTactique(self.formation)
-                .success(function(data) {
-                    console.log(data);
-                    self.post = data.tactique;
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
+        // self.getTactique = function() {
+        //     MatchService.getTactique(self.formation)
+        //         .success(function(data) {
+        //             console.log(data);
+        //             self.post = data.tactique;
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         });
+        // };
 
         //add player to the selection of current match
-        self.addPlayerSelected = function(player_id, position) {
-            console.log(player_id);
-            MatchService.addPlayerSelected(player_id, self.matchId, position)
-                .success(function(data) {
-                    console.log(data);
-                    if (!data.success) {
-                        $ionicPopup.alert({
-                            title: 'Erreur',
-                            template: data.msg
-                        })
-                    }
-
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
+        // self.addPlayerSelected = function(player_id, position) {
+        //     console.log(player_id);
+        //     MatchService.addPlayerSelected(player_id, self.matchId, position)
+        //         .success(function(data) {
+        //             console.log(data);
+        //             if (!data.success) {
+        //                 $ionicPopup.alert({
+        //                     title: 'Erreur',
+        //                     template: data.msg
+        //                 })
+        //             }
+        //
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         });
+        // };
 
         //remove player to the selection of current match
-        self.removePlayerSelected = function(player_id, player) {
-            MatchService.removePlayerSelected(player_id, self.matchId)
-                .success(function(data) {
-                    console.log(data);
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
+        // self.removePlayerSelected = function(player_id, player) {
+        //     MatchService.removePlayerSelected(player_id, self.matchId)
+        //         .success(function(data) {
+        //             console.log(data);
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         });
+        // };
 
 
-        self.playerSelected = FireService.refPlayer(refMatch);
-        console.log(self.playerSelected);
-        console.log('self.playerSelected :' + self.matchId);
+        // self.playerSelected = FireService.refPlayer(refMatch);
+        // console.log(self.playerSelected);
+        // console.log('self.playerSelected :' + self.matchId);
 
         //add position to player
-        self.addPosition = function(player_id, position) {
-            PlayerService.addPosition(player_id, position, self.matchId)
-                .success(function(data) {
-                    console.log(data);
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
+        // self.addPosition = function(player_id, position) {
+        //     PlayerService.addPosition(player_id, position, self.matchId)
+        //         .success(function(data) {
+        //             console.log(data);
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         });
+        // };
 
         self.getMatch = function() {
             MatchService.getMatchById(self.matchId)
@@ -150,10 +181,10 @@ angular.module('starter.controller.tactique', [])
             }
             //call add formation here for get position as soons as
             // tactique page is loaded
+            // TODO: faire choisir une formation vie un modal ou une popup
         self.addFormation();
-        //  self.getPlayers();
-        self.getPlayerNoSelected();
         self.getMatch();
         self.getNameTeam();
+
 
     });

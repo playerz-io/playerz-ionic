@@ -36,6 +36,14 @@
         },
         "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "phonegap-facebook-plugin": {
+            "APP_ID": "508256989378454",
+            "APP_NAME": "Playerz",
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
         }
     },
     "dependent_plugins": {

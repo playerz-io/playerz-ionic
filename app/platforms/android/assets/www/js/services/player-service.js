@@ -113,7 +113,17 @@ angular.module('starter')
                 player_id_one,
                 player_id_two
             });
+
+        let getGlobalStatistics = (player_id) =>
+            $http.get(`${API_ENDPOINT.url}/getGlobalStatistics`, {
+                params: {
+                    player_id,
+                }
+            });
+
+
         return {
+            getGlobalStatistics,
             switchPosition,
             getMatchPlayed,
             getStatisticsMatch,

@@ -79,7 +79,7 @@ exports.addMatch = function(req, res) {
                 if (err)
                     throw err;
             });
-            let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a œété ajouté` :
+            let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
                 `Le match ${against_team} - ${nameClub} a été ajouté`;
 
             res.status(200).json({
@@ -176,8 +176,8 @@ exports.removeMatch = function(req, res) {
                 if (err)
                     throw err;
             });
-            let returnMsg = (match.place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
-                `Le match ${against_team} - ${nameClub} a été ajouté`;
+            let returnMsg = (match.place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été supprimé` :
+                `Le match ${against_team} - ${nameClub} a été supprimé`;
             res.status(200).json({
                 success: true,
                 msg: returnMsg,

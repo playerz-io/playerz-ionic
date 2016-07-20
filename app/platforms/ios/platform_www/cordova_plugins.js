@@ -282,6 +282,23 @@ module.exports = [
         "file": "plugins/cordova-plugin-x-toast/test/tests.js",
         "id": "cordova-plugin-x-toast.tests",
         "pluginId": "cordova-plugin-x-toast"
+    },
+    {
+        "file": "plugins/phonegap-facebook-plugin/facebookConnectPlugin.js",
+        "id": "phonegap-facebook-plugin.FacebookConnectPlugin",
+        "pluginId": "phonegap-facebook-plugin",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 

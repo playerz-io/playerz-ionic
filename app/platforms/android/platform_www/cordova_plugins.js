@@ -237,6 +237,21 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-x-toast/test/tests.js",
         "id": "cordova-plugin-x-toast.tests"
+    },
+    {
+        "file": "plugins/phonegap-facebook-plugin/facebookConnectPlugin.js",
+        "id": "phonegap-facebook-plugin.FacebookConnectPlugin",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -252,7 +267,9 @@ module.exports.metadata =
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-camera": "2.2.0",
     "cordova-plugin-file": "4.2.0",
-    "cordova-plugin-x-toast": "2.5.2"
+    "cordova-plugin-x-toast": "2.5.2",
+    "phonegap-facebook-plugin": "0.12.0",
+    "cordova-plugin-inappbrowser": "1.4.0"
 };
 // BOTTOM OF METADATA
 });

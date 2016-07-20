@@ -12,7 +12,9 @@
     "angular-stripe": "^4.2.12",
     "ngCordova": "^0.1.26-alpha",
     "ngDraggable": "^0.1.8",
-    "angular-material": "^1.0.9"
+    "angular-material": "^1.0.9",
+    "facebook-connect-plugin": "https://cdn.rawgit.com/Wizcorp/phonegap-facebook-plugin/master/facebookConnectPlugin.js",
+    "ng-cordova-oauth": "^0.2.9"
   },
   "resolutions": {
     "angular": ">= 1.0.8"

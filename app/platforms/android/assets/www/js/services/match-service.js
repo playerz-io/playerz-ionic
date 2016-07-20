@@ -1,16 +1,7 @@
 'use strict'
 angular.module('starter')
     .service('MatchService', function(API_ENDPOINT, $http, $httpParamSerializerJQLike) {
-        let addMatch = function(match) {
-            return $http({
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                data: $httpParamSerializerJQLike(match),
-                url: API_ENDPOINT.url + '/match'
-            });
-        };
+        let addMatch = (match) => $http.post(API_ENDPOINT.url + '/match', match);
 
         let getMatchs = function() {
             return $http({
@@ -148,7 +139,10 @@ angular.module('starter')
             }
         });
 
+        let getGlobalStatisticsMatch = (match_id) => $http.get(API_ENDPOINT.url + '/getGlobalStatisticsMatch');
+
         return {
+            getGlobalStatisticsMatch,
             getMatchStatistics,
             putMatchFinished,
             addOpponentBut,

@@ -4,13 +4,11 @@ angular.module('starter.directives.fourFourtwo', [])
     return {
       templateUrl: 'templates/formation/four-four-two.html',
       restrict: 'E',
-      replace: true,
-      transclude: true,
-      controller: 'MatchStatCtrl',
-      controllerAs: 'matchStat',
       scope: {
         playerInfo: '=info',
-        isDisableClick: '=click'
+        drag: '=',
+        dropComplete: '&',
+        ballPlayed: '&'
       }
     };
   });

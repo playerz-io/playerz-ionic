@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('starter.controller.change', [])
     .controller('ChangeCtrl', function(MatchService, StorageService, FireService, PlayerService, $scope) {
 

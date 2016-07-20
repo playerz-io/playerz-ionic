@@ -8,11 +8,23 @@
             <label class="item item-input">
                 <input type="text" placeholder="Adversaire" ng-model="match.against_team">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Domicile ou Exterieur" ng-model="match.place">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Lieu
+                </div>
+                <select ng-model="match.place">
+                    <option>Domicile</option>
+                    <option selected>Exterieur</option>
+                </select>
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Amical Officiel" ng-model="match.type">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Type
+                </div>
+                <select ng-model="match.type">
+                    <option>Amical</option>
+                    <option selected>Officiel</option>
+                </select>
             </label>
             <label class="item item-input">
                 <span class="input-label">Date</span>

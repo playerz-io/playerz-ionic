@@ -1,31 +1,41 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $state, $ionicPopup) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal) {
 
-        const NBR_PLAYER_SWITCHED = 2;
         let self = this;
-        self.disable = true;
+
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
-        self.playerSelected_firebase = FireService.refPlayer(FireService.refMatch(self.matchId, self.coachId));
-        let refMatch = FireService.refMatch(StorageService.getStorageMatchId(), self.coachId);
-          self.formation = '4-4-2';
-        self.showDelete = false;
-        //define if player is selected by user
-        // self.selected = -1;
-        // self.switched = false;
-        // // array that should contains two player switched
-        // let playerSwitched = [];
+        self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
+        self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
+        let counter;
+        self.minutes = 0;
+        self.seconds = 0;
+        self.textSeconds = null;
+        self.textMinutes = null;
+        self.fullTime = null;
+
+        self.time = () => {
+            self.seconds++;
+            if (self.seconds > 59) {
+                self.seconds = 0;
+                self.minutes++;
+            }
+
+            self.textMinutes = self.minutes < 10 ? '0' + self.minutes : self.minutes;
+            self.textSeconds = self.seconds < 10 ? '0' + self.seconds : self.seconds;
+            self.fullTime = self.textMinutes + ':' + self.textSeconds;
+
+        }
 
         self.onDropComplete = (index, obj, evt) => {
             //dropped
             console.log(index);
-            let droppedId = self.playerSelected_firebase[index].$id || self.playerSelected_firebase[index]._id;
+            let droppedId = self.playerSelected[index].$id || self.playerSelected[index]._id;
             //dragged
-            console.log(obj);
             let draggedId = obj.$id || obj._id;
-
+            console.log(droppedId, draggedId);
             PlayerService.switchPosition(self.matchId, droppedId, draggedId)
                 .success((data) => {
                     console.log(data);
@@ -33,103 +43,81 @@ angular.module('starter.controller.match-stat', [])
                 .error((data) => {
                     console.log(data);
                 })
-
         };
 
-        //switched position of two player
-        // params index allow to highlight only the player selected
-        // self.switchedPlayer = (index, player) => {
-        //     self.selected = index;
-        //
-        //     if (!self.switched) {
-        //         playerSwitched.push(player);
-        //         self.switched = true;
-        //
-        //     } else {
-        //         playerSwitched.push(player);
-        //         console.log(playerSwitched);
-        //         //check if playerSelected lenght equals 2
-        //         if (playerSwitched.length === NBR_PLAYER_SWITCHED) {
-        //             let idFstPlayer = playerSwitched[0].$id;
-        //             let idSndPlayer = playerSwitched[1].$id;
-        //             console.log(idFstPlayer, idSndPlayer);
-        //             PlayerService.switchPosition(self.matchId, idFstPlayer, idSndPlayer)
-        //                 .success((data) => {
-        //                     console.log(data);
-        //                 })
-        //                 .error((data) => {
-        //                     console.log(data);
-        //                 })
-        //         }
-        //
-        //         playerSwitched = [];
-        //         self.switched = false;
-        //         self.selected = -1;
-        //     }
-        // };
+        self.stopTimer = () => {
+            console.log('OK');
+            if (angular.isDefined(counter)) {
+                console.log('counter is defined stop')
+                $interval.cancel(counter);
+                counter = undefined;
+            }
+        };
 
+        self.startTimer = () => {
+            if (angular.isDefined(counter)) {
+                console.log('counter is defined')
+                return;
+            }
+            counter = $interval(self.time, 1000);
+        };
+
+        self.showCountdownPopup = () => {
+            let popup = $ionicPopup.confirm({
+                title: 'Chronomètre',
+                template: 'En appuyant sur ok le chronomètre va démarrer'
+            });
+            popup.then((res) => {
+                if (res) {
+                    console.log('ok');
+                    self.startTimer();
+                } else {
+                    $state.go('tactique');
+                }
+            })
+        };
+
+        let putMatchFinished = () => {
+            MatchService.putMatchFinished(self.matchId)
+                .success((data) => {
+                    console.log(data);
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+        };
 
         self.showConfirmEndMatchPopup = function() {
             let popup = $ionicPopup.confirm({
                 title: 'Fin du match',
                 template: 'Etes-vous sûr de vouloir terminer le match ?'
             });
-
             popup.then(function(res) {
                 if (res) {
-                    self.countPercent();
+                    putMatchFinished();
+                    $state.go("summary-stat");
                 } else {
 
                 }
             });
         };
 
-        //update statistic of player, set the stat in params stat
+
+        //  update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {
             PlayerService.updateStatistic(player_id, self.matchId, stat)
                 .success(function(data) {
                     console.log(data);
                     // data of match
-                    self.playerSelected = data.playerSelected;
-
                 })
                 .error(function(data) {
                     console.log(data);
                 })
         };
-
-        // get Match with match id
-        self.getMatch = function() {
-            MatchService.getMatchById(self.matchId)
-                .success(function(data) {
-                    console.log(data);
-                    // data of match
-                    self.match = data.match;
-                    self.coach_id = data.coach_id;
-                    console.log(self.match);
-                })
-                .error(function(data) {
-                    console.log(data);
-                })
-        };
-
-        // get player selected of match with match id
-        // self.getPlayerSelected = function() {
-        //     MatchService.getPlayerSelected(self.matchId)
-        //         .success(function(data) {
-        //             console.log(data.playerSelected);
-        //             // data of player
-        //             self.playerSelected = data.playerSelected;
-        //         })
-        //         .error(function(data) {
-        //             console.log(data);
-        //         })
-        // };
 
         //count ball touched
         self.countBallPlayed = function(player) {
             self.updateStatistic(player.$id, "ballPlayed");
-            console.log(player.$id.toString());
             PlayerService.addSchema(self.matchId, player.$id.toString())
                 .success(function(data) {
                     console.log(data);
@@ -141,7 +129,7 @@ angular.module('starter.controller.match-stat', [])
 
         self.countMainAction = function(action) {
             console.log(action)
-            PlayerService.countMainAction(self.matchId, action)
+            PlayerService.countMainAction(self.matchId, action, self.fullTime)
                 .success(function(data) {
                     console.log(data);
                 })
@@ -150,68 +138,70 @@ angular.module('starter.controller.match-stat', [])
                 })
         };
 
-        self.countPercent = function() {
-            PlayerService.countPercent(self.matchId)
+        //Change Modal
+        $ionicModal.fromTemplateUrl('templates/change-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then((modal) => {
+            $scope.modal = modal;
+        });
+
+        self.goChange = () => {
+            $scope.modal.show();
+        };
+
+        self.backToMatch = () => {
+            $scope.modal.hide();
+        }
+
+
+
+
+        // self.countPercent = function() {
+        //     PlayerService.countPercent(self.matchId)
+        //         .success(function(data) {
+        //             console.log(data);
+        //
+        //         })
+        //         .error(function(data) {
+        //             console.log(data);
+        //         })
+        // }
+
+        self.getMatch = function() {
+            MatchService.getMatchById(self.matchId)
                 .success(function(data) {
                     console.log(data);
-                    $state.go("summary-stat");
+                    self.formation = data.match.formation;
+                    console.log(self.formation);
                 })
                 .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        self.addOpponentBut = function() {
+            MatchService.addOpponentBut(self.matchId)
+                .success((data) => {
+                    console.log(data);
+                    self.opponent_but = data.but_opponent;
+                })
+                .error((data) => {
+                    console.log(data);
+                })
+        };
+
+        self.removeAction = () => {
+            MatchService.removeAction(self.matchId)
+                .success((data) => {
+                    console.log(data);
+                })
+                .error((data) => {
                     console.log(data);
                 })
         }
 
-        //change the formation
-        self.addFormation = function() {
-            //console.log(formation);
-            TeamService.addFormation(self.formation, self.matchId)
-                .success(function(data) {
-                    self.getTactique();
-                    console.log(data);
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
-
-        // return posts of formation
-        self.getTactique = function() {
-            MatchService.getTactique(self.formation)
-                .success(function(data) {
-                    console.log(data);
-                    self.post = data.tactique;
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
-
-        self.getPlayerNoSelected = () => {
-            MatchService.getPlayerNoSelected(self.matchId)
-                .success((data) => {
-                    self.playersNoSelected = data.players;
-                    console.log(data);
-                })
-                .error((data) => {
-
-                })
-        };
-
-        //remove player to the selection of current match
-        self.removePlayerSelected = function(player_id, player) {
-            MatchService.removePlayerSelected(player_id, self.matchId)
-                .success(function(data) {
-                    console.log(data);
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
-
-        self.getPlayerNoSelected();
-        MatchService.defaultPosition(self.matchId);
-        self.playerSelected = FireService.refPlayer(refMatch);
-        //        self.getMatch();
-        //playerSelected for data in real time
+        self.getMatch();
+        self.showCountdownPopup();
 
     });
