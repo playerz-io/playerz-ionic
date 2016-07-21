@@ -16,11 +16,11 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .constant('API_ENDPOINT', {
-    url: 'http://localhost:5000/api'
-    //url: 'https://secret-plateau-96989.herokuapp.com/api'
+    //url: 'http://localhost:5000/api'
+    url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
-.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window, $cordovaSplashscreen) {
+.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
 
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -40,6 +40,12 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
+
+        if (next.name === 'tactique' || next.name === 'match-statistics') {
+            screen.lockOrientation('landscape');
+        } else {
+            screen.unlockOrientation();
+        }
 
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);

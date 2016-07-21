@@ -248,11 +248,12 @@ exports.authenticationJwt = (req, res) => {
                 msg: "Le coach n'a pas été trouvé"
             });
         } else {
+
+            console.info(coach);
             //check si le mdp est le bon
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
-                    console.log("token : " + token);
                     //increase total_connexion
                     coach.total_connexion++;
                     coach.save((err) => {

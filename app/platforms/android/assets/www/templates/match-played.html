@@ -1,0 +1,37 @@
+<ion-view title="Match terminé">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+        </ion-nav-back-button>
+        <ion-nav-buttons side="secondary">
+            <button class="button button-icon icon ion-ios-minus-outline" ng-click="played.showDelete = !played.showDelete">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <p>Match jouées : {{played.nbrMatchFinished}} </p>
+        <p>
+          Statistiques Global : {{played.statisticsGlobal}}
+        </p>
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="Rechercher un match" ng-model="played.searchMatch">
+                </label>
+                </br>
+
+                <ion-list show-delete="played.showDelete">
+                    <ion-item class="item" ng-repeat="match in played.matchs | filter:played.searchMatch">
+                        <a ui-sref="stat-end-match({matchId: match._id})" ng-click="played.saveMatchID(match._id)">
+                            <h2>{{match.against_team}}</h2>
+                            <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
+                        </a>
+                        <ion-delete-button class="ion-minus-circled" ng-click="played.removeMatch(match._id)"></ion-delete-button>
+                        <!-- <ion-option-button ng-click="played.removeMatch(match._id)">Supprimer</ion-option-button> -->
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>
