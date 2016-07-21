@@ -74,7 +74,7 @@ exports._findMatch = function(status, req, res) {
             status: status
         }, function(err, matchs) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             res.status(201).json({
                 success: true,
@@ -93,7 +93,10 @@ exports._findMatch = function(status, req, res) {
 exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
     exports.addStatisticsToPlayer(player, idMatch);
     player.position = position;
-    player.save();
+    player.save((err) => {
+        if (err)
+            return Utils.errorIntern(res, err);
+    });
     if (playersSelected.indexOf(player._id) < 0) {
         playersSelected.push(player);
     }

@@ -34,6 +34,9 @@ exports.facebookConnect = (req, res) => {
                 email,
                 connected: 'jwt'
             }, (err, coach) => {
+                if (err) {
+                    return Utils.errorIntern(res, err);
+                }
                 if (coach) {
                     //TODO: trouver le bon code erreur correspondnat
                     return res.status(400).json({
@@ -51,7 +54,7 @@ exports.facebookConnect = (req, res) => {
                 id_facebook
             }, (err, coach) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
 
                 if (!coach) {
                     let newCoach = new Coach({
@@ -72,7 +75,7 @@ exports.facebookConnect = (req, res) => {
                     newCoach.total_connexion++;
                     newCoach.save(function(err) {
                         if (err) {
-                            throw err;
+                            return Utils.errorIntern(res, err);
                         }
                     });
 
@@ -86,7 +89,10 @@ exports.facebookConnect = (req, res) => {
                 } else {
                     //increase total_connexion
                     coach.total_connexion++;
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                 }
                 let token = jwt.encode(coach, config.secret);
@@ -134,21 +140,21 @@ exports.signup = (req, res) => {
         }
     }
 
-    if(password){
+    if (password) {
 
-      if (confirmation_password.length < 6 || password.length < 6) {
-          return res.json({
-              success: false,
-              msg: 'Votre mot de passe doit contenir au moins 6 caractères'
-          });
-      }
+        if (confirmation_password.length < 6 || password.length < 6) {
+            return res.json({
+                success: false,
+                msg: 'Votre mot de passe doit contenir au moins 6 caractères'
+            });
+        }
 
-      if (confirmation_password !== password) {
-          return res.json({
-              success: false,
-              msg: 'Le mot de passe et la confirmation sont différents'
-          });
-      }
+        if (confirmation_password !== password) {
+            return res.json({
+                success: false,
+                msg: 'Le mot de passe et la confirmation sont différents'
+            });
+        }
     }
 
     // NOTE: 2
@@ -162,6 +168,9 @@ exports.signup = (req, res) => {
         Coach.findOne({
             email
         }, (err, coach) => {
+
+            if (err)
+                return Utils.errorIntern(res, err);
             //si le coach n'existe pas deja ds la bdd
             if (!coach) {
                 //creation du coach
@@ -188,7 +197,7 @@ exports.signup = (req, res) => {
 
                 newCoach.save(function(err) {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     return res.json({
                         success: true,
@@ -231,7 +240,7 @@ exports.authenticationJwt = (req, res) => {
         email: email
     }, function(err, coach) {
         if (err)
-            throw err;
+            return Utils.errorIntern(res, err);
 
         if (!coach) {
             return res.json({
@@ -239,14 +248,18 @@ exports.authenticationJwt = (req, res) => {
                 msg: "Le coach n'a pas été trouvé"
             });
         } else {
+
+            console.info(coach);
             //check si le mdp est le bon
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
                     let token = jwt.encode(coach, config.secret);
-                    console.log("token : " + token);
                     //increase total_connexion
                     coach.total_connexion++;
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                     return res.json({
                         success: true,
@@ -279,11 +292,14 @@ exports.addSportFacebookUser = (req, res) => {
     Coach.findById(coach_id, (err, coach) => {
 
         if (err) {
-            throw err;
+            return Utils.errorIntern(res, err);
         }
 
         coach.sport = sport;
-        coach.save();
+        coach.save((err) => {
+            if (err)
+                return Utils.errorIntern(res, err);
+        });
 
         res.status(202).json({
             success: true,
@@ -311,7 +327,7 @@ exports.addTeamFacebookUser = (req, res) => {
     Coach.findById(coach_id, (err, coach) => {
 
         if (err) {
-            throw err;
+            return Utils.errorIntern(res, err);
         }
 
         let newTeam = new Team({
@@ -322,7 +338,10 @@ exports.addTeamFacebookUser = (req, res) => {
 
         coach.team = newTeam;
 
-        coach.save();
+        coach.save((err) => {
+            if (err)
+                return Utils.errorIntern(res, err);
+        });
 
         //create token for authentication jwt
         let token = jwt.encode(coach, config.secret);

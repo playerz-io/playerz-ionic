@@ -32,14 +32,20 @@ exports.addPlayer = function(req, res) {
             favourite_position: req.body.favourite_position
         });
 
-        newPlayer.save();
+        newPlayer.save((err) => {
+            if (err)
+                return Utils.errorIntern(res, err);
+        });
 
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             coach.team.players.push(newPlayer);
-            coach.save();
+            coach.save((err) => {
+                if (err)
+                    return Utils.errorIntern(res, err);
+            });
             let returnMsg = `${newPlayer.first_name} ${newPlayer.last_name} ajouté`;
 
             res.status(201).json({
@@ -70,7 +76,7 @@ exports.getPlayers = function(req, res) {
             .populate('team.players')
             .exec(function(err, coach) {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
 
                 res.status(200).json({
                     success: true,
@@ -94,7 +100,7 @@ exports.getPlayerById = function(req, res) {
 
         Player.findById(req.params.id, function(err, player) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             res.status(200).json({
                 success: true,
@@ -123,11 +129,11 @@ exports.removePlayer = function(req, res) {
 
         Player.findById(player_id, (err, playerRemoved) => {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             Coach.findById(coach_id, function(err, coach) {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
 
                 let players = coach.team.players;
                 let findPlayer = players.indexOf(player_id);
@@ -142,11 +148,11 @@ exports.removePlayer = function(req, res) {
 
                 coach.save(function(err) {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     res.status(200).json({
                         player: players,
-                        msg: `${playerRemoved.first_ame} ${playerRemoved.last_name} a été supprimé`
+                        msg: `${playerRemoved.first_name} ${playerRemoved.last_name} a été supprimé`
                     });
 
                 });

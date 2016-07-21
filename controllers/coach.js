@@ -21,7 +21,8 @@ exports.getNameTeam = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
         Coach.findById(coach_id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
+
             let nameTeam = coach.team.name_club;
 
             res.status(202).json({
@@ -44,7 +45,7 @@ exports.getCoachById = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
 
             res.status(202).json({
@@ -69,7 +70,8 @@ exports.getCoach = function(req, res) {
             email: decoded.email,
             password: decoded.password
         }, function(err, coach) {
-            if (err) throw err;
+            if (err)
+                return Utils.errorIntern(res, err);
 
             if (!coach) {
                 return res.status(403).send({
@@ -107,6 +109,8 @@ exports.updateCoach = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
 
         Coach.findById(decoded._id, (err, coach) => {
+            if (err)
+                return Utils.errorIntern(res, err);
 
             coach.first_name = first_name;
             coach.last_name = last_name;
@@ -118,7 +122,7 @@ exports.updateCoach = function(req, res) {
 
             coach.save((err) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
             });
 
             res.status(202).json({

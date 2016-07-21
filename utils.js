@@ -1,4 +1,9 @@
-'use strict'
+'use strict';
+
+let mg = require('nodemailer-mailgun-transport');
+let auth = require('./config/mailgun').auth;
+let nodemailer = require('nodemailer');
+
 exports.validateEmail = (email) => {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -14,12 +19,35 @@ exports.diffArray = (fstArray, sndArray) => {
 };
 
 exports.error = (res, msg) => {
-   return res.status(400).json({
-     success: false,
-     msg
-   });
+    return res.status(400).json({
+        success: false,
+        msg
+    });
 }
 
+exports.errorIntern = (res, err) => {
+
+    console.error(err);
+
+    let smtpTransport = nodemailer.createTransport(mg(auth));
+
+    let mailOptionsOldMail = {
+        to: 'sabinecaizergues@hotmail.com, ceul1barth@hotmail.fr',
+        from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+        subject: `Internal Server Error`,
+        text: err
+    };
+
+    smtpTransport.sendMail(mailOptionsOldMail, (err) => {
+        if (err)
+            throw err;
+    });
+
+    return res.status(500).json({
+      success: false,
+      msg: `Internal Server Error`
+    });
+};
 
 let actionMap = new Map();
 
@@ -46,8 +74,6 @@ actionMap.set('saves', 'parade');
 actionMap.set('sorties_aeriennes', 'sortie aérienne');
 actionMap.set('clean_sheet', 'clean sheet');
 
-
-
 exports.getAction = (key) => {
-  return actionMap.get(key)
+    return actionMap.get(key)
 }
