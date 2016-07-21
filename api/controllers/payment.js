@@ -20,11 +20,14 @@ exports.createTokenStripe = (req, res) => {
             (done) => {
                 Coach.findById(coach_id, (err, coach) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     coach.token_stripe = token_stripe;
                     console.log(coach);
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                     done(null, coach);
                     // res.status(202).json({
@@ -40,10 +43,9 @@ exports.createTokenStripe = (req, res) => {
                     plan: 'basic',
                     email: coach.email
                 }, (err, customers) => {
-                  // TODO: handle err
+                    // TODO: handle err
                     if (err) {
-                        console.log(err);
-                        throw err;
+                        return Utils.errorIntern(res, err);
                     }
 
                     console.log(customers);

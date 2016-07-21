@@ -57,6 +57,9 @@ exports.forgotPassword = function(req, res) {
                 coach.resetPasswordExpires = Date.now() + 3600000;
 
                 coach.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+
                     done(err, token, coach);
                 });
             });
@@ -75,7 +78,9 @@ exports.forgotPassword = function(req, res) {
 
             smtpTransport.sendMail(mailOptions, (err) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
+
+
                 return res.status(202).json({
                     success: true,
                     msg: 'Un mail vous a été envoyé'
@@ -121,7 +126,7 @@ exports.resetPassword = function(req, res) {
 
                 coach.save((err) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     done(null, coach);
                 });
@@ -142,7 +147,8 @@ exports.resetPassword = function(req, res) {
 
             smtpTransport.sendMail(mailOptions, (err) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
+
                 return res.status(202).json({
                     success: true,
                     msg: 'Le mot de passe a été changé'
@@ -199,7 +205,7 @@ exports.changePassword = (req, res) => {
                     coach.password = newPassword;
                     coach.save((err) => {
                         if (err)
-                            throw err;
+                            return Utils.errorIntern(res, err);
 
                         let smtpTransport = nodemailer.createTransport(mg(auth));
 
@@ -212,7 +218,7 @@ exports.changePassword = (req, res) => {
 
                         smtpTransport.sendMail(mailOptions, (err) => {
                             if (err)
-                                throw err;
+                                return Utils.errorIntern(res, err);
                         });
 
                         return res.status(200).json({
@@ -263,7 +269,7 @@ exports.changeEmail = (req, res) => {
             (done) => {
                 Coach.findById(coachId, (err, coach) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
                     let oldEmail = coach.email;
                     coach.email = newEmail
 
@@ -274,7 +280,10 @@ exports.changeEmail = (req, res) => {
                         })
                     }
 
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                     done(null, oldEmail, newEmail);
 
@@ -301,12 +310,12 @@ exports.changeEmail = (req, res) => {
 
                 smtpTransport.sendMail(mailOptionsOldMail, (err) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
                 });
 
                 smtpTransport.sendMail(mailOptionsNewMail, (err) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
                 });
 
                 return res.status(202).json({
@@ -344,10 +353,13 @@ exports.changeNumber = (req, res) => {
             (done) => {
                 Coach.findById(coachId, (err, coach) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
                     coach.number_tel = number;
 
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                     done(null, number, coach);
 
@@ -367,7 +379,7 @@ exports.changeNumber = (req, res) => {
 
                 smtpTransport.sendMail(mailOptions, (err) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
                 });
 
                 return res.status(202).json({

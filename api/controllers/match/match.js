@@ -61,14 +61,16 @@ exports.addMatch = function(req, res) {
         });
 
         Coach.findById(idCoach, (err, coach) => {
-            if (err)
-                throw err;
+            if (err) {
+                return Utils.errorIntern(res, err);
+            }
+
 
             real_time.addStatisticsMatch(newMatch._id.toString(), idCoach, newMatch);
 
-            newMatch.save((err, match) => {
+            newMatch.save((err) => {
                 if (err) {
-                    throw err;
+                    return Utils.errorIntern(res, err);
                 }
             });
 
@@ -77,7 +79,7 @@ exports.addMatch = function(req, res) {
 
             coach.save((err, coach) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
             });
             let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
                 `Le match ${against_team} - ${nameClub} a été ajouté`;
@@ -105,7 +107,7 @@ exports.getMatchs = function(req, res) {
 
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             res.status(200).json({
                 success: true,
@@ -129,7 +131,7 @@ exports.getMatchById = function(req, res) {
 
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             let match = coach.team.matchs.id(req.params.id);
             res.status(200).json({
@@ -156,25 +158,25 @@ exports.removeMatch = function(req, res) {
 
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             Match.remove({
                 _id: idMatch
-            }, (err, ok) => {
+            }, (err) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
             });
             let match = coach.team.matchs.id(idMatch);
             let against_team = match.against_team;
             let nameClub = coach.team.name_club;
             match.remove((err, match) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
             });
 
             coach.save((err, coach) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
             });
             let returnMsg = (match.place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été supprimé` :
                 `Le match ${against_team} - ${nameClub} a été supprimé`;
@@ -206,19 +208,25 @@ exports.addFormation = function(req, res) {
         Coach.findById(decoded._id, function(err, coach) {
 
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             Match.findById(idMatch, (err, foundMatch) => {
 
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
                 let match = coach.team.matchs.id(idMatch);
 
                 match.formation = formation;
-                coach.save();
+                coach.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
 
                 foundMatch.formation = formation;
-                foundMatch.save();
+                foundMatch.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
                 console.log(match);
 
                 res.status(200).json({
@@ -478,7 +486,7 @@ exports.getPlayerSelected = function(req, res) {
             .populate('team.matchs.playerSelected')
             .exec(function(err, coach) {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
 
                 let playerSelected = coach.team.matchs.id(req.query.match_id).playerSelected;
 
@@ -538,7 +546,7 @@ exports.defaultPosition = (req, res) => {
             (done) => {
                 Coach.findById(idCoach, (err, coach) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     let team = coach.team;
                     let match = team.matchs.id(idMatch);
@@ -557,6 +565,8 @@ exports.defaultPosition = (req, res) => {
                         }
                     },
                     (err, playersTeam) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
 
                         //pour que defaultPosition ne soit executer que une seul fois
                         if (match.defaultPosition !== true) {
@@ -678,19 +688,25 @@ exports.defaultPosition = (req, res) => {
                     let matchPlayerNoSelected = match.playerNoSelected;
 
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     for (let player of players) {
 
                         if (matchPlayerNoSelected.indexOf(player._id) === -1) {
                             privateMatch.addStatisticsToPlayer(player, idMatch);
                             matchPlayerNoSelected.push(player);
-                            player.save();
+                            player.save((err) => {
+                                if (err)
+                                    return Utils.errorIntern(res, err);
+                            });
                         }
                         real_time.addPlayer_firebase(player, idMatch, idCoach, false);
                     }
 
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                     return res.status(200).json({
                         success: true,
@@ -728,7 +744,7 @@ exports.switchPosition = (req, res) => {
                 Coach.findById(idCoach, (err, coach) => {
 
                     if (err) {
-                        throw err;
+                        return Utils.errorIntern(res, err);
                     }
 
                     let match = coach.team.matchs.id(match_id);
@@ -756,11 +772,11 @@ exports.switchPosition = (req, res) => {
 
                     Player.findById(player_id_one, (fstErr, fstPlayer) => {
                         if (fstErr) {
-                            throw fstErr;
+                            return Utils.errorIntern(res, fstErr);
                         }
                         Player.findById(player_id_two, (sndErr, sndPlayer) => {
                             if (sndErr) {
-                                throw sndErr;
+                                return Utils.errorIntern(res, sndErr);
                             }
 
                             playersNoSelected.push(fstPlayer);
@@ -786,11 +802,11 @@ exports.switchPosition = (req, res) => {
 
                     Player.findById(player_id_two, (sndErr, sndPlayer) => {
                         if (sndErr) {
-                            throw sndErr;
+                            return Utils.errorIntern(res, sndErr);
                         }
                         Player.findById(player_id_one, (fstErr, fstPlayer) => {
                             if (fstErr) {
-                                throw fstErr;
+                                return Utils.errorIntern(res, fstErr);
                             }
 
                             playersNoSelected.push(sndPlayer);
@@ -809,27 +825,36 @@ exports.switchPosition = (req, res) => {
 
             (playersSelected, playersNoSelected, coach, fstPlayerSelectedExists, sndPlayerSelectedExists, fstPlayerNoSelectedExists, sndPlayerNoSelectedExists, cb) => {
 
-                coach.save();
+                coach.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
                 //si les deux joueurs son selectionnés
                 if (fstPlayerSelectedExists >= 0 && sndPlayerSelectedExists >= 0) {
 
                     Player.findById(player_id_one, (fstErr, fstPlayer) => {
                         if (fstErr)
-                            throw fstErr;
+                            return Utils.errorIntern(res, fstErr);
 
                         Player.findById(player_id_two, (sndErr, sndPlayer) => {
                             if (sndErr)
-                                throw sndErr;
+                                return Utils.errorIntern(res, sndErr);
 
                             //  console.log(sndPlayer);
                             let sndPosition = sndPlayer.position;
                             let fstPosition = fstPlayer.position;
 
                             fstPlayer.position = sndPosition;
-                            fstPlayer.save();
+                            fstPlayer.save((err) => {
+                                if (err)
+                                    return Utils.errorIntern(res, err);
+                            });
 
                             sndPlayer.position = fstPosition;
-                            sndPlayer.save();
+                            sndPlayer.save((err) => {
+                                if (err)
+                                    return Utils.errorIntern(res, err);
+                            });
 
                             cb(null);
 
@@ -846,13 +871,13 @@ exports.switchPosition = (req, res) => {
                 Player.findById(player_id_two, (sndErr, sndPlayer) => {
 
                     if (sndErr) {
-                        throw sndErr;
+                        return Utils.errorIntern(res, sndErr);
                     }
 
                     Player.findById(player_id_one, (fstErr, fstPlayer) => {
                         console.log(fstPlayer);
                         if (fstErr) {
-                            throw fstErr;
+                            return Utils.errorIntern(res, fstErr);
                         }
 
                         let fstPlayerName = `${fstPlayer.first_name} ${fstPlayer.last_name}`;
@@ -890,7 +915,7 @@ exports.addOpponentBut = (req, res) => {
         Coach.findById(coach_id, (err, coach) => {
 
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             let match = coach.team.matchs.id(match_id);
             let statistics = match.statistics;
@@ -902,7 +927,7 @@ exports.addOpponentBut = (req, res) => {
             });
             coach.save((err) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
             });
             res.status(201).json({
                 success: true,
@@ -927,21 +952,27 @@ exports.putMatchFinished = (req, res) => {
         let decoded = jwt.decode(token, config.secret);
         let coach_id = decoded._id;
 
-        Coach.findById(coach_id, (err, coach) => {
-            if (err)
-                throw err;
+        Coach.findById(coach_id, (coachErr, coach) => {
+            if (coachErr)
+                return Utils.errorIntern(res, coachErr);
 
-            Match.findById(match_id, (err, match) => {
+            Match.findById(match_id, (matchErr, match) => {
 
-                if (err)
-                    throw err;
+                if (matchErr)
+                    return Utils.errorIntern(res, matchErr);
 
                 let matchCoach = coach.team.matchs.id(match_id)
                 matchCoach.status = "finished";
-                coach.save();
+                coach.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
 
                 match.status = 'finished'
-                match.save();
+                match.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
 
                 res.status(202).json({
                     success: true,
@@ -985,6 +1016,10 @@ exports.getGlobalStatisticsMatch = (req, res) => {
         let nbrMatchFinished = 0;
 
         Coach.findById(coach_id, (err, coach) => {
+
+            if (err)
+                return Utils.errorIntern(res, err);
+
             let matchs = coach.team.matchs
 
             for (let match of matchs) {

@@ -24,10 +24,9 @@
 
 
           Player.findById(idPlayer, function(err, player) {
+
               if (err)
-                  res.status(404).json({
-                      error: err
-                  });
+                  return Utils.errorIntern(res, err);
 
               console.log(player, idMatch, idCoach)
               player.position = position;
@@ -38,7 +37,10 @@
                   favourite_position: player.favourite_position,
                   position: position
               });
-              player.save();
+              player.save((err) => {
+                  if (err)
+                      return Utils.errorIntern(res, err);
+              });
 
               res.status(201).json({
                   success: true,
@@ -67,8 +69,10 @@
 
               (cb) => {
                   Coach.findById(coach_id, (err, coach) => {
+
                       if (err)
-                          throw err;
+                          return Utils.errorIntern(res, err);
+
                       let matchPlayed = [];
                       let matchs = coach.team.matchs;
                       for (let match of matchs) {
@@ -90,14 +94,14 @@
                       status: 'finished'
                   }, (err, match) => {
                       if (err)
-                          throw err;
+                          return Utils.errorIntern(res, err);
 
                       cb(null, match);
                   });
               }
           ], (err, matchs) => {
               if (err)
-                  throw err;
+                  return Utils.errorIntern(res, err);
               res.status(202).json({
                   success: true,
                   matchs
@@ -124,7 +128,7 @@
           Player.findById(player_id, (err, player) => {
 
               if (err)
-                  throw err;
+                  return Utils.errorIntern(res, err);
 
               let statistics = player.statistics;
 
@@ -190,7 +194,7 @@
               (cb) => {
                   Coach.findById(coach_id, (err, coach) => {
                       if (err)
-                          throw err;
+                          return Utils.errorIntern(res, err);
                       let matchPlayed = [];
                       let matchs = coach.team.matchs;
                       for (let match of matchs) {
@@ -222,14 +226,15 @@
                       }
                       statisticsGlobal.passesCompletion = statisticsGlobal.passesCompletion / matchPlayed.length;
                       statisticsGlobal.relanceCompletion = statisticsGlobal.passesCompletion / matchPlayed.length;
-                      
+
                       cb(null, statisticsGlobal, matchPlayed);
                   });
 
               }
           ], (err, matchs, matchPlayed) => {
               if (err)
-                  throw err;
+                  return Utils.errorIntern(res, err);
+
               res.status(202).json({
                   success: true,
                   statisticsGlobal,

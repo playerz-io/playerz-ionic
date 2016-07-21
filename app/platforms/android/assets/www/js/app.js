@@ -37,10 +37,6 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             StatusBar.styleDefault();
         }
 
-        // $cordovaSplashscreen.show();
-        // setTimeout(function() {
-        //     $cordovaSplashscreen.hide()
-        // }, 3000);
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {

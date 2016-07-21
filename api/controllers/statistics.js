@@ -26,7 +26,8 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             //  console.log(player);
 
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
+
             if (minus === true) {
                 statistics[stat]--;
             } else {
@@ -64,7 +65,10 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             statistics.ballLost = lostBall;
 
             console.log(i, statistics);
-            player.save();
+            player.save((err) => {
+                if (err)
+                    return Utils.errorIntern(res, err);
+            });
             totalStat(coach_id.toString(), match_id.toString());
             real_time.updateStatistic_firebase(player, match_id, coach_id, {
                 assist: statistics.assist,
@@ -110,7 +114,7 @@ exports.addSchemaMatch = function(req, res) {
         let decoded = jwt.decode(token, config.secret);
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             let match = coach.team.matchs.id(match_id);
             match.schemaMatch.push(data);
@@ -144,12 +148,15 @@ exports.addPlayerSchema = function(req, res) {
         Coach.findById(decoded._id, function(err, coach) {
 
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             let match = coach.team.matchs.id(match_id);
             match.schemas.push(data);
 
-            coach.save();
+            coach.save((err) => {
+                if (err)
+                    return Utils.errorIntern(res, err);
+            });
 
             res.status(201).json({
                 success: true,
@@ -179,7 +186,7 @@ exports.countMainAction = function(req, res) {
             (done) => {
                 Coach.findById(coach_id, (err, coach) => {
                     if (err)
-                        throw err;
+                        return Utils.errorIntern(res, err);
 
                     let match = coach.team.matchs.id(match_id);
                     let schema = match.schemas;
@@ -297,7 +304,10 @@ exports.countMainAction = function(req, res) {
                 coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
                 coach.team.matchs.id(match_id).schemas = [];
 
-                coach.save();
+                coach.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
 
                 res.status(201).json({
                     success: true,
@@ -443,7 +453,7 @@ exports.countMainAction = function(req, res) {
 //
 // };
 
-
+// TODO: save à vérifié
 exports.avgRelance = function(req, res) {
     let token = getToken(req.headers);
     let match_id = req.body.match_id;
@@ -457,7 +467,8 @@ exports.avgRelance = function(req, res) {
 
         Coach.findById(coach_id, function(err, coach) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
+
 
             //playerSelected
             let playersSelected = coach.team.matchs.id(match_id).playerSelected;
@@ -468,6 +479,8 @@ exports.avgRelance = function(req, res) {
             // to correct match and take relanceCompletion
             for (let player_id of playersSelected) {
                 Player.findById(player_id, function(err, player) {
+                    if (err)
+                        return Utils.errorIntern(res, err);
 
                     let playerStatistic = player.statistics;
 
@@ -510,7 +523,7 @@ exports.updateStatistic = function(req, res) {
 
         Player.findById(player_id, function(err, player) {
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             for (let i = 0, x = player.statistics.length; i < x; i++) {
                 if (player.statistics[i].match_id.toString() === match_id.toString()) {
@@ -531,7 +544,10 @@ exports.updateStatistic = function(req, res) {
                     });
                 }
             }
-            player.save();
+            player.save((err) => {
+                if (err)
+                    return Utils.errorIntern(res, err);
+            });
             totalStat(decoded._id, match_id);
             res.status(201).json({
                 success: true,
@@ -574,7 +590,7 @@ let totalStat = function(_coach_id, _match_id) {
         (cb) => {
             Coach.findById(coach_id, (err, coach) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
 
                 let match = coach.team.matchs.id(match_id)
 
@@ -592,6 +608,9 @@ let totalStat = function(_coach_id, _match_id) {
             for (let player_id of playerSelected) {
 
                 Player.findById(player_id, (err, player) => {
+
+                    if (err)
+                        return Utils.errorIntern(res, err);
 
                     let playerStatistic = player.statistics;
                     for (let stat of playerStatistic) {
@@ -638,7 +657,7 @@ let totalStat = function(_coach_id, _match_id) {
 
             Match.findById(match_id, (err, foundMatch) => {
                 if (err)
-                    throw err;
+                    return Utils.errorIntern(res, err);
 
                 //update match stat
                 foundMatch.statistics = {
@@ -658,7 +677,10 @@ let totalStat = function(_coach_id, _match_id) {
                     totalBut: stat.totalBut
 
                 };
-                foundMatch.save();
+                foundMatch.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
             });
 
             match.statistics = {
@@ -679,13 +701,16 @@ let totalStat = function(_coach_id, _match_id) {
 
             };
             console.log('match.statistics', match.statistics);
-            coach.save();
+            coach.save((err) => {
+                if (err)
+                    return Utils.errorIntern(res, err);
+            });
 
             cb(null, stat);
         }
     ], (err, result) => {
         if (err)
-            throw err;
+            return Utils.errorIntern(res, err);
         console.log(result);
         real_time.updateStatMatch_firebase(coach_id.toString(), match_id.toString(), result);
     });
@@ -703,14 +728,14 @@ exports.removeAction = (req, res) => {
         Coach.findById(idCoach, (err, coach) => {
 
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             console.log(coach);
             let match = coach.team.matchs.id(match_id);
             let sizeSchemaMatch = match.schemaMatch.length;
             let schemaMatch = match.schemaMatch;
             let lastSchema = schemaMatch[sizeSchemaMatch - 1];
-            let sizeLastSchema = (lastSchema === undefined)? 0 : lastSchema.length;
+            let sizeLastSchema = (lastSchema === undefined) ? 0 : lastSchema.length;
             let schema = match.schemas;
             let sizeSchema = schema.length;
 
@@ -718,7 +743,10 @@ exports.removeAction = (req, res) => {
                 let idPlayerRemoved = schema.splice(sizeSchema - 1, 1);
                 Player.findById(idPlayerRemoved, (err, player) => {
                     updateStatPlayer(player, match_id, 'ballPlayed', err, idCoach, true);
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
                     return res.status(202).json({
                         success: true,
                         msg: `${Utils.getAction('ballPlayed')} de ${player.last_name} ${player.first_name} est annulé`
@@ -739,10 +767,14 @@ exports.removeAction = (req, res) => {
                     let idPlayerRemoved = schemaRemoved[0];
                     let actionRemoved = schemaRemoved[1];
 
-                    coach.save();
+                    coach.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
 
                     Player.findById(idPlayerRemoved, (err, player) => {
-
+                        if (err)
+                            return Utils.errorIntern(res, err);
                         updateStatPlayer(player, match_id, actionRemoved, err, idCoach, true);
 
                         res.status(202).json({
@@ -783,7 +815,7 @@ exports.getStatMatch = (req, res) => {
         Coach.findById(coach_id, (err, coach) => {
 
             if (err)
-                throw err;
+                return Utils.errorIntern(res, err);
 
             let match = coach.team.matchs.id(match_id);
             console.log(match_id);
