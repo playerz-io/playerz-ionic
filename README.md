@@ -1,4 +1,4 @@
-# playerz-ionic [![NPM version][npm-image]][npm-url] [![Build status][travis-image]][travis-url]
+# playerz-ionic
 
 Tout d'abord installez NodeJS
 
