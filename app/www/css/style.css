@@ -7,6 +7,44 @@
 * {
   font-family: Raleway
 }
+.chart div {
+  background-color: steelblue;
+
+}
+.main-background{
+  background: #1e3239;
+}
+
+.rounded-corner{
+  border-radius: 25px;
+}
+.input-login{
+   border-radius: 25px;
+   border: 1px solid white;
+   background: none;
+   margin-bottom: 10px;
+   margin-top: 10px;
+}
+
+.input-login .white-color{
+  color: #FFFFFF;
+}
+
+#register{
+  float: left;
+  color: white;
+}
+
+#forgot{
+  float: right;
+  color: white;
+}
+
+#register-forgot{
+  margin-top: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
 .css-form input.ng-invalid.ng-dirty{
   border-color: #FA787E;
@@ -135,5 +173,5 @@ div .row-player + .row-player, .row-player {
     }
 }
 .connexion {
-    margin-top: 35vh;
+    margin-top: 25vh;
 }

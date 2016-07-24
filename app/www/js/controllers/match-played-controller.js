@@ -35,17 +35,30 @@ angular.module('starter.controller.match-played', [])
                 });
         };
 
+        self.scale = (data) => {
+            let x = d3.scaleLinear()
+                .domain([0, d3.max(self.ball)])
+                .range([0, 80]);
+
+            return x(data);
+
+
+        }
+
         self.getGlobalStatisticsMatch = () => {
             MatchService.getGlobalStatisticsMatch()
                 .success(function(data) {
                     console.log(data);
                     self.statisticsGlobal = data.statisticsGlobal;
                     self.nbrMatchFinished = data.nbrMatchFinished;
+                    self.ball = [self.statisticsGlobal.totalBallLost, self.statisticsGlobal.totalBallPlayed];
+                    //self.ballChart();
                 })
                 .error(function(data) {
                     console.log(data);
                 });
         };
+
         self.getMatchFinished();
         self.getGlobalStatisticsMatch();
 
