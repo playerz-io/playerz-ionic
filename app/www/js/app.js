@@ -98,7 +98,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     $stateProvider
 
         .state('login', {
-            url: '/',
+            url: '/welcome',
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl as login'
         })
@@ -274,7 +274,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             }
         })
         .state('welcome', {
-            url: '/welcome',
+            url: '/',
             templateUrl: 'templates/welcome.html',
             controller: 'welcomeCtrl as welcome'
         });

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.tactique', [])
-    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope) {
+    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast) {
 
         var self = this;
 
@@ -56,6 +56,7 @@ angular.module('starter.controller.tactique', [])
             PlayerService.switchPosition(self.matchId, droppedId, draggedId)
                 .success((data) => {
                     console.log(data);
+                    $cordovaToast.showShortBottom(data.msg);
                 })
                 .error((data) => {
                     console.log(data);

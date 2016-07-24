@@ -1,16 +1,24 @@
-<ion-header-bar align-title="center" class="bar-positive tabs-top">
-    <div class="h1 title">Inscription</div>
-</ion-header-bar>
-<ion-tabs class="tabs-positive tabs-icon-top">
-    <form novalidate>
-        <ion-tab title="Email & password" href="#/register/register-profile">
-            <ion-nav-view name="register-profile"></ion-nav-view>
-        </ion-tab>
-        <ion-tab title="Information Personnelle" href="#/register/register-privateInfo">
-            <ion-nav-view name="register-privateInfo"></ion-nav-view>
-        </ion-tab>
-        <ion-tab title="Information Equipe" href="#/register/register-team">
-            <ion-nav-view name="register-team"></ion-nav-view>
-        </ion-tab>
-    </form>
-</ion-tabs>
+<ion-view title="Inscription">
+    <!-- <div class="h1 title">Inscription</div> -->
+    <ion-nav-bar class="bar-positive" align-title="center">
+      <ion-nav-buttons side="primary">
+          <button class="button" ui-sref="login">
+            Log In
+          </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-tabs class="tabs-positive tabs-icon-top">
+        <form novalidate>
+            <ion-tab title="Email & password" href="#/register/register-profile">
+                <ion-nav-view name="register-profile"></ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Information Personnelle" href="#/register/register-privateInfo">
+                <ion-nav-view name="register-privateInfo"></ion-nav-view>
+            </ion-tab>
+            <ion-tab title="Information Equipe" href="#/register/register-team">
+                <ion-nav-view name="register-team"></ion-nav-view>
+            </ion-tab>
+        </form>
+    </ion-tabs>
+</ion-view>
