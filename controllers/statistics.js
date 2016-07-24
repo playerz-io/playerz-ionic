@@ -610,7 +610,7 @@ let totalStat = function(_coach_id, _match_id) {
                 Player.findById(player_id, (err, player) => {
 
                     if (err)
-                        return Utils.errorIntern(res, err);
+                        throw err;
 
                     let playerStatistic = player.statistics;
                     for (let stat of playerStatistic) {
@@ -657,7 +657,7 @@ let totalStat = function(_coach_id, _match_id) {
 
             Match.findById(match_id, (err, foundMatch) => {
                 if (err)
-                    return Utils.errorIntern(res, err);
+                    throw err;
 
                 //update match stat
                 foundMatch.statistics = {
@@ -677,10 +677,7 @@ let totalStat = function(_coach_id, _match_id) {
                     totalBut: stat.totalBut
 
                 };
-                foundMatch.save((err) => {
-                    if (err)
-                        return Utils.errorIntern(res, err);
-                });
+                foundMatch.save();
             });
 
             match.statistics = {
@@ -701,16 +698,13 @@ let totalStat = function(_coach_id, _match_id) {
 
             };
             console.log('match.statistics', match.statistics);
-            coach.save((err) => {
-                if (err)
-                    return Utils.errorIntern(res, err);
-            });
+            coach.save();
 
             cb(null, stat);
         }
     ], (err, result) => {
         if (err)
-            return Utils.errorIntern(res, err);
+            throw err;
         console.log(result);
         real_time.updateStatMatch_firebase(coach_id.toString(), match_id.toString(), result);
     });
