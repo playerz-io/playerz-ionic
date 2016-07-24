@@ -6,7 +6,7 @@
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
         'ionic-table', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset', 'starter.controller.account', 'starter.controller.main-settings',
-        'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live', 'starter.controller.stat-in-live-player', 'ngCordovaOauth'
+        'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live', 'starter.controller.stat-in-live-player', 'ngCordovaOauth', 'ionic-material', 'starter.controller.welcome'
     ])
     // TODO: 'angular-stripe',
     .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -98,7 +98,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     $stateProvider
 
         .state('login', {
-            url: '/',
+            url: '/welcome',
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl as login'
         })
@@ -272,6 +272,11 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             params: {
                 playerId: null
             }
+        })
+        .state('welcome', {
+            url: '/',
+            templateUrl: 'templates/welcome.html',
+            controller: 'welcomeCtrl as welcome'
         });
 
 
