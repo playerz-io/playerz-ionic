@@ -24,10 +24,10 @@ Utilisez `git clone`
 ### BackEnd
 
 Placez vous dans le dossier **api** en faisant la commande `cd api` 
-ensuite si le dossier **node_modules** existe effacer en faisant la commande `rm -r node_modules`
+ensuite si le dossier **node_modules** existe effacer en faisant la commande `rm -rf node_modules`
 enfin tapez la commande `npm install`
 
-Pour démarrer le serveur faites la commande `node`
+Pour démarrer le serveur faites la commande `nodemon`
 
 ### FrontEnd
 
