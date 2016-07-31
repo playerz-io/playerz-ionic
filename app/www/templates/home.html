@@ -1,21 +1,51 @@
-<ion-view title="Home">
-  <ion-nav-buttons side="secondary">
-    <button class="button button-icon ion-more" ng-click="popover.show($event)"
-    style="color:white"></button>
-  </ion-nav-buttons>
+<ion-view title="PLAYERZ" id="home">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-more" ng-click="popover.show($event)" style="color:white"></button>
+    </ion-nav-buttons>
+    <ion-content has-bouncing="false">
+        <button id="div-effectif" ui-sref="profile.troop">
+            <h1>EFFECTIF</h1>
+        </button>
+        <button id="div-next-match" ui-sref="match-comeup">
+            <h1 class="text-center">PROCHAINS <br> MATCHS</h1>
+        </button>
+        <button id="div-statistics" ui-sref="match-played">
+            <h1>STATISTIQUES</h1>
+        </button>
+        <div style="height: 25vh; background-color:black">
 
+        </div>
 
-
-
-
-
-
-  <ion-content>
-    <h1 class="text-center">Bienvenue {{ profile.coach.first_name + " " + profile.coach.last_name }}</h1>
-
-
-
-  </ion-content>
+    </ion-content>
 
 
 </ion-view>
+
+<!-- <ion-side-menus>
+
+    <ion-pane ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-pane>
+
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-stable">
+            <h1 class="title">Left</h1>
+        </header>
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item nav-clear menu-close href="#/app/search">
+                    Search
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/browse">
+                    Browse
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/playlists">
+                    Playlists
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus> -->

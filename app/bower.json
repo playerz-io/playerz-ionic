@@ -16,7 +16,8 @@
     "facebook-connect-plugin": "https://cdn.rawgit.com/Wizcorp/phonegap-facebook-plugin/master/facebookConnectPlugin.js",
     "ng-cordova-oauth": "^0.2.9",
     "ionic-material": "^0.4.2",
-    "robotodraft": "^1.1.0"
+    "robotodraft": "^1.1.0",
+    "ion-floating-menu": "^1.0.1"
   },
   "resolutions": {
     "angular": "1.5.8",

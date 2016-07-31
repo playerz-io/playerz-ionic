@@ -14,13 +14,243 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../www/lib/ionic/fonts" !default;
 $RobotoDraftFontPath: "..www/lib/robotodraft/fonts"; // REMINDER: edit as appropriate!
 $RobotoDraftFontName: "RobotoDraft";
-$RobotoDraftFontVersion: "1.0.0";
-
-// Include all of Ionic
+$RobotoDraftFontVersion: "1.0.0"; // Include all of Ionic
 @import "../www/lib/ionic/scss/ionic";
 @import "../www/lib/robotodraft/sass/robotodraft.scss";
+$elephant: #172B32;
+$california: #DF8331;
+$saumon: #fe4e50;
+$pelorous: #28B0D3;
+$aluminium: #929292;
+$mariner: #3C5A95;
+$white: #FFFFFF;
+@font-face {
+    font-weight: 'Raleway', sans-serif;
+}
+* {
+    font-family: Raleway;
+}
+.pane {
+  background: -webkit-linear-gradient(left, #313B42 , #3C4F5E);
+    background: linear-gradient(to right, #313B42 , #3C4F5E);
+}
+ion-content {
+  background: -webkit-linear-gradient(left, #313B42 , #3C4F5E);
+    background: linear-gradient(to right, #313B42 , #3C4F5E);
+}
+input::-webkit-input-placeholder {
+    color: $white;
+}
+#login {
+    ion-content{
+      margin: 2rem;
+    }
+
+    h1 {
+        margin: 5vh;
+        font-size: 3.6em;
+        color: $white;
+    }
+    ion-content {
+        margin-top: 25vh;
+    }
+    label {
+        background: rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 0;
+        padding: 0;
+        border-radius: 25px;
+        input[type="email"],
+        input[type="password"] {
+            color: $white;
+            text-decoration: none;
+            border-radius: 25px;
+            padding-left: 1rem;
+
+
+        }
+    }
+    button, label {
+        height: 40px;
+    }
+    button {
+        border-radius: 25px;
+
+        &#btn-fb {
+            background-color: $mariner;
+            color: #FFFFFF;
+            &.activated {
+                border: 0;
+                background-color: darken($mariner, 10%);
+            }
+        }
+        &#btn-sign-in {
+            background-color: $saumon;
+            color: $white;
+            &.activated {
+                border: 0;
+                background-color: darken($saumon, 10%);;
+            }
+        }
+    }
+    a {
+        text-decoration: none;
+        color: $white;
+        &.activated {
+            color: $california;
+        }
+        &#a-sign-up {
+            float: left;
+        }
+        &#a-forgot {
+            float: right;
+        }
+    }
+}
+#home {
+    h1 {
+        margin: auto;
+        color: white;
+    }
+    #div-effectif {
+        height: 25vh;
+        width: 100vw;
+        border: 0;
+        background-color: green;
+        display: flex;
+        &.activated {
+            background-color: darken(green, 10%);
+        }
+    }
+    #div-next-match {
+        @extend #div-effectif;
+        background-color: yellow;
+        &.activated {
+            background-color: darken(yellow, 10%);
+        }
+    }
+    #div-statistics {
+        @extend #div-effectif;
+        background-color: pink;
+        &.activated {
+            background-color: darken(pink, 10%);
+        }
+    }
+}
+#match-comeup,
+#match-played,
+#troop {
+    label {
+        background: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid $white;
+        padding: 0;
+        border-radius: 25px;
+        i.placeholder-icon:first-child {
+            padding-left: 6px;
+            color: $white;
+        }
+        input[type="text"] {
+            color: $white;
+            text-decoration: none;
+        }
+    }
+    ion-item {
+        background-color: none;
+        &.item {
+            background-color: $california;
+            border-color: $elephant;
+        }
+    }
+    .item-complex .item-content {
+        background-color: $elephant;
+    }
+    h2,
+    h3, p {
+        color: $white;
+    }
+    ion-option-button {
+        background-color: $california;
+        &.button {
+            color: $white;
+        }
+    }
+}
+#match-comeup,
+#match-played {
+    ion-item {
+        padding-bottom: 1px;
+    }
+}
+#match-played {
+    a {
+        text-decoration: none;
+    }
+}
+#modal-add-match,
+#modal-add-player {
+    input {
+        color: $white;
+    }
+    label.item {
+        background-color: $elephant;
+        border-right: 0;
+        border-left: 0;
+    }
+    .toggle.toggle-calm input:checked + .track {
+        border-color: $california;
+        background-color: $california;
+    }
+    .item {
+        background-color: $elephant;
+        border: 0;
+        border-top: 1px solid $california;
+    }
+    .item-toggle {
+        padding: 16px;
+        p {
+            color: $white;
+        }
+        p:first-child {
+            float: right;
+        }
+        p:nth-child(2) {
+            float: left;
+        }
+    }
+    .item-toggle .toggle {
+        position: inherit;
+        right: inherit;
+        top: inherit;
+    }
+    label .input-label {
+        color: $white;
+    }
+    .item-select select {
+        background-color: $elephant;
+        color: $white;
+    }
+}
+
+#match{
+  button{
+    display: inline-block;
+    height: 50%;
+    width: 100%;
+    border: 0;
+    color: white;
+    text-transform: uppercase;
+    h1{
+      color: $white;
+    }
+    &:first-child{
+      background-color: yellow;
+    }
+  }
+}

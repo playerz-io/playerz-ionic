@@ -1,21 +1,22 @@
-<ion-view title="Home">
-  <ion-nav-buttons side="secondary">
-    <button class="button button-icon ion-more" ng-click="popover.show($event)"
-    style="color:white"></button>
-  </ion-nav-buttons>
+<ion-view title="PLAYERZ" id="home">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-more" ng-click="popover.show($event)" style="color:white"></button>
+    </ion-nav-buttons>
+    <ion-content has-bouncing="false">
+        <button id="div-effectif" ui-sref="profile.troop">
+            <h1>EFFECTIF</h1>
+        </button>
+        <button id="div-next-match" ui-sref="match-comeup">
+            <h1 class="text-center">PROCHAINS <br> MATCHS</h1>
+        </button>
+        <button id="div-statistics" ui-sref="match-played">
+            <h1>STATISTIQUES</h1>
+        </button>
+        <div style="height: 25vh; background-color:black">
 
+        </div>
 
-
-
-
-
-
-  <ion-content>
-    <h1 class="text-center">Bienvenue {{ profile.coach.first_name + " " + profile.coach.last_name }}</h1>
-
-
-
-  </ion-content>
+    </ion-content>
 
 
 </ion-view>

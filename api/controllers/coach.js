@@ -15,11 +15,11 @@ let bcrypt = require('bcrypt');
 
 exports.getNameTeam = function(req, res) {
     let token = getToken(req.headers);
-    let coach_id = req.query.coach_id;
+
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
-        Coach.findById(coach_id, function(err, coach) {
+        Coach.findById(decoded._id, function(err, coach) {
             if (err)
                 return Utils.errorIntern(res, err);
 

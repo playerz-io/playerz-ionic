@@ -1,16 +1,14 @@
-<ion-view title="Match">
+<ion-view title="Match" id="match">
     <ion-nav-buttons side="secondary">
-        <button class="button button-icon ion-ios-plus-outline" ng-click="openModal()">
-        </button>
+        <!-- <button class="button button-icon ion-ios-plus-outline" ng-click="openModal()">
+        </button> -->
     </ion-nav-buttons>
+    <ion-floating-button click="openModal()" has-footer="true" button-color="#DF8331" icon="ion-plus" iconColor="#fff">
+    </ion-floating-button>
     <ion-content scroll="false">
-        <div class="row">
-            <div class="col">
-                <button ui-sref="match-comeup" ui-sref-opts="{reload: true}">Match à venir</button>
-            </div>
-            <div class="col">
-                <button ui-sref="match-played" ui-sref-opts="{reload: true}">Match terminé</button>
-            </div>
-        </div>
+                <button ui-sref="match-comeup" ui-sref-opts="{reload: true}"><h1>Match <br> à <br>venir</h1></button>
+
+                <button ui-sref="match-played" ui-sref-opts="{reload: true}"><h1>Match <br> terminé</h1></button>
+
     </ion-content>
 </ion-view>

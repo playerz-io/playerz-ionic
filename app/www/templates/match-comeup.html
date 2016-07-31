@@ -1,12 +1,14 @@
-<ion-view title="Match à venir">
+<ion-view title="Match à venir" id="match-comeup">
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
-        <ion-nav-buttons side="secondary">
-            <button class="button button-icon icon ion-ios-minus-outline" ng-click="comeup.showDelete = !comeup.showDelete">
-            </button>
-        </ion-nav-buttons>
+          <!-- <ion-nav-buttons side="secondary">
+              <button class="button button-icon icon ion-ios-minus-outline" ng-click="comeup.showDelete = !comeup.showDelete">
+              </button>
+          </ion-nav-buttons> -->
     </ion-nav-bar>
+    <ion-floating-button click="openModal()" has-footer="true" button-color="#DF8331" icon="ion-plus" iconColor="#fff">
+    </ion-floating-button>
     <ion-content>
         <div class="row">
             <div class="col">
@@ -18,12 +20,12 @@
 
                 <ion-list show-delete="comeup.showDelete">
                     <ion-item class="item" ng-repeat="match in comeup.matchs | filter:comeup.searchMatch">
-                        <a ui-sref="tactique({matchId: match._id})" ng-click="comeup.saveMatchID(match._id)">
-                            <h2>{{match.against_team}}</h2>
-                            <h3>{{match.place}} {{match.type}} {{match.date | date:'dd MMMM yyyy'}}</h3>
+                        <a class="text-center" ui-sref="tactique({matchId: match._id})" ng-click="comeup.saveMatchID(match._id)" style="text-decoration: none">
+                            <h2 ng-bind-html="comeup.getBillingName(match)">  </h2>
+                            <h3>{{match.date | date:'fullDate'}}</h3>
                         </a>
-                          <ion-delete-button class="ion-minus-circled" ng-click="comeup.removeMatch(match._id)"></ion-delete-button>
-                        <!-- <ion-option-button ng-click="comeup.removeMatch(match._id)">Supprimer</ion-option-button> -->
+                        <!-- <ion-delete-button class="ion-minus-circled" ng-click="comeup.removeMatch(match._id)"></ion-delete-button> -->
+                        <ion-option-button class="button icon ion-ios-trash-outline" ng-click="comeup.removeMatch(match._id)"><i ></i></ion-option-button>
                     </ion-item>
                 </ion-list>
             </div>

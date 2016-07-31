@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-comeup', [])
-    .controller('MatchComeUpCtrl', function(MatchService, $scope, StorageService, $cordovaToast) {
+    .controller('MatchComeUpCtrl', function(TeamService, $filter, $ionicPopup, $ionicModal, MatchService, $scope, StorageService, $cordovaToast) {
 
         let self = this;
 
@@ -11,6 +11,50 @@ angular.module('starter.controller.match-comeup', [])
         });
 
         self.showDelete = false;
+
+        $scope.match = {
+            against_team: '',
+            place: '',
+            type: '',
+            date: ''
+        };
+
+        $ionicModal.fromTemplateUrl('templates/add-match-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        })
+
+        $scope.openModal = function() {
+            $scope.modal.show();
+        };
+
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+
+        $scope.addMatch = function() {
+            $scope.match.date = new Date($scope.match.date);
+            $scope.match.against_team = $filter('uppercase')($scope.match.against_team);
+            $scope.match.place = !$scope.togglePlace ? 'Domicile' : 'Exterieur';
+            $scope.match.type = !$scope.toggleType ? 'Officiel' : 'Amical';
+            MatchService.addMatch($scope.match)
+                .success(function(data) {
+                    console.log(data);
+                    $cordovaToast.showShortBottom(data.msg);
+                    $scope.match = {};
+                    $scope.modal.hide();
+
+                })
+                .error(function(data) {
+                    console.log(data);
+                    let alertPopup = $ionicPopup.alert({
+                        title: 'Erreur',
+                        template: data.msg
+                    });
+                });
+        };
 
         self.saveMatchID = function(match_id) {
             StorageService.addStorageMatchId(match_id);
@@ -39,6 +83,27 @@ angular.module('starter.controller.match-comeup', [])
                 });
         };
 
+        self.getNameTeam = function() {
+            TeamService.nameTeam()
+                .success(function(data) {
+                    console.log(data);
+                    self.nameTeam = data.nameTeam;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        self.getBillingName = function(match) {
+            if (match.place === 'Domicile') {
+                self.billingName = `${self.nameTeam} <br /> - <br /> ${match.against_team}`;
+            } else {
+                self.billingName = `${match.against_team} <br /> - <br /> ${self.nameTeam}`;
+            }
+            return self.billingName;
+        };
+
+        self.getNameTeam();
         self.getMatchComeUp();
 
 

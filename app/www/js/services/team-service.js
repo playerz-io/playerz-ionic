@@ -69,16 +69,7 @@ angular.module('starter')
         };
 
         let nameTeam = function(idCoach){
-            return $http({
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                params: {
-                    coach_id: idCoach
-                },
-                url: API_ENDPOINT.url + '/nameTeam'
-            });
+            return $http.get(API_ENDPOINT.url + '/nameTeam');
         };
 
         let getNameClub = function(){

@@ -1,4 +1,4 @@
-<ion-modal-view>
+<ion-modal-view id="modal-add-match">
     <ion-header-bar class="bar bar-header bar-positive">
         <h1 class="title">Ajouter un match</h1>
         <button class="button button-clear button-primary" ng-click="closeModal()">Annuler</button>
@@ -8,7 +8,7 @@
             <label class="item item-input">
                 <input type="text" placeholder="Adversaire" ng-model="match.against_team">
             </label>
-            <label class="item item-input item-select">
+            <!-- <label class="item item-input item-select">
                 <div class="input-label">
                     Lieu
                 </div>
@@ -16,8 +16,13 @@
                     <option>Domicile</option>
                     <option selected>Exterieur</option>
                 </select>
-            </label>
-            <label class="item item-input item-select">
+            </label> -->
+            <ion-toggle class="text-center" ng-init="togglePlace = false" ng-model="togglePlace" toggle-class="toggle-calm"><p>
+              Exterieur
+            </p><p>
+              Domicile
+            </p></ion-toggle>
+            <!-- <label class="item item-input item-select">
                 <div class="input-label">
                     Type
                 </div>
@@ -25,12 +30,17 @@
                     <option>Amical</option>
                     <option selected>Officiel</option>
                 </select>
-            </label>
+            </label> -->
+            <ion-toggle class="text-center" ng-init="toggleType = false" ng-model="toggleType" toggle-class="toggle-calm"><p>
+              Amical
+            </p><p>
+              Officiel
+            </p></ion-toggle>
             <label class="item item-input">
                 <span class="input-label">Date</span>
                 <input type="date" ng-model="match.date">
             </label>
-            <button class="button button-full button-positive" ng-click="matchCtrl.addMatch()">Ajouter</button>
+            <button class="button button-full button-positive" ng-click="addMatch()">Ajouter</button>
         </div>
     </ion-content>
 </ion-modal-view>
