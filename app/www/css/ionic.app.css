@@ -9904,7 +9904,7 @@ a.button {
 
 /* END Black */
 @font-face {
-  font-weight: 'Raleway', sans-serif; }
+  font-family: 'Raleway', sans-serif; }
 
 * {
   font-family: Raleway; }
@@ -9921,15 +9921,13 @@ input::-webkit-input-placeholder {
   color: #FFFFFF; }
 
 #login ion-content {
-  margin: 2rem; }
+  margin: 2rem;
+  margin-top: 25vh; }
 
 #login h1 {
   margin: 5vh;
   font-size: 3.6em;
   color: #FFFFFF; }
-
-#login ion-content {
-  margin-top: 25vh; }
 
 #login label {
   background: rgba(0, 0, 0, 0.3);
