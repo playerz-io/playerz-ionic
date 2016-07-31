@@ -47,16 +47,14 @@ input::-webkit-input-placeholder {
 }
 #login {
     ion-content{
-      margin: 2rem;
+        margin: 2rem;
+        margin-top: 25vh;
     }
 
     h1 {
         margin: 5vh;
         font-size: 3.6em;
         color: $white;
-    }
-    ion-content {
-        margin-top: 25vh;
     }
     label {
         background: rgba(0, 0, 0, 0.3);
