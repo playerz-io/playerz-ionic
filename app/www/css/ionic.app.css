@@ -12101,19 +12101,17 @@ a.button {
   font-family: Raleway; }
 
 .pane {
-  background: -webkit-linear-gradient(left, #313B42, #3C4F5E);
-  background: linear-gradient(to right, #313B42, #3C4F5E); }
+  background: -webkit-linear-gradient(left, #313B42, #3C4F5E); }
 
 ion-content {
-  background: -webkit-linear-gradient(left, #313B42, #3C4F5E);
   background: linear-gradient(to right, #313B42, #3C4F5E); }
 
 input::-webkit-input-placeholder {
   color: #FFFFFF; }
 
 #login ion-content {
-  margin: 2rem;
-  margin-top: 25vh; }
+  background: none;
+  margin: 25vh 2rem 2rem; }
 
 #login h1 {
   margin: 5vh;
@@ -12134,7 +12132,8 @@ input::-webkit-input-placeholder {
     border-radius: 25px;
     padding-left: 1rem; }
 
-#login button, #login label {
+#login button,
+#login label {
   height: 40px; }
 
 #login button {
@@ -12156,7 +12155,7 @@ input::-webkit-input-placeholder {
   text-decoration: none;
   color: #FFFFFF; }
   #login a.activated {
-    color: #DF8331; }
+    color: #fe4e50; }
   #login a#a-sign-up {
     float: left; }
   #login a#a-forgot {
@@ -12208,20 +12207,22 @@ input::-webkit-input-placeholder {
 #match-comeup ion-item,
 #match-played ion-item,
 #troop ion-item {
-  background-color: none; }
+  background: none; }
   #match-comeup ion-item.item,
   #match-played ion-item.item,
   #troop ion-item.item {
-    background-color: #DF8331;
-    border-color: #172B32; }
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #fe4e50; }
 
 #match-comeup .item-complex .item-content,
 #match-played .item-complex .item-content,
 #troop .item-complex .item-content {
-  background-color: #172B32; }
+  background: none; }
 
 #match-comeup h2,
-#match-comeup h3, #match-comeup p,
+#match-comeup h3,
+#match-comeup p,
 #match-played h2,
 #match-played h3,
 #match-played p,
@@ -12233,7 +12234,7 @@ input::-webkit-input-placeholder {
 #match-comeup ion-option-button,
 #match-played ion-option-button,
 #troop ion-option-button {
-  background-color: #DF8331; }
+  background-color: #fe4e50; }
   #match-comeup ion-option-button.button,
   #match-played ion-option-button.button,
   #troop ion-option-button.button {
@@ -12246,54 +12247,177 @@ input::-webkit-input-placeholder {
 #match-played a {
   text-decoration: none; }
 
+#menu input,
 #modal-add-match input,
-#modal-add-player input {
+#modal-add-player input,
+#profile-settings input,
+#register-info input,
+#register-profile input,
+#account input,
+#register-team input,
+#change-password input {
   color: #FFFFFF; }
 
+#menu label.item,
 #modal-add-match label.item,
-#modal-add-player label.item {
-  background-color: #172B32;
+#modal-add-player label.item,
+#profile-settings label.item,
+#register-info label.item,
+#register-profile label.item,
+#account label.item,
+#register-team label.item,
+#change-password label.item {
+  background: none;
   border-right: 0;
   border-left: 0; }
 
+#menu .toggle.toggle-calm input:checked + .track,
 #modal-add-match .toggle.toggle-calm input:checked + .track,
-#modal-add-player .toggle.toggle-calm input:checked + .track {
-  border-color: #DF8331;
-  background-color: #DF8331; }
+#modal-add-player .toggle.toggle-calm input:checked + .track,
+#profile-settings .toggle.toggle-calm input:checked + .track,
+#register-info .toggle.toggle-calm input:checked + .track,
+#register-profile .toggle.toggle-calm input:checked + .track,
+#account .toggle.toggle-calm input:checked + .track,
+#register-team .toggle.toggle-calm input:checked + .track,
+#change-password .toggle.toggle-calm input:checked + .track {
+  border-color: #fe4e50;
+  background-color: #fe4e50; }
 
+#menu .item,
 #modal-add-match .item,
-#modal-add-player .item {
-  background-color: #172B32;
+#modal-add-player .item,
+#profile-settings .item,
+#register-info .item,
+#register-profile .item,
+#account .item,
+#register-team .item,
+#change-password .item {
+  background: none;
   border: 0;
-  border-top: 1px solid #DF8331; }
-
-#modal-add-match .item-toggle,
-#modal-add-player .item-toggle {
-  padding: 16px; }
-  #modal-add-match .item-toggle p,
-  #modal-add-player .item-toggle p {
+  border-bottom: 1px solid #fe4e50; }
+  #menu .item a,
+  #modal-add-match .item a,
+  #modal-add-player .item a,
+  #profile-settings .item a,
+  #register-info .item a,
+  #register-profile .item a,
+  #account .item a,
+  #register-team .item a,
+  #change-password .item a {
     color: #FFFFFF; }
+
+#menu .item-toggle,
+#modal-add-match .item-toggle,
+#modal-add-player .item-toggle,
+#profile-settings .item-toggle,
+#register-info .item-toggle,
+#register-profile .item-toggle,
+#account .item-toggle,
+#register-team .item-toggle,
+#change-password .item-toggle {
+  padding: 16px; }
+  #menu .item-toggle p,
+  #modal-add-match .item-toggle p,
+  #modal-add-player .item-toggle p,
+  #profile-settings .item-toggle p,
+  #register-info .item-toggle p,
+  #register-profile .item-toggle p,
+  #account .item-toggle p,
+  #register-team .item-toggle p,
+  #change-password .item-toggle p {
+    color: #FFFFFF; }
+  #menu .item-toggle p:first-child,
   #modal-add-match .item-toggle p:first-child,
-  #modal-add-player .item-toggle p:first-child {
+  #modal-add-player .item-toggle p:first-child,
+  #profile-settings .item-toggle p:first-child,
+  #register-info .item-toggle p:first-child,
+  #register-profile .item-toggle p:first-child,
+  #account .item-toggle p:first-child,
+  #register-team .item-toggle p:first-child,
+  #change-password .item-toggle p:first-child {
     float: right; }
+  #menu .item-toggle p:nth-child(2),
   #modal-add-match .item-toggle p:nth-child(2),
-  #modal-add-player .item-toggle p:nth-child(2) {
+  #modal-add-player .item-toggle p:nth-child(2),
+  #profile-settings .item-toggle p:nth-child(2),
+  #register-info .item-toggle p:nth-child(2),
+  #register-profile .item-toggle p:nth-child(2),
+  #account .item-toggle p:nth-child(2),
+  #register-team .item-toggle p:nth-child(2),
+  #change-password .item-toggle p:nth-child(2) {
     float: left; }
 
+#menu .item-toggle .toggle,
 #modal-add-match .item-toggle .toggle,
-#modal-add-player .item-toggle .toggle {
+#modal-add-player .item-toggle .toggle,
+#profile-settings .item-toggle .toggle,
+#register-info .item-toggle .toggle,
+#register-profile .item-toggle .toggle,
+#account .item-toggle .toggle,
+#register-team .item-toggle .toggle,
+#change-password .item-toggle .toggle {
   position: inherit;
   right: inherit;
   top: inherit; }
 
+#menu label .input-label,
 #modal-add-match label .input-label,
-#modal-add-player label .input-label {
+#modal-add-player label .input-label,
+#profile-settings label .input-label,
+#register-info label .input-label,
+#register-profile label .input-label,
+#account label .input-label,
+#register-team label .input-label,
+#change-password label .input-label {
   color: #FFFFFF; }
 
+#menu .item-select select,
 #modal-add-match .item-select select,
-#modal-add-player .item-select select {
-  background-color: #172B32;
+#modal-add-player .item-select select,
+#profile-settings .item-select select,
+#register-info .item-select select,
+#register-profile .item-select select,
+#account .item-select select,
+#register-team .item-select select,
+#change-password .item-select select {
+  background: none;
   color: #FFFFFF; }
+
+#menu .item-stacked-label input,
+#modal-add-match .item-stacked-label input,
+#modal-add-player .item-stacked-label input,
+#profile-settings .item-stacked-label input,
+#register-info .item-stacked-label input,
+#register-profile .item-stacked-label input,
+#account .item-stacked-label input,
+#register-team .item-stacked-label input,
+#change-password .item-stacked-label input {
+  background: none; }
+
+#menu .input-label,
+#modal-add-match .input-label,
+#modal-add-player .input-label,
+#profile-settings .input-label,
+#register-info .input-label,
+#register-profile .input-label,
+#account .input-label,
+#register-team .input-label,
+#change-password .input-label {
+  color: #FFFFFF; }
+
+#menu .item h2,
+#modal-add-match .item h2,
+#modal-add-player .item h2,
+#profile-settings .item h2,
+#register-info .item h2,
+#register-profile .item h2,
+#account .item h2,
+#register-team .item h2,
+#change-password .item h2 {
+  color: #FFFFFF; }
+
+.popover .scroll-content {
+  margin: 0; }
 
 #match button {
   display: inline-block;

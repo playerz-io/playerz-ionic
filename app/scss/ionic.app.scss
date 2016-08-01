@@ -21,7 +21,7 @@ $RobotoDraftFontName: "RobotoDraft";
 $RobotoDraftFontVersion: "1.0.0"; // Include all of Ionic
 @import "../www/lib/ionic/scss/ionic";
 @import "../www/lib/robotodraft/sass/robotodraft.scss";
-@import "../font-awesome-4.6.3/scss/font-awesome";  
+@import "../font-awesome-4.6.3/scss/font-awesome";
 $elephant: #172B32;
 $california: #DF8331;
 $saumon: #fe4e50;
@@ -29,6 +29,8 @@ $pelorous: #28B0D3;
 $aluminium: #929292;
 $mariner: #3C5A95;
 $white: #FFFFFF;
+$clear_mariner: #313B42;
+$sombre_mariner: #3C4F5E;
 @font-face {
     font-family: 'Raleway', sans-serif;
 }
@@ -36,22 +38,21 @@ $white: #FFFFFF;
     font-family: Raleway;
 }
 .pane {
-  background: -webkit-linear-gradient(left, #313B42 , #3C4F5E);
-    background: linear-gradient(to right, #313B42 , #3C4F5E);
+    background: -webkit-linear-gradient(left, #313B42 , #3C4F5E);
+    //background: linear-gradient(to right, #313B42 , #3C4F5E);
 }
 ion-content {
-  background: -webkit-linear-gradient(left, #313B42 , #3C4F5E);
+    //background: none;
     background: linear-gradient(to right, #313B42 , #3C4F5E);
 }
 input::-webkit-input-placeholder {
     color: $white;
 }
 #login {
-    ion-content{
-        margin: 2rem;
-        margin-top: 25vh;
+    ion-content {
+        background: none;
+        margin: 25vh 2rem 2rem;
     }
-
     h1 {
         margin: 5vh;
         font-size: 3.6em;
@@ -70,16 +71,14 @@ input::-webkit-input-placeholder {
             text-decoration: none;
             border-radius: 25px;
             padding-left: 1rem;
-
-
         }
     }
-    button, label {
+    button,
+    label {
         height: 40px;
     }
     button {
         border-radius: 25px;
-
         &#btn-fb {
             background-color: $mariner;
             color: #FFFFFF;
@@ -93,7 +92,7 @@ input::-webkit-input-placeholder {
             color: $white;
             &.activated {
                 border: 0;
-                background-color: darken($saumon, 10%);;
+                background-color: darken($saumon, 10%);
             }
         }
     }
@@ -101,7 +100,7 @@ input::-webkit-input-placeholder {
         text-decoration: none;
         color: $white;
         &.activated {
-            color: $california;
+            color: $saumon;
         }
         &#a-sign-up {
             float: left;
@@ -161,21 +160,23 @@ input::-webkit-input-placeholder {
         }
     }
     ion-item {
-        background-color: none;
+        background: none;
         &.item {
-            background-color: $california;
-            border-color: $elephant;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid $saumon;
         }
     }
     .item-complex .item-content {
-        background-color: $elephant;
+        background: none;
     }
     h2,
-    h3, p {
+    h3,
+    p {
         color: $white;
     }
     ion-option-button {
-        background-color: $california;
+        background-color: $saumon;
         &.button {
             color: $white;
         }
@@ -192,24 +193,34 @@ input::-webkit-input-placeholder {
         text-decoration: none;
     }
 }
+#menu,
 #modal-add-match,
-#modal-add-player {
+#modal-add-player,
+#profile-settings,
+#register-info,
+#register-profile,
+#account,
+#register-team,
+#change-password {
     input {
         color: $white;
     }
     label.item {
-        background-color: $elephant;
+        background: none;
         border-right: 0;
         border-left: 0;
     }
     .toggle.toggle-calm input:checked + .track {
-        border-color: $california;
-        background-color: $california;
+        border-color: $saumon;
+        background-color: $saumon;
     }
     .item {
-        background-color: $elephant;
+        background: none;
         border: 0;
-        border-top: 1px solid $california;
+        border-bottom: 1px solid $saumon;
+        a {
+            color: $white;
+        }
     }
     .item-toggle {
         padding: 16px;
@@ -232,24 +243,38 @@ input::-webkit-input-placeholder {
         color: $white;
     }
     .item-select select {
-        background-color: $elephant;
+        background: none;
         color: $white;
     }
-}
-
-#match{
-  button{
-    display: inline-block;
-    height: 50%;
-    width: 100%;
-    border: 0;
-    color: white;
-    text-transform: uppercase;
-    h1{
+    .item-stacked-label input {
+        background: none;
+    }
+    .input-label{
       color: $white;
     }
-    &:first-child{
-      background-color: yellow;
+
+    .item h2{
+      color: $white;
     }
-  }
+
+}
+//menu popover
+.popover .scroll-content {
+    margin: 0;
+}
+#match {
+    button {
+        display: inline-block;
+        height: 50%;
+        width: 100%;
+        border: 0;
+        color: white;
+        text-transform: uppercase;
+        h1 {
+            color: $white;
+        }
+        &:first-child {
+            background-color: yellow;
+        }
+    }
 }

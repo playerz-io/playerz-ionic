@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-played', [])
-    .controller('MatchPlayedCtrl', function(MatchService, $scope, StorageService) {
+    .controller('MatchPlayedCtrl', function(TeamService, MatchService, $scope, StorageService) {
         let self = this;
 
         //force to display back button
@@ -35,15 +35,15 @@ angular.module('starter.controller.match-played', [])
                 });
         };
 
-        self.scale = (data) => {
-            let x = d3.scaleLinear()
-                .domain([0, d3.max(self.ball)])
-                .range([0, 80]);
-
-            return x(data);
-
-
-        }
+        // self.scale = (data) => {
+        //     let x = d3.scaleLinear()
+        //         .domain([0, d3.max(self.ball)])
+        //         .range([0, 80]);
+        //
+        //     return x(data);
+        //
+        //
+        // }
 
         self.getGlobalStatisticsMatch = () => {
             MatchService.getGlobalStatisticsMatch()
@@ -58,6 +58,29 @@ angular.module('starter.controller.match-played', [])
                     console.log(data);
                 });
         };
+
+        self.getNameTeam = function() {
+            TeamService.nameTeam()
+                .success(function(data) {
+                    console.log(data);
+                    self.nameTeam = data.nameTeam;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        self.getBillingName = function(match) {
+            if (match.place === 'Domicile') {
+                self.billingName = `${self.nameTeam} <br /> - <br /> ${match.against_team}`;
+            } else {
+                self.billingName = `${match.against_team} <br /> - <br /> ${self.nameTeam}`;
+            }
+            return self.billingName;
+        };
+
+        self.getNameTeam();
+
 
         self.getMatchFinished();
         self.getGlobalStatisticsMatch();

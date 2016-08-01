@@ -2,7 +2,7 @@
 
 <ion-view title="Se connecter" id='login'>
     <h1 id='title-login' class="text-center">Playerz</h1>
-    <ion-content class="padding" scrollbar-x="false" scrollbar-y="false">
+    <ion-content class="padding" scroll='true'>
         <form name="LoginForm">
             <div class="list">
                 <label class="item item-input input-login">
@@ -18,10 +18,8 @@
                 <button class="button button-full" id="btn-fb" ng-click="login.loginFacebook()" >
                     Login with Facebook
                 </button>
-
                     <a  ui-sref="register" id="a-sign-up">S'inscrire</a>
                     <a ui-sref="forgot" id="a-forgot">Mot de passe oublié</a>
-
             </div>
         </form>
     </ion-content>

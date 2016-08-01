@@ -160,7 +160,7 @@ angular.module('starter.controller.tactique', [])
         };
 
         self.getNameTeam = function() {
-            TeamService.nameTeam(self.coachId)
+            TeamService.nameTeam()
                 .success(function(data) {
                     console.log(data);
                     self.nameTeam = data.nameTeam;
@@ -171,18 +171,16 @@ angular.module('starter.controller.tactique', [])
         };
 
         self.getBillingName = function() {
-
-                if (self.place === 'Domicile') {
-                    self.billingName = self.nameTeam + ' - ' + self.opponent;
-                } else {
-                    self.billingName = self.opponent + ' - ' + self.nameTeam;
-                }
-
-                return self.billingName;
+            if (self.place === 'Domicile') {
+                self.billingName = self.nameTeam + ' - ' + self.opponent;
+            } else {
+                self.billingName = self.opponent + ' - ' + self.nameTeam;
             }
-            //call add formation here for get position as soons as
-            // tactique page is loaded
-            // TODO: faire choisir une formation vie un modal ou une popup
+            return self.billingName;
+        };
+        //call add formation here for get position as soons as
+        // tactique page is loaded
+        // TODO: faire choisir une formation vie un modal ou une popup
         self.addFormation();
         self.getMatch();
         self.getNameTeam();

@@ -4,7 +4,7 @@ angular.module('starter.controller.troop', [])
     .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout, $state, StorageService, $cordovaToast) {
 
         var self = this;
-
+      
         $scope.player = {
             first_name: null,
             last_name: null,
