@@ -16,7 +16,7 @@ $dark:                            #444 !default;
 */
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../www/lib/ionic/fonts" !default;
-$RobotoDraftFontPath: "..www/lib/robotodraft/fonts"; // REMINDER: edit as appropriate!
+$RobotoDraftFontPath: "../www/lib/robotodraft/fonts"; // REMINDER: edit as appropriate!
 $RobotoDraftFontName: "RobotoDraft";
 $RobotoDraftFontVersion: "1.0.0"; // Include all of Ionic
 @import "../www/lib/ionic/scss/ionic";
@@ -119,25 +119,22 @@ input::-webkit-input-placeholder {
         height: 25vh;
         width: 100vw;
         border: 0;
-        background-color: green;
         display: flex;
         &.activated {
-            background-color: darken(green, 10%);
+            background-color: darken(10%);
         }
     }
     #div-next-match {
         @extend #div-effectif;
-        background-color: yellow;
-        &.activated {
-            background-color: darken(yellow, 10%);
-        }
+        background-image: url(../img/proMatchs.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+
     }
     #div-statistics {
         @extend #div-effectif;
-        background-color: pink;
-        &.activated {
-            background-color: darken(pink, 10%);
-        }
+
+
     }
 }
 #match-comeup,
