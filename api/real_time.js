@@ -4,11 +4,27 @@
 let Firebase = require('firebase');
 let ref = new Firebase('https://boos.firebaseio.com/coaches');
 let async = require('async');
+let Player = require('./models/player').modelPlayer;
+
 
 
 let checkMatchId = function(match_ID, player) {
     return matchID === player.match_id;
 };
+
+exports.addActions = (match_ID, coach_ID, actions) => {
+
+    Player.findById(actions[0], (err, player) => {
+      actions[0] = `${player.last_name}`;
+      let refMatch = ref
+          .child(coach_ID)
+          .child('matchs')
+          .child(match_ID)
+          .child('actions')
+          .push(actions);
+    });
+
+}
 exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
 
     let statistics = match.statistics;
@@ -21,6 +37,7 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
             type: match.type,
             place: match.place,
             against_team: match.against_team,
+            actions: [],
             statistics: {
                 totalBallPlayed: statistics.totalBallPlayed,
                 totalBallLost: statistics.totalBallLost,

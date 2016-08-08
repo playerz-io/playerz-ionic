@@ -301,8 +301,9 @@ exports.countMainAction = function(req, res) {
             },
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach, done) => {
-                coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
-                coach.team.matchs.id(match_id).schemas = [];
+                match.schemaMatch.push(match.schemas);
+                real_time.addActions(match_id, coach_id, match.schemas.slice(-3));
+                match.schemas = [];
 
                 coach.save((err) => {
                     if (err)
@@ -324,6 +325,13 @@ exports.countMainAction = function(req, res) {
         });
     }
 
+};
+
+let getThreeLastAction = (coach, match_id) => {
+
+    Coach.findById(coach._id, (err, coach) => {
+      let match = coach.team.match.id(match_id)
+    });
 };
 
 

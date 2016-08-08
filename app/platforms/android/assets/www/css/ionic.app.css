@@ -3926,23 +3926,23 @@ a.subdued {
     .bar.bar-light.bar-footer {
       background-image: linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%); }
   .bar.bar-stable {
-    border-color: #b2b2b2;
-    background-color: #f8f8f8;
-    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-    color: #444; }
-    .bar.bar-stable .title {
-      color: #444; }
-    .bar.bar-stable.bar-footer {
-      background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
-  .bar.bar-positive {
-    border-color: #fe1b1e;
+    border-color: #fe4e50;
     background-color: #fe4e50;
-    background-image: linear-gradient(0deg, #fe1b1e, #fe1b1e 50%, transparent 50%);
+    background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
+    color: #fff; }
+    .bar.bar-stable .title {
+      color: #fff; }
+    .bar.bar-stable.bar-footer {
+      background-image: linear-gradient(180deg, #fe4e50, #fe4e50 50%, transparent 50%); }
+  .bar.bar-positive {
+    border-color: #fe4e50;
+    background-color: #fe4e50;
+    background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
     color: #fff; }
     .bar.bar-positive .title {
       color: #fff; }
     .bar.bar-positive.bar-footer {
-      background-image: linear-gradient(180deg, #fe1b1e, #fe1b1e 50%, transparent 50%); }
+      background-image: linear-gradient(180deg, #fe4e50, #fe4e50 50%, transparent 50%); }
   .bar.bar-calm {
     border-color: #0a9dc7;
     background-color: #11c1f3;
@@ -4117,11 +4117,11 @@ a.subdued {
     background: none; }
 
 .bar-stable .button {
-  border-color: #b2b2b2;
-  background-color: #f8f8f8;
-  color: #444; }
+  border-color: #fe4e50;
+  background-color: #fe4e50;
+  color: #fff; }
   .bar-stable .button:hover {
-    color: #444;
+    color: #fff;
     text-decoration: none; }
   .bar-stable .button.active, .bar-stable .button.activated {
     border-color: #a2a2a2;
@@ -4130,14 +4130,14 @@ a.subdued {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #444;
+    color: #fff;
     font-size: 17px; }
   .bar-stable .button.button-icon {
     border-color: transparent;
     background: none; }
 
 .bar-positive .button {
-  border-color: #fe1b1e;
+  border-color: #fe4e50;
   background-color: #fe4e50;
   color: #fff; }
   .bar-positive .button:hover {
@@ -4830,14 +4830,14 @@ a.subdued {
 .tabs-background-stable .tabs,
 .tabs-background-stable > .tabs {
   background-color: #f8f8f8;
-  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-  border-color: #b2b2b2; }
+  background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
+  border-color: #fe4e50; }
 
 .tabs-background-positive .tabs,
 .tabs-background-positive > .tabs {
   background-color: #fe4e50;
-  background-image: linear-gradient(0deg, #fe1b1e, #fe1b1e 50%, transparent 50%);
-  border-color: #fe1b1e; }
+  background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
+  border-color: #fe4e50; }
 
 .tabs-background-calm .tabs,
 .tabs-background-calm > .tabs {
@@ -12186,7 +12186,7 @@ input::-webkit-input-placeholder {
 
 #match-comeup label,
 #match-played label,
-#troop label {
+#troop label, #menu-match label {
   background: none;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -12195,29 +12195,30 @@ input::-webkit-input-placeholder {
   border-radius: 25px; }
   #match-comeup label i.placeholder-icon:first-child,
   #match-played label i.placeholder-icon:first-child,
-  #troop label i.placeholder-icon:first-child {
+  #troop label i.placeholder-icon:first-child, #menu-match label i.placeholder-icon:first-child {
     padding-left: 6px;
     color: #FFFFFF; }
   #match-comeup label input[type="text"],
   #match-played label input[type="text"],
-  #troop label input[type="text"] {
+  #troop label input[type="text"], #menu-match label input[type="text"] {
     color: #FFFFFF;
     text-decoration: none; }
 
 #match-comeup ion-item,
 #match-played ion-item,
-#troop ion-item {
-  background: none; }
+#troop ion-item, #menu-match ion-item {
+  background: none;
+  color: #FFFFFF; }
   #match-comeup ion-item.item,
   #match-played ion-item.item,
-  #troop ion-item.item {
+  #troop ion-item.item, #menu-match ion-item.item {
     background: none;
     border: 0;
     border-bottom: 1px solid #fe4e50; }
 
 #match-comeup .item-complex .item-content,
 #match-played .item-complex .item-content,
-#troop .item-complex .item-content {
+#troop .item-complex .item-content, #menu-match .item-complex .item-content {
   background: none; }
 
 #match-comeup h2,
@@ -12228,16 +12229,18 @@ input::-webkit-input-placeholder {
 #match-played p,
 #troop h2,
 #troop h3,
-#troop p {
+#troop p, #menu-match h2,
+#menu-match h3,
+#menu-match p {
   color: #FFFFFF; }
 
 #match-comeup ion-option-button,
 #match-played ion-option-button,
-#troop ion-option-button {
+#troop ion-option-button, #menu-match ion-option-button {
   background-color: #fe4e50; }
   #match-comeup ion-option-button.button,
   #match-played ion-option-button.button,
-  #troop ion-option-button.button {
+  #troop ion-option-button.button, #menu-match ion-option-button.button {
     color: #FFFFFF; }
 
 #match-comeup ion-item,
@@ -12247,173 +12250,173 @@ input::-webkit-input-placeholder {
 #match-played a {
   text-decoration: none; }
 
+#account input,
+#change-password input,
 #menu input,
 #modal-add-match input,
 #modal-add-player input,
 #profile-settings input,
 #register-info input,
 #register-profile input,
-#account input,
-#register-team input,
-#change-password input {
+#register-team input {
   color: #FFFFFF; }
 
+#account label.item,
+#change-password label.item,
 #menu label.item,
 #modal-add-match label.item,
 #modal-add-player label.item,
 #profile-settings label.item,
 #register-info label.item,
 #register-profile label.item,
-#account label.item,
-#register-team label.item,
-#change-password label.item {
+#register-team label.item {
   background: none;
   border-right: 0;
   border-left: 0; }
 
+#account .toggle.toggle-calm input:checked + .track,
+#change-password .toggle.toggle-calm input:checked + .track,
 #menu .toggle.toggle-calm input:checked + .track,
 #modal-add-match .toggle.toggle-calm input:checked + .track,
 #modal-add-player .toggle.toggle-calm input:checked + .track,
 #profile-settings .toggle.toggle-calm input:checked + .track,
 #register-info .toggle.toggle-calm input:checked + .track,
 #register-profile .toggle.toggle-calm input:checked + .track,
-#account .toggle.toggle-calm input:checked + .track,
-#register-team .toggle.toggle-calm input:checked + .track,
-#change-password .toggle.toggle-calm input:checked + .track {
+#register-team .toggle.toggle-calm input:checked + .track {
   border-color: #fe4e50;
   background-color: #fe4e50; }
 
+#account .item,
+#change-password .item,
 #menu .item,
 #modal-add-match .item,
 #modal-add-player .item,
 #profile-settings .item,
 #register-info .item,
 #register-profile .item,
-#account .item,
-#register-team .item,
-#change-password .item {
+#register-team .item {
   background: none;
   border: 0;
   border-bottom: 1px solid #fe4e50; }
+  #account .item a,
+  #change-password .item a,
   #menu .item a,
   #modal-add-match .item a,
   #modal-add-player .item a,
   #profile-settings .item a,
   #register-info .item a,
   #register-profile .item a,
-  #account .item a,
-  #register-team .item a,
-  #change-password .item a {
+  #register-team .item a {
     color: #FFFFFF; }
 
+#account .item-toggle,
+#change-password .item-toggle,
 #menu .item-toggle,
 #modal-add-match .item-toggle,
 #modal-add-player .item-toggle,
 #profile-settings .item-toggle,
 #register-info .item-toggle,
 #register-profile .item-toggle,
-#account .item-toggle,
-#register-team .item-toggle,
-#change-password .item-toggle {
+#register-team .item-toggle {
   padding: 16px; }
+  #account .item-toggle p,
+  #change-password .item-toggle p,
   #menu .item-toggle p,
   #modal-add-match .item-toggle p,
   #modal-add-player .item-toggle p,
   #profile-settings .item-toggle p,
   #register-info .item-toggle p,
   #register-profile .item-toggle p,
-  #account .item-toggle p,
-  #register-team .item-toggle p,
-  #change-password .item-toggle p {
+  #register-team .item-toggle p {
     color: #FFFFFF; }
+  #account .item-toggle p:first-child,
+  #change-password .item-toggle p:first-child,
   #menu .item-toggle p:first-child,
   #modal-add-match .item-toggle p:first-child,
   #modal-add-player .item-toggle p:first-child,
   #profile-settings .item-toggle p:first-child,
   #register-info .item-toggle p:first-child,
   #register-profile .item-toggle p:first-child,
-  #account .item-toggle p:first-child,
-  #register-team .item-toggle p:first-child,
-  #change-password .item-toggle p:first-child {
+  #register-team .item-toggle p:first-child {
     float: right; }
+  #account .item-toggle p:nth-child(2),
+  #change-password .item-toggle p:nth-child(2),
   #menu .item-toggle p:nth-child(2),
   #modal-add-match .item-toggle p:nth-child(2),
   #modal-add-player .item-toggle p:nth-child(2),
   #profile-settings .item-toggle p:nth-child(2),
   #register-info .item-toggle p:nth-child(2),
   #register-profile .item-toggle p:nth-child(2),
-  #account .item-toggle p:nth-child(2),
-  #register-team .item-toggle p:nth-child(2),
-  #change-password .item-toggle p:nth-child(2) {
+  #register-team .item-toggle p:nth-child(2) {
     float: left; }
 
+#account .item-toggle .toggle,
+#change-password .item-toggle .toggle,
 #menu .item-toggle .toggle,
 #modal-add-match .item-toggle .toggle,
 #modal-add-player .item-toggle .toggle,
 #profile-settings .item-toggle .toggle,
 #register-info .item-toggle .toggle,
 #register-profile .item-toggle .toggle,
-#account .item-toggle .toggle,
-#register-team .item-toggle .toggle,
-#change-password .item-toggle .toggle {
+#register-team .item-toggle .toggle {
   position: inherit;
   right: inherit;
   top: inherit; }
 
+#account label .input-label,
+#change-password label .input-label,
 #menu label .input-label,
 #modal-add-match label .input-label,
 #modal-add-player label .input-label,
 #profile-settings label .input-label,
 #register-info label .input-label,
 #register-profile label .input-label,
-#account label .input-label,
-#register-team label .input-label,
-#change-password label .input-label {
+#register-team label .input-label {
   color: #FFFFFF; }
 
+#account .item-select select,
+#change-password .item-select select,
 #menu .item-select select,
 #modal-add-match .item-select select,
 #modal-add-player .item-select select,
 #profile-settings .item-select select,
 #register-info .item-select select,
 #register-profile .item-select select,
-#account .item-select select,
-#register-team .item-select select,
-#change-password .item-select select {
+#register-team .item-select select {
   background: none;
   color: #FFFFFF; }
 
+#account .item-stacked-label input,
+#change-password .item-stacked-label input,
 #menu .item-stacked-label input,
 #modal-add-match .item-stacked-label input,
 #modal-add-player .item-stacked-label input,
 #profile-settings .item-stacked-label input,
 #register-info .item-stacked-label input,
 #register-profile .item-stacked-label input,
-#account .item-stacked-label input,
-#register-team .item-stacked-label input,
-#change-password .item-stacked-label input {
+#register-team .item-stacked-label input {
   background: none; }
 
+#account .input-label,
+#change-password .input-label,
 #menu .input-label,
 #modal-add-match .input-label,
 #modal-add-player .input-label,
 #profile-settings .input-label,
 #register-info .input-label,
 #register-profile .input-label,
-#account .input-label,
-#register-team .input-label,
-#change-password .input-label {
+#register-team .input-label {
   color: #FFFFFF; }
 
+#account .item h2,
+#change-password .item h2,
 #menu .item h2,
 #modal-add-match .item h2,
 #modal-add-player .item h2,
 #profile-settings .item h2,
 #register-info .item h2,
 #register-profile .item h2,
-#account .item h2,
-#register-team .item h2,
-#change-password .item h2 {
+#register-team .item h2 {
   color: #FFFFFF; }
 
 .popover .scroll-content {
@@ -12430,3 +12433,227 @@ input::-webkit-input-placeholder {
     color: #FFFFFF; }
   #match button:first-child {
     background-color: yellow; }
+
+#tactique * {
+  box-sizing: border-box; }
+
+#tactique #begin-match {
+  float: right; }
+
+#tactique .item {
+  background: none;
+  border: 1px solid #fe4e50; }
+  #tactique .item .input-label {
+    color: #FFFFFF; }
+
+#tactique .div-player {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -2px; }
+
+#tactique .div-player > div {
+  color: #FFFFFF;
+  font-size: 0.85em;
+  border: 1px solid #fe4e50;
+  flex: 0 0 auto;
+  margin-left: 2px;
+  margin-top: 2px;
+  width: calc(25% - 2px); }
+  #tactique .div-player > div.drag-enter, #tactique .div-player > div.dragging {
+    background: #fe4e50;
+    border: 1px solid #FFFFFF; }
+
+#tactique .item-select select {
+  background: none;
+  color: #FFFFFF; }
+
+#tactique .rem {
+  border: 1px solid #fe4e50;
+  font-size: 0.85em;
+  margin: 2px;
+  padding: 2px; }
+  #tactique .rem a {
+    color: #FFFFFF; }
+  #tactique .rem.drag-enter, #tactique .rem.dragging {
+    background: #fe4e50;
+    border: 1px solid #FFFFFF; }
+
+body,
+html {
+  height: 100%; }
+
+.dv-tac {
+  text-align: center; }
+
+.defender,
+.goalkeeper,
+.midfielder,
+.stricker {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 0; }
+
+.defender div,
+.midfielder div {
+  display: flex;
+  flex: 0 0 auto;
+  width: 25%;
+  height: 17vh;
+  background-image: url("../img/hexagon_playerz_stroke.png");
+  background-size: 100% 100%;
+  background-position: left top;
+  background-repeat: no-repeat; }
+
+.defender div a,
+.goalkeeper a,
+.midfielder div a,
+.stricker a {
+  margin: auto; }
+
+div.dv-tac div.drag-enter a,
+div.dv-tac div.dragging a {
+  color: #FFFFFF; }
+
+.goalkeeper {
+  flex-direction: column; }
+  .goalkeeper span {
+    display: flex;
+    flex-direction: row;
+    /* margin: auto; */
+    margin-top: 4%;
+    justify-content: space-around; }
+  .goalkeeper div {
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 25% 100%;
+    background-position: center;
+    background-repeat: no-repeat; }
+
+.stricker div:first-child {
+  padding-left: 25%;
+  display: flex;
+  flex: 0 0 auto;
+  width: 50%;
+  height: 17vh;
+  background-image: url("../img/hexagon_playerz_stroke.png");
+  background-size: 50% 100%;
+  background-position: right top;
+  background-repeat: no-repeat; }
+
+.stricker div:last-child {
+  padding-right: 25%;
+  display: flex;
+  flex: 0 0 auto;
+  width: 50%;
+  height: 17vh;
+  background-image: url("../img/hexagon_playerz_stroke.png");
+  background-size: 50% 100%;
+  background-position: left top;
+  background-repeat: no-repeat; }
+
+.hexagon {
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  background-color: #64C7CC;
+  margin: 86.60px 0; }
+
+.hexagon:after,
+.hexagon:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent; }
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #64C7CC; }
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #64C7CC; }
+
+.whistle {
+  width: 20%;
+  height: 20%; }
+
+#match-stat #btn-but img {
+  color: #FFFFFF; }
+
+#match-stat .row {
+  height: 100%; }
+
+#match-stat #stat a img {
+  width: 70%;
+  height: 70%; }
+
+#match-stat #stat div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%; }
+
+#match-stat #fft {
+  margin: auto; }
+
+#match-stat #div-brand {
+  display: flex; }
+  #match-stat #div-brand p {
+    transform: rotate(90deg);
+    margin: auto;
+    float: left; }
+
+#match-stat #score {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  #match-stat #score span {
+    margin: auto;
+    color: #FFFFFF; }
+  #match-stat #score p:nth-child(2) {
+    width: 10%;
+    display: flex;
+    height: 100%;
+    font-size: 2em; }
+  #match-stat #score p:first-child,
+  #match-stat #score p:last-child {
+    width: 45%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: flex;
+    height: 100%;
+    font-size: 2em; }
+
+#match-stat #div-act-dead-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+#match-stat #info-match {
+  display: flex;
+  flex-direction: column; }
+  #match-stat #info-match div:last-child {
+    align-self: center;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    justify-content: space-around; }
+  #match-stat #info-match p {
+    align-self: center;
+    color: #FFFFFF; }
+
+.vertical-line {
+  width: 1px;
+  background-color: #FFFFFF;
+  height: 15px;
+  display: flex; }

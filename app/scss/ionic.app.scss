@@ -142,7 +142,7 @@ input::-webkit-input-placeholder {
 }
 #match-comeup,
 #match-played,
-#troop {
+#troop, #menu-match{
     label {
         background: none;
         margin-bottom: 10px;
@@ -161,6 +161,7 @@ input::-webkit-input-placeholder {
     }
     ion-item {
         background: none;
+        color: $white;
         &.item {
             background: none;
             border: 0;
@@ -193,15 +194,16 @@ input::-webkit-input-placeholder {
         text-decoration: none;
     }
 }
+#account,
+
+#change-password,
 #menu,
 #modal-add-match,
 #modal-add-player,
 #profile-settings,
 #register-info,
 #register-profile,
-#account,
-#register-team,
-#change-password {
+#register-team {
     input {
         color: $white;
     }
@@ -249,14 +251,12 @@ input::-webkit-input-placeholder {
     .item-stacked-label input {
         background: none;
     }
-    .input-label{
-      color: $white;
+    .input-label {
+        color: $white;
     }
-
-    .item h2{
-      color: $white;
+    .item h2 {
+        color: $white;
     }
-
 }
 //menu popover
 .popover .scroll-content {
@@ -277,4 +277,299 @@ input::-webkit-input-placeholder {
             background-color: yellow;
         }
     }
+}
+#tactique {
+    * {
+        box-sizing: border-box;
+    }
+    #begin-match {
+        float: right;
+    }
+    .item {
+        background: none;
+        border: 1px solid $saumon;
+        .input-label {
+            color: $white;
+        }
+    }
+    .div-player {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -2px;
+    }
+    .div-player > div {
+        color: $white;
+        font-size: 0.85em;
+        border: 1px solid $saumon;
+        flex: 0 0 auto;
+        margin-left: 2px;
+        margin-top: 2px;
+        width: calc(25% - 2px);
+        &.drag-enter,
+        &.dragging {
+            background: $saumon;
+            border: 1px solid $white;
+        }
+    }
+    .item-select select {
+        background: none;
+        color: $white;
+    }
+    .rem {
+        border: 1px solid $saumon;
+        font-size: 0.85em;
+        margin: 2px;
+        padding: 2px;
+        a {
+            color: $white;
+        }
+        &.drag-enter,
+        &.dragging {
+            background: $saumon;
+            border: 1px solid $white;
+        }
+    }
+}
+// .button-player {
+//     background-image: url('../img/hexagon_playerz_stroke.png');
+//     background-size: 25% 20vh;
+//     background-position: left top;
+//     background-repeat: no-repeat;
+//     display: inline-block;
+//     width: 25%;
+//     height: 20vh;
+//     padding-top: 7vh;
+//     font-size: 1em;
+// }
+//
+// .stricker {
+//     clear: both;
+//     margin: 0 auto;
+//     width: 50%;
+// }
+// .midfielder, .defender {
+//     margin: 0 auto;
+//     clear: both;
+//     width: 100%
+// }
+// .goalkeeper {
+//     margin: 0 auto;
+//     clear: both;
+//     width: 100%;
+// }
+//
+// .div .row-player + .row-player, .row-player {
+//     float: right;
+// }
+body,
+html {
+    height: 100%;
+}
+.dv-tac {
+    text-align: center;
+}
+.defender,
+.goalkeeper,
+.midfielder,
+.stricker {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+.defender div,
+.midfielder div {
+    display: flex;
+    flex: 0 0 auto;
+    width: 25%;
+    height: 17vh;
+    background-image: url('../img/hexagon_playerz_stroke.png');
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+.defender div a,
+.goalkeeper a,
+.midfielder div a,
+.stricker a {
+    margin: auto;
+}
+div.dv-tac div.drag-enter a,
+div.dv-tac div.dragging a {
+    color: $white;
+}
+
+.goalkeeper {
+    flex-direction: column;
+    span {
+        display: flex;
+        flex-direction: row;
+        /* margin: auto; */
+        margin-top: 4%;
+        justify-content: space-around;
+    }
+    div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 100%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 25% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+.stricker div:first-child {
+    padding-left: 25%;
+    display: flex;
+    flex: 0 0 auto;
+    width: 50%;
+    height: 17vh;
+    background-image: url('../img/hexagon_playerz_stroke.png');
+    background-size: 50% 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+.stricker div:last-child {
+    padding-right: 25%;
+    display: flex;
+    flex: 0 0 auto;
+    width: 50%;
+    height: 17vh;
+    background-image: url('../img/hexagon_playerz_stroke.png');
+    background-size: 50% 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+.hexagon {
+    position: relative;
+    width: 300px;
+    height: 173.21px;
+    background-color: #64C7CC;
+    margin: 86.60px 0;
+}
+.hexagon:after,
+.hexagon:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+}
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 86.60px solid #64C7CC;
+}
+.hexagon:after {
+    top: 100%;
+    width: 0;
+    border-top: 86.60px solid #64C7CC;
+}
+.whistle {
+    width: 20%;
+    height: 20%;
+}
+#match-stat {
+    #btn-but {
+        img {
+            color: $white;
+        }
+    }
+    .row {
+        height: 100%;
+    }
+    #stat {
+        a {}
+        a img {
+            width: 70%;
+            height: 70%;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+        }
+        // a:nth-child(odd){
+        //     margin-left: 75%;
+        // }
+        // a:nth-child(3),
+        // a:nth-child(5) {
+        //     margin-left: 40%;
+        // }1
+        // a:nth-child(4) {
+        //     margin-left: 20%;
+        // }
+    }
+    #fft {
+        margin: auto;
+    }
+    #div-brand {
+        display: flex;
+        p {
+            transform: rotate(90deg);
+            margin: auto;
+            float: left;
+        }
+    }
+    #score {
+        height: 20%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span {
+            margin: auto;
+            color: $white;
+        }
+        p:nth-child(2) {
+            width: 10%;
+            display: flex;
+            height: 100%;
+            font-size: 2em;
+        }
+        p:first-child,
+        p:last-child {
+            width: 45%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            height: 100%;
+            font-size: 2em;
+        }
+    }
+
+    #div-act-dead-time{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    #info-match{
+      display: flex;
+      flex-direction: column;
+
+      div:last-child{
+        align-self: center;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20%;
+        justify-content: space-around;
+      }
+
+      p{
+        align-self: center;
+        color: $white;
+      }
+    }
+}
+
+.vertical-line{
+  width: 1px;
+  background-color: $white;
+  height: 15px;
+  display: flex;
+
 }

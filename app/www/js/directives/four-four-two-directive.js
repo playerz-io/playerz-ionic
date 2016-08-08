@@ -8,7 +8,10 @@ angular.module('starter.directives.fourFourtwo', [])
         playerInfo: '=info',
         drag: '=',
         dropComplete: '&',
-        ballPlayed: '&'
+        ballPlayed: '&',
+        showActionsGoalkeeper: '&',
+        goalkeeper: '=',
+        actionsGoalkeeper: '&'
       }
     };
   });

@@ -37,8 +37,6 @@ angular.module('starter.controller.match-comeup', [])
         $scope.addMatch = function() {
             $scope.match.date = new Date($scope.match.date);
             $scope.match.against_team = $filter('uppercase')($scope.match.against_team);
-            $scope.match.place = !$scope.togglePlace ? 'Domicile' : 'Exterieur';
-            $scope.match.type = !$scope.toggleType ? 'Officiel' : 'Amical';
             MatchService.addMatch($scope.match)
                 .success(function(data) {
                     console.log(data);
