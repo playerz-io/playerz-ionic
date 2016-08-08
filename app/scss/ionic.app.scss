@@ -31,6 +31,9 @@ $mariner: #3C5A95;
 $white: #FFFFFF;
 $clear_mariner: #313B42; //$clear_mariner: #34495e;
 $sombre_mariner: #3C4F5E; //$sombre_mariner: #2c3e50;
+$red: #c0392b;
+$green: #27ae60;
+$grey: #7f8c8d;
 @font-face {
     font-family: 'Raleway', sans-serif;
 }
@@ -48,6 +51,18 @@ ion-content {
 input::-webkit-input-placeholder {
     color: $white;
 }
+
+.backgroundRed{
+  background-color: $red;
+}
+.backgroundGreen{
+  background-color: $green;
+}
+
+.backgroundGrey{
+  background-color: $grey;
+}
+
 #login {
     ion-content {
         background: none;
@@ -149,7 +164,8 @@ input::-webkit-input-placeholder {
 #match-comeup,
 #match-played,
 #menu-match,
-#troop, #player-view {
+#player-view,
+#troop {
     label {
         background: none;
         margin-bottom: 10px;
@@ -211,6 +227,35 @@ input::-webkit-input-placeholder {
 #match-played {
     a {
         text-decoration: none;
+    }
+    a.item-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+    }
+
+    ion-list{
+      ion-item{
+        height: 15%;
+
+        #div-result{
+          border-radius: 50%;
+          width: 15%;
+          height: 40%;
+
+          display: flex;
+
+          p{
+            margin: auto;
+          }
+
+        }
+      }
+      div.list{
+        height: 100%;
+      }
     }
 }
 #account,

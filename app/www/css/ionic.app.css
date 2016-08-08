@@ -12109,6 +12109,15 @@ ion-content {
 input::-webkit-input-placeholder {
   color: #FFFFFF; }
 
+.backgroundRed {
+  background-color: #c0392b; }
+
+.backgroundGreen {
+  background-color: #27ae60; }
+
+.backgroundGrey {
+  background-color: #7f8c8d; }
+
 #login ion-content {
   background: none;
   margin: 25vh 2rem 2rem; }
@@ -12194,7 +12203,8 @@ input::-webkit-input-placeholder {
 #match-comeup label,
 #match-played label,
 #menu-match label,
-#troop label, #player-view label {
+#player-view label,
+#troop label {
   background: none;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -12204,45 +12214,52 @@ input::-webkit-input-placeholder {
   #match-comeup label i.placeholder-icon:first-child,
   #match-played label i.placeholder-icon:first-child,
   #menu-match label i.placeholder-icon:first-child,
-  #troop label i.placeholder-icon:first-child, #player-view label i.placeholder-icon:first-child {
+  #player-view label i.placeholder-icon:first-child,
+  #troop label i.placeholder-icon:first-child {
     padding-left: 6px;
     color: #FFFFFF; }
   #match-comeup label input[type="text"],
   #match-played label input[type="text"],
   #menu-match label input[type="text"],
-  #troop label input[type="text"], #player-view label input[type="text"] {
+  #player-view label input[type="text"],
+  #troop label input[type="text"] {
     color: #FFFFFF;
     text-decoration: none; }
 
 #match-comeup ion-item,
 #match-played ion-item,
 #menu-match ion-item,
-#troop ion-item, #player-view ion-item {
+#player-view ion-item,
+#troop ion-item {
   background: none;
   color: #FFFFFF; }
   #match-comeup ion-item.item,
   #match-played ion-item.item,
   #menu-match ion-item.item,
-  #troop ion-item.item, #player-view ion-item.item {
+  #player-view ion-item.item,
+  #troop ion-item.item {
     background: none;
     border: 0;
     border-bottom: 1px solid #fe4e50; }
   #match-comeup ion-item.activated,
   #match-played ion-item.activated,
   #menu-match ion-item.activated,
-  #troop ion-item.activated, #player-view ion-item.activated {
+  #player-view ion-item.activated,
+  #troop ion-item.activated {
     background-color: #50697d; }
 
 #match-comeup .item-complex .item-content,
 #match-played .item-complex .item-content,
 #menu-match .item-complex .item-content,
-#troop .item-complex .item-content, #player-view .item-complex .item-content {
+#player-view .item-complex .item-content,
+#troop .item-complex .item-content {
   background: none; }
 
 #match-comeup .item-content.activated,
 #match-played .item-content.activated,
 #menu-match .item-content.activated,
-#troop .item-content.activated, #player-view .item-content.activated {
+#player-view .item-content.activated,
+#troop .item-content.activated {
   background-color: #50697d; }
 
 #match-comeup h1,
@@ -12257,24 +12274,27 @@ input::-webkit-input-placeholder {
 #menu-match h2,
 #menu-match h3,
 #menu-match p,
+#player-view h1,
+#player-view h2,
+#player-view h3,
+#player-view p,
 #troop h1,
 #troop h2,
 #troop h3,
-#troop p, #player-view h1,
-#player-view h2,
-#player-view h3,
-#player-view p {
+#troop p {
   color: #FFFFFF; }
 
 #match-comeup ion-option-button,
 #match-played ion-option-button,
 #menu-match ion-option-button,
-#troop ion-option-button, #player-view ion-option-button {
+#player-view ion-option-button,
+#troop ion-option-button {
   background-color: #fe4e50; }
   #match-comeup ion-option-button.button,
   #match-played ion-option-button.button,
   #menu-match ion-option-button.button,
-  #troop ion-option-button.button, #player-view ion-option-button.button {
+  #player-view ion-option-button.button,
+  #troop ion-option-button.button {
     color: #FFFFFF; }
 
 #match-comeup ion-item,
@@ -12288,6 +12308,26 @@ input::-webkit-input-placeholder {
 
 #match-played a {
   text-decoration: none; }
+
+#match-played a.item-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%; }
+
+#match-played ion-list ion-item {
+  height: 15%; }
+  #match-played ion-list ion-item #div-result {
+    border-radius: 50%;
+    width: 15%;
+    height: 40%;
+    display: flex; }
+    #match-played ion-list ion-item #div-result p {
+      margin: auto; }
+
+#match-played ion-list div.list {
+  height: 100%; }
 
 #account input,
 #change-password input,

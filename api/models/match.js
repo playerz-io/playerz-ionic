@@ -12,6 +12,7 @@ let MatchSchema = new Schema({
     score: String,
     date: Date,
     status: String, //['comeup, finished']
+    result: String, //['victory, defeat, draw']
     playerSelected: [{
         type: Schema.ObjectId,
         ref: 'Player'

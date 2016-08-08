@@ -922,6 +922,7 @@ exports.addOpponentBut = (req, res) => {
             let match = coach.team.matchs.id(match_id);
             let statistics = match.statistics;
             statistics.but_opponent++;
+            console.log(match_id);
             console.log(statistics);
 
             real_time.updateStatMatch_firebase(coach_id, match_id, {
@@ -944,6 +945,66 @@ exports.addOpponentBut = (req, res) => {
     }
 };
 
+exports.setResultMatch = (req, res) => {
+    let match_id = req.body.match_id;
+    let token = getToken(req.headers);
+
+    if (token) {
+        let decoded = jwt.decode(token, config.secret);
+        let coach_id = decoded._id;
+
+        Coach.findById(coach_id, (err, coach) => {
+            if (err)
+                return Utils.errorIntern(res, err);
+
+                console.log(match_id);
+
+            Match.findById(match_id, (matchErr, match) => {
+                if (matchErr)
+                    return Utils.errorIntern(res, matchErr);
+
+                let matchCoach = coach.team.matchs.id(match_id);
+                let statMatch = matchCoach.statistics;
+                let result = '';
+
+                console.log(statMatch.totalBut, statMatch.but_opponent);
+                if(statMatch.totalBut === statMatch.but_opponent){
+                  result = 'draw';
+                }
+                if(statMatch.totalBut > statMatch.but_opponent){
+                  result = 'victory';
+                }
+
+                if (statMatch.totalBut < statMatch.but_opponent) {
+                  result = 'defeat';
+                }
+
+console.log(result);
+                match.result = result;
+                match.save();
+
+                matchCoach.result = result;
+                coach.save();
+
+                res.status(200).json({
+                  success: true,
+                  result
+                });
+
+            });
+        });
+
+
+    } else {
+        return res.status(403).json({
+            success: false,
+            msg: 'No token provided.'
+        });
+    }
+
+
+}
+
 exports.putMatchFinished = (req, res) => {
 
     let match_id = req.body.match_id;
@@ -963,7 +1024,8 @@ exports.putMatchFinished = (req, res) => {
                 if (matchErr)
                     return Utils.errorIntern(res, matchErr);
 
-                let matchCoach = coach.team.matchs.id(match_id)
+                let matchCoach = coach.team.matchs.id(match_id);
+                console.log(matchCoach);
                 matchCoach.status = "finished";
                 coach.save((err) => {
                     if (err)

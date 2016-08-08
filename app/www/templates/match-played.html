@@ -38,9 +38,24 @@
 
                 <ion-list show-delete="played.showDelete">
                     <ion-item class="item text-center" ng-repeat="match in played.matchs | filter:played.searchMatch" ui-sref="stat-end-match({matchId: match._id})" ng-click="played.saveMatchID(match._id)">
+                        <div id="div-result" ng-class="{backgroundGreen: match.result === 'victory' , backgroundRed: match.result === 'defeat', backgroundGrey: match.result === 'draw'}"  >
+                            <p>
 
-                        <h2 ng-bind-html="played.getBillingName(match)">  </h2>
-                        <h3>{{match.date | date:'fullDate'}}</h3>
+                                <b>{{match.result | getResult}}</b>
+
+                            </p>
+                        </div>
+                        <div>
+                            <h2 ng-bind-html="played.getBillingName(match)">  </h2>
+                            <h3>{{match.date | date:'fullDate'}}</h3>
+                        </div>
+                        <p ng-if="match.place === 'Domicile'">
+                            <b>{{match.statistics.totalBut}} - {{match.statistics.but_opponent}}</b>
+                        </p>
+                        <p ng-if="match.place === 'Exterieur'">  
+                            <b>{{match.statistics.but_opponent}} - {{match.statistics.totalBut}}</b>
+                        </p>
+
 
                         <!-- <ion-delete-button class="ion-minus-circled" ng-click="played.removeMatch(match._id)"></ion-delete-button> -->
                         <ion-option-button class="button icon ion-ios-trash-outline" ng-click="played.removeMatch(match._id)"></ion-option-button>
