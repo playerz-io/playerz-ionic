@@ -24,13 +24,13 @@ $RobotoDraftFontVersion: "1.0.0"; // Include all of Ionic
 @import "../font-awesome-4.6.3/scss/font-awesome";
 $elephant: #172B32;
 $california: #DF8331;
-$saumon: #fe4e50;
+$saumon: #fe4e50; //$saumon: #e74c3c;
 $pelorous: #28B0D3;
 $aluminium: #929292;
 $mariner: #3C5A95;
 $white: #FFFFFF;
-$clear_mariner: #313B42;
-$sombre_mariner: #3C4F5E;
+$clear_mariner: #313B42; //$clear_mariner: #34495e;
+$sombre_mariner: #3C4F5E; //$sombre_mariner: #2c3e50;
 @font-face {
     font-family: 'Raleway', sans-serif;
 }
@@ -38,12 +38,12 @@ $sombre_mariner: #3C4F5E;
     font-family: Raleway;
 }
 .pane {
-    background: -webkit-linear-gradient(left, #313B42 , #3C4F5E);
+    background: -webkit-linear-gradient(left, $clear_mariner , $sombre_mariner);
     //background: linear-gradient(to right, #313B42 , #3C4F5E);
 }
 ion-content {
     //background: none;
-    background: linear-gradient(to right, #313B42 , #3C4F5E);
+    background: linear-gradient(to right, $clear_mariner , $sombre_mariner);
 }
 input::-webkit-input-placeholder {
     color: $white;
@@ -111,35 +111,45 @@ input::-webkit-input-placeholder {
     }
 }
 #home {
+    div.scroll {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
     h1 {
         margin: auto;
         color: white;
     }
     #div-effectif {
-        height: 25vh;
-        width: 100vw;
+        height: 25%;
+        width: 100%;
         border: 0;
         display: flex;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("../img/effectifSS.png");
         &.activated {
-            background-color: darken(10%);
+            background-color: darken(black, 10%);
         }
     }
     #div-next-match {
         @extend #div-effectif;
-        background-image: url(../img/proMatchs.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-
+        background-image: url("../img/proMatchs.png");
     }
     #div-statistics {
         @extend #div-effectif;
-
-
+        background-image: url("../img/rectangle-copy-2.png");
+    }
+    #div-add {
+        @extend #div-effectif;
+        background: none;
     }
 }
 #match-comeup,
 #match-played,
-#troop, #menu-match{
+#menu-match,
+#troop, #player-view {
     label {
         background: none;
         margin-bottom: 10px;
@@ -164,10 +174,17 @@ input::-webkit-input-placeholder {
             border: 0;
             border-bottom: 1px solid $saumon;
         }
+        &.activated {
+            background-color: lighten($sombre_mariner, 10%);
+        }
     }
     .item-complex .item-content {
         background: none;
     }
+    .item-content.activated {
+        background-color: lighten($sombre_mariner, 10%);
+    }
+    h1,
     h2,
     h3,
     p {
@@ -184,6 +201,11 @@ input::-webkit-input-placeholder {
 #match-played {
     ion-item {
         padding-bottom: 1px;
+        a.activated {
+            width: 100%;
+            height: 100%;
+            background-color: lighten($sombre_mariner, 10%);
+        }
     }
 }
 #match-played {
@@ -192,7 +214,6 @@ input::-webkit-input-placeholder {
     }
 }
 #account,
-
 #change-password,
 #menu,
 #modal-add-match,
@@ -217,8 +238,12 @@ input::-webkit-input-placeholder {
         background: none;
         border: 0;
         border-bottom: 1px solid $saumon;
+        color: $white;
         a {
             color: $white;
+        }
+        &.activated {
+            background-color: lighten($sombre_mariner, 10%);
         }
     }
     .item-toggle {
@@ -252,6 +277,12 @@ input::-webkit-input-placeholder {
         color: $white;
     }
     .item h2 {
+        color: $white;
+    }
+}
+#account {
+    .item.item-divider {
+        background-color: $saumon;
         color: $white;
     }
 }
@@ -396,7 +427,6 @@ div.dv-tac div.drag-enter a,
 div.dv-tac div.dragging a {
     color: $white;
 }
-
 .goalkeeper {
     flex-direction: column;
     span {
@@ -535,38 +565,32 @@ div.dv-tac div.dragging a {
             font-size: 2em;
         }
     }
-
-    #div-act-dead-time{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    #info-match{
-      display: flex;
-      flex-direction: column;
-
-      div:last-child{
-        align-self: center;
-        height: 20%;
+    #div-act-dead-time {
         display: flex;
         flex-direction: column;
-        margin-top: 20%;
-        justify-content: space-around;
-      }
-
-      p{
-        align-self: center;
-        color: $white;
-      }
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #info-match {
+        display: flex;
+        flex-direction: column;
+        div:last-child {
+            align-self: center;
+            height: 20%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20%;
+            justify-content: space-around;
+        }
+        p {
+            align-self: center;
+            color: $white;
+        }
     }
 }
-
-.vertical-line{
-  width: 1px;
-  background-color: $white;
-  height: 15px;
-  display: flex;
-
+.vertical-line {
+    width: 1px;
+    background-color: $white;
+    height: 15px;
+    display: flex;
 }

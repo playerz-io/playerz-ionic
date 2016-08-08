@@ -592,6 +592,8 @@ let totalStat = function(_coach_id, _match_id) {
         totalBut = 0,
         totalPassesCompletion = 0,
         totalRelanceCompletion = 0,
+        totalRedCard = 0,
+        totalYellowCard = 0,
         but_opponent = 0;
 
     async.waterfall([
@@ -638,6 +640,8 @@ let totalStat = function(_coach_id, _match_id) {
                             totalBut += stat['but'];
                             totalPassesCompletion += stat['passesCompletion'];
                             totalRelanceCompletion += stat['relanceCompletion'];
+                            totalYellowCard += stat['yellowCard'];
+                            totalRedCard += stat['redCard'];
                         }
                     }
                     if (player_id === playerSelected[numberPlayerSelected - 1]) {
@@ -653,6 +657,8 @@ let totalStat = function(_coach_id, _match_id) {
                             totalAttemptsOnTarget,
                             totalAttemptsOffTarget,
                             totalBut,
+                            totalYellowCard,
+                            totalRedCard,
                             totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
                             totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
                             but_opponent: match.statistics.but_opponent
@@ -681,6 +687,8 @@ let totalStat = function(_coach_id, _match_id) {
                     totalAttempts: stat.totalAttempts,
                     totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
                     totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
+                    totalYellowCard: stat.totalYellowCard,
+                    totalRedCard: stat.totalRedCard,
                     but_opponent: stat.but_opponent,
                     totalBut: stat.totalBut
 
@@ -701,6 +709,8 @@ let totalStat = function(_coach_id, _match_id) {
                 totalAttempts: stat.totalAttempts,
                 totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
                 totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
+                totalYellowCard: stat.totalYellowCard,
+                totalRedCard: stat.totalRedCard,
                 but_opponent: stat.but_opponent,
                 totalBut: stat.totalBut
 

@@ -50,6 +50,8 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
                 totalAttempts: statistics.totalAttempts,
                 totalAttemptsOnTarget: statistics.totalAttemptsOnTarget,
                 totalAttemptsOffTarget: statistics.totalAttemptsOffTarget,
+                totalYellowCard: statistics.totalYellowCard,
+                totalRedCard: statistics.totalRedCard,
                 totalBut: statistics.totalBut,
                 but_opponent: statistics.but_opponent
             }

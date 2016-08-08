@@ -56,6 +56,8 @@ exports.addMatch = function(req, res) {
                 totalBut: 0,
                 totalPassesCompletion: 0,
                 totalRelanceCompletion: 0,
+                totalRedCard: 0,
+                totalYellowCard: 0,
                 but_opponent: 0
             }
         });

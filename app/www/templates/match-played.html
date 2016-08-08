@@ -9,11 +9,11 @@
     </ion-nav-bar>
     <ion-content>
         <ion-slide-box on-slide-changed="slideHasChanged($index)" style="height: 20vh">
-            <ion-slide >
-              <div class="chart" style="width : 80%; padding-top: 5vh">
-                <div style="width: {{played.scale(played.statisticsGlobal.totalBallLost)}}%">{{played.statisticsGlobal.totalBallLost}}</div>
-                <div style="width: {{played.scale(played.statisticsGlobal.totalBallPlayed)}}%">{{played.statisticsGlobal.totalBallPlayed}}</div>
-              </div>
+            <ion-slide>
+                <div class="chart" style="width : 80%; padding-top: 5vh">
+                    <div style="width: {{played.scale(played.statisticsGlobal.totalBallLost)}}%">{{played.statisticsGlobal.totalBallLost}}</div>
+                    <div style="width: {{played.scale(played.statisticsGlobal.totalBallPlayed)}}%">{{played.statisticsGlobal.totalBallPlayed}}</div>
+                </div>
             </ion-slide>
             <ion-slide>
                 <div class="box yellow" style="background: yellow; height: 20vh">
@@ -37,11 +37,11 @@
                 </br>
 
                 <ion-list show-delete="played.showDelete">
-                    <ion-item class="item" ng-repeat="match in played.matchs | filter:played.searchMatch">
-                        <a class="text-center" ui-sref="stat-end-match({matchId: match._id})" ng-click="played.saveMatchID(match._id)">
-                          <h2 ng-bind-html="played.getBillingName(match)">  </h2>
-                          <h3>{{match.date | date:'fullDate'}}</h3>
-                        </a>
+                    <ion-item class="item text-center" ng-repeat="match in played.matchs | filter:played.searchMatch" ui-sref="stat-end-match({matchId: match._id})" ng-click="played.saveMatchID(match._id)">
+
+                        <h2 ng-bind-html="played.getBillingName(match)">  </h2>
+                        <h3>{{match.date | date:'fullDate'}}</h3>
+
                         <!-- <ion-delete-button class="ion-minus-circled" ng-click="played.removeMatch(match._id)"></ion-delete-button> -->
                         <ion-option-button class="button icon ion-ios-trash-outline" ng-click="played.removeMatch(match._id)"></ion-option-button>
                     </ion-item>

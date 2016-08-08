@@ -9818,7 +9818,7 @@ a.button {
 /* BEGIN Thin */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.ttf?v=1.0.0") format("truetype");
   font-weight: 100;
   font-style: normal; }
 
@@ -9826,7 +9826,7 @@ a.button {
 /* BEGIN Light */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Light/RobotoDraft-Light.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Light/RobotoDraft-Light.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Light/RobotoDraft-Light.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Light/RobotoDraft-Light.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Light/RobotoDraft-Light.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Light/RobotoDraft-Light.ttf?v=1.0.0") format("truetype");
   font-weight: 300;
   font-style: normal; }
 
@@ -9834,13 +9834,13 @@ a.button {
 /* BEGIN Regular */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.ttf?v=1.0.0") format("truetype");
   font-weight: 400;
   font-style: normal; }
 
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.ttf?v=1.0.0") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
@@ -9848,13 +9848,13 @@ a.button {
 /* BEGIN Italic */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.ttf?v=1.0.0") format("truetype");
   font-weight: 400;
   font-style: italic; }
 
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.ttf?v=1.0.0") format("truetype");
   font-weight: normal;
   font-style: italic; }
 
@@ -9862,7 +9862,7 @@ a.button {
 /* BEGIN Medium */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.ttf?v=1.0.0") format("truetype");
   font-weight: 500;
   font-style: normal; }
 
@@ -9870,13 +9870,13 @@ a.button {
 /* BEGIN Bold */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.ttf?v=1.0.0") format("truetype");
   font-weight: 700;
   font-style: normal; }
 
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.ttf?v=1.0.0") format("truetype");
   font-weight: bold;
   font-style: normal; }
 
@@ -9884,13 +9884,13 @@ a.button {
 /* BEGIN Bold Italic */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.ttf?v=1.0.0") format("truetype");
   font-weight: 700;
   font-style: italic; }
 
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.ttf?v=1.0.0") format("truetype");
   font-weight: bold;
   font-style: italic; }
 
@@ -9898,7 +9898,7 @@ a.button {
 /* BEGIN Black */
 @font-face {
   font-family: RobotoDraft;
-  src: url("..www/lib/robotodraft/fonts/Black/RobotoDraft-Black.woff2?v=1.0.0") format("woff2"), url("..www/lib/robotodraft/fonts/Black/RobotoDraft-Black.woff?v=1.0.0") format("woff"), url("..www/lib/robotodraft/fonts/Black/RobotoDraft-Black.ttf?v=1.0.0") format("truetype");
+  src: url("../www/lib/robotodraft/fonts/Black/RobotoDraft-Black.woff2?v=1.0.0") format("woff2"), url("../www/lib/robotodraft/fonts/Black/RobotoDraft-Black.woff?v=1.0.0") format("woff"), url("../www/lib/robotodraft/fonts/Black/RobotoDraft-Black.ttf?v=1.0.0") format("truetype");
   font-weight: 900;
   font-style: normal; }
 
@@ -12161,32 +12161,40 @@ input::-webkit-input-placeholder {
   #login a#a-forgot {
     float: right; }
 
+#home div.scroll {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; }
+
 #home h1 {
   margin: auto;
   color: white; }
 
-#home #div-effectif, #home #div-next-match, #home #div-statistics {
-  height: 25vh;
-  width: 100vw;
+#home #div-effectif, #home #div-next-match, #home #div-statistics, #home #div-add {
+  height: 25%;
+  width: 100%;
   border: 0;
-  background-color: green;
-  display: flex; }
-  #home #div-effectif.activated, #home .activated#div-next-match, #home .activated#div-statistics {
-    background-color: #004d00; }
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../img/effectifSS.png"); }
+  #home #div-effectif.activated, #home .activated#div-next-match, #home .activated#div-statistics, #home .activated#div-add {
+    background-color: black; }
 
 #home #div-next-match {
-  background-color: yellow; }
-  #home #div-next-match.activated {
-    background-color: #cccc00; }
+  background-image: url("../img/proMatchs.png"); }
 
 #home #div-statistics {
-  background-color: pink; }
-  #home #div-statistics.activated {
-    background-color: #ff8da1; }
+  background-image: url("../img/rectangle-copy-2.png"); }
+
+#home #div-add {
+  background: none; }
 
 #match-comeup label,
 #match-played label,
-#troop label, #menu-match label {
+#menu-match label,
+#troop label, #player-view label {
   background: none;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -12195,57 +12203,88 @@ input::-webkit-input-placeholder {
   border-radius: 25px; }
   #match-comeup label i.placeholder-icon:first-child,
   #match-played label i.placeholder-icon:first-child,
-  #troop label i.placeholder-icon:first-child, #menu-match label i.placeholder-icon:first-child {
+  #menu-match label i.placeholder-icon:first-child,
+  #troop label i.placeholder-icon:first-child, #player-view label i.placeholder-icon:first-child {
     padding-left: 6px;
     color: #FFFFFF; }
   #match-comeup label input[type="text"],
   #match-played label input[type="text"],
-  #troop label input[type="text"], #menu-match label input[type="text"] {
+  #menu-match label input[type="text"],
+  #troop label input[type="text"], #player-view label input[type="text"] {
     color: #FFFFFF;
     text-decoration: none; }
 
 #match-comeup ion-item,
 #match-played ion-item,
-#troop ion-item, #menu-match ion-item {
+#menu-match ion-item,
+#troop ion-item, #player-view ion-item {
   background: none;
   color: #FFFFFF; }
   #match-comeup ion-item.item,
   #match-played ion-item.item,
-  #troop ion-item.item, #menu-match ion-item.item {
+  #menu-match ion-item.item,
+  #troop ion-item.item, #player-view ion-item.item {
     background: none;
     border: 0;
     border-bottom: 1px solid #fe4e50; }
+  #match-comeup ion-item.activated,
+  #match-played ion-item.activated,
+  #menu-match ion-item.activated,
+  #troop ion-item.activated, #player-view ion-item.activated {
+    background-color: #50697d; }
 
 #match-comeup .item-complex .item-content,
 #match-played .item-complex .item-content,
-#troop .item-complex .item-content, #menu-match .item-complex .item-content {
+#menu-match .item-complex .item-content,
+#troop .item-complex .item-content, #player-view .item-complex .item-content {
   background: none; }
 
+#match-comeup .item-content.activated,
+#match-played .item-content.activated,
+#menu-match .item-content.activated,
+#troop .item-content.activated, #player-view .item-content.activated {
+  background-color: #50697d; }
+
+#match-comeup h1,
 #match-comeup h2,
 #match-comeup h3,
 #match-comeup p,
+#match-played h1,
 #match-played h2,
 #match-played h3,
 #match-played p,
+#menu-match h1,
+#menu-match h2,
+#menu-match h3,
+#menu-match p,
+#troop h1,
 #troop h2,
 #troop h3,
-#troop p, #menu-match h2,
-#menu-match h3,
-#menu-match p {
+#troop p, #player-view h1,
+#player-view h2,
+#player-view h3,
+#player-view p {
   color: #FFFFFF; }
 
 #match-comeup ion-option-button,
 #match-played ion-option-button,
-#troop ion-option-button, #menu-match ion-option-button {
+#menu-match ion-option-button,
+#troop ion-option-button, #player-view ion-option-button {
   background-color: #fe4e50; }
   #match-comeup ion-option-button.button,
   #match-played ion-option-button.button,
-  #troop ion-option-button.button, #menu-match ion-option-button.button {
+  #menu-match ion-option-button.button,
+  #troop ion-option-button.button, #player-view ion-option-button.button {
     color: #FFFFFF; }
 
 #match-comeup ion-item,
 #match-played ion-item {
   padding-bottom: 1px; }
+  #match-comeup ion-item a.activated,
+  #match-played ion-item a.activated {
+    width: 100%;
+    height: 100%;
+    background-color: #50697d; }
 
 #match-played a {
   text-decoration: none; }
@@ -12297,7 +12336,8 @@ input::-webkit-input-placeholder {
 #register-team .item {
   background: none;
   border: 0;
-  border-bottom: 1px solid #fe4e50; }
+  border-bottom: 1px solid #fe4e50;
+  color: #FFFFFF; }
   #account .item a,
   #change-password .item a,
   #menu .item a,
@@ -12308,6 +12348,16 @@ input::-webkit-input-placeholder {
   #register-profile .item a,
   #register-team .item a {
     color: #FFFFFF; }
+  #account .item.activated,
+  #change-password .item.activated,
+  #menu .item.activated,
+  #modal-add-match .item.activated,
+  #modal-add-player .item.activated,
+  #profile-settings .item.activated,
+  #register-info .item.activated,
+  #register-profile .item.activated,
+  #register-team .item.activated {
+    background-color: #50697d; }
 
 #account .item-toggle,
 #change-password .item-toggle,
@@ -12417,6 +12467,10 @@ input::-webkit-input-placeholder {
 #register-info .item h2,
 #register-profile .item h2,
 #register-team .item h2 {
+  color: #FFFFFF; }
+
+#account .item.item-divider {
+  background-color: #fe4e50;
   color: #FFFFFF; }
 
 .popover .scroll-content {
