@@ -51,18 +51,15 @@ ion-content {
 input::-webkit-input-placeholder {
     color: $white;
 }
-
-.backgroundRed{
-  background-color: $red;
+.backgroundRed {
+    background-color: $red;
 }
-.backgroundGreen{
-  background-color: $green;
+.backgroundGreen {
+    background-color: $green;
 }
-
-.backgroundGrey{
-  background-color: $grey;
+.backgroundGrey {
+    background-color: $grey;
 }
-
 #login {
     ion-content {
         background: none;
@@ -224,38 +221,35 @@ input::-webkit-input-placeholder {
         }
     }
 }
-#match-played {
+#match-played,
+#player-view {
     a {
         text-decoration: none;
     }
-    a.item-content {
+    *.item-content {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        flex-wrap: wrap;
         align-items: center;
         height: 100%;
     }
-
-    ion-list{
-      ion-item{
-        height: 15%;
-
-        #div-result{
-          border-radius: 50%;
-          width: 15%;
-          height: 40%;
-
-          display: flex;
-
-          p{
-            margin: auto;
-          }
-
+    ion-list {
+        ion-item {
+            height: 15%;
+            #div-result {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                p {
+                    margin: auto;
+                }
+            }
         }
-      }
-      div.list{
-        height: 100%;
-      }
+        div.list {
+            height: 100%;
+        }
     }
 }
 #account,
@@ -266,7 +260,8 @@ input::-webkit-input-placeholder {
 #profile-settings,
 #register-info,
 #register-profile,
-#register-team {
+#register-team,
+#stat-in-live-view {
     input {
         color: $white;
     }
@@ -638,4 +633,111 @@ div.dv-tac div.dragging a {
     background-color: $white;
     height: 15px;
     display: flex;
+}
+.content-stat {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.slider-slide {
+    margin-top: 10px;
+}
+#stat-in-live-view {
+    p {
+        color: $white;
+    }
+}
+#stat-match-view,
+#stat-player-view {
+    h2,
+    p {
+        color: $white;
+    }
+    #stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        div {
+            border-bottom: 1px solid $saumon;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            div {
+                text-align: center;
+                margin: auto;
+                border: 0;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+        div.scroll {
+            border: 0;
+        }
+    }
+    #div-result {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: auto;
+        p {
+            margin: auto;
+        }
+    }
+    div:first-child {
+        margin-top: 15px;
+    }
+}
+#stat-in-live-player-view {
+    color: $white;
+    ion-content {
+        display: flex;
+    }
+    div.scroll {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        h1 {
+            text-align: center;
+            color: $white;
+        }
+        div.box-stat {
+            flex-direction: row;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: space-around;
+            margin: auto;
+            width: 100%;
+            div:first-child,
+            div:nth-child(2) {
+                border-bottom: 1px solid $saumon;
+            }
+            div:first-child,
+            div:nth-child(3) {
+                border-right: 1px solid $saumon;
+            }
+            div {
+                padding: 5px;
+                text-align: center;
+                width: 50%;
+            }
+        }
+    }
+}
+#summary-match-view {
+    ion-content {
+        display: flex;
+        a {
+            color: $white;
+            text-decoration: none;
+            margin: auto;
+            background: $saumon;
+            border-radius: 5px;
+            padding: 5px;
+            &.activated {
+                background-color: darken($saumon, 10%);
+            }
+        }
+    }
 }

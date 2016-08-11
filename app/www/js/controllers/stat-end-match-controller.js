@@ -22,7 +22,19 @@ angular.module('starter.controller.stat-end-match', [])
                 .error(function(data) {
                     console.log(data);
                 });
-        }
+        };
 
+        self.getMatchById = () => {
+            MatchService.getMatchById(self.matchId)
+                .success(function(data) {
+                    console.log(data);
+                      self.match = data.match;
+                })
+                .error(function(data) {
+                    console.log(data);
+                })
+        };
+
+        self.getMatchById();
         self.getMatchStatistics();
     });

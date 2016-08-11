@@ -1,37 +1,10 @@
-<ion-view title="Statistiques">
+<ion-view title="Statistiques" id="summary-match-view">
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-content>
-        <button ui-sref="stat-end-match({ matchId: summary.matchId})"> Voir les stats du matchs</button>
-        <!-- <table border="1">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th ng-repeat="stat in summary.namesStats">{{stat}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="player in summary.realTimePlayers">
-                    <td>{{player.last_name}} </br> {{player.first_name}}</td>
-                    <td>nb min jouées</td>
-                    <td>{{player.statistics.ballPlayed}}</td>
-                    <td>{{player.statistics.ballLost}}</td>
-                    <td>{{player.statistics.passesCompletion}}</td>
-                    <td>{{player.statistics.retrieveBalls}}</td>
-                    <td>{{player.statistics.defensiveAction}}</td>
-                    <td>{{player.statistics.relanceCompletion}}</td>
-                    <td>{{player.statistics.foulsCommitted}}</td>
-                    <td>{{player.statistics.foulsSuffered}} </td>
-                    <td>{{player.statistics.offSide}}</td>
-                    <td>{{player.statistics.attempts}}</td>
-                    <td>{{player.statistics.attemptsOnTarget}}</td>
-                    <td>{{player.statistics.beforeAssist}}</td>
-                    <td>{{player.statistics.assist}}</td>
-                    <td>{{player.statistics.but}}</td>
-                </tr>
-            </tbody>
-        </table> -->
+    <ion-content scroll="false">
+        <a ui-sref="stat-end-match({ matchId: summary.matchId})"> Voir les stats du matchs</a>
+
     </ion-content>
 </ion-view>

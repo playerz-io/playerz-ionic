@@ -94,7 +94,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
                 passesFailed: statistics.passesFailed,
                 crossesFailed: statistics.crossesFailed,
                 saves: statistics.saves,
-                claquettes: statistics.claquettes,
+                dual_goalkeeper: statistics.dual_goalkeeper,
                 sorties_aeriennes: statistics.sorties_aeriennes,
                 clean_sheet: statistics.clean_sheet
             });
@@ -397,7 +397,7 @@ let getThreeLastAction = (coach, match_id) => {
 //                     passesFailed: stat.passesFailed,
 //                     crossesFailed: stat.crossesFailed,
 //                     saves: stat.saves,
-//                     claquettes: stat.claquettes,
+//                     dual_goalkeeper: stat.dual_goalkeeper,
 //                     sorties_aeriennes: stat.sorties_aeriennes,
 //                     clean_sheet: stat.clean_sheet
 //                 }

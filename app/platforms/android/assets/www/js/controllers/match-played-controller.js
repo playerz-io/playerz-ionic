@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-played', [])
-    .controller('MatchPlayedCtrl', function(TeamService, MatchService, $scope, StorageService) {
+    .controller('MatchPlayedCtrl', function(TeamService, MatchService, $scope, StorageService, $state) {
         let self = this;
 
         //force to display back button
@@ -11,6 +11,8 @@ angular.module('starter.controller.match-played', [])
 
         self.saveMatchID = function(match_id) {
             StorageService.addStorageMatchId(match_id);
+
+            $state.go('stat-end-match', {matchId: match_id});
         };
 
         self.getMatchFinished = function() {

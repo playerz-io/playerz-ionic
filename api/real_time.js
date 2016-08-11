@@ -104,7 +104,7 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
                 passesFailed: stat[0].passesFailed,
                 crossesFailed: stat[0].crossesFailed,
                 saves: stat[0].saves,
-                claquettes: stat[0].claquettes,
+                dual_goalkeeper: stat[0].dual_goalkeeper,
                 sorties_aeriennes: stat[0].sorties_aeriennes,
                 clean_sheet: stat[0].clean_sheet
             }

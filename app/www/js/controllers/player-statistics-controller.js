@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.player-statistics', [])
-    .controller("PlayerStatCtrl", function(PlayerService, $stateParams, $scope) {
+    .controller("PlayerStatCtrl", function(PlayerService, $stateParams, $scope, TeamService, MatchService) {
 
         //force to display back button
         $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
@@ -24,5 +24,30 @@ angular.module('starter.controller.player-statistics', [])
                 })
         };
 
+        self.getMatchById = () => {
+            MatchService.getMatchById(self.matchId)
+                .success(function(data) {
+                    console.log(data);
+                      self.match = data.match;
+                })
+                .error(function(data) {
+                    console.log(data);
+                })
+        };
+
+        self.getPlayer = function() {
+
+            TeamService.getPlayerById(self.playerId)
+
+            .success(function(data) {
+                    console.log(data);
+                    self.player = data.player;
+                })
+                .error(function(data) {
+                    console.log(data);
+                })
+        };
+        self.getMatchById();
+        self.getPlayer();
         self.getStatisticsMatch();
     });

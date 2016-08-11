@@ -38,7 +38,9 @@ let MatchSchema = new Schema({
       totalRelanceCompletion: Number,
       totalRedCard: Number,
       totalYellowCard: Number,
-      but_opponent: Number
+      but_opponent: Number,
+      totalPassesFailed: Number,
+      totalDefensiveAction: Number
     },
     schemas: [],
     belongs_to: String,

@@ -33,7 +33,7 @@ let _addStatisticsToPlayer = (player, match_id) => {
         offSide: 0,
         clean_sheet: 0,
         sorties_aeriennes: 0,
-        claquettes: 0,
+        dual_goalkeeper: 0,
         saves: 0,
         crossesFailed: 0,
         passesFailed: 0

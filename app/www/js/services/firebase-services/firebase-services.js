@@ -35,7 +35,7 @@ angular.module('starter')
             .child(matchId)
             .child('statistics');
 
-            return $firebaseArray(refStatMatch);
+            return $firebaseObject(refStatMatch);
       },
 
       refPlayerSelectedStat: (matchId, coachId, playerId) => {

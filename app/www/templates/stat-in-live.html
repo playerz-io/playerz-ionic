@@ -1,11 +1,51 @@
-<ion-view title="Stat en live">
-  <ion-nav-buttons side="left" class="positive">
-      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
+<ion-view title="Stat en live" id="stat-in-live-view">
+    <ion-nav-buttons side="left" class="positive">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
     <ion-content>
         <div class="row">
             <div class="col">
-                <p ng-repeat="stat in statInLive.refStatMatch">{{stat.$id}} : {{stat.$value}}</p>
+                <p>
+                    Buts : {{statInLive.refStatMatch.totalBut}}
+                </p>
+                <p>
+                    Tir cadrés : {{statInLive.refStatMatch.totalAttemptsOnTarget}}
+                </p>
+                <p>
+                    Tir non cadrés : {{statInLive.refStatMatch.totalAttemptsOffTarget}}
+                </p>
+                <p>
+                    Ballons perdus : {{statInLive.refStatMatch.totalBallLost}}
+                </p>
+                <p>
+                    Ballons joués : {{statInLive.refStatMatch.totalBallPlayed}}
+                </p>
+                <p>
+                    Gestes défensifs : {{statInLive.refStatMatch.totalDefensiveAction}}
+                </p>
+                <p>
+                    Fautes subies : {{statInLive.refStatMatch.totalFoulsSuffered}}
+                </p>
+                <p>
+                    Fautes commises : {{statInLive.refStatMatch.totalFoulsCommited}}
+                </p>
+                <p>
+                    Hors-Jeu : {{statInLive.refStatMatch.totalOffSide}}
+                </p>
+
+                <p>
+                    Pourcentage de relance: {{statInLive.refStatMatch.totalRelanceCompletion}}
+                </p>
+                <p>
+                  Ballons récupérés : {{statInLive.refStatMatch.totalRetrieveBalls}}
+                </p>
+                <p>
+                    Cartons rouges: {{statInLive.refStatMatch.redCard}}
+                </p>
+                <p>
+                    Cartons jaunes: {{statInLive.refStatMatch.yellowCard}}
+                </p>
+
             </div>
             <div class="col">
                 <ion-list>
