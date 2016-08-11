@@ -65,7 +65,7 @@ exports.getCoach = function(req, res) {
     var token = getToken(req.headers);
     if (token) {
         var decoded = jwt.decode(token, config.secret);
-        console.log(decoded);
+  
         Coach.findOne({
             email: decoded.email,
             password: decoded.password

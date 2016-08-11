@@ -158,10 +158,61 @@ input::-webkit-input-placeholder {
         background: none;
     }
 }
+#player-view {
+    label {
+        background: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid $white;
+        padding: 0;
+        border-radius: 25px;
+        i.placeholder-icon:first-child {
+            padding-left: 6px;
+            color: $white;
+        }
+        input[type="text"] {
+            color: $white;
+            text-decoration: none;
+        }
+    }
+    ion-item {
+        background: none;
+        color: $white;
+        &.item {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid $saumon;
+        }
+        &.activated {
+            background-color: lighten($sombre_mariner, 10%);
+        }
+    }
+    .item-complex .item-content {
+        background: none;
+    }
+    .item-content.activated {
+        background-color: lighten($sombre_mariner, 10%);
+    }
+    h1,
+    h2,
+    h3,
+    p {
+        color: $white;
+    }
+    ion-option-button {
+        background-color: $saumon;
+        &.button {
+            color: $white;
+        }
+    }
+}
 #match-comeup,
 #match-played,
 #menu-match,
-#player-view,
 #troop {
     label {
         background: none;
@@ -236,7 +287,7 @@ input::-webkit-input-placeholder {
     }
     ion-list {
         ion-item {
-            height: 15%;
+
             #div-result {
                 border-radius: 50%;
                 width: 40px;
@@ -740,4 +791,12 @@ div.dv-tac div.dragging a {
             }
         }
     }
+}
+
+.button-player{
+  a:last-child{
+    &.activated{
+      color: $white;
+    }
+  }
 }

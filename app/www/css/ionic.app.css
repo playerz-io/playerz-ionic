@@ -12200,10 +12200,54 @@ input::-webkit-input-placeholder {
 #home #div-add {
   background: none; }
 
+#player-view label {
+  background: none;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 1px solid #FFFFFF;
+  padding: 0;
+  border-radius: 25px; }
+  #player-view label i.placeholder-icon:first-child {
+    padding-left: 6px;
+    color: #FFFFFF; }
+  #player-view label input[type="text"] {
+    color: #FFFFFF;
+    text-decoration: none; }
+
+#player-view ion-item {
+  background: none;
+  color: #FFFFFF; }
+  #player-view ion-item.item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #fe4e50; }
+  #player-view ion-item.activated {
+    background-color: #50697d; }
+
+#player-view .item-complex .item-content {
+  background: none; }
+
+#player-view .item-content.activated {
+  background-color: #50697d; }
+
+#player-view h1,
+#player-view h2,
+#player-view h3,
+#player-view p {
+  color: #FFFFFF; }
+
+#player-view ion-option-button {
+  background-color: #fe4e50; }
+  #player-view ion-option-button.button {
+    color: #FFFFFF; }
+
 #match-comeup label,
 #match-played label,
 #menu-match label,
-#player-view label,
 #troop label {
   background: none;
   margin-bottom: 10px;
@@ -12214,14 +12258,12 @@ input::-webkit-input-placeholder {
   #match-comeup label i.placeholder-icon:first-child,
   #match-played label i.placeholder-icon:first-child,
   #menu-match label i.placeholder-icon:first-child,
-  #player-view label i.placeholder-icon:first-child,
   #troop label i.placeholder-icon:first-child {
     padding-left: 6px;
     color: #FFFFFF; }
   #match-comeup label input[type="text"],
   #match-played label input[type="text"],
   #menu-match label input[type="text"],
-  #player-view label input[type="text"],
   #troop label input[type="text"] {
     color: #FFFFFF;
     text-decoration: none; }
@@ -12229,14 +12271,12 @@ input::-webkit-input-placeholder {
 #match-comeup ion-item,
 #match-played ion-item,
 #menu-match ion-item,
-#player-view ion-item,
 #troop ion-item {
   background: none;
   color: #FFFFFF; }
   #match-comeup ion-item.item,
   #match-played ion-item.item,
   #menu-match ion-item.item,
-  #player-view ion-item.item,
   #troop ion-item.item {
     background: none;
     border: 0;
@@ -12244,21 +12284,18 @@ input::-webkit-input-placeholder {
   #match-comeup ion-item.activated,
   #match-played ion-item.activated,
   #menu-match ion-item.activated,
-  #player-view ion-item.activated,
   #troop ion-item.activated {
     background-color: #50697d; }
 
 #match-comeup .item-complex .item-content,
 #match-played .item-complex .item-content,
 #menu-match .item-complex .item-content,
-#player-view .item-complex .item-content,
 #troop .item-complex .item-content {
   background: none; }
 
 #match-comeup .item-content.activated,
 #match-played .item-content.activated,
 #menu-match .item-content.activated,
-#player-view .item-content.activated,
 #troop .item-content.activated {
   background-color: #50697d; }
 
@@ -12274,10 +12311,6 @@ input::-webkit-input-placeholder {
 #menu-match h2,
 #menu-match h3,
 #menu-match p,
-#player-view h1,
-#player-view h2,
-#player-view h3,
-#player-view p,
 #troop h1,
 #troop h2,
 #troop h3,
@@ -12287,13 +12320,11 @@ input::-webkit-input-placeholder {
 #match-comeup ion-option-button,
 #match-played ion-option-button,
 #menu-match ion-option-button,
-#player-view ion-option-button,
 #troop ion-option-button {
   background-color: #fe4e50; }
   #match-comeup ion-option-button.button,
   #match-played ion-option-button.button,
   #menu-match ion-option-button.button,
-  #player-view ion-option-button.button,
   #troop ion-option-button.button {
     color: #FFFFFF; }
 
@@ -12319,18 +12350,15 @@ input::-webkit-input-placeholder {
   align-items: center;
   height: 100%; }
 
-#match-played ion-list ion-item,
-#player-view ion-list ion-item {
-  height: 15%; }
-  #match-played ion-list ion-item #div-result,
-  #player-view ion-list ion-item #div-result {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex; }
-    #match-played ion-list ion-item #div-result p,
-    #player-view ion-list ion-item #div-result p {
-      margin: auto; }
+#match-played ion-list ion-item #div-result,
+#player-view ion-list ion-item #div-result {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex; }
+  #match-played ion-list ion-item #div-result p,
+  #player-view ion-list ion-item #div-result p {
+    margin: auto; }
 
 #match-played ion-list div.list,
 #player-view ion-list div.list {
@@ -12870,3 +12898,6 @@ div.dv-tac div.dragging a {
     padding: 5px; }
     #summary-match-view ion-content a.activated {
       background-color: #fe1b1e; }
+
+.button-player a:last-child.activated {
+  color: #FFFFFF; }

@@ -14,17 +14,35 @@ let checkMatchId = function(match_ID, player) {
 
 exports.addActions = (match_ID, coach_ID, actions) => {
 
-    Player.findById(actions[0], (err, player) => {
-      actions[0] = `${player.last_name}`;
-      let refMatch = ref
-          .child(coach_ID)
-          .child('matchs')
-          .child(match_ID)
-          .child('actions')
-          .push(actions);
+    if (['assist', 'retrieveBalls', 'foulsSuffered', 'foulsCommitted', 'yellowCard', 'redCard', 'attemptsOnTarget', 'attemptsOffTarget', 'but', 'ballLost', 'ballPlayed', 'defensiveAction', 'offSide', 'passesFailed', 'saves', 'dual_goalkeeper', 'sorties_aeriennes'].indexOf(actions) >= 0) {
+        Player.findById(actions[0], (err, player) => {
+            actions[0] = `${player.last_name}`;
+            let refMatch = ref
+                .child(coach_ID)
+                .child('matchs')
+                .child(match_ID)
+                .child('actions')
+                .push(actions);
+        });
+    }
+
+};
+
+exports.removeLastActions_firebase = (match_ID, coach_ID) => {
+
+    let listActions = [];
+    let refActions = ref
+        .child(coach_ID)
+        .child('matchs')
+        .child(match_ID)
+        .child('actions').limitToLast(1);
+
+    refActions.once('child_added', (snap) => {
+
+        snap.ref().remove();
     });
 
-}
+};
 exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
 
     let statistics = match.statistics;
@@ -53,6 +71,7 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
                 totalYellowCard: statistics.totalYellowCard,
                 totalRedCard: statistics.totalRedCard,
                 totalBut: statistics.totalBut,
+                totalPassesFailed: statistics.totalPassesFailed,
                 but_opponent: statistics.but_opponent
             }
         });
@@ -254,6 +273,13 @@ exports.cleanReference_firebase = (coachId, matchId) => {
     let refPlayerNoSelected = refMatch.child('players_no_selected').remove();
 
 
+};
+
+exports.removeMatch_firebase = (coachId, matchId) => {
+    let refMatch = ref
+        .child(coachId.toString())
+        .child("matchs")
+        .child(matchId.toString()).set(null);
 };
 
 exports.updateStatMatch_firebase = (coachId, matchId, stat) => {

@@ -133,7 +133,7 @@
               let statistics = player.statistics;
 
               for (let stat of statistics) {
-                  if (stat.match_id = match_id) {
+                  if (stat.match_id === match_id) {
                       return res.status(202).json({
                           success: true,
                           stat
