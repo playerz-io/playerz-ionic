@@ -29,7 +29,7 @@ let StatisticSchema = new Schema({
     passesFailed: Number,
     crossesFailed: Number,
     saves: Number,
-    claquettes: Number,
+    dual_goalkeeper: Number,
     sorties_aeriennes: Number,
     clean_sheet: Number,
     any: Schema.Types.Mixed

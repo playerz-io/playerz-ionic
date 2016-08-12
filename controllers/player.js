@@ -133,7 +133,7 @@
               let statistics = player.statistics;
 
               for (let stat of statistics) {
-                  if (stat.match_id = match_id) {
+                  if (stat.match_id === match_id) {
                       return res.status(202).json({
                           success: true,
                           stat
@@ -158,7 +158,7 @@
           "passesFailed": 0,
           "crossesFailed": 0,
           "saves": 0,
-          "claquettes": 0,
+          "dual_goalkeeper": 0,
           "sorties_aeriennes": 0,
           "clean_sheet": 0,
           "offSide": 0,

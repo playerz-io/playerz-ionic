@@ -12,6 +12,7 @@ let MatchSchema = new Schema({
     score: String,
     date: Date,
     status: String, //['comeup, finished']
+    result: String, //['victory, defeat, draw']
     playerSelected: [{
         type: Schema.ObjectId,
         ref: 'Player'
@@ -35,11 +36,16 @@ let MatchSchema = new Schema({
       totalBut: Number,
       totalPassesCompletion: Number,
       totalRelanceCompletion: Number,
-      but_opponent: Number
+      totalRedCard: Number,
+      totalYellowCard: Number,
+      but_opponent: Number,
+      totalPassesFailed: Number,
+      totalDefensiveAction: Number
     },
     schemas: [],
     belongs_to: String,
     defaultPosition: Boolean,
+    actions: [],
     any: Schema.Types.Mixed
 
 });

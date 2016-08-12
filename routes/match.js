@@ -64,6 +64,9 @@ router
     .post('/match_finished', passport.authenticate('jwt', {
         session: false
     }), controllerMatch.putMatchFinished)
+    .post('/setResultMatch', passport.authenticate('jwt', {
+        session: false
+    }), controllerMatch.setResultMatch)
     .get('/getGlobalStatisticsMatch', passport.authenticate('jwt', {
         session: false
     }), controllerMatch.getGlobalStatisticsMatch)

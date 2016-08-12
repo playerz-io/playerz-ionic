@@ -4,6 +4,7 @@ let getToken = require('../token');
 let jwt = require('jwt-simple');
 let config = require('../../config/database');
 let Match = require('../../models/match').modelMatch;
+let Coach = require('../../models/coach').modelCoach;
 let Statistic = require('../../models/statistics').modelStatistic;
 let real_time = require('../../real_time');
 
@@ -27,13 +28,13 @@ let _addStatisticsToPlayer = (player, match_id) => {
         but: 0,
         ballLost: 0,
         ballPlayed: 0,
-        passesCompletion: 0,
+        passesCompletion: 100,
         defensiveAction: 0,
-        relanceCompletion: 0,
+        relanceCompletion: 100,
         offSide: 0,
         clean_sheet: 0,
         sorties_aeriennes: 0,
-        claquettes: 0,
+        dual_goalkeeper: 0,
         saves: 0,
         crossesFailed: 0,
         passesFailed: 0
@@ -68,20 +69,25 @@ exports._findMatch = function(status, req, res) {
         let decoded = jwt.decode(token, config.secret);
 
         let idCoach = decoded._id;
+        let matchsStatus = [];
 
-        Match.find({
-            belongs_to: idCoach,
-            status: status
-        }, function(err, matchs) {
+
+        Coach.findById(idCoach, (err, coach) => {
+
             if (err)
                 return Utils.errorIntern(res, err);
+            let matchs = coach.team.matchs;
+            for (let match of matchs) {
+                if (match.status === status) {
+                    matchsStatus.push(match)
+                }
+            }
 
             res.status(201).json({
                 success: true,
-                matchs: matchs
-            })
-
-        })
+                matchs: matchsStatus
+            });
+        });
     } else {
         return res.status(403).json({
             success: false,

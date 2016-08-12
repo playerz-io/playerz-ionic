@@ -40,6 +40,14 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
                 numberAttempts = 0
             }
             statistics.attempts = numberAttempts;
+
+            //ballLost
+            lostBall = statistics.ballLost + statistics.passesFailed + statistics.crossesFailed;
+            if (isNaN(lostBall)) {
+                lostBall = 0;
+            }
+            statistics.ballLost = lostBall;
+
             //count percentage passes success
             percentPass = 100 - (statistics.ballLost * 100 / statistics.ballPlayed);
 
@@ -49,20 +57,16 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             statistics.passesCompletion = percentPass;
 
             //count percentRelance
-            percentRelance = statistics.retrieveBalls * 100 / (statistics.retrieveBalls + statistics.defensiveAction);
+            percentRelance = statistics.defensiveAction * 100 / (statistics.defensiveAction + statistics.retrieveBalls);
 
             if (isNaN(percentRelance)) {
                 percentRelance = 0;
             }
             statistics.relanceCompletion = percentRelance;
 
-            //ballLost
 
-            lostBall = statistics.ballLost + statistics.passesFailed + statistics.crossesFailed;
-            if (isNaN(lostBall)) {
-                lostBall = 0;
-            }
-            statistics.ballLost = lostBall;
+
+
 
             console.log(i, statistics);
             player.save((err) => {
@@ -94,7 +98,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
                 passesFailed: statistics.passesFailed,
                 crossesFailed: statistics.crossesFailed,
                 saves: statistics.saves,
-                claquettes: statistics.claquettes,
+                dual_goalkeeper: statistics.dual_goalkeeper,
                 sorties_aeriennes: statistics.sorties_aeriennes,
                 clean_sheet: statistics.clean_sheet
             });
@@ -116,14 +120,18 @@ exports.addSchemaMatch = function(req, res) {
             if (err)
                 return Utils.errorIntern(res, err);
 
-            let match = coach.team.matchs.id(match_id);
-            match.schemaMatch.push(data);
+            Match.findById(match_id, (err, foundMatch) => {
+                foundMatch.schemaMatch.push(data);
 
-            res.status(201).json({
-                success: true,
-                schemaMatch: match.schemaMatch
+                let match = coach.team.matchs.id(match_id);
+                match.schemaMatch.push(data);
+
+                res.status(201).json({
+                    success: true,
+                    schemaMatch: match.schemaMatch
+                });
+
             });
-
         });
 
     } else {
@@ -149,6 +157,16 @@ exports.addPlayerSchema = function(req, res) {
 
             if (err)
                 return Utils.errorIntern(res, err);
+
+            Match.findById(match_id, (errMatch, foundMatch) => {
+
+                foundMatch.schemas.push(data);
+                foundMatch.save((err) => {
+                    if (err)
+                        return Utils.errorIntern(res, err);
+                });
+
+            });
 
             let match = coach.team.matchs.id(match_id);
             match.schemas.push(data);
@@ -301,8 +319,10 @@ exports.countMainAction = function(req, res) {
             },
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach, done) => {
-                coach.team.matchs.id(match_id).schemaMatch.push(coach.team.matchs.id(match_id).schemas);
-                coach.team.matchs.id(match_id).schemas = [];
+                match.schemaMatch.push(match.schemas);
+                match.actions.push(match.schemas.slice(-3));
+                real_time.addActions(match_id, coach_id, match.schemas.slice(-3));
+                match.schemas = [];
 
                 coach.save((err) => {
                     if (err)
@@ -324,6 +344,13 @@ exports.countMainAction = function(req, res) {
         });
     }
 
+};
+
+let getThreeLastAction = (coach, match_id) => {
+
+    Coach.findById(coach._id, (err, coach) => {
+        let match = coach.team.match.id(match_id)
+    });
 };
 
 
@@ -389,7 +416,7 @@ exports.countMainAction = function(req, res) {
 //                     passesFailed: stat.passesFailed,
 //                     crossesFailed: stat.crossesFailed,
 //                     saves: stat.saves,
-//                     claquettes: stat.claquettes,
+//                     dual_goalkeeper: stat.dual_goalkeeper,
 //                     sorties_aeriennes: stat.sorties_aeriennes,
 //                     clean_sheet: stat.clean_sheet
 //                 }
@@ -584,6 +611,9 @@ let totalStat = function(_coach_id, _match_id) {
         totalBut = 0,
         totalPassesCompletion = 0,
         totalRelanceCompletion = 0,
+        totalRedCard = 0,
+        totalYellowCard = 0,
+        totalPassesFailed = 0,
         but_opponent = 0;
 
     async.waterfall([
@@ -628,8 +658,11 @@ let totalStat = function(_coach_id, _match_id) {
                             totalAttemptsOnTarget += stat['attemptsOnTarget'];
                             totalAttemptsOffTarget += stat['attemptsOffTarget'];
                             totalBut += stat['but'];
+                            totalPassesFailed += stat['passesFailed'];
                             totalPassesCompletion += stat['passesCompletion'];
                             totalRelanceCompletion += stat['relanceCompletion'];
+                            totalYellowCard += stat['yellowCard'];
+                            totalRedCard += stat['redCard'];
                         }
                     }
                     if (player_id === playerSelected[numberPlayerSelected - 1]) {
@@ -645,6 +678,9 @@ let totalStat = function(_coach_id, _match_id) {
                             totalAttemptsOnTarget,
                             totalAttemptsOffTarget,
                             totalBut,
+                            totalYellowCard,
+                            totalRedCard,
+                            totalPassesFailed,
                             totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
                             totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
                             but_opponent: match.statistics.but_opponent
@@ -673,6 +709,9 @@ let totalStat = function(_coach_id, _match_id) {
                     totalAttempts: stat.totalAttempts,
                     totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
                     totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
+                    totalYellowCard: stat.totalYellowCard,
+                    totalRedCard: stat.totalRedCard,
+                    totalPassesFailed: stat.totalPassesFailed,
                     but_opponent: stat.but_opponent,
                     totalBut: stat.totalBut
 
@@ -693,6 +732,9 @@ let totalStat = function(_coach_id, _match_id) {
                 totalAttempts: stat.totalAttempts,
                 totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
                 totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
+                totalYellowCard: stat.totalYellowCard,
+                totalRedCard: stat.totalRedCard,
+                totalPassesFailed: stat.totalPassesFailed,
                 but_opponent: stat.but_opponent,
                 totalBut: stat.totalBut
 
@@ -732,6 +774,7 @@ exports.removeAction = (req, res) => {
             let sizeLastSchema = (lastSchema === undefined) ? 0 : lastSchema.length;
             let schema = match.schemas;
             let sizeSchema = schema.length;
+            let arrayActions = match.actions;
 
             if (sizeSchema !== 0) {
                 let idPlayerRemoved = schema.splice(sizeSchema - 1, 1);
@@ -757,6 +800,8 @@ exports.removeAction = (req, res) => {
 
                     //removed last schema
                     schemaMatch.splice(sizeSchemaMatch - 1, 1);
+                    arrayActions.splice(arrayActions.length -1, 1);
+                    real_time.removeLastActions_firebase(match_id, idCoach);
 
                     let idPlayerRemoved = schemaRemoved[0];
                     let actionRemoved = schemaRemoved[1];
