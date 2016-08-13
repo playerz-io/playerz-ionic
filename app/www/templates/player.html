@@ -7,9 +7,12 @@
     <ion-content class="padding text-center">
         <h1>{{player.player.first_name}}</h1>
         <h2>{{player.player.last_name}}</h2>
-        <p>{{player.player.favourite_position}}</p>
-        <p>Nombre de match joués : {{player.nbrMatchPlayed}}</p>
-        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+        <p >{{player.player.favourite_position}}</p>
+        <p ng-if='player.nbrMatchPlayed !== 0'>Nombre de match joués : {{player.nbrMatchPlayed}}</p>
+        <p ng-if='player.nbrMatchPlayed === 0'>
+          Ce joueur n'a joué aucun match
+        </p>
+        <ion-slide-box ng-if='player.nbrMatchPlayed !== 0' on-slide-changed="slideHasChanged($index)">
             <ion-slide>
                 <div class="content-stat">
                     <div>

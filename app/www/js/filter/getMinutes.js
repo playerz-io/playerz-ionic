@@ -4,7 +4,9 @@ angular.module('starter')
 .filter('getMinutes', function(){
 
     return (input) => {
-      return input.substring(0,2);
+      console.log(input.split(':')[0]);
+      return input.split(':')[0];
+
     }
 })
 .filter('getResult', () => {
