@@ -10,6 +10,7 @@
     <ion-floating-button click="openModal()" has-footer="true" button-color="#fe4e50" icon="ion-plus" iconColor="#fff">
     </ion-floating-button>
     <ion-content>
+        <ion-refresher on-refresh="comeup.getNewMatchComeUp()"></ion-refresher>
         <div class="row">
             <div class="col">
                 <label class="item item-input">

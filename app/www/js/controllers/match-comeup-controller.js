@@ -19,6 +19,18 @@ angular.module('starter.controller.match-comeup', [])
             date: ''
         };
 
+        self.getNewMatchComeUp = function() {
+            MatchService.getMatchComeUp()
+                .success(function(data) {
+                    console.log(data);
+                    self.matchs = data.matchs;
+                    $scope.$broadcast('scroll.refreshComplete');
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
         $ionicModal.fromTemplateUrl('templates/add-match-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'

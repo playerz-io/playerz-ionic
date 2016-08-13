@@ -21,7 +21,6 @@ $RobotoDraftFontName: "RobotoDraft";
 $RobotoDraftFontVersion: "1.0.0"; // Include all of Ionic
 @import "../www/lib/ionic/scss/ionic";
 @import "../www/lib/robotodraft/sass/robotodraft.scss";
-@import "../font-awesome-4.6.3/scss/font-awesome";
 $elephant: #172B32;
 $california: #DF8331;
 $saumon: #fe4e50; //$saumon: #e74c3c;
@@ -34,6 +33,17 @@ $sombre_mariner: #3C4F5E; //$sombre_mariner: #2c3e50;
 $red: #c0392b;
 $green: #27ae60;
 $grey: #7f8c8d;
+@font-face {
+    font-family: 'fontawesome';
+    src: url('../www/lib/font-awesome/fonts/fontawesome-webfont.eot');
+    src: url('../www/lib/font-awesome/fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../www/lib/font-awesome/fonts/fontawesome-webfont.woff') format('woff'), url('../www/lib/font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'), url('../www/lib/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.icon-users {
+    font-family: "fontawesome";
+    content: '\f0c0';
+}
 @font-face {
     font-family: 'Raleway', sans-serif;
 }
@@ -287,7 +297,6 @@ input::-webkit-input-placeholder {
     }
     ion-list {
         ion-item {
-
             #div-result {
                 border-radius: 50%;
                 width: 40px;
@@ -305,6 +314,7 @@ input::-webkit-input-placeholder {
 }
 #account,
 #change-password,
+#forgot-password-view,
 #menu,
 #modal-add-match,
 #modal-add-player,
@@ -792,11 +802,10 @@ div.dv-tac div.dragging a {
         }
     }
 }
-
-.button-player{
-  a:last-child{
-    &.activated{
-      color: $white;
+.button-player {
+    a:last-child {
+        &.activated {
+            color: $white;
+        }
     }
-  }
 }
