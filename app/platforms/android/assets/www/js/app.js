@@ -16,7 +16,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 })
 
 .constant('API_ENDPOINT', {
-  //  url: 'http://localhost:5000/api'
+    //url: 'http://localhost:5000/api'
     url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
@@ -45,6 +45,10 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             screen.lockOrientation('landscape');
         } else {
             //screen.unlockOrientation();
+        }
+
+        if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {
+            $window.location.reload();
         }
 
         if (!AuthService.isAuthenticated()) {

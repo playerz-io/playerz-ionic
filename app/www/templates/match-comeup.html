@@ -20,7 +20,7 @@
                 </br>
 
                 <ion-list show-delete="comeup.showDelete">
-                    <ion-item class="item text-center" ng-repeat="match in comeup.matchs | filter:comeup.searchMatch" ui-sref="tactique({matchId: match._id})" ng-click="comeup.saveMatchID(match._id)">
+                    <ion-item class="item text-center" ng-repeat="match in comeup.matchs | filter:comeup.searchMatch"  ng-click="comeup.saveMatchID(match)">
                             <h2 ng-bind-html="comeup.getBillingName(match)">  </h2>
                             <h3>{{match.date | date:'fullDate'}}</h3>
                         <!-- <ion-delete-button class="ion-minus-circled" ng-click="comeup.removeMatch(match._id)"></ion-delete-button> -->

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.tactique', [])
-    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast) {
+    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast, $state, $ionicHistory) {
 
         var self = this;
 
@@ -16,6 +16,7 @@ angular.module('starter.controller.tactique', [])
         });
 
         self.matchId = StorageService.getStorageMatchId();
+        console.log(self.matchId);
         self.coachId = StorageService.getStorageCoachId();
         self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
 
@@ -30,6 +31,12 @@ angular.module('starter.controller.tactique', [])
                 .error((data) => {
 
                 })
+        };
+
+        self.goMatch = () => {
+            $state.go('menu-match.match-statistics', {
+                matchId: self.matchId,
+            });
         };
 
         self.defaultPosition = () => {

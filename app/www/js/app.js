@@ -47,6 +47,10 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             //screen.unlockOrientation();
         }
 
+        if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {
+            $window.location.reload();
+        }
+
         if (!AuthService.isAuthenticated()) {
             console.log(next.name);
             if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo' && next.name !== 'sport' && next.name !== 'team-user-facebook' && next.name !== 'profile' && next.name !== 'forgot' && next.name !== 'reset' && next.name !== 'register-facebook-team' && next.name !== 'register-facebook-sport') {

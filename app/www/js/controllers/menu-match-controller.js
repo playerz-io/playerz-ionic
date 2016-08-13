@@ -6,6 +6,8 @@ angular.module('starter.controller.menu-match', [])
 
         self.matchId = StorageService.getStorageMatchId();
 
+        console.log(self.matchId);
+
         //force to display back button
         $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
             viewData.enableBack = true;

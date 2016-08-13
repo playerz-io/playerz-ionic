@@ -1,9 +1,11 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading) {
 
         let self = this;
+
+
 
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
@@ -12,7 +14,7 @@ angular.module('starter.controller.match-stat', [])
         self.actions = FireService.getArrayActions(self.matchId, self.coachId);
         self.statMatch = FireService.getStatMatch(self.matchId, self.coachId);
         self.match = FireService.getMatch(self.matchId, self.coachId);
-        console.log(self.match);
+        console.log(self.matchId);
         let counter;
         self.minutes = 0;
         self.seconds = 0;
@@ -23,10 +25,26 @@ angular.module('starter.controller.match-stat', [])
         self.goalkeeper = false;
         self.cardActived = false;
         self.foulsActived = false;
+
+        $ionicLoading.show({
+
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
+
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 2000);
+
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');
             self.goalkeeper = !self.goalkeeper;
         }
+
+
 
         self.time = () => {
             self.seconds++;
@@ -59,15 +77,15 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.timer = () => {
-            if(self.timerRunning){
-              if (angular.isDefined(counter)) {
-                  console.log('counter is defined stop')
-                  $interval.cancel(counter);
-                  counter = undefined;
-                  self.timerRunning = false;
-              }
+            if (self.timerRunning) {
+                if (angular.isDefined(counter)) {
+                    console.log('counter is defined stop')
+                    $interval.cancel(counter);
+                    counter = undefined;
+                    self.timerRunning = false;
+                }
             } else {
-              self.startTimer();
+                self.startTimer();
             }
         }
 
@@ -81,13 +99,15 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.startTimer = () => {
-          self.timerRunning = true;
+            self.timerRunning = true;
             if (angular.isDefined(counter)) {
                 console.log('counter is defined')
                 return;
             }
             counter = $interval(self.time, 1000);
         };
+
+
 
         self.showCountdownPopup = () => {
             let popup = $ionicPopup.confirm({
@@ -137,12 +157,12 @@ angular.module('starter.controller.match-stat', [])
                 self.showActionsGoalkeeper();
             }
 
-            if(self.cardActived) {
-              self.cardActived = !self.cardActived;
+            if (self.cardActived) {
+                self.cardActived = !self.cardActived;
             }
 
-            if(self.foulsActived) {
-              self.foulsActived = !self.foulsActived;
+            if (self.foulsActived) {
+                self.foulsActived = !self.foulsActived;
             }
 
             PlayerService.countMainAction(self.matchId, action, self.fullTime)
@@ -220,5 +240,7 @@ angular.module('starter.controller.match-stat', [])
 
         self.getMatch();
         self.showCountdownPopup();
+
+
 
     });

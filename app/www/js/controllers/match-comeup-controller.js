@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-comeup', [])
-    .controller('MatchComeUpCtrl', function(TeamService, $filter, $ionicPopup, $ionicModal, MatchService, $scope, StorageService, $cordovaToast) {
+    .controller('MatchComeUpCtrl', function(TeamService, $state, $filter, $ionicPopup, $ionicModal, MatchService, $scope, StorageService, $cordovaToast) {
 
         let self = this;
 
@@ -66,8 +66,12 @@ angular.module('starter.controller.match-comeup', [])
                 });
         };
 
-        self.saveMatchID = function(match_id) {
-            StorageService.addStorageMatchId(match_id);
+        self.saveMatchID = function(match) {
+            StorageService.addStorageMatchId(match._id);
+
+            $state.go('tactique', {
+                matchId: match._id
+            });
         };
 
         self.getMatchComeUp = function() {

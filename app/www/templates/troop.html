@@ -17,6 +17,8 @@
                     <input type="text" placeholder="Rechercher un joueur" ng-model="troop.searchPlayer.first_name">
                 </label>
                 </br>
+
+                <p ng-if='troop.players.length ===  0'>Vous n'avez pas de joueur dans votre effectif</p>
                 <ion-list show-delete="troop.showDelete">
                     <ion-item collection-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
                         <h2><b>{{player.last_name}} {{player.first_name}}</b></h2>
