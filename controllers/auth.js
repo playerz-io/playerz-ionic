@@ -6,6 +6,41 @@ let Utils = require('../utils');
 let config = require('../config/database');
 let Team = require('../models/team').modelTeam;
 let jwt = require('jwt-simple');
+let nodemailer = require('nodemailer');
+let mg = require('nodemailer-mailgun-transport');
+let auth = require('../config/mailgun').auth;
+
+
+let mailSubscription = (last_name, first_name, email) => {
+
+    let smtpTransport = nodemailer.createTransport(mg(auth));
+    let mailOptions = {
+        to: email,
+        from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+        subject: 'Bienvenue sur Playerz',
+        text: `Bonjour ${last_name} ${first_name},
+
+  Merci d'avoir choisi Playerz, nous esperons que Playerz vous aidera à améliorer vos performances.
+
+  Si vous n'êtes pas à l'origine de cette inscription veuillez nous contacter à l'adresse suivante :
+
+  contact@playerz.io
+
+  Cordialement,
+
+  L'équipe Playerz
+                      `
+
+    };
+
+    smtpTransport.sendMail(mailOptions, (err) => {
+
+
+        if (err)
+            return Utils.errorIntern(res, err);
+
+    });
+}
 
 //connexion facebook
 // NOTE: 1
@@ -71,6 +106,7 @@ exports.facebookConnect = (req, res) => {
                         total_connexion: 0
                     });
 
+                    mailSubscription(last_name, first_name, email);
                     //increase total_connexion
                     newCoach.total_connexion++;
                     newCoach.save(function(err) {
@@ -188,6 +224,9 @@ exports.signup = (req, res) => {
                     created_at: Date.now(),
                     total_connexion: 0
                 });
+
+                mailSubscription(last_name, first_name, email);
+
                 //creation de son equipe
                 newCoach.team = new Team({
                     name_club,

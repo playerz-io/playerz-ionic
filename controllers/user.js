@@ -71,8 +71,17 @@ exports.forgotPassword = function(req, res) {
             let mailOptions = {
                 to: coach.email,
                 from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
-                subject: 'Playerz mot de passe oublié',
-                text: `http://localhost:8100/#/reset/${token}`
+                subject: 'Réinitialisation de votre mot de passe',
+                text: `Cliquez sur le lien ci-dessous pour réinitialiser le mot de passe de votre compte Playerz
+
+http://localhost:8100/#/reset/${token}
+
+Ne prenez pas en compte ce mail, si vous n'avez pas demander à réinitialiser votre mot de passe.
+
+Cordialement,
+
+L'équipe Playerz
+                `
 
             };
 
@@ -141,8 +150,18 @@ exports.resetPassword = function(req, res) {
             let mailOptions = {
                 to: coach.email,
                 from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
-                subject: 'Le mot a été changé',
-                text: `Votre mot de passe a bien été changé`
+                subject: 'Changement de mot de passe',
+                text: `Votre mot de passe a bien été changé
+
+Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+
+contact@playerz.io
+
+Cordialement,
+
+L'équipe Playerz
+
+                `
             };
 
             smtpTransport.sendMail(mailOptions, (err) => {
