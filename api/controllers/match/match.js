@@ -11,7 +11,7 @@ let Player = require('../../models/player').modelPlayer;
 let Statistic = require('../../models/statistics').modelStatistic;
 let real_time = require('../../real_time');
 let async = require('async');
-let Football = require('../../sports/football');
+let Football = require('../../sports/football/football');
 let privateMatch = require('./private');
 
 
