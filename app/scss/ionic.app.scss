@@ -27,7 +27,7 @@ $saumon: #fe4e50; //$saumon: #e74c3c;
 $pelorous: #28B0D3;
 $aluminium: #929292;
 $mariner: #3C5A95;
-$white: #FFFFFF;
+$white: #ffffff;
 $clear_mariner: #313B42; //$clear_mariner: #34495e;
 $sombre_mariner: #3C4F5E; //$sombre_mariner: #2c3e50;
 $red: #c0392b;
@@ -844,5 +844,18 @@ html {
         &.activated {
             color: $white;
         }
+    }
+}
+#auto-complete {
+
+    i {
+      font-size: 0.8rem;
+    }
+    li.item {
+        background: $white;
+        color: $grey;
+        font-size: 0.8rem;
+
+
     }
 }
