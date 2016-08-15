@@ -43,7 +43,7 @@ let _addStatisticsToPlayer = (player, match_id) => {
 
 //check if stat for this match already exists
 exports.addStatisticsToPlayer = function(player, match_id) {
-    //  console.log('ok');
+
     let statExist = false;
     if (player.statistics.length === 0) {
         _addStatisticsToPlayer(player, match_id)
@@ -107,4 +107,22 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected)
         playersSelected.push(player);
     }
     real_time.addPlayer_firebase(player, idMatch, idCoach, true);
+};
+
+exports._setDefaultPosition = (idMatch, idCoach, defaultPosition) => {
+
+    Coach.findById(idCoach, (err, coach) => {
+
+        Match.findById(idMatch, (err, foundMatch) => {
+
+            let match = coach.team.match.id(idMatch);
+            match.defaultPosition = defaultPosition;
+
+            coach.save();
+
+            foundMatch.defaultPosition = defaultPosition;
+            foundMatch.save();
+
+        });
+    });
 };

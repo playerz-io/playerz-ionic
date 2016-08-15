@@ -19,15 +19,18 @@
                 </select>
             </label> -->
             <label class="item item-input">
-                <input type="text" placeholder="Nom de votre club" ng-change="register.search()" ng-model="register.user.name_club">
+                <input type="text" placeholder="Nom de votre club" ng-change="register.searchClubs()" ng-model="register.user.name_club">
             </label>
 
             <div ng-show="register.user.name_club.length">
-                <li class="item" ng-click="register.selectedItem($index)" ng-repeat="club in register.clubs">{{club}}</li>
+                <li style="background: green" class="item item item-icon-left" ng-click="register.selectedClubs($index)" ng-repeat="club in register.clubs"><i class="icon ion-search"></i>{{club}}</li>
             </div>
             <label class="item item-input">
-                <input type="text" placeholder="Categorie" ng-model="register.user.category">
+                <input type="text" placeholder="Categorie" ng-change="register.searchCategories()" ng-model="register.user.category">
             </label>
+            <div ng-show="register.user.category.length" >
+                <li style="background: green" class="item item item-icon-left" ng-click="register.selectedCategories($index)" ng-repeat="category in register.categories"><i class="icon ion-search"></i>{{category}}</li>
+            </div>
             <label class="item item-input">
                 <input type="text" placeholder="Division de l'equipe" ng-model="register.user.division">
             </label>

@@ -5,9 +5,11 @@ var define = require('node-constants')(exports);
 define({
     FOOTBALL: 'Football',
     QQDEUX: '4-4-2',
+    QTTROIS: '4-3-3',
     GD: 'Gardien',
     NUMBER_GD: 1,
     NUMBER_FIRST_PLAYER: 11,
+    NUMBER_SUBSTITUTE: 5,
     DEF: 'Défenseur',
     AR: 'Arrière Latéral',
     MD: 'Milieu Défensif',

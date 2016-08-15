@@ -2,10 +2,6 @@
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
-        <ion-nav-buttons side="secondary">
-            <button class="button button-icon icon ion-ios-minus-outline" ng-click="tactique.showDelete = !tactique.showDelete">
-            </button>
-        </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content scroll="false">
         <div class="row" id="tactique">
@@ -64,7 +60,7 @@
                     </div>
 
                     <div ng-if="tactique.formation === '4-3-3'">
-                        <four-threethree></four-threethree>
+                        <four-threethree info="tactique.playerSelected" drag="true" drop-complete="tactique.onDropComplete(index, data)"></four-threethree>
                     </div>
                 </div>
             </div>

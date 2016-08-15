@@ -460,115 +460,151 @@ input::-webkit-input-placeholder {
         }
     }
 }
-// .button-player {
-//     background-image: url('../img/hexagon_playerz_stroke.png');
-//     background-size: 25% 20vh;
-//     background-position: left top;
-//     background-repeat: no-repeat;
-//     display: inline-block;
-//     width: 25%;
-//     height: 20vh;
-//     padding-top: 7vh;
-//     font-size: 1em;
-// }
-//
-// .stricker {
-//     clear: both;
-//     margin: 0 auto;
-//     width: 50%;
-// }
-// .midfielder, .defender {
-//     margin: 0 auto;
-//     clear: both;
-//     width: 100%
-// }
-// .goalkeeper {
-//     margin: 0 auto;
-//     clear: both;
-//     width: 100%;
-// }
-//
-// .div .row-player + .row-player, .row-player {
-//     float: right;
-// }
 body,
 html {
     height: 100%;
 }
-.dv-tac {
+.div-tac-fft {
     text-align: center;
-}
-.defender,
-.goalkeeper,
-.midfielder,
-.stricker {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 0;
-}
-.defender div,
-.midfielder div {
-    display: flex;
-    flex: 0 0 auto;
-    width: 25%;
-    height: 17vh;
-    background-image: url('../img/hexagon_playerz_stroke.png');
-    background-size: 100% 100%;
-    background-position: left top;
-    background-repeat: no-repeat;
-}
-.defender div a,
-.goalkeeper a,
-.midfielder div a,
-.stricker a {
-    margin: auto;
-}
-div.dv-tac div.drag-enter a,
-div.dv-tac div.dragging a {
-    color: $white;
-}
-.goalkeeper {
-    flex-direction: column;
-    span {
+    .defender,
+    .goalkeeper,
+    .midfielder,
+    .stricker {
         display: flex;
         flex-direction: row;
-        /* margin: auto; */
-        margin-top: 4%;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 0;
     }
-    div {
+    .defender div,
+    .midfielder div {
         display: flex;
         flex: 0 0 auto;
-        width: 100%;
+        width: 25%;
         height: 17vh;
         background-image: url('../img/hexagon_playerz_stroke.png');
-        background-size: 25% 100%;
-        background-position: center;
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .defender div a,
+    .goalkeeper a,
+    .midfielder div a,
+    .stricker a {
+        margin: auto;
+    }
+    & div.drag-enter a,
+    & div.dragging a {
+        color: $white;
+    }
+    .goalkeeper {
+        flex-direction: column;
+        span {
+            display: flex;
+            flex-direction: row;
+            /* margin: auto; */
+            margin-top: 4%;
+            justify-content: space-around;
+        }
+        div {
+            display: flex;
+            flex: 0 0 auto;
+            width: 100%;
+            height: 17vh;
+            background-image: url('../img/hexagon_playerz_stroke.png');
+            background-size: 25% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+    .stricker div:first-child {
+        padding-left: 25%;
+        display: flex;
+        flex: 0 0 auto;
+        width: 50%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 50% 100%;
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+    .stricker div:last-child {
+        padding-right: 25%;
+        display: flex;
+        flex: 0 0 auto;
+        width: 50%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 50% 100%;
+        background-position: left top;
         background-repeat: no-repeat;
     }
 }
-.stricker div:first-child {
-    padding-left: 25%;
-    display: flex;
-    flex: 0 0 auto;
-    width: 50%;
-    height: 17vh;
-    background-image: url('../img/hexagon_playerz_stroke.png');
-    background-size: 50% 100%;
-    background-position: right top;
-    background-repeat: no-repeat;
-}
-.stricker div:last-child {
-    padding-right: 25%;
-    display: flex;
-    flex: 0 0 auto;
-    width: 50%;
-    height: 17vh;
-    background-image: url('../img/hexagon_playerz_stroke.png');
-    background-size: 50% 100%;
-    background-position: left top;
-    background-repeat: no-repeat;
+.div-tac-ftt {
+    text-align: center;
+    .defender,
+    .goalkeeper,
+    .midfielder,
+    .stricker {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+    .midfielder,
+    .stricker {
+        justify-content: center;
+    }
+    & div.drag-enter a,
+    & div.dragging a {
+        color: $white;
+    }
+    .defender div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 25%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .midfielder div,
+    .stricker div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 25%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .defender div a,
+    .goalkeeper a,
+    .midfielder div a,
+    .stricker a {
+        margin: auto;
+    }
+    .goalkeeper {
+        flex-direction: column;
+        span {
+            display: flex;
+            flex-direction: row;
+            /* margin: auto; */
+            margin-top: 4%;
+            justify-content: space-around;
+        }
+        div {
+            display: flex;
+            flex: 0 0 auto;
+            width: 100%;
+            height: 17vh;
+            background-image: url('../img/hexagon_playerz_stroke.png');
+            background-size: 25% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
 }
 .hexagon {
     position: relative;
@@ -608,10 +644,12 @@ div.dv-tac div.dragging a {
         height: 100%;
     }
     #stat {
+        padding-top: 0;
+        padding-bottom: 0;
         a {}
         a img {
-            width: 70%;
-            height: 70%;
+            width: 62%;
+            height: 9vh;
         }
         div {
             display: flex;
@@ -630,7 +668,8 @@ div.dv-tac div.dragging a {
         //     margin-left: 20%;
         // }
     }
-    #fft {
+    #fft,
+    #ftt {
         margin: auto;
     }
     #div-brand {
@@ -671,6 +710,10 @@ div.dv-tac div.dragging a {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        a img {
+            width: 62%;
+            height: 9vh;
+        }
     }
     #info-match {
         display: flex;
@@ -688,12 +731,6 @@ div.dv-tac div.dragging a {
             color: $white;
         }
     }
-}
-.vertical-line {
-    width: 1px;
-    background-color: $white;
-    height: 15px;
-    display: flex;
 }
 .content-stat {
     display: flex;

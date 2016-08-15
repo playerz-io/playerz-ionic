@@ -79,7 +79,7 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
 };
 exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
 
-    console.log('ok');
+  //  console.log('ok');
     //get stat for the good match
     let getStatMatch = (stat) => stat.match_id === match_ID;
     let stat = player.statistics.filter(getStatMatch);

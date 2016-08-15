@@ -26,19 +26,6 @@ angular.module('starter.controller.match-stat', [])
         self.cardActived = false;
         self.foulsActived = false;
 
-        $ionicLoading.show({
-
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
-
-        $timeout(function() {
-            $ionicLoading.hide();
-        }, 2000);
-
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');
             self.goalkeeper = !self.goalkeeper;

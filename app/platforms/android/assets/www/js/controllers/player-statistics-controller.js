@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.player-statistics', [])
-    .controller("PlayerStatCtrl", function(PlayerService, $stateParams, $scope, TeamService, MatchService) {
+    .controller("PlayerStatCtrl", function(PlayerService, StorageService, $stateParams, $scope, TeamService, MatchService) {
 
         //force to display back button
         $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
@@ -10,8 +10,8 @@ angular.module('starter.controller.player-statistics', [])
 
         let self = this;
 
-        self.matchId = $stateParams.matchId;
-        self.playerId = $stateParams.playerId;
+        self.matchId = StorageService.getStorageMatchId();
+        self.playerId = StorageService.getStoragePlayerId();
 
         self.getStatisticsMatch = () => {
             PlayerService.getStatisticsMatch(self.playerId, self.matchId)

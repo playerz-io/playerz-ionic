@@ -11,6 +11,7 @@
     </ion-floating-button>
     <ion-content>
         <ion-refresher on-refresh="comeup.getNewMatchComeUp()"></ion-refresher>
+
         <div class="row">
             <div class="col">
                 <label class="item item-input">
@@ -18,7 +19,7 @@
                     <input type="text" placeholder="Rechercher un match" ng-model="comeup.searchMatch">
                 </label>
                 </br>
-
+                <p ng-if='comeup.matchs.length ===  0' class="text-center">Vous n'avez pas de match</p>
                 <ion-list show-delete="comeup.showDelete">
                     <ion-item class="item text-center" ng-repeat="match in comeup.matchs | filter:comeup.searchMatch"  ng-click="comeup.saveMatchID(match)">
                             <h2 ng-bind-html="comeup.getBillingName(match)">  </h2>

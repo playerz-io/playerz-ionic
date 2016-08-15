@@ -5,9 +5,7 @@ let getCategoriesFoot = () => {
   for(let i = 7; i < 21; i++){
     categories.push('U'+i);
   }
-
   categories.push('Sénior', 'Vétéran');
-
   return categories;
 }
 

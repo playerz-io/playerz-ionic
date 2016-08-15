@@ -10571,15 +10571,17 @@ div.dv-tac div.dragging a {
 #match-stat .row {
   height: 100%; }
 
-#match-stat #stat a img {
-  width: 70%;
-  height: 70%; }
-
-#match-stat #stat div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%; }
+#match-stat #stat {
+  padding-top: 0;
+  padding-bottom: 0; }
+  #match-stat #stat a img {
+    width: 70%;
+    height: 70%; }
+  #match-stat #stat div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%; }
 
 #match-stat #fft {
   margin: auto; }

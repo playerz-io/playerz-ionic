@@ -40,20 +40,20 @@ angular
             TeamService.getNameClub()
                 .success((data) => {
                     self.clubsArray = data.arrayNameClub;
-                    console.log(data);
                 })
-                .error((data) => {
-                    //console.log(data);
-                });
         };
         self.getNameClub();
 
-        let searchClubs = function(searchFilter) {
+        let _search = function(searchFilter, type) {
             console.log('Searching clubs for ' + searchFilter);
             var deferred = $q.defer();
-            var matches = self.clubsArray.filter(function(club) {
-                //console.log(club);
-                if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
+            let array = null;
+            if (type === 'clubs') array = self.clubsArray;
+            if (type === 'categories') array = self.categoriesArray;
+
+            var matches = array.filter(function(club) {
+                if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1)
+                    return true;
             });
             $timeout(function() {
                 deferred.resolve(matches);
@@ -61,10 +61,9 @@ angular
             return deferred.promise;
         };
 
-        self.search = () => {
-            searchClubs(self.user.name_club).then(
+        self.searchClubs = () => {
+            _search(self.user.name_club, 'clubs').then(
                 function(matches) {
-
                     if (self.user.name_club.length === 0) {
                         self.clubs = {};
                     } else {
@@ -74,8 +73,37 @@ angular
             )
         };
 
-        self.selectedItem = (index) => {
+        self.selectedClubs = (index) => {
             self.user.name_club = self.clubs[index];
             self.clubs = {};
-        }
+        };
+
+        self.getCategories = () => {
+            TeamService.getCategories()
+                .success((data) => {
+                    self.categoriesArray = data.categories;
+                });
+        };
+        self.getCategories();
+
+        self.searchCategories = () => {
+            _search(self.user.category, 'categories').then(
+                function(matches) {
+                    if (self.user.category.length === 0) {
+                        self.categories = {};
+                    } else {
+                        self.categories = matches;
+                    }
+                }
+            )
+        };
+
+        self.selectedCategories = (index) => {
+            self.user.category = self.categories[index];
+            self.categories = {};
+        };
+
+
+
+
     });
