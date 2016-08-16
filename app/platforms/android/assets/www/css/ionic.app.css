@@ -9927,7 +9927,7 @@ ion-content {
   background: linear-gradient(to right, #313B42, #3C4F5E); }
 
 input::-webkit-input-placeholder {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 .backgroundRed {
   background-color: #c0392b; }
@@ -9945,7 +9945,7 @@ input::-webkit-input-placeholder {
 #login h1 {
   margin: 5vh;
   font-size: 3.6em;
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #login label {
   background: rgba(0, 0, 0, 0.3);
@@ -9956,7 +9956,7 @@ input::-webkit-input-placeholder {
   border-radius: 25px; }
   #login label input[type="email"],
   #login label input[type="password"] {
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 25px;
     padding-left: 1rem; }
@@ -9975,14 +9975,14 @@ input::-webkit-input-placeholder {
       background-color: #2d4471; }
   #login button#btn-sign-in {
     background-color: #fe4e50;
-    color: #FFFFFF; }
+    color: #ffffff; }
     #login button#btn-sign-in.activated {
       border: 0;
       background-color: #fe1b1e; }
 
 #login a {
   text-decoration: none;
-  color: #FFFFFF; }
+  color: #ffffff; }
   #login a.activated {
     color: #fe4e50; }
   #login a#a-sign-up {
@@ -10024,19 +10024,19 @@ input::-webkit-input-placeholder {
   background: none;
   margin-bottom: 10px;
   margin-top: 10px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   padding: 0;
   border-radius: 25px; }
   #player-view label i.placeholder-icon:first-child {
     padding-left: 6px;
-    color: #FFFFFF; }
+    color: #ffffff; }
   #player-view label input[type="text"] {
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none; }
 
 #player-view ion-item {
   background: none;
-  color: #FFFFFF; }
+  color: #ffffff; }
   #player-view ion-item.item {
     display: flex;
     justify-content: space-between;
@@ -10058,12 +10058,12 @@ input::-webkit-input-placeholder {
 #player-view h2,
 #player-view h3,
 #player-view p {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #player-view ion-option-button {
   background-color: #fe4e50; }
   #player-view ion-option-button.button {
-    color: #FFFFFF; }
+    color: #ffffff; }
 
 #match-comeup label,
 #match-played label,
@@ -10072,7 +10072,7 @@ input::-webkit-input-placeholder {
   background: none;
   margin-bottom: 10px;
   margin-top: 10px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   padding: 0;
   border-radius: 25px; }
   #match-comeup label i.placeholder-icon:first-child,
@@ -10080,12 +10080,12 @@ input::-webkit-input-placeholder {
   #menu-match label i.placeholder-icon:first-child,
   #troop label i.placeholder-icon:first-child {
     padding-left: 6px;
-    color: #FFFFFF; }
+    color: #ffffff; }
   #match-comeup label input[type="text"],
   #match-played label input[type="text"],
   #menu-match label input[type="text"],
   #troop label input[type="text"] {
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none; }
 
 #match-comeup ion-item,
@@ -10093,7 +10093,7 @@ input::-webkit-input-placeholder {
 #menu-match ion-item,
 #troop ion-item {
   background: none;
-  color: #FFFFFF; }
+  color: #ffffff; }
   #match-comeup ion-item.item,
   #match-played ion-item.item,
   #menu-match ion-item.item,
@@ -10135,7 +10135,7 @@ input::-webkit-input-placeholder {
 #troop h2,
 #troop h3,
 #troop p {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #match-comeup ion-option-button,
 #match-played ion-option-button,
@@ -10146,7 +10146,7 @@ input::-webkit-input-placeholder {
   #match-played ion-option-button.button,
   #menu-match ion-option-button.button,
   #troop ion-option-button.button {
-    color: #FFFFFF; }
+    color: #ffffff; }
 
 #match-comeup ion-item,
 #match-played ion-item {
@@ -10195,7 +10195,7 @@ input::-webkit-input-placeholder {
 #register-profile input,
 #register-team input,
 #stat-in-live-view input {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #account label.item,
 #change-password label.item,
@@ -10240,7 +10240,7 @@ input::-webkit-input-placeholder {
   background: none;
   border: 0;
   border-bottom: 1px solid #fe4e50;
-  color: #FFFFFF; }
+  color: #ffffff; }
   #account .item a,
   #change-password .item a,
   #forgot-password-view .item a,
@@ -10252,7 +10252,7 @@ input::-webkit-input-placeholder {
   #register-profile .item a,
   #register-team .item a,
   #stat-in-live-view .item a {
-    color: #FFFFFF; }
+    color: #ffffff; }
   #account .item.activated,
   #change-password .item.activated,
   #forgot-password-view .item.activated,
@@ -10289,7 +10289,7 @@ input::-webkit-input-placeholder {
   #register-profile .item-toggle p,
   #register-team .item-toggle p,
   #stat-in-live-view .item-toggle p {
-    color: #FFFFFF; }
+    color: #ffffff; }
   #account .item-toggle p:first-child,
   #change-password .item-toggle p:first-child,
   #forgot-password-view .item-toggle p:first-child,
@@ -10341,7 +10341,7 @@ input::-webkit-input-placeholder {
 #register-profile label .input-label,
 #register-team label .input-label,
 #stat-in-live-view label .input-label {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #account .item-select select,
 #change-password .item-select select,
@@ -10355,7 +10355,7 @@ input::-webkit-input-placeholder {
 #register-team .item-select select,
 #stat-in-live-view .item-select select {
   background: none;
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #account .item-stacked-label input,
 #change-password .item-stacked-label input,
@@ -10381,7 +10381,7 @@ input::-webkit-input-placeholder {
 #register-profile .input-label,
 #register-team .input-label,
 #stat-in-live-view .input-label {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #account .item h2,
 #change-password .item h2,
@@ -10394,11 +10394,11 @@ input::-webkit-input-placeholder {
 #register-profile .item h2,
 #register-team .item h2,
 #stat-in-live-view .item h2 {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #account .item.item-divider {
   background-color: #fe4e50;
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 .popover .scroll-content {
   margin: 0; }
@@ -10411,7 +10411,7 @@ input::-webkit-input-placeholder {
   color: white;
   text-transform: uppercase; }
   #match button h1 {
-    color: #FFFFFF; }
+    color: #ffffff; }
   #match button:first-child {
     background-color: yellow; }
 
@@ -10425,7 +10425,7 @@ input::-webkit-input-placeholder {
   background: none;
   border: 1px solid #fe4e50; }
   #tactique .item .input-label {
-    color: #FFFFFF; }
+    color: #ffffff; }
 
 #tactique .div-player {
   display: flex;
@@ -10434,7 +10434,7 @@ input::-webkit-input-placeholder {
   margin-left: -2px; }
 
 #tactique .div-player > div {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.85em;
   border: 1px solid #fe4e50;
   flex: 0 0 auto;
@@ -10443,11 +10443,11 @@ input::-webkit-input-placeholder {
   width: calc(25% - 2px); }
   #tactique .div-player > div.drag-enter, #tactique .div-player > div.dragging {
     background: #fe4e50;
-    border: 1px solid #FFFFFF; }
+    border: 1px solid #ffffff; }
 
 #tactique .item-select select {
   background: none;
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #tactique .rem {
   border: 1px solid #fe4e50;
@@ -10455,87 +10455,138 @@ input::-webkit-input-placeholder {
   margin: 2px;
   padding: 2px; }
   #tactique .rem a {
-    color: #FFFFFF; }
+    color: #ffffff; }
   #tactique .rem.drag-enter, #tactique .rem.dragging {
     background: #fe4e50;
-    border: 1px solid #FFFFFF; }
+    border: 1px solid #ffffff; }
 
 body,
 html {
   height: 100%; }
 
-.dv-tac {
+.div-tac-fft {
   text-align: center; }
-
-.defender,
-.goalkeeper,
-.midfielder,
-.stricker {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 0; }
-
-.defender div,
-.midfielder div {
-  display: flex;
-  flex: 0 0 auto;
-  width: 25%;
-  height: 17vh;
-  background-image: url("../img/hexagon_playerz_stroke.png");
-  background-size: 100% 100%;
-  background-position: left top;
-  background-repeat: no-repeat; }
-
-.defender div a,
-.goalkeeper a,
-.midfielder div a,
-.stricker a {
-  margin: auto; }
-
-div.dv-tac div.drag-enter a,
-div.dv-tac div.dragging a {
-  color: #FFFFFF; }
-
-.goalkeeper {
-  flex-direction: column; }
-  .goalkeeper span {
+  .div-tac-fft .defender,
+  .div-tac-fft .goalkeeper,
+  .div-tac-fft .midfielder,
+  .div-tac-fft .stricker {
     display: flex;
     flex-direction: row;
-    /* margin: auto; */
-    margin-top: 4%;
-    justify-content: space-around; }
-  .goalkeeper div {
+    flex-wrap: wrap;
+    margin-top: 0; }
+  .div-tac-fft .defender div,
+  .div-tac-fft .midfielder div {
     display: flex;
     flex: 0 0 auto;
-    width: 100%;
+    width: 25%;
     height: 17vh;
     background-image: url("../img/hexagon_playerz_stroke.png");
-    background-size: 25% 100%;
-    background-position: center;
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat; }
+  .div-tac-fft .defender div a,
+  .div-tac-fft .goalkeeper a,
+  .div-tac-fft .midfielder div a,
+  .div-tac-fft .stricker a {
+    margin: auto; }
+  .div-tac-fft div.drag-enter a,
+  .div-tac-fft div.dragging a {
+    color: #ffffff; }
+  .div-tac-fft .goalkeeper {
+    flex-direction: column; }
+    .div-tac-fft .goalkeeper span {
+      display: flex;
+      flex-direction: row;
+      /* margin: auto; */
+      margin-top: 4%;
+      justify-content: space-around; }
+    .div-tac-fft .goalkeeper div {
+      display: flex;
+      flex: 0 0 auto;
+      width: 100%;
+      height: 17vh;
+      background-image: url("../img/hexagon_playerz_stroke.png");
+      background-size: 25% 100%;
+      background-position: center;
+      background-repeat: no-repeat; }
+  .div-tac-fft .stricker div:first-child {
+    padding-left: 25%;
+    display: flex;
+    flex: 0 0 auto;
+    width: 50%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 50% 100%;
+    background-position: right top;
+    background-repeat: no-repeat; }
+  .div-tac-fft .stricker div:last-child {
+    padding-right: 25%;
+    display: flex;
+    flex: 0 0 auto;
+    width: 50%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 50% 100%;
+    background-position: left top;
     background-repeat: no-repeat; }
 
-.stricker div:first-child {
-  padding-left: 25%;
-  display: flex;
-  flex: 0 0 auto;
-  width: 50%;
-  height: 17vh;
-  background-image: url("../img/hexagon_playerz_stroke.png");
-  background-size: 50% 100%;
-  background-position: right top;
-  background-repeat: no-repeat; }
-
-.stricker div:last-child {
-  padding-right: 25%;
-  display: flex;
-  flex: 0 0 auto;
-  width: 50%;
-  height: 17vh;
-  background-image: url("../img/hexagon_playerz_stroke.png");
-  background-size: 50% 100%;
-  background-position: left top;
-  background-repeat: no-repeat; }
+.div-tac-ftt {
+  text-align: center; }
+  .div-tac-ftt .defender,
+  .div-tac-ftt .goalkeeper,
+  .div-tac-ftt .midfielder,
+  .div-tac-ftt .stricker {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0; }
+  .div-tac-ftt .midfielder,
+  .div-tac-ftt .stricker {
+    justify-content: center; }
+  .div-tac-ftt div.drag-enter a,
+  .div-tac-ftt div.dragging a {
+    color: #ffffff; }
+  .div-tac-ftt .defender div {
+    display: flex;
+    flex: 0 0 auto;
+    width: 25%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat; }
+  .div-tac-ftt .midfielder div,
+  .div-tac-ftt .stricker div {
+    display: flex;
+    flex: 0 0 auto;
+    width: 25%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat; }
+  .div-tac-ftt .defender div a,
+  .div-tac-ftt .goalkeeper a,
+  .div-tac-ftt .midfielder div a,
+  .div-tac-ftt .stricker a {
+    margin: auto; }
+  .div-tac-ftt .goalkeeper {
+    flex-direction: column; }
+    .div-tac-ftt .goalkeeper span {
+      display: flex;
+      flex-direction: row;
+      /* margin: auto; */
+      margin-top: 4%;
+      justify-content: space-around; }
+    .div-tac-ftt .goalkeeper div {
+      display: flex;
+      flex: 0 0 auto;
+      width: 100%;
+      height: 17vh;
+      background-image: url("../img/hexagon_playerz_stroke.png");
+      background-size: 25% 100%;
+      background-position: center;
+      background-repeat: no-repeat; }
 
 .hexagon {
   position: relative;
@@ -10566,7 +10617,7 @@ div.dv-tac div.dragging a {
   height: 20%; }
 
 #match-stat #btn-but img {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #match-stat .row {
   height: 100%; }
@@ -10575,15 +10626,16 @@ div.dv-tac div.dragging a {
   padding-top: 0;
   padding-bottom: 0; }
   #match-stat #stat a img {
-    width: 70%;
-    height: 70%; }
+    width: 62%;
+    height: 9vh; }
   #match-stat #stat div {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%; }
 
-#match-stat #fft {
+#match-stat #fft,
+#match-stat #ftt {
   margin: auto; }
 
 #match-stat #div-brand {
@@ -10600,7 +10652,7 @@ div.dv-tac div.dragging a {
   justify-content: space-between; }
   #match-stat #score span {
     margin: auto;
-    color: #FFFFFF; }
+    color: #ffffff; }
   #match-stat #score p:nth-child(2) {
     width: 10%;
     display: flex;
@@ -10620,6 +10672,9 @@ div.dv-tac div.dragging a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; }
+  #match-stat #div-act-dead-time a img {
+    width: 62%;
+    height: 9vh; }
 
 #match-stat #info-match {
   display: flex;
@@ -10633,13 +10688,7 @@ div.dv-tac div.dragging a {
     justify-content: space-around; }
   #match-stat #info-match p {
     align-self: center;
-    color: #FFFFFF; }
-
-.vertical-line {
-  width: 1px;
-  background-color: #FFFFFF;
-  height: 15px;
-  display: flex; }
+    color: #ffffff; }
 
 .content-stat {
   display: flex;
@@ -10650,13 +10699,13 @@ div.dv-tac div.dragging a {
   margin-top: 10px; }
 
 #stat-in-live-view p {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #stat-match-view h2,
 #stat-match-view p,
 #stat-player-view h2,
 #stat-player-view p {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 #stat-match-view #stat,
 #stat-player-view #stat {
@@ -10697,7 +10746,7 @@ div.dv-tac div.dragging a {
   margin-top: 15px; }
 
 #stat-in-live-player-view {
-  color: #FFFFFF; }
+  color: #ffffff; }
   #stat-in-live-player-view ion-content {
     display: flex; }
   #stat-in-live-player-view div.scroll {
@@ -10706,7 +10755,7 @@ div.dv-tac div.dragging a {
     flex-direction: column; }
     #stat-in-live-player-view div.scroll h1 {
       text-align: center;
-      color: #FFFFFF; }
+      color: #ffffff; }
     #stat-in-live-player-view div.scroll div.box-stat {
       flex-direction: row;
       flex-wrap: wrap;
@@ -10728,7 +10777,7 @@ div.dv-tac div.dragging a {
 #summary-match-view ion-content {
   display: flex; }
   #summary-match-view ion-content a {
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
     margin: auto;
     background: #fe4e50;
@@ -10738,4 +10787,12 @@ div.dv-tac div.dragging a {
       background-color: #fe1b1e; }
 
 .button-player a:last-child.activated {
-  color: #FFFFFF; }
+  color: #ffffff; }
+
+#auto-complete i {
+  font-size: 0.8rem; }
+
+#auto-complete li.item {
+  background: #ffffff;
+  color: #7f8c8d;
+  font-size: 0.8rem; }

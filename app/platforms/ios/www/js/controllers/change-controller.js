@@ -10,9 +10,9 @@ angular.module('starter.controller.change', [])
         self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
 
         //force to display back button
-        $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
-            viewData.enableBack = true;
-        });
+        // $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+        //     viewData.enableBack = true;
+        // });
 
         self.onDropComplete = (index, obj, evt) => {
             //dropped

@@ -1,33 +1,98 @@
-// Ionic Starter App
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 'use strict';
 
-angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-        'ionic-table', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset', 'starter.controller.account', 'starter.controller.main-settings',
-        'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live', 'starter.controller.stat-in-live-player', 'ngCordovaOauth', 'starter.controller.welcome', 'ion-floating-menu', 'starter.controller.menu-match', 'starter.controller.change'
-    ])
-    // TODO: 'angular-stripe',
-    .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
+angular.module('starter',
+    [
+        'ionic',
+        'starter.controller.login',
+        'starter.controller.profile',
+        'starter.controller.register',
+        'starter.controller.home',
+        'starter.controller.troop',
+        'starter.controller.player',
+        'starter.controller.match',
+        'starter.controller.tactique',
+        'starter.directives.fourFourtwo',
+        'starter.directives.fourThreethree',
+        'firebase',
+        'ngStorage',
+        'starter.controller.match-stat',
+        'disableAll',
+        'starter.controller.summary-stat',
+        'ionic-table',
+        'starter.controller.match-comeup',
+        'starter.controller.match-played',
+        'starter.controller.stat-end-match',
+        'starter.controller.profile-setting',
+        'starter.controller.player-statistics',
+        'starter.controller.facebook-sport',
+        'starter.controller.facebook-team',
+        'starter.controller.forgot',
+        'starter.controller.reset',
+        'starter.controller.account',
+        'starter.controller.main-settings',
+        'starter.controller.change-password',
+        'ngCordova',
+        'ngDraggable',
+        'ngMaterial',
+        'starter.controller.stat-in-live',
+        'starter.controller.stat-in-live-player',
+        'ngCordovaOauth',
+        'starter.controller.welcome',
+        'ion-floating-menu',
+        'starter.controller.menu-match',
+        'starter.controller.change',
+        'tmh.dynamicLocale',
+        'pascalprecht.translate'
+    ]
+)
 
+// TODO: 'angular-stripe',
+.constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
 .constant('AUTH_EVENTS', {
     notAuthenticated: 'auth-not-authenticated'
 })
-
 .constant('API_ENDPOINT', {
     url: 'http://localhost:5000/api'
     //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
+.constant('availableLanguages', ['en-US', 'fr-fr'])
+.constant('defaultLanguage', 'fr-fr')
+.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window, tmhDynamicLocale, $translate, $cordovaGlobalization,
+              availableLanguages, defaultLanguage) {
 
-.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
+    function applyLanguage(language) {
+        tmhDynamicLocale.set(language.toLowerCase());
+    }
+
+    function getSuitableLanguage(language) {
+        for (var index = 0; index < availableLanguages.length; index++) {
+            if (availableLanguages[index].toLowerCase() === language.toLocaleLowerCase()) {
+                return availableLanguages[index];
+            }
+        }
+        return defaultLanguage;
+    }
+
+    function setLanguage(){
+        if (typeof navigator.globalization !== "undefined") {
+            $cordovaGlobalization.getPreferredLanguage().then(function (result) {
+                var language = getSuitableLanguage(result.value);
+                applyLanguage(language);
+                $translate.use(language);
+            });
+        } else {
+          applyLanguage(defaultLanguage);
+        }
+    }
 
     $ionicPlatform.ready(function() {
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
 
+        setLanguage();
+
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             // Don't remove this line unless you know what you are doing. It stops the viewport
             // from snapping when text inputs are focused. Ionic handles this internally for
             // a much nicer keyboard experience.
@@ -36,11 +101,9 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
-
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
-
         if (next.name === 'tactique' || next.name === 'match-statistics') {
             screen.lockOrientation('landscape');
         } else {
@@ -69,11 +132,9 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     });
 
 
-
     $rootScope.user = {};
 
     $window.fbAsyncInit = function() {
-
         FB.init({
             appId: '508256989378454',
             cookie: true, // enable cookies to allow the server to access
@@ -81,26 +142,31 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             xfbml: true, // parse social plugins on this page
             version: 'v2.5' // use graph api version 2.5
         });
-
     };
 
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $mdGestureProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $mdGestureProvider, $translateProvider, defaultLanguage, tmhDynamicLocaleProvider) {
+    //set default language
+    tmhDynamicLocaleProvider
+        .localeLocationPattern('lib/angular-i18n/angular-locale_{{locale}}.js');
+    $translateProvider.useStaticFilesLoader({
+        'prefix': 'i18n/',
+        'suffix': '.json'
+    });
+
+    $translateProvider.preferredLanguage(defaultLanguage);
 
     //set tabs in bottom for all platform
     $ionicConfigProvider.tabs
         .position("bottom")
         .style("standard");
 
-
     $mdGestureProvider.skipClickHijack();
 
     //set key stripe
     // stripeProvider.setPublishableKey('pk_test_DmbU7fQcToQjn3DyOH35uBuc');
-
     $stateProvider
-
         .state('login', {
             url: '/',
             templateUrl: 'templates/login.html',
@@ -306,7 +372,5 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
         });
 
-
     $urlRouterProvider.otherwise('/');
-
 });

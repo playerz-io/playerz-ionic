@@ -42,6 +42,7 @@
 		1417DDFE36244C3C84D56FF7 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0511C5D2AFCF41FCAF6B7037 /* FacebookConnectPlugin.m */; };
 		E73AB2D0FD884AF7958280E4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8812F2214243F0A23DAFE7 /* FacebookSDK.framework */; };
 		57D1A220306B49FCB8F87952 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA5D2E0492343AAB02E5609 /* CDVInAppBrowser.m */; };
+		FF7B900861F14F529D9E603B /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6570E5101C427A8AC08025 /* CDVGlobalization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,8 @@
 		AF8812F2214243F0A23DAFE7 /* FacebookSDK.framework */ = {isa = PBXFileReference; name = "FacebookSDK.framework"; path = "playerz/Plugins/phonegap-facebook-plugin/FacebookSDK.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		FDA5D2E0492343AAB02E5609 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		F01EE198CA3945EE84DB86F3 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5B6570E5101C427A8AC08025 /* CDVGlobalization.m */ = {isa = PBXFileReference; name = "CDVGlobalization.m"; path = "cordova-plugin-globalization/CDVGlobalization.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		5063E81FB28D4252AF91832E /* CDVGlobalization.h */ = {isa = PBXFileReference; name = "CDVGlobalization.h"; path = "cordova-plugin-globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +287,8 @@
 				EBD986257F404717AB0A7DC0 /* FacebookConnectPlugin.h */,
 				FDA5D2E0492343AAB02E5609 /* CDVInAppBrowser.m */,
 				F01EE198CA3945EE84DB86F3 /* CDVInAppBrowser.h */,
+				5B6570E5101C427A8AC08025 /* CDVGlobalization.m */,
+				5063E81FB28D4252AF91832E /* CDVGlobalization.h */,
 			);
 			name = Plugins;
 			path = "playerz/Plugins";
@@ -416,6 +421,7 @@
 				94C889B0B962414084304B95 /* Toast.m in Sources */,
 				1417DDFE36244C3C84D56FF7 /* FacebookConnectPlugin.m in Sources */,
 				57D1A220306B49FCB8F87952 /* CDVInAppBrowser.m in Sources */,
+				FF7B900861F14F529D9E603B /* CDVGlobalization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

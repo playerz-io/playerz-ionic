@@ -1,0 +1,13 @@
+{
+  "LOGIN": "Login",
+  "EMAIL": "E-mail",
+  "PASSWORD": "Password",
+  "LOGIN_WITH_FACEBOOK": "Login with Facebook",
+  "SIGN_IN": "Sign-in",
+  "FORGOT_PASSWORD": "Forgot password",
+
+  "DASHBOARD": "Dashboard",
+  "RECENT_UPDATES": "Recent Updates",
+  "UPCOMING": "Upcoming",
+  "ACCOUNT_TAB": "Account"
+}

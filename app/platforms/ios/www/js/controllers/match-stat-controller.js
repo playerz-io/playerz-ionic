@@ -1,20 +1,37 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading) {
 
         let self = this;
+
+
 
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
         self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
         self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
+        self.actions = FireService.getArrayActions(self.matchId, self.coachId);
+        self.statMatch = FireService.getStatMatch(self.matchId, self.coachId);
+        self.match = FireService.getMatch(self.matchId, self.coachId);
+        console.log(self.matchId);
         let counter;
         self.minutes = 0;
         self.seconds = 0;
         self.textSeconds = null;
         self.textMinutes = null;
         self.fullTime = null;
+        self.timerRunning = false;
+        self.goalkeeper = false;
+        self.cardActived = false;
+        self.foulsActived = false;
+
+        self.showActionsGoalkeeper = () => {
+            console.log('goalkeeper');
+            self.goalkeeper = !self.goalkeeper;
+        }
+
+
 
         self.time = () => {
             self.seconds++;
@@ -46,6 +63,19 @@ angular.module('starter.controller.match-stat', [])
                 })
         };
 
+        self.timer = () => {
+            if (self.timerRunning) {
+                if (angular.isDefined(counter)) {
+                    console.log('counter is defined stop')
+                    $interval.cancel(counter);
+                    counter = undefined;
+                    self.timerRunning = false;
+                }
+            } else {
+                self.startTimer();
+            }
+        }
+
         self.stopTimer = () => {
             console.log('OK');
             if (angular.isDefined(counter)) {
@@ -56,12 +86,15 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.startTimer = () => {
+            self.timerRunning = true;
             if (angular.isDefined(counter)) {
                 console.log('counter is defined')
                 return;
             }
             counter = $interval(self.time, 1000);
         };
+
+
 
         self.showCountdownPopup = () => {
             let popup = $ionicPopup.confirm({
@@ -78,32 +111,6 @@ angular.module('starter.controller.match-stat', [])
             })
         };
 
-        let putMatchFinished = () => {
-            MatchService.putMatchFinished(self.matchId)
-                .success((data) => {
-                    console.log(data);
-                })
-                .error((data) => {
-                    console.log(data);
-                })
-        };
-
-        self.showConfirmEndMatchPopup = function() {
-            let popup = $ionicPopup.confirm({
-                title: 'Fin du match',
-                template: 'Etes-vous sûr de vouloir terminer le match ?'
-            });
-            popup.then(function(res) {
-                if (res) {
-                    putMatchFinished();
-                    $state.go("summary-stat");
-                } else {
-
-                }
-            });
-        };
-
-
         //  update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {
             PlayerService.updateStatistic(player_id, self.matchId, stat)
@@ -119,6 +126,9 @@ angular.module('starter.controller.match-stat', [])
         //count ball touched
         self.countBallPlayed = function(player) {
             self.updateStatistic(player.$id, "ballPlayed");
+            if (self.goalkeeper) {
+                self.showActionsGoalkeeper();
+            }
             PlayerService.addSchema(self.matchId, player.$id.toString())
                 .success(function(data) {
                     console.log(data);
@@ -130,6 +140,18 @@ angular.module('starter.controller.match-stat', [])
 
         self.countMainAction = function(action) {
             console.log(action)
+            if (self.goalkeeper) {
+                self.showActionsGoalkeeper();
+            }
+
+            if (self.cardActived) {
+                self.cardActived = !self.cardActived;
+            }
+
+            if (self.foulsActived) {
+                self.foulsActived = !self.foulsActived;
+            }
+
             PlayerService.countMainAction(self.matchId, action, self.fullTime)
                 .success(function(data) {
                     console.log(data);
@@ -205,5 +227,7 @@ angular.module('starter.controller.match-stat', [])
 
         self.getMatch();
         self.showCountdownPopup();
+
+
 
     });

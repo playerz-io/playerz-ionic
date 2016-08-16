@@ -4,9 +4,9 @@ angular.module('starter.controller.stat-in-live', [])
     .controller('StatInLiveCtrl', function(TeamService, MatchService, StorageService, PlayerService, $scope, FireService, $state, $ionicPopup, $interval) {
 
         //force to display back button
-        $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
-            viewData.enableBack = true;
-        });
+        // $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
+        //     viewData.enableBack = true;
+        // });
 
         let self = this;
 

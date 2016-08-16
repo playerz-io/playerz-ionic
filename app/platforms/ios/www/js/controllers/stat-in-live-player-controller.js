@@ -14,7 +14,7 @@ angular.module('starter.controller.stat-in-live-player', [])
         self.matchId = StorageService.getStorageMatchId();
         self.playerId = $stateParams.playerId;
         let playerSelectedStat = FireService.refPlayerSelectedStat(self.matchId, self.coachId, self.playerId);
-
+        console.log(playerSelectedStat);
         $scope.data = playerSelectedStat;
         // For three-way data bindings, bind it to the scope instead
         playerSelectedStat.$bindTo($scope, "data");
