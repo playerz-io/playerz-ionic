@@ -139,9 +139,14 @@ angular.module('starter')
             }
         });
 
+        let setResultMatch = (match_id) => $http.post(API_ENDPOINT.url + '/setResultMatch', {
+            match_id
+        });
+
         let getGlobalStatisticsMatch = (match_id) => $http.get(API_ENDPOINT.url + '/getGlobalStatisticsMatch');
 
         return {
+            setResultMatch,
             getGlobalStatisticsMatch,
             getMatchStatistics,
             putMatchFinished,

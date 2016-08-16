@@ -1,10 +1,99 @@
-<ion-view title="Statistiques Match">
+<ion-view title="Statistiques Match" id="stat-match-view">
   <ion-nav-bar class="bar-positive" align-title="center">
       <ion-nav-back-button class="button-clear">
       </ion-nav-back-button>
+      <ion-nav-buttons side="secondary">
+      <a class="button" ui-sref="profile">
+        Menu principal
+      </a>
+    </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
-      <p>{{statEndMatch.statistics}}</p>
+
+      <div class="text-center">
+          <h2>{{statEndMatch.match.against_team}}</h2>
+          <p ng-if="statEndMatch.match.place === 'Domicile'">
+              <b>{{statEndMatch.match.statistics.totalBut}} - {{statEndMatch.match.statistics.but_opponent}}</b>
+          </p>
+          <p ng-if="statEndMatch.match.place === 'Exterieur'">
+              <b>{{statEndMatch.match.statistics.but_opponent}} - {{statEndMatch.match.statistics.totalBut}}</b>
+          </p>
+          <div id="div-result" ng-class="{backgroundGreen: statEndMatch.match.result === 'victory' , backgroundRed: statEndMatch.match.result === 'defeat', backgroundGrey: statEndMatch.match.result === 'draw'}">
+              <p>
+
+                  <b>{{statEndMatch.match.result | getResult}}</b>
+
+              </p>
+          </div>
+      </div>
+
+      <div id="stat">
+          <div>
+              <div>
+                  <p>
+                      Ballons perdus: {{statEndMatch.statistics.totalBallLost}}
+                  </p>
+                  <p>
+                      Ballons joués: {{statEndMatch.statistics.totalBallPlayed}}
+                  </p>
+                  <p>
+                      Pourcentage de passes réussies: {{statEndMatch.statistics.totalPassesCompletion}} %
+                  </p>
+                  <p>
+                      Passes ratés: {{statEndMatch.statistics.totalPassesFailed}}
+                  </p>
+                  <p>
+                      Pourcentage de relance: {{statEndMatch.statistics.totalRelanceCompletion}} %
+                  </p>
+
+              </div>
+          </div>
+
+          <div>
+              <div>
+
+                  <p>
+                      Buts: {{statEndMatch.statistics.totalBut}}
+                  </p>
+                  <p>
+                      Buts Encaissés: {{statEndMatch.statistics.but_opponent}}
+                  </p>
+                  <p>
+                      Tirs Cadrés: {{statEndMatch.statistics.totalAttemptsOnTarget}}
+                  </p>
+                  <p>
+                      Tirs Non Cadrés: {{statEndMatch.statistics.totalAttemptsOffTarget}}
+                  </p>
+                  <p>
+                      Hors-Jeu: {{statEndMatch.statistics.totalOffSide}}
+                  </p>
+
+              </div>
+          </div>
+
+          <div>
+              <div>
+                  <p>
+                      Fautes Commises: {{statEndMatch.statistics.totalFoulsCommited}}
+                  </p>
+                  <p>
+                      Fautes Subies: {{statEndMatch.statistics.totalFoulsSuffered}}
+                  </p>
+
+                  <p>
+                      Cartons rouges: {{statEndMatch.statistics.totoalRedCard}}
+                  </p>
+                  <p>
+                      Cartons jaunes: {{statEndMatch.statistics.totalYellowCard}}
+                  </p>
+
+                  <p>
+                      Ballons récupérés: {{statEndMatch.statistics.totalRetrieveBalls}}
+                  </p>
+
+              </div>
+          </div>
+      </div>
   </ion-content>
 
 </ion-view>

@@ -1,10 +1,56 @@
-<ion-view title="{{data.last_name}} {{data.first_name}}">
+<ion-view title="{{data.last_name}} {{data.first_name}}" id="stat-in-live-player-view">
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
 
         </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-content>
-      <p ng-repeat="(key, stat) in data.statistics">{{key}} {{stat}}</p>
+    <ion-content class="padding">
+      <h1>{{data.last_name}} {{data.first_name}}</h1>
+      <div class="box-stat ">
+        <div class="">
+            <p ng-if="data.position ===  'GD'">
+                Duels : {{data.statistics.dual_goalkeeper}}
+            </p>
+            <p ng-if="data.position ===  'GD'">
+                Arrêts : {{data.statistics.saves}}
+            </p>
+            <p ng-if="data.position ===  'GD'">
+                Sorties aeriennes : {{data.statistics.sorties_aeriennes}}
+            </p>
+            <p>But: {{data.statistics.but}}</p>
+            <p>Passes décisives: {{data.statistics.assist}}</p>
+            <p>Tirs Cadrés: {{data.statistics.attemptsOffTarget}}</p>
+        </div>
+        <div class="">
+
+            <p>Hors-jeu: {{data.statistics.offSide}}</p>
+            <p>Avant-Dernière-Passe: {{data.statistics.beforeAssist}}</p>
+            <p>Tirs Non Cadrés: {{data.statistics.attemptsOnTarget}}</p>
+            <p>Ballons joués: {{data.statistics.ballPlayed}}</p>
+            <p>Gestes défensives: {{data.statistics.defensiveAction}}</p>
+        </div>
+        <div class="">
+            <p>Fautes subies: {{data.statistics.foulsSuffered}}</p>
+            <p>Fautes commises: {{data.statistics.foulsCommitted}}</p>
+            <p>Cartons jaunes: {{data.statistics.yellowCard}}</p>
+            <p>Cartons rouges: {{data.statistics.redCard}}</p>
+            <p>Ballons récupérés: {{data.statistics.retrieveBalls}}</p>
+        </div>
+        <div>
+            <p>Ballons perdus: {{data.statistics.ballLost}}</p>
+
+            <p>Passes ratées: {{data.statistics.passesFailed}}</p>
+            <p>Pourcentage de passes réussies: {{data.statistics.passesCompletion}}%</p>
+            <p>Pourcentage de relance: {{data.statistics.relanceCompletion}}%</p>
+
+
+        </div>
+
+      </div>
+
+
+
+
+
     </ion-content>
 </ion-view>

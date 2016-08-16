@@ -1,27 +1,61 @@
-// Ionic Starter App
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 'use strict';
 
-angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
-        'ionic-table', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset', 'starter.controller.account', 'starter.controller.main-settings',
-        'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live', 'starter.controller.stat-in-live-player', 'ngCordovaOauth', 'ionic-material', 'starter.controller.welcome'
-    ])
-    // TODO: 'angular-stripe',
-    .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
+angular.module('starter',
+    [
+        'ionic',
+        'starter.controller.login',
+        'starter.controller.profile',
+        'starter.controller.register',
+        'starter.controller.home',
+        'starter.controller.troop',
+        'starter.controller.player',
+        'starter.controller.match',
+        'starter.controller.tactique',
+        'starter.directives.fourFourtwo',
+        'starter.directives.fourThreethree',
+        'firebase',
+        'ngStorage',
+        'starter.controller.match-stat',
+        'disableAll',
+        'starter.controller.summary-stat',
+        'ionic-table',
+        'starter.controller.match-comeup',
+        'starter.controller.match-played',
+        'starter.controller.stat-end-match',
+        'starter.controller.profile-setting',
+        'starter.controller.player-statistics',
+        'starter.controller.facebook-sport',
+        'starter.controller.facebook-team',
+        'starter.controller.forgot',
+        'starter.controller.reset',
+        'starter.controller.account',
+        'starter.controller.main-settings',
+        'starter.controller.change-password',
+        'ngCordova',
+        'ngDraggable',
+        'ngMaterial',
+        'starter.controller.stat-in-live',
+        'starter.controller.stat-in-live-player',
+        'ngCordovaOauth',
+        'starter.controller.welcome',
+        'ion-floating-menu',
+        'starter.controller.menu-match',
+        'starter.controller.change',
+        'tmh.dynamicLocale',
+        'pascalprecht.translate'
+    ]
+)
 
+// TODO: 'angular-stripe',
+.constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
 .constant('AUTH_EVENTS', {
     notAuthenticated: 'auth-not-authenticated'
 })
-
 .constant('API_ENDPOINT', {
-    //url: 'http://localhost:5000/api'
-    url: 'https://secret-plateau-96989.herokuapp.com/api'
+    url: 'http://localhost:5000/api'
+    //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
-
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {
-
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -36,15 +70,17 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
-
     });
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
-
         if (next.name === 'tactique' || next.name === 'match-statistics') {
             screen.lockOrientation('landscape');
         } else {
-            screen.unlockOrientation();
+            //screen.unlockOrientation();
+        }
+
+        if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {
+            $window.location.reload();
         }
 
         if (!AuthService.isAuthenticated()) {
@@ -69,7 +105,6 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     $rootScope.user = {};
 
     $window.fbAsyncInit = function() {
-
         FB.init({
             appId: '508256989378454',
             cookie: true, // enable cookies to allow the server to access
@@ -77,18 +112,15 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             xfbml: true, // parse social plugins on this page
             version: 'v2.5' // use graph api version 2.5
         });
-
     };
 
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $mdGestureProvider) {
-
     //set tabs in bottom for all platform
     $ionicConfigProvider.tabs
         .position("bottom")
         .style("standard");
-
 
     $mdGestureProvider.skipClickHijack();
 
@@ -96,9 +128,8 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
     // stripeProvider.setPublishableKey('pk_test_DmbU7fQcToQjn3DyOH35uBuc');
 
     $stateProvider
-
         .state('login', {
-            url: '/welcome',
+            url: '/',
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl as login'
         })
@@ -189,14 +220,6 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
                 matchId: null,
             }
         })
-        .state('match-statistics', {
-            url: '/match-statistics',
-            templateUrl: 'templates/match-statistics.html',
-            controller: 'MatchStatCtrl as matchStat',
-            params: {
-                matchId: null,
-            }
-        })
         .state('summary-stat', {
             url: '/summary-stat',
             templateUrl: 'templates/summary-stat.html',
@@ -260,11 +283,6 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             templateUrl: 'templates/change-password.html',
             controller: 'ChangePasswordCtrl as changePassword'
         })
-        .state('stat-in-live', {
-            url: '/stat-in-live',
-            templateUrl: 'templates/stat-in-live.html',
-            controller: 'StatInLiveCtrl as statInLive'
-        })
         .state('stat-in-live-player', {
             url: '/stat-in-live-player',
             templateUrl: 'templates/stat-in-live-player.html',
@@ -274,12 +292,46 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
             }
         })
         .state('welcome', {
-            url: '/',
+            url: '/welcome',
             templateUrl: 'templates/welcome.html',
             controller: 'welcomeCtrl as welcome'
+        })
+        .state('menu-match', {
+            url: '/menu-match',
+            templateUrl: 'templates/menu-match.html',
+            controller: 'MenuMatchCtrl as menuMatch'
+        })
+        .state('menu-match.match-statistics', {
+            url: '/match-statistics',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/match-statistics.html',
+                    controller: 'MatchStatCtrl as matchStat',
+                    params: {
+                        matchId: null,
+                    }
+                }
+            }
+        })
+        .state('menu-match.change', {
+            url: '/change',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/change.html',
+                    controller: 'ChangeCtrl as change'
+                }
+            }
+        })
+        .state('menu-match.stat-in-live', {
+            url: '/stat-in-live',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/stat-in-live.html',
+                    controller: 'StatInLiveCtrl as statInLive'
+                }
+            }
+
         });
 
-
     $urlRouterProvider.otherwise('/');
-
 });

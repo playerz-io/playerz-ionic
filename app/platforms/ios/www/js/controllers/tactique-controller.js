@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.tactique', [])
-    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast) {
+    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast, $state, $ionicHistory) {
 
         var self = this;
 
@@ -16,6 +16,7 @@ angular.module('starter.controller.tactique', [])
         });
 
         self.matchId = StorageService.getStorageMatchId();
+        console.log(self.matchId);
         self.coachId = StorageService.getStorageCoachId();
         self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
 
@@ -30,6 +31,12 @@ angular.module('starter.controller.tactique', [])
                 .error((data) => {
 
                 })
+        };
+
+        self.goMatch = () => {
+            $state.go('menu-match.match-statistics', {
+                matchId: self.matchId,
+            });
         };
 
         self.defaultPosition = () => {
@@ -160,7 +167,7 @@ angular.module('starter.controller.tactique', [])
         };
 
         self.getNameTeam = function() {
-            TeamService.nameTeam(self.coachId)
+            TeamService.nameTeam()
                 .success(function(data) {
                     console.log(data);
                     self.nameTeam = data.nameTeam;
@@ -171,18 +178,16 @@ angular.module('starter.controller.tactique', [])
         };
 
         self.getBillingName = function() {
-
-                if (self.place === 'Domicile') {
-                    self.billingName = self.nameTeam + ' - ' + self.opponent;
-                } else {
-                    self.billingName = self.opponent + ' - ' + self.nameTeam;
-                }
-
-                return self.billingName;
+            if (self.place === 'Domicile') {
+                self.billingName = self.nameTeam + ' - ' + self.opponent;
+            } else {
+                self.billingName = self.opponent + ' - ' + self.nameTeam;
             }
-            //call add formation here for get position as soons as
-            // tactique page is loaded
-            // TODO: faire choisir une formation vie un modal ou une popup
+            return self.billingName;
+        };
+        //call add formation here for get position as soons as
+        // tactique page is loaded
+        // TODO: faire choisir une formation vie un modal ou une popup
         self.addFormation();
         self.getMatch();
         self.getNameTeam();

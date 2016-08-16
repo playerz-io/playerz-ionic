@@ -31,9 +31,12 @@ angular.module('starter.controller.match', [])
             $scope.modal.hide();
         };
 
-        self.addMatch = function() {
+        $scope.addMatch = function() {
             $scope.match.date = new Date($scope.match.date);
             $scope.match.against_team = $filter('uppercase')($scope.match.against_team);
+            //$scope.match.place = !$scope.togglePlace ? 'Exterieur' : 'Domicile';
+            //$scope.match.type = !$scope.toggleType ? 'Officiel' : 'Amical';
+            console.log($scope.match.place, $scope.match.type);
             MatchService.addMatch($scope.match)
                 .success(function(data) {
                     console.log(data);

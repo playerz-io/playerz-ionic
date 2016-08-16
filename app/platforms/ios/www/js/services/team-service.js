@@ -68,31 +68,17 @@ angular.module('starter')
             });
         };
 
-        let nameTeam = function(idCoach){
-            return $http({
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                params: {
-                    coach_id: idCoach
-                },
-                url: API_ENDPOINT.url + '/nameTeam'
-            });
+        let nameTeam = function(idCoach) {
+            return $http.get(API_ENDPOINT.url + '/nameTeam');
         };
 
-        let getNameClub = function(){
-            return $http({
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                url: API_ENDPOINT.url + '/getNameClub'
-            });
-        };
+        let getNameClub = () => $http.get(`${API_ENDPOINT.url}/getNameClub`);
+
+        let getCategories = () => $http.get(`${API_ENDPOINT.url}/categories`);
 
 
         return {
+            getCategories,
             getNameClub,
             addTeam,
             addPlayer,
