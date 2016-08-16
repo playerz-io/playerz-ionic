@@ -10588,6 +10588,66 @@ html {
       background-position: center;
       background-repeat: no-repeat; }
 
+.div-tac-tft {
+  text-align: center;
+  font-size: 0.7rem; }
+  .div-tac-tft .defender,
+  .div-tac-tft .goalkeeper,
+  .div-tac-tft .midfielder,
+  .div-tac-tft .stricker {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0; }
+  .div-tac-tft .defender,
+  .div-tac-tft .stricker {
+    justify-content: center; }
+  .div-tac-tft div.drag-enter a,
+  .div-tac-tft div.dragging a {
+    color: #ffffff; }
+  .div-tac-tft .defender div {
+    display: flex;
+    flex: 0 0 auto;
+    width: 20%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat; }
+  .div-tac-tft .goalkeeper {
+    flex-direction: column;
+    align-items: center; }
+    .div-tac-tft .goalkeeper span {
+      display: flex;
+      flex-direction: row;
+      /* margin: auto; */
+      margin-top: 4%;
+      align-self: stretch; }
+    .div-tac-tft .goalkeeper div {
+      display: flex;
+      flex: 0 0 auto;
+      width: 20%;
+      height: 17vh;
+      background-image: url("../img/hexagon_playerz_stroke.png");
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat; }
+  .div-tac-tft .midfielder div,
+  .div-tac-tft .stricker div {
+    display: flex;
+    flex: 0 0 auto;
+    width: 20%;
+    height: 17vh;
+    background-image: url("../img/hexagon_playerz_stroke.png");
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat; }
+  .div-tac-tft .defender div a,
+  .div-tac-tft .goalkeeper a,
+  .div-tac-tft .midfielder div a,
+  .div-tac-tft .stricker a {
+    margin: auto; }
+
 .hexagon {
   position: relative;
   width: 300px;

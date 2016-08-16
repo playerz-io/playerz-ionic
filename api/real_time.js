@@ -12,6 +12,17 @@ let checkMatchId = function(match_ID, player) {
     return matchID === player.match_id;
 };
 
+exports.resetPosition_firebase = (match_ID, coach_ID, player_ID) => {
+  let refActions = ref
+  .child(coach_ID)
+  .child('matchs')
+  .child(match_ID)
+  .child('players_selected')
+  .child(player_ID)
+  .child('position')
+  .set(null);
+};
+
 exports.addActions = (match_ID, coach_ID, actions) => {
 
     if (['assist', 'retrieveBalls', 'foulsSuffered', 'foulsCommitted', 'yellowCard', 'redCard', 'attemptsOnTarget', 'attemptsOffTarget', 'but', 'ballLost', 'ballPlayed', 'defensiveAction', 'offSide', 'passesFailed', 'saves', 'dual_goalkeeper', 'sorties_aeriennes'].indexOf(actions[1]) >= 0) {
@@ -84,7 +95,6 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
     let getStatMatch = (stat) => stat.match_id === match_ID;
     let stat = player.statistics.filter(getStatMatch);
 
-
     let playerSelected = selected ? 'players_selected' : 'players_no_selected';
 
     let refAddPlayer = ref
@@ -97,7 +107,7 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
             id: player._id,
             first_name: player.first_name,
             last_name: player.last_name,
-            position: player.position || '',
+            position: player.position,
             favourite_position: player.favourite_position,
             statistics: {
                 assist: stat[0].assist,

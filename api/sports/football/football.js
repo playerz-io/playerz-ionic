@@ -6,6 +6,7 @@ define({
     FOOTBALL: 'Football',
     QQDEUX: '4-4-2',
     QTTROIS: '4-3-3',
+    TCDEUX: '3-5-2',
     GD: 'Gardien',
     NUMBER_GD: 1,
     NUMBER_FIRST_PLAYER: 11,

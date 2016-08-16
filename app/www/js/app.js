@@ -6,7 +6,7 @@
 
 angular.module('starter', ['ionic', 'starter.controller.login', 'starter.controller.profile', 'starter.controller.register', 'starter.controller.home', 'starter.controller.troop', 'starter.controller.player', 'starter.controller.match', 'starter.controller.tactique', 'starter.directives.fourFourtwo', 'starter.directives.fourThreethree', 'firebase', 'ngStorage', 'starter.controller.match-stat', 'disableAll', 'starter.controller.summary-stat',
         'ionic-table', 'starter.controller.match-comeup', 'starter.controller.match-played', 'starter.controller.stat-end-match', 'starter.controller.profile-setting', 'starter.controller.player-statistics', 'starter.controller.facebook-sport', 'starter.controller.facebook-team', 'starter.controller.forgot', 'starter.controller.reset', 'starter.controller.account', 'starter.controller.main-settings',
-        'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live', 'starter.controller.stat-in-live-player', 'ngCordovaOauth', 'starter.controller.welcome', 'ion-floating-menu', 'starter.controller.menu-match', 'starter.controller.change'
+        'starter.controller.change-password', 'ngCordova', 'ngDraggable', 'ngMaterial', 'starter.controller.stat-in-live', 'starter.controller.stat-in-live-player', 'ngCordovaOauth', 'starter.controller.welcome', 'ion-floating-menu', 'starter.controller.menu-match', 'starter.controller.change', 'starter.directives.threeFivetwo'
     ])
     // TODO: 'angular-stripe',
     .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'starter.controller.login', 'starter.control
 
 .constant('API_ENDPOINT', {
     url: 'http://localhost:5000/api'
-    //url: 'https://secret-plateau-96989.herokuapp.com/api'
+        //url: 'https://secret-plateau-96989.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window) {

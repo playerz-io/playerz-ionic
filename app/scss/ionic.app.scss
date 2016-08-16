@@ -606,6 +606,75 @@ html {
         }
     }
 }
+.div-tac-tft {
+    text-align: center;
+    font-size: 0.7rem;
+    .defender,
+    .goalkeeper,
+    .midfielder,
+    .stricker {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+    .defender,
+    .stricker {
+        justify-content: center;
+    }
+    & div.drag-enter a,
+    & div.dragging a {
+        color: $white;
+    }
+    .defender div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 20%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .goalkeeper {
+        flex-direction: column;
+        align-items: center;
+        span {
+            display: flex;
+            flex-direction: row;
+            /* margin: auto; */
+            margin-top: 4%;
+            align-self: stretch;
+        }
+        div {
+            display: flex;
+            flex: 0 0 auto;
+            width: 20%;
+            height: 17vh;
+            background-image: url('../img/hexagon_playerz_stroke.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+    .midfielder div,
+    .stricker div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 20%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .defender div a,
+    .goalkeeper a,
+    .midfielder div a,
+    .stricker a {
+        margin: auto;
+    }
+}
 .hexagon {
     position: relative;
     width: 300px;
@@ -847,15 +916,12 @@ html {
     }
 }
 #auto-complete {
-
     i {
-      font-size: 0.8rem;
+        font-size: 0.8rem;
     }
     li.item {
         background: $white;
         color: $grey;
         font-size: 0.8rem;
-
-
     }
 }
