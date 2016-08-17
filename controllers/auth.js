@@ -20,15 +20,15 @@ let mailSubscription = (last_name, first_name, email) => {
         subject: 'Bienvenue sur Playerz',
         text: `Bonjour ${last_name} ${first_name},
 
-  Merci d'avoir choisi Playerz, nous esperons que Playerz vous aidera à améliorer vos performances.
+Merci d'avoir choisi Playerz, nous esperons que Playerz vous aidera à améliorer vos performances.
 
-  Si vous n'êtes pas à l'origine de cette inscription veuillez nous contacter à l'adresse suivante :
+Si vous n'êtes pas à l'origine de cette inscription veuillez nous contacter à l'adresse suivante :
 
-  contact@playerz.io
+contact@playerz.io
 
-  Cordialement,
+Cordialement,
 
-  L'équipe Playerz
+L'équipe Playerz
                       `
 
     };

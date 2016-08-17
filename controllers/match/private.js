@@ -5,6 +5,7 @@ let jwt = require('jwt-simple');
 let config = require('../../config/database');
 let Match = require('../../models/match').modelMatch;
 let Coach = require('../../models/coach').modelCoach;
+let Player = require('../../models/player').modelPlayer;
 let Statistic = require('../../models/statistics').modelStatistic;
 let real_time = require('../../real_time');
 
@@ -43,7 +44,8 @@ let _addStatisticsToPlayer = (player, match_id) => {
 
 //check if stat for this match already exists
 exports.addStatisticsToPlayer = function(player, match_id) {
-    //  console.log('ok');
+
+    console.log('defaultPosition');
     let statExist = false;
     if (player.statistics.length === 0) {
         _addStatisticsToPlayer(player, match_id)
@@ -57,7 +59,7 @@ exports.addStatisticsToPlayer = function(player, match_id) {
 
     if (!statExist) {
         _addStatisticsToPlayer(player, match_id.toString());
-        console.log('defaultPosition');
+
     }
 
 };
@@ -106,5 +108,33 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected)
     if (playersSelected.indexOf(player._id) < 0) {
         playersSelected.push(player);
     }
+    //console.log('player.position', player.position);
     real_time.addPlayer_firebase(player, idMatch, idCoach, true);
 };
+
+exports._setDefaultPosition = (idMatch, idCoach, defaultPosition) => {
+
+    Coach.findById(idCoach, (err, coach) => {
+
+        Match.findById(idMatch, (err, foundMatch) => {
+
+            let match = coach.team.match.id(idMatch);
+            match.defaultPosition = defaultPosition;
+
+            coach.save();
+
+            foundMatch.defaultPosition = defaultPosition;
+            foundMatch.save();
+
+        });
+    });
+};
+
+exports._resetPosition = (match_ID, coach_ID, player_ID) => {
+    Player.findById(player_ID, (err, player) => {
+        player.position = null;
+        real_time.resetPosition_firebase(match_ID, coach_ID, player_ID)
+
+        player.save();
+    });
+}
