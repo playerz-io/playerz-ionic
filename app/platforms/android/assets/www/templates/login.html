@@ -1,25 +1,54 @@
  <!-- <div class="fb-login-button"  data-show-faces="false" data-scope="public_profile" data-auto-logout-link="true"></div> -->
 
-<ion-view title="Se connecter" id='login'>
-    <h1 id='title-login' class="text-center">Playerz</h1>
-    <ion-content class="padding" scroll='true'>
+<ion-view title="{{'LOGIN' | translate }}"
+          id='login'
+>
+    <h1 id='title-login'
+        class="text-center"
+    >
+        PLAYERZ
+    </h1>
+    <ion-content class="padding"
+                 scroll='true'
+    >
         <form name="LoginForm">
             <div class="list">
                 <label class="item item-input input-login">
-                    <input type="email" placeholder="Email" ng-model="login.user.email">
+                    <input type="email"
+                           placeholder="{{ 'EMAIL' | translate }}"
+                           ng-model="login.user.email"
+                    >
                 </label>
                 <label class="item item-input  input-login">
-                    <input type="password" placeholder="Mot de passe" ng-model="login.user.password">
+                    <input type="password"
+                           placeholder="{{'PASSWORD' | translate }}"
+                           ng-model="login.user.password"
+                    >
                 </label>
 
-                <button class="button button-full" id="btn-sign-in" ng-click="login.login()" >
-                    Se connecter
+                <button class="button button-full"
+                        id="btn-sign-in"
+                        ng-click="login.login()"
+                >
+                    {{ 'LOGIN' | translate }}
                 </button>
-                <button class="button button-full" id="btn-fb" ng-click="login.loginFacebook()" >
-                    Login with Facebook
+                <button
+                        class="button button-full"
+                        id="btn-fb"
+                        ng-click="login.loginFacebook()"
+                >
+                    {{'LOGIN_WITH_FACEBOOK' | translate }}
                 </button>
-                    <a  ui-sref="register" id="a-sign-up">S'inscrire</a>
-                    <a ui-sref="forgot" id="a-forgot">Mot de passe oublié</a>
+                    <a ui-sref="register"
+                       id="a-sign-up"
+                    >
+                        {{'SIGN_IN' | translate}}
+                    </a>
+                    <a ui-sref="forgot"
+                       id="a-forgot"
+                    >
+                        {{'FORGOT_PASSWORD' | translate }}
+                    </a>
             </div>
         </form>
     </ion-content>

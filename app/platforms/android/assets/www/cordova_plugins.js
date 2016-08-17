@@ -254,6 +254,21 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
         "id": "cordova-plugin-globalization.GlobalizationError",
         "clobbers": [
@@ -284,6 +299,7 @@ module.exports.metadata =
     "cordova-plugin-x-toast": "2.5.2",
     "phonegap-facebook-plugin": "0.12.0",
     "cordova-plugin-inappbrowser": "1.4.0",
+    "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-globalization": "1.0.3"
 };
 // BOTTOM OF METADATA

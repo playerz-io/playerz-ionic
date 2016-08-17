@@ -20,7 +20,7 @@
         </div>
         <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ATD' && !drag">
             <a ng-click="ballPlayed({player: player})"> {{player.last_name}}
-              <br/> {{player.first_name}} {{player.position}}
+              <br/> {{player.first_name}}
           </a>
         </div>
     </div>

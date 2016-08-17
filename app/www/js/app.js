@@ -1,151 +1,175 @@
 'use strict';
 
-angular.module('starter',
-    [
-        'ionic',
-        'starter.controller.login',
-        'starter.controller.profile',
-        'starter.controller.register',
-        'starter.controller.home',
-        'starter.controller.troop',
-        'starter.controller.player',
-        'starter.controller.match',
-        'starter.controller.tactique',
-        'starter.directives.fourFourtwo',
-        'starter.directives.fourThreethree',
-        'firebase',
-        'ngStorage',
-        'starter.controller.match-stat',
-        'disableAll',
-        'starter.controller.summary-stat',
-        'ionic-table',
-        'starter.controller.match-comeup',
-        'starter.controller.match-played',
-        'starter.controller.stat-end-match',
-        'starter.controller.profile-setting',
-        'starter.controller.player-statistics',
-        'starter.controller.facebook-sport',
-        'starter.controller.facebook-team',
-        'starter.controller.forgot',
-        'starter.controller.reset',
-        'starter.controller.account',
-        'starter.controller.main-settings',
-        'starter.controller.change-password',
-        'ngCordova',
-        'ngDraggable',
-        'ngMaterial',
-        'starter.controller.stat-in-live',
-        'starter.controller.stat-in-live-player',
-        'ngCordovaOauth',
-        'starter.controller.welcome',
-        'ion-floating-menu',
-        'starter.controller.menu-match',
-        'starter.controller.change',
-        'starter.directives.threeFivetwo',
-        'tmh.dynamicLocale',
-        'pascalprecht.translate'
-    ]
-)
+angular.module('starter', [
+    'ionic',
+    'starter.controller.login',
+    'starter.controller.profile',
+    'starter.controller.register',
+    'starter.controller.home',
+    'starter.controller.troop',
+    'starter.controller.player',
+    'starter.controller.match',
+    'starter.controller.tactique',
+    'starter.directives.fourFourtwo',
+    'starter.directives.fourThreethree',
+    'firebase',
+    'ngStorage',
+    'starter.controller.match-stat',
+    'disableAll',
+    'starter.controller.summary-stat',
+    'ionic-table',
+    'starter.controller.match-comeup',
+    'starter.controller.match-played',
+    'starter.controller.stat-end-match',
+    'starter.controller.profile-setting',
+    'starter.controller.player-statistics',
+    'starter.controller.facebook-sport',
+    'starter.controller.facebook-team',
+    'starter.controller.forgot',
+    'starter.controller.reset',
+    'starter.controller.account',
+    'starter.controller.main-settings',
+    'starter.controller.change-password',
+    'ngCordova',
+    'ngDraggable',
+    'ngMaterial',
+    'starter.controller.stat-in-live',
+    'starter.controller.stat-in-live-player',
+    'ngCordovaOauth',
+    'starter.controller.welcome',
+    'ion-floating-menu',
+    'starter.controller.menu-match',
+    'starter.controller.change',
+    'starter.directives.threeFivetwo',
+    'tmh.dynamicLocale',
+    'pascalprecht.translate'
+])
 
 // TODO: 'angular-stripe',
 .constant('FIREBASE_URI', 'https://boos.firebaseio.com/')
-.constant('AUTH_EVENTS', {
-    notAuthenticated: 'auth-not-authenticated'
-})
-.constant('API_ENDPOINT', {
-    url: 'http://localhost:5000/api'
-        //url: 'https://secret-plateau-96989.herokuapp.com/api'
-})
-.constant('availableLanguages', ['en-US', 'fr-fr'])
-.constant('defaultLanguage', 'fr-fr')
-.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window, tmhDynamicLocale, $translate, $cordovaGlobalization,
-              availableLanguages, defaultLanguage) {
+    .constant('AUTH_EVENTS', {
+        notAuthenticated: 'auth-not-authenticated'
+    })
+    .constant('API_ENDPOINT', {
+        //url: 'http://localhost:5000/api'
+        url: 'https://secret-plateau-96989.herokuapp.com/api'
+    })
+    .constant('availableLanguages', ['en-US', 'fr-fr'])
+    .constant('defaultLanguage', 'fr-fr')
+    .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $window, tmhDynamicLocale, $translate, $cordovaGlobalization,
+        availableLanguages, defaultLanguage, $ionicPopup, $cordovaNetwork) {
 
-    function applyLanguage(language) {
-        tmhDynamicLocale.set(language.toLowerCase());
-    }
+        $ionicPlatform.ready(function() {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
 
-    function getSuitableLanguage(language) {
-        for (var index = 0; index < availableLanguages.length; index++) {
-            if (availableLanguages[index].toLowerCase() === language.toLocaleLowerCase()) {
-                return availableLanguages[index];
+            setLanguage();
+
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                // Don't remove this line unless you know what you are doing. It stops the viewport
+                // from snapping when text inputs are focused. Ionic handles this internally for
+                // a much nicer keyboard experience.
+                cordova.plugins.Keyboard.disableScroll(true);
             }
-        }
-        return defaultLanguage;
-    }
+            if (window.StatusBar) {
+                StatusBar.styleDefault();
+            }
 
-    function setLanguage(){
-        if (typeof navigator.globalization !== "undefined") {
-            $cordovaGlobalization.getPreferredLanguage().then(function (result) {
-                var language = getSuitableLanguage(result.value);
-                applyLanguage(language);
-                $translate.use(language);
+
+
+
+
+
+            //check connection
+            $rootScope.$on('$cordovaNetwork:offline', function(event, networkState) {
+                $ionicPopup.alert({
+                    title: "Internet",
+                    template: "Vous avez perdu votre connexion internet"
+                }).then((res) => {});
+
             });
-        } else {
-          applyLanguage(defaultLanguage);
-        }
-    }
-
-    $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-
-        setLanguage();
-
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            // Don't remove this line unless you know what you are doing. It stops the viewport
-            // from snapping when text inputs are focused. Ionic handles this internally for
-            // a much nicer keyboard experience.
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-        if (window.StatusBar) {
-            StatusBar.styleDefault();
-        }
-    });
-
-    $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
-        if (next.name === 'tactique' || next.name === 'match-statistics') {
-            screen.lockOrientation('landscape');
-        } else {
-            //screen.unlockOrientation();
-        }
-
-        if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {
-            $window.location.reload();
-        }
-
-        if (!AuthService.isAuthenticated()) {
-            console.log(next.name);
-            if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo' && next.name !== 'sport' && next.name !== 'team-user-facebook' && next.name !== 'profile' && next.name !== 'forgot' && next.name !== 'reset' && next.name !== 'register-facebook-team' && next.name !== 'register-facebook-sport') {
-                event.preventDefault();
-                $state.go('login');
+            if ($cordovaNetwork.isOffline()) {
+                $ionicPopup.alert({
+                    title: "Internet",
+                    template: "Internet n'est pas activé"
+                }).then((res) => {
+                    ionic.Platform.exitApp();
+                });
             }
 
-        } else {
-            if (AuthService.isAuthenticated()) {
-                if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team' || next.name === 'register.privateInfo') {
-                    event.preventDefault();
-                    $state.go('profile.home');
+        });
+
+        function applyLanguage(language) {
+            tmhDynamicLocale.set(language.toLowerCase());
+        }
+
+        function getSuitableLanguage(language) {
+            for (var index = 0; index < availableLanguages.length; index++) {
+                if (availableLanguages[index].toLowerCase() === language.toLocaleLowerCase()) {
+                    return availableLanguages[index];
                 }
             }
+            return defaultLanguage;
         }
-    });
+
+        function setLanguage() {
+            if (typeof navigator.globalization !== "undefined") {
+                $cordovaGlobalization.getPreferredLanguage().then(function(result) {
+                    var language = getSuitableLanguage(result.value);
+                    applyLanguage(language);
+                    $translate.use(language);
+                });
+            } else {
+                applyLanguage(defaultLanguage);
+            }
+        }
 
 
-    $rootScope.user = {};
+        $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
 
-    $window.fbAsyncInit = function() {
-        FB.init({
-            appId: '508256989378454',
-            cookie: true, // enable cookies to allow the server to access
-            // the session
-            xfbml: true, // parse social plugins on this page
-            version: 'v2.5' // use graph api version 2.5
+
+            if (next.name === 'tactique' || next.name === 'match-statistics') {
+                screen.lockOrientation('landscape');
+            } else {
+                //screen.unlockOrientation();
+            }
+
+            if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {
+                $window.location.reload();
+            }
+
+            if (!AuthService.isAuthenticated()) {
+                console.log(next.name);
+                if (next.name !== 'login' && next.name !== 'register' && next.name !== 'register.profile' && next.name !== 'register.team' && next.name !== 'register.privateInfo' && next.name !== 'sport' && next.name !== 'team-user-facebook' && next.name !== 'profile' && next.name !== 'forgot' && next.name !== 'reset' && next.name !== 'register-facebook-team' && next.name !== 'register-facebook-sport') {
+                    event.preventDefault();
+                    $state.go('login');
+                }
+
+            } else {
+                if (AuthService.isAuthenticated()) {
+                    if (next.name === 'login' || next.name === 'register' || next.name === 'register.profile' || next.name === 'register.team' || next.name === 'register.privateInfo') {
+                        event.preventDefault();
+                        $state.go('profile.home');
+                    }
+                }
+            }
         });
-    };
 
-})
+
+        $rootScope.user = {};
+
+        $window.fbAsyncInit = function() {
+            FB.init({
+                appId: '508256989378454',
+                cookie: true, // enable cookies to allow the server to access
+                // the session
+                xfbml: true, // parse social plugins on this page
+                version: 'v2.5' // use graph api version 2.5
+            });
+        };
+
+    })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $mdGestureProvider, $translateProvider, defaultLanguage, tmhDynamicLocaleProvider) {
     //set default language

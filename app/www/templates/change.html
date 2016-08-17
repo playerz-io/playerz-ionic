@@ -17,6 +17,9 @@
                     <div ng-if="change.formation === '4-3-3'">
                         <four-threethree info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-threethree>
                     </div>
+                    <div ng-if="change.formation === '3-5-2'">
+                        <three-fiveTwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></three-fiveTwo>
+                    </div>
 
                 </div>
             </div>

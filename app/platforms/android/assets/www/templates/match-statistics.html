@@ -81,6 +81,9 @@
             <div ng-if="matchStat.formation === '4-3-3'" class="col col-60" id="ftt">
                 <four-threethree info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></four-threethree>
             </div>
+            <div ng-if="matchStat.formation === '3-5-2'" class="col col-60" id="ftt">
+                <three-fivetwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></three-fivetwo>
+            </div>
             <div class="col col-10 text-center" id="div-act-dead-time">
                 <a ng-click="matchStat.countMainAction('offSide')">
                     <img src="img/two-black-flags.png" alt="Hors-jeu" height="36" width="36" />
