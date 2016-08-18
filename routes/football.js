@@ -7,6 +7,7 @@ let passport = require('passport');
 let football = require('../sports/football/categories');
 
 router
-    .get('/getNameClub', controllerClub.getNameClub);
+    .get('/categories_football', football.getCategoriesFoot)
+    .get('/french_division_football', football.getFrenchDivisionFoot);
 
 module.exports = router;

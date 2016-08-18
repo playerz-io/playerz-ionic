@@ -4,7 +4,7 @@ let express = require('express');
 let router = express.Router();
 let controllerUser = require('../controllers/user');
 let passport = require('passport');
-
+let Utils = require('../utils');
 router
     .post('/forgotPassword', controllerUser.forgotPassword)
     .post('/resetPassword', controllerUser.resetPassword)
@@ -16,7 +16,8 @@ router
     }), controllerUser.changeEmail)
     .post('/changeNumber', passport.authenticate('jwt', {
         session: false
-    }), controllerUser.changeNumber);
+    }), controllerUser.changeNumber)
+    .get('/countries', Utils.getCountries);
 
 
 module.exports = router;
