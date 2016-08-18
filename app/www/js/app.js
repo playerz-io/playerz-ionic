@@ -51,8 +51,8 @@ angular.module('starter', [
         notAuthenticated: 'auth-not-authenticated'
     })
     .constant('API_ENDPOINT', {
-        //url: 'http://localhost:5000/api'
-        url: 'https://secret-plateau-96989.herokuapp.com/api'
+        url: 'http://localhost:5000/api'
+        //url: 'https://secret-plateau-96989.herokuapp.com/api'
     })
     .constant('availableLanguages', ['en-US', 'fr-fr'])
     .constant('defaultLanguage', 'fr-fr')
@@ -183,9 +183,9 @@ angular.module('starter', [
     $translateProvider.preferredLanguage(defaultLanguage);
 
     //set tabs in bottom for all platform
-    $ionicConfigProvider.tabs
-        .position("bottom")
-        .style("standard");
+    // $ionicConfigProvider.tabs
+    //     .position("bottom")
+    //     .style("standard");
 
     $mdGestureProvider.skipClickHijack();
 

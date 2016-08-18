@@ -183,9 +183,9 @@ angular.module('starter', [
     $translateProvider.preferredLanguage(defaultLanguage);
 
     //set tabs in bottom for all platform
-    $ionicConfigProvider.tabs
-        .position("bottom")
-        .style("standard");
+    // $ionicConfigProvider.tabs
+    //     .position("bottom")
+    //     .style("standard");
 
     $mdGestureProvider.skipClickHijack();
 

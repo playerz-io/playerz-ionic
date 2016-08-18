@@ -13,8 +13,12 @@
                 <input type="date" ng-model="register.user.birth_date">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="Country" ng-model="register.user.country">
-            </label>
+                <input type="text" placeholder="Pays" ng-change="register.searchCountries()" ng-model="register.user.country">
+          </label>
+
+            <div ng-show="register.user.country.length" id="auto-complete">
+                <li class="item item-icon-left" ng-click="register.selectedCountries($index)" ng-repeat="country in register.countries"><i class="icon ion-search"></i>{{country}}</li>
+            </div>
 
             <label class="item item-input item-select">
                 <div class="input-label">

@@ -3926,23 +3926,23 @@ a.subdued {
     .bar.bar-light.bar-footer {
       background-image: linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%); }
   .bar.bar-stable {
-    border-color: #fe4e50;
-    background-color: #fe4e50;
-    background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
-    color: #fff; }
+    border-color: #b2b2b2;
+    background-color: #f8f8f8;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #444; }
     .bar.bar-stable .title {
-      color: #fff; }
+      color: #444; }
     .bar.bar-stable.bar-footer {
-      background-image: linear-gradient(180deg, #fe4e50, #fe4e50 50%, transparent 50%); }
+      background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
   .bar.bar-positive {
-    border-color: #fe4e50;
+    border-color: #fe1b1e;
     background-color: #fe4e50;
-    background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
+    background-image: linear-gradient(0deg, #fe1b1e, #fe1b1e 50%, transparent 50%);
     color: #fff; }
     .bar.bar-positive .title {
       color: #fff; }
     .bar.bar-positive.bar-footer {
-      background-image: linear-gradient(180deg, #fe4e50, #fe4e50 50%, transparent 50%); }
+      background-image: linear-gradient(180deg, #fe1b1e, #fe1b1e 50%, transparent 50%); }
   .bar.bar-calm {
     border-color: #0a9dc7;
     background-color: #11c1f3;
@@ -4117,11 +4117,11 @@ a.subdued {
     background: none; }
 
 .bar-stable .button {
-  border-color: #fe4e50;
-  background-color: #fe4e50;
-  color: #fff; }
+  border-color: #b2b2b2;
+  background-color: #f8f8f8;
+  color: #444; }
   .bar-stable .button:hover {
-    color: #fff;
+    color: #444;
     text-decoration: none; }
   .bar-stable .button.active, .bar-stable .button.activated {
     border-color: #a2a2a2;
@@ -4130,14 +4130,14 @@ a.subdued {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #fff;
+    color: #444;
     font-size: 17px; }
   .bar-stable .button.button-icon {
     border-color: transparent;
     background: none; }
 
 .bar-positive .button {
-  border-color: #fe4e50;
+  border-color: #fe1b1e;
   background-color: #fe4e50;
   color: #fff; }
   .bar-positive .button:hover {
@@ -4830,14 +4830,14 @@ a.subdued {
 .tabs-background-stable .tabs,
 .tabs-background-stable > .tabs {
   background-color: #f8f8f8;
-  background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
-  border-color: #fe4e50; }
+  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+  border-color: #b2b2b2; }
 
 .tabs-background-positive .tabs,
 .tabs-background-positive > .tabs {
   background-color: #fe4e50;
-  background-image: linear-gradient(0deg, #fe4e50, #fe4e50 50%, transparent 50%);
-  border-color: #fe4e50; }
+  background-image: linear-gradient(0deg, #fe1b1e, #fe1b1e 50%, transparent 50%);
+  border-color: #fe1b1e; }
 
 .tabs-background-calm .tabs,
 .tabs-background-calm > .tabs {
@@ -5283,7 +5283,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
 .menu-content {
   -webkit-transform: none;
   transform: none;
-  box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2); }
+  box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2), 1px 0 2px rgba(0, 0, 0, 0.2); }
 
 .menu-open .menu-content .pane,
 .menu-open .menu-content .scroll-content {
@@ -5568,7 +5568,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
     width: 250px;
     max-width: 100%;
     max-height: 90%;
-    border-radius: 0px;
+    border-radius: 0;
     background-color: rgba(255, 255, 255, 0.9);
     display: -webkit-box;
     display: -webkit-flex;

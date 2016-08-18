@@ -2,7 +2,7 @@
 
 angular
     .module('starter.controller.register', [])
-    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast) {
+    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast, UserService) {
         let self = this;
 
         self.user = {
@@ -36,13 +36,29 @@ angular
             });
         };
 
+        self.getCountries = () => {
+            UserService.getCountries()
+                .success((data) => {
+                    self.countriesObject = data;
+                });
+        };
+        self.getCountries();
+
         self.getNameClub = () => {
             TeamService.getNameClub()
                 .success((data) => {
                     self.clubsArray = data.arrayNameClub;
-                })
+                });
         };
         self.getNameClub();
+
+        self.getFrenchDivisionFootball = () => {
+          TeamService.getFrenchDivisionFootball()
+          .success((data) => {
+            self.divisionFootballArray = data._frenchDivision;
+          });
+        }
+        self.getFrenchDivisionFootball();
 
         let _search = function(searchFilter, type) {
             console.log('Searching clubs for ' + searchFilter);
@@ -50,7 +66,9 @@ angular
             let array = null;
             if (type === 'clubs') array = self.clubsArray;
             if (type === 'categories') array = self.categoriesArray;
-
+            if (type === 'country') array = self.countriesObject;
+            if(type === 'division') array = self.divisionFootballArray;
+console.log(array);
             var matches = array.filter(function(club) {
                 if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1)
                     return true;
@@ -59,6 +77,43 @@ angular
                 deferred.resolve(matches);
             }, 100);
             return deferred.promise;
+        };
+
+
+        self.searchCountries = () => {
+          _search(self.user.country, 'country').then(
+            (matches) => {
+              console.log(matches);
+              if(self.user.country.length === 0){
+                self.countries = {};
+              } else {
+                self.countries = matches;
+              }
+            }
+          )
+        };
+
+        self.selectedCountries = (index) => {
+            self.user.country = self.countries[index];
+            self.countries = {};
+        };
+
+        self.searchFrenchDivision = () => {
+          _search(self.user.division, 'division').then(
+            (matches) => {
+              console.log(matches);
+              if(self.user.division.length === 0){
+                self.divisions = {};
+              } else {
+                self.divisions = matches;
+              }
+            }
+          )
+        };
+
+        self.selectedDivisions = (index) => {
+            self.user.division = self.divisions[index];
+            self.divisions = {};
         };
 
         self.searchClubs = () => {

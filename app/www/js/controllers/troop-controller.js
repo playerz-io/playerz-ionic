@@ -4,7 +4,7 @@ angular.module('starter.controller.troop', [])
     .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout, $state, StorageService, $cordovaToast) {
 
         var self = this;
-      
+
         $scope.player = {
             first_name: null,
             last_name: null,
@@ -50,6 +50,18 @@ angular.module('starter.controller.troop', [])
                 });
 
         };
+
+        self.getNewPlayers = () => {
+            TeamService.getPlayers()
+                .success(function(data) {
+                    console.log(data);
+                    self.players = data.players;
+                    $scope.$broadcast('scroll.refreshComplete');
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        }
 
         self.getPlayers = function() {
             TeamService.getPlayers()

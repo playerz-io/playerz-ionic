@@ -15,11 +15,24 @@ angular.module('starter.controller.match-played', [])
             $state.go('stat-end-match', {matchId: match_id});
         };
 
-        self.getMatchFinished = function() {
+        self.getMatchFinished = () => {
             MatchService.getMatchFinished()
                 .success(function(data) {
                     console.log(data);
                     self.matchs = data.matchs;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+
+        self.getNewMatchFinished = () => {
+            MatchService.getMatchFinished()
+                .success(function(data) {
+                    console.log(data);
+                    self.matchs = data.matchs;
+                    self.getGlobalStatisticsMatch();
+                    $scope.$broadcast('scroll.refreshComplete');
                 })
                 .error(function(data) {
                     console.log(data);
@@ -36,16 +49,6 @@ angular.module('starter.controller.match-played', [])
                     console.log(data);
                 });
         };
-
-        // self.scale = (data) => {
-        //     let x = d3.scaleLinear()
-        //         .domain([0, d3.max(self.ball)])
-        //         .range([0, 80]);
-        //
-        //     return x(data);
-        //
-        //
-        // }
 
         self.getGlobalStatisticsMatch = () => {
             MatchService.getGlobalStatisticsMatch()

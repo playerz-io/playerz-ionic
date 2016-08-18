@@ -74,10 +74,12 @@ angular.module('starter')
 
         let getNameClub = () => $http.get(`${API_ENDPOINT.url}/getNameClub`);
 
-        let getCategories = () => $http.get(`${API_ENDPOINT.url}/categories`);
+        let getCategories = () => $http.get(`${API_ENDPOINT.url}/categories_football`);
+        let getFrenchDivisionFootball = () => $http.get(`${API_ENDPOINT.url}/french_division_football`);
 
 
         return {
+            getFrenchDivisionFootball,
             getCategories,
             getNameClub,
             addTeam,

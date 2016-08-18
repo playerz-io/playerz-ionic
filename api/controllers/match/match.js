@@ -918,6 +918,7 @@ exports.defaultPosition = (req, res) => {
                     for (let player of players) {
 
                         if (matchPlayerNoSelected.indexOf(player._id) === -1) {
+                            player.position = 'no_selected';
                             privateMatch.addStatisticsToPlayer(player, idMatch);
                             matchPlayerNoSelected.push(player);
                             player.save((err) => {

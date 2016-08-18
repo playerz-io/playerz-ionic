@@ -6,8 +6,11 @@
     <ion-content class="padding">
         <div class="list">
             <label class="item item-input">
-                <input type="text" placeholder="Adversaire" ng-model="match.against_team">
+                <input type="text" placeholder="Adversaire" ng-change="searchClubs()" ng-model="match.against_team">
             </label>
+            <div ng-show="match.against_team.length" id="auto-complete">
+                <li  class="item item-icon-left" ng-click="selectedClubs($index)" ng-repeat="club in clubs"><i class="icon ion-search"></i>{{club}}</li>
+            </div>
             <!-- <label class="item item-input item-select">
                 <div class="input-label">
                     Lieu
