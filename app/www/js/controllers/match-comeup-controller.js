@@ -19,6 +19,8 @@ angular.module('starter.controller.match-comeup', [])
             date: ''
         };
 
+        $scope.match.date = new Date();
+
         self.getNewMatchComeUp = function() {
             MatchService.getMatchComeUp()
                 .success(function(data) {
@@ -133,8 +135,8 @@ angular.module('starter.controller.match-comeup', [])
             if (type === 'clubs') array = self.clubsArray;
             if (type === 'categories') array = self.categoriesArray;
             if (type === 'country') array = self.countriesObject;
-            if(type === 'division') array = self.divisionFootballArray;
-console.log(array);
+            if (type === 'division') array = self.divisionFootballArray;
+            console.log(array);
             var matches = array.filter(function(club) {
                 if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1)
                     return true;
@@ -145,6 +147,10 @@ console.log(array);
             return deferred.promise;
         };
 
+        self.defaultCategory = (category) => {
+            if (category === 'Sénior')
+                return true
+        }
         $scope.searchClubs = () => {
             _search($scope.match.against_team, 'clubs').then(
                 function(matches) {

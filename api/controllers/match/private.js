@@ -99,6 +99,7 @@ exports._findMatch = function(status, req, res) {
 };
 
 exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
+  console.log(player.last_name, position);
     exports.addStatisticsToPlayer(player, idMatch);
     player.position = position;
     player.save((err) => {

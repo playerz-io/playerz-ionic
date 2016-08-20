@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.match', [])
-    .controller('MatchTabCtrl', function($state, $filter, $ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService, $cordovaToast) {
+    .controller('MatchTabCtrl', function(TeamService, $q, $state, $filter, $ionicPopup, $ionicModal, MatchService, $scope, $timeout, StorageService, $cordovaToast) {
 
         var self = this;
 
@@ -57,5 +57,51 @@ angular.module('starter.controller.match', [])
         self.goMatchComeUp = () => {
             $state.go('match-comeup');
         }
+
+        $scope.getNameClub = () => {
+            TeamService.getNameClub()
+                .success((data) => {
+                    console.log(data);
+                    self.clubsArray = data.arrayNameClub;
+                });
+        };
+        $scope.getNameClub();
+
+        let _search = function(searchFilter, type) {
+            console.log('Searching clubs for ' + searchFilter);
+            var deferred = $q.defer();
+            let array = null;
+            if (type === 'clubs') array = self.clubsArray;
+            if (type === 'categories') array = self.categoriesArray;
+            if (type === 'country') array = self.countriesObject;
+            if(type === 'division') array = self.divisionFootballArray;
+console.log(array);
+            var matches = array.filter(function(club) {
+                if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1)
+                    return true;
+            });
+            $timeout(function() {
+                deferred.resolve(matches);
+            }, 100);
+            return deferred.promise;
+        };
+
+        $scope.searchClubs = () => {
+            _search($scope.match.against_team, 'clubs').then(
+                function(matches) {
+                    if ($scope.match.against_team.length === 0) {
+                        $scope.clubs = {};
+                    } else {
+                        $scope.clubs = matches;
+                    }
+                }
+            )
+        };
+
+        $scope.selectedClubs = (index) => {
+            $scope.match.against_team = $scope.clubs[index];
+            $scope.clubs = {};
+        };
+
 
     });

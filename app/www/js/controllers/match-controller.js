@@ -16,6 +16,8 @@ angular.module('starter.controller.match', [])
             date: ''
         };
 
+        $scope.match.date = new Date();
+
         $ionicModal.fromTemplateUrl('templates/add-match-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'

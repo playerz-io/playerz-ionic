@@ -23,6 +23,26 @@ exports.resetPosition_firebase = (match_ID, coach_ID, player_ID) => {
   .set(null);
 };
 
+exports.resetPlayersSelected_firebase = (match_ID, coach_ID) => {
+  console.log('fire');
+  let refActions = ref
+  .child(coach_ID)
+  .child('matchs')
+  .child(match_ID)
+  .child('players_selected')
+  .set(null);
+};
+
+exports.resetPlayersNoSelected_firebase = (match_ID, coach_ID) => {
+  let refActions = ref
+  .child(coach_ID)
+  .child('matchs')
+  .child(match_ID)
+  .child('players_no_selected')
+  .remove();
+};
+
+
 exports.addActions = (match_ID, coach_ID, actions) => {
 
     if (['assist', 'retrieveBalls', 'foulsSuffered', 'foulsCommitted', 'yellowCard', 'redCard', 'attemptsOnTarget', 'attemptsOffTarget', 'but', 'ballLost', 'ballPlayed', 'defensiveAction', 'offSide', 'passesFailed', 'saves', 'dual_goalkeeper', 'sorties_aeriennes'].indexOf(actions[1]) >= 0) {

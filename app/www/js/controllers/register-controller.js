@@ -20,10 +20,18 @@ angular
             birth_date: ''
         };
 
+        self.user.birth_date = new Date();
+
+        self.sports = [{
+            name: 'Football',
+            value: 'Football'
+        }];
+
         self.register = function() {
+          console.log(self.user);
             self.user.birth_date = new Date(self.user.birth_date);
             AuthService.register(self.user).then(function(msg) {
-                console.log(msg);
+
                 $cordovaToast.showShortBottom(msg)
                 $state.go('login');
                 self.user = {};
@@ -53,10 +61,10 @@ angular
         self.getNameClub();
 
         self.getFrenchDivisionFootball = () => {
-          TeamService.getFrenchDivisionFootball()
-          .success((data) => {
-            self.divisionFootballArray = data._frenchDivision;
-          });
+            TeamService.getFrenchDivisionFootball()
+                .success((data) => {
+                    self.divisionFootballArray = data._frenchDivision;
+                });
         }
         self.getFrenchDivisionFootball();
 
@@ -67,8 +75,8 @@ angular
             if (type === 'clubs') array = self.clubsArray;
             if (type === 'categories') array = self.categoriesArray;
             if (type === 'country') array = self.countriesObject;
-            if(type === 'division') array = self.divisionFootballArray;
-console.log(array);
+            if (type === 'division') array = self.divisionFootballArray;
+            console.log(array);
             var matches = array.filter(function(club) {
                 if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1)
                     return true;
@@ -81,34 +89,35 @@ console.log(array);
 
 
         self.searchCountries = () => {
-          _search(self.user.country, 'country').then(
-            (matches) => {
-              console.log(matches);
-              if(self.user.country.length === 0){
-                self.countries = {};
-              } else {
-                self.countries = matches;
-              }
-            }
-          )
+            _search(self.user.country, 'country').then(
+                (matches) => {
+                    console.log(matches);
+                    if (self.user.country.length === 0) {
+                        self.countries = {};
+                    } else {
+                        self.countries = matches;
+                    }
+                }
+            )
         };
 
         self.selectedCountries = (index) => {
             self.user.country = self.countries[index];
             self.countries = {};
+            self.hideCountry = false;
         };
 
         self.searchFrenchDivision = () => {
-          _search(self.user.division, 'division').then(
-            (matches) => {
-              console.log(matches);
-              if(self.user.division.length === 0){
-                self.divisions = {};
-              } else {
-                self.divisions = matches;
-              }
-            }
-          )
+            _search(self.user.division, 'division').then(
+                (matches) => {
+                    console.log(matches);
+                    if (self.user.division.length === 0) {
+                        self.divisions = {};
+                    } else {
+                        self.divisions = matches;
+                    }
+                }
+            )
         };
 
         self.selectedDivisions = (index) => {
@@ -141,24 +150,24 @@ console.log(array);
         };
         self.getCategories();
 
-        self.searchCategories = () => {
-            _search(self.user.category, 'categories').then(
-                function(matches) {
-                    if (self.user.category.length === 0) {
-                        self.categories = {};
-                    } else {
-                        self.categories = matches;
-                    }
-                }
-            )
-        };
-
-        self.selectedCategories = (index) => {
-            self.user.category = self.categories[index];
-            self.categories = {};
-        };
-
-
+        // self.searchCategories = () => {
+        //     _search(self.user.category, 'categories').then(
+        //         function(matches) {
+        //             if (self.user.category.length === 0) {
+        //                 self.categories = {};
+        //             } else {
+        //                 self.categories = matches;
+        //             }
+        //         }
+        //     )
+        // };
+        //
+        // self.selectedCategories = (index) => {
+        //     self.user.category = self.categories[index];
+        //     self.categories = {};
+        // };
+        //
+        //
 
 
     });

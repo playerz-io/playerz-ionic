@@ -14,8 +14,11 @@ angular.module('starter')
             number
         });
 
+        let getCountries = () => $http.get(`${API_ENDPOINT.url}/countries`);
+
 
         return {
+            getCountries,
             changeNumber,
             changePassword,
             changeMail
