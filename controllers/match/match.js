@@ -578,6 +578,19 @@ exports.defaultPosition = (req, res) => {
                     let match = team.matchs.id(idMatch);
                     let players = team.players;
                     let playersSelected = match.playerSelected;
+                    let playersNoSelected = match.playerNoSelected;
+                    if(playersSelected.length !== 0) {
+                    //  console.log('playerSelected');
+                      match.playerSelected.length = 0;
+                      real_time.resetPlayersSelected_firebase(idMatch, idCoach);
+                    }
+                    if(playersNoSelected.length !== 0){
+                      //console.log('playerNoSelected');
+                      match.playerNoSelected.length = 0;
+                      real_time.resetPlayersNoSelected_firebase(idMatch, idCoach);
+                    }
+
+                    console.log('rrr',match.playerSelected, match.playerNoSelected);
                     done(null, match, players, playersSelected, coach);
                 });
             },
@@ -713,6 +726,7 @@ exports.defaultPosition = (req, res) => {
                                 if (match.formation === Football.QTTROIS) {
                                     console.log('4-4-3');
                                     for (let player of playersTeam) {
+                                      console.log();
                                         // placement du gardien
                                         if (player.favourite_position === Football.GD && GD_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'GD', idCoach, playersSelected);
@@ -904,7 +918,7 @@ exports.defaultPosition = (req, res) => {
                 //diff between playersSelected and players of troop
                 let playersNoSelected = Utils.diffArray(players, playersSelected);
 
-                console.log(players);
+                console.log(players.length, playersSelected.length);
                 Player.find({
                     _id: {
                         "$in": playersNoSelected
@@ -916,7 +930,7 @@ exports.defaultPosition = (req, res) => {
                         return Utils.errorIntern(res, err);
 
                     for (let player of players) {
-
+console.log(player.last_name);
                         if (matchPlayerNoSelected.indexOf(player._id) === -1) {
                             player.position = 'no_selected';
                             privateMatch.addStatisticsToPlayer(player, idMatch);
