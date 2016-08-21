@@ -17,7 +17,6 @@ angular.module('starter', [
     'starter.controller.match-stat',
     'disableAll',
     'starter.controller.summary-stat',
-    'ionic-table',
     'starter.controller.match-comeup',
     'starter.controller.match-played',
     'starter.controller.stat-end-match',
