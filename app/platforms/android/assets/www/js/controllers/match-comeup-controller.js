@@ -19,6 +19,8 @@ angular.module('starter.controller.match-comeup', [])
             date: ''
         };
 
+        $scope.match.date = new Date();
+
         self.getNewMatchComeUp = function() {
             MatchService.getMatchComeUp()
                 .success(function(data) {

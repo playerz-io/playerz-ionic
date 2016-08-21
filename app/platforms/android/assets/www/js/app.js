@@ -129,10 +129,10 @@ angular.module('starter', [
         $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
 
 
-            if (next.name === 'tactique' || next.name === 'match-statistics') {
+            if (next.name === 'tactique' || next.name === 'menu-match.match-statistics') {
                 screen.lockOrientation('landscape');
             } else {
-                //screen.unlockOrientation();
+                screen.unlockOrientation();
             }
 
             if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {

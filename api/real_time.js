@@ -1,8 +1,8 @@
 'use strict'
 //function firebase
-
+const REF_COACH = 'https://boos.firebaseio.com/coaches'
 let Firebase = require('firebase');
-let ref = new Firebase('https://boos.firebaseio.com/coaches');
+let ref = new Firebase(REF_COACH);
 let async = require('async');
 let Player = require('./models/player').modelPlayer;
 
@@ -24,7 +24,6 @@ exports.resetPosition_firebase = (match_ID, coach_ID, player_ID) => {
 };
 
 exports.resetPlayersSelected_firebase = (match_ID, coach_ID) => {
-  console.log('fire');
   let refActions = ref
   .child(coach_ID)
   .child('matchs')

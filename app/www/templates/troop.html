@@ -20,7 +20,7 @@
 
         <p ng-if='troop.players.length ===  0' class="text-center">Vous n'avez pas de joueur dans votre effectif</p>
         <ion-list show-delete="troop.showDelete">
-            <ion-item collection-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
+            <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
                 <h2><b>{{player.last_name}} {{player.first_name}}</b></h2>
                 <p>Position favorite: {{player.favourite_position}}</p>
                 <!-- <ion-delete-button class="ion-minus-circled" ng-click="troop.popupRemovePlayer(player)"></ion-delete-button> -->
