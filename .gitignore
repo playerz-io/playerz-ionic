@@ -1,7 +1,0 @@
-app/bower_components
-app/node_modules
-api/node_modules
-.idea
-/api/node_modules/
-/app/platforms/
-/app/node_modules/
