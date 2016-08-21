@@ -1,0 +1,32 @@
+<ion-view title="Effectif" id="troop">
+    <!-- <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-ios-plus-outline">
+        </button>
+    </ion-nav-buttons> -->
+    <!-- <ion-nav-buttons side="primary">
+        <button class="button button-icon icon ion-ios-minus-outline" ng-click="troop.showDelete = !troop.showDelete">
+        </button>
+    </ion-nav-buttons> -->
+    <ion-floating-button click="openModal()" has-footer="true" button-color="#fe4e50" icon="ion-plus" iconColor="#fff">
+    </ion-floating-button>
+    <ion-content class="padding">
+
+        <ion-refresher on-refresh="troop.getNewPlayers()"></ion-refresher>
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Rechercher un joueur" ng-model="troop.searchPlayer.first_name">
+        </label>
+        </br>
+
+        <p ng-if='troop.players.length ===  0' class="text-center">Vous n'avez pas de joueur dans votre effectif</p>
+        <ion-list show-delete="troop.showDelete">
+            <ion-item ng-repeat="player in troop.players | filter:troop.searchPlayer" ng-click="troop.goPlayer(player._id)">
+                <h2><b>{{player.last_name}} {{player.first_name}}</b></h2>
+                <p>Position favorite: {{player.favourite_position}}</p>
+                <!-- <ion-delete-button class="ion-minus-circled" ng-click="troop.popupRemovePlayer(player)"></ion-delete-button> -->
+                <ion-option-button class="button icon ion-ios-trash-outline" ng-click="troop.popupRemovePlayer(player)">
+                </ion-option-button>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

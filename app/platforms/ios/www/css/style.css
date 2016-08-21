@@ -1,0 +1,184 @@
+/* Empty. Add your own CSS if you like */
+
+@font-face {
+    font-weight: 'Raleway', sans-serif;
+}
+* {
+    font-family: Raleway
+}
+.pane {
+    background-color: #172B32;
+}
+.whistle {
+    background-image: url('../img/whistle.png');
+    background-size: 10vh 10vh;
+    background-position: left top;
+    background-repeat: no-repeat;
+    width: 10vh;
+    height: 10vh;
+}
+.button-player {
+    background-image: url('../img/hexagon_playerz_stroke.png');
+    background-size: 20vh 20vh;
+    background-position: left top;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 20vh;
+    height: 20vh;
+    padding-top: 7vh;
+    font-size: 1em;
+}
+.stricker {
+    clear: both;
+    margin: 0 auto;
+    width: 40vh;
+}
+.midfielder, .defender {
+    margin: 0 auto;
+    clear: both;
+    width: 80vh;
+}
+.goalkeeper {
+    margin: 0 auto;
+    clear: both;
+    width: 20vh;
+}
+.text-center {
+    text-align: center;
+}
+.button-energized {
+    margin-bottom: 2.5vh;
+    font-weight: bold;
+    line-height: 100%;
+}
+#match-statistics {
+    background: url('../img/blue-polygon.jpg')
+}
+table, th, td {
+    border: 1px solid black;
+}
+a {
+    text-decoration: none;
+}
+.tactique {
+    width: 100vh;
+    margin: 0 auto;
+}
+.quatre {
+    height: 85vh;
+    width: 100%;
+    margin: 0 auto;
+}
+.quatre button {
+    border-radius: 50%;
+    height: 10vh;
+}
+#begin-match {
+    height: 10vh;
+    width: 10vh;
+    float: right;
+}
+#begin-match img {
+    height: 10vh;
+    width: 10vh;
+    float: right;
+}
+.rem {
+    float: left;
+    margin-right: 0.5vw;
+    height: 10vh;
+    width: 10vw;
+    background-color: green;
+}
+div .row-player+ .row-player, .row-player {
+    float: right;
+}
+
+/*  screen > 520px  and landscape mode*/
+
+@media screen and (orientation:landscape) and (min-width: 520px) {
+    .connexion {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 5vh;
+    }
+}
+.connexion {
+    margin-top: 25vh;
+}
+@media screen and (orientation:landscape) {
+    .connexion {
+        margin-top: 15vh;
+    }
+}
+
+.
+/*login*/
+
+#connect h1{
+    margin: 5vh;
+
+}
+input::-webkit-input-placeholder {
+    color: #DF8331;
+}
+#sign-in{
+    background: #DF8331;
+    color: #FFFFFF;
+}
+
+#fb-login{
+  background-color: #3C5A95;
+  color: #FFFFFF;
+}
+
+#connect button.activated{
+  border: 0px;
+  background-color: green;
+}
+
+#fb-login button.activated{
+  border: 0px;
+}
+
+.rounded-corner {
+    border-radius: 25px;
+}
+.input-login {
+    background: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 0;
+    padding: 0;
+}
+
+.input-login input[type="email"], .input-login input[type="password"] {
+    color: #DF8331;
+    text-decoration: none;
+    border-radius: 25px;
+    border: 1px solid #DF8331;
+}
+
+.input-login input[type="email"]:focus, .input-login input[type="password"]:focus {
+  border: 1px solid #28B0D3;
+  color: #28B0D3;
+}
+
+.input-login .white-color {
+    color: #FFFFFF;
+
+}
+#register {
+    float: left;
+    color: #DF8331;
+}
+
+#register:active , #forgot:active{
+    color: #28B0D3;
+}
+
+
+#forgot {
+    float: right;
+    color: #DF8331;
+}

@@ -1,0 +1,31 @@
+<ion-view title="PLAYERZ" id="home">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-android-more-vertical"
+                ng-click="popover.show($event)"
+                >
+
+        </button>
+    </ion-nav-buttons>
+    <ion-content has-bouncing="false">
+        <button id="div-effectif"
+                ui-sref="profile.troop"
+        >
+            <h1>EFFECTIF</h1>
+        </button>
+        <button id="div-next-match"
+                ui-sref="match-comeup"
+        >
+            <h1 class="text-center">PROCHAINS <br> MATCHS</h1>
+        </button>
+        <button id="div-statistics"
+                ui-sref="match-played"
+        >
+            <h1>STATISTIQUES</h1>
+        </button>
+        <div id="div-add">
+          <h1>
+            ADD ICON PLAYER & MATCH
+          </h1>
+        </div>
+    </ion-content>
+</ion-view>

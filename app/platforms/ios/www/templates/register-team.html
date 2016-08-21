@@ -1,0 +1,42 @@
+<ion-view title="Inscription" id="register-team">
+    <ion-content class="padding" scroll="false">
+        <div class="list">
+            <label class="item item-input item-select">
+              <div class="input-label">
+                  Sport
+              </div>
+                <select ng-model="register.user.sport">
+                    <option>Football</option>
+                </select>
+            </label>
+            <!-- <label class="item item-input item-select">
+                <div class="input-label">
+                    Joueur ou Entraineur
+                </div>
+                <select ng-model="register.user.type">
+                    <option>Entraineur</option>
+                    <option selected>Joueur</option>
+                </select>
+            </label> -->
+            <label class="item item-input">
+                <input type="text" placeholder="Nom de votre club" ng-change="register.searchClubs()" ng-model="register.user.name_club">
+            </label>
+
+            <div ng-show="register.user.name_club.length" id="auto-complete">
+                <li class="item item-icon-left" ng-click="register.selectedClubs($index)" ng-repeat="club in register.clubs"><i class="icon ion-search"></i>{{club}}</li>
+            </div>
+            <label class="item item-input">
+                <input type="text" placeholder="Categorie" ng-change="register.searchCategories()" ng-model="register.user.category">
+            </label>
+            <div ng-show="register.user.category.length" id="auto-complete">
+                <li  class="item item-icon-left" ng-click="register.selectedCategories($index)" ng-repeat="category in register.categories"><i class="icon ion-search"></i>{{category}}</li>
+            </div>
+            <label class="item item-input">
+                <input type="text" placeholder="Division de l'equipe" ng-model="register.user.division">
+            </label>
+        </div>
+        <button class="button button-full button-positive" ng-click="register.register(register.user)">
+            S'inscrire
+        </button>
+    </ion-content>
+</ion-view>

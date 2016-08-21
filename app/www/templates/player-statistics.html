@@ -1,0 +1,117 @@
+<ion-view title="Stat Joueur" id="stat-player-view">
+
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="text-center">
+            <h2>{{playerStat.match.against_team}}</h2>
+            <p ng-if="playerStat.match.place === 'Domicile'">
+                <b>{{playerStat.match.statistics.totalBut}} - {{playerStat.match.statistics.but_opponent}}</b>
+            </p>
+            <p ng-if="playerStat.match.place === 'Exterieur'">
+                <b>{{playerStat.match.statistics.but_opponent}} - {{playerStat.match.statistics.totalBut}}</b>
+            </p>
+            <div id="div-result" ng-class="{backgroundGreen: playerStat.match.result === 'victory' , backgroundRed: playerStat.match.result === 'defeat', backgroundGrey: playerStat.match.result === 'draw'}">
+                <p>
+
+                    <b>{{playerStat.match.result | getResult}}</b>
+
+                </p>
+            </div>
+        </div>
+
+        <div id="stat">
+
+
+            <div>
+                <div>
+                    <p>
+                        Clean Sheet: {{playerStat.stat.clean_sheet}}
+                    </p>
+                    <p>
+                        Arrêts: {{playerStat.stat.saves}}
+                    </p>
+                    <p>
+                        Sorties Aériennes: {{playerStat.stat.sorties_aeriennes}}
+                    </p>
+                    <p>
+                        Duels Gagnés: {{playerStat.stat.dual_goalkeeper}}
+                    </p>
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p>
+                        Ballons perdus: {{playerStat.stat.ballLost}}
+                    </p>
+                    <p>
+                        Ballons joués: {{playerStat.stat.ballPlayed}}
+                    </p>
+                    <p>
+                        Pourcentage de passes réussies: {{playerStat.stat.passesCompletion}}
+                    </p>
+                    <p>
+                        Passes ratés: {{playerStat.stat.passesFailed}}
+                    </p>
+                    <p>
+                        Pourcentage de relance: {{playerStat.stat.relanceCompletion}}
+                    </p>
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p>
+                        Passes décisives: {{playerStat.stat.assist}}
+                    </p>
+                    <p>
+                        Avant dernière passes décisives: {{playerStat.stat.beforeAssist}}
+                    </p>
+                    <p>
+                        But: {{playerStat.stat.but}}
+                    </p>
+                    <p>
+                        Tirs Cadrés: {{playerStat.stat.attemptsOnTarget}}
+                    </p>
+                    <p>
+                        Tirs Non Cadrés: {{playerStat.stat.attemptsOffTarget}}
+                    </p>
+                    <p>
+                        Hors-Jeu: {{playerStat.stat.offSide}}
+                    </p>
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p>
+                        Fautes Commises: {{playerStat.stat.foulsCommitted}}
+                    </p>
+                    <p>
+                        Fautes Subies: {{playerStat.stat.foulsSuffered}}
+                    </p>
+
+                    <p>
+                        Cartons rouges: {{playerStat.stat.redCard}}
+                    </p>
+                    <p>
+                        Cartons jaunes: {{playerStat.stat.yellowCard}}
+                    </p>
+
+                    <p>
+                        Ballons récupérés: {{playerStat.stat.retrieveBalls}}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

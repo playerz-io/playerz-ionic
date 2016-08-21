@@ -1,0 +1,91 @@
+<ion-view title="Match terminé" id="match-played">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <ion-refresher on-refresh="played.getNewMatchFinished()"></ion-refresher>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" ng-if="played.matchs.length !== 0">
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Buts: {{played.statisticsGlobal.totalBut}}</p>
+                        <p>Buts encaissés: {{played.statisticsGlobal.but_opponent}}</p>
+                        <p>Tirs Cadrés: {{played.statisticsGlobal.totalAttemptsOffTarget}}</p>
+                    </div>
+                    <div>
+                        <p>Hors-jeu: {{played.statisticsGlobal.totalOffSide}}</p>
+                        <p>Tirs Non Cadrés: {{played.statisticsGlobal.totalAttemptsOnTarget}}</p>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Fautes subies: {{played.statisticsGlobal.totalFoulsSuffered}}</p>
+                        <p>Fautes commises: {{played.statisticsGlobal.totalFoulsCommited}}</p>
+                        <p>Actions défensives: {{played.statisticsGlobal.totalDefensiveAction}}</p>
+                    </div>
+                    <div>
+                        <p>Cartons jaunes: {{played.statisticsGlobal.totalYellowCard}}</p>
+                        <p>Cartons rouges: {{played.statisticsGlobal.totalRedCard}}</p>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Ballons récupérés: {{played.statisticsGlobal.totalRetrieveBalls}}</p>
+                        <p>Ballons perdus: {{played.statisticsGlobal.totalBallLost}}</p>
+                        <p>Ballons joués: {{played.statisticsGlobal.totalBallPlayed}}</p>
+                    </div>
+                    <div>
+                        <p>Passes ratées: {{played.statisticsGlobal.totalPassesFailed}}</p>
+                        <p>Pourcentage de passes réussies: {{played.statisticsGlobal.totalPassesCompletion}}%</p>
+                        <p>Pourcentage de relance: {{played.statisticsGlobal.totalRelanceCompletion}}%</p>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        <!-- <p>Match jouées : {{played.nbrMatchFinished}} </p>
+        <p>
+            Statistiques Global : {{played.statisticsGlobal}}
+        </p> -->
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="Rechercher un match" ng-model="played.searchMatch">
+                </label>
+                </br>
+                <p ng-if='played.matchs.length ===  0' class="text-center">Vous n'avez pas de match</p>
+                <ion-list show-delete="played.showDelete">
+                    <ion-item class="item text-center" ng-repeat="match in played.matchs | filter:played.searchMatch" ng-click="played.saveMatchID(match._id)">
+                        <div id="div-result" ng-class="{backgroundGreen: match.result === 'victory' , backgroundRed: match.result === 'defeat', backgroundGrey: match.result === 'draw'}">
+                            <p>
+
+                                <b>{{match.result | getResult}}</b>
+
+                            </p>
+                        </div>
+                        <div>
+                            <p ng-bind-html="played.getBillingName(match)"></p>
+                            <p>{{match.date | date:'fullDate'}}</p>
+                        </div>
+                        <p ng-if="match.place === 'Domicile'">
+                            <b>{{match.statistics.totalBut}} - {{match.statistics.but_opponent}}</b>
+                        </p>
+                        <p ng-if="match.place === 'Exterieur'">
+                            <b>{{match.statistics.but_opponent}} - {{match.statistics.totalBut}}</b>
+                        </p>
+
+
+                        <!-- <ion-delete-button class="ion-minus-circled" ng-click="played.removeMatch(match._id)"></ion-delete-button> -->
+                        <ion-option-button class="button icon ion-ios-trash-outline" ng-click="played.removeMatch(match._id)"></ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

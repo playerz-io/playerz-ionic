@@ -1,0 +1,82 @@
+<ion-view title="{{player.player.first_name}} {{player.player.last_name}}" id="player-view">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding text-center">
+        <h1>{{player.player.first_name}}</h1>
+        <h2>{{player.player.last_name}}</h2>
+        <p >{{player.player.favourite_position}}</p>
+        <p ng-if='player.nbrMatchPlayed !== 0'>Nombre de match joués : {{player.nbrMatchPlayed}}</p>
+        <p ng-if='player.nbrMatchPlayed === 0'>
+          Ce joueur n'a joué aucun match
+        </p>
+        <ion-slide-box ng-if='player.nbrMatchPlayed !== 0' on-slide-changed="slideHasChanged($index)">
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>But: {{player.statisticsGlobal.but}}</p>
+                        <p>Passes décisives: {{player.statisticsGlobal.assist}}</p>
+                        <p>Tirs Cadrés: {{player.statisticsGlobal.attemptsOffTarget}}</p>
+                    </div>
+                    <div>
+                        <p>Hors-jeu: {{player.statisticsGlobal.offSide}}</p>
+                        <p>Avant-Dernière-Passe: {{player.statisticsGlobal.beforeAssist}}</p>
+                        <p>Tirs Non Cadrés: {{player.statisticsGlobal.attemptsOnTarget}}</p>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Fautes subies: {{player.statisticsGlobal.foulsSuffered}}</p>
+                        <p>Fautes commises: {{player.statisticsGlobal.foulsCommitted}}</p>
+                        <p>Gestes défensives: {{player.statisticsGlobal.defensiveAction}}</p>
+                    </div>
+                    <div>
+                        <p>Cartons jaunes: {{player.statisticsGlobal.yellowCard}}</p>
+                        <p>Cartons rouges: {{player.statisticsGlobal.redCard}}</p>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Ballons récupérés: {{player.statisticsGlobal.retrieveBalls}}</p>
+                        <p>Ballons perdus: {{player.statisticsGlobal.ballLost}}</p>
+                        <p>Ballons joués: {{player.statisticsGlobal.ballPlayed}}</p>
+                    </div>
+                    <div>
+                        <p>Passes ratées: {{player.statisticsGlobal.passesFailed}}</p>
+                        <p>Pourcentage de passes réussies: {{player.statisticsGlobal.passesCompletion}}%</p>
+                        <p>Pourcentage de relance: {{player.statisticsGlobal.relanceCompletion}}%</p>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+
+        <ion-list>
+            <ion-item class="item text-center" ng-repeat="match in player.matchPlayed" ng-click="player.goPlayerStat(match._id)">
+                <div id="div-result" ng-class="{backgroundGreen: match.result === 'victory' , backgroundRed: match.result === 'defeat', backgroundGrey: match.result === 'draw'}">
+                    <p>
+
+                        <b>{{match.result | getResult}}</b>
+
+                    </p>
+                </div>
+                <div>
+                    <p>{{match.against_team}}</p>
+                    <p>{{match.date | date:'fullDate'}}</p>
+                </div>
+                <p ng-if="match.place === 'Domicile'">
+                    <b>{{match.statistics.totalBut}} - {{match.statistics.but_opponent}}</b>
+                </p>
+                <p ng-if="match.place === 'Exterieur'">
+                    <b>{{match.statistics.but_opponent}} - {{match.statistics.totalBut}}</b>
+                </p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view title="Profile" id="profile-settings">
+  <ion-nav-bar class="bar-positive" align-title="center">
+      <ion-nav-back-button class="button-clear">
+
+      </ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label"><b>Nom</b></span>
+                <input type="text" placeholder="Nom" ng-model="profileSetting.coach.first_name">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label"><b>Prénom</b></span>
+                <input type="text" placeholder="Prénom" ng-model="profileSetting.coach.last_name">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label"><b>Date de naissance</b></span>
+                <input type="date" placeholder="Date de naissance" ng-model="profileSetting.coach.birth_date">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label"><b>Site web du club</b></span>
+                <input ng-show="!profileSetting.coach.website_club" type="text" placeholder="Ajouter" ng-model="profileSetting.coach.website_club">
+                <input ng-show="profileSetting.coach.website_club" type="text" placeholder="Ajouter" ng-model="profileSetting.coach.website_club">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label"><b>Site web personel</b></span>
+                <input ng-show="!profileSetting.coach.website_perso" type="text" placeholder="Ajouter" ng-model="profileSetting.coach.website_perso">
+                <input ng-show="profileSetting.coach.website_perso" type="text" ng-model="profileSetting.coach.website_perso">
+            </label>
+        </div>
+        <button class="button button-block button-positive" ng-click="profileSetting.updateCoach()">
+            SAUVEGARDER
+        </button>
+    </ion-content>
+    <!-- TODO: add upload photo profile and logo club -->
+</ion-view>

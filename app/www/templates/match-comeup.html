@@ -1,0 +1,35 @@
+<ion-view title="Match à venir" id="match-comeup">
+    <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button class="button-clear">
+        </ion-nav-back-button>
+          <!-- <ion-nav-buttons side="secondary">
+              <button class="button button-icon icon ion-ios-minus-outline" ng-click="comeup.showDelete = !comeup.showDelete">
+              </button>
+          </ion-nav-buttons> -->
+    </ion-nav-bar>
+    <ion-floating-button click="openModal()" has-footer="true" button-color="#fe4e50" icon="ion-plus" iconColor="#fff">
+    </ion-floating-button>
+    <ion-content>
+        <ion-refresher on-refresh="comeup.getNewMatchComeUp()"></ion-refresher>
+
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="Rechercher un match" ng-model="comeup.searchMatch">
+                </label>
+                </br>
+                <p ng-if='comeup.matchs.length ===  0' class="text-center">Vous n'avez pas de match</p>
+                <ion-list show-delete="comeup.showDelete">
+                    <ion-item class="item text-center" ng-repeat="match in comeup.matchs | filter:comeup.searchMatch"  ng-click="comeup.saveMatchID(match)">
+                            <h2 ng-bind-html="comeup.getBillingName(match)">  </h2>
+                            <h3>{{match.date | date:'fullDate'}}</h3>
+                        <!-- <ion-delete-button class="ion-minus-circled" ng-click="comeup.removeMatch(match._id)"></ion-delete-button> -->
+                        <ion-option-button class="button icon ion-ios-trash-outline" ng-click="comeup.removeMatch(match._id)"><i ></i></ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

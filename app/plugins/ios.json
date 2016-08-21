@@ -1,0 +1,60 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "phonegap-facebook-plugin": {
+            "APP_ID": "508256989378454",
+            "APP_NAME": "Playerz",
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.playerz164850"
+        }
+    }
+}

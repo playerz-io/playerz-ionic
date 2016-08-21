@@ -1,0 +1,32 @@
+<ion-modal-view id="modal-add-player">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Ajouter un joueur</h1>
+        <button class="button button-clear button-primary" ng-click="closeModal()">Annuler</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Prénom" ng-model="player.first_name">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Nom" ng-model="player.last_name">
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Position favorite
+                </div>
+                <select ng-model="player.favourite_position">
+                    <option ng-selected="true">Gardien</option>
+                    <option>Défenseur Central</option>
+                    <option>Arrière Latéral</option>
+                    <option>Milieu Défensif</option>
+                    <option>Milieu Central</option>
+                    <option>Milieu Offensif</option>
+                    <option>Ailier</option>
+                    <option>Avant-Centre</option>
+                </select>
+            </label>
+            <button class="button button-full button-positive" ng-click="troop.addPlayer()">Ajouter</button>
+        </div>
+    </ion-content>
+</ion-modal-view>
