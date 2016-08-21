@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/misc.xml
+.idea/modules.xml
+.idea/playerz-ionic.iml
+.idea/workspace.xml
+.idea/vcs.xml
+
+app/www/lib/
+app/platforms/
+app/node_modules/
+
+api/node_modules/
+
