@@ -24,7 +24,8 @@
     "angular-translate": "^2.11.1",
     "angular-translate-loader-static-files": "^2.11.1",
     "angular-translate-loader-url": "^2.11.1",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "jquery": "^3.1.0"
   },
   "resolutions": {
     "angular": "1.5.8",
