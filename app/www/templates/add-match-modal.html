@@ -1,0 +1,88 @@
+<ion-modal-view id="modal-add-match">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">
+            {{ 'ADD_MATCH' | translate }}
+        </h1>
+        <button class="button button-clear button-primary"
+                ng-click="closeModal()"
+        >
+            {{ 'CANCEL' | translate }}
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text"
+                       placeholder="{{ 'OPPONENT' | translate }}"
+                       ng-model="match.against_team"
+                >
+            </label>
+
+            <ion-toggle class="text-center"
+                        ng-init="match.place = {{ 'HOME' | translate }}"
+                        ng-true-value="{{ 'AWAY' | translate }}"
+                        ng-false-value="{{ 'HOME' | translate }}"
+                        ng-model="match.place"
+                        toggle-class="toggle-calm">
+                <p>{{ 'AWAY' | translate }}</p>
+                <p>{{ 'HOME' | translate }}</p>
+            </ion-toggle>
+
+            <ion-toggle class="text-center"
+                        ng-true-value="{{ 'FRIENDLY' | translate }}"
+                        ng-init="match.type = {{ 'OFFICIAL' | translate }}"
+                        ng-false-value="{{ 'OFFICIAL' | translate }}"
+                        ng-model="match.type"
+                        toggle-class="toggle-calm"
+            >
+                <p>{{'FRIENDLY' | translate }}</p>
+                <p>{{'OFFICIAL' | translate }}</p>
+            </ion-toggle>
+            <div ng-show="match.against_team.length"
+                 id="auto-complete">
+                <li  class="item item-icon-left"
+                     ng-click="selectedClubs($index)"
+                     ng-repeat="club in clubs"
+                >
+                    <i class="icon ion-search"></i>
+
+                    {{club}}
+                </li>
+            </div>
+
+            <ion-toggle class="text-center"
+                        ng-init="match.place = {{ 'HOME' | translate}}"
+                        ng-true-value="'Exterieur'"
+                        ng-false-value="'Domicile'"
+                        ng-model="match.place"
+                        toggle-class="toggle-calm"
+            >
+                <p>Exterieur</p>
+                <p>Domicile</p>
+            </ion-toggle>
+
+            <ion-toggle class="text-center"
+                        ng-true-value="'Amical'"
+                        ng-init="match.type = '{{ 'OFFICIAL' | translate}}'"
+                        ng-false-value="'Officiel'"
+                        ng-model="match.type"
+                        toggle-class="toggle-calm"
+            >
+                <p>Amical</p>
+                <p>Officiel</p>
+            </ion-toggle>
+            <label class="item item-input">
+                <span class="input-label">{{ 'DATE' | translate }}</span>
+                <input type="date"
+                       ng-model="match.date"
+                >
+            </label>
+            <button class="button button-full button-positive"
+                    ng-click="addMatch()"
+            >
+                {{ 'ADD' | translate }}
+            </button>
+        </div>
+
+    </ion-content>
+</ion-modal-view>

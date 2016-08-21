@@ -1,0 +1,931 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../www/lib/ionic/fonts" !default;
+$RobotoDraftFontPath: "../www/lib/robotodraft/fonts"; // REMINDER: edit as appropriate!
+$RobotoDraftFontName: "RobotoDraft";
+$RobotoDraftFontVersion: "1.0.0"; // Include all of Ionic
+@import "../www/lib/ionic/scss/ionic";
+@import "../www/lib/robotodraft/sass/robotodraft.scss";
+$elephant: #172B32;
+$california: #DF8331;
+$saumon: #fe4e50; //$saumon: #e74c3c;
+$pelorous: #28B0D3;
+$aluminium: #929292;
+$mariner: #3C5A95;
+$white: #ffffff;
+$clear_mariner: #313B42; //$clear_mariner: #34495e;
+$sombre_mariner: #3C4F5E; //$sombre_mariner: #2c3e50;
+$red: #c0392b;
+$green: #27ae60;
+$grey: #7f8c8d;
+@font-face {
+    font-family: 'Raleway', sans-serif;
+    src: url('../www/lib/font-awesome/fonts/fontawesome-webfont.eot');
+    src: url('../www/lib/font-awesome/fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../www/lib/font-awesome/fonts/fontawesome-webfont.woff') format('woff'), url('../www/lib/font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'), url('../www/lib/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+//Include all sass files
+@import "index";
+
+
+.icon-users {
+    font-family: "fontawesome";
+    content: '\f0c0';
+}
+
+* {
+    font-family: Raleway;
+}
+.pane {
+    background: -webkit-linear-gradient(left, $clear_mariner , $sombre_mariner);
+    //background: linear-gradient(to right, #313B42 , #3C4F5E);
+}
+ion-content {
+    //background: none;
+    background: linear-gradient(to right, $clear_mariner , $sombre_mariner);
+}
+input::-webkit-input-placeholder {
+    color: $white;
+}
+.backgroundRed {
+    background-color: $red;
+}
+.backgroundGreen {
+    background-color: $green;
+}
+.backgroundGrey {
+    background-color: $grey;
+}
+#login {
+
+    ion-content {
+        background: none;
+        margin: 25vh 2rem 2rem;
+    }
+    h1 {
+        margin: 5vh;
+        font-size: 3.6em;
+        color: $white;
+    }
+    label {
+        background: rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 0;
+        padding: 0;
+        border-radius: 25px;
+        input[type="email"],
+        input[type="password"] {
+            color: $white;
+            text-decoration: none;
+            border-radius: 25px;
+            padding-left: 1rem;
+        }
+    }
+    button,
+    label {
+        height: 40px;
+    }
+    button {
+        border-radius: 25px;
+        &#btn-fb {
+            background-color: $mariner;
+            color: #FFFFFF;
+            &.activated {
+                border: 0;
+                background-color: darken($mariner, 10%);
+            }
+        }
+        &#btn-sign-in {
+            background-color: $saumon;
+            color: $white;
+            &.activated {
+                border: 0;
+                background-color: darken($saumon, 10%);
+            }
+        }
+    }
+    a {
+        text-decoration: none;
+        color: $white;
+        &.activated {
+            color: $saumon;
+        }
+        &#a-sign-up {
+            float: left;
+        }
+        &#a-forgot {
+            float: right;
+        }
+    }
+}
+#home {
+    div.scroll {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    h1 {
+        margin: auto;
+        color: white;
+    }
+    #div-effectif {
+        height: 25%;
+        width: 100%;
+        border: 0;
+        display: flex;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("../img/effectifSS.png");
+        &.activated {
+            background-color: darken(black, 10%);
+        }
+    }
+    #div-next-match {
+        @extend #div-effectif;
+        background-image: url("../img/proMatchs.png");
+    }
+    #div-statistics {
+        @extend #div-effectif;
+        background-image: url("../img/rectangle-copy-2.png");
+    }
+    #div-add {
+        @extend #div-effectif;
+        background: none;
+    }
+}
+#player-view {
+    label {
+        background: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid $white;
+        padding: 0;
+        border-radius: 25px;
+        i.placeholder-icon:first-child {
+            padding-left: 6px;
+            color: $white;
+        }
+        input[type="text"] {
+            color: $white;
+            text-decoration: none;
+        }
+    }
+    ion-item {
+        background: none;
+        color: $white;
+        &.item {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid $saumon;
+        }
+        &.activated {
+            background-color: lighten($sombre_mariner, 10%);
+        }
+    }
+    .item-complex .item-content {
+        background: none;
+    }
+    .item-content.activated {
+        background-color: lighten($sombre_mariner, 10%);
+    }
+    h1,
+    h2,
+    h3,
+    p {
+        color: $white;
+    }
+    ion-option-button {
+        background-color: $saumon;
+        &.button {
+            color: $white;
+        }
+    }
+}
+#match-comeup,
+#match-played,
+#menu-match,
+#troop {
+    label {
+        background: none;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 1px solid $white;
+        padding: 0;
+        border-radius: 25px;
+        i.placeholder-icon:first-child {
+            padding-left: 6px;
+            color: $white;
+        }
+        input[type="text"] {
+            color: $white;
+            text-decoration: none;
+        }
+    }
+    ion-item {
+        background: none;
+        color: $white;
+        &.item {
+            background: none;
+            border: 0;
+            border-bottom: 1px solid $saumon;
+        }
+        &.activated {
+            background-color: lighten($sombre_mariner, 10%);
+        }
+    }
+    .item-complex .item-content {
+        background: none;
+    }
+    .item-content.activated {
+        background-color: lighten($sombre_mariner, 10%);
+    }
+    h1,
+    h2,
+    h3,
+    p {
+        color: $white;
+    }
+    ion-option-button {
+        background-color: $saumon;
+        &.button {
+            color: $white;
+        }
+    }
+}
+#match-comeup,
+#match-played {
+    ion-item {
+        padding-bottom: 1px;
+        a.activated {
+            width: 100%;
+            height: 100%;
+            background-color: lighten($sombre_mariner, 10%);
+        }
+    }
+}
+#match-played,
+#player-view {
+    a {
+        text-decoration: none;
+    }
+    *.item-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 100%;
+    }
+    ion-list {
+        ion-item {
+            #div-result {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                p {
+                    margin: auto;
+                }
+            }
+        }
+        div.list {
+            height: 100%;
+        }
+    }
+}
+#account,
+#change-password,
+#forgot-password-view,
+#menu,
+#modal-add-match,
+#modal-add-player,
+#profile-settings,
+#register-info,
+#register-profile,
+#register-team,
+#stat-in-live-view {
+    input {
+        color: $white;
+    }
+    label.item {
+        background: none;
+        border-right: 0;
+        border-left: 0;
+    }
+    .toggle.toggle-calm input:checked + .track {
+        border-color: $saumon;
+        background-color: $saumon;
+    }
+    .item {
+        background: none;
+        border: 0;
+        border-bottom: 1px solid $saumon;
+        color: $white;
+        a {
+            color: $white;
+        }
+        &.activated {
+            background-color: lighten($sombre_mariner, 10%);
+        }
+    }
+    .item-toggle {
+        padding: 16px;
+        p {
+            color: $white;
+        }
+        p:first-child {
+            float: right;
+        }
+        p:nth-child(2) {
+            float: left;
+        }
+    }
+    .item-toggle .toggle {
+        position: inherit;
+        right: inherit;
+        top: inherit;
+    }
+    label .input-label {
+        color: $white;
+    }
+    .item-select select {
+        background: none;
+        color: $white;
+    }
+    .item-stacked-label input {
+        background: none;
+    }
+    .input-label {
+        color: $white;
+    }
+    .item h2 {
+        color: $white;
+    }
+}
+#account {
+    .item.item-divider {
+        background-color: $saumon;
+        color: $white;
+    }
+}
+//menu popover
+.popover .scroll-content {
+    margin: 0;
+}
+#match {
+    button {
+        display: inline-block;
+        height: 50%;
+        width: 100%;
+        border: 0;
+        color: white;
+        text-transform: uppercase;
+        h1 {
+            color: $white;
+        }
+        &:first-child {
+            background-color: yellow;
+        }
+    }
+}
+#tactique {
+    * {
+        box-sizing: border-box;
+    }
+    #begin-match {
+        float: right;
+    }
+    .item {
+        background: none;
+        border: 1px solid $saumon;
+        .input-label {
+            color: $white;
+        }
+    }
+    .div-player {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -2px;
+    }
+    .div-player > div {
+        color: $white;
+        font-size: 0.85em;
+        border: 1px solid $saumon;
+        flex: 0 0 auto;
+        margin-left: 2px;
+        margin-top: 2px;
+        width: calc(25% - 2px);
+        &.drag-enter,
+        &.dragging {
+            background: $saumon;
+            border: 1px solid $white;
+        }
+    }
+    .item-select select {
+        background: none;
+        color: $white;
+    }
+    .rem {
+        border: 1px solid $saumon;
+        font-size: 0.85em;
+        margin: 2px;
+        padding: 2px;
+        a {
+            color: $white;
+        }
+        &.drag-enter,
+        &.dragging {
+            background: $saumon;
+            border: 1px solid $white;
+        }
+    }
+}
+body,
+html {
+    height: 100%;
+}
+.div-tac-fft {
+    text-align: center;
+    .defender,
+    .goalkeeper,
+    .midfielder,
+    .stricker {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+    .defender div,
+    .midfielder div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 25%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .defender div a,
+    .goalkeeper a,
+    .midfielder div a,
+    .stricker a {
+        margin: auto;
+    }
+    & div.drag-enter a,
+    & div.dragging a {
+        color: $white;
+    }
+    .goalkeeper {
+        flex-direction: column;
+        span {
+            display: flex;
+            flex-direction: row;
+            /* margin: auto; */
+            margin-top: 4%;
+            justify-content: space-around;
+        }
+        div {
+            display: flex;
+            flex: 0 0 auto;
+            width: 100%;
+            height: 17vh;
+            background-image: url('../img/hexagon_playerz_stroke.png');
+            background-size: 25% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+    .stricker div:first-child {
+        padding-left: 25%;
+        display: flex;
+        flex: 0 0 auto;
+        width: 50%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 50% 100%;
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+    .stricker div:last-child {
+        padding-right: 25%;
+        display: flex;
+        flex: 0 0 auto;
+        width: 50%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 50% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+}
+.div-tac-ftt {
+    text-align: center;
+    .defender,
+    .goalkeeper,
+    .midfielder,
+    .stricker {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+    .midfielder,
+    .stricker {
+        justify-content: center;
+    }
+    & div.drag-enter a,
+    & div.dragging a {
+        color: $white;
+    }
+    .defender div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 25%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .midfielder div,
+    .stricker div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 25%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .defender div a,
+    .goalkeeper a,
+    .midfielder div a,
+    .stricker a {
+        margin: auto;
+    }
+    .goalkeeper {
+        flex-direction: column;
+        span {
+            display: flex;
+            flex-direction: row;
+            /* margin: auto; */
+            margin-top: 4%;
+            justify-content: space-around;
+        }
+        div {
+            display: flex;
+            flex: 0 0 auto;
+            width: 100%;
+            height: 17vh;
+            background-image: url('../img/hexagon_playerz_stroke.png');
+            background-size: 25% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}
+.div-tac-tft {
+    text-align: center;
+    font-size: 0.7rem;
+    .defender,
+    .goalkeeper,
+    .midfielder,
+    .stricker {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+    .defender,
+    .stricker {
+        justify-content: center;
+    }
+    & div.drag-enter a,
+    & div.dragging a {
+        color: $white;
+    }
+    .defender div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 20%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .goalkeeper {
+        flex-direction: column;
+        align-items: center;
+        span {
+            display: flex;
+            flex-direction: row;
+            /* margin: auto; */
+            margin-top: 4%;
+            align-self: stretch;
+        }
+        div {
+            display: flex;
+            flex: 0 0 auto;
+            width: 20%;
+            height: 17vh;
+            background-image: url('../img/hexagon_playerz_stroke.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+    .midfielder div,
+    .stricker div {
+        display: flex;
+        flex: 0 0 auto;
+        width: 20%;
+        height: 17vh;
+        background-image: url('../img/hexagon_playerz_stroke.png');
+        background-size: 100% 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .defender div a,
+    .goalkeeper a,
+    .midfielder div a,
+    .stricker a {
+        margin: auto;
+    }
+}
+.hexagon {
+    position: relative;
+    width: 300px;
+    height: 173.21px;
+    background-color: #64C7CC;
+    margin: 86.60px 0;
+}
+.hexagon:after,
+.hexagon:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+}
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 86.60px solid #64C7CC;
+}
+.hexagon:after {
+    top: 100%;
+    width: 0;
+    border-top: 86.60px solid #64C7CC;
+}
+.whistle {
+    width: 20%;
+    height: 20%;
+}
+#match-stat {
+    #btn-but {
+        img {
+            color: $white;
+        }
+    }
+    .row {
+        height: 100%;
+    }
+    #stat {
+        padding-top: 0;
+        padding-bottom: 0;
+        a {}
+        a img {
+            width: 62%;
+            height: 9vh;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+        }
+        // a:nth-child(odd){
+        //     margin-left: 75%;
+        // }
+        // a:nth-child(3),
+        // a:nth-child(5) {
+        //     margin-left: 40%;
+        // }1
+        // a:nth-child(4) {
+        //     margin-left: 20%;
+        // }
+    }
+    #fft,
+    #ftt {
+        margin: auto;
+    }
+    #div-brand {
+        display: flex;
+        p {
+            transform: rotate(90deg);
+            margin: auto;
+            float: left;
+        }
+    }
+    #score {
+        height: 20%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span {
+            margin: auto;
+            color: $white;
+        }
+        p:nth-child(2) {
+            width: 10%;
+            display: flex;
+            height: 100%;
+            font-size: 2em;
+        }
+        p:first-child,
+        p:last-child {
+            width: 45%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            height: 100%;
+            font-size: 2em;
+        }
+    }
+    #div-act-dead-time {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        a img {
+            width: 62%;
+            height: 9vh;
+        }
+    }
+    #info-match {
+        display: flex;
+        flex-direction: column;
+        div:last-child {
+            align-self: center;
+            height: 20%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20%;
+            justify-content: space-around;
+        }
+        p {
+            align-self: center;
+            color: $white;
+        }
+    }
+}
+.content-stat {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.slider-slide {
+    margin-top: 10px;
+}
+#stat-in-live-view {
+    p {
+        color: $white;
+    }
+}
+#stat-match-view,
+#stat-player-view {
+    h2,
+    p {
+        color: $white;
+    }
+    #stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        div {
+            border-bottom: 1px solid $saumon;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            div {
+                text-align: center;
+                margin: auto;
+                border: 0;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+        div.scroll {
+            border: 0;
+        }
+    }
+    #div-result {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: auto;
+        p {
+            margin: auto;
+        }
+    }
+    div:first-child {
+        margin-top: 15px;
+    }
+}
+#stat-in-live-player-view {
+    color: $white;
+    ion-content {
+        display: flex;
+    }
+    div.scroll {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        h1 {
+            text-align: center;
+            color: $white;
+        }
+        div.box-stat {
+            flex-direction: row;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: space-around;
+            margin: auto;
+            width: 100%;
+            div:first-child,
+            div:nth-child(2) {
+                border-bottom: 1px solid $saumon;
+            }
+            div:first-child,
+            div:nth-child(3) {
+                border-right: 1px solid $saumon;
+            }
+            div {
+                padding: 5px;
+                text-align: center;
+                width: 50%;
+            }
+        }
+    }
+}
+#summary-match-view {
+    ion-content {
+        display: flex;
+        a {
+            color: $white;
+            text-decoration: none;
+            margin: auto;
+            background: $saumon;
+            border-radius: 5px;
+            padding: 5px;
+            &.activated {
+                background-color: darken($saumon, 10%);
+            }
+        }
+    }
+}
+.button-player {
+    a:last-child {
+        &.activated {
+            color: $white;
+        }
+    }
+}
+#auto-complete {
+    i {
+        font-size: 0.8rem;
+    }
+    li.item {
+        background: $white;
+        color: $grey;
+        font-size: 0.8rem;
+    }
+}

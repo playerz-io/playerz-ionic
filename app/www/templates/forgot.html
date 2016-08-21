@@ -1,0 +1,15 @@
+<ion-view id="forgot-password-view" >
+  <ion-content class="padding">
+    <label class="item item-input" >
+        <input type="email"
+               placeholder="{{ 'EMAIL' | translate }}"
+               ng-model="forgot.email"
+        >
+    </label>
+    <button class="button button-full button-positive"
+            ng-click="forgot.forgotPassword()"
+    >
+      {{ 'RESET_PASSWORD' | translate }}
+    </button>
+  </ion-content>
+</ion-view>
