@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 let getCategoriesFoot = () => {
     let categories = [];
@@ -7,13 +7,13 @@ let getCategoriesFoot = () => {
     }
     categories.push('Sénior', 'Vétéran');
     return categories;
-}
+};
 
 exports.getCategoriesFoot = (req, res) => {
     res.status(200).json({
         categories: getCategoriesFoot()
     });
-}
+};
 
 
 let frenchDivision = [{

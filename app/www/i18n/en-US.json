@@ -9,5 +9,11 @@
   "DASHBOARD": "Dashboard",
   "RECENT_UPDATES": "Recent Updates",
   "UPCOMING": "Upcoming",
-  "ACCOUNT_TAB": "Account"
+  "ACCOUNT_TAB": "Account",
+
+
+
+
+  "ALT_1": "add a new match",
+  "ALT_2": "add a new player"
 }

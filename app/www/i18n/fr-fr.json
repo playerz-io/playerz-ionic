@@ -9,5 +9,11 @@
   "DASHBOARD": "Tableau de Bord",
   "RECENT_UPDATES": "Mises à Jour Récentes",
   "UPCOMING": "Évènements à venir",
-  "ACCOUNT_TAB": "Compte"
+  "ACCOUNT_TAB": "Compte",
+
+
+
+
+  "ALT_1": "rajouter un nouveau match",
+  "ALT_2": "rajouter un nouveau joueur"
 }

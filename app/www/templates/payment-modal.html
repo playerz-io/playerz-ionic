@@ -1,16 +1,20 @@
 <ion-modal-view>
     <ion-content class="padding">
         <div class="list">
-            <label class="item item-input">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Numéro de carte</span>
                 <input type="text" placeholder="Numéro de carte" ng-model="home.payment.number">
             </label>
-            <label class="item item-input">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">mois d'expiration</span>
                 <input type="text" placeholder="mois d'expiration" ng-model="home.payment.exp_month">
             </label>
-            <label class="item item-input">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">année d'expiration</span>
                 <input type="text" placeholder="année d'expiration" ng-model="home.payment.exp_year">
             </label>
-            <label class="item item-input">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">CVC</span>
                 <input type="text" placeholder="cvc" ng-model="home.payment.cvc">
             </label>
             <button class="button button-full button-positive" ng-click="home.charge()">Ajouter</button>
