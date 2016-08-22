@@ -1,10 +1,13 @@
 {
   "name": "playerz",
   "app_id": "11673121",
+  "serve" :  {
+      "defaultBrowser" :  "chrome"
+  },
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://floating-castle-92524.herokuapp.com/api"
+      "proxyUrl": "https://secret-plateau-96989.herokuapp.com/api"
     }
   ]
 }

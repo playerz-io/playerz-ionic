@@ -8,16 +8,28 @@
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_login_activity_layout.xml"
     },
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_search_box.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_search_box.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_checkbox.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_checkbox.xml"
+    },
+    {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_title_bar_stub.xml",
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_title_bar_stub.xml"
     },
     {
-        "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_list_row.xml",
-        "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_list_row.xml"
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_list_row.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_list_row.xml"
     },
     {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_usersettingsfragment.xml",
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_list_row.xml",
+        "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_list_row.xml"
     },
     {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_checkbox.xml",
@@ -26,6 +38,10 @@
     {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_placepickerfragment.xml",
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_list_section_header.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_list_section_header.xml"
     },
     {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_activity_circle_row.xml",
@@ -48,6 +64,10 @@
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_tooltip_bubble.xml"
     },
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_login_activity_layout.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_login_activity_layout.xml"
+    },
+    {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_title_bar_stub.xml",
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_title_bar_stub.xml"
     },
@@ -56,12 +76,20 @@
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_list_section_header.xml"
     },
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_image.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_image.xml"
+    },
+    {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_friendpickerfragment.xml",
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_friendpickerfragment.xml"
     },
     {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_placepickerfragment_list_row.xml",
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_activity_circle_row.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_activity_circle_row.xml"
     },
     {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_placepickerfragment.xml",
@@ -76,16 +104,32 @@
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_search_bar_layout.xml"
     },
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_title_bar.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_title_bar.xml"
+    },
+    {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_checkbox.xml",
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_checkbox.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_usersettingsfragment.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_usersettingsfragment.xml"
     },
     {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_title_bar.xml",
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_title_bar.xml"
     },
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_placepickerfragment_list_row.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_usersettingsfragment.xml",
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_tooltip_bubble.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_tooltip_bubble.xml"
     },
     {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_list_section_header.xml",
@@ -116,7 +160,23 @@
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_login_activity_layout.xml"
     },
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_placepickerfragment.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_search_bar_layout.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_search_bar_layout.xml"
+    },
+    {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_friendpickerfragment.xml",
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_friendpickerfragment.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_picker_title_bar_stub.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_picker_title_bar_stub.xml"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/layout/com_facebook_friendpickerfragment.xml",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/layout/com_facebook_friendpickerfragment.xml"
     }
 ]

@@ -17,7 +17,6 @@ angular.module('starter', [
     'starter.controller.match-stat',
     'disableAll',
     'starter.controller.summary-stat',
-    'ionic-table',
     'starter.controller.match-comeup',
     'starter.controller.match-played',
     'starter.controller.stat-end-match',
@@ -51,8 +50,8 @@ angular.module('starter', [
         notAuthenticated: 'auth-not-authenticated'
     })
     .constant('API_ENDPOINT', {
+        url: 'http://localhost:5000/api'
         //url: 'http://localhost:5000/api'
-        url: 'https://secret-plateau-96989.herokuapp.com/api'
     })
     .constant('availableLanguages', ['en-US', 'fr-fr'])
     .constant('defaultLanguage', 'fr-fr')
@@ -75,11 +74,6 @@ angular.module('starter', [
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
-
-
-
-
-
 
             //check connection
             $rootScope.$on('$cordovaNetwork:offline', function(event, networkState) {

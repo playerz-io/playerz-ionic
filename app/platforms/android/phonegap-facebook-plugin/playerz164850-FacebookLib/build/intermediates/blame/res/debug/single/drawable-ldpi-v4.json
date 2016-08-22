@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/drawable-ldpi-v4/com_facebook_close.png",
+        "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/drawable-ldpi/com_facebook_close.png"
+    },
+    {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/drawable-ldpi-v4/com_facebook_close.png",
         "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/drawable-ldpi/com_facebook_close.png"
     },
