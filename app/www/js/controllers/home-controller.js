@@ -1,7 +1,8 @@
-'use strict'
+'use strict';
 angular.module('starter.controller.home', [])
 
-.controller('HomeTabCtrl', function(PaymentService, ProfileService, AuthService, $ionicPopover, $scope, $state, $ionicPopup, $ionicModal) {
+.controller('HomeTabCtrl', function(PaymentService, ProfileService, AuthService,
+                                    $ionicPopover, $scope, $state, $ionicPopup, $ionicModal) {
     let self = this;
     let dataProfile;
     // TODO: signifier à l'utilisateur qu'il doit absolument donner ses coordonnées
@@ -56,18 +57,18 @@ angular.module('starter.controller.home', [])
         })
         .error(function(data) {
             console.log(data);
-        })
+        });
 
 
     $ionicPopover.fromTemplateUrl('templates/menu-popover.html', {
-        scope: $scope,
+        scope: $scope
     }).then(function(popover) {
         $scope.popover = popover;
     });
 
     let hidePopover = () => {
         $scope.popover.hide();
-    }
+    };
     self.logout = function() {
         hidePopover();
         AuthService.logout();

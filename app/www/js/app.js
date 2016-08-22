@@ -74,19 +74,14 @@ angular.module('starter', [
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
-
-
-
-
-
-
+            
             //check connection
             $rootScope.$on('$cordovaNetwork:offline', function(event, networkState) {
                 $ionicPopup.alert({
                     title: "Internet",
                     template: "Vous avez perdu votre connexion internet"
-                }).then((res) => {});
-
+                }).then((res) => {}
+                )
             });
             if ($cordovaNetwork.isOffline()) {
                 $ionicPopup.alert({
