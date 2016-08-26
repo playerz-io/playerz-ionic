@@ -18,7 +18,8 @@ let mailSubscription = (last_name, first_name, email) => {
         to: email,
         from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
         subject: 'Bienvenue sur Playerz',
-        html: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        html:''
+        /*'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -342,7 +343,7 @@ let mailSubscription = (last_name, first_name, email) => {
     </body>
     </html>
 
-    '
+    '*/
 
     };
 
