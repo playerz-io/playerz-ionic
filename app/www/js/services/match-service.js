@@ -121,8 +121,9 @@ angular.module('starter')
             match_id
         });
 
-        let addOpponentBut = (match_id) => $http.post(API_ENDPOINT.url + '/addOpponentBut', {
-            match_id
+        let addOpponentBut = (match_id, time) => $http.post(API_ENDPOINT.url + '/addOpponentBut', {
+            match_id,
+            time
         });
 
         let removeAction = (match_id) => $http.post(API_ENDPOINT.url + '/removeAction', {

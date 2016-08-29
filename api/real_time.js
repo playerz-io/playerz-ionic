@@ -1,8 +1,17 @@
 'use strict'
 //function firebase
 
+const MATCHS = 'matchs';
+const PLAYERS_SELECTED = 'players_selected';
+const PLAYERS_NO_SELECTED = 'players_no_selected';
+const POSITION = 'position';
+const STATISTICS = "statistics";
+const LIMIT_ACTION_REMOVE = 1;
+const REF_COACH = 'https://boos.firebaseio.com/coaches';
+const ACTIONS = 'actions';
+
 let Firebase = require('firebase');
-let ref = new Firebase('https://boos.firebaseio.com/coaches');
+let ref = new Firebase(REF_COACH);
 let async = require('async');
 let Player = require('./models/player').modelPlayer;
 
@@ -13,47 +22,50 @@ let checkMatchId = function(match_ID, player) {
 };
 
 exports.resetPosition_firebase = (match_ID, coach_ID, player_ID) => {
-  let refActions = ref
-  .child(coach_ID)
-  .child('matchs')
-  .child(match_ID)
-  .child('players_selected')
-  .child(player_ID)
-  .child('position')
-  .set(null);
+    let refActions = ref
+        .child(coach_ID)
+        .child(MATCHS)
+        .child(match_ID)
+        .child(PLAYERS_SELECTED)
+        .child(player_ID)
+        .child(POSITION)
+        .set(null);
 };
 
 exports.resetPlayersSelected_firebase = (match_ID, coach_ID) => {
-  console.log('fire');
-  let refActions = ref
-  .child(coach_ID)
-  .child('matchs')
-  .child(match_ID)
-  .child('players_selected')
-  .set(null);
+    console.log('fire');
+    let refActions = ref
+        .child(coach_ID)
+        .child(MATCHS)
+        .child(match_ID)
+        .child(PLAYERS_SELECTED)
+        .set(null);
 };
 
 exports.resetPlayersNoSelected_firebase = (match_ID, coach_ID) => {
-  let refActions = ref
-  .child(coach_ID)
-  .child('matchs')
-  .child(match_ID)
-  .child('players_no_selected')
-  .remove();
+    let refActions = ref
+        .child(coach_ID)
+        .child(MATCHS)
+        .child(match_ID)
+        .child(PLAYERS_NO_SELECTED)
+        .remove();
 };
 
 
 exports.addActions = (match_ID, coach_ID, actions) => {
-
+    let refMatch = ref
+        .child(coach_ID)
+        .child(MATCHS)
+        .child(match_ID)
+        .child(ACTIONS);
+        
+    if (actions[1] === 'but_opponent') {
+        refMatch.push(actions);
+    }
     if (['assist', 'retrieveBalls', 'foulsSuffered', 'foulsCommitted', 'yellowCard', 'redCard', 'attemptsOnTarget', 'attemptsOffTarget', 'but', 'ballLost', 'ballPlayed', 'defensiveAction', 'offSide', 'passesFailed', 'saves', 'dual_goalkeeper', 'sorties_aeriennes'].indexOf(actions[1]) >= 0) {
         Player.findById(actions[0], (err, player) => {
             actions[0] = `${player.last_name}`;
-            let refMatch = ref
-                .child(coach_ID)
-                .child('matchs')
-                .child(match_ID)
-                .child('actions')
-                .push(actions);
+            refMatch.push(actions);
         });
     }
 
@@ -64,12 +76,11 @@ exports.removeLastActions_firebase = (match_ID, coach_ID) => {
     let listActions = [];
     let refActions = ref
         .child(coach_ID)
-        .child('matchs')
+        .child(MATCHS)
         .child(match_ID)
-        .child('actions').limitToLast(1);
+        .child(ACTIONS).limitToLast(LIMIT_ACTION_REMOVE);
 
     refActions.once('child_added', (snap) => {
-
         snap.ref().remove();
     });
 
@@ -80,7 +91,7 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
     console.log(match.type, match.place, match.against_team);
     let refMatch = ref
         .child(coach_ID)
-        .child('matchs')
+        .child(MATCHS)
         .child(match_ID)
         .set({
             type: match.type,
@@ -110,16 +121,16 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
 };
 exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
 
-  //  console.log('ok');
+    //  console.log('ok');
     //get stat for the good match
     let getStatMatch = (stat) => stat.match_id === match_ID;
     let stat = player.statistics.filter(getStatMatch);
 
-    let playerSelected = selected ? 'players_selected' : 'players_no_selected';
+    let playerSelected = selected ? PLAYERS_SELECTED : PLAYERS_NO_SELECTED;
 
     let refAddPlayer = ref
         .child(coach_ID)
-        .child("matchs")
+        .child(MATCHS)
         .child(match_ID)
         .child(playerSelected)
         .child(player._id.toString())
@@ -164,9 +175,9 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
 exports.removePlayerSelected_firebase = function(player, match_ID, coach_ID) {
     let refAddPlayer = ref
         .child(coach_ID)
-        .child("matchs")
+        .child(MATCHS)
         .child(match_ID)
-        .child('players_selected')
+        .child(PLAYERS_SELECTED)
         .child(player._id.toString())
         .set(null);
 };
@@ -175,11 +186,11 @@ exports.updateStatistic_firebase = function(player, match_ID, coach_ID, stat) {
 
     ref
         .child(coach_ID)
-        .child("matchs")
+        .child(MATCHS)
         .child(match_ID)
-        .child('players_selected')
+        .child(PLAYERS_SELECTED)
         .child(player._id.toString())
-        .child('statistics')
+        .child(STATISTICS)
         .update(stat);
 
 };
@@ -189,12 +200,12 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
 
     let refMatch = ref
         .child(coachId.toString())
-        .child("matchs")
+        .child(MATCHS)
         .child(matchId.toString());
 
-    let refPlayerSelected = refMatch.child('players_selected');
+    let refPlayerSelected = refMatch.child(PLAYERS_SELECTED);
 
-    let refPlayerNoSelected = refMatch.child('players_no_selected');
+    let refPlayerNoSelected = refMatch.child(PLAYERS_NO_SELECTED);
 
     let referenceFstPlayer = refPlayerSelected.child(fstPlayerId.toString());
     let referenceSndPlayer = refPlayerSelected.child(sndPlayerId.toString());
@@ -295,12 +306,12 @@ exports.switchPosition_firebase = (fstPlayerId, sndPlayerId, matchId, coachId) =
 exports.cleanReference_firebase = (coachId, matchId) => {
     let refMatch = ref
         .child(coachId.toString())
-        .child("matchs")
+        .child(MATCHS)
         .child(matchId.toString());
 
-    let refPlayerSelected = refMatch.child('players_selected').remove();
+    let refPlayerSelected = refMatch.child(PLAYERS_SELECTED).remove();
 
-    let refPlayerNoSelected = refMatch.child('players_no_selected').remove();
+    let refPlayerNoSelected = refMatch.child(PLAYERS_NO_SELECTED).remove();
 
 
 };
@@ -308,7 +319,7 @@ exports.cleanReference_firebase = (coachId, matchId) => {
 exports.removeMatch_firebase = (coachId, matchId) => {
     let refMatch = ref
         .child(coachId.toString())
-        .child("matchs")
+        .child(MATCHS)
         .child(matchId.toString()).set(null);
 };
 
@@ -316,9 +327,9 @@ exports.updateStatMatch_firebase = (coachId, matchId, stat) => {
 
     let refMatch = ref
         .child(coachId.toString())
-        .child("matchs")
+        .child(MATCHS)
         .child(matchId.toString())
-        .child("statistics");
+        .child(STATISTICS);
 
     refMatch.update(stat);
 }

@@ -50,8 +50,8 @@ angular.module('starter', [
         notAuthenticated: 'auth-not-authenticated'
     })
     .constant('API_ENDPOINT', {
-        url: 'http://localhost:5000/api'
-        //url: 'http://localhost:5000/api'
+        url: 'https://secret-plateau-96989.herokuapp.com/api'
+        //url: 'https://secret-plateau-96989.herokuapp.com/api'
     })
     .constant('availableLanguages', ['en-US', 'fr-fr'])
     .constant('defaultLanguage', 'fr-fr')
@@ -80,8 +80,8 @@ angular.module('starter', [
                 $ionicPopup.alert({
                     title: "Internet",
                     template: "Vous avez perdu votre connexion internet"
-                }).then((res) => {});
-
+                }).then((res) => {}
+                )
             });
             if ($cordovaNetwork.isOffline()) {
                 $ionicPopup.alert({
@@ -126,7 +126,7 @@ angular.module('starter', [
             if (next.name === 'tactique' || next.name === 'menu-match.match-statistics' || next.name === 'menu-match.change' || next.name === 'menu-match.stat-in-live') {
                 screen.lockOrientation('landscape');
             } else {
-                screen.unlockOrientation();
+              //  screen.unlockOrientation();
             }
 
             if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {

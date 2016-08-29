@@ -9,6 +9,9 @@ router
     .post('/signup', controllerAuth.signup)
     .post('/authenticate', controllerAuth.authenticationJwt)
     .post('/addSportFacebookUser', controllerAuth.addSportFacebookUser)
-    .post('/addTeamFacebookUser', controllerAuth.addTeamFacebookUser);
+    .post('/addTeamFacebookUser', controllerAuth.addTeamFacebookUser)
+    .post('/checkEmail', controllerAuth.checkEmail)
+    .post('/checkPassword', controllerAuth.checkPassword);
+
 
 module.exports = router;

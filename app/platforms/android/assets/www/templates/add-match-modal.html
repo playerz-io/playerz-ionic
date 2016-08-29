@@ -5,7 +5,8 @@
     </ion-header-bar>
     <ion-content class="padding">
         <div class="list">
-            <label class="item item-input">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Adversaire</span>
                 <input type="text" placeholder="Adversaire" ng-change="searchClubs()" ng-model="match.against_team">
             </label>
             <div ng-show="match.against_team.length" id="auto-complete">

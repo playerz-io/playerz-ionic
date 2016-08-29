@@ -10676,23 +10676,44 @@ html {
   width: 20%;
   height: 20%; }
 
-#match-stat #btn-but img {
-  color: #ffffff; }
-
 #match-stat .row {
   height: 100%; }
 
 #match-stat #stat {
-  padding-top: 0;
-  padding-bottom: 0; }
-  #match-stat #stat a img {
-    width: 62%;
-    height: 9vh; }
-  #match-stat #stat div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%; }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start; }
+  #match-stat #stat #defensive-action {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/shield-icon.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
+  #match-stat #stat #attempts-on-target {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/attempt_on_target_icon.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
+  #match-stat #stat #attempts-off-target {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/attempt_off_target_icon.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
+  #match-stat #stat #goal {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/goal.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
+  #match-stat #stat #ball-retrieve {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/football-players-on-game.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
 
 #match-stat #fft,
 #match-stat #ftt {
@@ -10732,9 +10753,18 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; }
-  #match-stat #div-act-dead-time a img {
-    width: 62%;
-    height: 9vh; }
+  #match-stat #div-act-dead-time #off-side {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/two-black-flags.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
+  #match-stat #div-act-dead-time #undo-action {
+    width: 11vh;
+    height: 11vh;
+    background-image: url("../img/undo-icon.png");
+    background-size: 11vh 11vh;
+    background-repeat: no-repeat; }
 
 #match-stat #info-match {
   display: flex;

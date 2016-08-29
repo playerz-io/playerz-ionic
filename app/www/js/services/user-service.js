@@ -16,8 +16,19 @@ angular.module('starter')
 
         let getCountries = () => $http.get(`${API_ENDPOINT.url}/countries`);
 
+        let checkEmail = (email) => $http.post(`${API_ENDPOINT.url}/checkEmail`, {
+            email
+        });
+
+        let checkPassword = (password, confirmation_password) => $http.post(`${API_ENDPOINT.url}/checkPassword`, {
+            password,
+            confirmation_password
+        });
+
 
         return {
+            checkPassword,
+            checkEmail,
             getCountries,
             changeNumber,
             changePassword,

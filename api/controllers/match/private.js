@@ -8,6 +8,7 @@ let Coach = require('../../models/coach').modelCoach;
 let Player = require('../../models/player').modelPlayer;
 let Statistic = require('../../models/statistics').modelStatistic;
 let real_time = require('../../real_time');
+let async = require('async');
 
 
 let _addStatisticsToPlayer = (player, match_id) => {
@@ -98,19 +99,37 @@ exports._findMatch = function(status, req, res) {
     }
 };
 
-exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected) => {
-  console.log(player.last_name, position);
+exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected, foundMatch) => {
+
+    //
+    // Match.findById(idMatch, (err, foundMatch) => {
+    console.log(player.last_name, position);
+    console.log("playersSelected", playersSelected);
+    console.log('indexOf', playersSelected.indexOf(player._id));
+    if (foundMatch.playerSelected.indexOf(player._id) < 0) {
+        foundMatch.playerSelected.push(player);
+    }
+    // // TODO: A sauvegarder ???
+    foundMatch.save();
+
+    if (playersSelected.indexOf(player._id) < 0) {
+        console.log('oysh');
+        playersSelected.push(player);
+        console.log('defaultPosition', playersSelected);
+    }
+
     exports.addStatisticsToPlayer(player, idMatch);
     player.position = position;
     player.save((err) => {
         if (err)
             return Utils.errorIntern(res, err);
     });
-    if (playersSelected.indexOf(player._id) < 0) {
-        playersSelected.push(player);
-    }
+
+
     //console.log('player.position', player.position);
     real_time.addPlayer_firebase(player, idMatch, idCoach, true);
+    // });
+
 };
 
 exports._setDefaultPosition = (idMatch, idCoach, defaultPosition) => {

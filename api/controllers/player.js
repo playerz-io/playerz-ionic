@@ -224,8 +224,9 @@
                               }
                           }
                       }
+                      console.log(statisticsGlobal.passesCompletion, matchPlayed.length);
                       statisticsGlobal.passesCompletion = statisticsGlobal.passesCompletion / matchPlayed.length;
-                      statisticsGlobal.relanceCompletion = statisticsGlobal.passesCompletion / matchPlayed.length;
+                      statisticsGlobal.relanceCompletion = statisticsGlobal.relanceCompletion / matchPlayed.length;
 
                       cb(null, statisticsGlobal, matchPlayed);
                   });

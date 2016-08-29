@@ -8,34 +8,36 @@
     </ion-nav-bar>
     <ion-content id="match-statistics" scroll="false">
         <div class="row">
-            <div class="col col-10" id="stat">
-                <div>
+            <div class="col col-10 text-center" id="stat">
 
-                    <a id="btn-but" ng-click="matchStat.countMainAction('but')">
-                        <img src="img/but-icon.png" alt="But" height="36" width="36" />
-                    </a>
 
-                    <a ng-click="matchStat.countMainAction('defensiveAction')">
-                        <img src="img/shield-icon.png" alt="Geste Défensif" height="36" width="36" />
-                    </a>
 
-                    <a ng-click="matchStat.countMainAction('attemptsOnTarget')">
-                        <img src="img/attempt_on_target_icon.png" alt="Tir Cadré" height="36" width="36" />
-                    </a>
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE)"
+                  id='defensive-action'
+                  on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE)">
+                </a>
 
-                    <a ng-click="matchStat.countMainAction('attemptsOffTarget')">
-                        <img src="img/attempt_off_target_icon.png" alt="Tir Non Cadré" height="36" width="36" />
-                    </a>
-                    <a ng-click="matchStat.countMainAction('ballLost')">
-                        <img src="img/output-3.png" alt="Ballon Perdu" height="36" width="36" />
-                    </a>
-                    <a ng-click="matchStat.countMainAction('passesFailed')">
-                        <img src="img/pass_football.png" alt="Ballon récupéré" height="36" width="36" />
-                    </a>
-                    <a ng-click="matchStat.countMainAction('retrieveBalls')">
-                        <img src="img/football-players-on-game.png" alt="Ballon récupéré" height="36" width="36" />
-                    </a>
-                </div>
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET)"
+                  id="attempts-on-target"
+                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET)">
+                </a>
+
+                <a ng-click="matchStat.countMainAction('attemptsOffTarget')" id="attempts-off-target">
+                </a>
+
+                <a id="goal" ng-click="matchStat.countMainAction('but')" id="goal">
+
+                </a>
+<!--
+                <a ng-click="matchStat.countMainAction('ballLost')">
+                    <img src="img/output-3.png" alt="Ballon Perdu" height="36" width="36" />
+                </a>
+                <a ng-click="matchStat.countMainAction('passesFailed')">
+                    <img src="img/pass_football.png" alt="Passe ratée" height="36" width="36" />
+                </a> -->
+                <a ng-click="matchStat.countMainAction('retrieveBalls')" id="ball-retrieve">
+
+                </a>
 
             </div>
             <div class="col col-20" id="info-match">
@@ -52,7 +54,7 @@
                 <div>
                     <p ng-repeat="action in matchStat.actions">
                         <span ng-show="action[1] === 'but'">
-                          <img src="img/but-icon.png" alt="But" height="16" width="16" />
+                          <img src="img/goal.png" alt="But" height="16" width="16" />
                         </span>
                         <span ng-show="action[1] === 'defensiveAction'">
                           <img src="img/shield-icon.png" alt="Geste Défensif" height="16" width="16" />
@@ -71,6 +73,15 @@
                         </span>
                         <span ng-show="action[1] === 'retrieveBalls'">
                         <img src="img/football-players-on-game.png" alt="Ballon récupéré" height="16" width="16" />
+                        </span>
+                        <span ng-show="action[1] === 'dual_goalkeeper'">
+                        <img src="img/Arm-Wrestling-saumon .png" alt="Dual Goalkeeper" height="16" width="16" />
+                        </span>
+                        <span ng-show="action[1] === 'sorties_aeriennes'">
+                        <img src="img/superman-flying_saumon.png" alt="sorties aeriennes" height="16" width="16" />
+                        </span>
+                        <span ng-show="action[1] === 'saves'">
+                        <img src="img/stop_saumon.png" alt="Saves" height="16" width="16" />
                       </span> {{action[0]}} {{action[2] | getMinutes }}'
                     </p>
                 </div>
@@ -85,8 +96,7 @@
                 <three-fivetwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></three-fivetwo>
             </div>
             <div class="col col-10 text-center" id="div-act-dead-time">
-                <a ng-click="matchStat.countMainAction('offSide')">
-                    <img src="img/two-black-flags.png" alt="Hors-jeu" height="36" width="36" />
+                <a ng-click="matchStat.countMainAction('offSide')" id="off-side">
                 </a>
                 <a ng-click="matchStat.cardActived = !matchStat.cardActived">
                     <img src="img/output-7.png" alt="Cartons" height="36" width="36" />
@@ -111,8 +121,7 @@
                         <img src="img/output-7.png" alt="Fautes Commises" height="36" width="36" />
                     </a>
                 </div>
-                <a ng-click="matchStat.removeAction()">
-                    <img src="img/undo-icon.png" alt="Erreur action" height="36" width="36" />
+                <a ng-click="matchStat.removeAction()" id="undo-action">
                 </a>
             </div>
         </div>

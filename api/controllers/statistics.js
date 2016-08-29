@@ -319,6 +319,19 @@ exports.countMainAction = function(req, res) {
             },
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach, done) => {
+                Match.findById(match_id, (err, foundMatch) => {
+                    foundMatch.schemaMatch.push(match.schemas);
+                    foundMatch.actions.push(match.schemas.slice(-3));
+                    foundMatch.schemas = [];
+                    foundMatch.save((err) => {
+                        if (err)
+                            return Utils.errorIntern(res, err);
+                    });
+                    done(null, stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach);
+                });
+            },
+
+            (stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach, done) => {
                 match.schemaMatch.push(match.schemas);
                 match.actions.push(match.schemas.slice(-3));
                 real_time.addActions(match_id, coach_id, match.schemas.slice(-3));
@@ -331,6 +344,7 @@ exports.countMainAction = function(req, res) {
 
                 res.status(201).json({
                     success: true,
+                    actions,
                     playerSelected: match.playerSelected
                 });
             }
@@ -777,13 +791,16 @@ exports.removeAction = (req, res) => {
             let arrayActions = match.actions;
 
             if (sizeSchema !== 0) {
+
                 let idPlayerRemoved = schema.splice(sizeSchema - 1, 1);
+
                 Player.findById(idPlayerRemoved, (err, player) => {
                     updateStatPlayer(player, match_id, 'ballPlayed', err, idCoach, true);
                     coach.save((err) => {
                         if (err)
                             return Utils.errorIntern(res, err);
                     });
+
                     return res.status(202).json({
                         success: true,
                         msg: `${Utils.getAction('ballPlayed')} de ${player.last_name} ${player.first_name} est annulé`
@@ -800,27 +817,46 @@ exports.removeAction = (req, res) => {
 
                     //removed last schema
                     schemaMatch.splice(sizeSchemaMatch - 1, 1);
-                    arrayActions.splice(arrayActions.length -1, 1);
+                    //remove last item from arrayActions
+                    arrayActions.splice(arrayActions.length - 1, 1);
                     real_time.removeLastActions_firebase(match_id, idCoach);
 
                     let idPlayerRemoved = schemaRemoved[0];
                     let actionRemoved = schemaRemoved[1];
 
-                    coach.save((err) => {
-                        if (err)
-                            return Utils.errorIntern(res, err);
-                    });
+                    if (actionRemoved === 'but_opponent') {
+                        match.statistics.but_opponent--;
+                        real_time.updateStatMatch_firebase(idCoach, match_id, {
+                            but_opponent: match.statistics.but_opponent
+                        });
 
-                    Player.findById(idPlayerRemoved, (err, player) => {
-                        if (err)
-                            return Utils.errorIntern(res, err);
-                        updateStatPlayer(player, match_id, actionRemoved, err, idCoach, true);
+                        coach.save((err) => {
+                            if (err)
+                                return Utils.errorIntern(res, err);
+                        });
 
                         res.status(202).json({
                             success: true,
-                            msg: `${Utils.getAction(actionRemoved)} de ${player.last_name} ${player.first_name} est annulé`
-                        })
-                    });
+                            msg: `But adverse annulé`
+                        });
+                    } else {
+                        coach.save((err) => {
+                            if (err)
+                                return Utils.errorIntern(res, err);
+                        });
+
+                        Player.findById(idPlayerRemoved, (err, player) => {
+                            if (err)
+                                return Utils.errorIntern(res, err);
+                            updateStatPlayer(player, match_id, actionRemoved, err, idCoach, true);
+
+                            res.status(202).json({
+                                success: true,
+                                msg: `${Utils.getAction(actionRemoved)} de ${player.last_name} ${player.first_name} est annulé`
+                            });
+                        });
+                    }
+
                 } else {
                     return res.status(400).json({
                         success: false,

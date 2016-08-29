@@ -128,8 +128,8 @@ angular.module('starter', [
             } else {
               //  screen.unlockOrientation();
             }
-
-            if (next.name === 'menu-match.match-statistics' && fromState.name === 'tactique') {
+            
+            if (next.name === 'summary-stat' && fromState.name === 'menu-match.match-statistics') {
                 $window.location.reload();
             }
 

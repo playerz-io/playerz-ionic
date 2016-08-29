@@ -22,10 +22,19 @@
         >
             <h1>STATISTIQUES</h1>
         </button>
-        <div id="div-add">
-          <h1>
-            ADD ICON PLAYER & MATCH
-          </h1>
+        <div id="div-add" style="width: 100%">
+            <button type="button"
+                    ui-sref="match-comeup"
+                    style="width: 50%">
+                <img src="../img/addMatch.png"
+                     alt="{{ 'ALT_1' | translate }}">
+            </button>
+            <button type="button"
+                    ui-sref="profile.troop"
+                    style="width: 50%">
+                <img src="../img/addplayer.png"
+                     alt="{{ 'ALT_2' | translate }}">
+            </button>
         </div>
     </ion-content>
 </ion-view>

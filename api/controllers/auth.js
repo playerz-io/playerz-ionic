@@ -11,6 +11,69 @@ let mg = require('nodemailer-mailgun-transport');
 let auth = require('../config/mailgun').auth;
 
 
+let _checkPassword = (confirmation_password, password, res) => {
+    if (password) {
+
+        if (confirmation_password.length < 6 || password.length < 6) {
+            return res.status(404).json({
+                success: false,
+                msg: 'Votre mot de passe doit contenir au moins 6 caractères'
+            });
+        }
+
+        if (confirmation_password !== password) {
+            return res.status(404).json({
+                success: false,
+                msg: 'Le mot de passe et la confirmation sont différents'
+            });
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            msg: "Ajoutez un mot de passe"
+        });
+    }
+
+    res.status(200).json({
+        success: true
+    });
+};
+
+let _checkEmail = (email, res) => {
+    if (email) {
+        if (!Utils.validateEmail(email)) {
+            return res.status(404).json({
+                success: false,
+                msg: "Respecter le format d'une addresse mail"
+            });
+        }
+    } else {
+        return res.status(404).json({
+            success: false,
+            msg: "Ajoutez une adresse mail"
+        });
+    }
+
+    res.status(200).json({
+        success: true
+    })
+}
+
+exports.checkPassword = (req, res) => {
+
+    let password = req.body.password;
+    let confirmation_password = req.body.confirmation_password;
+
+    _checkPassword(confirmation_password, password, res);
+
+};
+
+exports.checkEmail = (req, res) => {
+    let email = req.body.email;
+    console.log(email);
+    _checkEmail(email, res);
+
+}
 let mailSubscription = (last_name, first_name, email) => {
 
     let smtpTransport = nodemailer.createTransport(mg(auth));
@@ -165,8 +228,11 @@ exports.signup = (req, res) => {
     let category = req.body.category;
     let division = req.body.division;
 
+
+
     //validation email
     // NOTE: 1
+
     if (email) {
         if (!Utils.validateEmail(email)) {
             return res.json({
@@ -192,6 +258,7 @@ exports.signup = (req, res) => {
             });
         }
     }
+
 
     // NOTE: 2
     if (!last_name || !email || !first_name || !password || !sport || !country || !genre || !birth_date || !name_club || !category || !division || !confirmation_password) {

@@ -5,8 +5,6 @@ angular.module('starter.controller.match-stat', [])
 
         let self = this;
 
-
-
         self.coachId = StorageService.getStorageCoachId();
         self.matchId = StorageService.getStorageMatchId();
         self.playerSelected = FireService.refPlayerSelected(self.matchId, self.coachId);
@@ -26,12 +24,108 @@ angular.module('starter.controller.match-stat', [])
         self.cardActived = false;
         self.foulsActived = false;
 
+        self.ACTION = {
+            _DEFENSIVE: {
+                id: 'defensive-action',
+                name: 'defensiveAction',
+                img: 'img/shield-icon.png',
+                img_click: 'img/shield_icon_white.png'
+            },
+            _ATTEMPTS_ON_TARGET: {
+                id: 'attempts-on-target',
+                name: 'attemptsOnTarget',
+                img: 'img/attempt_on_target_icon.png',
+                img_click: 'img/attempt_on_target_icon_white.png'
+            },
+
+            _ATTEMPTS_OFF_TARGET: {
+                id: 'attempts-off-target',
+                name: 'attemptsOffTarget',
+                img: 'img/attempt_off_target_icon.png',
+                img_click: 'img/attempt_off_target_icon_white.png'
+            },
+
+            _BUT: {
+                id: 'goal',
+                name: 'but',
+                img: 'img/goal.png',
+                img_click: 'img/goal_white.png'
+            },
+            _RETRIEVE_BALL: {
+                id: 'ball-retrieve',
+                name: 'retrieveBalls',
+                img: 'img/football-players-on-game.png',
+                img_click: 'img/football-players-on-game_white.png'
+            },
+
+            _BALL_LOST: {
+                name: 'ballLost',
+                img: '',
+                img_click: ''
+            },
+
+            _PASSE_FAILED: {
+                name: 'passesFailed',
+                img: '',
+                img_click: ''
+            },
+
+            _DUAL_GOALKEEPER: {
+                name: 'dual_goalkeeper',
+                img: '',
+                img_click: ''
+            },
+
+            _SORTIE_AERIENNE: {
+                name: 'sorties_aeriennes',
+                img: '',
+                img_click: ''
+            },
+
+            _SAVES: {
+                name: 'saves',
+                img: '',
+                img_click: ''
+            },
+
+            _OFF_SIDE: {
+                name: 'offSide',
+                img: 'img/two-black-flags.png',
+                img_click: 'img/two-black-flags_white.png'
+            }
+        }
+
+
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');
             self.goalkeeper = !self.goalkeeper;
         }
 
+        self.onTap = (action) => {
+            let img = null;
+            let img_click = null;
+            let element = null;
+            let id = null;
+            if (action === self.ACTION._DEFENSIVE) {
+                img = self.ACTION._DEFENSIVE.img;
+                img_click = self.ACTION._DEFENSIVE.img_click;
+                id = `#${self.ACTION._DEFENSIVE.id}`;
+            } else if (action === self.ACTION._ATTEMPTS_ON_TARGET) {
+                img = self.ACTION._ATTEMPTS_ON_TARGET.img;
+                img_click = self.ACTION._ATTEMPTS_ON_TARGET.img_click;
+                id = `#${self.ACTION._ATTEMPTS_ON_TARGET.id}`;
+            }
 
+            element = angular.element(document.querySelector(id));
+            element.css({
+                'background-image': `url(${img_click})`
+            });
+            $timeout(() => {
+                element.css({
+                    'background-image': `url(${img})`
+                });
+            }, 350);
+        }
 
         self.time = () => {
             self.seconds++;
