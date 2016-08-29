@@ -1,28 +1,28 @@
-<ion-view title="Changement">
+<ion-view title="Changement" id="change">
     <ion-nav-buttons side="left" class="bar-positive">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content scroll="false">
         <div class="row">
-            <div class="rem" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="change.onDropComplete($index, $data)" ng-repeat="player in change.playerSelected" ng-if="player.position === 'REM'">
-                <a> {{player.last_name}}
-                  <br/> {{player.first_name}} {{player.position}}
-              </a>
+            <div class="col col-33">
+                <div class="rem" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="change.onDropComplete($index, $data)" ng-repeat="player in change.playerSelected" ng-if="player.position === 'REM'">
+                    <a>{{player.last_name}} <br>
+                      {{player.first_name}}
+                    </a>
+                </div>
             </div>
             <div class="col col-67">
-                <div class="row quatre">
-                    <div ng-if="change.formation === '4-4-2'">
-                        <four-fourtwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-fourtwo>
-                    </div>
-                    <div ng-if="change.formation === '4-3-3'">
-                        <four-threethree info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-threethree>
-                    </div>
-                    <div ng-if="change.formation === '3-5-2'">
-                        <three-fiveTwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></three-fiveTwo>
-                    </div>
-
+                <div ng-if="change.formation === '4-4-2'">
+                    <four-fourtwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-fourtwo>
+                </div>
+                <div ng-if="change.formation === '4-3-3'">
+                    <four-threethree info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-threethree>
+                </div>
+                <div ng-if="change.formation === '3-5-2'">
+                    <three-fiveTwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></three-fiveTwo>
                 </div>
             </div>
         </div>
+
     </ion-content>
 </ion-view>

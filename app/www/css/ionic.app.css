@@ -10890,3 +10890,23 @@ html {
   background: #ffffff;
   color: #7f8c8d;
   font-size: 0.8rem; }
+
+#change .row {
+  height: 100%; }
+  #change .row .col-67 {
+    margin: auto; }
+
+#change .col-33 {
+  display: flex;
+  flex-direction: column; }
+  #change .col-33 .rem {
+    margin: auto;
+    width: 50%;
+    font-size: 0.85em;
+    border: 1px solid #fe4e50;
+    text-align: center; }
+    #change .col-33 .rem a {
+      color: #ffffff; }
+    #change .col-33 .rem.drag-enter, #change .col-33 .rem.dragging {
+      background: #fe4e50;
+      border: 1px solid #ffffff; }

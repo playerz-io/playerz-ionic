@@ -931,3 +931,30 @@ $size-background-action: 11vh;
         font-size: 0.8rem;
     }
 }
+#change {
+    .row {
+        height: 100%;
+        .col-67 {
+            margin: auto;
+        }
+    }
+    .col-33 {
+        display: flex;
+        flex-direction: column;
+        .rem {
+            margin: auto;
+            width: 50%;
+            font-size: 0.85em;
+            border: 1px solid #fe4e50;
+            text-align: center;
+            a {
+                color: #ffffff;
+            }
+            &.drag-enter,
+            &.dragging {
+                background: $saumon;
+                border: 1px solid $white;
+            }
+        }
+    }
+}
