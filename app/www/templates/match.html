@@ -6,9 +6,19 @@
     <ion-floating-button click="openModal()" has-footer="true" button-color="#fe4e50" icon="ion-plus" iconColor="#fff">
     </ion-floating-button>
     <ion-content scroll="false">
-                <button ui-sref="match-comeup" ui-sref-opts="{reload: true}"><h1>Match <br> à <br>venir</h1></button>
+                <button ui-sref="match-comeup"
+                        ui-sref-opts="{reload: true}"
+                        style="background-image: url("../img/matchsAVenir.jpeg")"
+                >
+                    <h1>Match à venir</h1>
+                </button>
 
-                <button ui-sref="match-played" ui-sref-opts="{reload: true}"><h1>Match <br> terminé</h1></button>
+                <button ui-sref="match-played"
+                        ui-sref-opts="{reload: true}"
+                        style="background-image: url("../img/matchsTermines.jpeg")"
+                >
+                    <h1>Match terminé</h1>
+                </button>
 
     </ion-content>
 </ion-view>
