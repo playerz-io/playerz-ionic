@@ -89,9 +89,17 @@ angular.module('starter.controller.match-stat', [])
             },
 
             _OFF_SIDE: {
+                id: 'off-side',
                 name: 'offSide',
                 img: 'img/two-black-flags.png',
                 img_click: 'img/two-black-flags_white.png'
+            },
+
+            _UNDO_ACTION: {
+                id: 'undo-action',
+                name: 'undoAction',
+                img: 'img/undo-icon.png',
+                img_click: 'img/undo_white.png'
             }
         }
 
@@ -106,14 +114,45 @@ angular.module('starter.controller.match-stat', [])
             let img_click = null;
             let element = null;
             let id = null;
-            if (action === self.ACTION._DEFENSIVE) {
+            console.log(action);
+            if (action === self.ACTION._DEFENSIVE.name) {
+
                 img = self.ACTION._DEFENSIVE.img;
                 img_click = self.ACTION._DEFENSIVE.img_click;
                 id = `#${self.ACTION._DEFENSIVE.id}`;
-            } else if (action === self.ACTION._ATTEMPTS_ON_TARGET) {
+
+            } else if (action === self.ACTION._ATTEMPTS_ON_TARGET.name) {
+
                 img = self.ACTION._ATTEMPTS_ON_TARGET.img;
                 img_click = self.ACTION._ATTEMPTS_ON_TARGET.img_click;
                 id = `#${self.ACTION._ATTEMPTS_ON_TARGET.id}`;
+
+            } else if (action === self.ACTION._ATTEMPTS_OFF_TARGET.name) {
+
+                img = self.ACTION._ATTEMPTS_OFF_TARGET.img;
+                img_click = self.ACTION._ATTEMPTS_OFF_TARGET.img_click;
+                id = `#${self.ACTION._ATTEMPTS_OFF_TARGET.id}`;
+
+            } else if (action === self.ACTION._BUT.name) {
+                img = self.ACTION._BUT.img;
+                img_click = self.ACTION._BUT.img_click;
+                id = `#${self.ACTION._BUT.id}`;
+
+            } else if (action === self.ACTION._RETRIEVE_BALL.name) {
+                img = self.ACTION._RETRIEVE_BALL.img;
+                img_click = self.ACTION._RETRIEVE_BALL.img_click;
+                id = `#${self.ACTION._RETRIEVE_BALL.id}`;
+
+            } else if (action === self.ACTION._UNDO_ACTION.name) {
+                img = self.ACTION._UNDO_ACTION.img;
+                img_click = self.ACTION._UNDO_ACTION.img_click;
+                id = `#${self.ACTION._UNDO_ACTION.id}`;
+
+            } else if (action === self.ACTION._OFF_SIDE.name) {
+                img = self.ACTION._OFF_SIDE.img;
+                img_click = self.ACTION._OFF_SIDE.img_click;
+                id = `#${self.ACTION._OFF_SIDE.id}`;
+
             }
 
             element = angular.element(document.querySelector(id));
@@ -298,7 +337,7 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.addOpponentBut = function() {
-            MatchService.addOpponentBut(self.matchId)
+            MatchService.addOpponentBut(self.matchId, self.fullTime)
                 .success((data) => {
                     console.log(data);
                     self.opponent_but = data.but_opponent;
@@ -316,6 +355,7 @@ angular.module('starter.controller.match-stat', [])
                 })
                 .error((data) => {
                     console.log(data);
+                    $cordovaToast.showShortBottom(data.msg);
                 })
         }
 

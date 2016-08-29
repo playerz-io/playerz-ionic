@@ -13,9 +13,9 @@ angular
             confirmation_password: '',
             country: '',
             sport: '',
-            genre: '',
+            genre: 'Féminin',
             name_club: '',
-            category: '',
+            category: 'Sénior',
             division: '',
             birth_date: ''
         };
@@ -28,7 +28,7 @@ angular
         }];
 
         self.register = function() {
-          console.log(self.user);
+            console.log(self.user);
             self.user.birth_date = new Date(self.user.birth_date);
             AuthService.register(self.user).then(function(msg) {
 
@@ -43,6 +43,23 @@ angular
                 });
             });
         };
+
+        // self.goToPrivateInfo = (email) => {
+        //     console.log(email);
+        //     UserService.checkEmail(email)
+        //         .success((data) => {
+        //             UserService.checkPassword(self.user.password, self.user.confirmation_password)
+        //                 .success((data) => {
+        //                     $state.go('register.privateInfo');
+        //                 })
+        //                 .error((data) => {
+        //
+        //                 })
+        //         })
+        //         .error((data) => {
+        //             console.log(data);
+        //         })
+        // };
 
         self.getCountries = () => {
             UserService.getCountries()

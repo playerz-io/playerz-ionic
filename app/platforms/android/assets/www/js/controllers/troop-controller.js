@@ -8,7 +8,7 @@ angular.module('starter.controller.troop', [])
         $scope.player = {
             first_name: null,
             last_name: null,
-            favourite_position: null
+            favourite_position: 'Gardien'
         };
 
         self.showDelete = false;
@@ -31,14 +31,18 @@ angular.module('starter.controller.troop', [])
             $scope.modal.hide();
         };
 
-        self.addPlayer = function() {
+        $scope.addPlayer = function() {
             TeamService.addPlayer($scope.player)
                 .success(function(data) {
                     self.getPlayers();
                     console.log(data);
-                    $scope.player = {};
+                    $scope.player = {
+                      first_name: null,
+                      last_name: null,
+                      favourite_position: 'Gardien'
+                    };
                     $scope.modal.hide();
-                    $cordovaToast.showShortBottom(data.msg);
+                  //  $cordovaToast.showShortBottom(data.msg);
 
                 })
                 .error(function(data) {

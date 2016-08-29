@@ -1,4 +1,4 @@
-<ion-view title="Inscription" id="register-team">
+ <ion-view title="Inscription" id="register-team">
     <ion-content class="padding" scroll="false">
         <div class="list">
             <label class="item item-input item-select" ng-hide="register.hideClub">
@@ -29,11 +29,8 @@
                     Catégorie
                 </div>
                 <select ng-model="register.user.category"
-                        ng-focus="register.hideClub = false;">
-                    <option ng-repeat="category in register.categoriesArray"
-                            >
-                        {{category}}
-                    </option>
+                        ng-focus="register.hideClub = false;"n ng-options="v for v in register.categoriesArray">
+                  
                 </select>
             </label>
             <!-- <label class="item item-input">
