@@ -329,6 +329,8 @@ angular.module('starter.controller.match-stat', [])
                 .success(function(data) {
                     console.log(data);
                     self.formation = data.match.formation;
+                    self.place = data.match.place;
+                    self.opponent = data.match.against_team;
                     console.log(self.formation);
                 })
                 .error(function(data) {
@@ -357,10 +359,30 @@ angular.module('starter.controller.match-stat', [])
                     console.log(data);
                     $cordovaToast.showShortBottom(data.msg);
                 })
-        }
+        };
+
+        self.getNameTeam = function() {
+            TeamService.nameTeam()
+                .success(function(data) {
+                    console.log(data);
+                    self.nameTeam = data.nameTeam;
+                })
+                .error(function(data) {
+                    console.log(data);
+                });
+        };
+        self.getBillingName = function() {
+            if (self.place === 'Domicile') {
+                self.billingName = self.nameTeam + ' - ' + self.opponent;
+            } else {
+                self.billingName = self.opponent + ' - ' + self.nameTeam;
+            }
+            return self.billingName;
+        };
 
         self.getMatch();
         self.showCountdownPopup();
+        self.getNameTeam();
 
 
 
