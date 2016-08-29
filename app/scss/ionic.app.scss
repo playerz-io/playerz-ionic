@@ -412,7 +412,7 @@ input::-webkit-input-placeholder {
         box-sizing: border-box;
     }
     #begin-match {
-        float: right;
+        margin-left: auto;
     }
     .item {
         background: none;
@@ -699,9 +699,13 @@ html {
     width: 0;
     border-top: 86.60px solid #64C7CC;
 }
-.whistle {
-    width: 20%;
-    height: 20%;
+#whistle {
+    width: 10vh;
+    height: 10vh;
+    display: block;
+    background-image: url('../img/whistle.png');
+    background-repeat: no-repeat;
+    background-size: 10vh 10vh;
 }
 $size-background-action: 11vh;
 @mixin background-action($background, $background-activated ,$link) {
@@ -720,18 +724,15 @@ $size-background-action: 11vh;
     //     background-repeat: no-repeat;
     // }
 }
-
 #match-stat {
     .row {
         height: 100%;
     }
     #stat {
-
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: flex-start;
-
         // div {
         //     display: flex;
         //     flex-direction: column;

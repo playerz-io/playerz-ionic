@@ -10419,7 +10419,7 @@ input::-webkit-input-placeholder {
   box-sizing: border-box; }
 
 #tactique #begin-match {
-  float: right; }
+  margin-left: auto; }
 
 #tactique .item {
   background: none;
@@ -10672,9 +10672,13 @@ html {
   width: 0;
   border-top: 86.60px solid #64C7CC; }
 
-.whistle {
-  width: 20%;
-  height: 20%; }
+#whistle {
+  width: 10vh;
+  height: 10vh;
+  display: block;
+  background-image: url("../img/whistle.png");
+  background-repeat: no-repeat;
+  background-size: 10vh 10vh; }
 
 #match-stat .row {
   height: 100%; }

@@ -39,18 +39,20 @@
             </div>
 
             <div class="col-60">
-                <div id="begin-match">
-                    <a class="whistle" ng-click="tactique.goMatch()">
-                        <img ng-src="img/whistle.png" width="36" height="36"
-                        alt="Début du match">
-                    </a>
-                </div>
+
 
                 <div style="display: flex; flex-direction: row">
                     <div class="rem" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="tactique.onDropComplete($index, $data)" ng-repeat="player in tactique.playerSelected" ng-if="player.position === 'REM'">
                         <a> {{player.last_name}}
                           <br/> {{player.first_name}}
                       </a>
+                    </div>
+
+                    <div id="begin-match">
+                        <a id="whistle" on-tap="tactique.onTapWhistle()" ng-click="tactique.goMatch()">
+                            <!-- <img ng-src="img/whistle.png"
+                            alt="Début du match"> -->
+                        </a>
                     </div>
                 </div>
 

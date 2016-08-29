@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.tactique', [])
-    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast, $state, $ionicHistory) {
+    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast, $state, $ionicHistory, $timeout) {
 
         var self = this;
 
@@ -51,8 +51,6 @@ angular.module('starter.controller.tactique', [])
 
         };
 
-
-
         self.onDropComplete = (index, obj, evt) => {
             //dropped
             console.log(index);
@@ -69,6 +67,22 @@ angular.module('starter.controller.tactique', [])
                     console.log(data);
                 })
         };
+
+        self.onTapWhistle = () => {
+
+          let element = angular.element(document.querySelector("#whistle"));
+          let img = 'img/whistle.png';
+          let img_click = 'img/whistle_white.png';
+
+          element.css({
+            'background-image':  `url(${img_click})`
+          });
+          $timeout(() => {
+              element.css({
+                  'background-image': `url(${img})`
+              });
+          }, 350);
+         }
 
         // self.getPlayers = function() {
         //     TeamService.getPlayers()
