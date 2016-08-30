@@ -35,7 +35,7 @@ exports.addMatch = function(req, res) {
             let msg = "Certains champs n'ont pas été saisies";
             return Utils.error(res, msg);
         }
-        // TODO: add red and yellow card
+
         let newMatch = new Match({
             team: decoded.team.name_club.toUpperCase(),
             against_team: against_team.toUpperCase(),
@@ -963,7 +963,7 @@ exports.defaultPosition = (req, res) => {
                         return Utils.errorIntern(res, err);
 
                     for (let player of playersFound) {
-                        // TODO: et foundMatch.playerNoSelected indexOf
+                        
                         if (match.playerNoSelected.indexOf(player._id) === -1) {
                             console.log(player.last_name);
                             player.position = 'no_selected';
@@ -1006,7 +1006,6 @@ exports.defaultPosition = (req, res) => {
 
 //switch position entre 2 joueurs selectionnés.
 //switch position entre un joueur selectioné et un non selectioné
-// TODO: A faire pour les matchs entité seule
 exports.switchPosition = (req, res) => {
 
     let player_id_one = req.body.player_id_one;

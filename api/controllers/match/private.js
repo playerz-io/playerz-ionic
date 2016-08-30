@@ -109,7 +109,7 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected,
     if (foundMatch.playerSelected.indexOf(player._id) < 0) {
         foundMatch.playerSelected.push(player);
     }
-    // // TODO: A sauvegarder ???
+
     foundMatch.save();
 
     if (playersSelected.indexOf(player._id) < 0) {
