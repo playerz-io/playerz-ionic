@@ -10419,7 +10419,7 @@ input::-webkit-input-placeholder {
   box-sizing: border-box; }
 
 #tactique #begin-match {
-  float: right; }
+  margin-left: auto; }
 
 #tactique .item {
   background: none;
@@ -10672,9 +10672,13 @@ html {
   width: 0;
   border-top: 86.60px solid #64C7CC; }
 
-.whistle {
-  width: 20%;
-  height: 20%; }
+#whistle {
+  width: 10vh;
+  height: 10vh;
+  display: block;
+  background-image: url("../img/whistle.png");
+  background-repeat: no-repeat;
+  background-size: 10vh 10vh; }
 
 #match-stat .row {
   height: 100%; }
@@ -10741,11 +10745,11 @@ html {
     font-size: 2em; }
   #match-stat #score p:first-child,
   #match-stat #score p:last-child {
-    width: 45%;
+    width: 13vh;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
     display: flex;
-    height: 100%;
+    height: 13vh;
     font-size: 2em; }
 
 #match-stat #div-act-dead-time {
@@ -10886,3 +10890,23 @@ html {
   background: #ffffff;
   color: #7f8c8d;
   font-size: 0.8rem; }
+
+#change .row {
+  height: 100%; }
+  #change .row .col-67 {
+    margin: auto; }
+
+#change .col-33 {
+  display: flex;
+  flex-direction: column; }
+  #change .col-33 .rem {
+    margin: auto;
+    width: 50%;
+    font-size: 0.85em;
+    border: 1px solid #fe4e50;
+    text-align: center; }
+    #change .col-33 .rem a {
+      color: #ffffff; }
+    #change .col-33 .rem.drag-enter, #change .col-33 .rem.dragging {
+      background: #fe4e50;
+      border: 1px solid #ffffff; }
