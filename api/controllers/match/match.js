@@ -579,6 +579,13 @@ exports.defaultPosition = (req, res) => {
                     let match = team.matchs.id(idMatch);
                     let players = team.players;
 
+                    if(players.length < Football.NUMBER_FIRST_PLAYER){
+                      return res.status(400).json({
+                        success: false,
+                        msg: `Vous devez avoir avoir au moins ${Football.NUMBER_FIRST_PLAYER} joueurs`
+                      })
+                    }
+
                     if (match.playerSelected.length !== 0) {
                         //  console.log('playerSelected');
                         match.playerSelected = [];
