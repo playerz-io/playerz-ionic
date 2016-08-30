@@ -11,12 +11,24 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 let replace = require('replace');
 let replaceFiles = ['./www/js/app.js'];
+let templateCache = require('gulp-angular-templatecache');
 
 
 
-var paths = {
-    sass: ['./scss/**/*.scss']
+
+let paths = {
+    sass: ['./scss/**/*.scss'],
+    templatecache: ['./www/templates/**/*.html']
+
 };
+
+gulp.task('templatecache', (done) => {
+    gulp.src(paths.templatecache)
+        .pipe(templateCache({
+            standalone: true
+        }))
+        .pipe(gulp.dest('./www/js'));
+});
 
 gulp.task('add-proxy', () => {
     return replace({
@@ -38,7 +50,7 @@ gulp.task('remove-proxy', () => {
     })
 });
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'templatecache']);
 
 gulp.task('sass', function(done) {
     gulp.src('./scss/ionic.app.scss')
@@ -57,6 +69,7 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
     gulp.watch(paths.sass, ['sass']);
+    gulp.watch(paths.templatecache, ['templatecache']);
 });
 
 gulp.task('install', ['git-check'], function() {

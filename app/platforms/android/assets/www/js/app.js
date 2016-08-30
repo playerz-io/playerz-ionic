@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 angular.module('starter', [
     'ionic',
@@ -80,8 +80,7 @@ angular.module('starter', [
                 $ionicPopup.alert({
                     title: "Internet",
                     template: "Vous avez perdu votre connexion internet"
-                }).then((res) => {}
-                )
+                }).then((res) => {})
             });
             if ($cordovaNetwork.isOffline()) {
                 $ionicPopup.alert({
@@ -128,7 +127,7 @@ angular.module('starter', [
             } else {
               //  screen.unlockOrientation();
             }
-            
+
             if (next.name === 'summary-stat' && fromState.name === 'menu-match.match-statistics') {
                 $window.location.reload();
             }

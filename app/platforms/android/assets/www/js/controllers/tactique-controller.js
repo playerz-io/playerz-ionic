@@ -47,6 +47,12 @@ angular.module('starter.controller.tactique', [])
                 })
                 .error((data) => {
                     console.log(data);
+                    $ionicPopup.alert({
+                      title: 'Message',
+                      template: data.msg
+                    }).then((res) => {
+                      $state.go('profile.troop');
+                    })
                 })
 
         };

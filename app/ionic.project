@@ -9,5 +9,11 @@
       "path": "/api",
       "proxyUrl": "https://secret-plateau-96989.herokuapp.com/api"
     }
+  ],
+
+  "gulpStartupTasks": [
+      "sass",
+      "templatecache",
+      "watch"
   ]
 }

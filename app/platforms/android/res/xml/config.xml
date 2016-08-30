@@ -72,9 +72,7 @@
     <description>
         An App for Team Soccer
     </description>
-    <author email="contact@playerz.io" href="http://www.playerz.io/">
-        Playerz
-    </author>
+    <author email="contact@playerz.io" href="http://www.playerz.io/" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
