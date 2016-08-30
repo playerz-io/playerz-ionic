@@ -81,8 +81,7 @@ angular.module('starter', [
                 $ionicPopup.alert({
                     title: "Internet",
                     template: "Vous avez perdu votre connexion internet"
-                }).then((res) => {}
-                )
+                }).then((res) => {});
             });
             if ($cordovaNetwork.isOffline()) {
                 $ionicPopup.alert({

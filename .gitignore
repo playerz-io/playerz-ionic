@@ -3,5 +3,7 @@
 app/www/lib/
 app/platforms/
 app/node_modules/
+app/www/dist/
+
 
 api/node_modules/

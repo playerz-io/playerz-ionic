@@ -1,5 +1,11 @@
 {
   "name": "playerz",
+  "gulpStartupTasks": [
+      "sass",
+      "templatecache",
+      "ng_annotate",
+      "watch"
+  ],
   "app_id": "11673121",
   "serve" :  {
       "defaultBrowser" :  "chrome"
@@ -11,9 +17,4 @@
     }
   ],
 
-  "gulpStartupTasks": [
-      "sass",
-      "templatecache",
-      "watch"
-  ]
 }

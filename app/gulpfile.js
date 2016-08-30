@@ -12,22 +12,34 @@ var sh = require('shelljs');
 let replace = require('replace');
 let replaceFiles = ['./www/js/app.js'];
 let templateCache = require('gulp-angular-templatecache');
+let ngAnnotate = require('gulp-ng-annotate');
+
 
 
 
 
 let paths = {
     sass: ['./scss/**/*.scss'],
-    templatecache: ['./www/templates/**/*.html']
-
+    templatecache: ['./www/templates/**/*.html'],
+    ng_annotate: ['./www/js/*.js']
 };
 
+gulp.task('ng_annotate', (done) => {
+    gulp.src('./www/js/**/*.js')
+        .pipe(ngAnnotate({
+            single_quotes: true
+        }))
+        .pipe(gulp.dest('./www/dist/dist_js/app'))
+        .on('end', done);
+});
+
 gulp.task('templatecache', (done) => {
-    gulp.src(paths.templatecache)
+    gulp.src('./www/templates/**/*.html')
         .pipe(templateCache({
             standalone: true
         }))
-        .pipe(gulp.dest('./www/js'));
+        .pipe(gulp.dest('./www/js'))
+        .on('end', done);
 });
 
 gulp.task('add-proxy', () => {
@@ -50,7 +62,7 @@ gulp.task('remove-proxy', () => {
     })
 });
 
-gulp.task('default', ['sass', 'templatecache']);
+gulp.task('default', ['sass', 'templatecache', 'ng_annotate']);
 
 gulp.task('sass', function(done) {
     gulp.src('./scss/ionic.app.scss')
@@ -70,6 +82,7 @@ gulp.task('sass', function(done) {
 gulp.task('watch', function() {
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.templatecache, ['templatecache']);
+    gulp.watch(paths.ng_annotate, ['ng_annotate']);
 });
 
 gulp.task('install', ['git-check'], function() {
