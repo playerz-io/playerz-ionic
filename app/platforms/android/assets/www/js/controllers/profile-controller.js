@@ -1,7 +1,7 @@
 'use strict';
 angular.module('starter.controller.profile', [])
 
-    .controller('ProfileCtrl', function($q, $timeout, $state, $ionicPopup, TeamService, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService) {
+    .controller('ProfileCtrl', function($q, $timeout, $state, $ionicPopup, StorageService, ProfileService, $ionicModal, $scope, FacebookService) {
 
         var self = this;
         var dataProfile;
@@ -94,7 +94,7 @@ angular.module('starter.controller.profile', [])
             $scope.modalSport.hide();
         };
 
-        
+
         // var profile = this;
 
         // var facebook = function(response){

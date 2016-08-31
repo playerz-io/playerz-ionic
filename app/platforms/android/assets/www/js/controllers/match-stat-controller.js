@@ -294,21 +294,21 @@ angular.module('starter.controller.match-stat', [])
                 })
         };
 
-        //Change Modal
-        $ionicModal.fromTemplateUrl('templates/change-modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then((modal) => {
-            $scope.modal = modal;
-        });
-
-        self.goChange = () => {
-            $scope.modal.show();
-        };
-
-        self.backToMatch = () => {
-            $scope.modal.hide();
-        }
+        // //Change Modal
+        // $ionicModal.fromTemplateUrl('templates/change-modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then((modal) => {
+        //     $scope.modal = modal;
+        // });
+        //
+        // self.goChange = () => {
+        //     $scope.modal.show();
+        // };
+        //
+        // self.backToMatch = () => {
+        //     $scope.modal.hide();
+        // }
 
 
 

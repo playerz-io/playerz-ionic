@@ -42,7 +42,7 @@ angular.module('starter.controller.troop', [])
                       favourite_position: 'Gardien'
                     };
                     $scope.modal.hide();
-                  //  $cordovaToast.showShortBottom(data.msg);
+                   $cordovaToast.showShortBottom(data.msg);
 
                 })
                 .error(function(data) {
