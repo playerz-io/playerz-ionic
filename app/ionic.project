@@ -4,6 +4,7 @@
       "sass",
       "templatecache",
       "ng_annotate",
+      "useref",
       "watch"
   ],
   "app_id": "11673121",

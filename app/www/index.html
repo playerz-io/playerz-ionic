@@ -14,7 +14,9 @@
     <!-- <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <!-- <link rel="stylesheet" href="lib/angular-material/angular-material.css"> -->
+    <!-- build:css dist_css/style.css -->
     <link href="css/ionic.app.css" rel="stylesheet">
+    <!-- endbuild -->
     <link href="lib/ion-floating-menu/dist/ion-floating-menu.css" rel="stylesheet" type="text/css">
 
 
@@ -34,8 +36,8 @@
     <!-- <script src="lib/ionic-material/dist/ionic.material.min.js"></script> -->
 
     <!-- your app's js -->
-    <script src="dist/dist_js/app/app.js"></script>
-    <script src="dist/dist_js/app/templates.js"></script>
+
+
 </head>
 
 <body ng-app="starter" ng-strict-di>
@@ -72,6 +74,18 @@
     <script src="lib/angularfire/dist/angularfire.min.js"></script>
     <!--  angular disable all -->
     <script src="lib/angular-disable-all/dist/angular-disable-all.min.js"></script>
+    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.js"></script>
+    <!-- stripe -->
+    <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="lib/angular-stripe/release/angular-stripe.js"></script> -->
+    <script src="lib/ion-floating-menu/dist/ion-floating-menu.js" type="text/javascript"></script>
+    <script src="lib/angular-translate/angular-translate.min.js"></script>
+    <script src="lib/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script src="lib/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <!-- build:js dist_js/app.js -->
+    <script src="dist/dist_js/app/app.js"></script>
+    <script src="dist/dist_js/app/templates.js"></script>
     <!-- controllers -->
     <script src="dist/dist_js/app/controllers/login-controller.js"></script>
     <script src="dist/dist_js/app/controllers/profile-controller.js"></script>
@@ -117,15 +131,7 @@
     <script src="dist/dist_js/app/directives/three-five-two-directive.js"></script>
     <!-- filter -->
     <script src="dist/dist_js/app/filter/getMinutes.js"></script>
-    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.js"></script>
-    <!-- stripe -->
-    <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script src="lib/angular-stripe/release/angular-stripe.js"></script> -->
-    <script src="lib/ion-floating-menu/dist/ion-floating-menu.js" type="text/javascript"></script>
-    <script src="lib/angular-translate/angular-translate.min.js"></script>
-    <script src="lib/angular-i18n/angular-locale_fr-fr.js"></script>
-    <script src="lib/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
-    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <!-- endbuild -->
 
 
 </body>
