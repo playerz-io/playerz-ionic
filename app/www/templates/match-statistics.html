@@ -119,7 +119,7 @@
                 on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)">
                 </a>
 
-                <a ng-click="matchStat.cardActived = !matchStat.cardActived">
+                <a ng-click="matchStat.isFoulsActivated(); matchStat.cardActived = !matchStat.cardActived">
                     <img src="img/double-carton.png" alt="Cartons" height="36" width="36" />
                 </a>
 
@@ -131,7 +131,7 @@
                         <img src="img/Foul-48.png" alt="carton rouge" height="36" width="36" />
                     </a>
                 </div>
-                <a ng-click="matchStat.foulsActived = !matchStat.foulsActived">
+                <a ng-click="matchStat.isCardActivated(); matchStat.foulsActived = !matchStat.foulsActived">
                     <img src="img/output-7.png" alt="Hors-jeu" height="36" width="36" />
                 </a>
                 <div class="div-fouls" ng-show="matchStat.foulsActived">
