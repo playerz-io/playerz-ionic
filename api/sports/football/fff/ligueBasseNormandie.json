@@ -1,0 +1,117 @@
+[
+{
+ "nomClub": "A.S. TROUVILLE DEAUVILLE",
+ "nbTeam": "33",
+ "ligue": "LIGUE FOOTBALL BASSE NORMANDIE",
+ "district": "DISTRICT DU CALVADOS DE FOOTBALL",
+ "correspondant": "LOZIER REYNALD",
+ "adresse": "",
+ "emailsClub": [ "as.trouville.deauville@lfbn.fr",
+ ],
+ "siegeSocial": "STADE COMMANDANT HEBERT, BD DES SPORTS, - 14800 - DEAUVILLE",
+ "téléphones": [ "02 31 98 41 83 (club)", ],
+ "stades": [
+ {
+  "nom": "", "adresse":"CHEMIN DE LA BRIQUETTERIE - 14800 - TOUQUES",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"PROSPERO MICHEL",
+"trésorier":"ESCANDRE FABIEN",
+"secretaire":"TISCHENKO CHRISTIAN",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00203/infos-cles"
+},
+{
+ "nomClub": "ST. MALHERBE CAEN-CALV.B.NORM.",
+ "nbTeam": "13",
+ "ligue": "LIGUE FOOTBALL BASSE NORMANDIE",
+ "district": "DISTRICT DU CALVADOS DE FOOTBALL",
+ "correspondant": "",
+ "adresse": "",
+ "emailsClub": [ "lglaize@smcaen.fr", "sm.caen@lfbn.fr",
+ ],
+ "siegeSocial": "23 bd georges pompidou, BP 6138 - 14064 - CAEN CEDEX",
+ "téléphones": [ ],
+ "fax":"0892.700.148",
+ "stades": [
+ {
+  "nom": "", "adresse":"TERRAIN ANNEXE 3 74 BOULEVARD ANDRE DETOLLE - 14000 - CAEN",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"FORTIN JEAN FRANCOIS",
+"trésorier":"GONDRY SYLVIE",
+"secretaire":"GLAIZE LAURENT",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00217/infos-cles"
+},
+{
+ "nomClub": "F.C. ST LO MANCHE",
+ "nbTeam": "15",
+ "ligue": "LIGUE FOOTBALL BASSE NORMANDIE",
+ "district": "DISTRICT MANCHE",
+ "correspondant": "FAUTRAT NICOLAS",
+ "adresse": "",
+ "emailsClub": [ "fc.stlo.manche@lfbn.fr",
+ ],
+ "siegeSocial": "CENTRE DES RONCHETTES, ROUTE DE TORIGNI, - 50000 - ST LO",
+ "téléphones": ["02 33 57 00 94", "02 33 57 42 84",],
+ "stades": [
+ {
+  "nom": "", "adresse":"RUE DE L EXODE - 50000 - ST LO",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"DESLANDES THIBAULT",
+"trésorier":"COUILLARD JEAN CLAUDE",
+"secretaire":"MOLITOR JEAN PIERRE",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00227/infos-cles"
+},
+{
+ "nomClub": "U.S. D AVRANCHES MONT ST MICHEL",
+ "nbTeam": "22",
+ "ligue": "LIGUE FOOTBALL BASSE NORMANDIE",
+ "district": "DISTRICT MANCHE",
+ "correspondant": "BOGUENET MICHEL",
+ "adresse": "ALLÉE JACQUES ANQUETIL 50300 AVRANCHES",
+ "emailsClub": [ "us.avranches@orange.fr",
+ ],
+ "siegeSocial": "Allée J Anquetil, - 50300 - AVRANCHES",
+ "téléphones": [ "02 33 48 60 28",],
+ "fax":"02 33 48 30 78",
+ "stades": [
+ {
+  "nom": "", "adresse":"TERRAIN HONNEUR BOULEVARD LOUIS PASTEUR - 50300 - AVRANCHES",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"GUERIN GILBERT",
+"trésorier":"PRIME MICHEL",
+"secretaire":"BOGUENET MICHEL",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00241/infos-cles"
+},
+
+{
+ "nomClub": "C.A. LISIEUX F. PAYS D AUGE",
+ "nbTeam": "30",
+ "ligue": "LIGUE FOOTBALL BASSE NORMANDIE",
+ "district": "DISTRICT DU CALVADOS DE FOOTBALL",
+ "correspondant": "FEUILLET CELINE",
+ "adresse": "",
+ "emailsClub": [ "ca.lisieux@lfbn.fr", "c.a.l@wanadoo.fr",
+ ],
+ "siegeSocial": "LISIEUX, 2 RUE PIERRE COURBERTIN, - 14100 - LISIEUX",
+ "téléphones": [ "02 31 62 80 60",],
+ "fax":"02 31 62 24 82 (club)",
+ "stades": [
+ {
+  "nom": "", "adresse":"RUE PAUL CORNU - 14100 - LISIEUX",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"LEBARBEY LILIAN",
+"trésorier":"",
+"secretaire":"FEUILLET CELINE",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00254/infos-cles"
+},
+
+]

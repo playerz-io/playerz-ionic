@@ -1,0 +1,20 @@
+[
+{
+ "nomClub": "ET.FILANTE BASTIAISE",
+ "nbTeam": "12",
+ "ligue": "LIGUE CORSE DE FOOTBALL",
+ "district": "LIGUE DE CORSE",
+ "correspondant": "SALARIS CHANTAL",
+ "adresse": "STADE F.MONTI 20620 BIGUGLIA",
+ "emailsClub": [ "e-f-b@sfr.fr",
+ ],
+ "siegeSocial": "STADE FRANCOIS MONTI, - 20620 - BIGUGLIA",
+ "téléphones": [ "04.95.33.18.82.", "04.95.30.57.74.",],
+ "stades": [{"nom": "", "adresse":"CHEMIN DE L ACOLAGHIA CASATORRA - 20620 - BIGUGLIA",
+ "surface": "Gazon synthétique type SY",}],
+ "president":"GRISANTI JEAN BAPTISTE",
+ "trésorier":"ALBERTINI DIDIER",
+ "secretaire":"",
+ "urlFFF":"http://www.fff.fr/la-vie-des-clubs/09975/infos-cles"
+ },
+ ]

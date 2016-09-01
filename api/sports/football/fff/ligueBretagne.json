@@ -1,0 +1,928 @@
+[
+{
+ "nomClub": "JEANNE D ARC ST SERVAN",
+ "nbTeam": "10",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "VIOT YANNICK",
+ "adresse": "6 RUE STE BARBE 35400 ST MALO",
+ "emailsClub": [ "jasaintservan@yahoo.fr", "4500014@footlbf.fr", ],
+ "siegeSocial": "22 Avenue de Marville, Stade de Marville, - 35400 - ST MALO",
+ "téléphones": ["02 99 40 32 12 (HR)", ],
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"RUE HENRI LEMARIE DUGUAY TROUIN - 35400 - ST MALO",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"PLIHON JEAN LUC",
+"trésorier":"",
+"secretaire":"VIOT YANNICK",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00165/infos-cles"
+},
+{
+ "nomClub": "ST. RENNAIS F.C.",
+ "nbTeam": "19",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "SECRETARIAT ADMINISTRATIF",
+ "adresse": "",
+ "emailsClub": [ "contact@staderennais.fr", "juridique@staderennais.fr", "4500015@footlbf.fr",],
+ "siegeSocial": "Stade Rennais - La piverdiere, CS 53909, - 35039 - RENNES CEDEX",
+ "téléphones": ["02 99 14 35 77",  ],
+ "stades":
+ [
+ {
+  "nom": "",
+  "adresse":"8 BOULEVARD DU PORTUGAL - 35000 - RENNES",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"SECRETARIAT ADMINISTRATIF",
+"trésorier":"ROUE LOUIS",
+"secretaire":"",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00166/infos-cles"
+},
+{
+ "nomClub": "LA TOUR D AUVERGNE RENNES",
+ "nbTeam": "24",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "BRINGUIER YVAN",
+ "adresse": "",
+ "emailsClub": [ "byvan63@gmail.com", "accueil@tourdauvergneasso.com", "4500018@footlbf.fr",
+ ],
+ "siegeSocial": "8 PASSAGE DU COUEDIC, BP 60408, - 35004 - RENNES CEDEX",
+ "téléphones": [ "02 99 30 10 89", "02 99 67 62 17",],
+ "fax":"02 99 30 10 89 (club)",
+ "stades": [
+ {
+  "nom": "", "adresse":"10 Bd de la Duchesse Anne - 35000 - RENNES",
+  "surface": "Parquet",
+}
+],
+"president":"AUBRY JACQUES",
+"trésorier":"GARNIER ALAIN",
+"secretaire":"BRINGUIER YVAN",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00168/infos-cles"
+},
+{
+ "nomClub": "A.S. BRESTOISE",
+ "nbTeam": "25",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT FINISTERE-NORD",
+ "correspondant": "OGOR ALAIN",
+ "adresse": "6, RUE DE MÉNEZ PAUL 29200 BREST",
+ "emailsClub": [ "alain.ogor@wanadoo.fr", "a.s.brestoise@orange.fr", "2500019@footlbf.fr",],
+ "siegeSocial": "6 RUE DE MENEZ PAUL, - 29200 - BREST",
+ "téléphones": [ "02 98 02 38 76", "02.98.42.17.49",],
+
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"40 ROUTE DE GOUESNOU - 29200 - BREST",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"OGOR ALAIN",
+"trésorier":"INIZAN DANIEL",
+"secretaire":"OGOR ALAIN",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00169/infos-cles"
+},
+
+{
+ "nomClub": "ST. BRESTOIS 29",
+ "nbTeam": "26",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT FINISTERE-NORD",
+ "correspondant": "LE ROUX DANIEL",
+ "adresse": "RUE DU BOT . BP 72026 29220 BREST CEDEX 2",
+ "emailsClub": [ "daniel.leroux.sb29@hotmail.fr", "2500024@footlbf.fr",
+ ],
+ "siegeSocial": "BP 72026, RUE DU BOT, - 29220 - BREST CÉDEX 2",
+ "téléphones": ["02 98 02 55 98", ],
+
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"RUE DU BOUGUEN - 29200 - BREST",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"LE ROUX DANIEL",
+"trésorier":"THIBAUD JACQUES",
+"secretaire":"LE ROUX DANIEL",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00174/infos-cles"
+},
+
+{
+ "nomClub": "U.S. ST MALO",
+ "nbTeam": "20",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "MONTREUIL REGIS",
+ "adresse": "",
+ "emailsClub": [ "secretariat@ussm.fr", "4500026@footlbf.fr",
+ ],
+ "siegeSocial": "22 AVENUE DE MARVILLE, STADE DE MARVILLE, - 35400 - ST MALO",
+ "téléphones": [ "02 99 40 57 94", "02 23 18 34 68",],
+ "fax":"02 99 40 86 33",
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"TERRAIN SYNTHETIQUE AVENUE DE MARVILLE - 35400 - ST MALO",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"BEAUMANOIR ROLAND",
+"trésorier":"HARDY MAX",
+"secretaire":"MONTREUIL REGIS",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00176/infos-cles"
+},
+
+{
+ "nomClub": "A.S. CHEMINOTS RENNAIS",
+ "nbTeam": "1",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "BEAUVERGER ANNE",
+ "adresse": "",
+ "emailsClub": [ "anne.beauverger@gmail.com", "4500029@footlbf.fr",
+ ],
+ "siegeSocial": "9 BIS SQ LOUIS ARMAND, - 35000 - RENNES",
+ "téléphones": [ ],
+
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"10 SQUARE LOUIS ARMAND - 35000 - RENNES",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"TONOLI SEBASTIEN",
+"trésorier":"",
+"secretaire":"BEAUVERGER ANNE",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00179/infos-cles"
+},
+
+{
+ "nomClub": "CADETS DE BRETAGNE RENNES",
+ "nbTeam": "3",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "CADETS DE BRETAGNE ASSOCIATION",
+ "adresse": "",
+ "emailsClub": [ "cadets.de.bretagne@wanadoo.fr", "4500034@footlbf.fr",
+ ],
+ "siegeSocial": "139 rue d Antrain, - 35703 - RENNES CEDEX 7",
+ "téléphones": [ "02.99.63.13.71",],
+
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"139 RUE D ANTRAIN - 35700 - RENNES",
+  "surface": "Parquet",
+}
+],
+"president":"HURAULT RODRIGUE",
+"trésorier":"RAIMBAULT SEBASTIEN",
+"secretaire":"GICQUELLO BRUNO",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00181/infos-cles"
+},
+
+{
+ "nomClub": "A.S. JACQUES CARTIER ST MALO",
+ "nbTeam": "7",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "MOIZEAU DOMINIQUE",
+ "adresse": "BP 23 35404 ST MALO CEDEX",
+ "emailsClub": [ "asjcparame@wanadoo.fr", "4500036@footlbf.fr",
+ ],
+ "siegeSocial": "5 AVENUE DE LA BORDERIE, - 35400 - ST MALO",
+ "téléphones": [ "02 99 56 54 86", ],
+
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"5 AVENUE DE LA BORDERIE-PARAME - 35400 - ST MALO",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"GROMELLON GERARD",
+"trésorier":"",
+"secretaire":"MOIZEAU DOMINIQUE",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00183/infos-cles"
+},
+
+{
+ "nomClub": "AM.S. VITRE",
+ "nbTeam": "22",
+ "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+ "district": "DISTRICT ILLE ET VILAINE",
+ "correspondant": "BEAUPERE JEAN CLAUDE",
+ "adresse": "3 PLACE DU CHAMP DE FOIRE 35500 VITRE",
+ "emailsClub": [ "beaupere.vitre@orange.fr", "4500048@footlbf.fr",
+ ],
+ "siegeSocial": "Amicale Sportive Vitré, 3, place du Champ de Foire, - 35500 - VITRE",
+ "téléphones": [ ],
+ "fax":"02 99 75 05 31",
+ "stades": [
+ {
+  "nom": "",
+  "adresse":"BD LOUIS GIROUX - 35500 - VITRE",
+  "surface": "Gazon synthétique type SYE",
+  }],
+  "president":"GUYARD GUY",
+  "trésorier":"",
+  "secretaire":"BEAUPERE JEAN CLAUDE",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00193/infos-cles"
+  },
+
+
+  {
+   "nomClub": "LORIENT SP.",
+   "nbTeam": "15",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT MORBIHAN",
+   "correspondant": "GUEGUEN STEPHANIE",
+   "adresse": "36 RUE RENE CASSIN 56270 PLOEMEUR",
+   "emailsClub": [ "gueguen.stephanie@free.fr", "5500049@footlbf.fr",
+   ],
+   "siegeSocial": "1 impasse CAMILLE PELLETAN, - 56100 - LORIENT",
+   "téléphones": [ "09 52 81 02 67", "02 97 88 19 96", "02 97 37 93 41",],
+
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"RUE JEAN LE COUTALLER - 56100 - LORIENT",
+    "surface": "Gazon synthétique type SYE",
+  }
+  ],
+  "president":"FOUILLE JOEL",
+  "trésorier":"",
+  "secretaire":"",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00194/infos-cles"
+  },
+
+  {
+   "nomClub": "ST. BRIOCHIN",
+   "nbTeam": "13",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FOOTBALL COTES D ARMOR",
+   "correspondant": "LE SECRETAIRE ST BRIOCHIN",
+   "adresse": "31 RUE JOSEPH LE BRIX 22000 ST BRIEUC",
+   "emailsClub": [ "stadebriochin@orange.fr", "1500087@footlbf.fr",
+   ],
+   "siegeSocial": "31 rue Joseph Le Brix, - 22000 - ST BRIEUC",
+   "téléphones": ["02 96 61 86 45",  ],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"RUE JOSEPH LE BRIX - 22000 - ST BRIEUC",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"",
+  "trésorier":"DOLEDEC HERVE",
+  "secretaire":"LE MANCHEC YANNICK",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00226/infos-cles"
+  },
+
+  {
+   "nomClub": "ST. CHARLES DE BLOIS GUINGAMP",
+   "nbTeam": "3",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FOOTBALL COTES D ARMOR",
+   "correspondant": "BELHAJ SAMIR",
+   "adresse": "",
+   "emailsClub": [ "emmanuelle.trehiou@laposte.net", "1500109@footlbf.fr",
+   ],
+   "siegeSocial": "2 RUE DE L YSER, - 22200 - GUINGAMP",
+   "téléphones": [ ],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"3 RUE DE LA FONTAINE - 22200 - PABU",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"LETELLIER KEVIN",
+  "trésorier":"CARTIER GILBERT",
+  "secretaire":"",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00245/infos-cles"
+  },
+  {
+   "nomClub": "EN AVT GUINGAMP",
+   "nbTeam": "19",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FOOTBALL COTES D ARMOR",
+   "correspondant": "BRIAND JEAN PAUL",
+   "adresse": "",
+   "emailsClub": [ "sylvie.lebuan@eag.fr", "1500126@footlbf.fr",
+   ],
+   "siegeSocial": "15 BD CLEMENCEAU, BP 50222, - 22200 - GUINGAMP",
+   "téléphones": [ "02 96 21 07 77", "02 96 40 13 13",],
+   "fax":"02 96 40 13 15",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"2 TRIVIS LE RUCAER - 22200 - PABU",
+    "surface": "Gazon synthétique type SYE",
+  }
+  ],
+  "president":"BRIAND JEAN PAUL",
+  "trésorier":"DEFAINS LAURENT",
+  "secretaire":"",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00262/infos-cles"
+  },
+
+  {
+   "nomClub": "AM.C. REDON",
+   "nbTeam": "2",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT ILLE ET VILAINE",
+   "correspondant": "FONTAINE MARTINE",
+   "adresse": "17 RUE GILLES FOURNEL 35600 REDON",
+   "emailsClub": [ "martine.fontaine4@bbox.fr", "4500156@footlbf.fr",
+   ],
+   "siegeSocial": "MAISON DES ASSOCIATIONS, 10 AVENUE GASTON SEBILLEAU, - 35600 - REDON",
+   "téléphones": ["02.99.70.37.69",  ],
+   "fax":"02.99.70.37.69",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"AVENUE JOSEPH RICORDEL - 35600 - REDON",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"GUYOT EDDY",
+  "trésorier":"LEFEBVRE CEDRIC",
+  "secretaire":"FONTAINE MARTINE",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00289/infos-cles"
+  },
+
+  {
+   "nomClub": "U.S. CONCARNOISE BEUZECQUOISE",
+   "nbTeam": "16",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE SUD",
+   "correspondant": "LAGUILLIER ISABELLE",
+   "adresse": "",
+   "emailsClub": [ "usc-concarneau@wanadoo.fr", "usc-concarneau@wanadoo.fr", "3500308@footlbf.fr",
+   ],
+   "siegeSocial": "BP 406, - 29184 - CONCARNEAU CEDEX",
+   "téléphones": ["02.98.97.40.44 (club)", ],
+   "fax":"02 98 97 40 44",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"CHEMIN DU VUZUT ROUTE DE KERHUN - 29900 - CONCARNEAU",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"PIRIOU JACQUES",
+  "trésorier":"RAPHALEN THIERRY",
+  "secretaire":"CARDUNER MARC",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00410/infos-cles"
+  },
+
+  {
+   "nomClub": "ST. LEONARD KREISKER",
+   "nbTeam": "19",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE-NORD",
+   "correspondant": "QUIEC ANNE LAURE",
+   "adresse": "",
+   "emailsClub": [ "2500329@footlbf.fr",
+   ],
+   "siegeSocial": "STADE DES CARMES, AVENUE DES CARMES, - 29250 - ST POL DE LEON",
+   "téléphones": ["09 63 53 72 34", ],
+   "fax":"0664303002",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"8 AVENUE DES CARMES - 29250 - ST POL DE LEON",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"GRALL HERVE",
+  "trésorier":"KERLEO VERONIQUE",
+  "secretaire":"OMER ISABELLE",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00428/infos-cles"
+  },
+
+  {
+   "nomClub": "ST. PONTIVYEN",
+   "nbTeam": "19",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT MORBIHAN",
+   "correspondant": "ROCHE JEAN MICHEL",
+   "adresse": "",
+   "emailsClub": [ "jean-michel.roche212@orange.fr", "5500392@footlbf.fr",
+   ],
+   "siegeSocial": "Batiment H, 6 quai du plessis, - 56300 - PONTIVY",
+   "téléphones": [ "02 97 27 99 88", "02 97 27 99 88",],
+   "fax":"06 78 90 44 24",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"10, RUE STANISLAS COMPAGNON - 56300 - PONTIVY",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"LE SAUCE MICKAEL",
+  "trésorier":"HAMONIC HERVE",
+  "secretaire":"ROCHE JEAN MICHEL",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00481/infos-cles"
+  },
+
+  {
+   "nomClub": "ET. ST LAURENT LAMBEZELLEC",
+   "nbTeam": "14",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE-NORD",
+   "correspondant": "CHAMBEL ALAIN",
+   "adresse": "",
+   "emailsClub": [ "eslfoot@orange.fr", "2500477@footlbf.fr",
+   ],
+   "siegeSocial": "45 rue Maurice RAVEL, - 29200 - BREST",
+   "téléphones": [ "02 98 03 02 66", ],
+   "fax":"09 67 53 02 66",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"45 RUE MAURICE RAVEL - 29200 - BREST",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"GALERON JEAN JACQUES",
+  "trésorier":"ZANGER JEAN CLAUDE",
+  "secretaire":"CHAMBEL ALAIN",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00549/infos-cles"
+  },
+  {
+   "nomClub": "A.S. ROMILLE",
+   "nbTeam": "7",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT ILLE ET VILAINE",
+   "correspondant": "AS ROMILLE SECTION FOOTBALL",
+   "adresse": "",
+   "emailsClub": [ "4501887@footlbf.fr",
+   ],
+   "siegeSocial": "MAISON DES ASSOCIATIONS, PLACE DES FRERES AUBERT, - 35850 - ROMILLE",
+   "téléphones": [ "02 99 68 25 77",],
+   "fax":"02 99 68 25 77",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"RUE RENE CULTE - 35850 - ROMILLE",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"FIXOT BERTRAND",
+  "trésorier":"",
+  "secretaire":"",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01109/infos-cles"
+  },
+  {
+   "nomClub": "A.S. PONT DE BUIS",
+   "nbTeam": "4",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE SUD",
+   "correspondant": "COLLIOU GWENOLA",
+   "adresse": "20 RUE BEL AIR 29590 PONT DE BUIS LES QUIMERCH",
+   "emailsClub": [ "gwenola.colliou@orange.fr", "3501888@footlbf.fr",
+   ],
+   "siegeSocial": "20 rue bel air, - 29590 - PONT DE BUIS",
+   "téléphones": [ "02 98 73 02 33",],
+   "fax":"02.98.73.15.15",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"RUE DU DRENIT - 29590 - PONT DE BUIS LES QUIMERCH",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"QUEINNEC ERIC",
+  "trésorier":"KERBOUL XAVIER",
+  "secretaire":"COLLIOU GWENOLA",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01110/infos-cles"
+  },
+  {
+   "nomClub": "DERNIERES CARTOUCHES CARHAIX",
+   "nbTeam": "8",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE SUD",
+   "correspondant": "COLLOBERT ISABELLE",
+   "adresse": "5 RUE DU CHATEAU D'EAU 29270 MOTREFF",
+   "emailsClub": [ "isabelle.collobert@orange.fr", "secretariat.dccarhaix@outlook.fr", "3501889@footlbf.fr",
+   ],
+   "siegeSocial": "BOULEVARD DE LA REPUBLIQUE, rue du Dr Menguy, - 29270 - CARHAIX PLOUGUER",
+   "téléphones": [ ],
+   "fax":"02 98 93 02 52",
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"10 RUE DU DOCTEUR MENGUY - 29270 - CARHAIX PLOUGUER",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"LOUARN FLORENCE",
+  "trésorier":"LE GUEN CHRISTINE",
+  "secretaire":"COLLOBERT ISABELLE",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01111/infos-cles"
+  },
+  {
+   "nomClub": "AGL-DRAPEAU FOUGERES FOOTBALL",
+   "nbTeam": "28",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT ILLE ET VILAINE",
+   "correspondant": "COMMUNIER CHRISTOPHE",
+   "adresse": "2 RUELLE DES FLAMBARDS 35300 FOUGERES",
+   "emailsClub": [ "com.christ@orange.fr", "4501900@footlbf.fr",
+   ],
+   "siegeSocial": "Route la chapelle JANSON, BP 20134 - 35301 - FOUGERES CEDEX",
+   "téléphones": ["02 23 51 08 62", "02 99 99 78 21",],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"ROUTE DE LA CHAPELLE JANSON - 35300 - FOUGERES",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"RENAULT DOMINIQUE",
+  "trésorier":"NOEL DOMINIQUE",
+  "secretaire":"BOIVENT CHRISTOPHE",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01121/infos-cles"
+  },
+
+  {
+   "nomClub": "ST. GUEMENOIS",
+   "nbTeam": "3",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT MORBIHAN",
+   "correspondant": "LE PENDEVEN CHRISTIAN",
+   "adresse": "113, LONGUEVILLE LOCMALO 56160 LOCMALO",
+   "emailsClub": [ "5501905@footlbf.fr",
+   ],
+   "siegeSocial": "MAIRIE, Place du Chateau, - 56160 - GUEMENE SUR SCORFF",
+   "téléphones": [ "02 97 39 31 39",],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"RUE JEAN LE GUENNEC - 56160 - GUEMENE SUR SCORFF",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"GOISLARD LOUIS",
+  "trésorier":"",
+  "secretaire":"",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01126/infos-cles"
+  },
+  {
+   "nomClub": "ET.S. ST CAST LE GUILDO",
+   "nbTeam": "3",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FOOTBALL COTES D ARMOR",
+   "correspondant": "ROUAULT VALERIE",
+   "adresse": "19 RUE DES ROMPAIS 22380 ST CAST LE GUILDO",
+   "emailsClub": [ "valerie.rouault@orange.fr", "1501906@footlbf.fr",
+   ],
+   "siegeSocial": "MAIRIE, - 22380 - ST CAST LE GUILDO",
+   "téléphones": [ ],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"LES MIELLES - 22380 - ST CAST LE GUILDO",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"HAMON JEAN YVES",
+  "trésorier":"ROUAULT VALERIE",
+  "secretaire":"CRESPIN JACKY",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01127/infos-cles"
+  },
+  {
+   "nomClub": "A.S. BUBRY",
+   "nbTeam": "4",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT MORBIHAN",
+   "correspondant": "LE ROUX JEAN MARC",
+   "adresse": "PLACE DU COMMERCE 56310 BUBRY",
+   "emailsClub": [ "jeanmarc.le-roux@orange.fr", "5501907@footlbf.fr",
+   ],
+   "siegeSocial": "MAIRIE, - 56310 - BUBRY",
+   "téléphones": [ "0962555059", ],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"ROUTE DE KERSCAVEN - 56310 - BUBRY",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"LE ROUX JEAN MARC",
+  "trésorier":"HOUSSAYS CEDRIC",
+  "secretaire":"ROMIEUX JEAN PIERRE",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01128/infos-cles"
+  },
+  {
+   "nomClub": "F.C. 56 LORIENT",
+   "nbTeam": "34",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT MORBIHAN",
+   "correspondant": "LE VISAGE ALAIN",
+   "adresse": "27 RUE MARCEL SEMBAT 56600 LANESTER",
+   "emailsClub": [ "5501913@footlbf.fr",
+   ],
+   "siegeSocial": "(Amateurs) Stade du Moustoir, Rue Jean Le Coutaller, Tribune Lycée Dupuy de Lome - 56104 - LORIENT CEDEX",
+   "téléphones": [ "02 97 35 15 07 ", "06 86 44 36 53", "02 97 35 15 02 (pro)",],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"RUE MASSENET - 56100 - LORIENT",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"LARMIGNAT YVES",
+  "trésorier":"MEAR YVES",
+  "secretaire":"LE VISAGE ALAIN",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01133/infos-cles"
+  },
+  {
+   "nomClub": "U.S. CROZON MORGAT",
+   "nbTeam": "13",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE SUD",
+   "correspondant": "BEAUGUION JEAN PIERRE",
+   "adresse": "LOT CROAS AN DOFFEN 29160 CROZON",
+   "emailsClub": [ "jp-mf29@hotmail.fr", "uscm@wanadoo.fr", "3501916@footlbf.fr",
+   ],
+   "siegeSocial": "B P 31, - 29160 - CROZON",
+   "téléphones": [ "02 98 26 23 50", "02 98 27 28 65 stade",],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"ROUTE DE DINAN - 29160 - CROZON",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"STIPON JEAN CLAUDE",
+  "trésorier":"ETIEMBLE BERNARD",
+  "secretaire":"KELHETTER RAYMOND",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01135/infos-cles"
+  },
+  {
+   "nomClub": "CERC.EDUT.PHYSIQUE LORIENT",
+   "nbTeam": "15",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT MORBIHAN",
+   "correspondant": "LE SECRETAIRE",
+   "adresse": "67 RUE DUGUAY TROUIN 56100 LORIENT",
+   "emailsClub": [ "cepfoot@orange.fr", "5501917@footlbf.fr",
+   ],
+   "siegeSocial": "67 RUE DUGUAY TROUIN, - 56100 - LORIENT",
+   "téléphones": ["02 97 84 11 41", "02 97 84 11 44",],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"QUARTIER DE TREFAVEN - 56100 - LORIENT",
+    "surface": "Gazon synthétique type SYE",
+  }
+  ],
+  "president":"PUECH CHRISTIAN",
+  "trésorier":"PATURLE GUY",
+  "secretaire":"GOURDENNE RONAN",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01136/infos-cles"
+  },
+  {
+   "nomClub": "U.S. LIFFRE",
+   "nbTeam": "6",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT ILLE ET VILAINE",
+   "correspondant": "HOCHET DANIEL",
+   "adresse": "",
+   "emailsClub": [ "danielhochet@orange.fr", "contact.football@usliffre.org", "4501918@footlbf.fr",
+   ],
+   "siegeSocial": "9, avenue Jules Ferry, - 35340 - LIFFRE",
+   "téléphones": [ "02 99 23 59 25", "02 99 68 61 03",],
+   "stades": [
+   {
+    "nom": "",
+    "adresse":"LE BOURG - 35340 - LIFFRE",
+    "surface": "Pelouse naturelle",
+  }
+  ],
+  "president":"MAINGUENE CHRISTIAN",
+  "trésorier":"HARDOT GUY",
+  "secretaire":"HOCHET DANIEL",
+  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01137/infos-cles"
+  },
+  {
+   "nomClub": "LA FLEUR DE GENET",
+   "nbTeam": "5",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE SUD",
+   "correspondant": "TAERON CHRISTIAN",
+   "adresse": "",
+   "emailsClub": [ "taeron.christian@wanadoo.fr", "3501924@footlbf.fr",
+   ],
+   "siegeSocial": "MAIRIE, - 29380 - BANNALEC",
+   "téléphones": [ "02 98 39 41 40",],
+   "fax":"02 98 39 50 20",
+   "stades":
+   [
+   {"nom": "",
+   "adresse":"ROUTE DE QUIMPERLE - 29380 - BANNALEC",
+   "surface": "Pelouse naturelle",
+ }
+ ],
+ "president":"",
+ "trésorier":"",
+ "secretaire":"",
+ "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01139/infos-cles"
+ },
+ {
+   "nomClub": "HERMINE CONCARNOISE",
+   "nbTeam": "7",
+   "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+   "district": "DISTRICT FINISTERE SUD",
+   "correspondant": "LE NIR GERARD",
+   "adresse": "6 RUE DU SANS PAREIL 29900 CONCARNEAU",
+   "emailsClub":
+   [ "gerard.lenir@orange.fr", "3501925@footlbf.fr",
+   ],
+   "siegeSocial": "Stade du Moros, 14 RUE DE PENZANCE, - 29900 - CONCARNEAU",
+   "téléphones":
+   [
+   "02 98 97 39 41",
+   ],
+   "president":"MAD YVAN",
+   "trésorier":"LE HENAFF ANDRE",
+   "secretaire":"LE NIR GERARD",
+   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01140/infos-cles"
+   },
+   {
+     "nomClub": "U.S. FOUESNANT",
+     "nbTeam": "15",
+     "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+     "district": "DISTRICT FINISTERE SUD",
+     "correspondant": "TREGUER JEAN JACQUES",
+     "adresse": "17 CHEMIN DE MENEZ ROUZ 29170 FOUESNANT",
+     "emailsClub": [ "3501927@footlbf.fr",
+     ],
+     "siegeSocial": "MAIRIE, Place du Général de Gaulle, - 29170 - FOUESNANT",
+     "téléphones": ["02 98 56 52 38", ],
+     "fax":"02 98 56 55 73",
+     "stades": [
+     {
+      "nom": "",
+      "adresse":"RUE DE MEERBUSCH - 29170 - FOUESNANT",
+      "surface": "Pelouse naturelle",
+    }
+    ],
+    "president":"LE LAY LYDIE",
+    "trésorier":"GEORGE MARIE JOSEE",
+    "secretaire":"TREGUER JEAN JACQUES",
+    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01142/infos-cles"
+    },
+    {
+     "nomClub": "U.S. CALLAC",
+     "nbTeam": "7",
+     "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+     "district": "DISTRICT FOOTBALL COTES D ARMOR",
+     "correspondant": "LE MERRER KARINE",
+     "adresse": "",
+     "emailsClub": [ "klemerrer@orange.fr", "1501930@footlbf.fr",
+     ],
+     "siegeSocial": "MAIRIE, PLACE JEAN AUFFRET, - 22160 - CALLAC DE BRETAGNE",
+     "téléphones": [ ],
+     "stades": [
+     {
+      "nom": "",
+      "adresse":"RUE LOUIS RAOUL - 22160 - CALLAC",
+      "surface": "Pelouse naturelle",
+    }
+    ],
+    "president":"",
+    "trésorier":"",
+    "secretaire":"",
+    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01145/infos-cles"
+    },
+
+
+    {
+     "nomClub": "LA PLOZEVETIENNE",
+     "nbTeam": "5",
+     "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+     "district": "DISTRICT FINISTERE SUD",
+     "correspondant": "CORNEC PAUL",
+     "adresse": "20 RUE DES AUBEPINES 29710 PLOZEVET",
+     "emailsClub": [ "paul.cornec@wanadoo.fr",  "la.ploz@orange.fr", "3501936@footlbf.fr",
+     ],
+     "siegeSocial": "MAIRIE, - 29710 - PLOZEVET",
+     "téléphones": [ "02 98 91 38 02", ],
+     "fax":"0298913802",
+     "stades": [
+     {
+      "nom": "",
+      "adresse":"RUE DU STADE - 29710 - PLOZEVET",
+      "surface": "Pelouse naturelle",
+    }
+    ],
+    "president":"CORNEC PAUL",
+    "trésorier":"BESCOND JEAN MICHEL",
+    "secretaire":"LE PAREUX PASCAL",
+    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01150/infos-cles"
+    },
+    {
+     "nomClub": "CORMORANS SP. PENMARCH",
+     "nbTeam": "6",
+     "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+     "district": "DISTRICT FINISTERE SUD",
+     "correspondant": "LES CORMORANS DE PENMARCH",
+     "adresse": "96, RUE DE KÉRONTEC STADE MUNICIPAL 29760 PENMARCH",
+     "emailsClub": [ "3501937@footlbf.fr",
+     ],
+     "siegeSocial": "STADE MUNICIPAL, 96,Rue de Kérontec, - 29760 - PENMARCH",
+     "téléphones": ["02 98 58 51 59", ],
+     "stades": [{"nom": "", "adresse":"66 RUE DE KERONTEC - 29760 - PENMARCH",
+     "surface": "Pelouse naturelle",
+   }
+   ],
+   "president":"LE BRUN JEAN PIERRE",
+   "trésorier":"POURCHASSE FREDERIC",
+   "secretaire":"POURCHASSE LYDIE",
+   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01151/infos-cles"
+   },
+   {
+     "nomClub": "C.S. MONTOIRIN",
+     "nbTeam": "6",
+     "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
+     "district": "DISTRICT DE LOIRE ATLANTIQUE",
+     "correspondant": "THOMAS EP TREMOUREUX NOELLE",
+     "adresse": "",
+     "emailsClub": [ "noelle.tremoureux@wanadoo.fr", "501946@atlantique-foot.fr",
+     ],
+     "siegeSocial": "RUE LAENNEC, - 44550 - MONTOIR DE BRETAGNE",
+     "téléphones": ["02 40 45 12 73", ],
+     "stades": [{"nom": "", "adresse":"RUE DE L ILE DE FRANCE - 44550 - MONTOIR DE BRETAGNE",
+     "surface": "Pelouse naturelle",
+   }
+   ],
+   "president":"MOYON NICOLAS",
+   "trésorier":"LASSAVE JEAN MARC",
+   "secretaire":"THOMAS EP TREMOUREUX NOELLE",
+   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01158/infos-cles"
+   },
+   {
+     "nomClub": "S.C. LANNILIS",
+     "nbTeam": "17",
+     "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+     "district": "DISTRICT FINISTERE-NORD",
+     "correspondant": "GOURIOU JEAN LUC",
+     "adresse": "",
+     "emailsClub": [ "jeanluc.gouriou@orange.fr", "2501950@footlbf.fr",
+     ],
+     "siegeSocial": "MAIRIE, - 29870 - LANNILIS",
+     "téléphones": [ "02 98 04 17 34",],
+     "fax":"02 98 04 16 27",
+     "stades": [
+     {
+      "nom": "",
+      "adresse":"RUE DE PRAT MEINOC - 29870 - LANNILIS",
+      "surface": "Pelouse naturelle",
+    }
+    ],
+    "president":"ABGUILLERM PASCAL",
+    "trésorier":"BESCOND PAUL",
+    "secretaire":"GOURIOU JEAN LUC",
+    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01161/infos-cles"
+    },
+    {
+     "nomClub": "LES GLAZIKS DE CORAY",
+     "nbTeam": "4",
+     "ligue": "LIGUE BRETAGNE DE FOOTBALL",
+     "district": "DISTRICT FINISTERE SUD",
+     "correspondant": "PERON JEAN",
+     "adresse": "BREC'HORAY 29370 CORAY",
+     "emailsClub": [ "jean.peron@orange.fr", "3501959@footlbf.fr",
+     ],
+     "siegeSocial": "MAIRIE, - 29370 - CORAY",
+     "téléphones": [ "02 98 59 16 20", "0298591010"],
+     "fax":"0964265010",
+     "stades": [
+     {
+       "nom": "",
+       "adresse":"POULLEN - 29370 - CORAY",
+       "surface": "Pelouse naturelle",
+     }
+     ],
+     "president":"PERON JEAN",
+     "trésorier":"GUEVEL JESSICA",
+     "secretaire":"BOEDEC ANDRE",
+     "urlFFF":"http://www.fff.fr/la-vie-des-clubs/01168/infos-cles"
+     },
+
+     ]

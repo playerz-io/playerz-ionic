@@ -1,0 +1,70 @@
+[
+{
+ "nomClub": "F.C. SELESTAT",
+ "nbTeam": "33",
+ "ligue": "LIGUE D ALSACE DE FOOTBALL",
+ "district": "LIGUE D ALSACE - BAS RHIN",
+ "correspondant": "OBERLIN CATHY",
+ "adresse": "2 ESPACE GEORGES LEVY 67600 SELESTAT",
+ "emailsClub": [ "opsdck@aol.com", "selestat.fc@lafafoot.fr",
+ ],
+ "siegeSocial": "2 ESPACE GEORGES LEVY, - 67600 - SELESTAT",
+ "téléphones": ["03 88 92 97 90", "03 88 92 29 77",],
+ "stades": [
+ {
+  "nom": "", "adresse":"2 RUE BRIGADE ALSACE LORRAINE - 67600 - SELESTAT",
+  "surface": "Gazon synthétique",
+}
+],
+"president":"OBERLIN ANDRE",
+"trésorier":"BEN AZIZA MAHER",
+"secretaire":"",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00255/infos-cles"
+},
+
+{
+ "nomClub": "A.S. STRASBOURG",
+ "nbTeam": "29",
+ "ligue": "LIGUE D ALSACE DE FOOTBALL",
+ "district": "LIGUE D ALSACE - BAS RHIN",
+ "correspondant": "CHEVREAU DE MONTLEHU BENOIT",
+ "adresse": "",
+ "emailsClub": [ "benoit.chevreau@live.fr", "strasbourg.as@lafafoot.fr",
+ ],
+ "siegeSocial": "CENTRE SPORTIF DE LA ROTONDE, Rue Pierre NUSS, - 67200 - STRASBOURG",
+ "téléphones": [ ],
+ "fax":"03 88 36 60 78 (ASS)",
+ "stades": [
+ {
+  "nom": "", "adresse":"TERRAIN HONNEUR RUE PIERRE NUSS - 67200 - STRASBOURG",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"BALD GILBERT",
+"trésorier":"BALD GILBERT",
+"secretaire":"MILLELIRI JACQUES",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00258/infos-cles"
+},
+{
+ "nomClub": "F.C. MULHOUSE",
+ "nbTeam": "29",
+ "ligue": "LIGUE D ALSACE DE FOOTBALL",
+ "district": "LIGUE D ALSACE - HAUT-RHIN",
+ "correspondant": "LE SECRETAIRE FC MULHOUSE",
+ "adresse": "",
+ "emailsClub": [ "dan@fcmulhouse.com", "fcm@fcmulhouse.com", "mulhouse.fc@lafafoot.fr",
+ ],
+ "siegeSocial": "STADE DE L ILL, 45, Bld. Stoessel, - 68200 - MULHOUSE",
+ "téléphones": [ "03 89 42 44 33", "03 89 42 07 38",],
+ "stades": [
+ {
+  "nom": "", "adresse":"45 BOULEVARD CHARLES STOESSEL - 68200 - MULHOUSE",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"DREYFUS ALAIN",
+"trésorier":"LE SECRETAIRE FC MULHOUSE",
+"secretaire":"",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00259/infos-cles"
+},
+]

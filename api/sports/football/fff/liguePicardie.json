@@ -1,0 +1,19 @@
+[
+{
+ "nomClub": "A.S. LAVERSINES",
+ "nbTeam": "2",
+ "ligue": "LIGUE PICARDIE",
+ "district": "DISTRICT OISE DE FOOTBALL",
+ "correspondant": "OLIVEIRA LUDOVIC",
+ "adresse": "",
+ "emailsClub": [ "ludovic_39@hotmail.com",
+ ],
+ "siegeSocial": "MAIRIE, RUE ST MARTIN, - 60510 - LAVERSINES",
+ "téléphones": [ ],
+ "stades": [{"nom": "", "adresse":"CHEMIN DES CHASSES MAREES - 60510 - LAVERSINES",
+ "surface": "Pelouse naturelle",}],
+ "president":"OLIVEIRA LUDOVIC",
+ "trésorier":"BIELAK FLAVIEN",
+ "secretaire":"SCHAKENRAAD XAVIER",
+ "urlFFF":"http://www.fff.fr/la-vie-des-clubs/09941/infos-cles"
+ },]

@@ -1,0 +1,68 @@
+[
+{
+ "nomClub": "A.S. DES PORTUGAIS BOURGES",
+ "nbTeam": "7",
+ "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
+ "district": "DISTRICT CHER",
+ "correspondant": "GOMES PATRICK",
+ "adresse": "16 CHEMIN DE VAUVERT 18000 BOURGES",
+ "emailsClub": [ "524968@lcfoot.fr",
+ ],
+ "siegeSocial": "STADE DES GRANDS BEAUREGARDS, ROUTE DE LA CHAPELLE ST.URSIN, - 18000 - BOURGES",
+ "téléphones": [ "02 48 67 09 12",],
+ "stades": [
+ {
+  "nom": "", "adresse":"ROUTE DE LA CHAPELLE ST URSIN - 18000 - BOURGES",
+  "surface": "Gazon synthétique type SYE",
+}
+],
+"president":"",
+"trésorier":"",
+"secretaire":"",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/09836/infos-cles"
+},
+{
+ "nomClub": "STE MLE O.C. ST. JEAN BRAYE",
+ "nbTeam": "43",
+ "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
+ "district": "DISTRICT LOIRET",
+ "correspondant": "BOUTIN MICHEL",
+ "adresse": "",
+ "emailsClub": [ "secretariat.smocfoot@sfr.fr", "michel.boutin@sfr.fr", "524970@lcfoot.fr",
+ ],
+ "siegeSocial": "SMOC Football, BP 60042, - 45801 - ST JEAN DE BRAYE CEDEX",
+ "téléphones": [ "02 38 21 75 74 (stade)",],
+ "stades": [
+ {
+  "nom": "", "adresse":"RUE DU PETIT BOIS - 45800 - ST JEAN DE BRAYE",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"",
+"trésorier":"",
+"secretaire":"",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/09838/infos-cles"
+},
+{
+ "nomClub": "U.S. DE LIGUEIL",
+ "nbTeam": "2",
+ "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
+ "district": "DISTRICT INDRE-ET-LOIRE",
+ "correspondant": "VELLUET JEANNE MARIE",
+ "adresse": "LA MARRONERIE 37350 FERRIERE LARCON",
+ "emailsClub": [ "us.ligueil.foot@wanadoo.fr", "524972@lcfoot.fr",
+ ],
+ "siegeSocial": "MAIRIE, - 37240 - LIGUEIL",
+ "téléphones": ["02 47 92 02 95", "02 47 92 30 56",],
+ "stades": [
+ {
+  "nom": "", "adresse":"ROUTE DE DESCARTES - 37240 - LIGUEIL",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"VELLUET JEANNE MARIE",
+"trésorier":"",
+"secretaire":"DETOUCHE SABRINA",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/09840/infos-cles"
+},
+]

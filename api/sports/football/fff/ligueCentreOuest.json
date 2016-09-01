@@ -1,0 +1,48 @@
+[
+{
+ "nomClub": "O. FC. DE RUELLE",
+ "nbTeam": "14",
+ "ligue": "LIGUE DU CENTRE OUEST",
+ "district": "DISTRICT DE LA CHARENTE",
+ "correspondant": "SIERK NADINE",
+ "adresse": "",
+ "emailsClub": [ "nadine.sierk@yahoo.fr", "ofcruelle@orange.fr", "500089@lcof.fr",
+ ], "telephones": "05 45 65 91 44",
+ "siegeSocial": "Stade de Vaugeline, Rue Maurice Lambert, - 16600 - RUELLE",
+ "téléphones": [ ],
+ "stades": [
+ {
+  "nom": "", "adresse":"ALLEE DES MARRONNIERS - 16110 - LA ROCHEFOUCAULD",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"FABREGUES SYLVAIN",
+"trésorier":"VERLAINE SOPHIE",
+"secretaire":"SIERK NADINE",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00228/infos-cles"
+},
+{
+ "nomClub": "S.O. CHATELLERAULT",
+ "nbTeam": "18",
+ "ligue": "LIGUE DU CENTRE OUEST",
+ "district": "DISTRICT DE LA VIENNE",
+ "correspondant": "RENETEAU CORALIE",
+ "adresse": "12 RUE JEAN FERRAT 86550 MIGNALOUX BEAUVOIR",
+ "emailsClub": [ "coralie.reneteau@gmail.com", "500111@lcof.fr", "socfoot@wanadoo.fr",
+ ], "telephones": ,
+ "siegeSocial": "91 avenue des stades, - 86100 - CHATELLERAULT",
+ "téléphones": ["05 46 92 00 47", ],
+ "stades": [
+ {
+  "nom": "", "adresse":"AVENUE DES STADES - 86100 - CHATELLERAULT",
+  "surface": "Pelouse naturelle",
+}
+],
+"president":"DENIS DOMINIQUE",
+"trésorier":"MIGAYRON OLIVIER",
+"secretaire":"JEANNETTE PIERRE",
+"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00247/infos-cles"
+},
+
+
+]
