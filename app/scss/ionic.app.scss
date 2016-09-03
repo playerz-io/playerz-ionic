@@ -54,6 +54,13 @@ $grey: #7f8c8d;
     background: -webkit-linear-gradient(left, $clear_mariner , $sombre_mariner);
     //background: linear-gradient(to right, #313B42 , #3C4F5E);
 }
+
+.popup-rm-match{
+  .popup-body{
+    text-align: center;
+  }
+}
+
 ion-content {
     //background: none;
     background: linear-gradient(to right, $clear_mariner , $sombre_mariner);
@@ -403,14 +410,17 @@ input::-webkit-input-placeholder {
             color: $white;
         }
     }
-
     #match-played {
         background-image: url('../img/matchsTermines-small.jpeg');
         background-size: cover;
+        background-repeat: no-repeat;
+
     }
     #match-comeup {
         background-image: url('../img/matchsAVenir-small.jpeg');
         background-size: cover;
+        background-repeat: no-repeat;
+
     }
 }
 #tactique {

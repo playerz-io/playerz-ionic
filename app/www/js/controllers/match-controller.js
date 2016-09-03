@@ -13,10 +13,17 @@ angular.module('starter.controller.match', [])
             against_team: '',
             place: '',
             type: '',
-            date: ''
+            date: new Date()
         };
 
-        $scope.match.date = new Date();
+        let resetMatch = () => {
+            $scope.match = {
+                against_team: '',
+                place: 'Domicile',
+                type: 'Officiel',
+                date: new Date()
+            };
+        };
 
         $ionicModal.fromTemplateUrl('templates/add-match-modal.html', {
             scope: $scope,
@@ -30,6 +37,7 @@ angular.module('starter.controller.match', [])
         };
 
         $scope.closeModal = function() {
+            resetMatch();
             $scope.modal.hide();
         };
 
@@ -43,7 +51,7 @@ angular.module('starter.controller.match', [])
                 .success(function(data) {
                     console.log(data);
                     $cordovaToast.showShortBottom(data.msg);
-                    $scope.match = {};
+                    resetMatch();
                     $scope.modal.hide();
 
                 })
@@ -76,8 +84,8 @@ angular.module('starter.controller.match', [])
             if (type === 'clubs') array = self.clubsArray;
             if (type === 'categories') array = self.categoriesArray;
             if (type === 'country') array = self.countriesObject;
-            if(type === 'division') array = self.divisionFootballArray;
-console.log(array);
+            if (type === 'division') array = self.divisionFootballArray;
+            console.log(array);
             var matches = array.filter(function(club) {
                 if (club.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1)
                     return true;

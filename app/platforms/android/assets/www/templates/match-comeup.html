@@ -2,10 +2,7 @@
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
-          <!-- <ion-nav-buttons side="secondary">
-              <button class="button button-icon icon ion-ios-minus-outline" ng-click="comeup.showDelete = !comeup.showDelete">
-              </button>
-          </ion-nav-buttons> -->
+          
     </ion-nav-bar>
     <ion-floating-button click="openModal()" has-footer="true" button-color="#fe4e50" icon="ion-plus" iconColor="#fff">
     </ion-floating-button>
@@ -25,7 +22,7 @@
                             <h2 ng-bind-html="comeup.getBillingName(match)">  </h2>
                             <h3>{{match.date | date:'fullDate'}}</h3>
                         <!-- <ion-delete-button class="ion-minus-circled" ng-click="comeup.removeMatch(match._id)"></ion-delete-button> -->
-                        <ion-option-button class="button icon ion-ios-trash-outline" ng-click="comeup.removeMatch(match._id)"><i ></i></ion-option-button>
+                        <ion-option-button class="button icon ion-ios-trash-outline" ng-click="comeup.popupRemoveMatch(match)"><i ></i></ion-option-button>
                     </ion-item>
                 </ion-list>
             </div>

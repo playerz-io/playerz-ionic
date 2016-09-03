@@ -9923,6 +9923,9 @@ a.button {
 .pane {
   background: -webkit-linear-gradient(left, #313B42, #3C4F5E); }
 
+.popup-rm-match .popup-body {
+  text-align: center; }
+
 ion-content {
   background: linear-gradient(to right, #313B42, #3C4F5E); }
 
@@ -10415,11 +10418,13 @@ input::-webkit-input-placeholder {
 
 #match #match-played {
   background-image: url("../img/matchsTermines-small.jpeg");
-  background-size: cover; }
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 #match #match-comeup {
   background-image: url("../img/matchsAVenir-small.jpeg");
-  background-size: cover; }
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 #tactique * {
   box-sizing: border-box; }

@@ -16,10 +16,17 @@ angular.module('starter.controller.match-comeup', [])
             against_team: '',
             place: '',
             type: '',
-            date: ''
+            date: new Date()
         };
 
-        $scope.match.date = new Date();
+        let resetMatch = () => {
+            $scope.match = {
+                against_team: '',
+                place: 'Domicile',
+                type: 'Officiel',
+                date: new Date()
+            };
+        };
 
         self.getNewMatchComeUp = function() {
             MatchService.getMatchComeUp()
@@ -45,6 +52,7 @@ angular.module('starter.controller.match-comeup', [])
         };
 
         $scope.closeModal = function() {
+            resetMatch();
             $scope.modal.hide();
         };
 
@@ -54,8 +62,9 @@ angular.module('starter.controller.match-comeup', [])
             MatchService.addMatch($scope.match)
                 .success(function(data) {
                     console.log(data);
-                    $cordovaToast.showShortBottom(data.msg);
-                    $scope.match = {};
+                    //    $cordovaToast.showShortBottom(data.msg);
+                    self.getMatchComeUp();
+                    resetMatch();
                     $scope.modal.hide();
 
                 })
@@ -168,6 +177,16 @@ angular.module('starter.controller.match-comeup', [])
             $scope.clubs = {};
         };
 
+        self.popupRemoveMatch = (match) => {
+            $ionicPopup.confirm({
+                cssClass: 'popup-rm-match',
+                title: 'Suppression',
+                template: `Etes-vous sûre de vouloir supprimer
+              ${self.getBillingName(match)} ?`
+            }).then((res) => {
+                self.removeMatch(match._id);
+            })
+        };
 
 
         self.getNameTeam();

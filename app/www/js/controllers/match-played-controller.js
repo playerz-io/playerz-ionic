@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-played', [])
-    .controller('MatchPlayedCtrl', function(TeamService, MatchService, $scope, StorageService, $state) {
+    .controller('MatchPlayedCtrl', function(TeamService, MatchService, $scope, StorageService, $state, $ionicPopup) {
         let self = this;
 
         //force to display back button
@@ -12,7 +12,9 @@ angular.module('starter.controller.match-played', [])
         self.saveMatchID = function(match_id) {
             StorageService.addStorageMatchId(match_id);
 
-            $state.go('stat-end-match', {matchId: match_id});
+            $state.go('stat-end-match', {
+                matchId: match_id
+            });
         };
 
         self.getMatchFinished = () => {
@@ -82,6 +84,17 @@ angular.module('starter.controller.match-played', [])
                 self.billingName = `${match.against_team} <br /> - <br /> ${self.nameTeam}`;
             }
             return self.billingName;
+        };
+
+        self.popupRemoveMatch = (match) => {
+            $ionicPopup.confirm({
+                cssClass: 'popup-rm-match',
+                title: 'Suppression',
+                template: `Etes-vous sûre de vouloir supprimer
+              ${self.getBillingName(match)} ?`
+            }).then((res) => {
+                self.removeMatch(match._id);
+            })
         };
 
         self.getNameTeam();
