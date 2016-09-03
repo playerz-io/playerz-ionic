@@ -10412,8 +10412,14 @@ input::-webkit-input-placeholder {
   text-transform: uppercase; }
   #match button h1 {
     color: #ffffff; }
-  #match button:first-child {
-    background-color: yellow; }
+
+#match #match-played {
+  background-image: url("../img/matchsTermines-small.jpeg");
+  background-size: cover; }
+
+#match #match-comeup {
+  background-image: url("../img/matchsAVenir-small.jpeg");
+  background-size: cover; }
 
 #tactique * {
   box-sizing: border-box; }

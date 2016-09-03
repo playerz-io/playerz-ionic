@@ -107,7 +107,9 @@ angular.module('starter.controller.match-stat', [])
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');
             self.goalkeeper = !self.goalkeeper;
-        }
+        };
+
+
 
         self.onTap = (action) => {
             let img = null;
@@ -292,6 +294,19 @@ angular.module('starter.controller.match-stat', [])
                 .error(function(data) {
                     console.log(data);
                 })
+        };
+
+        self.isCardActivated = () => {
+            if (self.cardActived) {
+                self.cardActived = false;
+            }
+        };
+
+        self.isFoulsActivated = function() {
+          console.log("le");
+            if (self.foulsActived) {
+                self.foulsActived = false;
+            }
         };
 
         // //Change Modal
