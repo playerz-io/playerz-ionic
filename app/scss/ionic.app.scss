@@ -402,9 +402,15 @@ input::-webkit-input-placeholder {
         h1 {
             color: $white;
         }
-        &:first-child {
-            background-color: yellow;
-        }
+    }
+
+    #match-played {
+        background-image: url('../img/matchsTermines-small.jpeg');
+        background-size: cover;
+    }
+    #match-comeup {
+        background-image: url('../img/matchsAVenir-small.jpeg');
+        background-size: cover;
     }
 }
 #tactique {
