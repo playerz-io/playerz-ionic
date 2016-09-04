@@ -52,7 +52,7 @@ angular.module('starter', [
     })
     .constant('API_ENDPOINT', {
         url: 'https://secret-plateau-96989.herokuapp.com/api'
-        //url: 'https://secret-plateau-96989.herokuapp.com/api'
+            //url: 'https://secret-plateau-96989.herokuapp.com/api'
     })
     .constant('availableLanguages', ['en-US', 'fr-fr'])
     .constant('defaultLanguage', 'fr-fr')
@@ -126,7 +126,7 @@ angular.module('starter', [
             if (next.name === 'tactique' || next.name === 'menu-match.match-statistics' || next.name === 'menu-match.change' || next.name === 'menu-match.stat-in-live') {
                 screen.lockOrientation('landscape');
             } else {
-               screen.unlockOrientation();
+                screen.unlockOrientation();
             }
 
             if (next.name === 'summary-stat' && fromState.name === 'menu-match.match-statistics') {

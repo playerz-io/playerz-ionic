@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading) {
+    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading, $stateParams) {
 
         let self = this;
 
@@ -243,8 +243,9 @@ angular.module('starter.controller.match-stat', [])
                 } else {
                     $state.go('tactique');
                 }
-            })
+            });
         };
+
 
         //  update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {
@@ -303,7 +304,7 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.isFoulsActivated = function() {
-          console.log("le");
+            console.log("le");
             if (self.foulsActived) {
                 self.foulsActived = false;
             }
@@ -396,8 +397,12 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.getMatch();
-        self.showCountdownPopup();
         self.getNameTeam();
+        $scope.$on("$ionicView.loaded", function(event, data){
+           // handle event
+           self.showCountdownPopup();
+        });
+
 
 
 
