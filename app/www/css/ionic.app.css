@@ -10808,6 +10808,11 @@ html {
     align-self: center;
     color: #ffffff; }
 
+#match-stat #time {
+  font-size: 2em; }
+  #match-stat #time.activated {
+    color: #fe4e50; }
+
 .content-stat {
   display: flex;
   flex-direction: row;

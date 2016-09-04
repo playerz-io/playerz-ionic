@@ -836,6 +836,14 @@ $size-background-action: 11vh;
             color: $white;
         }
     }
+
+    #time{
+      font-size: 2em;
+
+      &.activated{
+        color: $saumon;
+      }
+    }
 }
 .content-stat {
     display: flex;
