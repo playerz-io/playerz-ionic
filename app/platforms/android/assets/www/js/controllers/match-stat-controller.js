@@ -246,7 +246,6 @@ angular.module('starter.controller.match-stat', [])
             });
         };
 
-
         //  update statistic of player, set the stat in params stat
         self.updateStatistic = function(player_id, stat) {
             PlayerService.updateStatistic(player_id, self.matchId, stat)

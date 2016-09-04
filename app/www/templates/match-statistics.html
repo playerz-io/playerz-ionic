@@ -39,7 +39,7 @@
                     <p ng-if="matchStat.match.place ==='Domicile'">
                         <span>{{matchStat.statMatch.totalBut}}</span>
                     </p>
-                    <p ng-if="matchStat.match.place ==='Exterieur'" ng-click="matchStat.addOpponentBut()">
+                    <p ng-if="matchStat.match.place ==='Exterieur'" ng-click="matchStat.addOpponentBut()" class="div-opponent-but">
                         <img src="img/add.png" alt="" height="16" width="16" />
                         <span>{{matchStat.statMatch.but_opponent}}</span>
                     </p>
@@ -47,7 +47,7 @@
                     <p ng-if="matchStat.match.place ==='Exterieur'">
                         <span>{{matchStat.statMatch.totalBut}}</span>
                     </p>
-                    <p ng-if="matchStat.match.place ==='Domicile'" ng-click="matchStat.addOpponentBut()">
+                    <p ng-if="matchStat.match.place ==='Domicile'" ng-click="matchStat.addOpponentBut()" class="div-opponent-but">
                         <span>{{matchStat.statMatch.but_opponent}} </span>
                         <img src="img/add.png" alt="" height="16" width="16" />
                     </p>

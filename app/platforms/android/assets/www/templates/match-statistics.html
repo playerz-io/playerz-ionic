@@ -10,35 +10,25 @@
         <div class="row">
             <div class="col col-10 text-center" id="stat">
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"
-                  id='{{matchStat.ACTION._DEFENSIVE.id}}'
-                  on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)" id='{{matchStat.ACTION._DEFENSIVE.id}}' on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
                 </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
-                  id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
-                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)" id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}" on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
                 </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
-                id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}"
-                on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)" id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}" on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
                 </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
-                  id="{{matchStat.ACTION._BUT.id}}"
-                  on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)" id="{{matchStat.ACTION._BUT.id}}" on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
                 </a>
-<!--
+                <!--
                 <a ng-click="matchStat.countMainAction('ballLost')">
                     <img src="img/output-3.png" alt="Ballon Perdu" height="36" width="36" />
                 </a>
                 <a ng-click="matchStat.countMainAction('passesFailed')">
                     <img src="img/pass_football.png" alt="Passe ratée" height="36" width="36" />
                 </a> -->
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
-                  id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
-                  on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)" id="{{matchStat.ACTION._RETRIEVE_BALL.id}}" on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
 
                 </a>
 
@@ -47,19 +37,19 @@
             <div class="col col-20" id="info-match">
                 <div id="score">
                     <p ng-if="matchStat.match.place ==='Domicile'">
-                      <span>{{matchStat.statMatch.totalBut}}</span>
+                        <span>{{matchStat.statMatch.totalBut}}</span>
                     </p>
-                    <p ng-if="matchStat.match.place ==='Exterieur'" ng-click="matchStat.addOpponentBut()">
-                      <img src="img/add.png" alt="" height="16" width="16" />
-                      <span>{{matchStat.statMatch.but_opponent}}</span>
+                    <p ng-if="matchStat.match.place ==='Exterieur'" ng-click="matchStat.addOpponentBut()" class="div-opponent-but">
+                        <img src="img/add.png" alt="" height="16" width="16" />
+                        <span>{{matchStat.statMatch.but_opponent}}</span>
                     </p>
                     <p><span>:</span></p>
                     <p ng-if="matchStat.match.place ==='Exterieur'">
-                      <span>{{matchStat.statMatch.totalBut}}</span>
+                        <span>{{matchStat.statMatch.totalBut}}</span>
                     </p>
-                    <p ng-if="matchStat.match.place ==='Domicile'" ng-click="matchStat.addOpponentBut()">
-                      <span>{{matchStat.statMatch.but_opponent}} </span>
-                      <img src="img/add.png" alt="" height="16" width="16" />
+                    <p ng-if="matchStat.match.place ==='Domicile'" ng-click="matchStat.addOpponentBut()" class="div-opponent-but">
+                        <span>{{matchStat.statMatch.but_opponent}} </span>
+                        <img src="img/add.png" alt="" height="16" width="16" />
                     </p>
                 </div>
                 <p ng-click="matchStat.timer()">
@@ -97,6 +87,12 @@
                         <span ng-show="action[1] === 'offSide'">
                         <img src="img/two-black-flags.png" alt="Hors-Jeu" height="16" width="16" />
                         </span>
+                        <span ng-show="action[1] === 'yellowCard'">
+                        <img src="img/Soccer-Yellow-Card-48.png" alt="Yellow Card" height="16" width="16" />
+                        </span>
+                        <span ng-show="action[1] === 'redCard'">
+                        <img src="img/Foul-48.png" alt="Red Card" height="16" width="16" />
+                        </span>
                         <span ng-show="action[1] === 'saves'">
                         <img src="img/stop_saumon.png" alt="Saves" height="16" width="16" />
                       </span> {{action[0]}} {{action[2] | getMinutes }}'
@@ -114,12 +110,10 @@
             </div>
             <div class="col col-10 text-center" id="div-act-dead-time">
 
-                <a ng-click="matchStat.countMainAction('offSide')"
-                id="off-side"
-                on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)">
+                <a ng-click="matchStat.countMainAction('offSide')" id="off-side" on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)">
                 </a>
 
-                <a ng-click="matchStat.isFoulsActivated(); matchStat.cardActived = !matchStat.cardActived">
+                <a ng-click="matchStat.isFoulsActivated(); matchStat.cardActived = !matchStat.cardActived" id="double-card">
                     <img src="img/double-carton.png" alt="Cartons" height="36" width="36" />
                 </a>
 
@@ -131,10 +125,10 @@
                         <img src="img/Foul-48.png" alt="carton rouge" height="36" width="36" />
                     </a>
                 </div>
-                <a ng-click="matchStat.isCardActivated(); matchStat.foulsActived = !matchStat.foulsActived">
+                <a ng-click="matchStat.isCardActivated(); matchStat.foulsActived = !matchStat.foulsActived" id="double-fouls">
                     <img src="img/output-7.png" alt="Hors-jeu" height="36" width="36" />
                 </a>
-                <div class="div-fouls" ng-show="matchStat.foulsActived">
+                <div id="div-fouls" ng-show="matchStat.foulsActived">
                     <a ng-click="matchStat.countMainAction('foulsSuffered')">
                         <img src="img/output-7.png" alt="Fautes Subies" height="36" width="36" />
                     </a>
@@ -143,9 +137,7 @@
                     </a>
                 </div>
 
-                <a ng-click="matchStat.removeAction()"
-                id="undo-action"
-                on-tap="matchStat.onTap(matchStat.ACTION._UNDO_ACTION.name)">
+                <a ng-click="matchStat.removeAction()" id="undo-action" on-tap="matchStat.onTap(matchStat.ACTION._UNDO_ACTION.name)">
                 </a>
             </div>
         </div>

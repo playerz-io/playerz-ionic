@@ -10691,6 +10691,11 @@ html {
   background-repeat: no-repeat;
   background-size: 10vh 10vh; }
 
+#match-stat .div-opponent-but img {
+  margin-left: -2vw;
+  height: 4vh;
+  width: 4vh; }
+
 #match-stat #double-card {
   margin-top: 0.8vh; }
 

@@ -51,8 +51,8 @@ angular.module('starter', [
         notAuthenticated: 'auth-not-authenticated'
     })
     .constant('API_ENDPOINT', {
-        url: 'http://localhost:5000/api'
-            //url: 'http://localhost:5000/api'
+        url: 'https://secret-plateau-96989.herokuapp.com/api'
+            //url: 'https://secret-plateau-96989.herokuapp.com/api'
     })
     .constant('availableLanguages', ['en-US', 'fr-fr'])
     .constant('defaultLanguage', 'fr-fr')
