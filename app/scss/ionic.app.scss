@@ -741,6 +741,15 @@ $size-background-action: 11vh;
     // }
 }
 #match-stat {
+
+    #double-card{
+      margin-top: 0.8vh;
+    }
+    #double-card img, #div-card img, #double-fouls img, #div-fouls img{
+      width: $size-background-action;
+      height: $size-background-action;
+      background-size: $size-background-action $size-background-action;
+    }
     .row {
         height: 100%;
     }
