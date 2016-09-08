@@ -1,7 +1,7 @@
 'use strict'
 angular.module('starter.controller.change-password', [])
 
-.controller('ChangePasswordCtrl', function($state, $ionicPopup, $http, StorageService, UserService, AuthService, $ionicModal, $scope, FacebookService, $cordovaToast) {
+.controller('ChangePasswordCtrl', function($state, $http, StorageService, UserService, AuthService, $ionicModal, $scope, FacebookService, $cordovaToast) {
 
     let self = this;
 

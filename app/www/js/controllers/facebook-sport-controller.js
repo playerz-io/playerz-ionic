@@ -16,6 +16,7 @@ angular.module('starter.controller.facebook-sport', [])
                 })
                 .error((data) => {
                     $ionicPopup.alert({
+                        cssClass: 'popup-center-text',
                         title: 'Erreur',
                         template: data.msg
                     });

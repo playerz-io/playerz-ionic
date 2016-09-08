@@ -38,6 +38,7 @@ angular
             }, function(errMsg) {
                 console.log(errMsg);
                 let alertPopup = $ionicPopup.alert({
+                    cssClass: 'popup-center-text',
                     title: 'Erreur Inscription !',
                     template: errMsg
                 });

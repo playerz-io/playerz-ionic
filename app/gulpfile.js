@@ -49,7 +49,7 @@ gulp.task('templatecache', (done) => {
         .on('end', done);
 });
 
-gulp.task('add-proxy', () => {
+gulp.task('dev-url', () => {
     return replace({
         regex: "https://secret-plateau-96989.herokuapp.com/api",
         replacement: "http://localhost:5000/api",
@@ -59,7 +59,7 @@ gulp.task('add-proxy', () => {
     })
 });
 
-gulp.task('remove-proxy', () => {
+gulp.task('prod-url', () => {
     return replace({
         regex: "http://localhost:5000/api",
         replacement: "https://secret-plateau-96989.herokuapp.com/api",

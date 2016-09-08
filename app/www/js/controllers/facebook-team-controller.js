@@ -23,6 +23,7 @@ angular.module('starter.controller.facebook-team', [])
                 })
                 .error((data) => {
                     $ionicPopup.alert({
+                        cssClass: 'popup-center-text',
                         title: 'Erreur',
                         template: data.msg
                     });

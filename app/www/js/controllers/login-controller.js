@@ -26,6 +26,7 @@ angular.module('starter.controller.login', [])
         }, function(errMsg) {
             console.log(errMsg);
             var alertPopup = $ionicPopup.alert({
+                cssClass: 'popup-center-text',
                 title: 'Erreur',
                 template: errMsg
             });
@@ -62,12 +63,14 @@ angular.module('starter.controller.login', [])
                     .error(function(data) {
                         console.log(data);
                         $ionicPopup.alert({
+                            cssClass: 'popup-center-text',
                             title: 'Erreur',
                             template: data.msg
                         });
                     })
             }, (error) => {
                 $ionicPopup.alert({
+                    cssClass: 'popup-center-text',
                     title: 'Erreur',
                     template: error
                 });
@@ -76,6 +79,7 @@ angular.module('starter.controller.login', [])
 
         }, (error) => {
             $ionicPopup.alert({
+                cssClass: 'popup-center-text',
                 title: 'Erreur',
                 template: error
             });

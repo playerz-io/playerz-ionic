@@ -67,14 +67,14 @@ exports.forgotPassword = function(req, res) {
 
         (token, coach, done) => {
             let smtpTransport = nodemailer.createTransport(mg(auth));
-
+            console.log(coach.email);
             let mailOptions = {
                 to: coach.email,
                 from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
                 subject: 'Réinitialisation de votre mot de passe',
                 text: `Cliquez sur le lien ci-dessous pour réinitialiser le mot de passe de votre compte Playerz
 
-http://localhost:8100/#/reset/${token}
+http://localhost:3000/password/#/reset/${token}
 
 Ne prenez pas en compte ce mail, si vous n'avez pas demander à réinitialiser votre mot de passe.
 

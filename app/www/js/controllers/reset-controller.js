@@ -9,6 +9,7 @@ angular.module('starter.controller.reset', [])
                 .success((data) => {
                     console.log(data);
                     let popup = $ionicPopup.alert({
+                        cssClass: 'popup-center-text',
                         title: 'Information',
                         template: data.msg
                     });
@@ -20,6 +21,7 @@ angular.module('starter.controller.reset', [])
                 .error((data) => {
                     console.log(data);
                     $ionicPopup.alert({
+                        cssClass: 'popup-center-text',
                         title: 'Erreur',
                         template: data.msg
                     });

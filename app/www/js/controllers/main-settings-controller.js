@@ -1,7 +1,7 @@
 'use strict'
 angular.module('starter.controller.main-settings', [])
 
-.controller('MainSettingsCtrl', function($state, $ionicPopup, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService){
+.controller('MainSettingsCtrl', function($state, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService){
 
   let self = this;
 

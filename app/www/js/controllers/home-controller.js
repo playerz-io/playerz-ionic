@@ -2,7 +2,7 @@
 angular.module('starter.controller.home', [])
 
 .controller('HomeTabCtrl', function(PaymentService, ProfileService, AuthService,
-                                    $ionicPopover, $scope, $state, $ionicPopup, $ionicModal) {
+                                    $ionicPopover, $scope, $state, $ionicModal) {
     let self = this;
     let dataProfile;
     // TODO: signifier à l'utilisateur qu'il doit absolument donner ses coordonnées

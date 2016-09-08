@@ -71,6 +71,7 @@ angular.module('starter.controller.match-comeup', [])
                 .error(function(data) {
                     console.log(data);
                     let alertPopup = $ionicPopup.alert({
+                        cssClass: 'popup-center-text',
                         title: 'Erreur',
                         template: data.msg
                     });
@@ -179,7 +180,7 @@ angular.module('starter.controller.match-comeup', [])
 
         self.popupRemoveMatch = (match) => {
             $ionicPopup.confirm({
-                cssClass: 'popup-rm-match',
+                cssClass: 'popup-center-text',
                 title: 'Suppression',
                 template: `Etes-vous sûre de vouloir supprimer
               ${self.getBillingName(match)} ?`

@@ -48,6 +48,7 @@ angular.module('starter.controller.tactique', [])
                 .error((data) => {
                     console.log(data);
                     $ionicPopup.alert({
+                      cssClass: 'popup-center-text',
                       title: 'Message',
                       template: data.msg
                     }).then((res) => {
