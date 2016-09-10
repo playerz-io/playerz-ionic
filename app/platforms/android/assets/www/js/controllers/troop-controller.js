@@ -37,16 +37,17 @@ angular.module('starter.controller.troop', [])
                     self.getPlayers();
                     console.log(data);
                     $scope.player = {
-                      first_name: null,
-                      last_name: null,
-                      favourite_position: 'Gardien'
+                        first_name: null,
+                        last_name: null,
+                        favourite_position: 'Gardien'
                     };
                     $scope.modal.hide();
-                   $cordovaToast.showShortBottom(data.msg);
+                    $cordovaToast.showShortBottom(data.msg);
 
                 })
                 .error(function(data) {
                     var alertPopup = $ionicPopup.alert({
+                        cssClass: 'popup-center-text',
                         title: 'Error',
                         template: data.msg
                     });
@@ -80,6 +81,7 @@ angular.module('starter.controller.troop', [])
 
         self.popupRemovePlayer = (player) => {
             let confirmPopup = $ionicPopup.confirm({
+                cssClass: 'popup-center-text',
                 title: 'Suppression',
                 template: `Etes-vous sur de vouloir supprimer
             ${player.first_name} ${player.last_name} ?`

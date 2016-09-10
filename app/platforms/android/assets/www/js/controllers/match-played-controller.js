@@ -88,7 +88,7 @@ angular.module('starter.controller.match-played', [])
 
         self.popupRemoveMatch = (match) => {
             $ionicPopup.confirm({
-                cssClass: 'popup-rm-match',
+                cssClass: 'popup-center-text',
                 title: 'Suppression',
                 template: `Etes-vous sûre de vouloir supprimer
               ${self.getBillingName(match)} ?`

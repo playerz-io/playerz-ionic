@@ -5,7 +5,7 @@
 
 angular.module('starter.controller.welcome', [])
 
-.controller('welcomeCtrl', function($state, AuthService, $ionicPopup, StorageService, $location, $q, $cordovaOauth, $http) {
+.controller('welcomeCtrl', function($state, AuthService, StorageService, $location, $q, $cordovaOauth, $http) {
     var welcomeCtrl = this;
 
 

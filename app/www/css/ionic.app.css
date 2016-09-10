@@ -10700,9 +10700,9 @@ html {
   margin-top: 0.8vh; }
 
 #match-stat #double-card img, #match-stat #div-card img, #match-stat #double-fouls img, #match-stat #div-fouls img {
-  width: 11vh;
-  height: 11vh;
-  background-size: 11vh 11vh; }
+  width: 10vh;
+  height: 10vh;
+  background-size: 10vh 10vh; }
 
 #match-stat .row {
   height: 100%; }
@@ -10713,34 +10713,46 @@ html {
   justify-content: space-around;
   align-items: flex-start; }
   #match-stat #stat #defensive-action {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/shield-icon.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #attempts-on-target {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/attempt_on_target_icon.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #attempts-off-target {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/attempt_off_target_icon.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #goal {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/goal.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #ball-retrieve {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/football-players-on-game.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
+    background-repeat: no-repeat; }
+  #match-stat #stat #ball-lost {
+    width: 10vh;
+    height: 10vh;
+    background-image: url("../img/passeRatee_saumon.png");
+    background-size: 10vh 10vh;
+    background-repeat: no-repeat; }
+  #match-stat #stat #passe-failed {
+    width: 10vh;
+    height: 10vh;
+    background-image: url("../img/ballonPerdu2_saumon.png");
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
 
 #match-stat #fft,
@@ -10782,16 +10794,16 @@ html {
   justify-content: flex-start;
   align-items: center; }
   #match-stat #div-act-dead-time #off-side {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/two-black-flags.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #div-act-dead-time #undo-action {
-    width: 11vh;
-    height: 11vh;
+    width: 10vh;
+    height: 10vh;
     background-image: url("../img/undo-icon.png");
-    background-size: 11vh 11vh;
+    background-size: 10vh 10vh;
     background-repeat: no-repeat; }
 
 #match-stat #info-match {

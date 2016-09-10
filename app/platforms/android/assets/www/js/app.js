@@ -179,7 +179,7 @@ angular.module('starter', [
     //set tabs in bottom for all platform
     // $ionicConfigProvider.tabs
     //     .position("bottom")
-    //     .style("standard");  
+    //     .style("standard");
 
     $mdGestureProvider.skipClickHijack();
 

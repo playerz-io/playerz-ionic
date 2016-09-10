@@ -1,7 +1,7 @@
 'use strict';
 angular.module('starter.controller.account', [])
 
-.controller('AccountCtrl', function($state, $ionicPopup, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService, UserService) {
+.controller('AccountCtrl', function($state, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService, UserService) {
 
     let self = this;
 

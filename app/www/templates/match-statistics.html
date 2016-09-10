@@ -10,26 +10,37 @@
         <div class="row">
             <div class="col col-10 text-center" id="stat">
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)" id='{{matchStat.ACTION._DEFENSIVE.id}}' on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"
+                   id='{{matchStat.ACTION._DEFENSIVE.id}}'
+                   on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
                 </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)" id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}" on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
+                   id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
+                   on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
                 </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)" id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}" on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
+                   id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}"
+                    on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
                 </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)" id="{{matchStat.ACTION._BUT.id}}" on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
+                   id="{{matchStat.ACTION._BUT.id}}"
+                   on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
                 </a>
-                <!--
-                <a ng-click="matchStat.countMainAction('ballLost')">
-                    <img src="img/output-3.png" alt="Ballon Perdu" height="36" width="36" />
-                </a>
-                <a ng-click="matchStat.countMainAction('passesFailed')">
-                    <img src="img/pass_football.png" alt="Passe ratée" height="36" width="36" />
-                </a> -->
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)" id="{{matchStat.ACTION._RETRIEVE_BALL.id}}" on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
 
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BALL_LOST.name)"
+                   id="{{matchStat.ACTION._BALL_LOST.id}}"
+                   on-tap="matchStat.onTap(matchStat.ACTION._BALL_LOST.name)">
+                </a>
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
+                   id="{{matchStat.ACTION._PASSE_FAILED.id}}"
+                   on-tap="matchStat.onTap(matchStat.ACTION._PASSE_FAILED.name)">
+                </a>
+                <a ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
+                   id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
+                   on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
                 </a>
 
             </div>
@@ -70,10 +81,10 @@
                           <img src="img/attempt_off_target_icon.png" alt="Tir Non Cadré" height="16" width="16" />
                         </span>
                         <span ng-show="action[1] === 'ballLost'">
-                          <img src="img/output-3.png" alt="Ballon Perdu" height="16" width="16" />
+                          <img src="img/passeRatee_saumon.png" alt="Ballon Perdu" height="16" width="16" />
                         </span>
                         <span ng-show="action[1] === 'passesFailed'">
-                        <img src="img/pass_football.png" alt="Passe raté" height="16" width="16" />
+                        <img src="img/ballonPerdu2_saumon.png" alt="Passes Ratées" height="16" width="16" />
                         </span>
                         <span ng-show="action[1] === 'retrieveBalls'">
                         <img src="img/football-players-on-game.png" alt="Ballon récupéré" height="16" width="16" />
@@ -92,6 +103,12 @@
                         </span>
                         <span ng-show="action[1] === 'redCard'">
                         <img src="img/Foul-48.png" alt="Red Card" height="16" width="16" />
+                        </span>
+                        <span ng-show="action[1] === 'foulsSuffered'">
+                        <img src="img/paramedic.png" alt="Fautes Subies" height="16" width="16" />
+                        </span>
+                        <span ng-show="action[1] === 'foulsCommitted'">
+                        <img src="img/man-kicking-robots-head.png" alt="Fautes Commises" height="16" width="16" />
                         </span>
                         <span ng-show="action[1] === 'saves'">
                         <img src="img/stop_saumon.png" alt="Saves" height="16" width="16" />
@@ -126,14 +143,14 @@
                     </a>
                 </div>
                 <a ng-click="matchStat.isCardActivated(); matchStat.foulsActived = !matchStat.foulsActived" id="double-fouls">
-                    <img src="img/output-7.png" alt="Hors-jeu" height="36" width="36" />
+                    <img src="img/plaster.png" alt="Hors-jeu" height="36" width="36" />
                 </a>
                 <div id="div-fouls" ng-show="matchStat.foulsActived">
                     <a ng-click="matchStat.countMainAction('foulsSuffered')">
-                        <img src="img/output-7.png" alt="Fautes Subies" height="36" width="36" />
+                        <img src="img/paramedic.png" alt="Fautes Subies" height="36" width="36" />
                     </a>
                     <a ng-click="matchStat.countMainAction('foulsCommitted')">
-                        <img src="img/output-7.png" alt="Fautes Commises" height="36" width="36" />
+                        <img src="img/man-kicking-robots-head.png" alt="Fautes Commises" height="36" width="36" />
                     </a>
                 </div>
 

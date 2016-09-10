@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.stat-in-live-player', [])
-    .controller('StatInLivePlayerCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $scope, $ionicPopup, $stateParams) {
+    .controller('StatInLivePlayerCtrl', function(TeamService, MatchService, StorageService, PlayerService, FireService, $scope, $stateParams) {
 
         //force to display back button
         $scope.$on('$ionicView.beforeEnter', function(event, viewData) {

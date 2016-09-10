@@ -59,15 +59,18 @@ angular.module('starter.controller.match-stat', [])
             },
 
             _BALL_LOST: {
+                id: 'ball-lost',
                 name: 'ballLost',
-                img: '',
-                img_click: ''
+                img: 'img/passeRatee_saumon.png',
+                img_click: 'img/passeRatee_white.png'
             },
 
             _PASSE_FAILED: {
+                id: 'passe-failed',
                 name: 'passesFailed',
-                img: '',
-                img_click: ''
+                img: 'img/ballonPerdu2_saumon.png',
+                img_click: 'img/ballonPerdu2_white.png'
+
             },
 
             _DUAL_GOALKEEPER: {
@@ -155,6 +158,14 @@ angular.module('starter.controller.match-stat', [])
                 img_click = self.ACTION._OFF_SIDE.img_click;
                 id = `#${self.ACTION._OFF_SIDE.id}`;
 
+            } else if (action === self.ACTION._BALL_LOST.name) {
+                img = self.ACTION._BALL_LOST.img;
+                img_click = self.ACTION._BALL_LOST.img_click;
+                id = `#${self.ACTION._BALL_LOST.id}`;
+            } else if (action === self.ACTION._PASSE_FAILED.name) {
+                img = self.ACTION._PASSE_FAILED.img;
+                img_click = self.ACTION._PASSE_FAILED.img_click;
+                id = `#${self.ACTION._PASSE_FAILED.id}`;
             }
 
             element = angular.element(document.querySelector(id));
@@ -397,9 +408,9 @@ angular.module('starter.controller.match-stat', [])
 
         self.getMatch();
         self.getNameTeam();
-        $scope.$on("$ionicView.loaded", function(event, data){
-           // handle event
-           self.showCountdownPopup();
+        $scope.$on("$ionicView.loaded", function(event, data) {
+            // handle event
+            self.showCountdownPopup();
         });
 
 

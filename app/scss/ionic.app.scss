@@ -723,7 +723,7 @@ html {
     background-repeat: no-repeat;
     background-size: 10vh 10vh;
 }
-$size-background-action: 11vh;
+$size-background-action: 10vh;
 @mixin background-action($background, $background-activated ,$link) {
     #{$link} {
         width: $size-background-action;
@@ -774,6 +774,8 @@ $size-background-action: 11vh;
         @include background-action( '../img/attempt_off_target_icon.png', '../img/attempt_off_target_icon_white.png' ,'#attempts-off-target');
         @include background-action( '../img/goal.png', '../img/goal_white.png' ,'#goal');
         @include background-action( '../img/football-players-on-game.png', '../img/football-players-on-game_white.png' ,'#ball-retrieve');
+        @include background-action( '../img/passeRatee_saumon.png', '../img/passeRatee_white.png' ,'#ball-lost');
+        @include background-action( '../img/ballonPerdu2_saumon.png', '../img/ballonPerdu2_white.png' ,'#passe-failed');
     }
     #fft,
     #ftt {
