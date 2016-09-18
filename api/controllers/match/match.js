@@ -579,11 +579,11 @@ exports.defaultPosition = (req, res) => {
                     let match = team.matchs.id(idMatch);
                     let players = team.players;
 
-                    if(players.length < Football.NUMBER_FIRST_PLAYER){
-                      return res.status(400).json({
-                        success: false,
-                        msg: `Vous devez avoir avoir au moins ${Football.NUMBER_FIRST_PLAYER} joueurs`
-                      })
+                    if (players.length < Football.NUMBER_FIRST_PLAYER) {
+                        return res.status(400).json({
+                            success: false,
+                            msg: `Vous devez avoir avoir au moins ${Football.NUMBER_FIRST_PLAYER} joueurs`
+                        })
                     }
 
                     if (match.playerSelected.length !== 0) {
@@ -963,7 +963,7 @@ exports.defaultPosition = (req, res) => {
                         return Utils.errorIntern(res, err);
 
                     for (let player of playersFound) {
-                        
+
                         if (match.playerNoSelected.indexOf(player._id) === -1) {
                             console.log(player.last_name);
                             player.position = 'no_selected';
@@ -1267,66 +1267,6 @@ exports.addOpponentBut = (req, res) => {
     }
 };
 
-exports.setResultMatch = (req, res) => {
-    let match_id = req.body.match_id;
-    let token = getToken(req.headers);
-
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        let coach_id = decoded._id;
-
-        Coach.findById(coach_id, (err, coach) => {
-            if (err)
-                return Utils.errorIntern(res, err);
-
-            console.log(match_id);
-
-            Match.findById(match_id, (matchErr, match) => {
-                if (matchErr)
-                    return Utils.errorIntern(res, matchErr);
-
-                let matchCoach = coach.team.matchs.id(match_id);
-                let statMatch = matchCoach.statistics;
-                let result = '';
-
-                console.log(statMatch.totalBut, statMatch.but_opponent);
-                if (statMatch.totalBut === statMatch.but_opponent) {
-                    result = 'draw';
-                }
-                if (statMatch.totalBut > statMatch.but_opponent) {
-                    result = 'victory';
-                }
-
-                if (statMatch.totalBut < statMatch.but_opponent) {
-                    result = 'defeat';
-                }
-
-                console.log(result);
-                match.result = result;
-                match.save();
-
-                matchCoach.result = result;
-                coach.save();
-
-                res.status(200).json({
-                    success: true,
-                    result
-                });
-
-            });
-        });
-
-
-    } else {
-        return res.status(403).json({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
-
-
-}
-
 exports.putMatchFinished = (req, res) => {
 
     let match_id = req.body.match_id;
@@ -1336,6 +1276,7 @@ exports.putMatchFinished = (req, res) => {
 
         let decoded = jwt.decode(token, config.secret);
         let coach_id = decoded._id;
+        let result = '';
 
         Coach.findById(coach_id, (coachErr, coach) => {
             if (coachErr)
@@ -1347,14 +1288,42 @@ exports.putMatchFinished = (req, res) => {
                     return Utils.errorIntern(res, matchErr);
 
                 let matchCoach = coach.team.matchs.id(match_id);
+                let statMatch = matchCoach.statistics;
                 console.log(matchCoach);
+
+                if (statMatch.totalBut === statMatch.but_opponent) {
+                    result = 'draw';
+                }
+                if (statMatch.totalBut > statMatch.but_opponent) {
+                    result = 'victory';
+                }
+
+                if (statMatch.totalBut < statMatch.but_opponent) {
+                    result = 'defeat';
+                }
                 matchCoach.status = "finished";
+
+                //set clean_sheet
+                if (matchCoach.statistics.but_opponent === 0) {
+                    matchCoach.statistics.clean_sheet = 1;
+                }
+
+                matchCoach.result = result;
+
                 coach.save((err) => {
                     if (err)
                         return Utils.errorIntern(res, err);
                 });
 
                 match.status = 'finished';
+
+                //set clean_sheet
+                if (match.statistics.but_opponent === 0) {
+                    match.statistics.clean_sheet = 1;
+                }
+
+                match.result = result;
+
                 match.save((err) => {
                     if (err)
                         return Utils.errorIntern(res, err);
@@ -1425,8 +1394,8 @@ exports.getGlobalStatisticsMatch = (req, res) => {
                 }
             }
 
-            statisticsGlobal.totalPassesCompletion = statisticsGlobal.totalPassesCompletion / nbrMatchFinished;
-            statisticsGlobal.totalRelanceCompletion = statisticsGlobal.totalRelanceCompletion / nbrMatchFinished;
+            statisticsGlobal.totalPassesCompletion = Math.round(statisticsGlobal.totalPassesCompletion / nbrMatchFinished);
+            statisticsGlobal.totalRelanceCompletion = Math.round(statisticsGlobal.totalRelanceCompletion / nbrMatchFinished);
 
             res.status(200).json({
                 success: true,

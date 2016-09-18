@@ -124,9 +124,6 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.playerz164850"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.playerz164850"
         },
@@ -458,7 +455,6 @@
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-console": "1.0.2",
         "cordova-plugin-device": "1.1.1",
         "cordova-plugin-splashscreen": "3.1.0",
         "cordova-plugin-statusbar": "2.1.2",

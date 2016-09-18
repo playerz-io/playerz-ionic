@@ -14,6 +14,7 @@ let Utils = require('../utils');
 let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
     //console.log(player);
     let numberAttempts = 0;
+    let numberAttemptsOnTarget = 0;
     let percentPass = 0;
     let percentRelance = 0;
     let lostBall = 0;
@@ -37,7 +38,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
 
             numberAttempts = statistics.attemptsOnTarget + statistics.attemptsOffTarget + statistics.but;
             if (isNaN(numberAttempts)) {
-                numberAttempts = 0
+                numberAttempts = 0;
             }
             statistics.attempts = numberAttempts;
 
@@ -636,18 +637,23 @@ let totalStat = function(_coach_id, _match_id) {
                 if (err)
                     return Utils.errorIntern(res, err);
 
-                let match = coach.team.matchs.id(match_id)
+                let match = coach.team.matchs.id(match_id);
 
                 //player selected
                 let playerSelected = match.playerSelected;
                 //number of player selected
                 let numberPlayerSelected = playerSelected.length;
-                cb(null, numberPlayerSelected, playerSelected, match, coach)
+
+                coach.save((err) => {
+                    if (err)
+                        console.log(err);
+                });
+                cb(null, numberPlayerSelected, playerSelected, match);
 
             });
         },
 
-        (numberPlayerSelected, playerSelected, match, coach, cb) => {
+        (numberPlayerSelected, playerSelected, match, cb) => {
             console.log(playerSelected);
             for (let player_id of playerSelected) {
 
@@ -680,7 +686,8 @@ let totalStat = function(_coach_id, _match_id) {
                         }
                     }
                     if (player_id === playerSelected[numberPlayerSelected - 1]) {
-                        cb(null, coach, match, {
+                        console.log('fforforf,r');
+                        cb(null, match, {
                             totalBallPlayed,
                             totalBallLost,
                             totalRetrieveBalls,
@@ -688,8 +695,8 @@ let totalStat = function(_coach_id, _match_id) {
                             totalFoulsSuffered,
                             totalFoulsCommited,
                             totalOffSide,
-                            totalAttempts,
-                            totalAttemptsOnTarget,
+                            totalAttempts: totalAttemptsOnTarget + totalAttemptsOffTarget + totalBut,
+                            totalAttemptsOnTarget: totalAttemptsOnTarget + totalBut,
                             totalAttemptsOffTarget,
                             totalBut,
                             totalYellowCard,
@@ -703,65 +710,43 @@ let totalStat = function(_coach_id, _match_id) {
                 });
             }
         },
-        (coach, match, stat, cb) => {
+
+        (match, stat, cb) => {
 
             Match.findById(match_id, (err, foundMatch) => {
                 if (err)
                     throw err;
 
+                console.log('totalStat', stat);
                 //update match stat
-                foundMatch.statistics = {
-                    totalBallPlayed: stat.totalBallPlayed,
-                    totalBallLost: stat.totalBallLost,
-                    totalPassesCompletion: stat.totalPassesCompletion,
-                    totalRetrieveBalls: stat.totalRetrieveBalls,
-                    totalDefensiveAction: stat.totalDefensiveAction,
-                    totalRelanceCompletion: stat.totalRelanceCompletion,
-                    totalFoulsSuffered: stat.totalFoulsSuffered,
-                    totalFoulsCommited: stat.totalFoulsCommited,
-                    totalOffSide: stat.totalOffSide,
-                    totalAttempts: stat.totalAttempts,
-                    totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
-                    totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
-                    totalYellowCard: stat.totalYellowCard,
-                    totalRedCard: stat.totalRedCard,
-                    totalPassesFailed: stat.totalPassesFailed,
-                    but_opponent: stat.but_opponent,
-                    totalBut: stat.totalBut
-
-                };
+                foundMatch.statistics = stat;
                 foundMatch.save();
+
+                cb(null, match, stat);
             });
 
-            match.statistics = {
-                totalBallPlayed: stat.totalBallPlayed,
-                totalBallLost: stat.totalBallLost,
-                totalPassesCompletion: stat.totalPassesCompletion,
-                totalRetrieveBalls: stat.totalRetrieveBalls,
-                totalDefensiveAction: stat.totalDefensiveAction,
-                totalRelanceCompletion: stat.totalRelanceCompletion,
-                totalFoulsSuffered: stat.totalFoulsSuffered,
-                totalFoulsCommited: stat.totalFoulsCommited,
-                totalOffSide: stat.totalOffSide,
-                totalAttempts: stat.totalAttempts,
-                totalAttemptsOnTarget: stat.totalAttemptsOnTarget,
-                totalAttemptsOffTarget: stat.totalAttemptsOffTarget,
-                totalYellowCard: stat.totalYellowCard,
-                totalRedCard: stat.totalRedCard,
-                totalPassesFailed: stat.totalPassesFailed,
-                but_opponent: stat.but_opponent,
-                totalBut: stat.totalBut
+        },
 
-            };
-            console.log('match.statistics', match.statistics);
-            coach.save();
+          (match, stat, cb) => {
+              Coach.findById(coach_id, (err, coach) => {
 
-            cb(null, stat);
-        }
+                console.log('match', match);
+                coach.team.matchs.id(match_id).statistics = stat;
+
+                console.log('match.statistics', coach.team.matchs.id(match_id).statistics);
+                coach.save((err) => {
+                    if (err)
+                        console.log(err);
+                });
+
+                cb(null, stat);
+              });
+          }
+
     ], (err, result) => {
         if (err)
             throw err;
-        console.log(result);
+        console.log('result', result);
         real_time.updateStatMatch_firebase(coach_id.toString(), match_id.toString(), result);
     });
 };

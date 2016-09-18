@@ -23,16 +23,6 @@ angular.module('starter.controller.menu-match', [])
                 })
         };
 
-        let setResultMatch = () => {
-            MatchService.setResultMatch(self.matchId)
-                .success((data) => {
-                    console.log(data);
-                })
-                .error((data) => {
-                    console.log(data);
-                })
-        };
-
         self.showConfirmEndMatchPopup = function() {
             console.log('show popup');
             let popup = $ionicPopup.confirm({
@@ -42,7 +32,6 @@ angular.module('starter.controller.menu-match', [])
             popup.then(function(res) {
                 if (res) {
                     putMatchFinished();
-                    setResultMatch();
                     $state.go("summary-stat");
                 } else {
 

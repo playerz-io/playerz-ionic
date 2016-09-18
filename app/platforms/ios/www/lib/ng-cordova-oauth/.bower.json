@@ -1,7 +1,7 @@
 {
   "name": "ng-cordova-oauth",
   "main": "dist/ng-cordova-oauth.js",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "homepage": "https://github.com/nraboy/ng-cordova-oauth",
   "authors": [
     "Nic Raboy <http://www.nraboy.com>"
@@ -28,14 +28,13 @@
     "test",
     "tests"
   ],
-  "_release": "0.2.9",
+  "_release": "0.2.10",
   "_resolution": {
     "type": "version",
-    "tag": "0.2.9",
-    "commit": "44ba5587cb3598b119204d3cf29872dc47ecf9cb"
+    "tag": "0.2.10",
+    "commit": "5dd456fb24df1edbad1c21ba6d2e00d8b6908538"
   },
   "_source": "https://github.com/nraboy/ng-cordova-oauth.git",
   "_target": "^0.2.9",
-  "_originalSource": "ng-cordova-oauth",
-  "_direct": true
+  "_originalSource": "ng-cordova-oauth"
 }

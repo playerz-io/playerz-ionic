@@ -225,8 +225,8 @@
                           }
                       }
                       console.log(statisticsGlobal.passesCompletion, matchPlayed.length);
-                      statisticsGlobal.passesCompletion = statisticsGlobal.passesCompletion / matchPlayed.length;
-                      statisticsGlobal.relanceCompletion = statisticsGlobal.relanceCompletion / matchPlayed.length;
+                      statisticsGlobal.passesCompletion = Math.round(statisticsGlobal.passesCompletion / matchPlayed.length);
+                      statisticsGlobal.relanceCompletion = Math.round(statisticsGlobal.relanceCompletion / matchPlayed.length);
 
                       cb(null, statisticsGlobal, matchPlayed);
                   });
