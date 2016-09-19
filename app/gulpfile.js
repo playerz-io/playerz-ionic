@@ -1,6 +1,5 @@
 'use strict';
 
-
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
@@ -14,6 +13,7 @@ let replaceFiles = ['./www/js/app.js'];
 let templateCache = require('gulp-angular-templatecache');
 let ngAnnotate = require('gulp-ng-annotate');
 let useref = require('gulp-useref');
+let stripDebug = require('gulp-strip-debug');
 
 
 
@@ -84,6 +84,12 @@ gulp.task('sass', function(done) {
         }))
         .pipe(gulp.dest('./www/css/'))
         .on('end', done);
+});
+
+gulp.task('strip-debug', () => {
+    return gulp.src('./www/dist/dist_js/**/*.js')
+        .pipe(stripDebug())
+        .pipe(gulp.dest('./www/dist/dist_js'));
 });
 
 gulp.task('watch', function() {
