@@ -77,13 +77,6 @@
     <feature name="Globalization">
         <param name="ios-package" value="CDVGlobalization" />
     </feature>
-    <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
-    <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
-    <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
-    <splash height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
-    <splash height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
-    <splash height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
-    <preference name="SplashScreenDelay" value="3000" />
     <icon height="57" src="resources/ios/icon/icon.png" width="57" />
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
     <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
@@ -110,9 +103,7 @@
     <description>
         An App for Team Soccer
     </description>
-    <author email="contact@playerz.io" href="http://www.playerz.io/">
-        Playerz
-    </author>
+    <author email="contact@playerz.io" href="http://www.playerz.io/" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />

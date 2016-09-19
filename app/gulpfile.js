@@ -14,8 +14,8 @@ let templateCache = require('gulp-angular-templatecache');
 let ngAnnotate = require('gulp-ng-annotate');
 let useref = require('gulp-useref');
 let stripDebug = require('gulp-strip-debug');
-
-
+let babel = require('gulp-babel');
+let uglify = require('gulp-uglifyjs');
 
 let paths = {
     sass: ['./scss/**/*.scss'],
@@ -23,6 +23,12 @@ let paths = {
     ng_annotate: ['./www/js/*.js'],
     useref: ['./www/*.html']
 };
+
+gulp.task('uglify', () => {
+  return gulp.src('./www/dist/dist_js/**/*.js')
+      .pipe(uglify())
+      .pipe(gulp.dest('./www/dist/dist_js'));
+});
 
 gulp.task('useref', (done) => {
     gulp.src('./www/*.html')
@@ -84,6 +90,12 @@ gulp.task('sass', function(done) {
         }))
         .pipe(gulp.dest('./www/css/'))
         .on('end', done);
+});
+
+gulp.task('babel', () => {
+  return gulp.src('./www/dist/dist_js/**/*.js')
+      .pipe(babel())
+      .pipe(gulp.dest('./www/dist/dist_js'));
 });
 
 gulp.task('strip-debug', () => {
