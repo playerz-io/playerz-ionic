@@ -1,104 +1,98 @@
-[
-{
- "nomClub": "ST. LAVALLOIS F.C.",
- "nbTeam": "12",
- "ligue": "LIGUE DU MAINE DE FOOTBALL",
- "district": "DISTRICT DE LA MAYENNE",
- "correspondant": "MONNIER MARCEL",
- "adresse": "PLAINE DES GANDONNIERES - RUE GEORGES COUPEAU 53000 LAVAL ",
- "emailsClub": [ "association@stade-lavallois.com", "500016@liguedumaine.fr",
- ],
- "siegeSocial": "PLAINE DES GANDONNIERES, RUE GEORGES COUPEAU, - 53000 - LAVAL",
- "téléphones": [ "02.43.53.97.05", ],
- "fax":"02.43.53.97.05. (club)",
- "stades": [
- {
-  "nom": "",
-  "adresse":"EX HIPPODROME 91 AVENUE PIERRE DE COUBERTIN - 53000 - LAVAL",
-  "surface": "Gazon synthétique type SY",
-}
-],
-"president":"MONNIER ROGER",
-"trésorier":"ROUSSELET JEAN CLAUDE",
-"secretaire":"MONNIER MARCEL",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00167/infos-cles"
-},
-{
- "nomClub": "VELO S. FERTOIS",
- "nbTeam": "10",
- "ligue": "LIGUE DU MAINE DE FOOTBALL",
- "district": "DISTRICT SARTHE",
- "correspondant": "DROUIN DOMINIQUE",
- "adresse": "",
- "emailsClub": [ "natetdom.drouin@sfr.fr", "500351@liguedumaine.fr",
- ],
- "siegeSocial": "RUE VIET, HOTEL DE VILLE, - 72400 - LA FERTE BERNARD",
- "téléphones": ["02.43.93.88.60. Tél. / Fax", ],
- "stades": [{"nom": "", "adresse":"AVENUE DU GENERAL DE GAULLE - 72400 - LA FERTE BERNARD",
- "surface": "Pelouse naturelle",}],
- "president":"COUDRAY DAMIEN",
- "trésorier":"",
- "secretaire":"DROUIN DOMINIQUE",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00445/infos-cles"
- },
- {
-   "nomClub": "U.S. RENAZEENNE",
-   "nbTeam": "10",
-   "ligue": "LIGUE DU MAINE DE FOOTBALL",
-   "district": "DISTRICT DE LA MAYENNE",
-   "correspondant": "LEGEARD ANTOINE",
-   "adresse": "",
-   "emailsClub": [ "500449@liguedumaine.fr",
-   ],
-   "siegeSocial": "RUE DES SPORTS, COMPLEXE 2000, - 53800 - RENAZE",
-   "téléphones": [ "02.43.06.82.45.",],
-   "stades": [{"nom": "", "adresse":"Rue des Sports - 53800 - RENAZE",
-   "surface": "Pelouse naturelle",}],
-   "president":"DAVY LAURENT",
-   "trésorier":"BERNARD LUDOVIC",
-   "secretaire":"",
-   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00530/infos-cles"
-   },
-   {
-     "nomClub": "L ERNEENNE",
-     "nbTeam": "19",
-     "ligue": "LIGUE DU MAINE DE FOOTBALL",
-     "district": "DISTRICT DE LA MAYENNE",
-     "correspondant": "TROIS ANNE MARIE",
-     "adresse": "",
-     "emailsClub": [ "michel.trois007@orange.fr", "500511@liguedumaine.fr",
-     ],
-     "siegeSocial": "10 ROUTE DE LAVAL, STADE MARCEL BOULANGER, - 53500 - ERNEE",
-     "téléphones": ["02.43.05.72.94.",  ],
-     "stades": [{"nom": "", "adresse":"TERRAIN ANNEXE D ROUTE DE LAVAL - 53500 - ERNEE",
-     "surface": "Pelouse naturelle",}],
-     "president":"BOUTELOUP JEROME",
-     "trésorier":"COUET THIERRY",
-     "secretaire":"TROIS ANNE MARIE",
-     "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00576/infos-cles"
-     },
-     {
-       "nomClub": "LA MELLINET DE NANTES",
-       "nbTeam": "22",
-       "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
-       "district": "DISTRICT DE LOIRE ATLANTIQUE",
-       "correspondant": "CERQUEIRA ANTONIO",
-       "adresse": "10 BOULEVARD CLOVIS CONSTANT 44000 NANTES",
-       "emailsClub": [ "a.cerqueira@orange.fr", "lamellinet@wanadoo.fr", "500041@atlantique-foot.fr",
-       ],
-       "siegeSocial": "57 RUE MARZELLE GRILLAUD, - 44100 - NANTES",
-       "téléphones": [ "02 40 46 99 11", "02 40 36 99 35", "02 51 83 81 05",],
-       "fax":"02 40 46 99 11",
-       "stades": [
-       {
+[{
+    "nomClub": "ST. LAVALLOIS F.C.",
+    "nbTeam": "12",
+    "ligue": "LIGUE DU MAINE DE FOOTBALL",
+    "district": "DISTRICT DE LA MAYENNE",
+    "correspondant": "MONNIER MARCEL",
+    "adresse": "PLAINE DES GANDONNIERES - RUE GEORGES COUPEAU 53000 LAVAL ",
+    "emailsClub": ["association@stade-lavallois.com", "500016@liguedumaine.fr"],
+    "siegeSocial": "PLAINE DES GANDONNIERES, RUE GEORGES COUPEAU, - 53000 - LAVAL",
+    "téléphones": ["02.43.53.97.05"],
+    "fax": "02.43.53.97.05. (club)",
+    "stades": [{
         "nom": "",
-        "adresse":"57 RUE MARZELLE DE GRILLAUD LA CONTRIE - 44100 - NANTES",
-        "surface": "Gazon synthétique type SYE",
-      }
-      ],
-      "president":"PIVETEAU JEAN PIERRE",
-      "trésorier":"",
-      "secretaire":"CERQUEIRA ANTONIO",
-      "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00187/infos-cles"
-      },
-      ]
+        "adresse": "EX HIPPODROME 91 AVENUE PIERRE DE COUBERTIN - 53000 - LAVAL",
+        "surface": "Gazon synthétique type SY"
+    }],
+    "president": "MONNIER ROGER",
+    "trésorier": "ROUSSELET JEAN CLAUDE",
+    "secretaire": "MONNIER MARCEL",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00167/infos-cles"
+}, {
+    "nomClub": "VELO S. FERTOIS",
+    "nbTeam": "10",
+    "ligue": "LIGUE DU MAINE DE FOOTBALL",
+    "district": "DISTRICT SARTHE",
+    "correspondant": "DROUIN DOMINIQUE",
+    "adresse": "",
+    "emailsClub": ["natetdom.drouin@sfr.fr", "500351@liguedumaine.fr"],
+    "siegeSocial": "RUE VIET, HOTEL DE VILLE, - 72400 - LA FERTE BERNARD",
+    "téléphones": ["02.43.93.88.60. Tél. / Fax"],
+    "stades": [{
+        "nom": "",
+        "adresse": "AVENUE DU GENERAL DE GAULLE - 72400 - LA FERTE BERNARD",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "COUDRAY DAMIEN",
+    "trésorier": "",
+    "secretaire": "DROUIN DOMINIQUE",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00445/infos-cles"
+}, {
+    "nomClub": "U.S. RENAZEENNE",
+    "nbTeam": "10",
+    "ligue": "LIGUE DU MAINE DE FOOTBALL",
+    "district": "DISTRICT DE LA MAYENNE",
+    "correspondant": "LEGEARD ANTOINE",
+    "adresse": "",
+    "emailsClub": ["500449@liguedumaine.fr"],
+    "siegeSocial": "RUE DES SPORTS, COMPLEXE 2000, - 53800 - RENAZE",
+    "téléphones": ["02.43.06.82.45."],
+    "stades": [{
+        "nom": "",
+        "adresse": "Rue des Sports - 53800 - RENAZE",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "DAVY LAURENT",
+    "trésorier": "BERNARD LUDOVIC",
+    "secretaire": "",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00530/infos-cles"
+}, {
+    "nomClub": "L ERNEENNE",
+    "nbTeam": "19",
+    "ligue": "LIGUE DU MAINE DE FOOTBALL",
+    "district": "DISTRICT DE LA MAYENNE",
+    "correspondant": "TROIS ANNE MARIE",
+    "adresse": "",
+    "emailsClub": ["michel.trois007@orange.fr", "500511@liguedumaine.fr"],
+    "siegeSocial": "10 ROUTE DE LAVAL, STADE MARCEL BOULANGER, - 53500 - ERNEE",
+    "téléphones": ["02.43.05.72.94."],
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN ANNEXE D ROUTE DE LAVAL - 53500 - ERNEE",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "BOUTELOUP JEROME",
+    "trésorier": "COUET THIERRY",
+    "secretaire": "TROIS ANNE MARIE",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00576/infos-cles"
+}, {
+    "nomClub": "LA MELLINET DE NANTES",
+    "nbTeam": "22",
+    "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
+    "district": "DISTRICT DE LOIRE ATLANTIQUE",
+    "correspondant": "CERQUEIRA ANTONIO",
+    "adresse": "10 BOULEVARD CLOVIS CONSTANT 44000 NANTES",
+    "emailsClub": ["a.cerqueira@orange.fr", "lamellinet@wanadoo.fr", "500041@atlantique-foot.fr"],
+    "siegeSocial": "57 RUE MARZELLE GRILLAUD, - 44100 - NANTES",
+    "téléphones": ["02 40 46 99 11", "02 40 36 99 35", "02 51 83 81 05"],
+    "fax": "02 40 46 99 11",
+    "stades": [{
+        "nom": "",
+        "adresse": "57 RUE MARZELLE DE GRILLAUD LA CONTRIE - 44100 - NANTES",
+        "surface": "Gazon synthétique type SYE"
+    }],
+    "president": "PIVETEAU JEAN PIERRE",
+    "trésorier": "",
+    "secretaire": "CERQUEIRA ANTONIO",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00187/infos-cles"
+}]

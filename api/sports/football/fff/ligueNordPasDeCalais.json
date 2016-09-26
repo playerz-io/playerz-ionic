@@ -1,931 +1,845 @@
-[
-{
- "nomClub": "LOSC LILLE METROPOLE",
- "nbTeam": "21",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT FLANDRE DE FOOTBALL",
- "correspondant": "DEPOORTER CAROLE",
- "adresse": "",
- "emailsClub": [ "losclillemetropole.500054@ligue59-62.fr",
- ],
- "siegeSocial": "Domaine de Luchin, Grand Rue, BP 79 - 59780 - CAMPHIN EN PEVELE",
- "téléphones": [ ],
- "fax":"08 20 25 26 27 (club)",
- "stades":
- [
- {
-  "nom": "", "adresse":"TERRAIN ANNEXE 1 AVENUE DE LA CHATELLENIE - 59491 - VILLENEUVE D ASCQ",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"ROBERT PATRICK",
-"trésorier":"SANTRE JEAN MARIE",
-"secretaire":"VAN DAMME BERNARD",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00199/infos-cles"
-},
-{
- "nomClub": "U. S. LITTORAL DUNKERQUE",
- "nbTeam": "20",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT MARITIME NORD",
- "correspondant": "",
- "adresse": "",
- "emailsClub": [ "dunkerquelittoral.us.500056@ligue59-62.fr",
- ],
- "siegeSocial": "STADE TRIBUT, AVENUE DU STADE, - 59140 - DUNKERQUE",
- "téléphones": ["03 28 59 34 84 (stade)", ],
- "fax":"03 28 63 67 22 (stade)",
- "stades": [
- {
-  "nom": "", "adresse":"COMPLEXE SPORTIF DE FLANDRES AVENUE DE ROSENDAËL - 59240 - DUNKERQUE",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"SCOUARNEC JEAN PIERRE",
-"trésorier":"DEVOS JEAN PIERRE",
-"secretaire":"DEGANS MAURICE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00201/infos-cles"
-},
+[{
+        "nomClub": "LOSC LILLE METROPOLE",
+        "nbTeam": "21",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "DEPOORTER CAROLE",
+        "adresse": "",
+        "emailsClub": ["losclillemetropole.500054@ligue59-62.fr"],
+        "siegeSocial": "Domaine de Luchin, Grand Rue, BP 79 - 59780 - CAMPHIN EN PEVELE",
+        "téléphones": [],
+        "fax": "08 20 25 26 27 (club)",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN ANNEXE 1 AVENUE DE LA CHATELLENIE - 59491 - VILLENEUVE D ASCQ",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "ROBERT PATRICK",
+        "trésorier": "SANTRE JEAN MARIE",
+        "secretaire": "VAN DAMME BERNARD",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00199/infos-cles"
+    }, {
+        "nomClub": "U. S. LITTORAL DUNKERQUE",
+        "nbTeam": "20",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT MARITIME NORD",
+        "correspondant": "",
+        "adresse": "",
+        "emailsClub": ["dunkerquelittoral.us.500056@ligue59-62.fr"],
+        "siegeSocial": "STADE TRIBUT, AVENUE DU STADE, - 59140 - DUNKERQUE",
+        "téléphones": ["03 28 59 34 84 (stade)"],
+        "fax": "03 28 63 67 22 (stade)",
+        "stades": [{
+            "nom": "",
+            "adresse": "COMPLEXE SPORTIF DE FLANDRES AVENUE DE ROSENDAËL - 59240 - DUNKERQUE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "SCOUARNEC JEAN PIERRE",
+        "trésorier": "DEVOS JEAN PIERRE",
+        "secretaire": "DEGANS MAURICE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00201/infos-cles"
+    },
 
-{
- "nomClub": "R.U.F.C. CALAIS",
- "nbTeam": "20",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT COTE D OPALE",
- "correspondant": "LEGRAND ANNE",
- "adresse": "",
- "emailsClub": [ "calais.rufc.500063@ligue59-62.fr", "calais.rufc.500063@ligue59-62.fr",
- ],
- "siegeSocial": "Stade de l Epopée, 2,Rue Roger Martin Du Gard, - 62100 - CALAIS",
- "téléphones": [ "03 21 96 79 79",  "03 21 96 71 65",],
- "stades": [
- {
-  "nom": "", "adresse":"AVENUE ST EXUPERY - 62100 - CALAIS",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"DUBURQUOY JEFF",
-"trésorier":"TUEUX JACKY",
-"secretaire":"LEGRAND ANNE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00207/infos-cles"
-},
-{
- "nomClub": "U.S. BOULOGNE COTE D OPALE",
- "nbTeam": "20",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT COTE D OPALE",
- "correspondant": "MILLET JEROME",
- "adresse": "",
- "emailsClub": [ "boulognesurmercotedopale.us.500077@ligue59-62.fr",
- ],
- "siegeSocial": "BP 463, Boulevard Eurvin, - 62200 - BOULOGNE SUR MER",
- "téléphones": ["03 21 83 38 89", "03 21 10 04 56",],
- "fax":"03 21 10 04 58 (Section Professionnelle)",
- "stades": [
- {
-  "nom": "", "adresse":"BOULEVARD EURVIN - 62200 - BOULOGNE SUR MER",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"",
-"trésorier":"GHYSEL ROBERT",
-"secretaire":"MONTBOBIER CLAUDE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00218/infos-cles"
-},
+    {
+        "nomClub": "R.U.F.C. CALAIS",
+        "nbTeam": "20",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "LEGRAND ANNE",
+        "adresse": "",
+        "emailsClub": ["calais.rufc.500063@ligue59-62.fr", "calais.rufc.500063@ligue59-62.fr"],
+        "siegeSocial": "Stade de l Epopée, 2,Rue Roger Martin Du Gard, - 62100 - CALAIS",
+        "téléphones": ["03 21 96 79 79", "03 21 96 71 65"],
+        "stades": [{
+            "nom": "",
+            "adresse": "AVENUE ST EXUPERY - 62100 - CALAIS",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DUBURQUOY JEFF",
+        "trésorier": "TUEUX JACKY",
+        "secretaire": "LEGRAND ANNE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00207/infos-cles"
+    }, {
+        "nomClub": "U.S. BOULOGNE COTE D OPALE",
+        "nbTeam": "20",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "MILLET JEROME",
+        "adresse": "",
+        "emailsClub": ["boulognesurmercotedopale.us.500077@ligue59-62.fr"],
+        "siegeSocial": "BP 463, Boulevard Eurvin, - 62200 - BOULOGNE SUR MER",
+        "téléphones": ["03 21 83 38 89", "03 21 10 04 56"],
+        "fax": "03 21 10 04 58 (Section Professionnelle)",
+        "stades": [{
+            "nom": "",
+            "adresse": "BOULEVARD EURVIN - 62200 - BOULOGNE SUR MER",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "",
+        "trésorier": "GHYSEL ROBERT",
+        "secretaire": "MONTBOBIER CLAUDE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00218/infos-cles"
+    },
 
-{
- "nomClub": "U.S. RONCHIN",
- "nbTeam": "10",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT FLANDRE DE FOOTBALL",
- "correspondant": "MARLIER GREGORY",
- "adresse": "",
- "emailsClub": [ "samuel.tremelet@wanadoo.fr", "ronchin.us.500112@ligue59-62.fr",
- ],
- "siegeSocial": "stade leo lagrange, rue Pierre dupont, - 59790 - RONCHIN",
- "téléphones": ["03.61.92.46.71", ],
- "stades": [
- {
-  "nom": "", "adresse":"RUE PIERRE DUPONT - 59790 - RONCHIN",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"MARLIER GREGORY",
-"trésorier":"DESCAMPS ISABELLE",
-"secretaire":"TREMELET SAMUEL",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00248/infos-cles"
-},
+    {
+        "nomClub": "U.S. RONCHIN",
+        "nbTeam": "10",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "MARLIER GREGORY",
+        "adresse": "",
+        "emailsClub": ["samuel.tremelet@wanadoo.fr", "ronchin.us.500112@ligue59-62.fr"],
+        "siegeSocial": "stade leo lagrange, rue Pierre dupont, - 59790 - RONCHIN",
+        "téléphones": ["03.61.92.46.71"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE PIERRE DUPONT - 59790 - RONCHIN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "MARLIER GREGORY",
+        "trésorier": "DESCAMPS ISABELLE",
+        "secretaire": "TREMELET SAMUEL",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00248/infos-cles"
+    },
 
-{
- "nomClub": "ST. BETHUNOIS",
- "nbTeam": "23",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT ARTOIS",
- "correspondant": "DERANSY AURELIE",
- "adresse": "",
- "emailsClub": [ "footballclubbethunois@wanadoo.fr",  "bethune.st.500115@ligue59-62.fr",
- ],
- "siegeSocial": "STADE MUNICIPAL, 156 Rue Fernand Bar, - 62400 - BETHUNE",
- "téléphones": [ "03 21 57 30 95",],
- "fax":"03 21 57 30 95 (stade)",
- "stades": [
- {
-  "nom": "", "adresse":"RUE DE L YSER - 62400 - BETHUNE",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"GILLE YVES",
-"trésorier":"GILLE YVES",
-"secretaire":"DERANSY AURELIE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00251/infos-cles"
-},
+    {
+        "nomClub": "ST. BETHUNOIS",
+        "nbTeam": "23",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "DERANSY AURELIE",
+        "adresse": "",
+        "emailsClub": ["footballclubbethunois@wanadoo.fr", "bethune.st.500115@ligue59-62.fr"],
+        "siegeSocial": "STADE MUNICIPAL, 156 Rue Fernand Bar, - 62400 - BETHUNE",
+        "téléphones": ["03 21 57 30 95"],
+        "fax": "03 21 57 30 95 (stade)",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DE L YSER - 62400 - BETHUNE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "GILLE YVES",
+        "trésorier": "GILLE YVES",
+        "secretaire": "DERANSY AURELIE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00251/infos-cles"
+    },
 
-{
- "nomClub": "S.C. DOUAI",
- "nbTeam": "19",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT ESCAUT",
- "correspondant": "URBAIN HERVE",
- "adresse": "6 RUE DU JURA 59400 CAMBRAI",
- "emailsClub": [ "elybop21@orange.fr", "scdouai@orange.fr", "douai.sc.500125@ligue59-62.fr",
- ],
- "siegeSocial": "STADE DEMENY, RUE DE FERIN, - 59500 - DOUAI",
- "téléphones": [ ],
- "stades": [
- {
-  "nom": "", "adresse":"",
-  "surface": "",
-}
-],
-"president":"DELFOSSE PHILIPPE",
-"trésorier":"WOSIAK CHRISTIAN",
-"secretaire":"DUPONT STEPHANIE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00261/infos-cles"
-},
+    {
+        "nomClub": "S.C. DOUAI",
+        "nbTeam": "19",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "URBAIN HERVE",
+        "adresse": "6 RUE DU JURA 59400 CAMBRAI",
+        "emailsClub": ["elybop21@orange.fr", "scdouai@orange.fr", "douai.sc.500125@ligue59-62.fr"],
+        "siegeSocial": "STADE DEMENY, RUE DE FERIN, - 59500 - DOUAI",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "",
+            "surface": ""
+        }],
+        "president": "DELFOSSE PHILIPPE",
+        "trésorier": "WOSIAK CHRISTIAN",
+        "secretaire": "DUPONT STEPHANIE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00261/infos-cles"
+    },
 
-{
- "nomClub": "ST. HENINOIS",
- "nbTeam": "11",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT ARTOIS",
- "correspondant": "GIOLDA JOSEPH",
- "adresse": "",
- "emailsClub": [ "heninbeaumont.st.500133@ligue59-62.fr",
- ],
- "siegeSocial": "STADE OCTAVE BIREMBAUT, BP 44, BOULEVARD SALVADOR ALLENDE - 62110 - HENIN BEAUMONT",
- "téléphones": [ ],
- "fax":"03 21 20 12 45",
- "stades": [
- {
-  "nom": "", "adresse":"BLD SALVADOR ALLENDE - 62110 - HENIN BEAUMONT",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"DUGARDIN JEAN ALYRE",
-"trésorier":"GIOLDA MICHEL",
-"secretaire":"GIOLDA JOSEPH",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00267/infos-cles"
-},
-{
- "nomClub": "U.S. OUVRIERE BRUAY LABUISSIERE",
- "nbTeam": "12",
- "ligue": "LIGUE NORD-PAS DE CALAIS",
- "district": "DISTRICT ARTOIS",
- "correspondant": "POIRRIER JEAN CLAUDE",
- "adresse": "573 RUE FLORENT EVRARD 62700 BRUAY LA BUISSIERE",
- "emailsClub": [ "usobl@numericable.fr", "bruay.us.500148@ligue59-62.fr",
- ],
- "siegeSocial": "HOTEL DE VILLE BRUAY, PLACE HENRI CADOT, - 62700 - BRUAY LA BUISSIERE",
- "téléphones": ["03 21 53 44 31", "03.66.09.15.15",],
- "fax":"03.59.41.34.20",
- "stades":
- [
- {"nom": "", "adresse":"TERRAIN ANNEXE RUE DE LA LIBERATION - 62700 - BRUAY LA BUISSIERE",
- "surface": "Stabilisé",}],
- "president":"BRISMAILLE SERGE",
- "trésorier":"LEJOSNE PATRICK",
- "secretaire":"POIRRIER JEAN CLAUDE",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00282/infos-cles"
- },
- {
-   "nomClub": "U.S. VIESLY",
-   "nbTeam": "7",
-   "ligue": "LIGUE NORD-PAS DE CALAIS",
-   "district": "DISTRICT ESCAUT",
-   "correspondant": "DECAU DENIS",
-   "adresse": "10 RUE DE BEAURAIN OVILLERS 59730 SOLESMES",
-   "emailsClub": [ "viesly.us.500155@ligue59-62.fr",  "denis.decau@wanadoo.fr",
-   ],
-   "siegeSocial": "MAIRIE, RUE DE LA MAIRIE, - 59271 - VIESLY",
-   "téléphones": [ "03 27 74 95 88", "03 27 85 09 03",],
-   "stades": [{"nom": "", "adresse":"RUE DU 8 MAI - 59271 - VIESLY",
-   "surface": "Pelouse naturelle",}],
-   "president":"DECAU DENIS",
-   "trésorier":"LAIGLE FREDERIC",
-   "secretaire":"WANNEPAIN STEPHANIE",
-   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00288/infos-cles"
-   },
+    {
+        "nomClub": "ST. HENINOIS",
+        "nbTeam": "11",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "GIOLDA JOSEPH",
+        "adresse": "",
+        "emailsClub": ["heninbeaumont.st.500133@ligue59-62.fr"],
+        "siegeSocial": "STADE OCTAVE BIREMBAUT, BP 44, BOULEVARD SALVADOR ALLENDE - 62110 - HENIN BEAUMONT",
+        "téléphones": [],
+        "fax": "03 21 20 12 45",
+        "stades": [{
+            "nom": "",
+            "adresse": "BLD SALVADOR ALLENDE - 62110 - HENIN BEAUMONT",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DUGARDIN JEAN ALYRE",
+        "trésorier": "GIOLDA MICHEL",
+        "secretaire": "GIOLDA JOSEPH",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00267/infos-cles"
+    }, {
+        "nomClub": "U.S. OUVRIERE BRUAY LABUISSIERE",
+        "nbTeam": "12",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "POIRRIER JEAN CLAUDE",
+        "adresse": "573 RUE FLORENT EVRARD 62700 BRUAY LA BUISSIERE",
+        "emailsClub": ["usobl@numericable.fr", "bruay.us.500148@ligue59-62.fr"],
+        "siegeSocial": "HOTEL DE VILLE BRUAY, PLACE HENRI CADOT, - 62700 - BRUAY LA BUISSIERE",
+        "téléphones": ["03 21 53 44 31", "03.66.09.15.15"],
+        "fax": "03.59.41.34.20",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN ANNEXE RUE DE LA LIBERATION - 62700 - BRUAY LA BUISSIERE",
+            "surface": "Stabilisé"
+        }],
+        "president": "BRISMAILLE SERGE",
+        "trésorier": "LEJOSNE PATRICK",
+        "secretaire": "POIRRIER JEAN CLAUDE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00282/infos-cles"
+    }, {
+        "nomClub": "U.S. VIESLY",
+        "nbTeam": "7",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "DECAU DENIS",
+        "adresse": "10 RUE DE BEAURAIN OVILLERS 59730 SOLESMES",
+        "emailsClub": ["viesly.us.500155@ligue59-62.fr", "denis.decau@wanadoo.fr"],
+        "siegeSocial": "MAIRIE, RUE DE LA MAIRIE, - 59271 - VIESLY",
+        "téléphones": ["03 27 74 95 88", "03 27 85 09 03"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DU 8 MAI - 59271 - VIESLY",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DECAU DENIS",
+        "trésorier": "LAIGLE FREDERIC",
+        "secretaire": "WANNEPAIN STEPHANIE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00288/infos-cles"
+    },
 
-   {
-     "nomClub": "U.S.A. LIEVIN",
-     "nbTeam": "13",
-     "ligue": "LIGUE NORD-PAS DE CALAIS",
-     "district": "DISTRICT ARTOIS",
-     "correspondant": "BRAND REMY",
-     "adresse": "30 RUE AUDRAN 62800 LIEVIN",
-     "emailsClub": [ "lievin.usa.500157@ligue59-62.fr",
-     ],
-     "siegeSocial": "PARC ROLLENCOURT, Complexe Jean Frère, - 62800 - LIEVIN",
-     "téléphones": [ ],
-     "stades": [{"nom": "", "adresse":"DOMAINE DE ROLLENCOURT RUE MONTAIGNE - 62800 - LIEVIN",
-     "surface": "Pelouse naturelle",}],
-     "president":"BRAND REMY",
-     "trésorier":"BOEYAERT CATHERINE",
-     "secretaire":"BRIET LAETITIA",
-     "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00290/infos-cles"
-     },
-     {
-       "nomClub": "A.C. CAMBRAI",
-       "nbTeam": "18",
-       "ligue": "LIGUE NORD-PAS DE CALAIS",
-       "district": "DISTRICT ESCAUT",
-       "correspondant": "LAGOUCHE GASTON",
-       "adresse": "",
-       "emailsClub": [ "cambrai.ac.500165@ligue59-62.fr",
-       ],
-       "siegeSocial": "STADE DE LA LIBERTE, BLD DE LA LIBERTE, - 59400 - CAMBRAI",
-       "téléphones": ["03 27 83 34 42", ],
-       "fax":"03 27 81 42 62",
-       "stades":
-       [
-       {
-        "nom": "", "adresse":"BOULEVARD DE LA LIBERTE - 59400 - CAMBRAI",
-        "surface": "Pelouse naturelle",
-      }
-      ],
-      "president":"COPIN JEAN PHILIPPE",
-      "trésorier":"DUPLOUYE ERIC",
-      "secretaire":"LAGOUCHE GASTON",
-      "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00296/infos-cles"
-      },
-      {
-       "nomClub": "S.C. LOURCHES",
-       "nbTeam": "10",
-       "ligue": "LIGUE NORD-PAS DE CALAIS",
-       "district": "DISTRICT ESCAUT",
-       "correspondant": "DEMARQUE CORINNE",
-       "adresse": "89 RUE MARCEL PAUL 59156 LOURCHES",
-       "emailsClub": [ "lourches.sc.500176@ligue59-62.fr",
-       ],
-       "siegeSocial": "Mme DEMARQUE Corinne, 89 rue Marcel Paul, - 59156 - LOURCHES",
-       "téléphones": [ "03 27 48 81 26",],
-       "stades":
-       [
-       {
-        "nom": "", "adresse":"RUE JEAN JAURES - 59156 - LOURCHES",
-        "surface": "Parquet",
-      }
-      ],
-      "president":"TERROUCHE DIMITRI",
-      "trésorier":"CORNU EMELINE",
-      "secretaire":"DEMARQUE CORINNE",
-      "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00307/infos-cles"
-      },
-      {
-       "nomClub": "U. S. AUCHELLOISE JEUNE",
-       "nbTeam": "7",
-       "ligue": "LIGUE NORD-PAS DE CALAIS",
-       "district": "DISTRICT ARTOIS",
-       "correspondant": "CHIQUET EMERICK",
-       "adresse": "",
-       "emailsClub": [ "emerick16.9@hotmail.fr", "auchel.us.500181@ligue59-62.fr",
-       ],
-       "siegeSocial": "STADE J. VINCENT, RUE DE LA MEUSE, - 62260 - AUCHEL",
-       "téléphones": [ ],
-       "stades": [{"nom": "", "adresse":"TERRAIN HONNEUR RUE DE LA MEUSE - 62260 - AUCHEL",
-       "surface": "Pelouse naturelle",}],
-       "president":"CHIQUET DANY",
-       "trésorier":"CHIQUET ELODIE",
-       "secretaire":"CHIQUET EMERICK",
-       "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00311/infos-cles"
-       },
-       {
-         "nomClub": "U.S. NOEUXOISE",
-         "nbTeam": "13",
-         "ligue": "LIGUE NORD-PAS DE CALAIS",
-         "district": "DISTRICT ARTOIS",
-         "correspondant": "LEGRAND SANDRINE",
-         "adresse": "",
-         "emailsClub": [ "noeuxlesmines.us.500182@ligue59-62.fr", "sandrine.cocheteur@sfr.fr", "usnoeux@sfr.fr",
-         ],
-         "siegeSocial": "Avenue Guillon, Stade Camille Tisserand, - 62290 - NOEUX LES MINES",
-         "téléphones": [ ],
-         "fax":"03 21 64 15 77 (Mme LEGRAND)",
-         "stades": [{"nom": "", "adresse":"Annexe 1 AVENUE PIERRE GUILLON - 62290 - NOEUX LES MINES",
-         "surface": "Pelouse naturelle",}],
-         "president":"DEMEYER ERIC",
-         "trésorier":"BOURDEAUDUCQ DOMINIQUE",
-         "secretaire":"LEGRAND SANDRINE",
-         "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00312/infos-cles"
-         },
-         {
-           "nomClub": "U.S. MARQUETTE",
-           "nbTeam": "15",
-           "ligue": "LIGUE NORD-PAS DE CALAIS",
-           "district": "DISTRICT FLANDRE DE FOOTBALL",
-           "correspondant": "VERVAECKE SYLVIE",
-           "adresse": "",
-           "emailsClub": [ "eric.vervaecke@bbox.fr", "marquettelezlille.us.500183@ligue59-62.fr",
-           ],
-           "siegeSocial": "11 PLACE DU GENERAL DE GAULLE, BP 20042, - 59520 - MARQUETTE",
-           "téléphones": [ "03 20 06 68 79",],
-           "fax":"03 20 06 68 79",
-           "stades": [{"nom": "", "adresse":"PLACE DU GENERAL DE GAULLE - 59520 - MARQUETTE LEZ LILLE",
-           "surface": "Pelouse naturelle",}],
-           "president":"CLAEREBOUT JEAN LUC",
-           "trésorier":"VERVAECKE SYLVIE",
-           "secretaire":"VERVAECKE ERIC",
-           "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00313/infos-cles"
-           },
-           {
-             "nomClub": "L ECLAIR NEUFCHATEL",
-             "nbTeam": "13",
-             "ligue": "LIGUE NORD-PAS DE CALAIS",
-             "district": "DISTRICT COTE D OPALE",
-             "correspondant": "MENUGE PATRICK",
-             "adresse": "135 RUE DES SONS DE VILLE 62152 NEUFCHATEL HARDELOT",
-             "emailsClub": [ "neufchateleclair.500188@ligue59-62.fr",
-             ],
-             "siegeSocial": "NEUFCHATEL P DE CALAIS, LA MAIRIE, RUE DES ALLEES - 62152 - NEUFCHATEL",
-             "téléphones": ["03 21 87 52 19", "03 21 99 87 28",],
-             "fax":"03 21 87 52 19",
-             "stades": [{"nom": "", "adresse":"TERRAIN HONNEUR RUE DES ALLEES - 62152 - NEUFCHATEL HARDELOT",
-             "surface": "Pelouse naturelle",}],
-             "president":"PROIX EMMANUEL",
-             "trésorier":"FIGONI VALERIE",
-             "secretaire":"MENUGE PATRICK",
-             "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00318/infos-cles"
-             },
-             {
-               "nomClub": "S.C. BOURBOURG",
-               "nbTeam": "10",
-               "ligue": "LIGUE NORD-PAS DE CALAIS",
-               "district": "DISTRICT MARITIME NORD",
-               "correspondant": "CAENES YVES",
-               "adresse": "70 RUE VERTE 59630 BOURBOURG",
-               "emailsClub": [ "bourbourg.sc.500265@ligue59-62.fr", "caenes.yves@bbox.fr",
-               ],
-               "siegeSocial": "BP 50009, 95, Rue Anthony CARO, - 59630 - BOURBOURG",
-               "téléphones": [ ],
-               "stades": [{"nom": "", "adresse":"AVENUE ANTHONY CARO - 59630 - BOURBOURG",
-               "surface": "Pelouse naturelle",}],
-               "president":"LESAVRE JEAN RICHARD",
-               "trésorier":"BRAZY THIERRY",
-               "secretaire":"CAENES YVES",
-               "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00379/infos-cles"
-               },
-               {
-                 "nomClub": "U. HALLUINOISE",
-                 "nbTeam": "17",
-                 "ligue": "LIGUE NORD-PAS DE CALAIS",
-                 "district": "DISTRICT FLANDRE DE FOOTBALL",
-                 "correspondant": "DHALLUIN GEORGES",
-                 "adresse": "",
-                 "emailsClub": [ "halluinunion.500276@ligue59-62.fr",
-                 ],
-                 "siegeSocial": "53 Rue du stade, - 59250 - HALLUIN",
-                 "téléphones": [ "09 54 81 31 38",],
-                 "fax":"03 20 37 28 65",
-                 "stades": [
-                 {
-                  "nom": "", "adresse":"TERRAIN HONNEUR RUE DU STADE - 59250 - HALLUIN",
-                  "surface": "Pelouse naturelle",
-                }
-                ],
-                "president":"",
-                "trésorier":"",
-                "secretaire":"",
-                "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00384/infos-cles"
-                },
-                {
-                 "nomClub": "LES CARABINIERS DE BILLY MONTIGN",
-                 "nbTeam": "12",
-                 "ligue": "LIGUE NORD-PAS DE CALAIS",
-                 "district": "DISTRICT ARTOIS",
-                 "correspondant": "PLUMIOEN REYNALD",
-                 "adresse": "24,RUE MAXIME GORKI 62210 AVION",
-                 "emailsClub": [ "reyplu@hotmail.fr", "billy-montigny@orange.fr", "billymontignylescarabiniers.500277@ligue59-62.fr",
-                 ],
-                 "siegeSocial": "STADE PAUL GUERRE, RUE DE LA CONVENTION, - 62420 - BILLY MONTIGNY",
-                 "téléphones": ["03.62.91.62.76", ],
-                 "fax":"03.21.76.21.52",
-                 "stades": [
-                 {
-                  "nom": "", "adresse":"15-17 RUE DE LA CONVENTION - 62420 - BILLY MONTIGNY",
-                  "surface": "Pelouse naturelle",
-                }
-                ],
-                "president":"SZEWCZYK MICHEL",
-                "trésorier":"DURETZ RENE",
-                "secretaire":"PLUMIOEN REYNALD",
-                "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00385/infos-cles"
-                },
-                {
-                 "nomClub": "J.S. DESVRES",
-                 "nbTeam": "14",
-                 "ligue": "LIGUE NORD-PAS DE CALAIS",
-                 "district": "DISTRICT COTE D OPALE",
-                 "correspondant": "DUCROCQ ERIC",
-                 "adresse": "",
-                 "emailsClub": [ "desvres.js.500283@ligue59-62.fr",
-                 ],
-                 "siegeSocial": "PMU AU CARREFOUR, 1 RUE DE LA GARE, - 62240 - DESVRES",
-                 "téléphones": [ "03.21.91.67.49",],
-                 "fax":"09.60.10.57.72",
-                 "stades": [{"nom": "", "adresse":"IMPASSE BEUGNET - 62240 - DESVRES",
-                 "surface": "Pelouse naturelle",}],
-                 "president":"DETOUT LAURENT",
-                 "trésorier":"SERGEANT FABRICE",
-                 "secretaire":"DUCROCQ ERIC",
-                 "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00388/infos-cles"
-                 },
-                 {
-                   "nomClub": "U.S. MONTREUIL S/MER",
-                   "nbTeam": "18",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT COTE D OPALE",
-                   "correspondant": "MACQUET RENE",
-                   "adresse": "378 RUE DE LA PIE 62170 ECUIRES",
-                   "emailsClub": [ "r.macquet@wanadoo.fr", "andre.martel3@wanadoo.fr", "montreuil.us.500292@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "623 avenue de paris, ECUIRES - 62170 - MONTREUIL",
-                   "téléphones": ["03 21 06 16 46", "pole jeunesse 0321054004"],
-                   "stades": [{"nom": "", "adresse":"623 AVENUE DE PARIS SAINT JUSTIN - 62170 - ECUIRES",
-                   "surface": "Pelouse naturelle",
-                 }
-                 ],
-                 "president":"MACQUET RENE",
-                 "trésorier":"LOR GUSTAVE",
-                 "secretaire":"MARTEL ANDRE",
-                 "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00395/infos-cles"
-                 },
-                 {
-                   "nomClub": "A.S. BERCK PLAGE",
-                   "nbTeam": "12",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT COTE D OPALE",
-                   "correspondant": "BRISEBARRE MATHILDE",
-                   "adresse": "",
-                   "emailsClub": [ "asb.football@orange.fr", "berckplage.as.500295@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "RUE EMILE LAVEZZARI, STADE MUNICIPAL, COMPLEXE SPORTIF - 62600 - BERCK",
-                   "téléphones": [ "0321848610",],
-                   "fax":"0321848610",
-                   "stades": [{"nom": "", "adresse":"TERRAIN BERNARD SENET RUE EMILE LAVEZZARI - 62600 - BERCK",
-                   "surface": "Pelouse naturelle",
-                 }
-                 ],
-                 "president":"DEVISE BERNARD",
-                 "trésorier":"LEBRAN VINCENT",
-                 "secretaire":"BRISEBARRE MATHILDE",
-                 "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00398/infos-cles"
-                 },
-                 {
-                   "nomClub": "J.A. ARMENTIERES",
-                   "nbTeam": "19",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT FLANDRE DE FOOTBALL",
-                   "correspondant": "HENNION YVES",
-                   "adresse": "",
-                   "emailsClub": [ "armentieres.ja.500305@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "Complexe Sportif Léo Lagrange, Chemin du Pont Bayard, - 59280 - ARMENTIERES",
-                   "téléphones": [ "03.20.77.99.85",],
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"CHEMIN DU PONT BAYART RUE DU QUAI DE BEAUVAIS RUE EN TRAVAUX JUSQU EN MAI 2016 - 59280 - ARMENTIERES",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"FACCHETTI YANN",
-                  "trésorier":"PYNSON SABINE",
-                  "secretaire":"HENNION YVES",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00407/infos-cles"
-                  },
-                  {
-                   "nomClub": "U.S. ST OMER",
-                   "nbTeam": "16",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT COTE D OPALE",
-                   "correspondant": "BLANQUART CELINE",
-                   "adresse": "",
-                   "emailsClub": [ "stomer.us.500368@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "ALLEE DES SPORTS, - 62500 - ST OMER",
-                   "téléphones": [ "03 21 38 43 00", "09.70.62.54.02",],
-                   "fax":"03 21 38 49 74",
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"RUE DE LA LONGUEVILLE - 62500 - ST OMER",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"FERIAU PASCAL",
-                  "trésorier":"VERCOUTRE PHILIPPE",
-                  "secretaire":"BLANQUART CELINE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00459/infos-cles"
-                  },
-                  {
-                   "nomClub": "R.C. LENSOIS",
-                   "nbTeam": "15",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "HOCHART LAURENT",
-                   "adresse": "",
-                   "emailsClub": [ "lhochart@rclens.fr", "lens.rc.500369@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "CENTRE TECHNIQUE RCL, LA GAILLETTE - BP 23, 33 RUE ARTHUR LAMENDIN - 62210 - AVION",
-                   "téléphones": [ "03 21 13 21 32",],
-                   "fax":"03.21.13.21.31",
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"AVENUE RAOUL BRIQUET - 62300 - LENS",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"LEGRAND CHRISTIAN",
-                  "trésorier":"HOCHART LAURENT",
-                  "secretaire":"HOCHART LAURENT",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00460/infos-cles"
-                  },
-                  {
-                   "nomClub": "U.S.F. PERENCHIES",
-                   "nbTeam": "19",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT FLANDRE DE FOOTBALL",
-                   "correspondant": "DELOS ISABELLE",
-                   "adresse": "",
-                   "emailsClub": [ "bejbl1@msn.com", "perenchies.usf.500383@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "1 bis rue Philippe de Girard, - 59840 - PERENCHIES",
-                   "téléphones": [ ],
-                   "fax":"06 98 43 55 19",
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"TERRAIN HONNEUR RUE DE PROVENCE - 59840 - PERENCHIES",
-                    "surface": "Gazon synthétique type SY",
-                  }
-                  ],
-                  "president":"",
-                  "trésorier":"",
-                  "secretaire":"",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00473/infos-cles"
-                  },
-                  {
-                   "nomClub": "U.S. BERLAIMONT",
-                   "nbTeam": "7",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ESCAUT",
-                   "correspondant": "LEMBOURG JULIEN",
-                   "adresse": "14 RUE JEAN JACQUES ROUSSEAU 59620 AULNOYE AYMERIES",
-                   "emailsClub": [ "julien.lembourg@yahoo.fr", "berlaimont.us.500404@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "14 BIS RUE DES ECOLES, - 59145 - BERLAIMONT",
-                   "téléphones": [ ],
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"RUE DE KLOTTEN - 59145 - BERLAIMONT",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"",
-                  "trésorier":"",
-                  "secretaire":"",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00490/infos-cles"
-                  },
-                  {
-                   "nomClub": "E.S. MOUVALLOISE",
-                   "nbTeam": "15",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT FLANDRE DE FOOTBALL",
-                   "correspondant": "IZEGHOUINE MONIA",
-                   "adresse": "",
-                   "emailsClub": [ "mouvaux.es.500415@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "complexe pierre de coubertin, rue mirabeau, - 59420 - MOUVAUX",
-                   "téléphones": ["03 20 27 11 02", "03 20 27 11 02",],
-                   "fax":"03 20 27 11 02",
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"RUE MIRABEAU - 59420 - MOUVAUX",
-                    "surface": "Gazon synthétique type SYE",
-                  }
-                  ],
-                  "president":"IZEGHOUINE MONIA",
-                  "trésorier":"DELEMER GERALD",
-                  "secretaire":"DUVILLERS CHLOE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00500/infos-cles"
-                  },
-                  {
-                   "nomClub": "U.S. ST POL S/TERNOISE",
-                   "nbTeam": "17",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "THUILLIER ANDRE",
-                   "adresse": "",
-                   "emailsClub": [ "dd.thuillier@orange.fr", "stpolsurternoise.us.500425@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "Café de la Poste, 16 Place Leclerc, - 62130 - ST POL SUR TERNOISE",
-                   "téléphones": [ ],
-                   "stades": [{"nom": "", "adresse":"RUE DE LA CAVEE VERTE - 62130 - ST POL SUR TERNOISE",
-                   "surface": "Pelouse naturelle",
-                 }
-                 ],
-                 "president":"",
-                 "trésorier":"",
-                 "secretaire":"",
-                 "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00510/infos-cles"
-                 },
-                 {
-                   "nomClub": "U.S. LESQUIN",
-                   "nbTeam": "17",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT FLANDRE DE FOOTBALL",
-                   "correspondant": "HENNETON PHILIPPE",
-                   "adresse": "",
-                   "emailsClub": [ "ph9220@yahoo.fr", "lesquin.us.500426@ligue59-62.fr", "uslesquin@free.fr",
-                   ],
-                   "siegeSocial": "complexe sportif J-P Papin, 32 rue d iena, - 59810 - LESQUIN",
-                   "téléphones": [ "09 85 69 95 05", ],
-                   "fax":"03 20 97 51 95",
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"RUE D IENA - 59810 - LESQUIN",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"DENGLOS BRUNO",
-                  "trésorier":"GAEREMYNCK GASTON",
-                  "secretaire":"DUMETZ FABRICE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00511/infos-cles"
-                  },
-                  {
-                   "nomClub": "ECLAIR S. CRESPIN",
-                   "nbTeam": "8",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ESCAUT",
-                   "correspondant": "WOJCINSKI ANDRE",
-                   "adresse": "",
-                   "emailsClub": [ "wojandre59@neuf.fr", "crespineclair.500437@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "STADE E ROMBY, 275 RUE DES DEPORTES, - 59154 - CRESPIN",
-                   "téléphones": [ "03 27 30 47 27",],
-                   "fax":"0327261372",
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"RUE DES DEPORTES - 59154 - CRESPIN",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"WOJCINSKI ANDRE",
-                  "trésorier":"SAUDOYER WILLIAM",
-                  "secretaire":"VANLAETHEM PASCALE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00520/infos-cles"
-                  },
-                  {
-                   "nomClub": "A.S. HAUTMONT",
-                   "nbTeam": "9",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ESCAUT",
-                   "correspondant": "VIOLIN STEPHANE",
-                   "adresse": "",
-                   "emailsClub": [ "hautmont.as.500455@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "MAIRIE, B.P. 99, - 59330 - HAUTMONT",
-                   "téléphones": [ "03 27 68 62 75",],
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"RUE FERNAND ROUSSELLE - 59330 - HAUTMONT",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"LALAMI SAID",
-                  "trésorier":"LAIDI MOUHADE",
-                  "secretaire":"VIOLIN STEPHANE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00534/infos-cles"
-                  },
-                  {
-                   "nomClub": "S.C. PRO PATRIA WINGLES",
-                   "nbTeam": "11",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "PHILIPPE CLAUDIAN",
-                   "adresse": "126 RUE ROGER SALENGRO 62410 WINGLES",
-                   "emailsClub": [ "winglespropatria.sc.500460@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "STADE LEONARD DANEL, RUE LECLERCQ, - 62410 - WINGLES",
-                   "téléphones": [ ],
-                   "fax":"03 21 69 59 76",
-                   "stades": [
-                   {
-                    "nom": "", "adresse":"TERRAIN ANNEXE 13 RUE ANDRE PEZE - 62410 - WINGLES",
-                    "surface": "Gazon synthétique type SY",
-                  }
-                  ],
-                  "president":"PHILIPPE CLAUDIAN",
-                  "trésorier":"PHILIPPE FRANCIS",
-                  "secretaire":"ANTONINI JEAN FRANCOIS",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00538/infos-cles"
-                  },
-                  {
-                   "nomClub": "ET.S. BULLY LES MINES",
-                   "nbTeam": "23",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "CAUFRIEZ PHILIPPE",
-                   "adresse": "85 RUE CASIMIR BEUGNET 62160 BULLY LES MINES",
-                   "emailsClub": [ "bullylesmines.es.500461@ligue59-62.fr", "caufphi@aol.com",
-                   ],
-                   "siegeSocial": "STADE MUNICIPAL RENE CORBELLE, BLD ALFRED JOSIEN - 62160 - BULLY LES MINES",
-                   "téléphones": [ "03.61.19.11.02", "03 21 45 48 43", "03.21.45.48.48",],
-                   "fax":"06.95.95.63.68 (correspondant)",
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"TERRAIN DE LA PISCINE AVENUE ALFRED JOSIEN - 62160 - BULLY LES MINES",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"PROVILLE JEAN MICHEL",
-                  "trésorier":"RUS DIDIER",
-                  "secretaire":"CAUFRIEZ PHILIPPE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00539/infos-cles"
-                  },
-                  {
-                   "nomClub": "ET.S. DISTRICT D ISBERGUES",
-                   "nbTeam": "12",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "LOZINGOT CEDRIC",
-                   "adresse": "",
-                   "emailsClub": [ "cedric.lozingot1@gmail.com",
-                   ],
-                   "siegeSocial": "MAIRIE, PLACE JEAN JAURES, BP 27 - 62330 - ISBERGUES",
-                   "téléphones": [ "03 21 61 30 80 (Mairie)",],
+    {
+        "nomClub": "U.S.A. LIEVIN",
+        "nbTeam": "13",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "BRAND REMY",
+        "adresse": "30 RUE AUDRAN 62800 LIEVIN",
+        "emailsClub": ["lievin.usa.500157@ligue59-62.fr"],
+        "siegeSocial": "PARC ROLLENCOURT, Complexe Jean Frère, - 62800 - LIEVIN",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "DOMAINE DE ROLLENCOURT RUE MONTAIGNE - 62800 - LIEVIN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "BRAND REMY",
+        "trésorier": "BOEYAERT CATHERINE",
+        "secretaire": "BRIET LAETITIA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00290/infos-cles"
+    }, {
+        "nomClub": "A.C. CAMBRAI",
+        "nbTeam": "18",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "LAGOUCHE GASTON",
+        "adresse": "",
+        "emailsClub": ["cambrai.ac.500165@ligue59-62.fr"],
+        "siegeSocial": "STADE DE LA LIBERTE, BLD DE LA LIBERTE, - 59400 - CAMBRAI",
+        "téléphones": ["03 27 83 34 42"],
+        "fax": "03 27 81 42 62",
+        "stades": [{
+            "nom": "",
+            "adresse": "BOULEVARD DE LA LIBERTE - 59400 - CAMBRAI",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "COPIN JEAN PHILIPPE",
+        "trésorier": "DUPLOUYE ERIC",
+        "secretaire": "LAGOUCHE GASTON",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00296/infos-cles"
+    }, {
+        "nomClub": "S.C. LOURCHES",
+        "nbTeam": "10",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "DEMARQUE CORINNE",
+        "adresse": "89 RUE MARCEL PAUL 59156 LOURCHES",
+        "emailsClub": ["lourches.sc.500176@ligue59-62.fr"],
+        "siegeSocial": "Mme DEMARQUE Corinne, 89 rue Marcel Paul, - 59156 - LOURCHES",
+        "téléphones": ["03 27 48 81 26"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE JEAN JAURES - 59156 - LOURCHES",
+            "surface": "Parquet"
+        }],
+        "president": "TERROUCHE DIMITRI",
+        "trésorier": "CORNU EMELINE",
+        "secretaire": "DEMARQUE CORINNE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00307/infos-cles"
+    }, {
+        "nomClub": "U. S. AUCHELLOISE JEUNE",
+        "nbTeam": "7",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "CHIQUET EMERICK",
+        "adresse": "",
+        "emailsClub": ["emerick16.9@hotmail.fr", "auchel.us.500181@ligue59-62.fr"],
+        "siegeSocial": "STADE J. VINCENT, RUE DE LA MEUSE, - 62260 - AUCHEL",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN HONNEUR RUE DE LA MEUSE - 62260 - AUCHEL",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "CHIQUET DANY",
+        "trésorier": "CHIQUET ELODIE",
+        "secretaire": "CHIQUET EMERICK",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00311/infos-cles"
+    }, {
+        "nomClub": "U.S. NOEUXOISE",
+        "nbTeam": "13",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "LEGRAND SANDRINE",
+        "adresse": "",
+        "emailsClub": ["noeuxlesmines.us.500182@ligue59-62.fr", "sandrine.cocheteur@sfr.fr", "usnoeux@sfr.fr"],
+        "siegeSocial": "Avenue Guillon, Stade Camille Tisserand, - 62290 - NOEUX LES MINES",
+        "téléphones": [],
+        "fax": "03 21 64 15 77 (Mme LEGRAND)",
+        "stades": [{
+            "nom": "",
+            "adresse": "Annexe 1 AVENUE PIERRE GUILLON - 62290 - NOEUX LES MINES",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DEMEYER ERIC",
+        "trésorier": "BOURDEAUDUCQ DOMINIQUE",
+        "secretaire": "LEGRAND SANDRINE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00312/infos-cles"
+    }, {
+        "nomClub": "U.S. MARQUETTE",
+        "nbTeam": "15",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "VERVAECKE SYLVIE",
+        "adresse": "",
+        "emailsClub": ["eric.vervaecke@bbox.fr", "marquettelezlille.us.500183@ligue59-62.fr"],
+        "siegeSocial": "11 PLACE DU GENERAL DE GAULLE, BP 20042, - 59520 - MARQUETTE",
+        "téléphones": ["03 20 06 68 79"],
+        "fax": "03 20 06 68 79",
+        "stades": [{
+            "nom": "",
+            "adresse": "PLACE DU GENERAL DE GAULLE - 59520 - MARQUETTE LEZ LILLE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "CLAEREBOUT JEAN LUC",
+        "trésorier": "VERVAECKE SYLVIE",
+        "secretaire": "VERVAECKE ERIC",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00313/infos-cles"
+    }, {
+        "nomClub": "L ECLAIR NEUFCHATEL",
+        "nbTeam": "13",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "MENUGE PATRICK",
+        "adresse": "135 RUE DES SONS DE VILLE 62152 NEUFCHATEL HARDELOT",
+        "emailsClub": ["neufchateleclair.500188@ligue59-62.fr"],
+        "siegeSocial": "NEUFCHATEL P DE CALAIS, LA MAIRIE, RUE DES ALLEES - 62152 - NEUFCHATEL",
+        "téléphones": ["03 21 87 52 19", "03 21 99 87 28"],
+        "fax": "03 21 87 52 19",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN HONNEUR RUE DES ALLEES - 62152 - NEUFCHATEL HARDELOT",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "PROIX EMMANUEL",
+        "trésorier": "FIGONI VALERIE",
+        "secretaire": "MENUGE PATRICK",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00318/infos-cles"
+    }, {
+        "nomClub": "S.C. BOURBOURG",
+        "nbTeam": "10",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT MARITIME NORD",
+        "correspondant": "CAENES YVES",
+        "adresse": "70 RUE VERTE 59630 BOURBOURG",
+        "emailsClub": ["bourbourg.sc.500265@ligue59-62.fr", "caenes.yves@bbox.fr"],
+        "siegeSocial": "BP 50009, 95, Rue Anthony CARO, - 59630 - BOURBOURG",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "AVENUE ANTHONY CARO - 59630 - BOURBOURG",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "LESAVRE JEAN RICHARD",
+        "trésorier": "BRAZY THIERRY",
+        "secretaire": "CAENES YVES",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00379/infos-cles"
+    }, {
+        "nomClub": "U. HALLUINOISE",
+        "nbTeam": "17",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "DHALLUIN GEORGES",
+        "adresse": "",
+        "emailsClub": ["halluinunion.500276@ligue59-62.fr"],
+        "siegeSocial": "53 Rue du stade, - 59250 - HALLUIN",
+        "téléphones": ["09 54 81 31 38"],
+        "fax": "03 20 37 28 65",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN HONNEUR RUE DU STADE - 59250 - HALLUIN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00384/infos-cles"
+    }, {
+        "nomClub": "LES CARABINIERS DE BILLY MONTIGN",
+        "nbTeam": "12",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "PLUMIOEN REYNALD",
+        "adresse": "24,RUE MAXIME GORKI 62210 AVION",
+        "emailsClub": ["reyplu@hotmail.fr", "billy-montigny@orange.fr", "billymontignylescarabiniers.500277@ligue59-62.fr"],
+        "siegeSocial": "STADE PAUL GUERRE, RUE DE LA CONVENTION, - 62420 - BILLY MONTIGNY",
+        "téléphones": ["03.62.91.62.76"],
+        "fax": "03.21.76.21.52",
+        "stades": [{
+            "nom": "",
+            "adresse": "15-17 RUE DE LA CONVENTION - 62420 - BILLY MONTIGNY",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "SZEWCZYK MICHEL",
+        "trésorier": "DURETZ RENE",
+        "secretaire": "PLUMIOEN REYNALD",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00385/infos-cles"
+    }, {
+        "nomClub": "J.S. DESVRES",
+        "nbTeam": "14",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "DUCROCQ ERIC",
+        "adresse": "",
+        "emailsClub": ["desvres.js.500283@ligue59-62.fr"],
+        "siegeSocial": "PMU AU CARREFOUR, 1 RUE DE LA GARE, - 62240 - DESVRES",
+        "téléphones": ["03.21.91.67.49"],
+        "fax": "09.60.10.57.72",
+        "stades": [{
+            "nom": "",
+            "adresse": "IMPASSE BEUGNET - 62240 - DESVRES",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DETOUT LAURENT",
+        "trésorier": "SERGEANT FABRICE",
+        "secretaire": "DUCROCQ ERIC",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00388/infos-cles"
+    }, {
+        "nomClub": "U.S. MONTREUIL S/MER",
+        "nbTeam": "18",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "MACQUET RENE",
+        "adresse": "378 RUE DE LA PIE 62170 ECUIRES",
+        "emailsClub": ["r.macquet@wanadoo.fr", "andre.martel3@wanadoo.fr", "montreuil.us.500292@ligue59-62.fr"],
+        "siegeSocial": "623 avenue de paris, ECUIRES - 62170 - MONTREUIL",
+        "téléphones": ["03 21 06 16 46", "pole jeunesse 0321054004"],
+        "stades": [{
+            "nom": "",
+            "adresse": "623 AVENUE DE PARIS SAINT JUSTIN - 62170 - ECUIRES",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "MACQUET RENE",
+        "trésorier": "LOR GUSTAVE",
+        "secretaire": "MARTEL ANDRE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00395/infos-cles"
+    }, {
+        "nomClub": "A.S. BERCK PLAGE",
+        "nbTeam": "12",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "BRISEBARRE MATHILDE",
+        "adresse": "",
+        "emailsClub": ["asb.football@orange.fr", "berckplage.as.500295@ligue59-62.fr"],
+        "siegeSocial": "RUE EMILE LAVEZZARI, STADE MUNICIPAL, COMPLEXE SPORTIF - 62600 - BERCK",
+        "téléphones": ["0321848610"],
+        "fax": "0321848610",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN BERNARD SENET RUE EMILE LAVEZZARI - 62600 - BERCK",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DEVISE BERNARD",
+        "trésorier": "LEBRAN VINCENT",
+        "secretaire": "BRISEBARRE MATHILDE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00398/infos-cles"
+    }, {
+        "nomClub": "J.A. ARMENTIERES",
+        "nbTeam": "19",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "HENNION YVES",
+        "adresse": "",
+        "emailsClub": ["armentieres.ja.500305@ligue59-62.fr"],
+        "siegeSocial": "Complexe Sportif Léo Lagrange, Chemin du Pont Bayard, - 59280 - ARMENTIERES",
+        "téléphones": ["03.20.77.99.85"],
+        "stades": [{
+            "nom": "",
+            "adresse": "CHEMIN DU PONT BAYART RUE DU QUAI DE BEAUVAIS RUE EN TRAVAUX JUSQU EN MAI 2016 - 59280 - ARMENTIERES",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "FACCHETTI YANN",
+        "trésorier": "PYNSON SABINE",
+        "secretaire": "HENNION YVES",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00407/infos-cles"
+    }, {
+        "nomClub": "U.S. ST OMER",
+        "nbTeam": "16",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT COTE D OPALE",
+        "correspondant": "BLANQUART CELINE",
+        "adresse": "",
+        "emailsClub": ["stomer.us.500368@ligue59-62.fr"],
+        "siegeSocial": "ALLEE DES SPORTS, - 62500 - ST OMER",
+        "téléphones": ["03 21 38 43 00", "09.70.62.54.02"],
+        "fax": "03 21 38 49 74",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DE LA LONGUEVILLE - 62500 - ST OMER",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "FERIAU PASCAL",
+        "trésorier": "VERCOUTRE PHILIPPE",
+        "secretaire": "BLANQUART CELINE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00459/infos-cles"
+    }, {
+        "nomClub": "R.C. LENSOIS",
+        "nbTeam": "15",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "HOCHART LAURENT",
+        "adresse": "",
+        "emailsClub": ["lhochart@rclens.fr", "lens.rc.500369@ligue59-62.fr"],
+        "siegeSocial": "CENTRE TECHNIQUE RCL, LA GAILLETTE - BP 23, 33 RUE ARTHUR LAMENDIN - 62210 - AVION",
+        "téléphones": ["03 21 13 21 32"],
+        "fax": "03.21.13.21.31",
+        "stades": [{
+            "nom": "",
+            "adresse": "AVENUE RAOUL BRIQUET - 62300 - LENS",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "LEGRAND CHRISTIAN",
+        "trésorier": "HOCHART LAURENT",
+        "secretaire": "HOCHART LAURENT",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00460/infos-cles"
+    }, {
+        "nomClub": "U.S.F. PERENCHIES",
+        "nbTeam": "19",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "DELOS ISABELLE",
+        "adresse": "",
+        "emailsClub": ["bejbl1@msn.com", "perenchies.usf.500383@ligue59-62.fr"],
+        "siegeSocial": "1 bis rue Philippe de Girard, - 59840 - PERENCHIES",
+        "téléphones": [],
+        "fax": "06 98 43 55 19",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN HONNEUR RUE DE PROVENCE - 59840 - PERENCHIES",
+            "surface": "Gazon synthétique type SY"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00473/infos-cles"
+    }, {
+        "nomClub": "U.S. BERLAIMONT",
+        "nbTeam": "7",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "LEMBOURG JULIEN",
+        "adresse": "14 RUE JEAN JACQUES ROUSSEAU 59620 AULNOYE AYMERIES",
+        "emailsClub": ["julien.lembourg@yahoo.fr", "berlaimont.us.500404@ligue59-62.fr"],
+        "siegeSocial": "14 BIS RUE DES ECOLES, - 59145 - BERLAIMONT",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DE KLOTTEN - 59145 - BERLAIMONT",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00490/infos-cles"
+    }, {
+        "nomClub": "E.S. MOUVALLOISE",
+        "nbTeam": "15",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "IZEGHOUINE MONIA",
+        "adresse": "",
+        "emailsClub": ["mouvaux.es.500415@ligue59-62.fr"],
+        "siegeSocial": "complexe pierre de coubertin, rue mirabeau, - 59420 - MOUVAUX",
+        "téléphones": ["03 20 27 11 02", "03 20 27 11 02"],
+        "fax": "03 20 27 11 02",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE MIRABEAU - 59420 - MOUVAUX",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "IZEGHOUINE MONIA",
+        "trésorier": "DELEMER GERALD",
+        "secretaire": "DUVILLERS CHLOE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00500/infos-cles"
+    }, {
+        "nomClub": "U.S. ST POL S/TERNOISE",
+        "nbTeam": "17",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "THUILLIER ANDRE",
+        "adresse": "",
+        "emailsClub": ["dd.thuillier@orange.fr", "stpolsurternoise.us.500425@ligue59-62.fr"],
+        "siegeSocial": "Café de la Poste, 16 Place Leclerc, - 62130 - ST POL SUR TERNOISE",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DE LA CAVEE VERTE - 62130 - ST POL SUR TERNOISE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00510/infos-cles"
+    }, {
+        "nomClub": "U.S. LESQUIN",
+        "nbTeam": "17",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT FLANDRE DE FOOTBALL",
+        "correspondant": "HENNETON PHILIPPE",
+        "adresse": "",
+        "emailsClub": ["ph9220@yahoo.fr", "lesquin.us.500426@ligue59-62.fr", "uslesquin@free.fr"],
+        "siegeSocial": "complexe sportif J-P Papin, 32 rue d iena, - 59810 - LESQUIN",
+        "téléphones": ["09 85 69 95 05"],
+        "fax": "03 20 97 51 95",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE D IENA - 59810 - LESQUIN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DENGLOS BRUNO",
+        "trésorier": "GAEREMYNCK GASTON",
+        "secretaire": "DUMETZ FABRICE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00511/infos-cles"
+    }, {
+        "nomClub": "ECLAIR S. CRESPIN",
+        "nbTeam": "8",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "WOJCINSKI ANDRE",
+        "adresse": "",
+        "emailsClub": ["wojandre59@neuf.fr", "crespineclair.500437@ligue59-62.fr"],
+        "siegeSocial": "STADE E ROMBY, 275 RUE DES DEPORTES, - 59154 - CRESPIN",
+        "téléphones": ["03 27 30 47 27"],
+        "fax": "0327261372",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DES DEPORTES - 59154 - CRESPIN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "WOJCINSKI ANDRE",
+        "trésorier": "SAUDOYER WILLIAM",
+        "secretaire": "VANLAETHEM PASCALE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00520/infos-cles"
+    }, {
+        "nomClub": "A.S. HAUTMONT",
+        "nbTeam": "9",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "VIOLIN STEPHANE",
+        "adresse": "",
+        "emailsClub": ["hautmont.as.500455@ligue59-62.fr"],
+        "siegeSocial": "MAIRIE, B.P. 99, - 59330 - HAUTMONT",
+        "téléphones": ["03 27 68 62 75"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE FERNAND ROUSSELLE - 59330 - HAUTMONT",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "LALAMI SAID",
+        "trésorier": "LAIDI MOUHADE",
+        "secretaire": "VIOLIN STEPHANE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00534/infos-cles"
+    }, {
+        "nomClub": "S.C. PRO PATRIA WINGLES",
+        "nbTeam": "11",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "PHILIPPE CLAUDIAN",
+        "adresse": "126 RUE ROGER SALENGRO 62410 WINGLES",
+        "emailsClub": ["winglespropatria.sc.500460@ligue59-62.fr"],
+        "siegeSocial": "STADE LEONARD DANEL, RUE LECLERCQ, - 62410 - WINGLES",
+        "téléphones": [],
+        "fax": "03 21 69 59 76",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN ANNEXE 13 RUE ANDRE PEZE - 62410 - WINGLES",
+            "surface": "Gazon synthétique type SY"
+        }],
+        "president": "PHILIPPE CLAUDIAN",
+        "trésorier": "PHILIPPE FRANCIS",
+        "secretaire": "ANTONINI JEAN FRANCOIS",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00538/infos-cles"
+    }, {
+        "nomClub": "ET.S. BULLY LES MINES",
+        "nbTeam": "23",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "CAUFRIEZ PHILIPPE",
+        "adresse": "85 RUE CASIMIR BEUGNET 62160 BULLY LES MINES",
+        "emailsClub": ["bullylesmines.es.500461@ligue59-62.fr", "caufphi@aol.com"],
+        "siegeSocial": "STADE MUNICIPAL RENE CORBELLE, BLD ALFRED JOSIEN - 62160 - BULLY LES MINES",
+        "téléphones": ["03.61.19.11.02", "03 21 45 48 43", "03.21.45.48.48"],
+        "fax": "06.95.95.63.68 (correspondant)",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN DE LA PISCINE AVENUE ALFRED JOSIEN - 62160 - BULLY LES MINES",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "PROVILLE JEAN MICHEL",
+        "trésorier": "RUS DIDIER",
+        "secretaire": "CAUFRIEZ PHILIPPE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00539/infos-cles"
+    }, {
+        "nomClub": "ET.S. DISTRICT D ISBERGUES",
+        "nbTeam": "12",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "LOZINGOT CEDRIC",
+        "adresse": "",
+        "emailsClub": ["cedric.lozingot1@gmail.com"],
+        "siegeSocial": "MAIRIE, PLACE JEAN JAURES, BP 27 - 62330 - ISBERGUES",
+        "téléphones": ["03 21 61 30 80 (Mairie)"],
 
-                   "nomClub2": "",
-                   "nomClub3": "isbergues.eds.500469@ligue59-62.fr",
-                   "nomClub4": "",
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"37 RUE JEAN JAURES - 62330 - ISBERGUES",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"BODART GEOFFREY",
-                  "trésorier":"DEVOGEL PHILIPPE",
-                  "secretaire":"PENNINCK JACQUES",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00543/infos-cles"
-                  },
-                  {
-                   "nomClub": "U.S. JEUMONT",
-                   "nbTeam": "5",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ESCAUT",
-                   "correspondant": "DELEBOIS MICHEL",
-                   "adresse": "19, RUE GABRIELLE COLETTE 59460 JEUMONT",
-                   "emailsClub": [ "jeumont.us.500485@ligue59-62.fr", "usjeumont.football@gmail.com",
-                   ],
-                   "siegeSocial": "HOTEL DE VILLE, BP 159, - 59572 - JEUMONT CEDEX",
-                   "téléphones": [ ],
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"RUE ROGER SALENGRO - 59460 - JEUMONT",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"DARAS ERIC",
-                  "trésorier":"JEANMENNE SEBASTIEN",
-                  "secretaire":"DELEBOIS MICHEL",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00555/infos-cles"
-                  },
-                  {
-                   "nomClub": "U.S. ROUVROY",
-                   "nbTeam": "20",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "",
-                   "adresse": "",
-                   "emailsClub": [ "rouvroy.us.500487@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "STADE CONSTANT DUQUENOY, RUE DU GENERAL DE GAULLE, BP 52 - 62320 - ROUVROY",
-                   "téléphones": [ ],
-                   "fax":"03 21 75 25 95",
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"TERRAIN CHRISTIAN DERUELLE RUE CHARLES DE GAULLE - 62320 - ROUVROY",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"VINIAL DOMINIQUE",
-                  "trésorier":"",
-                  "secretaire":"FESTA ISABELLE",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00557/infos-cles"
-                  },
-                  {
-                   "nomClub": "R.C. MAUBEUGE",
-                   "nbTeam": "4",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ESCAUT",
-                   "correspondant": "BENAZET EMMANUEL",
-                   "adresse": "",
-                   "emailsClub": [ "benazetemmanuel@aol.com", "maubeuge.rc.500495@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "LIENARD SEBASTIEN, 02 Rue de l Eglise, - 59600 - ELESMES",
-                   "téléphones": [ ],
-                   "stades":
-                   [
-                   {
-                    "nom": "", "adresse":"RUE STE ALDEGONDE - 59600 - MAUBEUGE",
-                    "surface": "Pelouse naturelle",
-                  }
-                  ],
-                  "president":"LIENARD SEBASTIEN",
-                  "trésorier":"MEMBRE RAPHAEL",
-                  "secretaire":"LIENARD SEBASTIEN",
-                  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00561/infos-cles"
-                  },
-                  {
-                   "nomClub": "S.C. LE CATEAU",
-                   "nbTeam": "9",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ESCAUT",
-                   "correspondant": "FLAVIGNY JEAN MICHEL",
-                   "adresse": "",
-                   "emailsClub": [ "jmflav59-2@sfr.fr", "lecateaucambresis.sc.500498@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "Mairie Le Cateau Cambrésis, 1 rue Victor Hugo, - 59360 - LE CATEAU CIS",
-                   "téléphones": [ ],
-                   "fax":"03 27 84 00 10",
-                   "stades":
-                   [
-                   {"nom": "", "adresse":"12 AVENUE DES ESSARTS - 59360 - LE CATEAU CAMBRESIS",
-                   "surface": "Pelouse naturelle",
-                 }
-                 ],
-                 "president":"LAIGLE MICHEL",
-                 "trésorier":"BULTEZ SEVERINE",
-                 "secretaire":"FLAVIGNY JEAN MICHEL",
-                 "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00564/infos-cles"
-                 },
-                 {
-                   "nomClub": "AVT G. GRENAY",
-                   "nbTeam": "17",
-                   "ligue": "LIGUE NORD-PAS DE CALAIS",
-                   "district": "DISTRICT ARTOIS",
-                   "correspondant": "CUCHEVAL CEDRIC",
-                   "adresse": "",
-                   "emailsClub": [ "grenay.avtg.500505@ligue59-62.fr",
-                   ],
-                   "siegeSocial": "BLD DE LA PLAINE, STADE VISEUX, BP 22 - 62160 - GRENAY",
-                   "téléphones": [ ],
-                   "fax":"03 21 72 96 39",
-                   "stades": [{"nom": "", "adresse":"TERRAIN ARTHUR FAUVERGUE BOULEVARD DE LA PLAINE - 62160 - GRENAY",
-                   "surface": "Gazon synthétique type SYE",}],
-                   "president":"MAGNOLIA GREGORY",
-                   "trésorier":"BOSMAN SEBASTIEN",
-                   "secretaire":"CUCHEVAL CEDRIC",
-                   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00570/infos-cles"
-                   },
+        "nomClub2": "",
+        "nomClub3": "isbergues.eds.500469@ligue59-62.fr",
+        "nomClub4": "",
+        "stades": [{
+            "nom": "",
+            "adresse": "37 RUE JEAN JAURES - 62330 - ISBERGUES",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "BODART GEOFFREY",
+        "trésorier": "DEVOGEL PHILIPPE",
+        "secretaire": "PENNINCK JACQUES",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00543/infos-cles"
+    }, {
+        "nomClub": "U.S. JEUMONT",
+        "nbTeam": "5",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "DELEBOIS MICHEL",
+        "adresse": "19, RUE GABRIELLE COLETTE 59460 JEUMONT",
+        "emailsClub": ["jeumont.us.500485@ligue59-62.fr", "usjeumont.football@gmail.com"],
+        "siegeSocial": "HOTEL DE VILLE, BP 159, - 59572 - JEUMONT CEDEX",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE ROGER SALENGRO - 59460 - JEUMONT",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DARAS ERIC",
+        "trésorier": "JEANMENNE SEBASTIEN",
+        "secretaire": "DELEBOIS MICHEL",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00555/infos-cles"
+    }, {
+        "nomClub": "U.S. ROUVROY",
+        "nbTeam": "20",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "",
+        "adresse": "",
+        "emailsClub": ["rouvroy.us.500487@ligue59-62.fr"],
+        "siegeSocial": "STADE CONSTANT DUQUENOY, RUE DU GENERAL DE GAULLE, BP 52 - 62320 - ROUVROY",
+        "téléphones": [],
+        "fax": "03 21 75 25 95",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN CHRISTIAN DERUELLE RUE CHARLES DE GAULLE - 62320 - ROUVROY",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "VINIAL DOMINIQUE",
+        "trésorier": "",
+        "secretaire": "FESTA ISABELLE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00557/infos-cles"
+    }, {
+        "nomClub": "R.C. MAUBEUGE",
+        "nbTeam": "4",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "BENAZET EMMANUEL",
+        "adresse": "",
+        "emailsClub": ["benazetemmanuel@aol.com", "maubeuge.rc.500495@ligue59-62.fr"],
+        "siegeSocial": "LIENARD SEBASTIEN, 02 Rue de l Eglise, - 59600 - ELESMES",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE STE ALDEGONDE - 59600 - MAUBEUGE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "LIENARD SEBASTIEN",
+        "trésorier": "MEMBRE RAPHAEL",
+        "secretaire": "LIENARD SEBASTIEN",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00561/infos-cles"
+    }, {
+        "nomClub": "S.C. LE CATEAU",
+        "nbTeam": "9",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ESCAUT",
+        "correspondant": "FLAVIGNY JEAN MICHEL",
+        "adresse": "",
+        "emailsClub": ["jmflav59-2@sfr.fr", "lecateaucambresis.sc.500498@ligue59-62.fr"],
+        "siegeSocial": "Mairie Le Cateau Cambrésis, 1 rue Victor Hugo, - 59360 - LE CATEAU CIS",
+        "téléphones": [],
+        "fax": "03 27 84 00 10",
+        "stades": [{
+            "nom": "",
+            "adresse": "12 AVENUE DES ESSARTS - 59360 - LE CATEAU CAMBRESIS",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "LAIGLE MICHEL",
+        "trésorier": "BULTEZ SEVERINE",
+        "secretaire": "FLAVIGNY JEAN MICHEL",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00564/infos-cles"
+    }, {
+        "nomClub": "AVT G. GRENAY",
+        "nbTeam": "17",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "CUCHEVAL CEDRIC",
+        "adresse": "",
+        "emailsClub": ["grenay.avtg.500505@ligue59-62.fr"],
+        "siegeSocial": "BLD DE LA PLAINE, STADE VISEUX, BP 22 - 62160 - GRENAY",
+        "téléphones": [],
+        "fax": "03 21 72 96 39",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN ARTHUR FAUVERGUE BOULEVARD DE LA PLAINE - 62160 - GRENAY",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "MAGNOLIA GREGORY",
+        "trésorier": "BOSMAN SEBASTIEN",
+        "secretaire": "CUCHEVAL CEDRIC",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00570/infos-cles"
+    },
 
 
-                   {
-                     "nomClub": "A.S. BARLIN",
-                     "nbTeam": "11",
-                     "ligue": "LIGUE NORD-PAS DE CALAIS",
-                     "district": "DISTRICT ARTOIS",
-                     "correspondant": "VITSE ALFRED",
-                     "adresse": "10 RUE VICTOR HUGO 62620 BARLIN",
-                     "emailsClub": [ "barlin.as.500525@ligue59-62.fr",
-                     ],
-                     "siegeSocial": "STADE RAYMOND DERANCY, RUE DE VERSAILLES, - 62620 - BARLIN",
-                     "téléphones": [ "09.81.82.64.61",],
-                     "stades":
-                     [
-                     {
-                      "nom": "", "adresse":"TERRAIN COSEC RUE DE VERSAILLES - 62620 - BARLIN",
-                      "surface": "Pelouse naturelle",
-                    }
-                    ],
-                    "president":"",
-                    "trésorier":"",
-                    "secretaire":"",
-                    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00586/infos-cles"
-                    },
+    {
+        "nomClub": "A.S. BARLIN",
+        "nbTeam": "11",
+        "ligue": "LIGUE NORD-PAS DE CALAIS",
+        "district": "DISTRICT ARTOIS",
+        "correspondant": "VITSE ALFRED",
+        "adresse": "10 RUE VICTOR HUGO 62620 BARLIN",
+        "emailsClub": ["barlin.as.500525@ligue59-62.fr"],
+        "siegeSocial": "STADE RAYMOND DERANCY, RUE DE VERSAILLES, - 62620 - BARLIN",
+        "téléphones": ["09.81.82.64.61"],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN COSEC RUE DE VERSAILLES - 62620 - BARLIN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00586/infos-cles"
+    }
 
-                    ]
+]

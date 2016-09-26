@@ -1,20 +1,20 @@
-[
-{
- "nomClub": "FOY.RUR. DE POUZY MESANGY",
- "nbTeam": "2",
- "ligue": "LIGUE D AUVERGNE",
- "district": "DISTRICT ALLIER",
- "correspondant": "TOUZET FREDERIC",
- "adresse": "6 RUE DE LA FEUILLE 03460 VILLENEUVE SUR ALLIER",
- "emailsClub": [ "fredtouzet@orange.fr", "pouzymesangy.fr@auverfoot.fr",
- ],
- "siegeSocial": "MAIRIE, LE BOURG, - 03320 - POUZY MESANGY",
- "téléphones": [ "04 70 66 2854",],
- "stades": [{"nom": "", "adresse":"CHEMIN DE CHAVY - 03320 - POUZY MESANGY",
- "surface": "Pelouse naturelle",}],
- "president":"VIRLOGEUX ALAIN",
- "trésorier":"HABERT FRANCOIS",
- "secretaire":"TOUZET FREDERIC",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/09821/infos-cles"
- },
- ]
+[{
+    "nomClub": "FOY.RUR. DE POUZY MESANGY",
+    "nbTeam": "2",
+    "ligue": "LIGUE D AUVERGNE",
+    "district": "DISTRICT ALLIER",
+    "correspondant": "TOUZET FREDERIC",
+    "adresse": "6 RUE DE LA FEUILLE 03460 VILLENEUVE SUR ALLIER",
+    "emailsClub": ["fredtouzet@orange.fr", "pouzymesangy.fr@auverfoot.fr"],
+    "siegeSocial": "MAIRIE, LE BOURG, - 03320 - POUZY MESANGY",
+    "téléphones": ["04 70 66 2854"],
+    "stades": [{
+        "nom": "",
+        "adresse": "CHEMIN DE CHAVY - 03320 - POUZY MESANGY",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "VIRLOGEUX ALAIN",
+    "trésorier": "HABERT FRANCOIS",
+    "secretaire": "TOUZET FREDERIC",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/09821/infos-cles"
+}]

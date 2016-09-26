@@ -1,20 +1,20 @@
-[
-{
- "nomClub": "F.C. VERDUNOIS",
- "nbTeam": "11",
- "ligue": "LIGUE DE BOURGOGNE",
- "district": "DISTRICT PAYS SAONOIS",
- "correspondant": "HAZOTTE JEAN",
- "adresse": "",
- "emailsClub": [ "hazotteb@aol.com", "verdun.fc@bourgogne-foot.fr",
- ],
- "siegeSocial": "MAIRIE, - 71350 - VERDUN SUR LE DOUBS",
- "téléphones": [ "03 85 91 92 23",],
- "stades": [{"nom": "", "adresse":"AVE VALERY GISCARD D ESTAING - 71350 - VERDUN SUR LE DOUBS",
- "surface": "Pelouse naturelle",}],
- "president":"",
- "trésorier":"",
- "secretaire":"",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/09831/infos-cles"
- },
- ]
+[{
+    "nomClub": "F.C. VERDUNOIS",
+    "nbTeam": "11",
+    "ligue": "LIGUE DE BOURGOGNE",
+    "district": "DISTRICT PAYS SAONOIS",
+    "correspondant": "HAZOTTE JEAN",
+    "adresse": "",
+    "emailsClub": ["hazotteb@aol.com", "verdun.fc@bourgogne-foot.fr"],
+    "siegeSocial": "MAIRIE, - 71350 - VERDUN SUR LE DOUBS",
+    "téléphones": ["03 85 91 92 23"],
+    "stades": [{
+        "nom": "",
+        "adresse": "AVE VALERY GISCARD D ESTAING - 71350 - VERDUN SUR LE DOUBS",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "",
+    "trésorier": "",
+    "secretaire": "",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/09831/infos-cles"
+}]

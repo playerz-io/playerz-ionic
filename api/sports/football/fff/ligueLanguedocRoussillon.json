@@ -1,48 +1,41 @@
-[
-{
- "nomClub": "F.C. DE SETE",
- "nbTeam": "21",
- "ligue": "LIGUE LANGUEDOC ROUSSILLON",
- "district": "DISTRICT DE L HERAULT",
- "correspondant": "PRENGIEL EMMANUEL",
- "adresse": "",
- "emailsClub": [ "fcsete@hotmail.fr",
- ],
- "siegeSocial": "STADE LOUIS MICHEL, B.P.52, RUE BACHAGA BOUALEM - 34201 - SETE CEDEX",
- "téléphones": [ ],
- "fax":"04 67 53 09 15",
- "stades": [
- {
-  "nom": "", "adresse":"TERRAIN Marcel Tomaszower Rue Bachagha Boualem - 34200 - SETE",
-  "surface": "Gazon synthétique type SYE",
-}
-],
-"president":"BERTHIER JEAN MARIE",
-"trésorier":"APICELLA LUCIEN",
-"secretaire":"DELLERBA GERARD",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00233/infos-cles"
-},
-{
- "nomClub": "MONTPELLIER HERAULT SP.C.",
- "nbTeam": "19",
- "ligue": "LIGUE LANGUEDOC ROUSSILLON",
- "district": "DISTRICT DE L HERAULT",
- "correspondant": "DENIZOT ALINE",
- "adresse": "",
- "emailsClub": [ "adenizot@mhscfoot.com", "500099@languedocroussillonfoot.fr",
- ],
- "siegeSocial": "DOMAINE DE GRAMMONT, AV ALBERT EINSTEIN, CS 79041 - 34967 - MONTPELLIER CEDEX 2",
- "téléphones": [ "0467154600", "0467154615",],
- "fax":"04 67 15 46 39 (club)",
- "stades": [
- {
-  "nom": "", "adresse":"TERRAIN PASCAL BAILLS ROUTE DE MAUGUIO - 34000 - MONTPELLIER",
-  "surface": "Gazon synthétique type SYE",
-}
-],
-"president":"VARLOT GILBERT",
-"trésorier":"BITON SYDNEY",
-"secretaire":"MASINI ALAIN",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00237/infos-cles"
-},
-]
+[{
+    "nomClub": "F.C. DE SETE",
+    "nbTeam": "21",
+    "ligue": "LIGUE LANGUEDOC ROUSSILLON",
+    "district": "DISTRICT DE L HERAULT",
+    "correspondant": "PRENGIEL EMMANUEL",
+    "adresse": "",
+    "emailsClub": ["fcsete@hotmail.fr"],
+    "siegeSocial": "STADE LOUIS MICHEL, B.P.52, RUE BACHAGA BOUALEM - 34201 - SETE CEDEX",
+    "téléphones": [],
+    "fax": "04 67 53 09 15",
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN Marcel Tomaszower Rue Bachagha Boualem - 34200 - SETE",
+        "surface": "Gazon synthétique type SYE"
+    }],
+    "president": "BERTHIER JEAN MARIE",
+    "trésorier": "APICELLA LUCIEN",
+    "secretaire": "DELLERBA GERARD",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00233/infos-cles"
+}, {
+    "nomClub": "MONTPELLIER HERAULT SP.C.",
+    "nbTeam": "19",
+    "ligue": "LIGUE LANGUEDOC ROUSSILLON",
+    "district": "DISTRICT DE L HERAULT",
+    "correspondant": "DENIZOT ALINE",
+    "adresse": "",
+    "emailsClub": ["adenizot@mhscfoot.com", "500099@languedocroussillonfoot.fr"],
+    "siegeSocial": "DOMAINE DE GRAMMONT, AV ALBERT EINSTEIN, CS 79041 - 34967 - MONTPELLIER CEDEX 2",
+    "téléphones": ["0467154600", "0467154615"],
+    "fax": "04 67 15 46 39 (club)",
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN PASCAL BAILLS ROUTE DE MAUGUIO - 34000 - MONTPELLIER",
+        "surface": "Gazon synthétique type SYE"
+    }],
+    "president": "VARLOT GILBERT",
+    "trésorier": "BITON SYDNEY",
+    "secretaire": "MASINI ALAIN",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00237/infos-cles"
+}]

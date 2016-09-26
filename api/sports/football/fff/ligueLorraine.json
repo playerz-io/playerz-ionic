@@ -1,22 +1,22 @@
-[
-{
- "nomClub": "F.C. PULNOY",
- "nbTeam": "9",
- "ligue": "LIGUE LORRAINE DE FOOTBALL",
- "district": "DISTRICT MEURTHE ET MOSELLE SUD",
- "correspondant": "GOGUER JEAN JACQUES",
- "adresse": "8 ALLÉE DU GREEN 54425 PULNOY",
- "emailsClub": [ "jjgoguer@yahoo.fr", "fc-pulnoy.fc-pulnoy@orange.fr",
- ],
- "siegeSocial": "MAIRIE, 2 CHEMIN DU TIR, - 54425 - PULNOY",
- "téléphones": ["03 83 21 99 70", ],
- "fax":"03 83 33 17 59 (siège)",
- "nomClub4": "",
- "stades": [{"nom": "", "adresse":"TERRAIN ANNEXE STABILISE ROUTE DE SEICHAMPS - 54425 - PULNOY",
- "surface": "Stabilisé",}],
- "president":"",
- "trésorier":"",
- "secretaire":"",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/09875/infos-cles"
- },
- ]
+[{
+    "nomClub": "F.C. PULNOY",
+    "nbTeam": "9",
+    "ligue": "LIGUE LORRAINE DE FOOTBALL",
+    "district": "DISTRICT MEURTHE ET MOSELLE SUD",
+    "correspondant": "GOGUER JEAN JACQUES",
+    "adresse": "8 ALLÉE DU GREEN 54425 PULNOY",
+    "emailsClub": ["jjgoguer@yahoo.fr", "fc-pulnoy.fc-pulnoy@orange.fr"],
+    "siegeSocial": "MAIRIE, 2 CHEMIN DU TIR, - 54425 - PULNOY",
+    "téléphones": ["03 83 21 99 70"],
+    "fax": "03 83 33 17 59 (siège)",
+    "nomClub4": "",
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN ANNEXE STABILISE ROUTE DE SEICHAMPS - 54425 - PULNOY",
+        "surface": "Stabilisé"
+    }],
+    "president": "",
+    "trésorier": "",
+    "secretaire": "",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/09875/infos-cles"
+}]

@@ -1,64 +1,62 @@
-[
-{
- "nomClub": "LA MELLINET DE NANTES",
- "nbTeam": "22",
- "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
- "district": "DISTRICT DE LOIRE ATLANTIQUE",
- "correspondant": "CERQUEIRA ANTONIO",
- "adresse": "10 BOULEVARD CLOVIS CONSTANT 44000 NANTES",
- "emailsClub": [ "a.cerqueira@orange.fr", "lamellinet@wanadoo.fr", "500041@atlantique-foot.fr",
- ],
- "siegeSocial": "57 RUE MARZELLE GRILLAUD, - 44100 - NANTES",
- "téléphones": [ "02 40 46 99 11", "02 40 36 99 35", "02 51 83 81 05",],
- "fax":"02 40 46 99 11",
- "stades": [
- {
-  "nom": "",
-  "adresse":"57 RUE MARZELLE DE GRILLAUD LA CONTRIE - 44100 - NANTES",
-  "surface": "Gazon synthétique type SYE",
-}
-],
-"president":"PIVETEAU JEAN PIERRE",
-"trésorier":"",
-"secretaire":"CERQUEIRA ANTONIO",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00187/infos-cles"
-},
-{
- "nomClub": "S.O. CHOLETAIS",
- "nbTeam": "23",
- "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
- "district": "DISTRICT MAINE ET LOIRE",
- "correspondant": "BARBIER NICOLAS",
- "adresse": "",
- "emailsClub": [ "contact@socholet.fr", "500106@atlantique-foot.fr",
- ],
- "siegeSocial": "STADE PIERRE BLOUEN, 95 RUE PORTE BARON, - 49300 - CHOLET",
- "téléphones": [ "02 41 62 31 22",],
- "fax":"02.41.62.31.22 (club)",
- "stades": [{"nom": "", "adresse":"RUE DE LA BONNAUDERIE ROUTE DE MAULEVRIER R.D. 20 - 49300 - CHOLET",
- "surface": "Pelouse naturelle",}],
- "president":"ERISOGLU BUNYAMIN",
- "trésorier":"GODINEAU JEANNINE",
- "secretaire":"BARBIER NICOLAS",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00242/infos-cles"
- },
- {
-   "nomClub": "R.C.ANCENIS 44",
-   "nbTeam": "6",
-   "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
-   "district": "DISTRICT DE LOIRE ATLANTIQUE",
-   "correspondant": "BOURGEAIS JEAN EMMANUEL",
-   "adresse": "84 RUE DE TOURAINE 44150 ANCENIS",
-   "emailsClub": [ "jean-emmanuel.bourgeais@sdis44.fr", "rca-ancenis@orange.fr", "500268@atlantique-foot.fr",
-   ],
-   "siegeSocial": "STADE MUNICIPAL DE LA DAVRAYS, BP 80247, - 44158 - ANCENIS CEDEX",
-   "téléphones": ["02 40 98 83 45", "02 40 83 37 35",],
-   "stades": [{"nom": "", "adresse":"RUE DES JEUX OLYMPIQUES - 44150 - ANCENIS",
-   "surface": "Stabilisé",}],
-   "president":"",
-   "trésorier":"",
-   "secretaire":"",
-   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00381/infos-cles"
-   },
+[{
+        "nomClub": "LA MELLINET DE NANTES",
+        "nbTeam": "22",
+        "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
+        "district": "DISTRICT DE LOIRE ATLANTIQUE",
+        "correspondant": "CERQUEIRA ANTONIO",
+        "adresse": "10 BOULEVARD CLOVIS CONSTANT 44000 NANTES",
+        "emailsClub": ["a.cerqueira@orange.fr", "lamellinet@wanadoo.fr", "500041@atlantique-foot.fr"],
+        "siegeSocial": "57 RUE MARZELLE GRILLAUD, - 44100 - NANTES",
+        "téléphones": ["02 40 46 99 11", "02 40 36 99 35", "02 51 83 81 05"],
+        "fax": "02 40 46 99 11",
+        "stades": [{
+            "nom": "",
+            "adresse": "57 RUE MARZELLE DE GRILLAUD LA CONTRIE - 44100 - NANTES",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "PIVETEAU JEAN PIERRE",
+        "trésorier": "",
+        "secretaire": "CERQUEIRA ANTONIO",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00187/infos-cles"
+    }, {
+        "nomClub": "S.O. CHOLETAIS",
+        "nbTeam": "23",
+        "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
+        "district": "DISTRICT MAINE ET LOIRE",
+        "correspondant": "BARBIER NICOLAS",
+        "adresse": "",
+        "emailsClub": ["contact@socholet.fr", "500106@atlantique-foot.fr"],
+        "siegeSocial": "STADE PIERRE BLOUEN, 95 RUE PORTE BARON, - 49300 - CHOLET",
+        "téléphones": ["02 41 62 31 22"],
+        "fax": "02.41.62.31.22 (club)",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DE LA BONNAUDERIE ROUTE DE MAULEVRIER R.D. 20 - 49300 - CHOLET",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "ERISOGLU BUNYAMIN",
+        "trésorier": "GODINEAU JEANNINE",
+        "secretaire": "BARBIER NICOLAS",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00242/infos-cles"
+    }, {
+        "nomClub": "R.C.ANCENIS 44",
+        "nbTeam": "6",
+        "ligue": "LIGUE ATLANTIQUE DE FOOTBALL",
+        "district": "DISTRICT DE LOIRE ATLANTIQUE",
+        "correspondant": "BOURGEAIS JEAN EMMANUEL",
+        "adresse": "84 RUE DE TOURAINE 44150 ANCENIS",
+        "emailsClub": ["jean-emmanuel.bourgeais@sdis44.fr", "rca-ancenis@orange.fr", "500268@atlantique-foot.fr"],
+        "siegeSocial": "STADE MUNICIPAL DE LA DAVRAYS, BP 80247, - 44158 - ANCENIS CEDEX",
+        "téléphones": ["02 40 98 83 45", "02 40 83 37 35"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE DES JEUX OLYMPIQUES - 44150 - ANCENIS",
+            "surface": "Stabilisé"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00381/infos-cles"
+    }
 
-   ]
+]

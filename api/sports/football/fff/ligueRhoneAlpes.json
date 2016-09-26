@@ -1,93 +1,81 @@
-[
-{
- "nomClub": "O. DE LYON ET DU RHONE",
- "nbTeam": "37",
- "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
- "district": "DISTRICT DE LYON ET DU RHONE",
- "correspondant": "ROBERT SERGE",
- "adresse": "350 AVENUE JEAN-JAURES 69361 LYON CEDEX 07 ",
- "emailsClub": [ "srobert@olympiquelyonnais.com", "olympique-lyonnais@lrafoot.org",
- ],
- "siegeSocial": "SECTEUR AMATEUR, 350 AVENUE JEAN JAURES, - 69007 - LYON",
- "téléphones": [ "04 26 29 65 34", "04 26 29 68 20", ],
- "fax":"04 26 29 65 06 (féminines : Alison Palma)",
- "stades": [
- {
-  "nom": "", "adresse":"89 AVENUE TONY GARNIER - 69007 - LYON 07",
-  "surface": "Stabilisé",
-}
-],
-"president":"MATAGRIN JACQUES",
-"trésorier":"ROCHE YVES",
-"secretaire":"FACCIOLI ROLF",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00221/infos-cles"
-},
-{
- "nomClub": "A.S.UNIV. LYON",
- "nbTeam": "22",
- "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
- "district": "DISTRICT DE LYON ET DU RHONE",
- "correspondant": "DI NOTA MYRIAM",
- "adresse": "64 RUE HENRI LEGAY 69100 VILLEURBANNE",
- "emailsClub": [ "myriam.di-nota@orange.fr", "asulfootball@lrafoot.org",
- ],
- "siegeSocial": "51 RUE PIERRE BARATIN, - 69100 - VILLEURBANNE",
- "téléphones": [ ],
- "stades": [
- {
-  "nom": "", "adresse":"41 RUE NICOLAS GARNIER - 69100 - VILLEURBANNE",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"ROUX CHRISTOPHE",
-"trésorier":"ANCIAN MICHEL",
-"secretaire":"ROUX CAROLE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00222/infos-cles"
-},
-{
- "nomClub": "C.S. VIENNE",
- "nbTeam": "15",
- "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
- "district": "DISTRICT DE LYON ET DU RHONE",
- "correspondant": "",
- "adresse": "",
- "emailsClub": [ "",
- ],
- "siegeSocial": "",
- "téléphones": [ ],
- "stades": [
- {
-  "nom": "", "adresse":"",
-  "surface": "",
-}
-],
-"president":"",
-"trésorier":"",
-"secretaire":"",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00257/infos-cles"
-},
-{
- "nomClub": "A.S. VILLEURBANNE EV. LYONNAIS",
- "nbTeam": "20",
- "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
- "district": "DISTRICT DE LYON ET DU RHONE",
- "correspondant": "FONBONNE GUY",
- "adresse": "243 COURS EMILE ZOLA 69100 VILLEURBANNE",
- "emailsClub": [ "guy.fonbonne@laposte.net", "asvel-football@lrafoot.org",
- ],
- "siegeSocial": "243 COURS EMILE ZOLA, - 69100 - VILLEURBANNE",
- "téléphones": [ "09/53/64/69/91", "04 78 79 13 18"  ],
- "stades": [
- {
-  "nom": "", "adresse":"80 RUE PIERRE VOYANT - 69100 - VILLEURBANNE",
-  "surface": "Gazon synthétique type SY",
-}
-],
-"president":"GALLUZZI JEAN CHRISTOPHE",
-"trésorier":"FONBONNE GUY",
-"secretaire":"PONCY SERGE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00260/infos-cles"
-},
+[{
+        "nomClub": "O. DE LYON ET DU RHONE",
+        "nbTeam": "37",
+        "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
+        "district": "DISTRICT DE LYON ET DU RHONE",
+        "correspondant": "ROBERT SERGE",
+        "adresse": "350 AVENUE JEAN-JAURES 69361 LYON CEDEX 07 ",
+        "emailsClub": ["srobert@olympiquelyonnais.com", "olympique-lyonnais@lrafoot.org"],
+        "siegeSocial": "SECTEUR AMATEUR, 350 AVENUE JEAN JAURES, - 69007 - LYON",
+        "téléphones": ["04 26 29 65 34", "04 26 29 68 20"],
+        "fax": "04 26 29 65 06 (féminines : Alison Palma)",
+        "stades": [{
+            "nom": "",
+            "adresse": "89 AVENUE TONY GARNIER - 69007 - LYON 07",
+            "surface": "Stabilisé"
+        }],
+        "president": "MATAGRIN JACQUES",
+        "trésorier": "ROCHE YVES",
+        "secretaire": "FACCIOLI ROLF",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00221/infos-cles"
+    }, {
+        "nomClub": "A.S.UNIV. LYON",
+        "nbTeam": "22",
+        "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
+        "district": "DISTRICT DE LYON ET DU RHONE",
+        "correspondant": "DI NOTA MYRIAM",
+        "adresse": "64 RUE HENRI LEGAY 69100 VILLEURBANNE",
+        "emailsClub": ["myriam.di-nota@orange.fr", "asulfootball@lrafoot.org"],
+        "siegeSocial": "51 RUE PIERRE BARATIN, - 69100 - VILLEURBANNE",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "41 RUE NICOLAS GARNIER - 69100 - VILLEURBANNE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "ROUX CHRISTOPHE",
+        "trésorier": "ANCIAN MICHEL",
+        "secretaire": "ROUX CAROLE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00222/infos-cles"
+    }, {
+        "nomClub": "C.S. VIENNE",
+        "nbTeam": "15",
+        "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
+        "district": "DISTRICT DE LYON ET DU RHONE",
+        "correspondant": "",
+        "adresse": "",
+        "emailsClub": [""],
+        "siegeSocial": "",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "",
+            "surface": ""
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00257/infos-cles"
+    }, {
+        "nomClub": "A.S. VILLEURBANNE EV. LYONNAIS",
+        "nbTeam": "20",
+        "ligue": "LIGUE RHONE-ALPES DE FOOTBALL",
+        "district": "DISTRICT DE LYON ET DU RHONE",
+        "correspondant": "FONBONNE GUY",
+        "adresse": "243 COURS EMILE ZOLA 69100 VILLEURBANNE",
+        "emailsClub": ["guy.fonbonne@laposte.net", "asvel-football@lrafoot.org"],
+        "siegeSocial": "243 COURS EMILE ZOLA, - 69100 - VILLEURBANNE",
+        "téléphones": ["09/53/64/69/91", "04 78 79 13 18"],
+        "stades": [{
+            "nom": "",
+            "adresse": "80 RUE PIERRE VOYANT - 69100 - VILLEURBANNE",
+            "surface": "Gazon synthétique type SY"
+        }],
+        "president": "GALLUZZI JEAN CHRISTOPHE",
+        "trésorier": "FONBONNE GUY",
+        "secretaire": "PONCY SERGE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00260/infos-cles"
+    }
 
 
 ]

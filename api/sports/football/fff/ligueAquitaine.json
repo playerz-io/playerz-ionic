@@ -1,209 +1,189 @@
-[
-{
- "nomClub": "STADE BORDELAIS - ASPTT ",
- "nbTeam": "18",
- "ligue": "LIGUE D AQUITAINE",
- "district": "DISTRICT DE BORDEAUX",
- "correspondant": "FOURNIER ALAIN",
- "adresse": "",
- "emailsClub": [ "500021@lfaquitaine.fr", ],
- "siegeSocial": "STADE SAINTE GERMAINE, SECTION FOOTBALL, 2 RUE FERDINAND DE LESSEPS - 33110 - LE BOUSCAT",
- "téléphones": ["05 56 57 45 55", "05 56 16 05 37",],
- "stades": [
- {
-  "nom": "",
-  "adresse":"TERRAIN RUGBY / FOOT 2 RUE FERDINAND DE LESSEPS - 33110 - LE BOUSCAT",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"FOURNIER ALAIN",
-"trésorier":"DAMBON RUDY",
-"secretaire":"BERTON NATACHA",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00171/infos-cles"
-},
+[{
+        "nomClub": "STADE BORDELAIS - ASPTT ",
+        "nbTeam": "18",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "FOURNIER ALAIN",
+        "adresse": "",
+        "emailsClub": ["500021@lfaquitaine.fr"],
+        "siegeSocial": "STADE SAINTE GERMAINE, SECTION FOOTBALL, 2 RUE FERDINAND DE LESSEPS - 33110 - LE BOUSCAT",
+        "téléphones": ["05 56 57 45 55", "05 56 16 05 37"],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN RUGBY / FOOT 2 RUE FERDINAND DE LESSEPS - 33110 - LE BOUSCAT",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "FOURNIER ALAIN",
+        "trésorier": "DAMBON RUDY",
+        "secretaire": "BERTON NATACHA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00171/infos-cles"
+    },
 
-{
- "nomClub": "BORDEAUX ETUDIANTS C.",
- "nbTeam": "11",
- "ligue": "LIGUE D AQUITAINE",
- "district": "DISTRICT DE BORDEAUX",
- "correspondant": "DRESCO SOPHIE",
- "adresse": "",
- "emailsClub": [ "500042@lfaquitaine.fr", ],
- "siegeSocial": "14 avenue jean babin, - 33600 - PESSAC",
- "téléphones": ["05 56 37 48 48", "05 56 84 06 07",],
- "stades": [
- {
-  "nom": "",
-  "adresse":"ALLEE PIERRE DE COUBERTIN CAMPUS UNIVERSITAIRE - 33400 - TALENCE",
-  "surface": "Gazon synthétique type SY",
-}
-],
-"president":"BECQUET ERIC",
-"trésorier":"CHARRON MORGAN",
-"secretaire":"VOSGIN JEAN PIERRE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00188/infos-cles"
-},
-{
- "nomClub": "C.ML FLOIRAC",
- "nbTeam": "14",
- "ligue": "LIGUE D AQUITAINE",
- "district": "DISTRICT DE BORDEAUX",
- "correspondant": "DESCHAMPS MICHEL",
- "adresse": "",
- "emailsClub": [ "mdeloscampos@modulonet.fr", "500045@lfaquitaine.fr",
- ],
- "siegeSocial": "MAISON DES SPORTS ET CULTURE, 4 AVENUE CAMILLE PELLETAN, - 33270 - FLOIRAC",
- "téléphones": ["05 56 86 86 04", "09 56 82 96 57",],
- "stades": [
- {
-  "nom": "",
-  "adresse":"RUE LEO LAGRANGE - 33270 - FLOIRAC",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"DEBANDE JEAN LUC",
-"trésorier":"GADEAUD FABIEN",
-"secretaire":"DESCHAMPS MICHEL",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00190/infos-cles"
-},
+    {
+        "nomClub": "BORDEAUX ETUDIANTS C.",
+        "nbTeam": "11",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "DRESCO SOPHIE",
+        "adresse": "",
+        "emailsClub": ["500042@lfaquitaine.fr"],
+        "siegeSocial": "14 avenue jean babin, - 33600 - PESSAC",
+        "téléphones": ["05 56 37 48 48", "05 56 84 06 07"],
+        "stades": [{
+            "nom": "",
+            "adresse": "ALLEE PIERRE DE COUBERTIN CAMPUS UNIVERSITAIRE - 33400 - TALENCE",
+            "surface": "Gazon synthétique type SY"
+        }],
+        "president": "BECQUET ERIC",
+        "trésorier": "CHARRON MORGAN",
+        "secretaire": "VOSGIN JEAN PIERRE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00188/infos-cles"
+    }, {
+        "nomClub": "C.ML FLOIRAC",
+        "nbTeam": "14",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "DESCHAMPS MICHEL",
+        "adresse": "",
+        "emailsClub": ["mdeloscampos@modulonet.fr", "500045@lfaquitaine.fr"],
+        "siegeSocial": "MAISON DES SPORTS ET CULTURE, 4 AVENUE CAMILLE PELLETAN, - 33270 - FLOIRAC",
+        "téléphones": ["05 56 86 86 04", "09 56 82 96 57"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE LEO LAGRANGE - 33270 - FLOIRAC",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DEBANDE JEAN LUC",
+        "trésorier": "GADEAUD FABIEN",
+        "secretaire": "DESCHAMPS MICHEL",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00190/infos-cles"
+    },
 
-{
- "nomClub": "SP.C. LA BASTIDIENNE",
- "nbTeam": "9",
- "ligue": "LIGUE D AQUITAINE",
- "district": "DISTRICT DE BORDEAUX",
- "correspondant": "FREMY FRANCOISE",
- "adresse": "54 RUE CAMILLE FLAMMARION 33100 BORDEAUX",
- "emailsClub": [ "francoisefremy@sfr.fr", "500057@lfaquitaine.fr",
- ],
- "siegeSocial": "70 RUE DES VIVANTS, - 33100 - BORDEAUX",
- "téléphones": [ "05 56 40 95 32", "05 56 86 48 33",],
- "stades": [
- {
-  "nom": "",
-  "adresse":"RUE GALIN - 33100 - BORDEAUX",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"DUPRAT DIDIER",
-"trésorier":"FREMY MARC",
-"secretaire":"GUIDEZ ALEXANDRA",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00202/infos-cles"
-},
+    {
+        "nomClub": "SP.C. LA BASTIDIENNE",
+        "nbTeam": "9",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "FREMY FRANCOISE",
+        "adresse": "54 RUE CAMILLE FLAMMARION 33100 BORDEAUX",
+        "emailsClub": ["francoisefremy@sfr.fr", "500057@lfaquitaine.fr"],
+        "siegeSocial": "70 RUE DES VIVANTS, - 33100 - BORDEAUX",
+        "téléphones": ["05 56 40 95 32", "05 56 86 48 33"],
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE GALIN - 33100 - BORDEAUX",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "DUPRAT DIDIER",
+        "trésorier": "FREMY MARC",
+        "secretaire": "GUIDEZ ALEXANDRA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00202/infos-cles"
+    },
 
-{
- "nomClub": "BORDEAUX A.C.",
- "nbTeam": "2",
- "ligue": "LIGUE D AQUITAINE",
- "district": "DISTRICT DE BORDEAUX",
- "correspondant": "HAMACHE LYES",
- "adresse": "",
- "emailsClub": [ "club.bordeauxathletic@sfr.fr", "500060@lfaquitaine.fr",
- ],
- "siegeSocial": "12 RUE CHARLEVOIX DE VILLERS, - 33300 - BORDEAUX",
- "téléphones": ["05 56 39 06 71", ],
- "stades": [{"nom": "",
- "adresse":"TERRAIN FOOT / RUGBY 63, RUE DU PROFESSEUR VILLEMIN - 33300 - BORDEAUX",
- "surface": "Gazon synthétique type SYE", }
- ],
- "president":"HAMACHE LYES",
- "trésorier":"",
- "secretaire":"MOUYEKE EULOGE",
- "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00205/infos-cles"
- },
+    {
+        "nomClub": "BORDEAUX A.C.",
+        "nbTeam": "2",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "HAMACHE LYES",
+        "adresse": "",
+        "emailsClub": ["club.bordeauxathletic@sfr.fr", "500060@lfaquitaine.fr"],
+        "siegeSocial": "12 RUE CHARLEVOIX DE VILLERS, - 33300 - BORDEAUX",
+        "téléphones": ["05 56 39 06 71"],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN FOOT / RUGBY 63, RUE DU PROFESSEUR VILLEMIN - 33300 - BORDEAUX",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "HAMACHE LYES",
+        "trésorier": "",
+        "secretaire": "MOUYEKE EULOGE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00205/infos-cles"
+    },
 
- {
-   "nomClub": "ST. MONTOIS",
-   "nbTeam": "14",
-   "ligue": "LIGUE D AQUITAINE",
-   "district": "DISTRICT LANDES",
-   "correspondant": "VIELLE GERVAIS",
-   "adresse": "",
-   "emailsClub": [ "500097@lfaquitaine.fr",
-   ],
-   "siegeSocial": "STADE DE L ARGENTE, 591 AVENUE DE NONERES, - 40000 - MONT DE MARSAN",
-   "téléphones": ["05 58 46 21 91", "05 58 46 21 93",],
-   "stades":
-   [
-   {
-    "nom": "",
-    "adresse":"591 AVENUE DE NONERES - 40000 - MONT DE MARSAN",
-    "surface": "Pelouse naturelle",
-  }
-  ],
-  "president":"FOIX PIERRE ALBERT",
-  "trésorier":"BISBAU THIERRY",
-  "secretaire":"OLIVIER BERNARD",
-  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00235/infos-cles"
-  },
+    {
+        "nomClub": "ST. MONTOIS",
+        "nbTeam": "14",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT LANDES",
+        "correspondant": "VIELLE GERVAIS",
+        "adresse": "",
+        "emailsClub": ["500097@lfaquitaine.fr"],
+        "siegeSocial": "STADE DE L ARGENTE, 591 AVENUE DE NONERES, - 40000 - MONT DE MARSAN",
+        "téléphones": ["05 58 46 21 91", "05 58 46 21 93"],
+        "stades": [{
+            "nom": "",
+            "adresse": "591 AVENUE DE NONERES - 40000 - MONT DE MARSAN",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "FOIX PIERRE ALBERT",
+        "trésorier": "BISBAU THIERRY",
+        "secretaire": "OLIVIER BERNARD",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00235/infos-cles"
+    },
 
-  {
-   "nomClub": "C.A. BEGLAIS",
-   "nbTeam": "15",
-   "ligue": "LIGUE D AQUITAINE",
-   "district": "DISTRICT DE BORDEAUX",
-   "correspondant": "GUITARD MICHEL",
-   "adresse": "",
-   "emailsClub": [ "guitard-michel@orange.fr", "500110@lfaquitaine.fr",
-   ],
-   "siegeSocial": "Stade Haut-Verduc, Avenue Pierre MENDES-FRANCE, Plaine des Sports - 33130 - BEGLES",
-   "téléphones": [ "05 56 49 18 18",],
-   "fax":"09 66 95 48 19",
-   "stades": [
-   {
-    "nom": "",
-    "adresse":"TERRAIN N°1 AVENUE PIERRE MENDES FRANCE - 33130 - BEGLES",
-    "surface": "Gazon synthétique type SYE",
-  }
-  ],
-  "president":"GOUGNARD ALEXANDRE",
-  "trésorier":"GUYET JEAN PATRICK",
-  "secretaire":"GUITARD MICHEL",
-  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00246/infos-cles"
-  },
+    {
+        "nomClub": "C.A. BEGLAIS",
+        "nbTeam": "15",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "GUITARD MICHEL",
+        "adresse": "",
+        "emailsClub": ["guitard-michel@orange.fr", "500110@lfaquitaine.fr"],
+        "siegeSocial": "Stade Haut-Verduc, Avenue Pierre MENDES-FRANCE, Plaine des Sports - 33130 - BEGLES",
+        "téléphones": ["05 56 49 18 18"],
+        "fax": "09 66 95 48 19",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN N°1 AVENUE PIERRE MENDES FRANCE - 33130 - BEGLES",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "GOUGNARD ALEXANDRE",
+        "trésorier": "GUYET JEAN PATRICK",
+        "secretaire": "GUITARD MICHEL",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00246/infos-cles"
+    },
 
-  {
-   "nomClub": "ST. PESSACAIS U.C.",
-   "nbTeam": "11",
-   "ligue": "LIGUE D AQUITAINE",
-   "district": "DISTRICT DE BORDEAUX",
-   "correspondant": "CAMPET NATHALIE",
-   "adresse": "",
-   "emailsClub": [ "clubfoot.500139@laposte.net", "500139@lfaquitaine.fr",
-   ],
-   "siegeSocial": "BP 70151, Avenue du Colonel Jacqui, Château de Bellegrave - 33606 - PESSAC CEDEX",
-   "téléphones": ["05.56.45.23.65", ],
-   "stades": [
-   {
-    "nom": "",
-    "adresse":"AVENUE COLONEL ROBERT JACQUI - 33600 - PESSAC",
-    "surface": "Pelouse naturelle",
-  }
-  ],
-  "president":"MOREAU BRUNO",
-  "trésorier":"KIEHL LAURENCE",
-  "secretaire":"CAMPET NATHALIE",
-  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00273/infos-cles"
-  },
+    {
+        "nomClub": "ST. PESSACAIS U.C.",
+        "nbTeam": "11",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "CAMPET NATHALIE",
+        "adresse": "",
+        "emailsClub": ["clubfoot.500139@laposte.net", "500139@lfaquitaine.fr"],
+        "siegeSocial": "BP 70151, Avenue du Colonel Jacqui, Château de Bellegrave - 33606 - PESSAC CEDEX",
+        "téléphones": ["05.56.45.23.65"],
+        "stades": [{
+            "nom": "",
+            "adresse": "AVENUE COLONEL ROBERT JACQUI - 33600 - PESSAC",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "MOREAU BRUNO",
+        "trésorier": "KIEHL LAURENCE",
+        "secretaire": "CAMPET NATHALIE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00273/infos-cles"
+    },
 
-  {
-   "nomClub": "F.C. DES GIRONDINS DE BORDEAUX",
-   "nbTeam": "15",
-   "ligue": "LIGUE D AQUITAINE",
-   "district": "DISTRICT DE BORDEAUX",
-   "correspondant": "CAMINADE JEAN FRANCOIS",
-   "adresse": "",
-   "emailsClub": [ "jfcaminade@girondins.com", "500211@lfaquitaine.fr",
-   ],
-   "siegeSocial": "Mr le Secrétaire, RUE JOLIOT CURIE, CS 10033 - 33187 - LE HAILLAN",
-   "téléphones": [ "05 56 16 78 95", "05 56 28 83 34",],
-   "stades": [{"nom": "", "adresse":"avenue de la Jallère - 33300 - BORDEAUX",
-   "surface": "Pelouse naturelle",}],
-   "president":"TRIAUD JEAN LOUIS",
-   "trésorier":"STEVA CATHERINE",
-   "secretaire":"DEVESELEER ALAIN",
-   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00337/infos-cles"
-   },
+    {
+        "nomClub": "F.C. DES GIRONDINS DE BORDEAUX",
+        "nbTeam": "15",
+        "ligue": "LIGUE D AQUITAINE",
+        "district": "DISTRICT DE BORDEAUX",
+        "correspondant": "CAMINADE JEAN FRANCOIS",
+        "adresse": "",
+        "emailsClub": ["jfcaminade@girondins.com", "500211@lfaquitaine.fr"],
+        "siegeSocial": "Mr le Secrétaire, RUE JOLIOT CURIE, CS 10033 - 33187 - LE HAILLAN",
+        "téléphones": ["05 56 16 78 95", "05 56 28 83 34"],
+        "stades": [{
+            "nom": "",
+            "adresse": "avenue de la Jallère - 33300 - BORDEAUX",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "TRIAUD JEAN LOUIS",
+        "trésorier": "STEVA CATHERINE",
+        "secretaire": "DEVESELEER ALAIN",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00337/infos-cles"
+    }
 
-   ]
+]

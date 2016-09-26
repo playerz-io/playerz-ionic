@@ -1,90 +1,78 @@
-[
-{
- "nomClub": "ESPE.S. TROYES AUBE CHAMPAGNE",
- "nbTeam": "12",
- "ligue": "LIGUE CHAMPAGNE ARDENNE",
- "district": "DISTRICT AUBE",
- "correspondant": "BERNA LAURENT",
- "adresse": "",
- "emailsClub": ["l.berna@estac.fr", "a.fichter@estac.fr", "500073@ligue-ca.fr",],
- "siegeSocial": "11 rue Marie Curie, - 10000 - TROYES",
- "téléphones": ["03 25 71 38 47", ],
- "fax":"03 25 71 38 42",
- "stades": [
- {
-  "nom": "",
-  "adresse":"TERRAIN HONNEUR 10 RUE MARIE CURIE - 10430 - ROSIERES PRES TROYES",
-  "surface": "Gazon synthétique type SYE",
-}
-],
-"president":"PICHERY PHILIPPE",
-"trésorier":"",
-"secretaire":"BOUZID FARES",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00215/infos-cles"
-},
-{
- "nomClub": "S.A. SEZANNE",
- "nbTeam": "7",
- "ligue": "LIGUE CHAMPAGNE ARDENNE",
- "district": "DISTRICT MARNE",
- "correspondant": "SCALA STEPHANIE",
- "adresse": "",
- "emailsClub": [ "500046@ligue-ca.fr", ],
- "siegeSocial": "HOTEL DE VILLE, - 51120 - SEZANNE",
- "téléphones": [ ],
- "stades": [
- {
-  "nom": "", "adresse":"CHEMIN DES POITRINES - 51120 - SEZANNE",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"JACQUESSON BRUNO",
-"trésorier":"JOUSSOT JEAN MICHEL",
-"secretaire":"SCALA STEPHANIE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00191/infos-cles"
-},
-{
- "nomClub": "F.C. PARGNY S/SAULX",
- "nbTeam": "2",
- "ligue": "LIGUE CHAMPAGNE ARDENNE",
- "district": "DISTRICT MARNE",
- "correspondant": "BAUDART DOMINIQUE",
- "adresse": "",
- "emailsClub": [ "fcpargny@sfr.fr", "500173@ligue-ca.fr",],
- "siegeSocial": "14 chemin cordier, - 51340 - PARGNY SUR SAULX",
- "téléphones": [ ],
- "stades": [
- {
-  "nom": "", "adresse":"AVENUE DU MARECHAL LECLERC - 51340 - PARGNY SUR SAULX",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"BAUDART DOMINIQUE",
-"trésorier":"LORENTZ CHRISTOPHE",
-"secretaire":"BADOIS VIRGINIE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00304/infos-cles"
-},
-{
- "nomClub": "CHEMINOTS S. DE CHALINDREY",
- "nbTeam": "9",
- "ligue": "LIGUE CHAMPAGNE ARDENNE",
- "district": "DISTRICT HAUTE MARNE",
- "correspondant": "DUGNY CYRILLE",
- "adresse": "",
- "emailsClub": [ "500421@ligue-ca.fr", "dugny.cyrille@orange.fr",
- ],
- "siegeSocial": "rue Gérard Philipe, - 52600 - CHALINDREY",
- "téléphones": [ "0325909748", ],
- "stades": [{"nom": "", "adresse":"TERRAIN ANNEXE PLACE DE VERDUN - 52600 - CHALINDREY",
- "surface": "Stabilisé",
-}
-],
-"president":"",
-"trésorier":"",
-"secretaire":"",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00506/infos-cles"
-},
-
-
-
-]
+[{
+    "nomClub": "ESPE.S. TROYES AUBE CHAMPAGNE",
+    "nbTeam": "12",
+    "ligue": "LIGUE CHAMPAGNE ARDENNE",
+    "district": "DISTRICT AUBE",
+    "correspondant": "BERNA LAURENT",
+    "adresse": "",
+    "emailsClub": ["l.berna@estac.fr", "a.fichter@estac.fr", "500073@ligue-ca.fr"],
+    "siegeSocial": "11 rue Marie Curie, - 10000 - TROYES",
+    "téléphones": ["03 25 71 38 47"],
+    "fax": "03 25 71 38 42",
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN HONNEUR 10 RUE MARIE CURIE - 10430 - ROSIERES PRES TROYES",
+        "surface": "Gazon synthétique type SYE"
+    }],
+    "president": "PICHERY PHILIPPE",
+    "trésorier": "",
+    "secretaire": "BOUZID FARES",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00215/infos-cles"
+}, {
+    "nomClub": "S.A. SEZANNE",
+    "nbTeam": "7",
+    "ligue": "LIGUE CHAMPAGNE ARDENNE",
+    "district": "DISTRICT MARNE",
+    "correspondant": "SCALA STEPHANIE",
+    "adresse": "",
+    "emailsClub": ["500046@ligue-ca.fr"],
+    "siegeSocial": "HOTEL DE VILLE, - 51120 - SEZANNE",
+    "téléphones": [],
+    "stades": [{
+        "nom": "",
+        "adresse": "CHEMIN DES POITRINES - 51120 - SEZANNE",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "JACQUESSON BRUNO",
+    "trésorier": "JOUSSOT JEAN MICHEL",
+    "secretaire": "SCALA STEPHANIE",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00191/infos-cles"
+}, {
+    "nomClub": "F.C. PARGNY S/SAULX",
+    "nbTeam": "2",
+    "ligue": "LIGUE CHAMPAGNE ARDENNE",
+    "district": "DISTRICT MARNE",
+    "correspondant": "BAUDART DOMINIQUE",
+    "adresse": "",
+    "emailsClub": ["fcpargny@sfr.fr", "500173@ligue-ca.fr"],
+    "siegeSocial": "14 chemin cordier, - 51340 - PARGNY SUR SAULX",
+    "téléphones": [],
+    "stades": [{
+        "nom": "",
+        "adresse": "AVENUE DU MARECHAL LECLERC - 51340 - PARGNY SUR SAULX",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "BAUDART DOMINIQUE",
+    "trésorier": "LORENTZ CHRISTOPHE",
+    "secretaire": "BADOIS VIRGINIE",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00304/infos-cles"
+}, {
+    "nomClub": "CHEMINOTS S. DE CHALINDREY",
+    "nbTeam": "9",
+    "ligue": "LIGUE CHAMPAGNE ARDENNE",
+    "district": "DISTRICT HAUTE MARNE",
+    "correspondant": "DUGNY CYRILLE",
+    "adresse": "",
+    "emailsClub": ["500421@ligue-ca.fr", "dugny.cyrille@orange.fr"],
+    "siegeSocial": "rue Gérard Philipe, - 52600 - CHALINDREY",
+    "téléphones": ["0325909748"],
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN ANNEXE PLACE DE VERDUN - 52600 - CHALINDREY",
+        "surface": "Stabilisé"
+    }],
+    "president": "",
+    "trésorier": "",
+    "secretaire": "",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00506/infos-cles"
+}]

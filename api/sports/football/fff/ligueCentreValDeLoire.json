@@ -1,71 +1,61 @@
-[
-{
- "nomClub": "LA BERRICHONNE DE CHATEAUROUX",
- "nbTeam": "22",
- "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
- "district": "DISTRICT INDRE",
- "correspondant": "LE SECRETAIRE ",
- "adresse": "4 RUE DU CHAMP DE FOIRE 36320 VILLEDIEU SUR INDRE",
- "emailsClub": [ "michelpournin@orange.fr", "lucarne2@wanadoo.fr", "500098@lcfoot.fr",
- ],
- "siegeSocial": "10 ALLEE DE BEAUMARCHAIS, - 36000 - CHATEAUROUX",
- "téléphones": [ "02 54 34 13 23", "02 54 07 07 27",],
- "fax":"02 54 34 13 23 (Siège)",
- "stades": [
- {
-  "nom": "", "adresse":"TERRAIN ANNEXE 10 ALLEE DE BEAUMARCHAIS - 36000 - CHATEAUROUX",
-  "surface": "Gazon synthétique type SYE",
-}
-],
-"president":"JAMET CLAUDE",
-"trésorier":"",
-"secretaire":"POURNIN MICHEL",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00236/infos-cles"
-},
-{
- "nomClub": "U.S. MUNICIPALE MONTARGIS FOOTBALL",
- "nbTeam": "23",
- "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
- "district": "DISTRICT LOIRET",
- "correspondant": "LE SECRETAIRE ",
- "adresse": "",
- "emailsClub": [ "usm.montargis.foot@wanadoo.fr", "500113@lcfoot.fr",
- ],
- "siegeSocial": "BP 20321, - 45203 - MONTARGIS CEDEX",
- "téléphones": ["02 38 85 27 14", ],
- "fax":"02 38 85 27 14 (club)",
- "stades": [
- {
-  "nom": "", "adresse":"ROUTE FORESTIERE DES SEPT FRERES - 45200 - MONTARGIS",
-  "surface": "Gazon synthétique type SYE",
-}
-],
-"president":"LUBAC DAMIEN",
-"trésorier":"DEPEE JEAN FRANCOIS",
-"secretaire":"MICHOUX SERGE",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00249/infos-cles"
-},
-{
- "nomClub": "SP.A. ISSOUDUN",
- "nbTeam": "9",
- "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
- "district": "DISTRICT INDRE",
- "correspondant": "TSIOMO TSIOMO CHANCEL",
- "adresse": "37 BIS RUE DE LA NATION 36100 ISSOUDUN",
- "emailsClub": [ "500120@lcfoot.fr", "chancelchampion@yahoo.fr",
- ],
- "siegeSocial": "Stade Henri MERILLAC, Route de Bourges, - 36100 - ISSOUDUN",
- "téléphones": ["02 54 21 14 58", ],
- "fax":"06-44-23-99-53",
- "stades": [
- {
-  "nom": "", "adresse":"Route de Bourges - 36100 - ISSOUDUN",
-  "surface": "Pelouse naturelle",
-}
-],
-"president":"FOUQUET DIDIER",
-"trésorier":"SENAC CATHERINE",
-"secretaire":"SZYDA MICHAEL",
-"urlFFF":"http://www.fff.fr/la-vie-des-clubs/00256/infos-cles"
-},
-]
+[{
+    "nomClub": "LA BERRICHONNE DE CHATEAUROUX",
+    "nbTeam": "22",
+    "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
+    "district": "DISTRICT INDRE",
+    "correspondant": "LE SECRETAIRE ",
+    "adresse": "4 RUE DU CHAMP DE FOIRE 36320 VILLEDIEU SUR INDRE",
+    "emailsClub": ["michelpournin@orange.fr", "lucarne2@wanadoo.fr", "500098@lcfoot.fr"],
+    "siegeSocial": "10 ALLEE DE BEAUMARCHAIS, - 36000 - CHATEAUROUX",
+    "téléphones": ["02 54 34 13 23", "02 54 07 07 27"],
+    "fax": "02 54 34 13 23 (Siège)",
+    "stades": [{
+        "nom": "",
+        "adresse": "TERRAIN ANNEXE 10 ALLEE DE BEAUMARCHAIS - 36000 - CHATEAUROUX",
+        "surface": "Gazon synthétique type SYE"
+    }],
+    "president": "JAMET CLAUDE",
+    "trésorier": "",
+    "secretaire": "POURNIN MICHEL",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00236/infos-cles"
+}, {
+    "nomClub": "U.S. MUNICIPALE MONTARGIS FOOTBALL",
+    "nbTeam": "23",
+    "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
+    "district": "DISTRICT LOIRET",
+    "correspondant": "LE SECRETAIRE ",
+    "adresse": "",
+    "emailsClub": ["usm.montargis.foot@wanadoo.fr", "500113@lcfoot.fr"],
+    "siegeSocial": "BP 20321, - 45203 - MONTARGIS CEDEX",
+    "téléphones": ["02 38 85 27 14"],
+    "fax": "02 38 85 27 14 (club)",
+    "stades": [{
+        "nom": "",
+        "adresse": "ROUTE FORESTIERE DES SEPT FRERES - 45200 - MONTARGIS",
+        "surface": "Gazon synthétique type SYE"
+    }],
+    "president": "LUBAC DAMIEN",
+    "trésorier": "DEPEE JEAN FRANCOIS",
+    "secretaire": "MICHOUX SERGE",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00249/infos-cles"
+}, {
+    "nomClub": "SP.A. ISSOUDUN",
+    "nbTeam": "9",
+    "ligue": "LIGUE DU CENTRE-VAL DE LOIRE",
+    "district": "DISTRICT INDRE",
+    "correspondant": "TSIOMO TSIOMO CHANCEL",
+    "adresse": "37 BIS RUE DE LA NATION 36100 ISSOUDUN",
+    "emailsClub": ["500120@lcfoot.fr", "chancelchampion@yahoo.fr"],
+    "siegeSocial": "Stade Henri MERILLAC, Route de Bourges, - 36100 - ISSOUDUN",
+    "téléphones": ["02 54 21 14 58"],
+    "fax": "06-44-23-99-53",
+    "stades": [{
+        "nom": "",
+        "adresse": "Route de Bourges - 36100 - ISSOUDUN",
+        "surface": "Pelouse naturelle"
+    }],
+    "president": "FOUQUET DIDIER",
+    "trésorier": "SENAC CATHERINE",
+    "secretaire": "SZYDA MICHAEL",
+    "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00256/infos-cles"
+}]

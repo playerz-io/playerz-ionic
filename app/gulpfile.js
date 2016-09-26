@@ -15,7 +15,8 @@ let ngAnnotate = require('gulp-ng-annotate');
 let useref = require('gulp-useref');
 let stripDebug = require('gulp-strip-debug');
 let babel = require('gulp-babel');
-let uglify = require('gulp-uglifyjs');
+let uglify = require('gulp-uglify');
+let pump = require('pump');
 
 let paths = {
     sass: ['./scss/**/*.scss'],
@@ -24,10 +25,19 @@ let paths = {
     useref: ['./www/*.html']
 };
 
-gulp.task('uglify', () => {
-  return gulp.src('./www/dist/dist_js/**/*.js')
-      .pipe(uglify())
-      .pipe(gulp.dest('./www/dist/dist_js'));
+
+gulp.task('concat', () => {
+    return gulp.src('./www/dist/dist_js/**/*.js')
+    .pipe(concat('concat.js'))
+    .pipe(gulp.dest('./www/dist/dist_js'));
+});
+
+gulp.task('uglify', (cb) => {
+    pump([
+        gulp.src('./www/dist/dist_js/**/*.js'),
+        uglify(),
+        gulp.dest('./www/dist/dist_js')
+    ], cb);
 });
 
 gulp.task('useref', (done) => {
@@ -93,9 +103,9 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('babel', () => {
-  return gulp.src('./www/dist/dist_js/**/*.js')
-      .pipe(babel())
-      .pipe(gulp.dest('./www/dist/dist_js'));
+    return gulp.src('./www/dist/dist_js/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('./www/dist/dist_js'));
 });
 
 gulp.task('strip-debug', () => {

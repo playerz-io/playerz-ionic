@@ -74,7 +74,7 @@ exports.forgotPassword = function(req, res) {
                 subject: 'Réinitialisation de votre mot de passe',
                 text: `Cliquez sur le lien ci-dessous pour réinitialiser le mot de passe de votre compte Playerz
 
-http://localhost:3000/password/#/reset/${token}
+http://localhost:8080/reset_password/${token}
 
 Ne prenez pas en compte ce mail, si vous n'avez pas demander à réinitialiser votre mot de passe.
 

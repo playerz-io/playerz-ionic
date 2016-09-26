@@ -55,7 +55,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             if (isNaN(percentPass)) {
                 percentPass = 0
             }
-            statistics.passesCompletion = percentPass;
+            statistics.passesCompletion = Math.round(percentPass);
 
             //count percentRelance
             percentRelance = statistics.defensiveAction * 100 / (statistics.defensiveAction + statistics.retrieveBalls);
@@ -63,7 +63,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             if (isNaN(percentRelance)) {
                 percentRelance = 0;
             }
-            statistics.relanceCompletion = percentRelance;
+            statistics.relanceCompletion = Math.round(percentRelance);
 
 
 

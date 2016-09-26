@@ -1,603 +1,571 @@
 [
 
-{
-  "nomClub": "RED STAR FOOTBALL CLUB",
-  "nbTeam": "21",
-  "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-  "district": "DISTRICT SEINE SAINT-DENIS",
-  "correspondant": "PILLON REGIS",
-  "adresse": "92 RUE DU DOCTEUR BAUER 93400 ST OUEN",
-  "emailsClub":  ["secretariat@redstar.fr", "redstarfc93@lpiff.fr"],
-  "siegeSocial": "92, RUE DOCTEUR BAUER, - 93400 - ST OUEN",
-  "téléphones": [ "0140110426", "01.40.12.48.17"],
-  "stades": [
-  {
-    "nom": "",
-    "adresse":"92,RUE DU DR.BAUER - 93400 - ST OUEN",
-    "surface":"PVC"
-  }
-  ],
-  "president": "HADDAD PATRICE",
-  "trésorier": "GIBRE MARIA",
-  "secretaire":"VALLETTE ANTOINE",
-  "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00154/infos-cles",
-  },
-  {
-    "nomClub": "VITRY C.A.",
-    "nbTeam": "21",
-    "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-    "district": "DISTRICT VAL DE MARNE",
-    "correspondant": "FOPPIANI JOCELYNE",
-    "adresse": "65 TER RUE DES PRES 94400 VITRY SUR SEINE",
-    "emailsClub": ["cavitry@lpiff.fr"],
-    "siegeSocial": "STADE PILLAUDIN, AV. DE LA REPUBLIQUE, Courrier à envoyer chez corresp. - 94400 - VITRY SUR SEINE",
-    "téléphones": ["01 46 80 64 98" , "01 46 80 01 55"],
-    "fax":"01 46 80 01 55",
-    "stades": [
     {
-      "nom": "",
-      "adresse":"94 RUE GABRIEL PERI - 94400 - VITRY SUR SEINE",
-      "surface":"Pelouse naturelle"
-    }
-    ],
-    "president":"FOPPIANI JEAN JACQUES",
-    "trésorier":"BLANCHARDIE JEAN MARC",
-    "secretaire":"ERGIL FUNDA",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00156/infos-cles"
+        "nomClub": "RED STAR FOOTBALL CLUB",
+        "nbTeam": "21",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE SAINT-DENIS",
+        "correspondant": "PILLON REGIS",
+        "adresse": "92 RUE DU DOCTEUR BAUER 93400 ST OUEN",
+        "emailsClub": ["secretariat@redstar.fr", "redstarfc93@lpiff.fr"],
+        "siegeSocial": "92, RUE DOCTEUR BAUER, - 93400 - ST OUEN",
+        "téléphones": ["0140110426", "01.40.12.48.17"],
+        "stades": [{
+            "nom": "",
+            "adresse": "92,RUE DU DR.BAUER - 93400 - ST OUEN",
+            "surface": "PVC"
+        }],
+        "president": "HADDAD PATRICE",
+        "trésorier": "GIBRE MARIA",
+        "secretaire": "VALLETTE ANTOINE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00154/infos-cles"
+    }, {
+        "nomClub": "VITRY C.A.",
+        "nbTeam": "21",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT VAL DE MARNE",
+        "correspondant": "FOPPIANI JOCELYNE",
+        "adresse": "65 TER RUE DES PRES 94400 VITRY SUR SEINE",
+        "emailsClub": ["cavitry@lpiff.fr"],
+        "siegeSocial": "STADE PILLAUDIN, AV. DE LA REPUBLIQUE, Courrier à envoyer chez corresp. - 94400 - VITRY SUR SEINE",
+        "téléphones": ["01 46 80 64 98", "01 46 80 01 55"],
+        "fax": "01 46 80 01 55",
+        "stades": [{
+            "nom": "",
+            "adresse": "94 RUE GABRIEL PERI - 94400 - VITRY SUR SEINE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "FOPPIANI JEAN JACQUES",
+        "trésorier": "BLANCHARDIE JEAN MARC",
+        "secretaire": "ERGIL FUNDA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00156/infos-cles"
     },
 
 
 
     {
-     "nomClub": "CLICHY S/SEINE U.S.",
-     "nbTeam": "18",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT DES HAUTS-DE-SEINE",
-     "correspondant": "BAZZONI JEAN LOUIS",
-     "adresse": "53 RUE KLOCK 92110 CLICHY",
-     "emailsClub": ["usa-clichy@lpiff.fr", "clichysports@lpiff.fr"],
-     "siegeSocial": "SECRETERIAT DU CLUB, 2 RUE JEAN WALTER, - 92110 - CLICHY SUR SEINE",
-     "téléphones": ["01 47 56 15 62","06 89 33 13 05" ],
+        "nomClub": "CLICHY S/SEINE U.S.",
+        "nbTeam": "18",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT DES HAUTS-DE-SEINE",
+        "correspondant": "BAZZONI JEAN LOUIS",
+        "adresse": "53 RUE KLOCK 92110 CLICHY",
+        "emailsClub": ["usa-clichy@lpiff.fr", "clichysports@lpiff.fr"],
+        "siegeSocial": "SECRETERIAT DU CLUB, 2 RUE JEAN WALTER, - 92110 - CLICHY SUR SEINE",
+        "téléphones": ["01 47 56 15 62", "06 89 33 13 05"],
 
-     "stades": [
-     {
-      "nom": "",
-      "adresse":"55, RUE VILLENEUVE - 92110 - CLICHY",
-      "surface":"Gazon synthétique type SYE"
-    }
-    ],
+        "stades": [{
+            "nom": "",
+            "adresse": "55, RUE VILLENEUVE - 92110 - CLICHY",
+            "surface": "Gazon synthétique type SYE"
+        }],
 
-    "president":"GODON FRANCIS",
-    "trésorier":"BAZZONI JEAN LOUIS",
-    "secretaire":"ADREF OUSSAMA",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00157/infos-cles"
+        "president": "GODON FRANCIS",
+        "trésorier": "BAZZONI JEAN LOUIS",
+        "secretaire": "ADREF OUSSAMA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00157/infos-cles"
     },
 
 
 
     {
-     "nomClub": "GARENNE COLOMBES A.F.",
-     "nbTeam": "17",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT DES HAUTS-DE-SEINE",
-     "correspondant": "DALLE EVELYNE",
-     "adresse": "",
-     "emailsClub": [ "afgc92@wanadoo.fr", "afgc@lpiff.fr",],
-     "siegeSocial": "MAISON DES CLUBS, 22, Rue Estienne d Orves, - 92250 - LA GARENNE COLOMBES",
-     "téléphones": [ "09 77 56 87 40","01 56 83 21 68",],
+        "nomClub": "GARENNE COLOMBES A.F.",
+        "nbTeam": "17",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT DES HAUTS-DE-SEINE",
+        "correspondant": "DALLE EVELYNE",
+        "adresse": "",
+        "emailsClub": ["afgc92@wanadoo.fr", "afgc@lpiff.fr"],
+        "siegeSocial": "MAISON DES CLUBS, 22, Rue Estienne d Orves, - 92250 - LA GARENNE COLOMBES",
+        "téléphones": ["09 77 56 87 40", "01 56 83 21 68"],
 
-     "stades": [
-     {
-      "nom": "",
-      "adresse":"36, Rue Paul Prouteau - 92250 - LA GARENNE COLOMBES",
-      "surface":"Gazon synthétique type SY"
-    }
-    ],
-    "president":"VIAUD ALAIN",
-    "trésorier":"KETTOU MERIEME",
-    "secretaire":"JOAQUIM GOMES PATRICIA",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00161/infos-cles"
+        "stades": [{
+            "nom": "",
+            "adresse": "36, Rue Paul Prouteau - 92250 - LA GARENNE COLOMBES",
+            "surface": "Gazon synthétique type SY"
+        }],
+        "president": "VIAUD ALAIN",
+        "trésorier": "KETTOU MERIEME",
+        "secretaire": "JOAQUIM GOMES PATRICIA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00161/infos-cles"
     },
 
 
 
     {
-     "nomClub": "CHARENTON C.A.P.",
-     "nbTeam": "20",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT VAL DE MARNE",
-     "correspondant": "GOURDOU JEAN PHILIPPE",
-     "adresse": "STADE HENRI GUERIN ILE MARTINET 94220 CHARENTON LE PONT",
-     "emailsClub": [ "capcharenton@lpiff.fr", "jpgourdou@capcharenton.fr",],
-     "siegeSocial": "STADE HENRI GUERIN, ILE MARTINET, - 94220 - CHARENTON",
-     "téléphones": [ "07.60.61.30.20"],
+        "nomClub": "CHARENTON C.A.P.",
+        "nbTeam": "20",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT VAL DE MARNE",
+        "correspondant": "GOURDOU JEAN PHILIPPE",
+        "adresse": "STADE HENRI GUERIN ILE MARTINET 94220 CHARENTON LE PONT",
+        "emailsClub": ["capcharenton@lpiff.fr", "jpgourdou@capcharenton.fr"],
+        "siegeSocial": "STADE HENRI GUERIN, ILE MARTINET, - 94220 - CHARENTON",
+        "téléphones": ["07.60.61.30.20"],
 
-     "stades": [
-     {
-      "nom": "STADE HENRI GUERIN",
-      "adresse":"QUAI DE CHARENTON ILE MARTINET - 94220 - CHARENTON LE PONT",
-      "surface":"Gazon synthétique type SYE"
-    }
-    ],
-    "president":"COUSO CARLOS",
-    "trésorier":"GUESSANT BERTRAND",
-    "secretaire":"GODIN VERONIQUE",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00164/infos-cles"
+        "stades": [{
+            "nom": "STADE HENRI GUERIN",
+            "adresse": "QUAI DE CHARENTON ILE MARTINET - 94220 - CHARENTON LE PONT",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "COUSO CARLOS",
+        "trésorier": "GUESSANT BERTRAND",
+        "secretaire": "GODIN VERONIQUE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00164/infos-cles"
     },
 
     {
-     "nomClub": "PARIS UNIVERSITE CLUB",
-     "nbTeam": "33",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT VAL DE MARNE",
-     "correspondant": "COMMENT BERNARD",
-     "adresse": "",
-     "emailsClub": [ "pucfoot@lpiff.fr",
-     ],
+        "nomClub": "PARIS UNIVERSITE CLUB",
+        "nbTeam": "33",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT VAL DE MARNE",
+        "correspondant": "COMMENT BERNARD",
+        "adresse": "",
+        "emailsClub": ["pucfoot@lpiff.fr"],
 
-     "siegeSocial": "17 Avenue Pierre De Coubertin, - 75013 - PARIS",
-     "téléphones": [ "09 53 39 24 19",],
-     "fax":"0144166262",
-     "stades": [
-     {
-      "nom": "", "adresse":"99 BD KELLERMANN - 75013 - PARIS 13",
-      "surface": "Pelouse naturelle",
-    }
-    ],
-    "president":"COMMENT BERNARD",
-    "trésorier":"FURIC PIERRE",
-    "secretaire":"LESCURE BERNARD",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00175/infos-cles"
+        "siegeSocial": "17 Avenue Pierre De Coubertin, - 75013 - PARIS",
+        "téléphones": ["09 53 39 24 19"],
+        "fax": "0144166262",
+        "stades": [{
+            "nom": "",
+            "adresse": "99 BD KELLERMANN - 75013 - PARIS 13",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "COMMENT BERNARD",
+        "trésorier": "FURIC PIERRE",
+        "secretaire": "LESCURE BERNARD",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00175/infos-cles"
     },
 
     {
-     "nomClub": "RENAULT E.S.",
-     "nbTeam": "1",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT DES HAUTS-DE-SEINE",
-     "correspondant": "MALINOSKY JEAN LUC",
-     "adresse": "",
-     "emailsClub": [ "esrenault@lpiff.fr", "jean-luc.malinosky@orange.fr",
-     ],
-     "siegeSocial": "ES RENAULT, 1 AVENUE DU GOLF, - 78288 - GUYANCOURT",
-     "téléphones": [ "09 71 53 06 51", "01 76 83 26 26", "01 76 83 57 59",],
+        "nomClub": "RENAULT E.S.",
+        "nbTeam": "1",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT DES HAUTS-DE-SEINE",
+        "correspondant": "MALINOSKY JEAN LUC",
+        "adresse": "",
+        "emailsClub": ["esrenault@lpiff.fr", "jean-luc.malinosky@orange.fr"],
+        "siegeSocial": "ES RENAULT, 1 AVENUE DU GOLF, - 78288 - GUYANCOURT",
+        "téléphones": ["09 71 53 06 51", "01 76 83 26 26", "01 76 83 57 59"],
 
-     "stades": [
-     {
-      "nom": "", "adresse":"TERRAIN FOOT / RUGBY Route du Pavillon l Abbé - 92190 - MEUDON",
-      "surface": "Gazon synthétique type SYE",
-    }
-    ],
-    "president":"HUILLET THIERRY",
-    "trésorier":"MALINOSKY JEAN LUC",
-    "secretaire":"MALINOSKY JEAN LUC",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00178/infos-cles"
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN FOOT / RUGBY Route du Pavillon l Abbé - 92190 - MEUDON",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "HUILLET THIERRY",
+        "trésorier": "MALINOSKY JEAN LUC",
+        "secretaire": "MALINOSKY JEAN LUC",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00178/infos-cles"
     },
 
     {
-     "nomClub": "CHOISY LE ROI A.S.",
-     "nbTeam": "26",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT VAL DE MARNE",
-     "correspondant": "AKABI YAMINA",
-     "adresse": "3 ALLÉE DUMONT D'URVILLE 94600 CHOISY LE ROI",
-     "emailsClub": [ "akabiyamina@yahoo.fr", "ascr@lpiff.fr",
-     ],
+        "nomClub": "CHOISY LE ROI A.S.",
+        "nbTeam": "26",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT VAL DE MARNE",
+        "correspondant": "AKABI YAMINA",
+        "adresse": "3 ALLÉE DUMONT D'URVILLE 94600 CHOISY LE ROI",
+        "emailsClub": ["akabiyamina@yahoo.fr", "ascr@lpiff.fr"],
 
-     "siegeSocial": "39/40 rue pompadour, - 94600 - CHOISY LE ROI",
-     "fax":"0148532769",
-     "stades": [
-     {
-      "nom": "", "adresse":"AVENUE JEAN BOUIN - 94600 - CHOISY LE ROI",
-      "surface": "Pelouse naturelle",
-    }
-    ],
-    "president":"AUBRY DAVID",
-    "trésorier":"EROUART ROBERT",
-    "secretaire":"BALIAS GERARD",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00180/infos-cles"
+        "siegeSocial": "39/40 rue pompadour, - 94600 - CHOISY LE ROI",
+        "fax": "0148532769",
+        "stades": [{
+            "nom": "",
+            "adresse": "AVENUE JEAN BOUIN - 94600 - CHOISY LE ROI",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "AUBRY DAVID",
+        "trésorier": "EROUART ROBERT",
+        "secretaire": "BALIAS GERARD",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00180/infos-cles"
     },
 
     {
-     "nomClub": "ASNIERES F.C.",
-     "nbTeam": "27",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT DES HAUTS-DE-SEINE",
-     "correspondant": "MARTINEZ ALAIN",
-     "adresse": "32 RUE TROUILLET DEREL 92600 ASNIERES SUR SEINE",
-     "emailsClub": [ "martinez.alain@numericable.fr", "fcasnieres@lpiff.fr",
-     ],
-     "siegeSocial": "40 RUE VICTOR HUGO, - 92600 - ASNIERES",
-     "téléphones": ["01 41 21 38 76",  ],
+        "nomClub": "ASNIERES F.C.",
+        "nbTeam": "27",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT DES HAUTS-DE-SEINE",
+        "correspondant": "MARTINEZ ALAIN",
+        "adresse": "32 RUE TROUILLET DEREL 92600 ASNIERES SUR SEINE",
+        "emailsClub": ["martinez.alain@numericable.fr", "fcasnieres@lpiff.fr"],
+        "siegeSocial": "40 RUE VICTOR HUGO, - 92600 - ASNIERES",
+        "téléphones": ["01 41 21 38 76"],
 
-     "stades": [
-     {
-      "nom": "", "adresse":"ANCIEN PAUL NICOLAS 12, RUE LOUIS ARMAND - 92600 - ASNIERES SUR SEINE",
-      "surface": "Gazon synthétique type SYE",
-    }
-    ],
-    "president":"MARTINEZ ALAIN",
-    "trésorier":"GUECHI DJAMEL",
-    "secretaire":"FERKOUS ABDELHALIM",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00185/infos-cles"
+        "stades": [{
+            "nom": "",
+            "adresse": "ANCIEN PAUL NICOLAS 12, RUE LOUIS ARMAND - 92600 - ASNIERES SUR SEINE",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "MARTINEZ ALAIN",
+        "trésorier": "GUECHI DJAMEL",
+        "secretaire": "FERKOUS ABDELHALIM",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00185/infos-cles"
     },
 
     {
-     "nomClub": "BOULOGNE BILLANCOURT AC",
-     "nbTeam": "50",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT DES HAUTS-DE-SEINE",
-     "correspondant": "MIGAUD PIERRETTE",
-     "adresse": "",
-     "emailsClub": [ "administration@acbbfoot.org", "acbb@lpiff.fr",
-     ],
-     "siegeSocial": "28, RUE DE SEVRES, STADE LE GALLO, - 92100 - BOULOGNE BILLANCOURT",
-     "téléphones": ["01.46.05.89.89", ],
+        "nomClub": "BOULOGNE BILLANCOURT AC",
+        "nbTeam": "50",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT DES HAUTS-DE-SEINE",
+        "correspondant": "MIGAUD PIERRETTE",
+        "adresse": "",
+        "emailsClub": ["administration@acbbfoot.org", "acbb@lpiff.fr"],
+        "siegeSocial": "28, RUE DE SEVRES, STADE LE GALLO, - 92100 - BOULOGNE BILLANCOURT",
+        "téléphones": ["01.46.05.89.89"],
 
-     "stades": [
-     {
-      "nom": "", "adresse":"TERRAIN 6 GAZON 1 BIS BD DE LA REPUBLIQUE - 92430 - MARNES LA COQUETTE",
-      "surface": "Pelouse naturelle",
-    }
-    ],
-    "president":"MIGAUD JACQUES",
-    "trésorier":"LERA PAOLO",
-    "secretaire":"GUENNEAU JEAN",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00196/infos-cles"
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN 6 GAZON 1 BIS BD DE LA REPUBLIQUE - 92430 - MARNES LA COQUETTE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "MIGAUD JACQUES",
+        "trésorier": "LERA PAOLO",
+        "secretaire": "GUENNEAU JEAN",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00196/infos-cles"
     },
 
     {
-     "nomClub": "JUVISY ACADEMIE DE FOOTBALL DE L ESSONNE",
-     "nbTeam": "7",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT ESSONNE",
-     "correspondant": "EVENO CHAUVET CHRISTOPHE",
-     "adresse": "37 AVENUE JEAN BOUIN 91170 VIRY CHATILLON",
-     "emailsClub": [ "jafessonne@yahoo.fr", "es-juvisy@lpiff.fr",
-     ],
-     "siegeSocial": "Stade George Maquin, 9 avenue de la passerelle, - 91170 - VIRY CHATILLON",
-     "téléphones": [ "06 28 35 83 11", "01 75 30 64 93",],
-     "fax":"01 75 30 64 93",
-     "stades": [
-     {
-      "nom": "", "adresse":"TERRAIN ANNEXE BOULEVARD DU GENERAL DE GAULLE - 91210 - DRAVEIL",
-      "surface": "Gazon synthétique type SY",
-    }
-    ],
-    "president":"EVENO CHAUVET CHRISTOPHE",
-    "trésorier":"EVENO CHAUVET CARMELINA",
-    "secretaire":"CUNHA FERREIRA ORLANDO",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00214/infos-cles"
+        "nomClub": "JUVISY ACADEMIE DE FOOTBALL DE L ESSONNE",
+        "nbTeam": "7",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT ESSONNE",
+        "correspondant": "EVENO CHAUVET CHRISTOPHE",
+        "adresse": "37 AVENUE JEAN BOUIN 91170 VIRY CHATILLON",
+        "emailsClub": ["jafessonne@yahoo.fr", "es-juvisy@lpiff.fr"],
+        "siegeSocial": "Stade George Maquin, 9 avenue de la passerelle, - 91170 - VIRY CHATILLON",
+        "téléphones": ["06 28 35 83 11", "01 75 30 64 93"],
+        "fax": "01 75 30 64 93",
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN ANNEXE BOULEVARD DU GENERAL DE GAULLE - 91210 - DRAVEIL",
+            "surface": "Gazon synthétique type SY"
+        }],
+        "president": "EVENO CHAUVET CHRISTOPHE",
+        "trésorier": "EVENO CHAUVET CARMELINA",
+        "secretaire": "CUNHA FERREIRA ORLANDO",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00214/infos-cles"
     },
 
     {
-     "nomClub": "VINCENNOIS C.O.",
-     "nbTeam": "31",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT VAL DE MARNE",
-     "correspondant": "SAMPAIO MICHAEL",
-     "adresse": "STADE LEO LAGRANGE ROUTE DE LA PYRAMIDE 75012 PARIS",
-     "emailsClub": [ "secretariat@covincennes.fr", "covincennes@lpiff.fr",
-     ],
-     "siegeSocial": "Stade Léo-Lagrange, Route de la Pyramide, (Face Parc Floral) - 75012 - PARIS",
-     "téléphones": [ "0143744799", "0955058590",],
+        "nomClub": "VINCENNOIS C.O.",
+        "nbTeam": "31",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT VAL DE MARNE",
+        "correspondant": "SAMPAIO MICHAEL",
+        "adresse": "STADE LEO LAGRANGE ROUTE DE LA PYRAMIDE 75012 PARIS",
+        "emailsClub": ["secretariat@covincennes.fr", "covincennes@lpiff.fr"],
+        "siegeSocial": "Stade Léo-Lagrange, Route de la Pyramide, (Face Parc Floral) - 75012 - PARIS",
+        "téléphones": ["0143744799", "0955058590"],
 
-     "stades": [
-     {
-      "nom": "", "adresse":"FACE AU PARC FLORAL ROUTE DE LA PYRAMIDE BOIS DE VINCENNES - 75012 - PARIS 12",
-      "surface": "Pelouse naturelle",
-    }
-    ],
-    "president":"CHEVIT FREDERIC",
-    "trésorier":"ROSSE ANNICK",
-    "secretaire":"FAUCHARD FRANCK",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00272/infos-cles"
+        "stades": [{
+            "nom": "",
+            "adresse": "FACE AU PARC FLORAL ROUTE DE LA PYRAMIDE BOIS DE VINCENNES - 75012 - PARIS 12",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "CHEVIT FREDERIC",
+        "trésorier": "ROSSE ANNICK",
+        "secretaire": "FAUCHARD FRANCK",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00272/infos-cles"
     },
 
     {
-     "nomClub": "BOURGET F.C.",
-     "nbTeam": "18",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT SEINE SAINT-DENIS",
-     "correspondant": "ROBERT MATTHIEU",
-     "adresse": "",
-     "emailsClub": [ "fcbourget@wanadoo.fr", "fcbourget@lpiff.fr",
-     ],
-     "siegeSocial": "9, rue Roger Salengro, Stade municipal complexe Legrand, - 93350 - LE BOURGET",
-     "téléphones": [ "01.48.37.05.93", ],
-     "fax":"01 48 38 68 06",
-     "stades": [
-     {
-      "nom": "", "adresse":"28 RUE ROGER SALENGRO - 93350 - LE BOURGET",
-      "surface": "Pelouse naturelle",
-    }
-    ],
-    "president":"ROBERT MATTHIEU",
-    "trésorier":"",
-    "secretaire":"",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00284/infos-cles"
+        "nomClub": "BOURGET F.C.",
+        "nbTeam": "18",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE SAINT-DENIS",
+        "correspondant": "ROBERT MATTHIEU",
+        "adresse": "",
+        "emailsClub": ["fcbourget@wanadoo.fr", "fcbourget@lpiff.fr"],
+        "siegeSocial": "9, rue Roger Salengro, Stade municipal complexe Legrand, - 93350 - LE BOURGET",
+        "téléphones": ["01.48.37.05.93"],
+        "fax": "01 48 38 68 06",
+        "stades": [{
+            "nom": "",
+            "adresse": "28 RUE ROGER SALENGRO - 93350 - LE BOURGET",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "ROBERT MATTHIEU",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00284/infos-cles"
     },
 
 
     {
-     "nomClub": "BRUNOY F.C.",
-     "nbTeam": "12",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT ESSONNE",
-     "correspondant": "SIGOT NATHALIE",
-     "adresse": "",
-     "emailsClub": [ "nathalie.sigot@laposte.net", "fcbrunoy@lpiff.fr",
-     ],
-     "siegeSocial": "STADE MUNICIPAL, 13 AVENUE DU GENERAL LECLERC, - 91800 - BRUNOY",
-     "téléphones": [ ],
-     "stades": [
-     {
-      "nom": "",
-      "adresse":"13 AVENUE DU GENERAL LECLERC - 91800 - BRUNOY",
-      "surface": "Pelouse naturelle",
-    }
-    ],
-    "president":"MESBAH HOCINE",
-    "trésorier":"",
-    "secretaire":"",
-    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00293/infos-cles"
+        "nomClub": "BRUNOY F.C.",
+        "nbTeam": "12",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT ESSONNE",
+        "correspondant": "SIGOT NATHALIE",
+        "adresse": "",
+        "emailsClub": ["nathalie.sigot@laposte.net", "fcbrunoy@lpiff.fr"],
+        "siegeSocial": "STADE MUNICIPAL, 13 AVENUE DU GENERAL LECLERC, - 91800 - BRUNOY",
+        "téléphones": [],
+        "stades": [{
+            "nom": "",
+            "adresse": "13 AVENUE DU GENERAL LECLERC - 91800 - BRUNOY",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "MESBAH HOCINE",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00293/infos-cles"
+    }, {
+        "nomClub": "BRETIGNY FOOT C.S.",
+        "nbTeam": "19",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT ESSONNE",
+        "correspondant": "DUBREUIL AMAURY",
+        "adresse": "6 RUE DE LEUVILLE 91220 BRETIGNY SUR ORGE",
+        "emailsClub": ["csbfootball@orange.fr"],
+        "siegeSocial": "6 rue de Leuville, - 91220 - BRETIGNY SUR ORGE",
+        "téléphones": ["01 60 84 39 54", "01 60 84 19 24"],
+        "stades": [{
+            "nom": "",
+            "adresse": "11 ALLEE DES NOISETIERS - 91220 - BRETIGNY SUR ORGE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "BRILLANT ANDRE",
+        "trésorier": "SCHVOCH VERONIQUE",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00343/infos-cles"
+    }, {
+        "nomClub": "PARIS C.A.",
+        "nbTeam": "23",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT DES HAUTS-DE-SEINE",
+        "correspondant": "DEFAIT THIERRY",
+        "adresse": "",
+        "emailsClub": ["thierry.defait@caparisfootball.fr", "secretariat@caparisfootball.fr", "caparis@lpiff.fr"],
+        "siegeSocial": "CLUB ATHLETIQUE DE PARIS, STADE DE LA PORTE DIDOT, 18, Av. Marc Sangnier - 75014 - PARIS",
+        "téléphones": ["01 45 42 80 82"],
+        "stades": [{
+            "nom": "",
+            "adresse": "3 AVENUE MAURICE D OCAGNE - 75014 - PARIS 14",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "DEFAIT THIERRY",
+        "trésorier": "TARDIEU STEPHANE",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00346/infos-cles"
+    }, {
+        "nomClub": "LIZEEN C.A.",
+        "nbTeam": "11",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE ET MARNE NORD",
+        "correspondant": "PEREIRA DE CARVALHO AVELINO",
+        "adresse": "10 RUE DE LA CROIX 77440 LIZY SUR OURCQ",
+        "emailsClub": ["calizy-ourcq@outlook.fr"],
+        "siegeSocial": "MAIRIE, PLACE DE VERDUN, - 77440 - LIZY SUR OURCQ",
+        "téléphones": ["01 60 01 70 35"],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN HONNEUR RUE DU STADE - 77440 - LIZY SUR OURCQ",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "PEREIRA DE CARVALHO AVELINO",
+        "trésorier": "LEITE MARTIUS JOSE MANUEL",
+        "secretaire": "LEPAGE EMILIE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00350/infos-cles"
+    }, {
+        "nomClub": "PARIS ST GERMAIN F.C.",
+        "nbTeam": "34",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT YVELINES",
+        "correspondant": "DUPRE FRANCIS",
+        "adresse": "",
+        "emailsClub": ["fdupre@psg.fr", "psgassoc@lpiff.fr"],
+        "siegeSocial": "7 avenue du président Kennedy, - 78100 - ST GERMAIN EN LAYE",
+        "téléphones": ["01 39 73 34 67", "01 39 73 09 31"],
+        "stades": [{
+            "nom": "",
+            "adresse": "99 BD KELLERMANN - 75013 - PARIS 13",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "ROUSSEAU BENOIT",
+        "trésorier": "DESPERAK IRENE",
+        "secretaire": "DUPRE FRANCIS",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00364/infos-cles"
     },
+
     {
-     "nomClub": "BRETIGNY FOOT C.S.",
-     "nbTeam": "19",
-     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-     "district": "DISTRICT ESSONNE",
-     "correspondant": "DUBREUIL AMAURY",
-     "adresse": "6 RUE DE LEUVILLE 91220 BRETIGNY SUR ORGE",
-     "emailsClub": [ "csbfootball@orange.fr",
-     ],
-     "siegeSocial": "6 rue de Leuville, - 91220 - BRETIGNY SUR ORGE",
-     "téléphones": [ "01 60 84 39 54", "01 60 84 19 24",],
-     "stades": [{"nom": "", "adresse":"11 ALLEE DES NOISETIERS - 91220 - BRETIGNY SUR ORGE",
-     "surface": "Pelouse naturelle",}],
-     "president":"BRILLANT ANDRE",
-     "trésorier":"SCHVOCH VERONIQUE",
-     "secretaire":"",
-     "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00343/infos-cles"
-     },
-     {
-       "nomClub": "PARIS C.A.",
-       "nbTeam": "23",
-       "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-       "district": "DISTRICT DES HAUTS-DE-SEINE",
-       "correspondant": "DEFAIT THIERRY",
-       "adresse": "",
-       "emailsClub": [ "thierry.defait@caparisfootball.fr", "secretariat@caparisfootball.fr", "caparis@lpiff.fr",
-       ],
-       "siegeSocial": "CLUB ATHLETIQUE DE PARIS, STADE DE LA PORTE DIDOT, 18, Av. Marc Sangnier - 75014 - PARIS",
-       "téléphones": [ "01 45 42 80 82",],
-       "stades": [{"nom": "", "adresse":"3 AVENUE MAURICE D OCAGNE - 75014 - PARIS 14",
-       "surface": "Gazon synthétique type SYE",}],
-       "president":"DEFAIT THIERRY",
-       "trésorier":"TARDIEU STEPHANE",
-       "secretaire":"",
-       "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00346/infos-cles"
-       },
-       {
-         "nomClub": "LIZEEN C.A.",
-         "nbTeam": "11",
-         "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-         "district": "DISTRICT SEINE ET MARNE NORD",
-         "correspondant": "PEREIRA DE CARVALHO AVELINO",
-         "adresse": "10 RUE DE LA CROIX 77440 LIZY SUR OURCQ",
-         "emailsClub": [ "calizy-ourcq@outlook.fr",
-         ],
-         "siegeSocial": "MAIRIE, PLACE DE VERDUN, - 77440 - LIZY SUR OURCQ",
-         "téléphones": [ "01 60 01 70 35",],
-         "stades": [{"nom": "", "adresse":"TERRAIN HONNEUR RUE DU STADE - 77440 - LIZY SUR OURCQ",
-         "surface": "Pelouse naturelle",}],
-         "president":"PEREIRA DE CARVALHO AVELINO",
-         "trésorier":"LEITE MARTIUS JOSE MANUEL",
-         "secretaire":"LEPAGE EMILIE",
-         "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00350/infos-cles"
-         },
-         {
-           "nomClub": "PARIS ST GERMAIN F.C.",
-           "nbTeam": "34",
-           "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-           "district": "DISTRICT YVELINES",
-           "correspondant": "DUPRE FRANCIS",
-           "adresse": "",
-           "emailsClub": [ "fdupre@psg.fr", "psgassoc@lpiff.fr",
-           ],
-           "siegeSocial": "7 avenue du président Kennedy, - 78100 - ST GERMAIN EN LAYE",
-           "téléphones": [ "01 39 73 34 67", "01 39 73 09 31",],
-           "stades": [{"nom": "", "adresse":"99 BD KELLERMANN - 75013 - PARIS 13",
-           "surface": "Pelouse naturelle",}],
-           "president":"ROUSSEAU BENOIT",
-           "trésorier":"DESPERAK IRENE",
-           "secretaire":"DUPRE FRANCIS",
-           "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00364/infos-cles"
-           },
+        "nomClub": "A. DES SPORTS DE CHELLES",
+        "nbTeam": "24",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE ET MARNE NORD",
+        "correspondant": "MELLOUK SALIHA",
+        "adresse": "",
+        "emailsClub": ["aschellessecretariat@hotmail.com", "aschelles@lpiff.fr"],
+        "siegeSocial": "61 Avenue HENIN PROLONGEE, - 77500 - CHELLES",
+        "téléphones": [],
+        "fax": "01 64 72 16 77",
+        "stades": [{
+            "nom": "",
+            "adresse": "AVENUE DU GRAND CERF - 77500 - CHELLES",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "RASCAR EDOUARD",
+        "trésorier": "BOUMRAR SAMIRA",
+        "secretaire": "MELLOUK SALIHA",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00378/infos-cles"
+    },
 
-           {
-             "nomClub": "A. DES SPORTS DE CHELLES",
-             "nbTeam": "24",
-             "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-             "district": "DISTRICT SEINE ET MARNE NORD",
-             "correspondant": "MELLOUK SALIHA",
-             "adresse": "",
-             "emailsClub": [ "aschellessecretariat@hotmail.com", "aschelles@lpiff.fr",
-             ],
-             "siegeSocial": "61 Avenue HENIN PROLONGEE, - 77500 - CHELLES",
-             "téléphones": [ ],
-             "fax":"01 64 72 16 77",
-             "stades": [{"nom": "", "adresse":"AVENUE DU GRAND CERF - 77500 - CHELLES",
-             "surface": "Gazon synthétique type SYE", }],
-             "president":"RASCAR EDOUARD",
-             "trésorier":"BOUMRAR SAMIRA",
-             "secretaire":"MELLOUK SALIHA",
-             "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00378/infos-cles"
-             },
-
-             {
-               "nomClub": "PAYS DE FONTAINEBLEAU R.C.",
-               "nbTeam": "22",
-               "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-               "district": "DISTRICT SEINE ET MARNE SUD",
-               "correspondant": "BOURDIN INGRID",
-               "adresse": "",
-               "emailsClub": [ "ingridbourdin@yahoo.fr", "pays-fontainebleau@lpiff.fr",
-               ],
-               "siegeSocial": "B.P. 102, - 77302 - FONTAINEBLEAU CEDEX",
-               "téléphones": [ "01.64.22.44.14", "09.59.64.72.96",],
-               "stades": [{"nom": "", "adresse":"TERRAIN F4 ROUTE DE L ERMITAGE - 77300 - FONTAINEBLEAU",
-               "surface": "Pelouse naturelle",}],
-               "president":"MORO AMNE SERGE",
-               "trésorier":"BOURDIN INGRID",
-               "secretaire":"BOURDIN LIONEL",
-               "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00456/infos-cles"
-               },
-               {
-                 "nomClub": "STADE DE L EST PAVILLONNAIS",
-                 "nbTeam": "20",
-                 "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                 "district": "DISTRICT SEINE SAINT-DENIS",
-                 "correspondant": "DUCA SOPHIE",
-                 "adresse": "",
-                 "emailsClub": [ "sepfoot@lpiff.fr",
-                 ],
-                 "siegeSocial": "20, AV. ANATOLE FRANCE, Stade Léo Lagrange, Section Football - 93320 - PAVILLONS SOUS BOIS",
-                 "téléphones": [ "0148478660",],
-                 "stades": [{"nom": "", "adresse":"TERRAIN ANNEXE 21 AVENUE ANATOLE FRANCE - 93320 - LES PAVILLONS SOUS BOIS",
-                 "surface": "Gazon synthétique type SYE",}],
-                 "president":"NASSUIF MOHAMED",
-                 "trésorier":"RAFFARD JEAN PIERRE",
-                 "secretaire":"GUEMENE FANNY",
-                 "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00472/infos-cles"
-                 },
-                 {
-                   "nomClub": "GAGNY U.S. MUNICIPALE",
-                   "nbTeam": "17",
-                   "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                   "district": "DISTRICT SEINE SAINT-DENIS",
-                   "correspondant": "SANCHEZ ROBERT",
-                   "adresse": "",
-                   "emailsClub": [ "rsanch21@gmail.com", "usmgagny@lpiff.fr",
-                   ],
-                   "siegeSocial": "Stade Jean Bouin, 1 ter rue Jean Bouin, - 93220 - GAGNY",
-                   "téléphones": [ ],
-                   "fax":"01.43.88.40.51",
-                   "stades": [{"nom": "", "adresse":"2 RUE JEAN BOUIN - 93220 - GAGNY",
-                   "surface": "Gazon synthétique type SYE",}],
-                   "president":"ZAMIT BERNARD",
-                   "trésorier":"HADDADJ BOUSSAD",
-                   "secretaire":"",
-                   "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00489/infos-cles"
-                   },
-                   {
-                     "nomClub": "POISSY A.S.",
-                     "nbTeam": "25",
-                     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                     "district": "DISTRICT YVELINES",
-                     "correspondant": "DELAETER JORDANE",
-                     "adresse": "",
-                     "emailsClub": [ "administration@aspoissyfootball.fr", "aspoissy@lpiff.fr",
-                     ],
-                     "siegeSocial": "8 rue du Stade, - 78300 - POISSY",
-                     "téléphones": [ "01 39 11 63 58",],
-                     "stades":
-                     [
-                     {
-                      "nom": "", "adresse":"42 RUE DAIGREMONT LA MALADRERIE - 78300 - POISSY",
-                      "surface": "Pelouse naturelle",
-                    }
-                    ],
-                    "president":"SEUILLET BRUNO",
-                    "trésorier":"",
-                    "secretaire":"",
-                    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00496/infos-cles"
-                    },
-                    {
-                     "nomClub": "CHATOU A.S.",
-                     "nbTeam": "20",
-                     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                     "district": "DISTRICT YVELINES",
-                     "correspondant": "MAI PATRICE",
-                     "adresse": "",
-                     "emailsClub": [ "chatoufootball@orange.fr", "aschatou@lpiff.fr",
-                     ],
-                     "siegeSocial": "197, RUE DES LANDES, - 78400 - CHATOU",
-                     "téléphones": [ "01 30 71 10 84",],
-                     "stades": [
-                     {
-                      "nom": "", "adresse":"197 RUE DES LANDES - 78400 - CHATOU",
-                      "surface": "Pelouse naturelle",
-                    }
-                    ],
-                    "president":"CHARPILIENNE JEAN PIERRE",
-                    "trésorier":"MAI PATRICIA",
-                    "secretaire":"",
-                    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00501/infos-cles"
-                    },
-                    {
-                     "nomClub": "FERRIERES EN BRIE U.S. DOMAINE",
-                     "nbTeam": "10",
-                     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                     "district": "DISTRICT SEINE ET MARNE NORD",
-                     "correspondant": "SRODA JEAN LOUIS",
-                     "adresse": "28 ALL DES CHARMILLES 77164 FERRIERES",
-                     "emailsClub": [ "jladors@free.fr", "usdf@lpiff.fr",
-                     ],
-                     "siegeSocial": "MAIRIE, - 77164 - FERRIERES EN BRIE",
-                     "téléphones": [ ],
-                     "fax":"0609034448",
-                     "stades": [
-                     {
-                      "nom": "", "adresse":"ALLEE DE LA TAFFARETTE - 77164 - FERRIERES EN BRIE",
-                      "surface": "Pelouse naturelle",
-                    }
-                    ],
-                    "president":"SRODA JEAN LOUIS",
-                    "trésorier":"FEDIDE MATTHIEU",
-                    "secretaire":"BELHADJ FABIENNE",
-                    "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00541/infos-cles"
-                    },
-                    {
-                     "nomClub": "PONTHIERRY U.S.",
-                     "nbTeam": "13",
-                     "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                     "district": "DISTRICT SEINE ET MARNE SUD",
-                     "correspondant": "HOUY DANIELLE",
-                     "adresse": "",
-                     "emailsClub": [ "houy.gerard@free.fr", "usponthierry@lpiff.fr",
-                     ],
-                     "siegeSocial": "B. P. 60, - 77983 - ST FARGEAU PTHIERRY CEDEX",
-                     "téléphones": [ "09 50 80 80 77", ],
-                     "fax":"06 25 09 61 34",
-                     "stades": [{"nom": "", "adresse":"RUE EMILE FILEE - 77310 - ST FARGEAU PONTHIERRY",
-                     "surface": "Pelouse naturelle",}],
-                     "president":"",
-                     "trésorier":"",
-                     "secretaire":"",
-                     "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00554/infos-cles"
-                     },
-                     {
-                       "nomClub": "FRESNES A.A.S.",
-                       "nbTeam": "21",
-                       "ligue": "LIGUE DE PARIS ILE DE FRANCE",
-                       "district": "DISTRICT VAL DE MARNE",
-                       "correspondant": "GONCALVES HERREROS ROLAND",
-                       "adresse": "",
-                       "emailsClub": [ "aasfresnesfoot@lpiff.fr",
-                       ],
-                       "siegeSocial": "Stade Gaston ROUSSEL, 12 avenue du Parc des Sports, - 94260 - FRESNES",
-                       "téléphones": [ ],
-                       "fax":"09 83 57 60 62",
-                       "stades": [
-                       {
-                        "nom": "", "adresse":"12 AVENUE DU PARC DES SPORTS - 94260 - FRESNES",
-                        "surface": "Gazon synthétique type SYE",
-                      }
-                      ],
-                      "president":"LEFEVRE PIERRE",
-                      "trésorier":"RATEAU SYLVAIN",
-                      "secretaire":"GONCALVES HERREROS ROLAND",
-                      "urlFFF":"http://www.fff.fr/la-vie-des-clubs/00560/infos-cles"
-                      },
-                      ]
+    {
+        "nomClub": "PAYS DE FONTAINEBLEAU R.C.",
+        "nbTeam": "22",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE ET MARNE SUD",
+        "correspondant": "BOURDIN INGRID",
+        "adresse": "",
+        "emailsClub": ["ingridbourdin@yahoo.fr", "pays-fontainebleau@lpiff.fr"],
+        "siegeSocial": "B.P. 102, - 77302 - FONTAINEBLEAU CEDEX",
+        "téléphones": ["01.64.22.44.14", "09.59.64.72.96"],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN F4 ROUTE DE L ERMITAGE - 77300 - FONTAINEBLEAU",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "MORO AMNE SERGE",
+        "trésorier": "BOURDIN INGRID",
+        "secretaire": "BOURDIN LIONEL",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00456/infos-cles"
+    }, {
+        "nomClub": "STADE DE L EST PAVILLONNAIS",
+        "nbTeam": "20",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE SAINT-DENIS",
+        "correspondant": "DUCA SOPHIE",
+        "adresse": "",
+        "emailsClub": ["sepfoot@lpiff.fr"],
+        "siegeSocial": "20, AV. ANATOLE FRANCE, Stade Léo Lagrange, Section Football - 93320 - PAVILLONS SOUS BOIS",
+        "téléphones": ["0148478660"],
+        "stades": [{
+            "nom": "",
+            "adresse": "TERRAIN ANNEXE 21 AVENUE ANATOLE FRANCE - 93320 - LES PAVILLONS SOUS BOIS",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "NASSUIF MOHAMED",
+        "trésorier": "RAFFARD JEAN PIERRE",
+        "secretaire": "GUEMENE FANNY",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00472/infos-cles"
+    }, {
+        "nomClub": "GAGNY U.S. MUNICIPALE",
+        "nbTeam": "17",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE SAINT-DENIS",
+        "correspondant": "SANCHEZ ROBERT",
+        "adresse": "",
+        "emailsClub": ["rsanch21@gmail.com", "usmgagny@lpiff.fr"],
+        "siegeSocial": "Stade Jean Bouin, 1 ter rue Jean Bouin, - 93220 - GAGNY",
+        "téléphones": [],
+        "fax": "01.43.88.40.51",
+        "stades": [{
+            "nom": "",
+            "adresse": "2 RUE JEAN BOUIN - 93220 - GAGNY",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "ZAMIT BERNARD",
+        "trésorier": "HADDADJ BOUSSAD",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00489/infos-cles"
+    }, {
+        "nomClub": "POISSY A.S.",
+        "nbTeam": "25",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT YVELINES",
+        "correspondant": "DELAETER JORDANE",
+        "adresse": "",
+        "emailsClub": ["administration@aspoissyfootball.fr", "aspoissy@lpiff.fr"],
+        "siegeSocial": "8 rue du Stade, - 78300 - POISSY",
+        "téléphones": ["01 39 11 63 58"],
+        "stades": [{
+            "nom": "",
+            "adresse": "42 RUE DAIGREMONT LA MALADRERIE - 78300 - POISSY",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "SEUILLET BRUNO",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00496/infos-cles"
+    }, {
+        "nomClub": "CHATOU A.S.",
+        "nbTeam": "20",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT YVELINES",
+        "correspondant": "MAI PATRICE",
+        "adresse": "",
+        "emailsClub": ["chatoufootball@orange.fr", "aschatou@lpiff.fr"],
+        "siegeSocial": "197, RUE DES LANDES, - 78400 - CHATOU",
+        "téléphones": ["01 30 71 10 84"],
+        "stades": [{
+            "nom": "",
+            "adresse": "197 RUE DES LANDES - 78400 - CHATOU",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "CHARPILIENNE JEAN PIERRE",
+        "trésorier": "MAI PATRICIA",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00501/infos-cles"
+    }, {
+        "nomClub": "FERRIERES EN BRIE U.S. DOMAINE",
+        "nbTeam": "10",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE ET MARNE NORD",
+        "correspondant": "SRODA JEAN LOUIS",
+        "adresse": "28 ALL DES CHARMILLES 77164 FERRIERES",
+        "emailsClub": ["jladors@free.fr", "usdf@lpiff.fr"],
+        "siegeSocial": "MAIRIE, - 77164 - FERRIERES EN BRIE",
+        "téléphones": [],
+        "fax": "0609034448",
+        "stades": [{
+            "nom": "",
+            "adresse": "ALLEE DE LA TAFFARETTE - 77164 - FERRIERES EN BRIE",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "SRODA JEAN LOUIS",
+        "trésorier": "FEDIDE MATTHIEU",
+        "secretaire": "BELHADJ FABIENNE",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00541/infos-cles"
+    }, {
+        "nomClub": "PONTHIERRY U.S.",
+        "nbTeam": "13",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT SEINE ET MARNE SUD",
+        "correspondant": "HOUY DANIELLE",
+        "adresse": "",
+        "emailsClub": ["houy.gerard@free.fr", "usponthierry@lpiff.fr"],
+        "siegeSocial": "B. P. 60, - 77983 - ST FARGEAU PTHIERRY CEDEX",
+        "téléphones": ["09 50 80 80 77"],
+        "fax": "06 25 09 61 34",
+        "stades": [{
+            "nom": "",
+            "adresse": "RUE EMILE FILEE - 77310 - ST FARGEAU PONTHIERRY",
+            "surface": "Pelouse naturelle"
+        }],
+        "president": "",
+        "trésorier": "",
+        "secretaire": "",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00554/infos-cles"
+    }, {
+        "nomClub": "FRESNES A.A.S.",
+        "nbTeam": "21",
+        "ligue": "LIGUE DE PARIS ILE DE FRANCE",
+        "district": "DISTRICT VAL DE MARNE",
+        "correspondant": "GONCALVES HERREROS ROLAND",
+        "adresse": "",
+        "emailsClub": ["aasfresnesfoot@lpiff.fr"],
+        "siegeSocial": "Stade Gaston ROUSSEL, 12 avenue du Parc des Sports, - 94260 - FRESNES",
+        "téléphones": [],
+        "fax": "09 83 57 60 62",
+        "stades": [{
+            "nom": "",
+            "adresse": "12 AVENUE DU PARC DES SPORTS - 94260 - FRESNES",
+            "surface": "Gazon synthétique type SYE"
+        }],
+        "president": "LEFEVRE PIERRE",
+        "trésorier": "RATEAU SYLVAIN",
+        "secretaire": "GONCALVES HERREROS ROLAND",
+        "urlFFF": "http://www.fff.fr/la-vie-des-clubs/00560/infos-cles"
+    }
+]
