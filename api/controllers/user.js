@@ -12,6 +12,7 @@ let auth = require('../config/mailgun').auth;
 let bcrypt = require('bcrypt');
 var Coach = require('../models/coach').modelCoach;
 let Utils = require('../utils');
+let fromMail = 'support@playerz.io';
 
 exports.forgotPassword = function(req, res) {
 
@@ -24,7 +25,7 @@ exports.forgotPassword = function(req, res) {
 
     if (email) {
         if (!Utils.validateEmail(email)) {
-            let msg = "Respecter le format d'une addresse mail"
+            let msg = "Respecter le format d'une adresse mail"
             return Utils.error(res, msg);
         }
     }
@@ -49,7 +50,7 @@ exports.forgotPassword = function(req, res) {
                 }
 
                 if (coach.connected === 'facebook') {
-                    let msg = "Votre connexion à été effectué avec Facebook !!";
+                    let msg = "Votre connexion a été effectué avec Facebook !!";
                     return Utils.error(res, msg);
                 }
 
@@ -70,13 +71,15 @@ exports.forgotPassword = function(req, res) {
             console.log(coach.email);
             let mailOptions = {
                 to: coach.email,
-                from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                from: fromMail,
                 subject: 'Réinitialisation de votre mot de passe',
-                text: `Cliquez sur le lien ci-dessous pour réinitialiser le mot de passe de votre compte Playerz
+                text: `Bonjour, ${coach.first_name}
 
-http://localhost:8080/reset_password/${token}
+Cliquez sur le lien ci-dessous pour réinitialiser le mot de passe de votre compte Playerz
 
-Ne prenez pas en compte ce mail, si vous n'avez pas demander à réinitialiser votre mot de passe.
+http://playerz.io/reset_password/${token}
+
+Ne prenez pas en compte ce mail, si vous n'avez pas demandé à réinitialiser votre mot de passe.
 
 Cordialement,
 
@@ -149,9 +152,11 @@ exports.resetPassword = function(req, res) {
 
             let mailOptions = {
                 to: coach.email,
-                from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                from: fromMail,
                 subject: 'Changement de mot de passe',
-                text: `Votre mot de passe a bien été changé
+                text: `Bonjour, ${coach.first_name}
+
+Votre mot de passe a bien été changé.
 
 Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
 
@@ -230,9 +235,19 @@ exports.changePassword = (req, res) => {
 
                         let mailOptions = {
                             to: coach.email,
-                            from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
-                            subject: 'Le mot a été changé',
-                            text: `Votre mot de passe a bien été changé`
+                            from: fromMail,
+                            subject: 'Changement de mot de passe',
+                            text: `Bonjour, ${coach.first_name}
+
+Votre mot de passe a bien été changé.
+
+Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+
+contact@playerz.io
+
+Cordialement,
+
+L'équipe Playerz`
                         };
 
                         smtpTransport.sendMail(mailOptions, (err) => {
@@ -286,6 +301,22 @@ exports.changeEmail = (req, res) => {
         async.waterfall([
 
             (done) => {
+                Coach.find({
+                    email: newEmail
+                }, (err, coach) => {
+                    console.log('new coach', coach);
+                    if (coach.length === 0) {
+                        done(null);
+                    } else {
+                        return res.status(400).json({
+                            success: false,
+                            msg: `Ce mail est déjà associé à un autre compte Playerz`
+                        });
+                    }
+                });
+            },
+
+            (done) => {
                 Coach.findById(coachId, (err, coach) => {
                     if (err)
                         return Utils.errorIntern(res, err);
@@ -296,7 +327,7 @@ exports.changeEmail = (req, res) => {
                         return res.status(400).json({
                             success: false,
                             msg: `La nouveau email est le même que l'ancien`
-                        })
+                        });
                     }
 
                     coach.save((err) => {
@@ -304,27 +335,47 @@ exports.changeEmail = (req, res) => {
                             return Utils.errorIntern(res, err);
                     });
 
-                    done(null, oldEmail, newEmail);
+                    done(null, oldEmail, newEmail, coach);
 
                 });
             },
 
-            (oldEmail, newEmail, done) => {
+            (oldEmail, newEmail, coach, done) => {
 
                 let smtpTransport = nodemailer.createTransport(mg(auth));
 
                 let mailOptionsOldMail = {
                     to: oldEmail,
-                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    from: fromMail,
                     subject: `Changement d'email`,
-                    text: `Ce mail n'est plus lié à Playerz`
+                    text: `Bonjour, ${coach.first_name}
+
+Cette adresse mail n'est plus lié à votre compte Playerz.
+
+Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+
+contact@playerz.io
+
+Cordialement,
+
+L'équipe Playerz`
                 };
 
                 let mailOptionsNewMail = {
                     to: newEmail,
-                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
+                    from: fromMail,
                     subject: `Changement d'email`,
-                    text: `Est bien votre nouveau mail`
+                    text: `Bonjour, ${coach.first_name}
+
+Votre adresse mail a bien été changé. Voici, votre nouvelle adresse lié à Playerz.
+
+Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+
+contact@playerz.io
+
+Cordialement,
+
+L'équipe Playerz`
                 };
 
                 smtpTransport.sendMail(mailOptionsOldMail, (err) => {
@@ -391,9 +442,19 @@ exports.changeNumber = (req, res) => {
 
                 let mailOptions = {
                     to: coach.email,
-                    from: 'postmaster@sandbox23aac40875ed43708170487989939d3f.mailgun.org',
-                    subject: `Changement de télphone`,
-                    text: `Le numéro de téléphone à changé`
+                    from: fromMail,
+                    subject: `Changement de numéro de téléphone`,
+                    text: `Bonjour, ${coach.first_name}
+
+Votre numéro de téléphone a bien été changé.
+
+Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+
+contact@playerz.io
+
+Cordialement,
+
+L'équipe Playerz`
                 };
 
                 smtpTransport.sendMail(mailOptions, (err) => {

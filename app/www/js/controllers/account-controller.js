@@ -20,7 +20,12 @@ angular.module('starter.controller.account', [])
 
             })
             .error((data) => {
-                console.log(data);
+                var alertPopup = $ionicPopup.alert({
+                    cssClass: 'popup-center-text',
+                    title: 'Error',
+                    template: data.msg
+                });
+                console.log(data.msg);
             })
     };
 
@@ -29,9 +34,15 @@ angular.module('starter.controller.account', [])
             .success((data) => {
                 console.log(data);
                 AuthService.logout();
+                $cordovaToast.showShortBottom(data.msg);
                 $state.go('login')
             })
             .error((data) => {
+                var alertPopup = $ionicPopup.alert({
+                    cssClass: 'popup-center-text',
+                    title: 'Error',
+                    template: data.msg
+                });
                 console.log(data);
             })
     };
@@ -39,9 +50,15 @@ angular.module('starter.controller.account', [])
     self.changeNumber = () => {
         UserService.changeNumber(self.coach.number_tel)
             .success((data) => {
+                $cordovaToast.showShortBottom(data.msg);
                 console.log(data);
             })
             .error((data) => {
+                var alertPopup = $ionicPopup.alert({
+                    cssClass: 'popup-center-text',
+                    title: 'Error',
+                    template: data.msg
+                });
                 console.log(data);
             })
     };
