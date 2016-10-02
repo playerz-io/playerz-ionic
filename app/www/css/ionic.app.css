@@ -10715,43 +10715,36 @@ html {
   #match-stat #stat #defensive-action {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/shield-icon.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #attempts-on-target {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/attempt_on_target_icon.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #attempts-off-target {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/attempt_off_target_icon.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #goal {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/goal.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #ball-retrieve {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/football-players-on-game.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #ball-lost {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/passeRatee_saumon.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #stat #passe-failed {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/ballonPerdu2_saumon.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
 
@@ -10796,13 +10789,11 @@ html {
   #match-stat #div-act-dead-time #off-side {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/two-black-flags.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
   #match-stat #div-act-dead-time #undo-action {
     width: 10vh;
     height: 10vh;
-    background-image: url("../img/undo-icon.png");
     background-size: 10vh 10vh;
     background-repeat: no-repeat; }
 

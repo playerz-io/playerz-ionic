@@ -728,7 +728,7 @@ $size-background-action: 10vh;
     #{$link} {
         width: $size-background-action;
         height: $size-background-action;
-        background-image: url($background);
+        
         background-size: $size-background-action $size-background-action;
         background-repeat: no-repeat;
     }

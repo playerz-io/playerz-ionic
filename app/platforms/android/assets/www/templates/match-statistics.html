@@ -1,4 +1,4 @@
-<ion-view id="match-stat" title="{{matchStat.getBillingName()}}">
+  <ion-view id="match-stat" title="{{matchStat.getBillingName()}}">
     <ion-nav-bar class="bar-positive" align-title="center">
         <ion-nav-back-button class="button-clear">
         </ion-nav-back-button>
@@ -10,38 +10,73 @@
         <div class="row">
             <div class="col col-10 text-center" id="stat">
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"
-                   id='{{matchStat.ACTION._DEFENSIVE.id}}'
-                   on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
-                </a>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
-                   id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
-                   on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
-                </a>
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"
+                 id='{{matchStat.ACTION._DEFENSIVE.id}}'
+                 on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
+              </a> -->
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
-                   id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}"
-                    on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
-                </a>
+              <img src="{{matchStat.defensiveActionImg}}" id='{{matchStat.ACTION._DEFENSIVE.id}}'
+              on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)"
+              ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"/>
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
-                   id="{{matchStat.ACTION._BUT.id}}"
-                   on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
-                </a>
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
+                 id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
+              </a> -->
 
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._BALL_LOST.name)"
-                   id="{{matchStat.ACTION._BALL_LOST.id}}"
-                   on-tap="matchStat.onTap(matchStat.ACTION._BALL_LOST.name)">
-                </a>
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
-                   id="{{matchStat.ACTION._PASSE_FAILED.id}}"
-                   on-tap="matchStat.onTap(matchStat.ACTION._PASSE_FAILED.name)">
-                </a>
-                <a ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
-                   id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
-                   on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
-                </a>
+              <img ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
+                 src="{{matchStat.attemptsOnTargetImg}}"  id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
+              </img>
+
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
+                 id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}"
+                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
+              </a> -->
+
+              <img ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
+                 src="{{matchStat.attemptsOffTargetImg}}" id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
+              </img>
+
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
+                 id="{{matchStat.ACTION._BUT.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
+              </a> -->
+
+              <img ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
+                 src="{{matchStat.butImg}}" id="{{matchStat.ACTION._BUT.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
+              </img>
+
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._BALL_LOST.name)"
+                 id="{{matchStat.ACTION._BALL_LOST.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._BALL_LOST.name)">
+              </a> -->
+
+              <img ng-click="matchStat.countMainAction(matchStat.ACTION._BALL_LOST.name)"
+                 src="{{matchStat.ballLostImg}}"  id="{{matchStat.ACTION._BALL_LOST.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._BALL_LOST.name)">
+              </img>
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
+                 id="{{matchStat.ACTION._PASSE_FAILED.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._PASSE_FAILED.name)">
+              </a> -->
+              <img ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
+                 src="{{matchStat.passesFailedImg}}" id="{{matchStat.ACTION._PASSE_FAILED.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._PASSE_FAILED.name)">
+              </img>
+              <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
+                 id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
+              </a> -->
+
+              <img ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
+                 src="{{matchStat.retrieveBallsImg}}" id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
+                 on-tap="matchStat.onTap(matchStat.ACTION _RETRIEVE_BALL.name)">
+              </img>
+
 
             </div>
 

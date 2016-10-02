@@ -12,14 +12,15 @@ let auth = require('../config/mailgun').auth;
 let bcrypt = require('bcrypt');
 var Coach = require('../models/coach').modelCoach;
 let Utils = require('../utils');
-let fromMail = 'support@playerz.io';
+let fromMail = `"Playerz" <support@playerz.io>`;
+let mailTemplate = require('../templates/mail').template;
 
 exports.forgotPassword = function(req, res) {
 
     let email = req.body.email;
 
     if (!email) {
-        let msg = 'Saisissez un email !!'
+        let msg = 'Saisissez une adresse mail !'
         return Utils.error(res, msg);
     }
 
@@ -81,10 +82,18 @@ http://playerz.io/reset_password/${token}
 
 Ne prenez pas en compte ce mail, si vous n'avez pas demandé à réinitialiser votre mot de passe.
 
-Cordialement,
+A bientôt,
 
-L'équipe Playerz
-                `
+Playerz Team`,
+              html: mailTemplate(coach.first_name, `Cliquez sur le lien ci-dessous pour réinitialiser le mot de passe de votre compte Playerz :
+              <br>
+              <br>
+              <a href="http://playerz.io/reset_password/${token}">http://playerz.io/reset_password/${token}</a>
+              <br>
+              <br>
+              Ne prenez pas en compte ce mail, si vous n'avez pas demandé à réinitialiser votre mot de passe.
+
+`, `Réinitialisation de votre mot de passe`)
 
             };
 
@@ -166,7 +175,14 @@ Cordialement,
 
 L'équipe Playerz
 
-                `
+                `,
+              html: mailTemplate(coach.first_name, `Votre mot de passe a bien été changé.
+              <br>
+              <br>
+              Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+              <br>
+              <br>
+              <a href='mailto:contact@playerz.io'>contact@playerz.io</a>`, 'Changement de mot de passe')
             };
 
             smtpTransport.sendMail(mailOptions, (err) => {
@@ -245,9 +261,16 @@ Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'a
 
 contact@playerz.io
 
-Cordialement,
+A bientôt,
 
-L'équipe Playerz`
+Playerz Team`,
+                          html: mailTemplate(coach.first_name, `Votre mot de passe a bien été changé.
+                          <br>
+                          <br>
+                          Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+                          <br>
+                          <br>
+                          <a href='mailto:contact@playerz.io'>contact@playerz.io</a>`, 'Changement de mot de passe')
                         };
 
                         smtpTransport.sendMail(mailOptions, (err) => {
@@ -258,7 +281,7 @@ L'équipe Playerz`
                         return res.status(200).json({
                             success: true,
                             coach,
-                            msg: 'Votre mot de passe à été mis à jour'
+                            msg: 'Votre mot de passe a été mis à jour'
                         });
                     });
 
@@ -281,7 +304,7 @@ exports.changeEmail = (req, res) => {
     if (!newEmail) {
         return res.status(400).json({
             success: false,
-            msg: "Saisissez une addresse mail"
+            msg: "Saisissez une adresse mail"
         });
     }
 
@@ -289,7 +312,7 @@ exports.changeEmail = (req, res) => {
         if (!Utils.validateEmail(newEmail)) {
             return res.status(400).json({
                 success: false,
-                msg: "Respecter le format d'une addresse mail"
+                msg: "Respecter le format d'une adresse mail"
             });
         }
     }
@@ -356,9 +379,16 @@ Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'a
 
 contact@playerz.io
 
-Cordialement,
+A bientôt,
 
-L'équipe Playerz`
+Playerz Team`,
+                    html: mailTemplate(coach.first_name, `Cette adresse mail n'est plus lié à votre compte Playerz.
+                    <br>
+                    <br>
+                    Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+                    <br>
+                    <br>
+                    <a href='mailto:contact@playerz.io'>contact@playerz.io</a>`, `Changement d'email`)
                 };
 
                 let mailOptionsNewMail = {
@@ -373,9 +403,18 @@ Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'a
 
 contact@playerz.io
 
-Cordialement,
+A bientôt,
 
-L'équipe Playerz`
+Playerz Team`,
+html: mailTemplate(coach.first_name, `Votre adresse mail a bien été changé. Voici, votre nouvelle adresse lié à Playerz.
+<br>
+<br>
+Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+<br>
+<br>
+<a href='mailto:contact@playerz.io'>contact@playerz.io</a>`, `Changement d'email`)
+
+
                 };
 
                 smtpTransport.sendMail(mailOptionsOldMail, (err) => {
@@ -452,9 +491,16 @@ Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'a
 
 contact@playerz.io
 
-Cordialement,
+A bientôt,
 
-L'équipe Playerz`
+Playerz Team`,
+                html: mailTemplate(coach.first_name, `Votre numéro de téléphone a bien été changé.
+                <br>
+                <br>
+                Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'adresse ci-dessus:
+                <br>
+                <br>
+                <a href='mailto:contact@playerz.io'>contact@playerz.io</a>`, `Changement de numéro de téléphone`)
                 };
 
                 smtpTransport.sendMail(mailOptions, (err) => {

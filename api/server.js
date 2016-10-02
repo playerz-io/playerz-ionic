@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
+app.use(express.static(__dirname + '/public'));
 //get our request parameters
 //TODO: a voir
 app.use(bodyParser.urlencoded({
