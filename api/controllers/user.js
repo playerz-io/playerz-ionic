@@ -429,7 +429,7 @@ Si vous n'êtes pas à l'origine de cette action, veuillez nous contacter à l'a
 
                 return res.status(202).json({
                     success: true,
-                    mgs: 'Votre email a changé'
+                    msg: 'Votre email a changé'
                 });
             }
         ]);
@@ -510,7 +510,7 @@ Playerz Team`,
 
                 return res.status(202).json({
                     success: true,
-                    mgs: 'Votre numéro a changé'
+                    msg: 'Votre numéro a changé'
                 });
             }
         ]);
