@@ -1,7 +1,7 @@
 'use strict';
 angular.module('starter.controller.account', [])
 
-.controller('AccountCtrl', function($state, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService, UserService) {
+.controller('AccountCtrl', function($cordovaToast, $state, $http, StorageService, ProfileService, AuthService, $ionicModal, $scope, FacebookService, UserService) {
 
     let self = this;
 

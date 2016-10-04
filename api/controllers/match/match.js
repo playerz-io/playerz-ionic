@@ -13,9 +13,8 @@ let real_time = require('../../real_time');
 let async = require('async');
 let Football = require('../../sports/football/football');
 let privateMatch = require('./private');
-let _ = require('underscore');
 
-
+const POSITION_ERROR_MSG = `Il vous manque un joueur qui a pour poste favori : `;
 //add new match
 exports.addMatch = function(req, res) {
     let token = getToken(req.headers);
@@ -583,7 +582,7 @@ exports.defaultPosition = (req, res) => {
                         return res.status(400).json({
                             success: false,
                             msg: `Vous devez avoir avoir au moins ${Football.NUMBER_FIRST_PLAYER} joueurs`
-                        })
+                        });
                     }
 
                     if (match.playerSelected.length !== 0) {
@@ -657,7 +656,6 @@ exports.defaultPosition = (req, res) => {
                                 if (match.formation === Football.QQDEUX) {
 
                                     for (let player of playersTeam) {
-
 
                                         // placement du gardien
                                         if (player.favourite_position === Football.GD && GD_QQD === false) {
@@ -747,8 +745,30 @@ exports.defaultPosition = (req, res) => {
                                             maxSubstitute++;
                                             continue;
                                         }
+
+
                                     } //for
 
+                                    //Check if all positon are full
+                                    if (!GD_QQD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.GD);
+                                    }
+
+                                    if (!DFG_QQD || !DFD_QQD || !ARD_QQD || !ARG_QQD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.DEF + ' ou ' + Football.AR);
+                                    }
+
+                                    if (!MCD_QQD || !MCG_QQD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MD + ' ou ' + Football.MC);
+                                    }
+
+                                    if (!MD_QQD || !MG_QQD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MO + ' ou ' + Football.AI);
+                                    }
+
+                                    if (!ATG_QQD || !ATD_QQD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AV + ' ou ' + Football.AI);
+                                    }
                                 } //if QQDEUX
 
                                 if (match.formation === Football.QTTROIS) {
@@ -842,6 +862,27 @@ exports.defaultPosition = (req, res) => {
                                         }
                                     } //for
 
+                                    //Check if all positon are full
+                                    if (!GD_QTT) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.GD);
+                                    }
+
+                                    if (!DFG_QTT || !DFD_QTT || !ARD_QTT || !ARG_QTT) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.DEF + ' ou ' + Football.AR);
+                                    }
+
+                                    if (!MCD_QTT || !MCG_QTT || !MC_QTT) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MD + ' ou ' + Football.MC);
+                                    }
+
+                                    if (!ATD_QTT || !ATG_QTT) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MO + ' ou ' + Football.AI);
+                                    }
+
+                                    if (!AV_QTT) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AV + ' ou ' + Football.AI);
+                                    }
+
                                 } //if QQTTROIS
 
                                 //TCDEUX
@@ -932,6 +973,27 @@ exports.defaultPosition = (req, res) => {
                                             continue;
                                         }
                                     } //for
+
+                                    //Check if all positon are full
+                                    if (!GD_TCD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.GD);
+                                    }
+
+                                    if (!DC_TCD || !DCG_TCD || !DCD_TCD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.DEF + ' ou ' + Football.AR);
+                                    }
+
+                                    if (!ARG_TCD || !ARD_TCD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AR + ' ou ' + Football.AI);
+                                    }
+
+                                    if (!MCD_TCD || !MCG_TCD || !MC_TCD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MD + ' ou ' + Football.MC);
+                                    }
+
+                                    if (!ATD_TCD || !ATG_TCD) {
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AV + ' ou ' + Football.AI);
+                                    }
 
                                 } //if TCDEUX
                             } //if Football
