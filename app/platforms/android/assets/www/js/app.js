@@ -271,6 +271,7 @@ angular.module('starter', [
             }
         })
         .state('tactique', {
+            cache: false,
             url: '/tactique',
             templateUrl: 'templates/tactique.html',
             controller: 'TactiqueCtrl as tactique',

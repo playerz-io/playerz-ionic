@@ -109,11 +109,13 @@ angular.module('starter.controller.match-stat', [])
         self.defensiveActionImg = self.ACTION._DEFENSIVE.img;
         self.attemptsOnTargetImg = self.ACTION._ATTEMPTS_ON_TARGET.img;
         self.attemptsOffTargetImg = self.ACTION._ATTEMPTS_OFF_TARGET.img;
-        self.butImg= self.ACTION._BUT.img;
+        self.butImg = self.ACTION._BUT.img;
         self.retrieveBallsImg = self.ACTION._RETRIEVE_BALL.img;
         self.ballLostImg = self.ACTION._BALL_LOST.img;
         self.passesFailedImg = self.ACTION._PASSE_FAILED.img;
-      //  self.dual_goalkeeper = self.ACTION._DUAL_GOALKEEPER.img;
+        self.offSideImg = self.ACTION._OFF_SIDE.img;
+        self.undoActionImg = self.ACTION._UNDO_ACTION.img;
+        //  self.dual_goalkeeper = self.ACTION._DUAL_GOALKEEPER.img;
 
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');
@@ -121,10 +123,10 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.onTapImg = () => {
-          self.defActionImg = self.ACTION._DEFENSIVE.img_click;
-          $timeout(() => {
-            self.defActionImg = self.ACTION._DEFENSIVE.img;
-          }, 350);
+            self.defActionImg = self.ACTION._DEFENSIVE.img_click;
+            $timeout(() => {
+                self.defActionImg = self.ACTION._DEFENSIVE.img;
+            }, 350);
         };
 
 
@@ -141,7 +143,7 @@ angular.module('starter.controller.match-stat', [])
                 // id = `#${self.ACTION._DEFENSIVE.id}`;
                 self.defensiveActionImg = self.ACTION._DEFENSIVE.img_click;
                 $timeout(() => {
-                  self.defensiveActionImg = self.ACTION._DEFENSIVE.img;
+                    self.defensiveActionImg = self.ACTION._DEFENSIVE.img;
                 }, 350);
 
             } else if (action === self.ACTION._ATTEMPTS_ON_TARGET.name) {
@@ -151,7 +153,7 @@ angular.module('starter.controller.match-stat', [])
                 // id = `#${self.ACTION._ATTEMPTS_ON_TARGET.id}`;
                 self.attemptsOnTargetImg = self.ACTION._ATTEMPTS_ON_TARGET.img_click;
                 $timeout(() => {
-                  self.attemptsOnTargetImg = self.ACTION._ATTEMPTS_ON_TARGET.img;
+                    self.attemptsOnTargetImg = self.ACTION._ATTEMPTS_ON_TARGET.img;
                 }, 350);
 
 
@@ -163,7 +165,7 @@ angular.module('starter.controller.match-stat', [])
 
                 self.attemptsOffTargetImg = self.ACTION._ATTEMPTS_OFF_TARGET.img_click;
                 $timeout(() => {
-                  self.attemptsOffTargetImg = self.ACTION._ATTEMPTS_OFF_TARGET.img;
+                    self.attemptsOffTargetImg = self.ACTION._ATTEMPTS_OFF_TARGET.img;
                 }, 350);
 
 
@@ -173,27 +175,34 @@ angular.module('starter.controller.match-stat', [])
                 // id = `#${self.ACTION._BUT.id}`;
                 self.butImg = self.ACTION._BUT.img_click;
                 $timeout(() => {
-                  self.butImg = self.ACTION._BUT.img;
+                    self.butImg = self.ACTION._BUT.img;
                 }, 350);
 
             } else if (action === self.ACTION._RETRIEVE_BALL.name) {
+                console.log(action);
                 // img = self.ACTION._RETRIEVE_BALL.img;
                 // img_click = self.ACTION._RETRIEVE_BALL.img_click;
                 // id = `#${self.ACTION._RETRIEVE_BALL.id}`;
                 self.retrieveBallsImg = self.ACTION._RETRIEVE_BALL.img_click;
                 $timeout(() => {
-                  self.retrieveBallsImg = self.ACTION._RETRIEVE_BALL.img;
+                    self.retrieveBallsImg = self.ACTION._RETRIEVE_BALL.img;
                 }, 350);
 
             } else if (action === self.ACTION._UNDO_ACTION.name) {
                 // img = self.ACTION._UNDO_ACTION.img;
                 // img_click = self.ACTION._UNDO_ACTION.img_click;
                 // id = `#${self.ACTION._UNDO_ACTION.id}`;
+                self.undoActionImg = self.ACTION._UNDO_ACTION.img_click;
+                $timeout(() => {
+                    self.undoActionImg = self.ACTION._UNDO_ACTION.img;
+                }, 350);
 
             } else if (action === self.ACTION._OFF_SIDE.name) {
-                img = self.ACTION._OFF_SIDE.img;
-                img_click = self.ACTION._OFF_SIDE.img_click;
-                id = `#${self.ACTION._OFF_SIDE.id}`;
+
+                self.offSideImg = self.ACTION._OFF_SIDE.img_click;
+                $timeout(() => {
+                    self.offSideImg = self.ACTION._OFF_SIDE.img;
+                }, 350);
 
             } else if (action === self.ACTION._BALL_LOST.name) {
                 // img = self.ACTION._BALL_LOST.img;
@@ -201,7 +210,7 @@ angular.module('starter.controller.match-stat', [])
                 // id = `#${self.ACTION._BALL_LOST.id}`;
                 self.ballLostImg = self.ACTION._BALL_LOST.img_click;
                 $timeout(() => {
-                  self.ballLostImg = self.ACTION._BALL_LOST.img;
+                    self.ballLostImg = self.ACTION._BALL_LOST.img;
                 }, 350);
             } else if (action === self.ACTION._PASSE_FAILED.name) {
                 // img = self.ACTION._PASSE_FAILED.img;
@@ -210,7 +219,7 @@ angular.module('starter.controller.match-stat', [])
 
                 self.passesFailedImg = self.ACTION._PASSE_FAILED.img_click;
                 $timeout(() => {
-                  self.passesFailedImg = self.ACTION._PASSE_FAILED.img;
+                    self.passesFailedImg = self.ACTION._PASSE_FAILED.img;
                 }, 350);
             }
 

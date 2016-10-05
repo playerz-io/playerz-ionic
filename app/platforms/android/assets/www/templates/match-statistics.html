@@ -74,7 +74,7 @@
 
               <img ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
                  src="{{matchStat.retrieveBallsImg}}" id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
-                 on-tap="matchStat.onTap(matchStat.ACTION _RETRIEVE_BALL.name)">
+                 on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
               </img>
 
 
@@ -162,8 +162,11 @@
             </div>
             <div class="col col-10 text-center" id="div-act-dead-time">
 
-                <a ng-click="matchStat.countMainAction('offSide')" id="off-side" on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)">
-                </a>
+                <img ng-click="matchStat.countMainAction('offSide')"
+                      id="off-side"
+                      src="{{matchStat.offSideImg}}"
+                      on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)">
+                </img>
 
                 <a ng-click="matchStat.isFoulsActivated(); matchStat.cardActived = !matchStat.cardActived" id="double-card">
                     <img src="img/double-carton.png" alt="Cartons" height="36" width="36" />
@@ -189,8 +192,11 @@
                     </a>
                 </div>
 
-                <a ng-click="matchStat.removeAction()" id="undo-action" on-tap="matchStat.onTap(matchStat.ACTION._UNDO_ACTION.name)">
-                </a>
+                <img ng-click="matchStat.removeAction()"
+                id="undo-action"
+                src="{{matchStat.undoActionImg}}" 
+                on-tap="matchStat.onTap(matchStat.ACTION._UNDO_ACTION.name)">
+              </img>
             </div>
         </div>
     </ion-content>
