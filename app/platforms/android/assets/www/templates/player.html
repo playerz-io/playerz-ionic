@@ -7,12 +7,64 @@
     <ion-content class="padding text-center">
         <h1>{{player.player.first_name}}</h1>
         <h2>{{player.player.last_name}}</h2>
-        <p >{{player.player.favourite_position}}</p>
+        <p>{{player.player.favourite_position}}</p>
         <p ng-if='player.nbrMatchPlayed !== 0'>Nombre de match joués : {{player.nbrMatchPlayed}}</p>
         <p ng-if='player.nbrMatchPlayed === 0'>
-          Ce joueur n'a joué aucun match
+            Ce joueur n'a joué aucun match
         </p>
-        <ion-slide-box ng-if='player.nbrMatchPlayed !== 0' on-slide-changed="slideHasChanged($index)">
+        <ion-slide-box ng-if="player.nbrMatchPlayed !== 0 && player.player.favourite_position  !== 'Gardien'" on-slide-changed="slideHasChanged($index)">
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>But: {{player.statisticsGlobal.but}}</p>
+                        <p>Passes décisives: {{player.statisticsGlobal.assist}}</p>
+                        <p>Tirs Cadrés: {{player.statisticsGlobal.attemptsOnTarget}}</p>
+                    </div>
+                    <div>
+                        <p>Hors-jeu: {{player.statisticsGlobal.offSide}}</p>
+                        <p>Avant-Dernière-Passe: {{player.statisticsGlobal.beforeAssist}}</p>
+                        <p>Tirs Non Cadrés: {{player.statisticsGlobal.attemptsOffTarget}}</p>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Fautes subies: {{player.statisticsGlobal.foulsSuffered}}</p>
+                        <p>Fautes commises: {{player.statisticsGlobal.foulsCommitted}}</p>
+                        <p>Gestes défensives: {{player.statisticsGlobal.defensiveAction}}</p>
+                    </div>
+                    <div>
+                        <p>Cartons jaunes: {{player.statisticsGlobal.yellowCard}}</p>
+                        <p>Cartons rouges: {{player.statisticsGlobal.redCard}}</p>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="content-stat">
+                    <div>
+                        <p>Ballons récupérés: {{player.statisticsGlobal.retrieveBalls}}</p>
+                        <p>Ballons perdus: {{player.statisticsGlobal.ballLost}}</p>
+                        <p>Ballons joués: {{player.statisticsGlobal.ballPlayed}}</p>
+                    </div>
+                    <div>
+                        <p>Passes ratées: {{player.statisticsGlobal.passesFailed}}</p>
+                        <p>Pourcentage de passes réussies: {{player.statisticsGlobal.passesCompletion}}%</p>
+                        <p>Pourcentage de relance: {{player.statisticsGlobal.relanceCompletion}}%</p>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        <ion-slide-box ng-if="player.nbrMatchPlayed !== 0 && player.player.favourite_position  === 'Gardien'" on-slide-changed="slideHasChanged($index)">
+            <ion-slide ng-show="player.player.favourite_position === 'Gardien'">
+                <div class="content-stat">
+                    <div>
+                        <p>Arrêts: {{player.statisticsGlobal.saves}}</p>
+                        <p>Sorties aériennes: {{player.statisticsGlobal.sorties_aeriennes}}</p>
+                        <p>Face à face: {{player.statisticsGlobal.dual_goalkeeper}}</p>
+                    </div>
+                </div>
+            </ion-slide>
             <ion-slide>
                 <div class="content-stat">
                     <div>

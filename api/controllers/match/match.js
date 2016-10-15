@@ -70,8 +70,9 @@ exports.addMatch = function(req, res) {
                 return Utils.errorIntern(res, err);
             }
 
+            let nameClub = coach.team.name_club;
 
-            real_time.addStatisticsMatch(newMatch._id.toString(), idCoach, newMatch);
+            real_time.addStatisticsMatch(newMatch._id.toString(), idCoach, newMatch, nameClub);
 
             newMatch.save((err) => {
                 if (err) {
@@ -80,7 +81,6 @@ exports.addMatch = function(req, res) {
             });
 
             coach.team.matchs.push(newMatch);
-            let nameClub = coach.team.name_club;
 
             coach.save((err, coach) => {
                 if (err)
@@ -1369,7 +1369,7 @@ exports.putMatchFinished = (req, res) => {
                 if (matchCoach.statistics.but_opponent === 0) {
                     matchCoach.statistics.clean_sheet = 1;
                 }
-
+                console.log('matchCoach.statistics.clean_sheet', matchCoach.statistics);
                 matchCoach.result = result;
 
                 coach.save((err) => {

@@ -58,7 +58,7 @@ exports.addActions = (match_ID, coach_ID, actions) => {
         .child(MATCHS)
         .child(match_ID)
         .child(ACTIONS);
-        
+
     if (actions[1] === 'but_opponent') {
         refMatch.push(actions);
     }
@@ -85,8 +85,10 @@ exports.removeLastActions_firebase = (match_ID, coach_ID) => {
     });
 
 };
-exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
+exports.addStatisticsMatch = (match_ID, coach_ID, match, nameClub) => {
 
+
+    console.log(nameClub);
     let statistics = match.statistics;
     console.log(match.type, match.place, match.against_team);
     let refMatch = ref
@@ -94,6 +96,7 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match) => {
         .child(MATCHS)
         .child(match_ID)
         .set({
+            name_team: nameClub,
             type: match.type,
             place: match.place,
             against_team: match.against_team,

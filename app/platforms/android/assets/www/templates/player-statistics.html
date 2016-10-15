@@ -27,11 +27,11 @@
         <div id="stat">
 
 
-            <div>
+            <div ng-if="playerStat.player.favourite_position === 'Gardien'">
                 <div>
-                    <p>
+                    <!-- <p>
                         Clean Sheet: {{playerStat.stat.clean_sheet}}
-                    </p>
+                    </p> -->
                     <p>
                         Arrêts: {{playerStat.stat.saves}}
                     </p>

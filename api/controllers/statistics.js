@@ -218,6 +218,13 @@ exports.countMainAction = function(req, res) {
                     let id_statPlayer = schema[sizeSchema - 3];
                     //  let id_playerRetrieveBall = schema[0];
 
+                    //lorsque la taille du schema est égale à 2, celà signifie qu'il contient
+                    //seulement le temps et l'action  donc pas de joueur donc on ne fait rien
+                    if(schema.length === 2){
+                      return;
+                    }
+
+
                     done(null, stringAction, match, schema, sizeSchema, id_statPlayer, coach);
 
                 });

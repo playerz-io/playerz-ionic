@@ -40,7 +40,8 @@ let MatchSchema = new Schema({
       totalYellowCard: Number,
       but_opponent: Number,
       totalPassesFailed: Number,
-      totalDefensiveAction: Number
+      totalDefensiveAction: Number,
+      clean_sheet: Number
     },
     schemas: [],
     belongs_to: String,
