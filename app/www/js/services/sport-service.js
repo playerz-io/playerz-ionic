@@ -5,7 +5,11 @@ angular.module('starter')
 
 
         let getSports = () => $http.get(`${API_ENDPOINT.url}/sports`);
+
+        let getPosts = () => $http.get(`${API_ENDPOINT.url}/posts`);
+
         return {
-            getSports
+            getSports,
+            getPosts
         }
     });

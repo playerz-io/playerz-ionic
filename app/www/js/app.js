@@ -198,7 +198,6 @@ angular.module('starter', [
             resolve: {
                 getSports: function(SportService) {
                     return SportService.getSports();
-
                 }
             }
         })
@@ -245,7 +244,12 @@ angular.module('starter', [
             views: {
                 'troop-tab': {
                     templateUrl: "templates/troop.html",
-                    controller: 'TroopTabCtrl as troop'
+                    controller: 'TroopTabCtrl as troop',
+                    resolve: {
+                        getPosts: function(SportService) {
+                            return SportService.getPosts();
+                        }
+                    }
                 }
             }
         })
