@@ -2,7 +2,7 @@
 
 angular
     .module('starter.controller.register', [])
-    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast, UserService) {
+    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast, UserService, SportService, getSports) {
         let self = this;
 
         self.user = {
@@ -22,10 +22,7 @@ angular
 
         self.user.birth_date = new Date();
 
-        self.sports = [{
-            name: 'Football',
-            value: 'Football'
-        }];
+        self.sports = getSports.data.sports;
 
         self.register = function() {
             console.log(self.user);

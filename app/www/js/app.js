@@ -194,7 +194,13 @@ angular.module('starter', [
         .state('register', {
             url: '/register',
             templateUrl: 'templates/register.html',
-            controller: 'RegisterCtrl as register'
+            controller: 'RegisterCtrl as register',
+            resolve: {
+                getSports: function(SportService) {
+                    return SportService.getSports();
+
+                }
+            }
         })
         .state('register.profile', {
             url: '/register-profile',

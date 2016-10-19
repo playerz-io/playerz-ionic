@@ -5,7 +5,9 @@
                 <div class="input-label">
                     Sport
                 </div>
-                <select ng-model="register.user.sport" ng-init="register.user.sport = 'Football'">
+                <select ng-model="register.user.sport"
+                        ng-init="register.user.sport = 'Football'"
+                        ng-options="v for v in register.sports">
                     <option ng-selected="true">Football</option>
                 </select>
             </label>
