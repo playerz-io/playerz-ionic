@@ -658,7 +658,7 @@ exports.defaultPosition = (req, res) => {
                                     for (let player of playersTeam) {
 
                                         // placement du gardien
-                                        if (player.favourite_position === Football.GD && GD_QQD === false) {
+                                        if (player.favourite_position === Football.POST.GD && GD_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'GD', idCoach, playersSelected, foundMatch);
                                             console.log('defaultPosition_____', playersSelected);
                                             GD_QQD = true;
@@ -667,7 +667,7 @@ exports.defaultPosition = (req, res) => {
 
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DFG_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DFG_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DFG', idCoach, playersSelected, foundMatch);
                                             console.log('defaultPosition_____', playersSelected);
                                             DFG_QQD = true;
@@ -675,7 +675,7 @@ exports.defaultPosition = (req, res) => {
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DFD_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DFD_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DFD', idCoach, playersSelected, foundMatch);
                                             console.log('defaultPosition_____', playersSelected);
                                             DFD_QQD = true;
@@ -683,56 +683,56 @@ exports.defaultPosition = (req, res) => {
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AR || player.favourite_position === Football.DEF) && ARG_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.AR || player.favourite_position === Football.POST.DEF) && ARG_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected, foundMatch);
                                             ARG_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AR || player.favourite_position === Football.DEF) && ARD_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.AR || player.favourite_position === Football.POST.DEF) && ARD_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected, foundMatch);
                                             ARD_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MCD_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MCD_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MCD', idCoach, playersSelected, foundMatch);
                                             MCD_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MCG_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MCG_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MCG', idCoach, playersSelected, foundMatch);
                                             MCG_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && MD_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.MO || player.favourite_position === Football.POST.AI) && MD_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MD', idCoach, playersSelected, foundMatch);
                                             MD_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && MG_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.MO || player.favourite_position === Football.POST.AI) && MG_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MG', idCoach, playersSelected, foundMatch);
                                             MG_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AV || player.favourite_position === Football.AI) && ATG_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.AV || player.favourite_position === Football.POST.AI) && ATG_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ATG', idCoach, playersSelected, foundMatch);
                                             ATG_QQD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AV || player.favourite_position === Football.AI) && ATD_QQD === false) {
+                                        if ((player.favourite_position === Football.POST.AV || player.favourite_position === Football.POST.AI) && ATD_QQD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ATD', idCoach, playersSelected, foundMatch);
                                             ATD_QQD = true;
                                             maxPlayer++;
@@ -751,23 +751,23 @@ exports.defaultPosition = (req, res) => {
 
                                     //Check if all positon are full
                                     if (!GD_QQD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.GD);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.GD);
                                     }
 
                                     if (!DFG_QQD || !DFD_QQD || !ARD_QQD || !ARG_QQD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.DEF + ' ou ' + Football.AR);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.DEF + ' ou ' + Football.POST.AR);
                                     }
 
                                     if (!MCD_QQD || !MCG_QQD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MD + ' ou ' + Football.MC);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.MD + ' ou ' + Football.POST.MC);
                                     }
 
                                     if (!MD_QQD || !MG_QQD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MO + ' ou ' + Football.AI);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.MO + ' ou ' + Football.POST.AI);
                                     }
 
                                     if (!ATG_QQD || !ATD_QQD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AV + ' ou ' + Football.AI);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.AV + ' ou ' + Football.POST.AI);
                                     }
                                 } //if QQDEUX
 
@@ -776,7 +776,7 @@ exports.defaultPosition = (req, res) => {
                                     for (let player of playersTeam) {
 
                                         // placement du gardien
-                                        if (player.favourite_position === Football.GD && GD_QTT === false) {
+                                        if (player.favourite_position === Football.POST.GD && GD_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'GD', idCoach, playersSelected, foundMatch);
                                             GD_QTT = true;
                                             maxPlayer++;
@@ -784,70 +784,70 @@ exports.defaultPosition = (req, res) => {
 
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DFG_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DFG_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DFG', idCoach, playersSelected, foundMatch);
                                             DFG_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DFD_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DFD_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DFD', idCoach, playersSelected, foundMatch);
                                             DFD_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AR || player.favourite_position === Football.DEF) && ARG_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.AR || player.favourite_position === Football.POST.DEF) && ARG_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected, foundMatch);
                                             ARG_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AR || player.favourite_position === Football.DEF) && ARD_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.AR || player.favourite_position === Football.POST.DEF) && ARD_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected, foundMatch);
                                             ARD_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MC_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MC_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MC', idCoach, playersSelected, foundMatch);
                                             MC_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MCG_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MCG_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MCG', idCoach, playersSelected, foundMatch);
                                             MCG_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MCD_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MCD_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MCD', idCoach, playersSelected, foundMatch);
                                             MCD_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && ATG_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.MO || player.favourite_position === Football.POST.AI) && ATG_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ATG', idCoach, playersSelected, foundMatch);
                                             ATG_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MO || player.favourite_position === Football.AI) && ATD_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.MO || player.favourite_position === Football.POST.AI) && ATD_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ATD', idCoach, playersSelected, foundMatch);
                                             ATD_QTT = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AV || player.favourite_position === Football.AI) && AV_QTT === false) {
+                                        if ((player.favourite_position === Football.POST.AV || player.favourite_position === Football.POST.AI) && AV_QTT === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'AV', idCoach, playersSelected, foundMatch);
                                             AV_QTT = true;
                                             maxPlayer++;
@@ -864,23 +864,23 @@ exports.defaultPosition = (req, res) => {
 
                                     //Check if all positon are full
                                     if (!GD_QTT) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.GD);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.GD);
                                     }
 
                                     if (!DFG_QTT || !DFD_QTT || !ARD_QTT || !ARG_QTT) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.DEF + ' ou ' + Football.AR);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.DEF + ' ou ' + Football.POST.AR);
                                     }
 
                                     if (!MCD_QTT || !MCG_QTT || !MC_QTT) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MD + ' ou ' + Football.MC);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.MD + ' ou ' + Football.POST.MC);
                                     }
 
                                     if (!ATD_QTT || !ATG_QTT) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MO + ' ou ' + Football.AI);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.MO + ' ou ' + Football.POST.AI);
                                     }
 
                                     if (!AV_QTT) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AV + ' ou ' + Football.AI);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.AV + ' ou ' + Football.POST.AI);
                                     }
 
                                 } //if QQTTROIS
@@ -889,7 +889,7 @@ exports.defaultPosition = (req, res) => {
                                 if (match.formation === Football.TCDEUX) {
                                     for (let player of playersTeam) {
                                         // placement du gardien
-                                        if (player.favourite_position === Football.GD && GD_TCD === false) {
+                                        if (player.favourite_position === Football.POST.GD && GD_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'GD', idCoach, playersSelected, foundMatch);
                                             GD_TCD = true;
                                             maxPlayer++;
@@ -897,70 +897,70 @@ exports.defaultPosition = (req, res) => {
 
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DC_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DC_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DC', idCoach, playersSelected, foundMatch);
                                             DC_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DCG_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DCG_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DCG', idCoach, playersSelected, foundMatch);
                                             DCG_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.DEF || player.favourite_position === Football.AR) && DCD_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.DEF || player.favourite_position === Football.POST.AR) && DCD_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'DCD', idCoach, playersSelected, foundMatch);
                                             DCD_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AR || player.favourite_position === Football.AI) && ARG_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.AR || player.favourite_position === Football.POST.AI) && ARG_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected, foundMatch);
                                             ARG_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AR || player.favourite_position === Football.AI) && ARD_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.AR || player.favourite_position === Football.POST.AI) && ARD_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected, foundMatch);
                                             ARD_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MC_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MC_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MC', idCoach, playersSelected, foundMatch);
                                             MC_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MCG_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MCG_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MCG', idCoach, playersSelected, foundMatch);
                                             MCG_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.MD || player.favourite_position === Football.MC) && MCD_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.MD || player.favourite_position === Football.POST.MC) && MCD_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'MCD', idCoach, playersSelected, foundMatch);
                                             MCD_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AV || player.favourite_position === Football.AI) && ATG_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.AV || player.favourite_position === Football.POST.AI) && ATG_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ATG', idCoach, playersSelected, foundMatch);
                                             ATG_TCD = true;
                                             maxPlayer++;
                                             continue;
                                         }
 
-                                        if ((player.favourite_position === Football.AV || player.favourite_position === Football.AI) && ATD_TCD === false) {
+                                        if ((player.favourite_position === Football.POST.AV || player.favourite_position === Football.POST.AI) && ATD_TCD === false) {
                                             privateMatch._defaultPosition(player, idMatch, 'ATD', idCoach, playersSelected, foundMatch);
                                             ATD_TCD = true;
                                             maxPlayer++;
@@ -976,23 +976,23 @@ exports.defaultPosition = (req, res) => {
 
                                     //Check if all positon are full
                                     if (!GD_TCD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.GD);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.GD);
                                     }
 
                                     if (!DC_TCD || !DCG_TCD || !DCD_TCD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.DEF + ' ou ' + Football.AR);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.DEF + ' ou ' + Football.POST.AR);
                                     }
 
                                     if (!ARG_TCD || !ARD_TCD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AR + ' ou ' + Football.AI);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.AR + ' ou ' + Football.POST.AI);
                                     }
 
                                     if (!MCD_TCD || !MCG_TCD || !MC_TCD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.MD + ' ou ' + Football.MC);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.MD + ' ou ' + Football.POST.MC);
                                     }
 
                                     if (!ATD_TCD || !ATG_TCD) {
-                                        return Utils.error(res, POSITION_ERROR_MSG + Football.AV + ' ou ' + Football.AI);
+                                        return Utils.error(res, POSITION_ERROR_MSG + Football.POST.AV + ' ou ' + Football.POST.AI);
                                     }
 
                                 } //if TCDEUX
