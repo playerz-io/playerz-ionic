@@ -1,6 +1,6 @@
 'use strict'
 
-var define = require('node-constants')(exports);
+let define = require('node-constants')(exports);
 
 define({
     FOOTBALL: 'Football',

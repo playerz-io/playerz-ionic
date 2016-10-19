@@ -72,6 +72,7 @@ let match = require('./routes/match');
 let player = require('./routes/player');
 let clubs = require('./routes/clubs');
 let football = require('./routes/football');
+let sports = require('./routes/sports');
 
 apiRoutes
     .use('/', auth)
@@ -82,7 +83,8 @@ apiRoutes
     .use('/', player)
     .use('/', match)
     .use('/', clubs)
-    .use('/', football);
+    .use('/', football)
+    .use('/', sports);
 
 // //save token stripe
 //

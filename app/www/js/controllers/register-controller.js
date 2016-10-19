@@ -45,23 +45,6 @@ angular
             });
         };
 
-        // self.goToPrivateInfo = (email) => {
-        //     console.log(email);
-        //     UserService.checkEmail(email)
-        //         .success((data) => {
-        //             UserService.checkPassword(self.user.password, self.user.confirmation_password)
-        //                 .success((data) => {
-        //                     $state.go('register.privateInfo');
-        //                 })
-        //                 .error((data) => {
-        //
-        //                 })
-        //         })
-        //         .error((data) => {
-        //             console.log(data);
-        //         })
-        // };
-
         self.getCountries = () => {
             UserService.getCountries()
                 .success((data) => {
@@ -167,25 +150,6 @@ angular
                 });
         };
         self.getCategories();
-
-        // self.searchCategories = () => {
-        //     _search(self.user.category, 'categories').then(
-        //         function(matches) {
-        //             if (self.user.category.length === 0) {
-        //                 self.categories = {};
-        //             } else {
-        //                 self.categories = matches;
-        //             }
-        //         }
-        //     )
-        // };
-        //
-        // self.selectedCategories = (index) => {
-        //     self.user.category = self.categories[index];
-        //     self.categories = {};
-        // };
-        //
-        //
 
 
     });

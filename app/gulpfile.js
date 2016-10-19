@@ -25,12 +25,12 @@ let paths = {
     useref: ['./www/*.html']
 };
 
-
-gulp.task('concat', () => {
-    return gulp.src('./www/dist/dist_js/**/*.js')
-    .pipe(concat('concat.js'))
-    .pipe(gulp.dest('./www/dist/dist_js'));
-});
+//
+// gulp.task('concat', () => {
+//     return gulp.src('./www/dist/dist_js/**/*.js')
+//     .pipe(concat('concat.js'))
+//     .pipe(gulp.dest('./www/dist/dist_js'));
+// });
 
 gulp.task('uglify', (cb) => {
     pump([
@@ -61,7 +61,7 @@ gulp.task('templatecache', (done) => {
         .pipe(templateCache({
             standalone: true
         }))
-        .pipe(gulp.dest('./www/js'))
+        .pipe(gulp.dest('./www/js'))  
         .on('end', done);
 });
 

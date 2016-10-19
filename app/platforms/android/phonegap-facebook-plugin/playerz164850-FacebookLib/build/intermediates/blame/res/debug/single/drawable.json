@@ -96,12 +96,12 @@
         "source": "/home/barth/Documents/Development_Web/playerz-ionic/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/drawable/com_facebook_button_grey_normal.9.png"
     },
     {
-        "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/drawable/com_facebook_inverse_icon.png",
-        "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/drawable/com_facebook_inverse_icon.png"
-    },
-    {
         "merged": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/drawable/com_facebook_button_grey_focused.9.png",
         "source": "/home/barth/Desktop/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/drawable/com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/drawable/com_facebook_inverse_icon.png",
+        "source": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/res/drawable/com_facebook_inverse_icon.png"
     },
     {
         "merged": "/home/barth/Documents/Development_Web/Playerz/app/platforms/android/phonegap-facebook-plugin/playerz164850-FacebookLib/build/intermediates/res/merged/debug/drawable/com_facebook_button_like_background_selected.png",

@@ -241,8 +241,8 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile project(path: "CordovaLib", configuration: "debug")
     releaseCompile project(path: "CordovaLib", configuration: "release")
-    debugCompile project(path: "phonegap-facebook-plugin:FacebookLib", configuration: "debug")
-    releaseCompile project(path: "phonegap-facebook-plugin:FacebookLib", configuration: "release")
+    debugCompile project(path: "phonegap-facebook-plugin:playerz164850-FacebookLib", configuration: "debug")
+    releaseCompile project(path: "phonegap-facebook-plugin:playerz164850-FacebookLib", configuration: "release")
     // SUB-PROJECT DEPENDENCIES END
 }
 
