@@ -10,6 +10,7 @@ let Statistics = require('./statistics').schemaStatistic;
 let playerSchema = user.userSchema.extend({
     height: Number,
     weight: Number,
+    sport: String,
     strong_foot: Number,
     country: String,
     position: String,

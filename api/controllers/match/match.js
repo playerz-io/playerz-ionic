@@ -586,19 +586,19 @@ exports.defaultPosition = (req, res) => {
                     }
 
                     if (match.playerSelected.length !== 0) {
-                        //  console.log('playerSelected');
+
                         match.playerSelected = [];
 
                         real_time.resetPlayersSelected_firebase(idMatch, idCoach);
                     }
                     if (match.playerNoSelected.length !== 0) {
-                        //console.log('playerNoSelected');
+
                         match.playerNoSelected = [];
                         real_time.resetPlayersNoSelected_firebase(idMatch, idCoach);
                     }
                     let playersSelected = match.playerSelected;
                     let playersNoSelected = match.playerNoSelected;
-                    //coach.save();
+
                     done(null, match, players, playersSelected, playersNoSelected, coach);
                 });
             },
