@@ -151,14 +151,17 @@
                     </p>
                 </div>
             </div>
-            <div ng-if="matchStat.formation === '4-4-2'" class="col col-60" id="fft">
+            <div ng-if="matchStat.formation === '4-4-2' && matchStat.sportCoach === 'Football'" class="col col-60" id="fft">
                 <four-fourtwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></four-fourtwo>
             </div>
-            <div ng-if="matchStat.formation === '4-3-3'" class="col col-60" id="ftt">
+            <div ng-if="matchStat.formation === '4-3-3' && matchStat.sportCoach === 'Football'" class="col col-60" id="ftt">
                 <four-threethree info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></four-threethree>
             </div>
-            <div ng-if="matchStat.formation === '3-5-2'" class="col col-60" id="ftt">
+            <div ng-if="matchStat.formation === '3-5-2' && matchStat.sportCoach === 'Football'" class="col col-60" id="ftt">
                 <three-fivetwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></three-fivetwo>
+            </div>
+            <div ng-if="matchStat.sportCoach === 'Handball'" class="col col-60" id="ftt">
+                <handball info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></handball>
             </div>
             <div class="col col-10 text-center" id="div-act-dead-time">
 
@@ -194,7 +197,7 @@
 
                 <img ng-click="matchStat.removeAction()"
                 id="undo-action"
-                src="{{matchStat.undoActionImg}}" 
+                src="{{matchStat.undoActionImg}}"
                 on-tap="matchStat.onTap(matchStat.ACTION._UNDO_ACTION.name)">
               </img>
             </div>

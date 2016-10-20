@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading, $stateParams) {
+    .controller('MatchStatCtrl', function(getCoach, TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading, $stateParams) {
 
         let self = this;
 
@@ -116,6 +116,20 @@ angular.module('starter.controller.match-stat', [])
         self.offSideImg = self.ACTION._OFF_SIDE.img;
         self.undoActionImg = self.ACTION._UNDO_ACTION.img;
         //  self.dual_goalkeeper = self.ACTION._DUAL_GOALKEEPER.img;
+
+
+        self.coach = getCoach.data;
+        if (self.coach.success) {
+            self.sportCoach = self.coach.coach.sport;
+            console.log(self.sportCoach);
+
+        } else {
+            $ionicPopup.alert({
+                cssClass: 'popup-center-text',
+                title: 'Erreur',
+                template: self.coach.msg
+            });
+        }
 
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');

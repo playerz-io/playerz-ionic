@@ -12,6 +12,7 @@ angular.module('starter', [
     'starter.controller.tactique',
     'starter.directives.fourFourtwo',
     'starter.directives.fourThreethree',
+    'starter.directives.handball',
     'firebase',
     'ngStorage',
     'starter.controller.match-stat',
@@ -287,6 +288,11 @@ angular.module('starter', [
             controller: 'TactiqueCtrl as tactique',
             params: {
                 matchId: null,
+            },
+            resolve: {
+                getCoach: function(ProfileService) {
+                    return ProfileService.getCoach();
+                }
             }
         })
         .state('summary-stat', {
@@ -378,6 +384,11 @@ angular.module('starter', [
                     controller: 'MatchStatCtrl as matchStat',
                     params: {
                         matchId: null,
+                    },
+                    resolve: {
+                        getCoach: function(ProfileService) {
+                            return ProfileService.getCoach();
+                        }
                     }
                 }
             }
@@ -387,7 +398,12 @@ angular.module('starter', [
             views: {
                 'menuContent': {
                     templateUrl: 'templates/change.html',
-                    controller: 'ChangeCtrl as change'
+                    controller: 'ChangeCtrl as change',
+                    resolve: {
+                        getCoach: function(ProfileService) {
+                            return ProfileService.getCoach();
+                        }
+                    }
                 }
             }
         })

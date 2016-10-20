@@ -7,7 +7,7 @@
         <div class="row" id="tactique">
 
             <div class="col col-40">
-                <div class="list">
+                <div class="list" ng-if="tactique.sportCoach === 'Football'">
                     <label class="item item-input item-select">
                         <div class="input-label">
                             Formation
@@ -57,7 +57,7 @@
                 </div>
 
 
-                <div>
+                <div ng-if="tactique.sportCoach === 'Football'">
                     <div ng-if="tactique.formation === '4-4-2'">
                         <four-fourtwo info="tactique.playerSelected" drag="true" drop-complete="tactique.onDropComplete(index, data)"></four-fourtwo>
                     </div>
@@ -69,6 +69,9 @@
                     <div ng-if="tactique.formation === '3-5-2'">
                         <three-fivetwo info="tactique.playerSelected" drag="true" drop-complete="tactique.onDropComplete(index, data)"></three-fivetwo>
                     </div>
+                </div>
+                <div ng-if="tactique.sportCoach === 'Handball'">
+                    <handball info="tactique.playerSelected" drag="true" drop-complete="tactique.onDropComplete(index, data)"></handball>
                 </div>
             </div>
 

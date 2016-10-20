@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starter.controller.tactique', [])
-    .controller('TactiqueCtrl', function($ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast, $state, $ionicHistory, $timeout) {
+    .controller('TactiqueCtrl', function(getCoach, $ionicPopup, $stateParams, TeamService, MatchService, PlayerService, FireService, $localStorage, StorageService, $scope, $cordovaToast, $state, $ionicHistory, $timeout) {
 
         var self = this;
 
@@ -21,6 +21,18 @@ angular.module('starter.controller.tactique', [])
         self.playersNoSelected = FireService.refPlayerNoSelected(self.matchId, self.coachId);
 
         self.formation = '4-4-2';
+
+        self.coach = getCoach.data;
+        if (self.coach.success) {
+            self.sportCoach = self.coach.coach.sport;
+
+        } else {
+            $ionicPopup.alert({
+                cssClass: 'popup-center-text',
+                title: 'Erreur',
+                template: self.coach.msg
+            });
+        }
 
         self.getPlayerNoSelected = () => {
             MatchService.getPlayerNoSelected(self.matchId)
@@ -48,11 +60,11 @@ angular.module('starter.controller.tactique', [])
                 .error((data) => {
                     console.log(data);
                     $ionicPopup.alert({
-                      cssClass: 'popup-center-text',
-                      title: 'Message',
-                      template: data.msg
+                        cssClass: 'popup-center-text',
+                        title: 'Message',
+                        template: data.msg
                     }).then((res) => {
-                      $state.go('profile.troop');
+                        $state.go('profile.troop');
                     })
                 })
 
@@ -77,19 +89,19 @@ angular.module('starter.controller.tactique', [])
 
         self.onTapWhistle = () => {
 
-          let element = angular.element(document.querySelector("#whistle"));
-          let img = 'img/whistle.png';
-          let img_click = 'img/whistle_white.png';
+            let element = angular.element(document.querySelector("#whistle"));
+            let img = 'img/whistle.png';
+            let img_click = 'img/whistle_white.png';
 
-          element.css({
-            'background-image':  `url(${img_click})`
-          });
-          $timeout(() => {
-              element.css({
-                  'background-image': `url(${img})`
-              });
-          }, 350);
-         }
+            element.css({
+                'background-image': `url(${img_click})`
+            });
+            $timeout(() => {
+                element.css({
+                    'background-image': `url(${img})`
+                });
+            }, 350);
+        }
 
         // self.getPlayers = function() {
         //     TeamService.getPlayers()

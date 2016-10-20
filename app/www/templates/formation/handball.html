@@ -1,0 +1,99 @@
+<div ng-drop='true' class="div-tac-ftt">
+    <!-- Attaquant -->
+    <div class="stricker">
+        <!-- ATG -->
+        <div class="button-player" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'AIG' && drag">
+            <a> {{player.last_name}}
+            <br/> {{player.first_name}}
+        </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'AIG' && !drag">
+            <a ng-click="ballPlayed({player: player})"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <!--AV -->
+        <div class="button-player" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'PIV' && drag">
+            <a ng-show="drag"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'PIV' && !drag">
+            <a ng-show="!drag" ng-click="ballPlayed({player: player})"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <!-- ATD -->
+        <div class="button-player" ng-drag="true" ng-drag-data="player" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'AID' && drag">
+            <a> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'AID' && !drag">
+            <a ng-click="ballPlayed({player: player})"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+    </div>
+
+
+    <!-- Milieu -->
+    <div class="midfielder">
+
+        <!-- MCG -->
+        <div class="button-player" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'ARG' && drag">
+            <a ng-show="drag"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ARG' && !drag">
+            <a ng-show="!drag" ng-click="ballPlayed({player: player})"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+
+        <!-- MD -->
+        <div class="button-player" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'DC' && drag">
+            <a ng-show="drag"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'DC' && !drag">
+            <a ng-show="!drag" ng-click="ballPlayed({player: player})"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+
+        <!-- MCD -->
+        <div class="button-player" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'ARD' && drag">
+            <a ng-show="drag"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'ARD' && !drag">
+            <a ng-show="!drag" ng-click="ballPlayed({player: player})"> {{player.last_name}}
+              <br/> {{player.first_name}}
+          </a>
+        </div>
+    </div>
+
+    <div class="goalkeeper">
+        <!-- GD -->
+        <div class="button-player" ng-drag-data="player" ng-drag="true" ng-drop="true" ng-drop-success="dropComplete({index: $index, data : $data})" ng-repeat="player in playerInfo" ng-if="player.position === 'GD' && drag">
+            <a ng-show="drag">
+            {{player.last_name}} <br/> {{player.first_name}}
+         </a>
+        </div>
+        <div class="button-player" ng-repeat="player in playerInfo" ng-if="player.position === 'GD' && !drag">
+            <a ng-show="!drag" ng-click="ballPlayed({player: player});  showActionsGoalkeeper()">
+            {{player.last_name}} <br> {{player.first_name}}
+          </a>
+        </div>
+        <span ng-show="!drag && goalkeeper">
+          <a ng-click="actionsGoalkeeper({action: 'dual_goalkeeper'})"><img src="img/Arm-Wrestling-128.png" alt="Dual" height="32" width="32" /></a>
+          <a ng-click="actionsGoalkeeper({action: 'saves'})"><img src="img/stop_saumon.png" alt="Saves" height="32" width="32" /></a>
+          <a ng-click="actionsGoalkeeper({action: 'sorties_aeriennes'})"><img src="img/superman-flying_saumon.png" alt="Sorties" height="32" width="32" /></a>
+        </span>
+    </div>
+
+</div>
