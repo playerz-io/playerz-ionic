@@ -14,6 +14,9 @@ let Firebase = require('firebase');
 let ref = new Firebase(REF_COACH);
 let async = require('async');
 let Player = require('./models/player').modelPlayer;
+let Football = require('./sports/football/football');
+let Handball = require('./sports/handball/handball');
+
 
 
 
@@ -127,17 +130,14 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
     //  console.log('ok');
     //get stat for the good match
     let getStatMatch = (stat) => stat.match_id === match_ID;
+
     let stat = player.statistics.filter(getStatMatch);
 
     let playerSelected = selected ? PLAYERS_SELECTED : PLAYERS_NO_SELECTED;
+    let firebase_player;
 
-    let refAddPlayer = ref
-        .child(coach_ID)
-        .child(MATCHS)
-        .child(match_ID)
-        .child(playerSelected)
-        .child(player._id.toString())
-        .set({
+    if (player.sport === Football.FOOTBALL) {
+        firebase_player = {
             id: player._id,
             first_name: player.first_name,
             last_name: player.last_name,
@@ -171,7 +171,39 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
                 sorties_aeriennes: stat[0].sorties_aeriennes,
                 clean_sheet: stat[0].clean_sheet
             }
-        });
+        }
+    } else if (player.sport === Handball.HANDBALL) {
+        firebase_player = {
+            id: player._id,
+            first_name: player.first_name,
+            last_name: player.last_name,
+            position: player.position,
+            favourite_position: player.favourite_position,
+            statistics: {
+                assist: stat[0].assist,
+                attemptsOnTarget: stat[0].attemptsOnTarget,
+                attemptsOffTarget: stat[0].attemptsOffTarget,
+                attempts: stat[0].attempts,
+                but: stat[0].but,
+                saves: stat[0].saves,
+                penalty: stat[0].penalty,
+                butsByAttempts: stat[0].butsByAttempts,
+                butsByPenalty: stat[0].butsByPenalty,
+                twoMinutes: stat[0].twoMinutes,
+                warning: stat[0].warning,
+                disqualification: stat[0].disqualification
+            }
+        }
+    }
+
+
+    let refAddPlayer = ref
+        .child(coach_ID)
+        .child(MATCHS)
+        .child(match_ID)
+        .child(playerSelected)
+        .child(player._id.toString())
+        .set(firebase_player);
 };
 
 

@@ -32,6 +32,12 @@ let StatisticSchema = new Schema({
     dual_goalkeeper: Number,
     sorties_aeriennes: Number,
     clean_sheet: Number,
+    penalty: Number,
+    butsByPenalty: Number,
+    butsByAttempts: Number,
+    twoMinutes: Number,
+    warning: Number,
+    disqualification: Number,
     any: Schema.Types.Mixed
 
 });
