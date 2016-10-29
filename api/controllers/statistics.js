@@ -21,6 +21,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
     let percentRelance = 0;
     let lostBall = 0;
     let statisticsPlayer;
+    let butHandball = 0;
 
     for (let i = 0, x = player.statistics.length; i < x; i++) {
         let statistics = player.statistics[i];
@@ -32,12 +33,13 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             if (err)
                 return Utils.errorIntern(res, err);
 
+
+            //increase or decrease stat as a function of minus params
             if (minus === true) {
                 statistics[stat]--;
             } else {
                 statistics[stat]++;
             }
-
 
             if (player.sport === Football.FOOTBALL) {
 
@@ -71,6 +73,13 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
                     percentRelance = 0;
                 }
                 statistics.relanceCompletion = Math.round(percentRelance);
+
+            }
+
+            if(player.sport === Handball.HANDBALL){
+
+              butHandball = statistics.butsByPenalty + statistics.butsByAttempts;
+              statistics.but = butHandball;
 
             }
 
