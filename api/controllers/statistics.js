@@ -9,6 +9,8 @@ let Coach = require('../models/coach').modelCoach;
 let real_time = require('../real_time');
 let async = require('async');
 let Utils = require('../utils');
+let Football = require('../sports/football/football');
+let Handball = require('../sports/handball/handball');
 
 // update statistics of player
 let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
@@ -18,6 +20,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
     let percentPass = 0;
     let percentRelance = 0;
     let lostBall = 0;
+    let statisticsPlayer;
 
     for (let i = 0, x = player.statistics.length; i < x; i++) {
         let statistics = player.statistics[i];
@@ -36,73 +39,108 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
             }
 
 
-            numberAttempts = statistics.attemptsOnTarget + statistics.attemptsOffTarget + statistics.but;
-            if (isNaN(numberAttempts)) {
-                numberAttempts = 0;
+            if (player.sport === Football.FOOTBALL) {
+
+                //count ball lost
+                lostBall = statistics.ballLost + statistics.passesFailed + statistics.crossesFailed;
+                if (isNaN(lostBall)) {
+                    lostBall = 0;
+                }
+                statistics.ballLost = lostBall;
+
+                //count number attempts
+                numberAttempts = statistics.attemptsOnTarget + statistics.attemptsOffTarget + statistics.but;
+                if (isNaN(numberAttempts)) {
+                    numberAttempts = 0;
+                }
+                statistics.attempts = numberAttempts;
+
+
+                //count percentage passes success
+                percentPass = 100 - (statistics.ballLost * 100 / statistics.ballPlayed);
+
+                if (isNaN(percentPass)) {
+                    percentPass = 0
+                }
+                statistics.passesCompletion = Math.round(percentPass);
+
+                //count percentRelance
+                percentRelance = statistics.defensiveAction * 100 / (statistics.defensiveAction + statistics.retrieveBalls);
+
+                if (isNaN(percentRelance)) {
+                    percentRelance = 0;
+                }
+                statistics.relanceCompletion = Math.round(percentRelance);
+
             }
-            statistics.attempts = numberAttempts;
 
-            //ballLost
-            lostBall = statistics.ballLost + statistics.passesFailed + statistics.crossesFailed;
-            if (isNaN(lostBall)) {
-                lostBall = 0;
-            }
-            statistics.ballLost = lostBall;
-
-            //count percentage passes success
-            percentPass = 100 - (statistics.ballLost * 100 / statistics.ballPlayed);
-
-            if (isNaN(percentPass)) {
-                percentPass = 0
-            }
-            statistics.passesCompletion = Math.round(percentPass);
-
-            //count percentRelance
-            percentRelance = statistics.defensiveAction * 100 / (statistics.defensiveAction + statistics.retrieveBalls);
-
-            if (isNaN(percentRelance)) {
-                percentRelance = 0;
-            }
-            statistics.relanceCompletion = Math.round(percentRelance);
-
-
-
-
-
-            console.log(i, statistics);
+            console.log(i, statistics, player.sport);
             player.save((err) => {
                 if (err)
                     return Utils.errorIntern(res, err);
             });
+
             totalStat(coach_id.toString(), match_id.toString());
-            real_time.updateStatistic_firebase(player, match_id, coach_id, {
-                assist: statistics.assist,
-                retrieveBalls: statistics.retrieveBalls,
-                foulsSuffered: statistics.foulsSuffered,
-                foulsCommitted: statistics.foulsCommitted,
-                yellowCard: statistics.yellowCard,
-                redCard: statistics.redCard,
-                attemptsOnTarget: statistics.attemptsOnTarget,
-                attemptsOffTarget: statistics.attemptsOffTarget,
-                attempts: statistics.attempts,
-                beforeAssist: statistics.beforeAssist,
-                matchPlayed: statistics.matchPlayed,
-                firstTeamPlayer: statistics.firstTeamPlayer,
-                substitute: statistics.substitute,
-                but: statistics.but,
-                ballLost: statistics.ballLost,
-                ballPlayed: statistics.ballPlayed,
-                passesCompletion: statistics.passesCompletion,
-                defensiveAction: statistics.defensiveAction,
-                relanceCompletion: statistics.relanceCompletion,
-                offSide: statistics.offSide,
-                passesFailed: statistics.passesFailed,
-                crossesFailed: statistics.crossesFailed,
-                saves: statistics.saves,
-                dual_goalkeeper: statistics.dual_goalkeeper,
-                sorties_aeriennes: statistics.sorties_aeriennes,
-                clean_sheet: statistics.clean_sheet
-            });
+
+            if (player.sport === Football.FOOTBALL) {
+                statisticsPlayer = {
+                    assist: statistics.assist,
+                    retrieveBalls: statistics.retrieveBalls,
+                    foulsSuffered: statistics.foulsSuffered,
+                    foulsCommitted: statistics.foulsCommitted,
+                    yellowCard: statistics.yellowCard,
+                    redCard: statistics.redCard,
+                    attemptsOnTarget: statistics.attemptsOnTarget,
+                    attemptsOffTarget: statistics.attemptsOffTarget,
+                    attempts: statistics.attempts,
+                    beforeAssist: statistics.beforeAssist,
+                    matchPlayed: statistics.matchPlayed,
+                    firstTeamPlayer: statistics.firstTeamPlayer,
+                    substitute: statistics.substitute,
+                    but: statistics.but,
+                    ballLost: statistics.ballLost,
+                    ballPlayed: statistics.ballPlayed,
+                    passesCompletion: statistics.passesCompletion,
+                    defensiveAction: statistics.defensiveAction,
+                    relanceCompletion: statistics.relanceCompletion,
+                    offSide: statistics.offSide,
+                    passesFailed: statistics.passesFailed,
+                    crossesFailed: statistics.crossesFailed,
+                    saves: statistics.saves,
+                    dual_goalkeeper: statistics.dual_goalkeeper,
+                    sorties_aeriennes: statistics.sorties_aeriennes,
+                    clean_sheet: statistics.clean_sheet
+                }
+            } else if (Handball.HANDBALL) {
+                statisticsPlayer = {
+                    foulsCommitted: statistics.foulsCommitted,
+                    foulsSuffered: statistics.foulsSuffered,
+                    redCard: statistics.redCard,
+                    yellowCard: statistics.yellowCard,
+                    ballPlayed: statistics.ballPlayed,
+                    saves: statistics.saves,
+                    disqualification: statistics.disqualification,
+                    warning: statistics.warning,
+                    twoMinutes: statistics.twoMinutes,
+                    butsByPenalty: statistics.butsByPenalty,
+                    butsByAttempts: statistics.butsByAttempts,
+                    ballLost: statistics.ballLost,
+                    attemptsDefence: statistics.attemptsDefence,
+                    interception: statistics.interception,
+                    defence: statistics.defence,
+                    but: statistics.but,
+                    penalty: statistics.penalty,
+                    penaltyOffTarget: statistics.penaltyOffTarget,
+                    penaltyOnTarget: statistics.penaltyOnTarget,
+                    penaltyStop: statistics.penaltyStop,
+                    attempts: statistics.attempts,
+                    attemptsOffTarget: statistics.attemptsOffTarget,
+                    attemptsOnTarget: statistics.attemptsOnTarget,
+                    attemptStop: statistics.attemptStop,
+                    assist: statistics.assist
+                }
+            }
+            real_time.updateStatistic_firebase(player, match_id, coach_id, statisticsPlayer);
 
         }
     }
@@ -220,8 +258,8 @@ exports.countMainAction = function(req, res) {
 
                     //lorsque la taille du schema est égale à 2, celà signifie qu'il contient
                     //seulement le temps et l'action  donc pas de joueur donc on ne fait rien
-                    if(schema.length === 2){
-                      return;
+                    if (schema.length === 2) {
+                        return;
                     }
 
 
@@ -312,7 +350,7 @@ exports.countMainAction = function(req, res) {
                     //check if id_statPlayer is not equal any actions
                     if (actions.indexOf(id_statPlayer) === -1) {
                         Player.findById(id_statPlayer, function(err, player) {
-                            console.log('but');
+                            console.log('but bbb');
                             updateStatPlayer(player, match_id, stringAction, err, coach_id, false);
                             done(null, stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach);
                         });
@@ -638,6 +676,16 @@ let totalStat = function(_coach_id, _match_id) {
         totalPassesFailed = 0,
         but_opponent = 0;
 
+    let totalPenalty = 0,
+        totalButsByAttempts = 0,
+        totalButsByPenalty = 0,
+        totalTwoMinutes = 0,
+        totalWarning = 0,
+        totalDisqualification = 0,
+        totalAttemptsDefence = 0,
+        totalInterception = 0,
+        totalDefence = 0;
+
     async.waterfall([
         (cb) => {
             Coach.findById(coach_id, (err, coach) => {
@@ -655,13 +703,14 @@ let totalStat = function(_coach_id, _match_id) {
                     if (err)
                         console.log(err);
                 });
-                cb(null, numberPlayerSelected, playerSelected, match);
+                cb(null, numberPlayerSelected, playerSelected, match, coach);
 
             });
         },
 
-        (numberPlayerSelected, playerSelected, match, cb) => {
+        (numberPlayerSelected, playerSelected, match, coach, cb) => {
             console.log(playerSelected);
+
             for (let player_id of playerSelected) {
 
                 Player.findById(player_id, (err, player) => {
@@ -670,52 +719,105 @@ let totalStat = function(_coach_id, _match_id) {
                         throw err;
 
                     let playerStatistic = player.statistics;
+
                     for (let stat of playerStatistic) {
                         //don't add but_opponent
                         if (stat.match_id.toString() === match_id.toString()) {
-                            //console.log(stat);
+
+                            //statistics for Football
+                            if (coach.sport === Football.FOOTBALL) {
+
+                                totalRetrieveBalls += stat['retrieveBalls'];
+                                totalDefensiveAction += stat['defensiveAction'];
+                                totalOffSide += stat['offSide'];
+                                totalPassesFailed += stat['passesFailed'];
+                                totalPassesCompletion += stat['passesCompletion'];
+                                totalRelanceCompletion += stat['relanceCompletion'];
+
+
+                                //statistics for Handball
+                            } else if (coach.sport === Handball.HANDBALL) {
+                                totalPenalty += stat['penalty'];
+                                totalButsByAttempts += stat['butsByAttempts'];
+                                totalButsByPenalty += stat['butsByPenalty'];
+                                totalWarning += stat['warning'];
+                                totalDisqualification += stat['disqualification'];
+                                totalAttemptsDefence += stat['totalAttemptsDefence'];
+                                totalInterception += stat['interception'];
+                                totalDefence += stat['defence'];
+                            }
+
+
+                            //stat shared by Handball and Football
                             totalBallPlayed += stat['ballPlayed'];
                             totalBallLost += stat['ballLost'];
-                            totalRetrieveBalls += stat['retrieveBalls'];
-                            totalDefensiveAction += stat['defensiveAction'];
                             totalFoulsSuffered += stat['foulsSuffered'];
                             totalFoulsCommited += stat['foulsCommitted'];
-                            totalOffSide += stat['offSide'];
                             totalAttempts += stat['attempts'];
                             totalAttemptsOnTarget += stat['attemptsOnTarget'];
                             totalAttemptsOffTarget += stat['attemptsOffTarget'];
                             totalBut += stat['but'];
-                            totalPassesFailed += stat['passesFailed'];
-                            totalPassesCompletion += stat['passesCompletion'];
-                            totalRelanceCompletion += stat['relanceCompletion'];
                             totalYellowCard += stat['yellowCard'];
                             totalRedCard += stat['redCard'];
+
                         }
                     }
+
                     if (player_id === playerSelected[numberPlayerSelected - 1]) {
-                        console.log('fforforf,r');
-                        cb(null, match, {
-                            totalBallPlayed,
-                            totalBallLost,
-                            totalRetrieveBalls,
-                            totalDefensiveAction,
-                            totalFoulsSuffered,
-                            totalFoulsCommited,
-                            totalOffSide,
-                            totalAttempts: totalAttemptsOnTarget + totalAttemptsOffTarget + totalBut,
-                            totalAttemptsOnTarget: totalAttemptsOnTarget + totalBut,
-                            totalAttemptsOffTarget,
-                            totalBut,
-                            totalYellowCard,
-                            totalRedCard,
-                            totalPassesFailed,
-                            totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
-                            totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
-                            but_opponent: match.statistics.but_opponent
-                        });
+                        let statisticsMatch;
+
+                        if (coach.sport === Football.FOOTBALL) {
+
+                            statisticsMatch = {
+                                totalBallPlayed,
+                                totalBallLost,
+                                totalRetrieveBalls,
+                                totalDefensiveAction,
+                                totalFoulsSuffered,
+                                totalFoulsCommited,
+                                totalOffSide,
+                                totalAttempts: totalAttemptsOnTarget + totalAttemptsOffTarget + totalBut,
+                                totalAttemptsOnTarget: totalAttemptsOnTarget + totalBut,
+                                totalAttemptsOffTarget,
+                                totalBut,
+                                totalYellowCard,
+                                totalRedCard,
+                                totalPassesFailed,
+                                totalPassesCompletion: Math.round(totalPassesCompletion / numberPlayerSelected),
+                                totalRelanceCompletion: Math.round(totalRelanceCompletion / numberPlayerSelected),
+                                but_opponent: match.statistics.but_opponent
+                            };
+
+                        } else if (coach.sport === Handball.HANDBALL) {
+
+                            statisticsMatch = {
+                                totalBallPlayed,
+                                totalBallLost,
+                                totalFoulsSuffered,
+                                totalFoulsCommited,
+                                totalAttempts,
+                                totalAttemptsOnTarget,
+                                totalAttemptsOffTarget,
+                                totalBut,
+                                totalYellowCard,
+                                totalRedCard,
+                                totalPenalty,
+                                totalButsByAttempts,
+                                totalButsByPenalty,
+                                totalWarning,
+                                totalDisqualification,
+                                totalAttemptsDefence,
+                                totalInterception,
+                                totalDefence
+                            }
+
+                        }
+
                     }
                 });
+
             }
+
         },
 
         (match, stat, cb) => {
@@ -734,8 +836,8 @@ let totalStat = function(_coach_id, _match_id) {
 
         },
 
-          (match, stat, cb) => {
-              Coach.findById(coach_id, (err, coach) => {
+        (match, stat, cb) => {
+            Coach.findById(coach_id, (err, coach) => {
 
                 console.log('match', match);
                 coach.team.matchs.id(match_id).statistics = stat;
@@ -747,9 +849,8 @@ let totalStat = function(_coach_id, _match_id) {
                 });
 
                 cb(null, stat);
-              });
-          }
-
+            });
+        }
     ], (err, result) => {
         if (err)
             throw err;

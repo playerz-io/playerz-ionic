@@ -90,10 +90,55 @@ exports.removeLastActions_firebase = (match_ID, coach_ID) => {
 };
 exports.addStatisticsMatch = (match_ID, coach_ID, match, nameClub) => {
 
-
-    console.log(nameClub);
     let statistics = match.statistics;
-    console.log(match.type, match.place, match.against_team);
+    let stastisticSport;
+
+    //if it's handball match
+    if(match.sport === Handball.HANDBALL){
+      stastisticSport = {
+          totalBallPlayed: statistics.totalBallPlayed,
+          totalBallLost: statistics.totalBallLost,
+          totalFoulsSuffered: statistics.totalFoulsSuffered,
+          totalFoulsCommited: statistics.totalFoulsCommited,
+          totalAttempts: statistics.totalAttempts,
+          totalAttemptsOnTarget: statistics.totalAttemptsOnTarget,
+          totalAttemptsOffTarget: statistics.totalAttemptsOffTarget,
+          totalBut: statistics.totalBut,
+          totalRedCard: statistics.totalRedCard,
+          totalYellowCard: statistics.totalYellowCard,
+          totalPassesFailed: statistics.totalPassesFailed,
+          but_opponent: statistics.but_opponent,
+          totalDisqualification : statistics.totalDisqualification,
+          totalWarning: statistics.totalWarning ,
+          totalTwoMinutes: statistics.totalTwoMinutes,
+          totalButsByPenalty: statistics.totalButsByPenalty,
+          totalButsByAttemps: statistics.totalButsByAttemps,
+          totalPenalty: statistics.totalPenalty
+
+      }
+    }else if (match.sport === Football.FOOTBALL) {
+      //if it's football match
+      stastisticSport = {
+          totalBallPlayed: statistics.totalBallPlayed,
+          totalBallLost: statistics.totalBallLost,
+          totalPassesCompletion: statistics.totalPassesCompletion,
+          totalRetrieveBalls: statistics.totalRetrieveBalls,
+          totalRelanceCompletion: statistics.totalRelanceCompletion,
+          totalFoulsSuffered: statistics.totalFoulsSuffered,
+          totalFoulsCommited: statistics.totalFoulsCommited,
+          totalOffSide: statistics.totalOffSide,
+          totalAttempts: statistics.totalAttempts,
+          totalAttemptsOnTarget: statistics.totalAttemptsOnTarget,
+          totalAttemptsOffTarget: statistics.totalAttemptsOffTarget,
+          totalYellowCard: statistics.totalYellowCard,
+          totalRedCard: statistics.totalRedCard,
+          totalBut: statistics.totalBut,
+          totalPassesFailed: statistics.totalPassesFailed,
+          but_opponent: statistics.but_opponent
+      };
+
+    }
+
     let refMatch = ref
         .child(coach_ID)
         .child(MATCHS)
@@ -104,24 +149,8 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match, nameClub) => {
             place: match.place,
             against_team: match.against_team,
             actions: [],
-            statistics: {
-                totalBallPlayed: statistics.totalBallPlayed,
-                totalBallLost: statistics.totalBallLost,
-                totalPassesCompletion: statistics.totalPassesCompletion,
-                totalRetrieveBalls: statistics.totalRetrieveBalls,
-                totalRelanceCompletion: statistics.totalRelanceCompletion,
-                totalFoulsSuffered: statistics.totalFoulsSuffered,
-                totalFoulsCommited: statistics.totalFoulsCommited,
-                totalOffSide: statistics.totalOffSide,
-                totalAttempts: statistics.totalAttempts,
-                totalAttemptsOnTarget: statistics.totalAttemptsOnTarget,
-                totalAttemptsOffTarget: statistics.totalAttemptsOffTarget,
-                totalYellowCard: statistics.totalYellowCard,
-                totalRedCard: statistics.totalRedCard,
-                totalBut: statistics.totalBut,
-                totalPassesFailed: statistics.totalPassesFailed,
-                but_opponent: statistics.but_opponent
-            }
+            sport: match.sport,
+            statistics: stastisticSport
         });
 
 };
@@ -180,18 +209,31 @@ exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
             position: player.position,
             favourite_position: player.favourite_position,
             statistics: {
+                ballPlayed: stat[0].ballPlayed,
                 assist: stat[0].assist,
                 attemptsOnTarget: stat[0].attemptsOnTarget,
                 attemptsOffTarget: stat[0].attemptsOffTarget,
                 attempts: stat[0].attempts,
+                attemptStop: stat[0].attemptStop,
                 but: stat[0].but,
                 saves: stat[0].saves,
                 penalty: stat[0].penalty,
+                penaltyOffTarget: stat[0].penaltyOffTarget,
+                penaltyOnTarget: stat[0].penaltyOnTarget,
+                penaltyStop: stat[0].penaltyStop,
                 butsByAttempts: stat[0].butsByAttempts,
                 butsByPenalty: stat[0].butsByPenalty,
                 twoMinutes: stat[0].twoMinutes,
                 warning: stat[0].warning,
-                disqualification: stat[0].disqualification
+                disqualification: stat[0].disqualification,
+                foulsSuffered: stat[0].foulsSuffered,
+                foulsCommitted: stat[0].foulsCommitted,
+                yellowCard: stat[0].yellowCard,
+                redCard: stat[0].redCard,
+                ballLost: stat[0].ballLost,
+                attemptsDefence: stat[0].attemptsDefence,
+                interception: stat[0].interception,
+                defence: stat[0].defence
             }
         }
     }

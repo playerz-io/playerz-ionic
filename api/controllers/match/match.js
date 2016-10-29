@@ -36,43 +36,86 @@ exports.addMatch = function(req, res) {
             return Utils.error(res, msg);
         }
 
-        let newMatch = new Match({
-            team: decoded.team.name_club.toUpperCase(),
-            against_team: against_team.toUpperCase(),
-            place,
-            type,
-            date: new Date(date),
-            belongs_to: idCoach,
-            defaultPosition: false,
-            status: 'comeup',
-            statistics: {
-                totalBallPlayed: 0,
-                totalBallLost: 0,
-                totalRetrieveBalls: 0,
-                totalFoulsSuffered: 0,
-                totalFoulsCommited: 0,
-                totalOffSide: 0,
-                totalAttempts: 0,
-                totalAttemptsOnTarget: 0,
-                totalAttemptsOffTarget: 0,
-                totalBut: 0,
-                totalDefensiveAction: 0,
-                totalPassesCompletion: 0,
-                totalRelanceCompletion: 0,
-                totalRedCard: 0,
-                totalYellowCard: 0,
-                totalPassesFailed: 0,
-                but_opponent: 0
-            }
-        });
 
         Coach.findById(idCoach, (err, coach) => {
             if (err) {
                 return Utils.errorIntern(res, err);
             }
 
+            let newMatch;
+
+            if(coach.sport === Football.FOOTBALL){
+
+              newMatch = new Match({
+                  team: decoded.team.name_club.toUpperCase(),
+                  against_team: against_team.toUpperCase(),
+                  place,
+                  type,
+                  date: new Date(date),
+                  belongs_to: idCoach,
+                  defaultPosition: false,
+                  status: 'comeup',
+                  sport: coach.sport,
+                  statistics: {
+                      totalBallPlayed: 0,
+                      totalBallLost: 0,
+                      totalRetrieveBalls: 0,
+                      totalFoulsSuffered: 0,
+                      totalFoulsCommited: 0,
+                      totalOffSide: 0,
+                      totalAttempts: 0,
+                      totalAttemptsOnTarget: 0,
+                      totalAttemptsOffTarget: 0,
+                      totalBut: 0,
+                      totalDefensiveAction: 0,
+                      totalPassesCompletion: 0,
+                      totalRelanceCompletion: 0,
+                      totalRedCard: 0,
+                      totalYellowCard: 0,
+                      totalPassesFailed: 0,
+                      but_opponent: 0
+                  }
+              });
+
+            } else if (coach.sport === Handball.HANDBALL) {
+
+              newMatch = new Match({
+                  team: decoded.team.name_club.toUpperCase(),
+                  against_team: against_team.toUpperCase(),
+                  place,
+                  type,
+                  date: new Date(date),
+                  belongs_to: idCoach,
+                  defaultPosition: false,
+                  status: 'comeup',
+                  sport: coach.sport,
+                  statistics: {
+                      totalBallPlayed: 0,
+                      totalBallLost: 0,
+                      totalFoulsSuffered: 0,
+                      totalFoulsCommited: 0,
+                      totalAttempts: 0,
+                      totalAttemptsOnTarget: 0,
+                      totalAttemptsOffTarget: 0,
+                      totalBut: 0,
+                      totalRedCard: 0,
+                      totalYellowCard: 0,
+                      totalPassesFailed: 0,
+                      but_opponent: 0,
+                      totalDisqualification: 0,
+                      totalWarning: 0,
+                      totalTwoMinutes: 0,
+                      totalButsByPenalty: 0,
+                      totalButsByAttemps: 0,
+                      totalPenalty: 0
+                  }
+              });
+
+            }
+
             let nameClub = coach.team.name_club;
 
+            console.log(newMatch);
             real_time.addStatisticsMatch(newMatch._id.toString(), idCoach, newMatch, nameClub);
 
             newMatch.save((err) => {
@@ -87,6 +130,7 @@ exports.addMatch = function(req, res) {
                 if (err)
                     return Utils.errorIntern(res, err);
             });
+
             let returnMsg = (place === `Domicile`) ? `Le match ${nameClub} - ${against_team} a été ajouté` :
                 `Le match ${against_team} - ${nameClub} a été ajouté`;
 
@@ -1036,14 +1080,14 @@ exports.defaultPosition = (req, res) => {
                                         continue;
                                     }
 
-                                    if (player.favourite_position === Handball.POSTS.AR  && ARG === false) {
+                                    if (player.favourite_position === Handball.POSTS.AR && ARG === false) {
                                         privateMatch._defaultPosition(player, idMatch, 'ARG', idCoach, playersSelected, foundMatch);
                                         ARG = true;
                                         maxPlayer++;
                                         continue;
                                     }
 
-                                    if (player.favourite_position === Handball.POSTS.AR  && ARD === false) {
+                                    if (player.favourite_position === Handball.POSTS.AR && ARD === false) {
                                         privateMatch._defaultPosition(player, idMatch, 'ARD', idCoach, playersSelected, foundMatch);
                                         ARD = true;
                                         maxPlayer++;
@@ -1064,7 +1108,7 @@ exports.defaultPosition = (req, res) => {
                                         continue;
                                     }
 
-                                    if (player.favourite_position === Handball.POSTS.PI  && PIV === false) {
+                                    if (player.favourite_position === Handball.POSTS.PI && PIV === false) {
                                         privateMatch._defaultPosition(player, idMatch, 'PIV', idCoach, playersSelected, foundMatch);
                                         PIV = true;
                                         maxPlayer++;

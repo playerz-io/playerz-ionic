@@ -6,11 +6,13 @@ let Schema = moogoose.Schema;
 
 
 let MatchSchema = new Schema({
+    team: String,
     against_team: String,
     place: String,
     type: String, //official pleasure
     score: String,
     date: Date,
+    sport: String,
     status: String, //['comeup, finished']
     result: String, //['victory, defeat, draw']
     playerSelected: [{
@@ -41,7 +43,14 @@ let MatchSchema = new Schema({
       but_opponent: Number,
       totalPassesFailed: Number,
       totalDefensiveAction: Number,
-      clean_sheet: Number
+      clean_sheet: Number,
+      totalDisqualification: Number,
+      totalWarning: Number,
+      totalTwoMinutes: Number,
+      totalButsByPenalty: Number,
+      totalButsByAttemps: Number,
+      totalPenalty: Number
+
     },
     schemas: [],
     belongs_to: String,

@@ -17,53 +17,66 @@ let _addStatisticsToPlayer = (player, match_id) => {
 
 
     let newStatistics;
-    if(player.sport === Football.FOOTBALL){
-      newStatistics = new Statistic({
-          match_id: match_id.toString(),
-          assist: 0,
-          retrieveBalls: 0,
-          foulsSuffered: 0,
-          foulsCommitted: 0,
-          yellowCard: 0,
-          redCard: 0,
-          attemptsOnTarget: 0,
-          attemptsOffTarget: 0,
-          attempts: 0,
-          beforeAssist: 0,
-          matchPlayed: 0,
-          firstTeamPlayer: 0,
-          substitute: 0,
-          but: 0,
-          ballLost: 0,
-          ballPlayed: 0,
-          passesCompletion: 100,
-          defensiveAction: 0,
-          relanceCompletion: 100,
-          offSide: 0,
-          clean_sheet: 0,
-          sorties_aeriennes: 0,
-          dual_goalkeeper: 0,
-          saves: 0,
-          crossesFailed: 0,
-          passesFailed: 0
-      });
-    } else if(player.sport === Handball.HANDBALL){
-      newStatistics = new Statistic({
-        match_id: match_id.toString(),
-        assist: 0,
-        attemptsOnTarget: 0,
-        attemptsOffTarget: 0,
-        attempts: 0,
-        penalty: 0,
-        but: 0,
-        butsByAttempts: 0,
-        butsByPenalty: 0,
-        twoMinutes: 0,
-        warning: 0,
-        disqualification: 0,
-        saves: 0
-      });
-      console.log('new stats: ', newStatistics);
+    if (player.sport === Football.FOOTBALL) {
+        newStatistics = new Statistic({
+            match_id: match_id.toString(),
+            assist: 0,
+            retrieveBalls: 0,
+            foulsSuffered: 0,
+            foulsCommitted: 0,
+            yellowCard: 0,
+            redCard: 0,
+            attemptsOnTarget: 0,
+            attemptsOffTarget: 0,
+            attempts: 0,
+            beforeAssist: 0,
+            matchPlayed: 0,
+            firstTeamPlayer: 0,
+            substitute: 0,
+            but: 0,
+            ballLost: 0,
+            ballPlayed: 0,
+            passesCompletion: 100,
+            defensiveAction: 0,
+            relanceCompletion: 100,
+            offSide: 0,
+            clean_sheet: 0,
+            sorties_aeriennes: 0,
+            dual_goalkeeper: 0,
+            saves: 0,
+            crossesFailed: 0,
+            passesFailed: 0
+        });
+    } else if (player.sport === Handball.HANDBALL) {
+        newStatistics = new Statistic({
+            match_id: match_id.toString(),
+            assist: 0,
+            attemptsOnTarget: 0,
+            attemptsOffTarget: 0,
+            attempts: 0,
+            attemptStop: 0,
+            penalty: 0,
+            penaltyOffTarget: 0,
+            penaltyOnTarget: 0,
+            penaltyStop: 0,
+            but: 0,
+            butsByAttempts: 0,
+            butsByPenalty: 0,
+            twoMinutes: 0,
+            warning: 0,
+            ballLost: 0,
+            attemptsDefence: 0,
+            interception: 0,
+            defence: 0,
+            disqualification: 0,
+            saves: 0,
+            ballPlayed: 0,
+            yellowCard: 0,
+            redCard: 0,
+            foulsSuffered: 0,
+            foulsCommitted: 0
+        });
+        console.log('new stats: ', newStatistics);
     }
 
     player.statistics.push(newStatistics);

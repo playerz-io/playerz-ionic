@@ -24,6 +24,22 @@ angular.module('starter.controller.match-stat', [])
         self.cardActived = false;
         self.foulsActived = false;
 
+        self.showPopupAttempts = () => {
+
+            $scope.popupAttempts = $ionicPopup.show({
+                templateUrl: 'templates/attempts-popup.html',
+                scope: $scope
+            });
+        };
+
+        self.showPopupPenalty = () => {
+            console.log('popupPenalty');
+            $scope.popupPenalty = $ionicPopup.show({
+                templateUrl: 'templates/penalty-popup.html',
+                scope: $scope
+            });
+        };
+
         self.ACTION = {
             _DEFENSIVE: {
                 id: 'defensive-action',
@@ -354,7 +370,8 @@ angular.module('starter.controller.match-stat', [])
         };
 
         self.countMainAction = function(action) {
-            console.log(action)
+
+          console.log(action)
             if (self.goalkeeper) {
                 self.showActionsGoalkeeper();
             }
@@ -369,6 +386,17 @@ angular.module('starter.controller.match-stat', [])
 
             PlayerService.countMainAction(self.matchId, action, self.fullTime)
                 .success(function(data) {
+
+                    //close popup after attempt in Handball
+                    if ((action === 'attemptStop' || action === 'attemptsOffTarget' || action === 'butsByAttempts') && self.sportCoach === 'Handball') {
+                        $scope.popupAttempts.close();
+                    }
+
+                    //close popup after penalty in Handball
+                    if ((action === 'penaltyStop' || action === 'penaltyOffTarget' || action === 'butsByPenalty') && self.sportCoach === 'Handball') {
+                        $scope.popupPenalty.close();
+                    }
+
                     console.log(data);
                 })
                 .error(function(data) {
@@ -388,36 +416,6 @@ angular.module('starter.controller.match-stat', [])
                 self.foulsActived = false;
             }
         };
-
-        // //Change Modal
-        // $ionicModal.fromTemplateUrl('templates/change-modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then((modal) => {
-        //     $scope.modal = modal;
-        // });
-        //
-        // self.goChange = () => {
-        //     $scope.modal.show();
-        // };
-        //
-        // self.backToMatch = () => {
-        //     $scope.modal.hide();
-        // }
-
-
-
-
-        // self.countPercent = function() {
-        //     PlayerService.countPercent(self.matchId)
-        //         .success(function(data) {
-        //             console.log(data);
-        //
-        //         })
-        //         .error(function(data) {
-        //             console.log(data);
-        //         })
-        // }
 
         self.getMatch = function() {
             MatchService.getMatchById(self.matchId)
@@ -466,6 +464,7 @@ angular.module('starter.controller.match-stat', [])
                     console.log(data);
                 });
         };
+
         self.getBillingName = function() {
             if (self.place === 'Domicile') {
                 self.billingName = self.nameTeam + ' - ' + self.opponent;
@@ -481,8 +480,5 @@ angular.module('starter.controller.match-stat', [])
             // handle event
             self.showCountdownPopup();
         });
-
-
-
 
     });
