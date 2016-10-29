@@ -22,6 +22,8 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
     let lostBall = 0;
     let statisticsPlayer;
     let butHandball = 0;
+    let attemptsHandall = 0;
+    let attemptsOnTargetHandball = 0;
 
     for (let i = 0, x = player.statistics.length; i < x; i++) {
         let statistics = player.statistics[i];
@@ -80,6 +82,12 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
 
               butHandball = statistics.butsByPenalty + statistics.butsByAttempts;
               statistics.but = butHandball;
+
+              attemptsHandall = statistics.butsByPenalty + statistics.butsByAttempts + statistics.penaltyOffTarget + statistics.attemptsOffTarget + statistics.penaltyStop + statistics.attemptStop;
+              statistics.attempts = attemptsHandall;
+
+              attemptsOnTargetHandball =  statistics.butsByPenalty + statistics.butsByAttempts + statistics.penaltyStop + statistics.attemptStop;
+              statistics.attemptsOnTarget = attemptsOnTargetHandball;
 
             }
 
