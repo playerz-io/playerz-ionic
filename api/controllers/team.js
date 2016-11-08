@@ -30,7 +30,9 @@ exports.addPlayer = function(req, res) {
             last_name: req.body.last_name,
             first_name: req.body.first_name,
             favourite_position: req.body.favourite_position,
-            sport: decoded.sport
+            sport: decoded.sport,
+            division: decoded.team.division,
+            category: decoded.team.category
         });
 
         newPlayer.save((err) => {
