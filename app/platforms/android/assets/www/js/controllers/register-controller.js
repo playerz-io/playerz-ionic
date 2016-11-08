@@ -2,7 +2,7 @@
 
 angular
     .module('starter.controller.register', [])
-    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast, UserService) {
+    .controller('RegisterCtrl', function($q, $timeout, $ionicPopup, $state, AuthService, TeamService, $cordovaToast, UserService, SportService, getSports) {
         let self = this;
 
         self.user = {
@@ -22,10 +22,7 @@ angular
 
         self.user.birth_date = new Date();
 
-        self.sports = [{
-            name: 'Football',
-            value: 'Football'
-        }];
+        self.sports = getSports.data.sports;
 
         self.register = function() {
             console.log(self.user);
@@ -44,23 +41,6 @@ angular
                 });
             });
         };
-
-        // self.goToPrivateInfo = (email) => {
-        //     console.log(email);
-        //     UserService.checkEmail(email)
-        //         .success((data) => {
-        //             UserService.checkPassword(self.user.password, self.user.confirmation_password)
-        //                 .success((data) => {
-        //                     $state.go('register.privateInfo');
-        //                 })
-        //                 .error((data) => {
-        //
-        //                 })
-        //         })
-        //         .error((data) => {
-        //             console.log(data);
-        //         })
-        // };
 
         self.getCountries = () => {
             UserService.getCountries()
@@ -167,25 +147,6 @@ angular
                 });
         };
         self.getCategories();
-
-        // self.searchCategories = () => {
-        //     _search(self.user.category, 'categories').then(
-        //         function(matches) {
-        //             if (self.user.category.length === 0) {
-        //                 self.categories = {};
-        //             } else {
-        //                 self.categories = matches;
-        //             }
-        //         }
-        //     )
-        // };
-        //
-        // self.selectedCategories = (index) => {
-        //     self.user.category = self.categories[index];
-        //     self.categories = {};
-        // };
-        //
-        //
 
 
     });

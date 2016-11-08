@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.change', [])
-    .controller('ChangeCtrl', function(MatchService, StorageService, FireService, PlayerService, $scope) {
+    .controller('ChangeCtrl', function(getCoach, MatchService, StorageService, FireService, PlayerService, $scope) {
 
         var self = this;
 
@@ -14,6 +14,19 @@ angular.module('starter.controller.change', [])
         //     viewData.enableBack = true;
         // });
 
+        self.coach = getCoach.data;
+        if (self.coach.success) {
+            self.sportCoach = self.coach.coach.sport;
+            console.log(self.sportCoach);
+
+        } else {
+            $ionicPopup.alert({
+                cssClass: 'popup-center-text',
+                title: 'Erreur',
+                template: self.coach.msg
+            });
+        }
+        
         self.onDropComplete = (index, obj, evt) => {
             //dropped
             console.log(index);

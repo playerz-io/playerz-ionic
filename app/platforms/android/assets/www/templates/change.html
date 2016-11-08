@@ -12,14 +12,17 @@
                 </div>
             </div>
             <div class="col col-67">
-                <div ng-if="change.formation === '4-4-2'">
+                <div ng-if="change.formation === '4-4-2' && change.sportCoach === 'Football'">
                     <four-fourtwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-fourtwo>
                 </div>
-                <div ng-if="change.formation === '4-3-3'">
+                <div ng-if="change.formation === '4-3-3' && change.sportCoach === 'Football'">
                     <four-threethree info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></four-threethree>
                 </div>
-                <div ng-if="change.formation === '3-5-2'">
+                <div ng-if="change.formation === '3-5-2' && change.sportCoach === 'Football'">
                     <three-fiveTwo info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></three-fiveTwo>
+                </div>
+                <div ng-if="change.sportCoach === 'Handball'">
+                    <handball info="change.playerSelected" drag="true" drop-complete="change.onDropComplete(index, data)"></handball>
                 </div>
             </div>
         </div>

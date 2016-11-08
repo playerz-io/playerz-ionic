@@ -17,15 +17,10 @@
                 <div class="input-label">
                     Position favorite
                 </div>
-                <select ng-model="player.favourite_position">
-                    <option ng-selected="true">Gardien</option>
-                    <option>Défenseur Central</option>
-                    <option>Arrière Latéral</option>
-                    <option>Milieu Défensif</option>
-                    <option>Milieu Central</option>
-                    <option>Milieu Offensif</option>
-                    <option>Ailier</option>
-                    <option>Avant-Centre</option>
+                <select ng-model="player.favourite_position"
+                        ng-init="player.favourite_position = posts[0]"
+                        ng-options="v for v in posts">
+
                 </select>
             </label>
             <button class="button button-full button-positive" ng-click="addPlayer()">Ajouter</button>

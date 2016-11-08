@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('starter.controller.match-stat', [])
-    .controller('MatchStatCtrl', function(TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading, $stateParams) {
+    .controller('MatchStatCtrl', function(getCoach, TeamService, MatchService, $scope, $timeout, StorageService, PlayerService, FireService, $state, $ionicPopup, $interval, $ionicModal, $cordovaToast, $ionicHistory, $ionicLoading, $stateParams) {
 
         let self = this;
 
@@ -23,6 +23,45 @@ angular.module('starter.controller.match-stat', [])
         self.goalkeeper = false;
         self.cardActived = false;
         self.foulsActived = false;
+
+
+        self.showPopupAreaAttempts = () => {
+            console.log('show area attempts');
+            $scope.popupAreaAttempts = $ionicPopup.show({
+                templateUrl: 'templates/area-attempts-popup.html',
+                scope: $scope,
+                title: 'Zone de tir'
+            });
+        };
+
+        self.getAreaBut = () => {
+            $scope.popupAreaAttempts.close();
+            $scope.popupAreaBut = $ionicPopup.show({
+                templateUrl: 'templates/area-but-popup.html',
+                scope: $scope,
+                title: 'Zone de but'
+            });
+        };
+
+        self.showPopupAreaBut = () => {
+
+        };
+
+        self.showPopupAttempts = () => {
+            $scope.popupAreaBut.close();
+            $scope.popupAttempts = $ionicPopup.show({
+                templateUrl: 'templates/attempts-popup.html',
+                scope: $scope
+            });
+        };
+
+        self.showPopupPenalty = () => {
+            console.log('popupPenalty');
+            $scope.popupPenalty = $ionicPopup.show({
+                templateUrl: 'templates/penalty-popup.html',
+                scope: $scope
+            });
+        };
 
         self.ACTION = {
             _DEFENSIVE: {
@@ -116,6 +155,20 @@ angular.module('starter.controller.match-stat', [])
         self.offSideImg = self.ACTION._OFF_SIDE.img;
         self.undoActionImg = self.ACTION._UNDO_ACTION.img;
         //  self.dual_goalkeeper = self.ACTION._DUAL_GOALKEEPER.img;
+
+
+        self.coach = getCoach.data;
+        if (self.coach.success) {
+            self.sportCoach = self.coach.coach.sport;
+            console.log(self.sportCoach);
+
+        } else {
+            $ionicPopup.alert({
+                cssClass: 'popup-center-text',
+                title: 'Erreur',
+                template: self.coach.msg
+            });
+        }
 
         self.showActionsGoalkeeper = () => {
             console.log('goalkeeper');
@@ -339,7 +392,24 @@ angular.module('starter.controller.match-stat', [])
                 })
         };
 
+
+        self.addAreaAttemptsAndBut = (area) => {
+            PlayerService.addSchema(self.matchId, area)
+                .success(function(data) {
+                    console.log(data);
+                    if (area.includes('zoneBut')) {
+                        self.showPopupAttempts();
+                    } else {
+                        self.getAreaBut();
+                    }
+                })
+                .error(function(data) {
+                    console.log(data);
+                })
+        };
+
         self.countMainAction = function(action) {
+
             console.log(action)
             if (self.goalkeeper) {
                 self.showActionsGoalkeeper();
@@ -355,6 +425,22 @@ angular.module('starter.controller.match-stat', [])
 
             PlayerService.countMainAction(self.matchId, action, self.fullTime)
                 .success(function(data) {
+
+                    //close poppu area attempts after attemptsOffTarget
+                    if(action === 'attemptsOffTarget' && self.sportCoach === 'Handball'){
+                      $scope.popupAreaBut.close();
+                    }
+
+                    //close popup after attempt in Handball
+                    if ((action === 'attemptStop' || action === 'butsByAttempts') && self.sportCoach === 'Handball') {
+                        $scope.popupAttempts.close();
+                    }
+
+                    //close popup after penalty in Handball
+                    if ((action === 'penaltyStop' || action === 'penaltyOffTarget' || action === 'butsByPenalty') && self.sportCoach === 'Handball') {
+                        $scope.popupPenalty.close();
+                    }
+
                     console.log(data);
                 })
                 .error(function(data) {
@@ -374,36 +460,6 @@ angular.module('starter.controller.match-stat', [])
                 self.foulsActived = false;
             }
         };
-
-        // //Change Modal
-        // $ionicModal.fromTemplateUrl('templates/change-modal.html', {
-        //     scope: $scope,
-        //     animation: 'slide-in-up'
-        // }).then((modal) => {
-        //     $scope.modal = modal;
-        // });
-        //
-        // self.goChange = () => {
-        //     $scope.modal.show();
-        // };
-        //
-        // self.backToMatch = () => {
-        //     $scope.modal.hide();
-        // }
-
-
-
-
-        // self.countPercent = function() {
-        //     PlayerService.countPercent(self.matchId)
-        //         .success(function(data) {
-        //             console.log(data);
-        //
-        //         })
-        //         .error(function(data) {
-        //             console.log(data);
-        //         })
-        // }
 
         self.getMatch = function() {
             MatchService.getMatchById(self.matchId)
@@ -452,6 +508,7 @@ angular.module('starter.controller.match-stat', [])
                     console.log(data);
                 });
         };
+
         self.getBillingName = function() {
             if (self.place === 'Domicile') {
                 self.billingName = self.nameTeam + ' - ' + self.opponent;
@@ -467,8 +524,5 @@ angular.module('starter.controller.match-stat', [])
             // handle event
             self.showCountdownPopup();
         });
-
-
-
 
     });

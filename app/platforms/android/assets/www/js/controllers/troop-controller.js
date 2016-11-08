@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starter.controller.troop', [])
-    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout, $state, StorageService, $cordovaToast) {
+    .controller('TroopTabCtrl', function($ionicModal, $ionicPopup, TeamService, $scope, $timeout, $state, StorageService, $cordovaToast, getPosts) {
 
         var self = this;
 
@@ -11,6 +11,8 @@ angular.module('starter.controller.troop', [])
             favourite_position: 'Gardien'
         };
 
+        $scope.posts = getPosts.data.posts;
+        console.log($scope.posts);
         self.showDelete = false;
 
         $ionicModal.fromTemplateUrl('templates/add-player-modal.html', {
@@ -32,6 +34,7 @@ angular.module('starter.controller.troop', [])
         };
 
         $scope.addPlayer = function() {
+          console.log($scope.player);
             TeamService.addPlayer($scope.player)
                 .success(function(data) {
                     self.getPlayers();
@@ -95,6 +98,7 @@ angular.module('starter.controller.troop', [])
                 }
             })
         };
+
         self.removePlayer = function(id) {
             TeamService.removePlayer(id)
                 .success(function(data) {

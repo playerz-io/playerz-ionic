@@ -9,7 +9,9 @@ let Coach = require('../models/coach').modelCoach;
 
 exports.getSports = (req, res) => {
 
-    let sports = [Football.FOOTBALL, Handball.HANDBALL];
+
+    // TODO: add sports
+    let sports = [Football.FOOTBALL];
 
     res.status(200).json({
         sports

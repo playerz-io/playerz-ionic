@@ -16,16 +16,44 @@
                  on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)">
               </a> -->
 
-              <img src="{{matchStat.defensiveActionImg}}" id='{{matchStat.ACTION._DEFENSIVE.id}}'
-              on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)"
-              ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"/>
 
+              <button type="button" name="button"
+                      ng-if="matchStat.sportCoach === 'Handball'"
+                      ng-click="matchStat.countMainAction('interception')"
+              >Interception</button>
+
+              <button type="button" name="button"
+                      ng-if="matchStat.sportCoach === 'Handball'"
+                      ng-click="matchStat.countMainAction('defence')"
+              >Contre <br> Défensif</button>
+
+              <button type="button" name="button"
+                      ng-if="matchStat.sportCoach === 'Handball'"
+                      ng-click="matchStat.countMainAction('attemptsDefence')"
+              >Tir <br> Contré</button>
+
+              <button type="button" name="button"
+                      ng-if="matchStat.sportCoach === 'Handball'"
+                      ng-click="matchStat.showPopupPenalty()"
+              >Penalty</button>
+
+              <button type="button" name="button"
+                      ng-if="matchStat.sportCoach === 'Handball'"
+                      ng-click="matchStat.showPopupAreaAttempts()"
+              >Tirs</button>
+
+              <img ng-if="matchStat.sportCoach === 'Football'"
+              src="{{matchStat.defensiveActionImg}}" id='{{matchStat.ACTION._DEFENSIVE.id}}'
+              on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)"
+              ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"
+              />
               <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
                  id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
               </a> -->
 
-              <img ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
+              <img ng-if="matchStat.sportCoach === 'Football'"
+                 ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
                  src="{{matchStat.attemptsOnTargetImg}}"  id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">
               </img>
@@ -35,7 +63,8 @@
                   on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
               </a> -->
 
-              <img ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
+              <img ng-if="matchStat.sportCoach === 'Football'"
+                 ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)"
                  src="{{matchStat.attemptsOffTargetImg}}" id="{{matchStat.ACTION._ATTEMPTS_OFF_TARGET.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_OFF_TARGET.name)">
               </img>
@@ -45,7 +74,8 @@
                  on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
               </a> -->
 
-              <img ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
+              <img ng-if="matchStat.sportCoach === 'Football'"
+                 ng-click="matchStat.countMainAction(matchStat.ACTION._BUT.name)"
                  src="{{matchStat.butImg}}" id="{{matchStat.ACTION._BUT.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._BUT.name)">
               </img>
@@ -59,11 +89,13 @@
                  src="{{matchStat.ballLostImg}}"  id="{{matchStat.ACTION._BALL_LOST.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._BALL_LOST.name)">
               </img>
+
               <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
                  id="{{matchStat.ACTION._PASSE_FAILED.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._PASSE_FAILED.name)">
               </a> -->
-              <img ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
+              <img ng-if="matchStat.sportCoach === 'Football'"
+                 ng-click="matchStat.countMainAction(matchStat.ACTION._PASSE_FAILED.name)"
                  src="{{matchStat.passesFailedImg}}" id="{{matchStat.ACTION._PASSE_FAILED.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._PASSE_FAILED.name)">
               </img>
@@ -72,7 +104,8 @@
                  on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
               </a> -->
 
-              <img ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
+              <img ng-if="matchStat.sportCoach === 'Football'"
+                 ng-click="matchStat.countMainAction(matchStat.ACTION._RETRIEVE_BALL.name)"
                  src="{{matchStat.retrieveBallsImg}}" id="{{matchStat.ACTION._RETRIEVE_BALL.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._RETRIEVE_BALL.name)">
               </img>
@@ -151,21 +184,28 @@
                     </p>
                 </div>
             </div>
-            <div ng-if="matchStat.formation === '4-4-2'" class="col col-60" id="fft">
+            <div ng-if="matchStat.formation === '4-4-2' && matchStat.sportCoach === 'Football'" class="col col-60" id="fft">
                 <four-fourtwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></four-fourtwo>
             </div>
-            <div ng-if="matchStat.formation === '4-3-3'" class="col col-60" id="ftt">
+            <div ng-if="matchStat.formation === '4-3-3' && matchStat.sportCoach === 'Football'" class="col col-60" id="ftt">
                 <four-threethree info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></four-threethree>
             </div>
-            <div ng-if="matchStat.formation === '3-5-2'" class="col col-60" id="ftt">
+            <div ng-if="matchStat.formation === '3-5-2' && matchStat.sportCoach === 'Football'" class="col col-60" id="ftt">
                 <three-fivetwo info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></three-fivetwo>
             </div>
+            <div ng-if="matchStat.sportCoach === 'Handball'" class="col col-60" id="ftt">
+                <handball info="matchStat.playerSelected" drag="false" ball-played="matchStat.countBallPlayed(player)" show-actions-goalkeeper="matchStat.showActionsGoalkeeper()" goalkeeper="matchStat.goalkeeper" actions-goalkeeper="matchStat.countMainAction(action)"></handball>
+            </div>
+
+
+
             <div class="col col-10 text-center" id="div-act-dead-time">
 
                 <img ng-click="matchStat.countMainAction('offSide')"
                       id="off-side"
                       src="{{matchStat.offSideImg}}"
-                      on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)">
+                      on-tap="matchStat.onTap(matchStat.ACTION._OFF_SIDE.name)"
+                      ng-show="matchStat.sportCoach === 'Football'">
                 </img>
 
                 <a ng-click="matchStat.isFoulsActivated(); matchStat.cardActived = !matchStat.cardActived" id="double-card">
@@ -179,6 +219,11 @@
                     <a ng-click="matchStat.countMainAction('redCard')">
                         <img src="img/Foul-48.png" alt="carton rouge" height="36" width="36" />
                     </a>
+                    <br>
+                    <button ng-click="matchStat.countMainAction('twoMinutes')"
+                            ng-if="matchStat.sportCoach === 'Handball'"
+                            type="button"
+                            name="button">2 min</button>
                 </div>
                 <a ng-click="matchStat.isCardActivated(); matchStat.foulsActived = !matchStat.foulsActived" id="double-fouls">
                     <img src="img/plaster.png" alt="Hors-jeu" height="36" width="36" />
@@ -194,7 +239,7 @@
 
                 <img ng-click="matchStat.removeAction()"
                 id="undo-action"
-                src="{{matchStat.undoActionImg}}" 
+                src="{{matchStat.undoActionImg}}"
                 on-tap="matchStat.onTap(matchStat.ACTION._UNDO_ACTION.name)">
               </img>
             </div>
