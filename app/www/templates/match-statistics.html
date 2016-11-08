@@ -18,35 +18,35 @@
 
 
               <button type="button" name="button"
-                      ng-if"matchStat.sportCoach === 'Handball'"
+                      ng-if="matchStat.sportCoach === 'Handball'"
                       ng-click="matchStat.countMainAction('interception')"
               >Interception</button>
 
               <button type="button" name="button"
-                      ng-if"matchStat.sportCoach === 'Handball'"
+                      ng-if="matchStat.sportCoach === 'Handball'"
                       ng-click="matchStat.countMainAction('defence')"
               >Contre <br> Défensif</button>
 
               <button type="button" name="button"
-                      ng-if"matchStat.sportCoach === 'Handball'"
+                      ng-if="matchStat.sportCoach === 'Handball'"
                       ng-click="matchStat.countMainAction('attemptsDefence')"
               >Tir <br> Contré</button>
 
               <button type="button" name="button"
-                      ng-if"matchStat.sportCoach === 'Handball'"
+                      ng-if="matchStat.sportCoach === 'Handball'"
                       ng-click="matchStat.showPopupPenalty()"
               >Penalty</button>
 
               <button type="button" name="button"
-                      ng-if"matchStat.sportCoach === 'Handball'"
-                      ng-click="matchStat.showPopupAttempts()"
+                      ng-if="matchStat.sportCoach === 'Handball'"
+                      ng-click="matchStat.showPopupAreaAttempts()"
               >Tirs</button>
 
               <img ng-if="matchStat.sportCoach === 'Football'"
               src="{{matchStat.defensiveActionImg}}" id='{{matchStat.ACTION._DEFENSIVE.id}}'
               on-tap="matchStat.onTap(matchStat.ACTION._DEFENSIVE.name)"
-              ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"/>
-
+              ng-click="matchStat.countMainAction(matchStat.ACTION._DEFENSIVE.name)"
+              />
               <!-- <a ng-click="matchStat.countMainAction(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)"
                  id="{{matchStat.ACTION._ATTEMPTS_ON_TARGET.id}}"
                  on-tap="matchStat.onTap(matchStat.ACTION._ATTEMPTS_ON_TARGET.name)">

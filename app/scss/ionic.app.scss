@@ -728,7 +728,7 @@ $size-background-action: 10vh;
     #{$link} {
         width: $size-background-action;
         height: $size-background-action;
-        
+
         background-size: $size-background-action $size-background-action;
         background-repeat: no-repeat;
     }
@@ -997,4 +997,16 @@ $size-background-action: 10vh;
             }
         }
     }
+}
+
+//modal area but and attempts
+
+.area{
+  border: solid 1px black;
+  min-height: 48px;
+  min-width: 48px;
+}
+
+.area.activated{
+  background-color: green;
 }

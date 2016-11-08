@@ -10942,3 +10942,11 @@ html {
     #change .col-33 .rem.drag-enter, #change .col-33 .rem.dragging {
       background: #fe4e50;
       border: 1px solid #ffffff; }
+
+.area {
+  border: solid 1px black;
+  min-height: 48px;
+  min-width: 48px; }
+
+.area.activated {
+  background-color: green; }

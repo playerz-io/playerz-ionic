@@ -78,16 +78,16 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
 
             }
 
-            if(player.sport === Handball.HANDBALL){
+            if (player.sport === Handball.HANDBALL) {
 
-              butHandball = statistics.butsByPenalty + statistics.butsByAttempts;
-              statistics.but = butHandball;
+                butHandball = statistics.butsByPenalty + statistics.butsByAttempts;
+                statistics.but = butHandball;
 
-              attemptsHandall = statistics.butsByPenalty + statistics.butsByAttempts + statistics.penaltyOffTarget + statistics.attemptsOffTarget + statistics.penaltyStop + statistics.attemptStop;
-              statistics.attempts = attemptsHandall;
+                attemptsHandall = statistics.butsByPenalty + statistics.butsByAttempts + statistics.penaltyOffTarget + statistics.attemptsOffTarget + statistics.penaltyStop + statistics.attemptStop;
+                statistics.attempts = attemptsHandall;
 
-              attemptsOnTargetHandball =  statistics.butsByPenalty + statistics.butsByAttempts + statistics.penaltyStop + statistics.attemptStop;
-              statistics.attemptsOnTarget = attemptsOnTargetHandball;
+                attemptsOnTargetHandball = statistics.butsByPenalty + statistics.butsByAttempts + statistics.penaltyStop + statistics.attemptStop;
+                statistics.attemptsOnTarget = attemptsOnTargetHandball;
 
             }
 
@@ -128,7 +128,7 @@ let updateStatPlayer = function(player, match_id, stat, err, coach_id, minus) {
                     sorties_aeriennes: statistics.sorties_aeriennes,
                     clean_sheet: statistics.clean_sheet
                 }
-            } else if (Handball.HANDBALL) {
+            } else if (player.sport === Handball.HANDBALL) {
                 statisticsPlayer = {
                     foulsCommitted: statistics.foulsCommitted,
                     foulsSuffered: statistics.foulsSuffered,
@@ -268,10 +268,21 @@ exports.countMainAction = function(req, res) {
                     schema.push(action);
                     schema.push(time);
                     let sizeSchema = match.schemas.length;
+                    let id_statPlayer;
 
-                    //id player with main action(but, tir cadré, tir non cadrées...)
-                    let id_statPlayer = schema[sizeSchema - 3];
-                    //  let id_playerRetrieveBall = schema[0];
+                    if (coach.sport === Football.FOOTBALL) {
+                        //id player with main action(but, tir cadré, tir non cadrées...)
+                        id_statPlayer = schema[sizeSchema - 3];
+
+                    } else if (coach.sport === Handball.HANDBALL) {
+                        console.log(stringAction);
+                        if (stringAction === 'butsByAttempts' || stringAction === 'attemptsOffTarget' || stringAction === 'attemptStop') {
+                            id_statPlayer = schema[sizeSchema - 5];
+                            console.log('id_statPlayer : ' + id_statPlayer);
+                        } else {
+                            id_statPlayer = schema[sizeSchema - 3];
+                        }
+                    }
 
                     //lorsque la taille du schema est égale à 2, celà signifie qu'il contient
                     //seulement le temps et l'action  donc pas de joueur donc on ne fait rien
@@ -360,12 +371,14 @@ exports.countMainAction = function(req, res) {
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, coach, done) => {
 
-                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null];
+                let actions = ['ballLost', 'but', 'defensiveAction', 'attemptsOffTarget', 'attemptsOnTarget', 'ballLost', 'foulsSuffered', 'foulsCommitted', 'redCard', 'yellowCard', 'crossesFailed', 'passesFailed', undefined, null, 'butsByAttempts'];
 
                 //verifie pour une action de but si nous sommmes pas dans les cas précédent
                 if (!((stringAction === 'but' && sizeSchema === 4) || (stringAction === 'but' && sizeSchema >= 5))) {
                     //check if id_statPlayer is not equal any actions
+
                     if (actions.indexOf(id_statPlayer) === -1) {
+                        console.log('allo', id_statPlayer);
                         Player.findById(id_statPlayer, function(err, player) {
                             console.log('but bbb');
                             updateStatPlayer(player, match_id, stringAction, err, coach_id, false);
@@ -396,10 +409,25 @@ exports.countMainAction = function(req, res) {
 
             (stringAction, match, schema, sizeSchema, id_statPlayer, actions, coach, done) => {
                 match.schemaMatch.push(match.schemas);
+                console.log('match push ', match.schemas);
+                console.log(`stringAction ${stringAction}`);
+
+                //Handball remove zone of attempts && zone of but
+                if (coach.sport === Handball.HANDBALL && (stringAction === 'butsByAttempts' || stringAction === 'attemptStop')) {
+
+                    match.schemas.splice(sizeSchema - 4, 2);
+                    console.log(match.schemas);
+                }
+
+                //Handball remove zone of attempts
+                if (coach.sport === Handball.HANDBALL && stringAction === 'attemptsOffTarget') {
+                    match.schemas.splice(sizeSchema - 3, 1);
+                    console.log(match.schemas);
+                }
+
                 match.actions.push(match.schemas.slice(-3));
                 real_time.addActions(match_id, coach_id, match.schemas.slice(-3));
                 match.schemas = [];
-
                 coach.save((err) => {
                     if (err)
                         return Utils.errorIntern(res, err);
@@ -751,7 +779,6 @@ let totalStat = function(_coach_id, _match_id) {
                                 totalPassesCompletion += stat['passesCompletion'];
                                 totalRelanceCompletion += stat['relanceCompletion'];
 
-
                                 //statistics for Handball
                             } else if (coach.sport === Handball.HANDBALL) {
                                 totalPenalty += stat['penalty'];
@@ -829,6 +856,9 @@ let totalStat = function(_coach_id, _match_id) {
                             }
 
                         }
+
+
+                        cb(null, match, statisticsMatch);
 
                     }
                 });
@@ -919,6 +949,8 @@ exports.removeAction = (req, res) => {
             } else {
                 //check if sizeLastSchema equals 3
                 if (sizeLastSchema >= 3) {
+
+                    console.log('lastSchema', lastSchema);
                     //remove 3 dernier item du dernier schema
                     //schemaRemoved contains [ '577a4211c02b9a386444063e', 'but', '00:09' ]
                     // lastSchema = schemaMatch[sizeSchemaMatch - 1] - [ '577a4211c02b9a386444063e', 'but', '00:09' ]

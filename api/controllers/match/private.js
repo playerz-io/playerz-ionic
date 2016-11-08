@@ -164,7 +164,7 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected,
             return Utils.errorIntern(res, err);
     });
 
-
+    console.log(idMatch );
     //console.log('player.position', player.position);
     real_time.addPlayer_firebase(player, idMatch, idCoach, true);
     // });

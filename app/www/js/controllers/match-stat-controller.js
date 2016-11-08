@@ -24,8 +24,31 @@ angular.module('starter.controller.match-stat', [])
         self.cardActived = false;
         self.foulsActived = false;
 
-        self.showPopupAttempts = () => {
 
+        self.showPopupAreaAttempts = () => {
+            console.log('show area attempts');
+            $scope.popupAreaAttempts = $ionicPopup.show({
+                templateUrl: 'templates/area-attempts-popup.html',
+                scope: $scope,
+                title: 'Zone de tir'
+            });
+        };
+
+        self.getAreaBut = () => {
+            $scope.popupAreaAttempts.close();
+            $scope.popupAreaBut = $ionicPopup.show({
+                templateUrl: 'templates/area-but-popup.html',
+                scope: $scope,
+                title: 'Zone de but'
+            });
+        };
+
+        self.showPopupAreaBut = () => {
+
+        };
+
+        self.showPopupAttempts = () => {
+            $scope.popupAreaBut.close();
             $scope.popupAttempts = $ionicPopup.show({
                 templateUrl: 'templates/attempts-popup.html',
                 scope: $scope
@@ -369,9 +392,25 @@ angular.module('starter.controller.match-stat', [])
                 })
         };
 
+
+        self.addAreaAttemptsAndBut = (area) => {
+            PlayerService.addSchema(self.matchId, area)
+                .success(function(data) {
+                    console.log(data);
+                    if (area.includes('zoneBut')) {
+                        self.showPopupAttempts();
+                    } else {
+                        self.getAreaBut();
+                    }
+                })
+                .error(function(data) {
+                    console.log(data);
+                })
+        };
+
         self.countMainAction = function(action) {
 
-          console.log(action)
+            console.log(action)
             if (self.goalkeeper) {
                 self.showActionsGoalkeeper();
             }
@@ -387,8 +426,13 @@ angular.module('starter.controller.match-stat', [])
             PlayerService.countMainAction(self.matchId, action, self.fullTime)
                 .success(function(data) {
 
+                    //close poppu area attempts after attemptsOffTarget
+                    if(action === 'attemptsOffTarget' && self.sportCoach === 'Handball'){
+                      $scope.popupAreaBut.close();
+                    }
+
                     //close popup after attempt in Handball
-                    if ((action === 'attemptStop' || action === 'attemptsOffTarget' || action === 'butsByAttempts') && self.sportCoach === 'Handball') {
+                    if ((action === 'attemptStop' || action === 'butsByAttempts') && self.sportCoach === 'Handball') {
                         $scope.popupAttempts.close();
                     }
 

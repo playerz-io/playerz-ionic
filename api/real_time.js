@@ -62,10 +62,11 @@ exports.addActions = (match_ID, coach_ID, actions) => {
         .child(match_ID)
         .child(ACTIONS);
 
+    console.log(actions);
     if (actions[1] === 'but_opponent') {
         refMatch.push(actions);
     }
-    if (['assist', 'retrieveBalls', 'foulsSuffered', 'foulsCommitted', 'yellowCard', 'redCard', 'attemptsOnTarget', 'attemptsOffTarget', 'but', 'ballLost', 'ballPlayed', 'defensiveAction', 'offSide', 'passesFailed', 'saves', 'dual_goalkeeper', 'sorties_aeriennes'].indexOf(actions[1]) >= 0) {
+    if (['attemptStop' ,'butsByAttempts','assist', 'retrieveBalls', 'foulsSuffered', 'foulsCommitted', 'yellowCard', 'redCard', 'attemptsOnTarget', 'attemptsOffTarget', 'but', 'ballLost', 'ballPlayed', 'defensiveAction', 'offSide', 'passesFailed', 'saves', 'dual_goalkeeper', 'sorties_aeriennes'].indexOf(actions[1]) >= 0) {
         Player.findById(actions[0], (err, player) => {
             actions[0] = `${player.last_name}`;
             refMatch.push(actions);
@@ -156,6 +157,7 @@ exports.addStatisticsMatch = (match_ID, coach_ID, match, nameClub) => {
 };
 exports.addPlayer_firebase = (player, match_ID, coach_ID, selected) => {
 
+    console.log(player);
     //  console.log('ok');
     //get stat for the good match
     let getStatMatch = (stat) => stat.match_id === match_ID;

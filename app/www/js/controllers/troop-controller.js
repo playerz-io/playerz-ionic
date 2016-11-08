@@ -34,6 +34,7 @@ angular.module('starter.controller.troop', [])
         };
 
         $scope.addPlayer = function() {
+          console.log($scope.player);
             TeamService.addPlayer($scope.player)
                 .success(function(data) {
                     self.getPlayers();
