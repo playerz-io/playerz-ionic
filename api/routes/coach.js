@@ -4,8 +4,13 @@ let express = require('express');
 let router = express.Router();
 let controllerCoach = require('../controllers/coach');
 let passport = require('passport');
+let handleToken = require('../middleware/middleware').handleToken;
+
 
 router
+    .use('*', (req, res, next) => {
+        handleToken(req, res, next);
+    })
     .get('/coach', passport.authenticate('jwt', {
         session: false
     }), controllerCoach.getCoach)

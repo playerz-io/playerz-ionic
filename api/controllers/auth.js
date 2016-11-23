@@ -364,11 +364,20 @@ exports.authenticationJwt = (req, res) => {
             });
         } else {
 
-            console.info(coach);
             //check si le mdp est le bon
             coach.comparePassword(password, function(err, isMatch) {
                 if (isMatch && !err) {
-                    let token = jwt.encode(coach, config.secret);
+
+                    //encode id, password & email coach
+                    let data = new Object();
+                    data.id = coach._id;
+                    data.email = coach.email;
+                    data.password = coach.password;
+
+                    console.log(coach, data);
+                    let token = jwt.encode({data}, config.secret);
+
+
                     //increase total_connexion
                     coach.total_connexion++;
                     coach.save((err) => {

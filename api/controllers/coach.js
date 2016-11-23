@@ -13,12 +13,12 @@ let auth = require('../config/mailgun').auth;
 let bcrypt = require('bcrypt');
 
 
-exports.getNameTeam = function(req, res) {
+exports.getNameTeam = function(req, res, next, data) {
     let token = getToken(req.headers);
-
 
     if (token) {
         let decoded = jwt.decode(token, config.secret);
+
         Coach.findById(decoded._id, function(err, coach) {
             if (err)
                 return Utils.errorIntern(res, err);
@@ -39,58 +39,43 @@ exports.getNameTeam = function(req, res) {
 }
 
 exports.getCoachById = function(req, res) {
-    let token = getToken(req.headers);
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
-        Coach.findById(decoded._id, function(err, coach) {
-            if (err)
-                return Utils.errorIntern(res, err);
+    let data = res.locals.data;
 
+    Coach.findById(data.id, function(err, coach) {
+        if (err)
+            return Utils.errorIntern(res, err);
 
-            res.status(202).json({
-                success: true,
-                coach
-            })
-        });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+        res.status(202).json({
+            success: true,
+            coach
+        })
+    });
 }
 
 exports.getCoach = function(req, res) {
-    var token = getToken(req.headers);
-    if (token) {
-        var decoded = jwt.decode(token, config.secret);
-  
-        Coach.findOne({
-            email: decoded.email,
-            password: decoded.password
-        }, function(err, coach) {
-            if (err)
-                return Utils.errorIntern(res, err);
 
-            if (!coach) {
-                return res.status(403).send({
-                    success: false,
-                    msg: 'Coach not found.'
-                });
-            } else {
-                res.json({
-                    success: true,
-                    coach
-                });
-            }
-        });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+    let data = res.locals.data;
+
+    Coach.findOne({
+        email: data.email,
+        password: data.password
+    }, function(err, coach) {
+        if (err)
+            return Utils.errorIntern(res, err);
+
+        if (!coach) {
+            return res.status(403).send({
+                success: false,
+                msg: 'Coach not found.'
+            });
+        } else {
+            res.json({
+                success: true,
+                coach
+            });
+        }
+    });
 
 };
 
@@ -104,37 +89,30 @@ exports.updateCoach = function(req, res) {
     let birth_date = req.body.birth_date;
     let website_club = req.body.website_club;
     let website_perso = req.body.website_perso;
+    let data = res.locals.data;
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
+    Coach.findById(data.id, (err, coach) => {
 
-        Coach.findById(decoded._id, (err, coach) => {
+        if (err)
+            return Utils.errorIntern(res, err);
+
+        coach.first_name = first_name;
+        coach.last_name = last_name;
+        coach.country = country;
+        coach.description = description;
+        coach.birth_date = birth_date;
+        coach.website_perso = website_perso;
+        coach.website_club = website_club;
+
+        coach.save((err) => {
             if (err)
                 return Utils.errorIntern(res, err);
-
-            coach.first_name = first_name;
-            coach.last_name = last_name;
-            coach.country = country;
-            coach.description = description;
-            coach.birth_date = birth_date;
-            coach.website_perso = website_perso;
-            coach.website_club = website_club;
-
-            coach.save((err) => {
-                if (err)
-                    return Utils.errorIntern(res, err);
-            });
-
-            res.status(202).json({
-                success: true,
-                msg: 'coach updated',
-                coach: coach
-            })
         });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
+
+        res.status(202).json({
+            success: true,
+            msg: 'coach updated',
+            coach: coach
         });
-    }
+    });
 };
