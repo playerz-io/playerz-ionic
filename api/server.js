@@ -41,7 +41,6 @@ app.use(passport.initialize());
 app.use(cors());
 
 app.use(function(req, res, next) {
-    console.log('HEADER');
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
 

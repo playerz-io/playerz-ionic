@@ -4,8 +4,12 @@ let express = require('express');
 let router = express.Router();
 let controllerStat = require('../controllers/statistics');
 let passport = require('passport');
+let handleToken = require('../middleware/middleware').handleToken;
 
 router
+    .use('*', (req, res, next) => {
+        handleToken(req, res, next);
+    })
     .post('/statistic', passport.authenticate('jwt', {
         session: false
     }), controllerStat.updateStatistic)
