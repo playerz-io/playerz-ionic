@@ -4,9 +4,13 @@ let express = require('express');
 let router = express.Router();
 let controllerTeam = require('../controllers/team');
 let passport = require('passport');
+let handleToken = require('../middleware/middleware').handleToken;
 
 router
-//add Player to Team
+    .use('*', (req, res, next) => {
+        handleToken(req, res, next);
+    })
+    //add Player to Team
     .post('/player', passport.authenticate('jwt', {
         session: false
     }), controllerTeam.addPlayer)
