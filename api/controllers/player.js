@@ -12,146 +12,116 @@
 
   exports.addPosition = function(req, res) {
 
+      let data = res.locals.data;
       let position = req.body.position;
       let idPlayer = req.body.player_id;
       let idMatch = req.body.match_id;
+      let idCoach = data.id;
 
-      let token = getToken(req.headers);
+      Player.findById(idPlayer, function(err, player) {
 
-      if (token) {
-          let decoded = jwt.decode(token, config.secret);
-          let idCoach = decoded._id;
+          if (err)
+              return Utils.errorIntern(res, err);
 
-
-          Player.findById(idPlayer, function(err, player) {
-
+          player.position = position;
+          realTime.updateStatistic_firebase(player, idMatch, idCoach, {
+              first_name: player.first_name,
+              last_name: player.last_name,
+              id: player._id,
+              favourite_position: player.favourite_position,
+              position: position
+          });
+          player.save((err) => {
               if (err)
                   return Utils.errorIntern(res, err);
-
-              console.log(player, idMatch, idCoach)
-              player.position = position;
-              realTime.updateStatistic_firebase(player, idMatch, idCoach, {
-                  first_name: player.first_name,
-                  last_name: player.last_name,
-                  id: player._id,
-                  favourite_position: player.favourite_position,
-                  position: position
-              });
-              player.save((err) => {
-                  if (err)
-                      return Utils.errorIntern(res, err);
-              });
-
-              res.status(201).json({
-                  success: true,
-                  player: player
-              });
-          })
-
-      } else {
-          return res.status(403).send({
-              success: false,
-              msg: 'No token provided.'
           });
-      }
+
+          res.status(201).json({
+              success: true,
+              player: player
+          });
+      });
   };
 
   exports.getMatchPlayed = (req, res) => {
 
-      let token = getToken(req.headers);
+      let data = res.locals.data;
       let player_id = req.query.player_id;
+      let coach_id = data.id;
 
-      if (token) {
-          let decoded = jwt.decode(token, config.secret);
-          let coach_id = decoded._id;
+      async.waterfall([
 
-          async.waterfall([
+          (cb) => {
+              Coach.findById(coach_id, (err, coach) => {
 
-              (cb) => {
-                  Coach.findById(coach_id, (err, coach) => {
+                  if (err)
+                      return Utils.errorIntern(res, err);
 
-                      if (err)
-                          return Utils.errorIntern(res, err);
+                  let matchPlayed = [];
+                  let matchs = coach.team.matchs;
 
-                      let matchPlayed = [];
-                      let matchs = coach.team.matchs;
-                      for (let match of matchs) {
-                          let playerSelected = match.playerSelected;
-                          if (playerSelected.indexOf(player_id) >= 0) {
-                              matchPlayed.push(match._id);
-                          }
+                  for (let match of matchs) {
+                      let playerSelected = match.playerSelected;
+
+                      if (playerSelected.indexOf(player_id) >= 0) {
+                          matchPlayed.push(match._id);
                       }
-
-                      cb(null, matchPlayed);
-                  });
-              },
-              (matchPlayed, cb) => {
-
-                  Match.find({
-                      _id: {
-                          "$in": matchPlayed
-                      },
-                      status: 'finished'
-                  }, (err, match) => {
-                      if (err)
-                          return Utils.errorIntern(res, err);
-
-                      cb(null, match);
-                  });
-              }
-          ], (err, matchs) => {
-              if (err)
-                  return Utils.errorIntern(res, err);
-              res.status(202).json({
-                  success: true,
-                  matchs
+                  }
+                  cb(null, matchPlayed);
               });
-          });
+          },
+          (matchPlayed, cb) => {
 
-      } else {
-          return res.status(403).send({
-              success: false,
-              msg: 'No token provided.'
+              Match.find({
+                  _id: {
+                      "$in": matchPlayed
+                  },
+                  status: 'finished'
+              }, (err, match) => {
+                  if (err)
+                      return Utils.errorIntern(res, err);
+
+                  cb(null, match);
+              });
+          }
+      ], (err, matchs) => {
+          if (err)
+              return Utils.errorIntern(res, err);
+          res.status(202).json({
+              success: true,
+              matchs
           });
-      }
+      });
   };
 
 
   exports.getStatisticsMatch = (req, res) => {
 
-      let token = getToken(req.headers);
+      let data = res.locals.data;
       let player_id = req.query.player_id;
       let match_id = req.query.match_id;
 
-      if (token) {
+      Player.findById(player_id, (err, player) => {
 
-          Player.findById(player_id, (err, player) => {
+          if (err)
+              return Utils.errorIntern(res, err);
 
-              if (err)
-                  return Utils.errorIntern(res, err);
+          let statistics = player.statistics;
 
-              let statistics = player.statistics;
-
-              for (let stat of statistics) {
-                  if (stat.match_id === match_id) {
-                      return res.status(202).json({
-                          success: true,
-                          stat
-                      });
-                  }
+          for (let stat of statistics) {
+              if (stat.match_id === match_id) {
+                  return res.status(202).json({
+                      success: true,
+                      stat
+                  });
               }
-          });
-      } else {
-          return res.status(403).send({
-              success: false,
-              msg: 'No token provided.'
-          });
-      }
+          }
+      });
   };
 
   exports.getGlobalStatistics = (req, res) => {
 
-      let token = getToken(req.headers);
+      let data = res.locals.data;
       let player_id = req.query.player_id;
 
       let statisticsGlobal = {
@@ -184,69 +154,59 @@
       };
 
       let keyStatisticsGlobal = Object.keys(statisticsGlobal);
+      let coach_id = data.id;
 
-      if (token) {
-          let decoded = jwt.decode(token, config.secret);
-          let coach_id = decoded._id;
+      async.waterfall([
 
-          async.waterfall([
+          (cb) => {
+              Coach.findById(coach_id, (err, coach) => {
+                  if (err)
+                      return Utils.errorIntern(res, err);
+                  let matchPlayed = [];
+                  let matchs = coach.team.matchs;
+                  for (let match of matchs) {
+                      let playerSelected = match.playerSelected;
+                      if (playerSelected.indexOf(player_id) >= 0) {
+                          matchPlayed.push(match._id);
 
-              (cb) => {
-                  Coach.findById(coach_id, (err, coach) => {
-                      if (err)
-                          return Utils.errorIntern(res, err);
-                      let matchPlayed = [];
-                      let matchs = coach.team.matchs;
-                      for (let match of matchs) {
-                          let playerSelected = match.playerSelected;
-                          if (playerSelected.indexOf(player_id) >= 0) {
-                              matchPlayed.push(match._id);
-
-                          }
                       }
+                  }
 
-                      cb(null, matchPlayed);
-                  });
-              },
-              (matchPlayed, cb) => {
-                  Player.findById(player_id, (err, player) => {
-
-                      let statistics = player.statistics;
-                      //convert array object in array string
-                      let matchPlayedString = matchPlayed.map(String);
-
-                      for (let stat of statistics) {
-
-                          if (matchPlayedString.indexOf(stat.match_id) >= 0) {
-
-                              for (let key of keyStatisticsGlobal) {
-                                  statisticsGlobal[key] += stat[key];
-                              }
-                          }
-                      }
-                      console.log(statisticsGlobal.passesCompletion, matchPlayed.length);
-                      statisticsGlobal.passesCompletion = Math.round(statisticsGlobal.passesCompletion / matchPlayed.length);
-                      statisticsGlobal.relanceCompletion = Math.round(statisticsGlobal.relanceCompletion / matchPlayed.length);
-
-                      cb(null, statisticsGlobal, matchPlayed);
-                  });
-
-              }
-          ], (err, matchs, matchPlayed) => {
-              if (err)
-                  return Utils.errorIntern(res, err);
-
-              res.status(202).json({
-                  success: true,
-                  statisticsGlobal,
-                  nbrMatchPlayed: matchPlayed.length
+                  cb(null, matchPlayed);
               });
-          });
+          },
+          (matchPlayed, cb) => {
+              Player.findById(player_id, (err, player) => {
 
-      } else {
-          return res.status(403).send({
-              success: false,
-              msg: 'No token provided.'
+                  let statistics = player.statistics;
+                  //convert array object in array string
+                  let matchPlayedString = matchPlayed.map(String);
+
+                  for (let stat of statistics) {
+
+                      if (matchPlayedString.indexOf(stat.match_id) >= 0) {
+
+                          for (let key of keyStatisticsGlobal) {
+                              statisticsGlobal[key] += stat[key];
+                          }
+                      }
+                  }
+                  console.log(statisticsGlobal.passesCompletion, matchPlayed.length);
+                  statisticsGlobal.passesCompletion = Math.round(statisticsGlobal.passesCompletion / matchPlayed.length);
+                  statisticsGlobal.relanceCompletion = Math.round(statisticsGlobal.relanceCompletion / matchPlayed.length);
+
+                  cb(null, statisticsGlobal, matchPlayed);
+              });
+
+          }
+      ], (err, matchs, matchPlayed) => {
+          if (err)
+              return Utils.errorIntern(res, err);
+
+          res.status(202).json({
+              success: true,
+              statisticsGlobal,
+              nbrMatchPlayed: matchPlayed.length
           });
-      }
+      });
   };

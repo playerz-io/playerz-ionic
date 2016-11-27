@@ -4,9 +4,13 @@ let express = require('express');
 let router = express.Router();
 let controllerPlayer = require('../controllers/player');
 let passport = require('passport');
+let handleToken = require('../middleware/middleware').handleToken;
 
 router
-//add position to playerSelected
+    .use('*', (req, res, next) => {
+        handleToken(req, res, next);
+    })
+    //add position to playerSelected
     .post('/position', passport.authenticate('jwt', {
         session: false
     }), controllerPlayer.addPosition)
