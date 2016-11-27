@@ -13,29 +13,22 @@ let auth = require('../config/mailgun').auth;
 let bcrypt = require('bcrypt');
 
 
-exports.getNameTeam = function(req, res, next, data) {
-    let token = getToken(req.headers);
+exports.getNameTeam = function(req, res) {
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
+    let data = res.locals.data;
 
-        Coach.findById(decoded._id, function(err, coach) {
-            if (err)
-                return Utils.errorIntern(res, err);
+    Coach.findById(data.id, function(err, coach) {
+        if (err)
+            return Utils.errorIntern(res, err);
 
-            let nameTeam = coach.team.name_club;
+        let nameTeam = coach.team.name_club;
 
-            res.status(202).json({
-                success: true,
-                nameTeam
-            })
+        res.status(202).json({
+            success: true,
+            nameTeam
         });
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+    });
+
 }
 
 exports.getCoachById = function(req, res) {
@@ -81,7 +74,6 @@ exports.getCoach = function(req, res) {
 
 exports.updateCoach = function(req, res) {
 
-    let token = getToken(req.headers);
     let first_name = req.body.first_name;
     let last_name = req.body.last_name;
     let country = req.body.country;

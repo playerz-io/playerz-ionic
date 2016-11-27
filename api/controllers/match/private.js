@@ -105,37 +105,28 @@ exports.addStatisticsToPlayer = function(player, match_id) {
 };
 
 exports._findMatch = function(status, req, res) {
-    let token = getToken(req.headers);
 
-    if (token) {
-        let decoded = jwt.decode(token, config.secret);
+    let data = res.locals.data;
+    let idCoach = data.id;
+    let matchsStatus = [];
 
-        let idCoach = decoded._id;
-        let matchsStatus = [];
+    Coach.findById(idCoach, (err, coach) => {
 
-
-        Coach.findById(idCoach, (err, coach) => {
-
-            if (err)
-                return Utils.errorIntern(res, err);
-            let matchs = coach.team.matchs;
-            for (let match of matchs) {
-                if (match.status === status) {
-                    matchsStatus.push(match)
-                }
+        if (err)
+            return Utils.errorIntern(res, err);
+            
+        let matchs = coach.team.matchs;
+        for (let match of matchs) {
+            if (match.status === status) {
+                matchsStatus.push(match)
             }
+        }
 
-            res.status(201).json({
-                success: true,
-                matchs: matchsStatus
-            });
+        res.status(201).json({
+            success: true,
+            matchs: matchsStatus
         });
-    } else {
-        return res.status(403).json({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+    });
 };
 
 exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected, foundMatch) => {
@@ -164,7 +155,7 @@ exports._defaultPosition = (player, idMatch, position, idCoach, playersSelected,
             return Utils.errorIntern(res, err);
     });
 
-    console.log(idMatch );
+    console.log(idMatch);
     //console.log('player.position', player.position);
     real_time.addPlayer_firebase(player, idMatch, idCoach, true);
     // });

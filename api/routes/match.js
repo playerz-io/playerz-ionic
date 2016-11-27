@@ -4,9 +4,13 @@ let express = require('express');
 let router = express.Router();
 let controllerMatch = require('../controllers/match/match');
 let passport = require('passport');
+let handleToken = require('../middleware/middleware').handleToken;
 
 router
-//add match
+    .use('*', (req, res, next) => {
+        handleToken(req, res, next);
+    })
+    //add match
     .post('/match', passport.authenticate('jwt', {
         session: false
     }), controllerMatch.addMatch)

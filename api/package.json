@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "async": "^2.0.0-rc.5",
+    "cors": "^2.8.1",
     "firebase": "^2.4.2",
     "moment": "^2.13.0",
     "mongoose-moment": "^0.1.0",
