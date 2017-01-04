@@ -20,44 +20,31 @@ exports.getSports = (req, res) => {
 
 
 exports.getPosts = (req, res) => {
+    let dataAuth = res.locals.data;
 
-    let token = getToken(req.headers);
+    Coach.findById(dataAuth.id, function(err, coach) {
 
-    if (token) {
+        if (err)
+            return Utils.errorIntern(res, err);
 
-        let decoded = jwt.decode(token, config.secret);
+        let posts = [];
 
-        Coach.findById(decoded._id, function(err, coach) {
+        if (coach.sport === Football.FOOTBALL) {
 
-            if (err)
-                return Utils.errorIntern(res, err);
-
-            let posts = [];
-
-            if (coach.sport === Football.FOOTBALL) {
-
-                posts = Object.keys(Football.POSTS).map((key, index) => {
-                    return Football.POSTS[key];
-                });
-
-            } else if (coach.sport === Handball.HANDBALL) {
-
-                posts = Object.keys(Handball.POSTS).map((key, index) => {
-                    return Handball.POSTS[key];
-                });
-            }
-
-            res.status(202).json({
-                success: true,
-                posts
+            posts = Object.keys(Football.POSTS).map((key, index) => {
+                return Football.POSTS[key];
             });
-        });
 
-    } else {
-        return res.status(403).send({
-            success: false,
-            msg: 'No token provided.'
-        });
-    }
+        } else if (coach.sport === Handball.HANDBALL) {
 
+            posts = Object.keys(Handball.POSTS).map((key, index) => {
+                return Handball.POSTS[key];
+            });
+        }
+
+        res.status(202).json({
+            success: true,
+            posts
+        });
+    });
 };

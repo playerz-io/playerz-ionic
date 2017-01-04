@@ -9917,7 +9917,17 @@ a.button {
 @font-face {
   font-family: 'Raleway', sans-serif; }
 
-* {
+html, * {
+  font-size: 100%;
+  font-family: Raleway; }
+
+h1,
+h2,
+h3,
+h4,
+h4,
+h5,
+h6 {
   font-family: Raleway; }
 
 .pane {
@@ -9931,6 +9941,14 @@ ion-content {
 
 input::-webkit-input-placeholder {
   color: #ffffff; }
+
+#menu-match #header {
+  padding: 8px;
+  background-color: #fe4e50;
+  height: 150px; }
+  #menu-match #header p {
+    position: absolute;
+    top: 86px; }
 
 .backgroundRed {
   background-color: #c0392b; }
@@ -9993,35 +10011,90 @@ input::-webkit-input-placeholder {
   #login a#a-forgot {
     float: right; }
 
-#home div.scroll {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%; }
-
-#home h1 {
-  margin: auto;
-  color: white; }
-
-#home #div-effectif, #home #div-next-match, #home #div-statistics, #home #div-add {
-  height: 25%;
-  width: 100%;
-  border: 0;
-  display: flex;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("../img/effectifSS.png"); }
-  #home #div-effectif.activated, #home .activated#div-next-match, #home .activated#div-statistics, #home .activated#div-add {
-    background-color: black; }
-
-#home #div-next-match {
-  background-image: url("../img/proMatchs.png"); }
-
-#home #div-statistics {
-  background-image: url("../img/rectangle-copy-2.png"); }
-
-#home #div-add {
-  background: none; }
+#home {
+  color: #ffffff; }
+  #home h2 {
+    color: #ffffff; }
+  #home ion-item {
+    background: none;
+    color: #ffffff; }
+    #home ion-item.item {
+      background: none;
+      border: 0;
+      border-bottom: 1px solid #fe4e50; }
+      #home ion-item.item h2 {
+        font-size: 0.8em; }
+      #home ion-item.item p {
+        font-size: 0.6em;
+        color: #ffffff; }
+    #home ion-item.activated {
+      background-color: #50697d; }
+  #home .item-complex .item-content {
+    background: none; }
+  #home .item-content.activated {
+    background-color: #50697d; }
+  #home h3 {
+    margin-bottom: 24px;
+    color: #ffffff; }
+  #home ion-content {
+    padding: 16px;
+    text-align: center; }
+  #home #stat-match {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+  #home #stat-match div {
+    text-align: center; }
+    #home #stat-match div p {
+      margin-top: 16px; }
+  #home #but-goal svg {
+    fill: #27ae60;
+    width: 10vw;
+    height: auto; }
+  #home #but-let-in-goal svg {
+    fill: #c0392b;
+    width: 10vw;
+    height: auto; }
+  #home #nbr-match-played svg {
+    fill: white;
+    width: 10vw;
+    height: auto; }
+  #home #yellow-card svg {
+    fill: #f1c40f;
+    width: 10vw;
+    height: auto; }
+  #home #red-card svg {
+    fill: #c0392b;
+    width: 10vw;
+    height: auto; }
+  #home #last-matchs {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 16px;
+    margin-bottom: 24px; }
+    #home #last-matchs h4 {
+      margin-bottom: 8px;
+      color: #ffffff; }
+    #home #last-matchs div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+      #home #last-matchs div p {
+        width: 10vw;
+        height: 10vw;
+        text-align: center;
+        border-radius: 50%;
+        line-height: 10vw;
+        margin-top: 8px; }
+  #home #match-player {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    #home #match-player div {
+      width: calc(50vw - 32px); }
+    #home #match-player div:first-child ion-item p {
+      line-height: 1.0em; }
 
 #player-view label {
   background: none;
@@ -10699,7 +10772,10 @@ html {
 #match-stat #double-card {
   margin-top: 0.8vh; }
 
-#match-stat #double-card img, #match-stat #div-card img, #match-stat #double-fouls img, #match-stat #div-fouls img {
+#match-stat #div-card img,
+#match-stat #div-fouls img,
+#match-stat #double-card img,
+#match-stat #double-fouls img {
   width: 10vh;
   height: 10vh;
   background-size: 10vh 10vh; }

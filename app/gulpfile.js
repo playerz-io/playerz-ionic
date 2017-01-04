@@ -61,7 +61,7 @@ gulp.task('templatecache', (done) => {
         .pipe(templateCache({
             standalone: true
         }))
-        .pipe(gulp.dest('./www/js'))  
+        .pipe(gulp.dest('./www/js'))
         .on('end', done);
 });
 
@@ -87,7 +87,7 @@ gulp.task('prod-url', () => {
 
 gulp.task('default', ['sass', 'templatecache', 'ng_annotate', 'useref']);
 
-gulp.task('sass', function(done) {
+gulp.task('sass', function (done) {
     gulp.src('./scss/ionic.app.scss')
         .pipe(sass())
         .on('error', sass.logError)

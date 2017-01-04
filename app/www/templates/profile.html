@@ -2,24 +2,66 @@
   <div class="h1 title">Playerz</div>
   <button class="button button-clear button-positive" ng-click="profile.logout()">Logout</button>
 </ion-header-bar> -->
-<ion-nav-bar class="bar-positive" align-title="center">
+<!-- <ion-nav-bar class="bar-positive" align-title="center">
 </ion-nav-bar>
 <ion-tabs class="tabs-positive tabs-icon-top">
-      <ion-tab title="Accueil" icon-on="ion-ios-home" icon-off="ion-ios-home" href="#/profile/home">
-        <!-- Tab 1 content -->
-        <ion-nav-view name="home-tab"></ion-nav-view>
+      <ion-tab title="Accueil" icon-on="ion-ios-home" icon-off="ion-ios-home" href="#/profile/home"> -->
+<!-- Tab 1 content -->
+<!-- <ion-nav-view name="home-tab"></ion-nav-view>
     </ion-tab>
-    <ion-tab title="Effectif" icon-on="ion-ios-people" icon-off="ion-ios-people"  href="#/profile/troop">
-        <!-- Tab 2 content -->
-        <ion-nav-view name="troop-tab"></ion-nav-view>
+    <ion-tab title="Effectif" icon-on="ion-ios-people" icon-off="ion-ios-people"  href="#/profile/troop"> -->
+<!-- Tab 2 content -->
+<!-- <ion-nav-view name="troop-tab"></ion-nav-view>
+    </ion-tab> -->
+
+<!-- <ion-tab title="Match" icon-on="ion-ios-football" icon-off="ion-ios-football" href="#/profile/match"> -->
+<!-- Tab 3 content -->
+<!-- <ion-nav-view name="match-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="Match" icon-on="ion-ios-football" icon-off="ion-ios-football" href="#/profile/match">
-        <!-- Tab 3 content -->
-        <ion-nav-view name="match-tab"></ion-nav-view>
-    </ion-tab>
-
-</ion-tabs>
+</ion-tabs> -->
 
 <!-- <button class="button" ng-click="profile.share()">Share</button> -->
 <!-- <button class="button" ng-click="profile.logout()">Logout</button> -->
+<ion-side-menus>
+    <ion-pane ion-side-menu-content>
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view name="menuHome" animation="slide-left-right"></ion-nav-view>
+    </ion-pane>
+
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-positive">
+            <h1 class="title">Playerz</h1>
+        </header>
+
+        <ion-content class="has-header" id="menu-match">
+            <div id="header">
+                <p>
+                    Bansimba <br> Ceulain Barth <br> OM Senior-Ligue1
+                </p>
+            </div>
+            <ion-list>
+                <ion-item nav-clear menu-close ui-sref="profile.home">
+                    <i class="icon ion-ios-home"></i> Vestiaire
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="profile.troop">
+                    <i class="icon ion-ios-people"></i> Effectif
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="profile.match">
+                    <i class="icon ion-ios-football"></i> Match
+                </ion-item>
+                <ion-item nav-clear menu-close>
+                    <i class="icon ion-ios-settings-strong"></i> Paramètres
+                </ion-item>
+                <ion-item nav-clear menu-close>
+                    <i class="icon ion-person"></i> Profile
+                </ion-item>
+                <ion-item nav-clear menu-close>
+                    <i class="icon ion-power"></i> Se déconnecter
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

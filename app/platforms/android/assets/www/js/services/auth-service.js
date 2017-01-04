@@ -11,7 +11,6 @@ angular.module('starter')
         let useCredentials = function(token) {
             isAuthenticated = true;
             authToken = token;
-
             $http.defaults.headers.common.Authorization = authToken;
         }
 
