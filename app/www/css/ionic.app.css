@@ -10769,6 +10769,11 @@ html {
   height: 4vh;
   width: 4vh; }
 
+#match-stat svg {
+  width: 10vh;
+  height: 10vh;
+  fill: #fe4e50; }
+
 #match-stat #double-card {
   margin-top: 0.8vh; }
 

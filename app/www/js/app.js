@@ -118,9 +118,9 @@ angular.module('starter', [
 
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
       if (next.name === 'tactique' || next.name === 'menu-match.match-statistics' || next.name === 'menu-match.change' || next.name === 'menu-match.stat-in-live') {
-        screen.lockOrientation('landscape');
+        // screen.lockOrientation('landscape');
       } else {
-        screen.unlockOrientation();
+      //screen.unlockOrientation();
       }
 
       if (next.name === 'summary-stat' && fromState.name === 'menu-match.match-statistics') {
@@ -277,7 +277,6 @@ angular.module('starter', [
       }
     })
     .state('tactique', {
-      cache: false,
       url: '/tactique',
       templateUrl: 'templates/tactique.html',
       controller: 'TactiqueCtrl as tactique',
@@ -338,7 +337,7 @@ angular.module('starter', [
       templateUrl: 'templates/reset.html',
       controller: 'ResetCtrl as reset'
     })
-    .state('main-settings', {
+    .state('profile.main-settings', {
       url: '/main-settings',
       templateUrl: 'templates/main-settings.html',
       controller: 'MainSettingsCtrl as settings'
