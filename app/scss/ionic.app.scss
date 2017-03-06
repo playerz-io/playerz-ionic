@@ -1010,6 +1010,8 @@ $size-background-action: 10vh;
         background-size: $size-background-action $size-background-action;
         background-repeat: no-repeat;
     }
+
+
     // #{$link}.activated {
     //     width: $size-background-action;
     //     height: $size-background-action;
@@ -1024,6 +1026,12 @@ $size-background-action: 10vh;
         margin-left: -2vw;
         height: 4vh;
         width: 4vh;
+    }
+
+    svg {
+      width: $size-background-action;
+      height: $size-background-action;
+      fill: $saumon;
     }
 
     #double-card {

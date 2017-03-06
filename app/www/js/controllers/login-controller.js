@@ -21,7 +21,7 @@ angular.module('starter.controller.login', [])
 
     loginCtrl.login = function() {
         AuthService.login(loginCtrl.user).then(function(msg) {
-            $state.go('profile');
+            $state.go('profile.home');
             loginCtrl.user = {};
         }, function(errMsg) {
             console.log(errMsg);
@@ -56,7 +56,7 @@ angular.module('starter.controller.login', [])
                         } else {
 
                             AuthService.useCredentials(data.token);
-                            $state.go('profile');
+                            $state.go('profile.home');
                         }
 
                     })

@@ -7,12 +7,6 @@ angular.module('starter.controller.main-settings', [])
 
   self.coachId = StorageService.getStorageCoachId();
 
-
-  //force to display back button
-  $scope.$on('$ionicView.beforeEnter', function(event, viewData) {
-      viewData.enableBack = true;
-  });
-
   self.getCoach = () => {
     ProfileService.getCoachById()
     .success( (data) => {

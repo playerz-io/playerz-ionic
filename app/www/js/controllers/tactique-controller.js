@@ -46,7 +46,8 @@ angular.module('starter.controller.tactique', [])
         };
 
         self.goMatch = () => {
-            $state.go('menu-match.match-statistics', {
+          console.log(self.matchId);
+          $state.go('menu-match.match-statistics', {
                 matchId: self.matchId,
             });
         };
