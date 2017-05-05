@@ -151,24 +151,18 @@
                 {{home.matchsPlayed}} matchs
             </p>
         </div>
-        <div id="match-player">
+        <div>
             <div>
                 <p>
                     Derniers matchs
                 </p>
                 <ion-list>
-                    <ion-item>
-                        <p>XXXXXXXX<br>-<br>XXXXXX</p>
-                    </ion-item>
-                    <ion-item>
-                        <p>XXXXXXXX<br>-<br>XXXXXX</p>
-                    </ion-item>
-                    <ion-item>
-                        <p>XXXXXXXX<br>-<br>XXXXXX</p>
+                    <ion-item ng-repeat="match in home.lastMatchs" ui-sref="stat-end-match({ matchId: match._id})">
+                        {{match.against_team}}
                     </ion-item>
                 </ion-list>
             </div>
-            <div>
+            <!-- <div>
                 <p>
                     Meilleurs Joueurs
                 </p>
@@ -186,7 +180,7 @@
                         <p>XXXX XXXXXXXXXX</p>
                     </ion-item>
                 </ion-list>
-            </div>
+            </div> -->
 
         </div>
         <!-- <button id="div-effectif" ui-sref="profile.troop">

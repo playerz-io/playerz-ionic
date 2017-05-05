@@ -1,14 +1,14 @@
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+let express         = require('express');
+let router          = express.Router();
 let controllerCoach = require('../controllers/coach');
-let passport = require('passport');
-let handleToken = require('../middleware/middleware').handleToken;
-
+let passport        = require('passport');
+let handleToken     = require('../middleware/middleware').handleToken;
+let routes = ['/coach', '/coach_by_id', '/nameTeam'];
 
 router
-    .use('*', (req, res, next) => {
+    .use(routes, (req, res, next) => {
         handleToken(req, res, next);
     })
     .get('/coach', passport.authenticate('jwt', {

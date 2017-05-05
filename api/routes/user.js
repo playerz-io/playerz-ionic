@@ -1,16 +1,18 @@
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+let express        = require('express');
+let router         = express.Router();
 let controllerUser = require('../controllers/user');
-let passport = require('passport');
-let Utils = require('../utils');
-let handleToken = require('../middleware/middleware').handleToken;
+let passport       = require('passport');
+let Utils          = require('../utils');
+let handleToken    = require('../middleware/middleware').handleToken;
+let routes         = ['/changeEmail', '/changePassword', '/changeNumber'];
+
 router
     .post('/forgotPassword', controllerUser.forgotPassword)
     .post('/resetPassword', controllerUser.resetPassword)
     .get('/countries', Utils.getCountries)
-    .use('*', (req, res, next) => {
+    .use(routes, (req, res, next) => {
         handleToken(req, res, next);
     })
     .post('/changePassword', passport.authenticate('jwt', {

@@ -1,13 +1,17 @@
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+let express        = require('express');
+let router         = express.Router();
 let controllerTeam = require('../controllers/team');
-let passport = require('passport');
-let handleToken = require('../middleware/middleware').handleToken;
+let passport       = require('passport');
+let handleToken    = require('../middleware/middleware').handleToken;
+let routes         = ['/player',
+                      '/player/:id',
+                      '/players',
+                      '/player'];
 
 router
-    .use('*', (req, res, next) => {
+    .use(routes, (req, res, next) => {
         handleToken(req, res, next);
     })
     //add Player to Team
