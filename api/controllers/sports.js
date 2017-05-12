@@ -3,9 +3,9 @@
 let Football = require('../sports/football/football');
 let Handball = require('../sports/handball/handball');
 let getToken = require('./token');
-let jwt = require('jwt-simple');
-let config = require('../config/database');
-let Coach = require('../models/coach').modelCoach;
+let jwt      = require('jwt-simple');
+let config   = require('../config/database');
+let Coach    = require('../models/coach').modelCoach;
 
 exports.getSports = (req, res) => {
 

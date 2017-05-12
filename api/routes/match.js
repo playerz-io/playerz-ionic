@@ -1,13 +1,27 @@
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+let express         = require('express');
+let router          = express.Router();
 let controllerMatch = require('../controllers/match/match');
-let passport = require('passport');
-let handleToken = require('../middleware/middleware').handleToken;
+let passport        = require('passport');
+let handleToken     = require('../middleware/middleware').handleToken;
+let routes          = ['/getLastMatchs',
+                       '/getGlobalStatisticsMatch',
+                       '/match_finished',
+                       '/addOpponentBut',
+                       '/switchPosition',
+                       '/defaultPosition',
+                       '/match_comeup',
+                       '/match_finished',
+                       '/player_selected',
+                       '/tactique',
+                       '/formation',
+                       '/match',
+                       '/match/:id',
+                       '/matchs'];
 
 router
-  .use('*', (req, res, next) => {
+  .use(routes, (req, res, next) => {
     handleToken(req, res, next);
   })
   // add match
