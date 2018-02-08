@@ -1,7 +1,7 @@
 //controller player
 'use strict'
 
-let realTime = require('../real_time');
+// let realTime = require('../real_time');
 let getToken = require('./token');
 let jwt = require('jwt-simple');
 let config = require('../config/database');

@@ -10,8 +10,16 @@ const LIMIT_ACTION_REMOVE = 1;
 const REF_COACH = 'https://boos.firebaseio.com/coaches';
 const ACTIONS = 'actions';
 
-let Firebase = require('firebase');
-let ref = new Firebase(REF_COACH);
+const Firebase = require('firebase');
+const config = {
+  apiKey: 'AIzaSyBtu_wrFl-aap2ecQghvHAriojQgQeIkDw',
+  authDomain: 'playerz-4d93c.firebase.com',
+  databaseURL: 'https://playerz-4d93c.firebaseio.com'
+}
+
+Firebase.initializeApp(config)
+
+const ref = firebase.database().ref(REF_COACH)
 let Player = require('./models/player').modelPlayer;
 let Football = require('./sports/football/football');
 let Handball = require('./sports/handball/handball');

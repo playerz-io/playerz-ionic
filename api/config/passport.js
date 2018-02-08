@@ -11,7 +11,7 @@ let config = require('./database');
 module.exports = function(passport) {
     let opts = {};
     opts.secretOrKey = config.secret;
-    opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
+    opts.jwtFromRequest = ExtractJwt.fromHeader();
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
         Coach.modelCoach.findOne({
             id: jwt_payload.id
