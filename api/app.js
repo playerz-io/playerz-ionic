@@ -6,7 +6,6 @@ let bodyParser = require('body-parser')
 // TODO: a voir
 let morgan = require('morgan')
 let mongoose = require('mongoose')
-let passport = require('passport')
 let config = require('./config/database')
 let port = process.env.PORT || 5000
 let jwt = require('jwt-simple')
@@ -32,9 +31,6 @@ app.use(bodyParser.json())
 // log to console
 app.use(morgan('dev'))
 
-// Use the passport package in our application
-app.use(passport.initialize())
-
 app.use(cors())
 
 app.use(function (req, res, next) {
@@ -55,9 +51,6 @@ app.use(function (req, res, next) {
   next()
 })
 
-// passport configuration
-require('./config/passport')(passport)
-// TODO: a voir
 let apiRoutes = express.Router()
 
 let auth = require('./routes/auth')

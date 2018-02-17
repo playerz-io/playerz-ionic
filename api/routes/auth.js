@@ -7,7 +7,7 @@ let controllerAuth = require('../controllers/auth')
 router
     .post('/facebook', controllerAuth.facebookConnect)
     .post('/signup', controllerAuth.signup)
-    .post('/authenticate', controllerAuth.authenticationJwt)
+    .post('/signIn', controllerAuth.signIn)
     .post('/addSportFacebookUser', controllerAuth.addSportFacebookUser)
     .post('/addTeamFacebookUser', controllerAuth.addTeamFacebookUser)
     .post('/checkEmail', controllerAuth.checkEmail)

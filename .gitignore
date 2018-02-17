@@ -9,3 +9,5 @@ app/www/dist/
 api/node_modules/
 app/Playerz.apk
 app/my-release-key.keystore
+
+api/.env
