@@ -330,7 +330,7 @@ exports.signup = (req, res) => {
           }
 
           return res.status(201).json({
-            status: 'ok',
+            status: STATUS.OK,
             code: 201,
             message: 'Votre profil à été crée'
           })
@@ -352,7 +352,7 @@ exports.signup = (req, res) => {
 }
 
 // authentication with jwt
-exports.authenticationJwt = (req, res) => {
+exports.signIn = (req, res) => {
   const email = req.body.email
   const password = req.body.password
 
@@ -383,7 +383,7 @@ exports.authenticationJwt = (req, res) => {
       }
     })
   }
-  // recherche d'un coach par son email
+
   Coach.findOne({
     email: email
   }, function (err, coach) {
@@ -421,15 +421,22 @@ exports.authenticationJwt = (req, res) => {
             }
           })
 
-          return res.json({
-            success: true,
+          return res.status(200).json({
+            status: STATUS.OK,
+            code: 201,
             token: 'JWT ' + token,
             coach: coach
           })
         } else {
-          return res.json({
-            success: false,
-            msg: `Votre mot de passe n'est pas correct`
+          return res.status(400).json({
+            error: {
+              code: 400,
+              message: 'Bad password',
+              status: STATUS.INVALID_ARGUMENT,
+              details: [{
+                message: 'Votre mot de passe n\'est pas correct'
+              }]
+            }
           })
         }
       })
