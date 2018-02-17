@@ -9,11 +9,9 @@ let routes = ['/coach', '/coach_by_id', '/nameTeam'];
 
 router
     .use(routes, (req, res, next) => {
-        handleToken(req, res, next);
+      handleToken(req, res, next);
     })
-    .get('/coach', passport.authenticate('jwt', {
-        session: false
-    }), controllerCoach.getCoach)
+    .get('/coach', controllerCoach.getCoach)
     .get('/coach_by_id', passport.authenticate('jwt', {
         session: false
     }), controllerCoach.getCoachById)

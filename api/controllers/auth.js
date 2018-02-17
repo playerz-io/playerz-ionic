@@ -5,7 +5,8 @@ const Coach = require('../models/coach').modelCoach
 const Utils = require('../utils')
 const config = require('../config/database')
 const Team = require('../models/team').modelTeam
-const jwt = require('jwt-simple')
+// const jwt = require('jwt-simple')
+const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 const mg = require('nodemailer-mailgun-transport')
 const auth = require('../config/mailgun').auth
@@ -70,7 +71,7 @@ exports.checkPassword = (req, res) => {
 
 exports.checkEmail = (req, res) => {
   let email = req.body.email
-  console.log(email)
+
   _checkEmail(email, res)
 
 }
@@ -216,7 +217,7 @@ exports.facebookConnect = (req, res) => {
 
 const validEmail = (email, response) => {
   if (!Utils.validateEmail(email)) {
-    return response.json({
+    return response.status(400).json({
       error: {
         code: 400,
         message: 'Invalid format email',
@@ -230,7 +231,6 @@ const validEmail = (email, response) => {
 }
 
 const confirmPassword = (password, confirmationPassword, response) => {
-  console.log(password, confirmPassword)
   if (confirmationPassword.length < 6 || password.length < 6) {
     return response.json({
       success: false,
@@ -249,7 +249,7 @@ const confirmPassword = (password, confirmationPassword, response) => {
 const missingFields = () => {
 const args = Array.from(arguments)
 const isFalsyArgs = !args.some(element => element === false)
-  return res.json({
+  return res.status(400).json({
     success: false,
     msg: "Un ou plusieurs champs requis n'ont pas été remplis"
   })
@@ -280,7 +280,7 @@ exports.signup = (req, res) => {
 
   if (!lastname || !email || !firstname || !password || !sport || !country ||
      !genre || !birthdate || !nameClub || !category || !division || !confirmationPassword) {
-    return res.json({
+    return res.status(400).json({
       error: {
         code: 400,
         message: 'Missing required fields',
@@ -329,14 +329,14 @@ exports.signup = (req, res) => {
             return Utils.errorIntern(res, err)
           }
 
-          return res.json({
+          return res.status(201).json({
             status: 'ok',
             code: 201,
             message: 'Votre profil à été crée'
           })
         })
       } else {
-        return res.json({
+        return res.status(409).json({
           error: {
             code: 409,
             message: `User ${email} already exists.`,
@@ -353,74 +353,87 @@ exports.signup = (req, res) => {
 
 // authentication with jwt
 exports.authenticationJwt = (req, res) => {
-
-  let email = req.body.email
-  let password = req.body.password
+  const email = req.body.email
+  const password = req.body.password
 
   if (email) {
-      if (!Utils.validateEmail(email)) {
-          return res.json({
-              success: false,
-              msg: "Respecter le format d'une adresse mail"
-          })
-      }
+    if (!Utils.validateEmail(email)) {
+      return res.status(400).json({
+        error: {
+          code: 400,
+          message: `Bad email address format`,
+          status: STATUS.INVALID_ARGUMENT,
+          details: [{
+            message: 'Format de l\'addresse email incorrect'
+          }]
+        }
+      })
+    }
   }
 
   if (!email || !password) {
-      return res.json({
-          success: false,
-          msg: "Les champs email ou mot de passe ne sont pas remplis !"
-      })
-  }
-  //recherche d'un coach par son email
-  Coach.findOne({
-      email: email
-  }, function(err, coach) {
-      if (err)
-          return Utils.errorIntern(res, err)
-
-      if (!coach) {
-          return res.json({
-              success: false,
-              msg: "Le coach n'a pas été trouvé"
-          })
-      } else {
-
-          //check si le mdp est le bon
-          coach.comparePassword(password, function(err, isMatch) {
-              if (isMatch && !err) {
-
-                  //encode id, password & email coach
-                  let data = new Object()
-                  data.id = coach._id
-                  data.email = coach.email
-                  data.password = coach.password
-
-                  console.log(coach, data)
-                  let token = jwt.encode({data}, config.secret)
-
-
-                  //increase total_connexion
-                  coach.total_connexion++
-                  coach.save((err) => {
-                      if (err)
-                          return Utils.errorIntern(res, err)
-                  })
-
-                  return res.json({
-                      success: true,
-                      token: 'JWT ' + token,
-                      coach: coach
-                  })
-
-              } else {
-                  return res.json({
-                      success: false,
-                      msg: `Votre mot de passe n'est pas correct`
-                  })
-              }
-          })
+    return res.status(400).json({
+      error: {
+        code: 400,
+        message: 'Missing required fields',
+        status: STATUS.INVALID_ARGUMENT,
+        details: [{
+          message: 'Les champs email ou mot de passe ne sont pas remplis !'
+        }]
       }
+    })
+  }
+  // recherche d'un coach par son email
+  Coach.findOne({
+    email: email
+  }, function (err, coach) {
+    if (err) {
+      return Utils.errorIntern(res, err)
+    }
+
+    if (!coach) {
+      return res.status(404).json({
+        error: {
+          code: 404,
+          message: 'Coach not found',
+          status: STATUS.NOT_FOUND,
+          details: [{
+            message: 'Le coach n\'a pas été trouvé'
+          }]
+        }
+      })
+    } else {
+      // check si le mdp est le bon
+      coach.comparePassword(password, function (err, isMatch) {
+        if (isMatch && !err) {
+          let token = jwt.sign({
+            id: coach._id,
+            exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24), // 24h
+            aud: 'pwa-playerz',
+            sub: coach.email,
+            iss: 'backend'}, process.env.SECRET)
+
+          // increase total_connexion
+          coach.total_connexion++
+          coach.save((err) => {
+            if (err) {
+              return Utils.errorIntern(res, err)
+            }
+          })
+
+          return res.json({
+            success: true,
+            token: 'JWT ' + token,
+            coach: coach
+          })
+        } else {
+          return res.json({
+            success: false,
+            msg: `Votre mot de passe n'est pas correct`
+          })
+        }
+      })
+    }
   })
 }
 

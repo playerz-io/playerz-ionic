@@ -1,6 +1,6 @@
 'use strict';
 
-let getToken = require('../token');
+
 let jwt = require('jwt-simple');
 let config = require('../../config/database');
 let Match = require('../../models/match').modelMatch;

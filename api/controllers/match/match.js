@@ -1,7 +1,7 @@
 //controller match
 'use strict';
 
-let getToken = require('../token');
+
 let Utils = require('../../utils');
 let jwt = require('jwt-simple');
 let config = require('../../config/database');

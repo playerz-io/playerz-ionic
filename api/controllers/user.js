@@ -1,6 +1,6 @@
 'use strict';
 
-let getToken = require('./token');
+
 let jwt = require('jwt-simple');
 let config = require('../config/database');
 let Team = require('../models/team').modelTeam;
@@ -9,7 +9,6 @@ let crypto = require('crypto');
 let nodemailer = require('nodemailer');
 let mg = require('nodemailer-mailgun-transport');
 let auth = require('../config/mailgun').auth;
-let bcrypt = require('bcrypt');
 var Coach = require('../models/coach').modelCoach;
 let Utils = require('../utils');
 let fromMail = `"Playerz" <support@playerz.io>`;

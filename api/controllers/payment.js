@@ -1,6 +1,6 @@
 'use strict'
 
-let getToken = require('./token');
+
 let jwt = require('jwt-simple');
 let Coach = require('../models/coach').modelCoach;
 let config = require('../config/database');
